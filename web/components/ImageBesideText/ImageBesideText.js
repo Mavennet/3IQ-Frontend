@@ -11,7 +11,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import StablecorpLogo from '../../assets/stablecorp-logo.svg'
 
 function Copyright(props) {
   return (
@@ -66,7 +65,7 @@ export default function ImageBesideText() {
                     transform: 'scale(1.9)'
                 }}
                 alt="The house from the offer."
-                src={StablecorpLogo}
+                src={'/assets/stablecorp-logo.svg'}
                 
               />
         </Grid>

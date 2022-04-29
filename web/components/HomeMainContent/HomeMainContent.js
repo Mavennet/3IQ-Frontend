@@ -4,9 +4,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import BackgroundImage from "../../assets/3iq-bg.png";
 import BigButton from "../BigButton/BigButton";
-import TagLineHero from "../../assets/3iq-tagline-hero.png";
 
 const theme = createTheme();
 
@@ -17,7 +15,7 @@ export default function HomeMainContent() {
       <main>
         <Box
           sx={{
-            background: `url(${BackgroundImage}) no-repeat center center`,
+            background: `url('/assets/3iq-bg.png') no-repeat center center`,
             backgroundSize: "cover",
             bgcolor: "#091b3f",
             pt: 2,
@@ -32,7 +30,7 @@ export default function HomeMainContent() {
                   maxWidth: { md: 400, xs: 300 }
                 }}
                 alt="The house from the offer."
-                src={TagLineHero}
+                src={'/assets/3iq-tagline-hero.png'}
               />
               <Box sx={{ pt: 5, pr: { md: 30, sm: 10 } }}>
                 <Typography

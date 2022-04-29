@@ -8,7 +8,6 @@ import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { FiMenu } from "react-icons/fi";
-import logo from "../../assets/3iq-logo.png";
 
 const pages = [
   "Our Funds",
@@ -43,7 +42,7 @@ const Header = () => {
             ml: 4
           }}
           alt="3iq"
-          src={logo}
+          src={'/assets/3iq-logo.png'}
         />
 
         <Box sx={{ ml: "auto", mr: 10, display: { xs: "none", md: "flex" } }}>
