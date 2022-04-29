@@ -1,5 +1,5 @@
 .bigButton{
-    background: none;
+    background: #DC6E19;
     border: 4px solid #DC6E19;
     text-transform: none;
     color: white;
@@ -7,9 +7,9 @@
 }
 
 .bigButton:hover{
-    background: #DC6E19;
+    background: none;
     font-weight: bold;
     border: 4px solid #DC6E19;
     text-transform: none;
-    color: white;
+    color: #DC6E19;
 }

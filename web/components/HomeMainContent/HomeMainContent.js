@@ -49,7 +49,7 @@ export default function HomeMainContent() {
                 </Typography>
               </Box>
 
-              <BigButton sx={{ mt: 4, width: { xs: "100%", md: "auto" } }}></BigButton>
+              <BigButton sx={{ mt: 4, width: { xs: "100%", md: "auto" }, padding: '15px 60px' }}></BigButton>
             </Box>
           </Container>
         </Box>
