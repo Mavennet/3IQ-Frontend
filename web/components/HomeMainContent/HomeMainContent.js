@@ -12,7 +12,6 @@ export default function HomeMainContent() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <main>
         <Box
           sx={{
             background: `url('/assets/3iq-bg.png') no-repeat center center`,
@@ -32,18 +31,16 @@ export default function HomeMainContent() {
                 alt="The house from the offer."
                 src={'/assets/3iq-tagline-hero.png'}
               />
-              <Box sx={{ pt: 5, pr: { md: 30, sm: 10 } }}>
+              <Box sx={{ pt: 5, pr: { md: 30, sm: 10 },  color: "#fff", align: 'left' }}>
                 <Typography
                   component="h1"
                   variant="h5"
-                  align="left"
                   style={{ fontWeight: "bold" }}
-                  color="#fff"
                   gutterBottom
                 >
                   That's the 3iQ difference.
                 </Typography>
-                <Typography variant="p" align="left" color="#fff" paragraph>
+                <Typography variant="p" paragraph>
                   We help investors navigate and understand the evolving digital asset space with
                   investment solutions that provide exposure to cryptocurrencies.
                 </Typography>
@@ -53,7 +50,6 @@ export default function HomeMainContent() {
             </Box>
           </Container>
         </Box>
-      </main>
     </ThemeProvider>
   );
 }
