@@ -8,6 +8,11 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './documents/page';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
+import category from './documents/category';
+import person from './documents/person';
+import post from './documents/post';
+import country from './documents/country';
+import language from './documents/language';
 
 // Object types
 import cta from './objects/cta';
@@ -17,6 +22,8 @@ import internalLink from './objects/internalLink';
 import link from './objects/link';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
+import bioPortableText from './objects/bioPortableText';
+import postPortableText from './objects/postPortableText';
 
 // Landing page sections
 import hero from './objects/hero';
@@ -44,5 +51,12 @@ export default createSchema({
     simplePortableText,
     siteConfig,
     textSection,
+    bioPortableText,
+    postPortableText,
+    category,
+    person,
+    post,
+    country,
+    language,
   ]),
 });
