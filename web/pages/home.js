@@ -8,9 +8,9 @@ const HomePage = props => {
 
   return (
     <div>
-      <Header/>
-      <HomeMainContent/>
-      <ImageBesideText/>
+      <Header />
+      <HomeMainContent />
+      <ImageBesideText />
     </div>
   );
 };

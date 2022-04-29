@@ -1,15 +1,15 @@
-.bigButton{
-    background: none;
-    border: 4px solid #DC6E19;
-    text-transform: none;
-    color: white;
-    font-weight: bold;
+.bigButton {
+  background: none;
+  border: 4px solid #dc6e19;
+  text-transform: none;
+  color: white;
+  font-weight: bold;
 }
 
-.bigButton:hover{
-    background: #DC6E19;
-    font-weight: bold;
-    border: 4px solid #DC6E19;
-    text-transform: none;
-    color: white;
+.bigButton:hover {
+  background: #dc6e19;
+  font-weight: bold;
+  border: 4px solid #dc6e19;
+  text-transform: none;
+  color: white;
 }

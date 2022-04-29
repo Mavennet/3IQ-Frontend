@@ -35,8 +35,8 @@ export default function ImageBesideText() {
           <Box
             component="img"
             sx={{
-              transform:  {sm: 'scale(1)', md: 'scale(1.9)'},
-              display: {xs: 'none', sm: 'inherit'}
+              transform: { sm: 'scale(1)', md: 'scale(1.9)' },
+              display: { xs: 'none', sm: 'inherit' }
             }}
             alt="The house from the offer."
             src={'/assets/stablecorp-logo.svg'}
@@ -48,7 +48,7 @@ export default function ImageBesideText() {
             sx={{
               mt: 15,
               ml: { xs: 2, md: 10 },
-              mr:{ xs: 2, md: 15 },
+              mr: { xs: 2, md: 15 },
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'left',
