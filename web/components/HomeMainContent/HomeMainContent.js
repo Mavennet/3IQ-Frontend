@@ -1,0 +1,61 @@
+import React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import BackgroundImage from "../../assets/3iq-bg.png";
+import BigButton from "../BigButton/BigButton";
+import TagLineHero from "../../assets/3iq-tagline-hero.png";
+
+const theme = createTheme();
+
+export default function HomeMainContent() {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <main>
+        <Box
+          sx={{
+            background: `url(${BackgroundImage}) no-repeat center center`,
+            backgroundSize: "cover",
+            bgcolor: "#091b3f",
+            pt: 2,
+            pb: 2
+          }}
+        >
+          <Container maxWidth="md">
+            <Box sx={{ p: 5 }}>
+              <Box
+                component="img"
+                sx={{
+                  maxWidth: { md: 400, xs: 300 }
+                }}
+                alt="The house from the offer."
+                src={TagLineHero}
+              />
+              <Box sx={{ pt: 5, pr: { md: 30, sm: 10 } }}>
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  align="left"
+                  style={{ fontWeight: "bold" }}
+                  color="#fff"
+                  gutterBottom
+                >
+                  That's the 3iQ difference.
+                </Typography>
+                <Typography variant="p" align="left" color="#fff" paragraph>
+                  We help investors navigate and understand the evolving digital asset space with
+                  investment solutions that provide exposure to cryptocurrencies.
+                </Typography>
+              </Box>
+
+              <BigButton sx={{ mt: 4, width: { xs: "100%", md: "auto" } }}></BigButton>
+            </Box>
+          </Container>
+        </Box>
+      </main>
+    </ThemeProvider>
+  );
+}
