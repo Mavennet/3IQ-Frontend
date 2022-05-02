@@ -24,6 +24,7 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
+import heroWithImage from './objects/heroWithImage';
 
 // Landing page sections
 import hero from './objects/hero';
@@ -58,5 +59,6 @@ export default createSchema({
     post,
     country,
     language,
+    heroWithImage,
   ]),
 });

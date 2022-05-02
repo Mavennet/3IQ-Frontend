@@ -5,7 +5,7 @@
   color: var(--color-black, #000);
   display: flex;
   margin: 0 auto;
-  max-width: var(--width-small);
+  max-height: 100px;
 }
 
 .root a {
@@ -47,6 +47,7 @@
 
 .logo {
   display: block;
+  height: 85px !important;
 }
 
 .nav {
