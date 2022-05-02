@@ -79,6 +79,11 @@ class Header extends Component {
         </h1>
         <nav className={styles.nav}>
           <ul className={styles.navItems}>
+            <li className={styles.navItem}>Social media</li>
+            <li className={styles.navItem}>Search box</li>
+            <li className={styles.navItem}>Languages</li>
+          </ul>
+          <ul className={styles.navItems}>
             {navItems &&
               navItems.map((item) => {
                 const {slug, title, _id} = item
