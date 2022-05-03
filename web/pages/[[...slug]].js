@@ -10,18 +10,7 @@ import RenderSections from '../components/RenderSections'
 import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
-...,
-content[] {
-  ...,
-  cta {
-    ...,
-    route->
-  },
-  ctas[] {
-    ...,
-    route->
-  }
-}`
+...`
 
 /**
  * Fetches data for our pages.
@@ -41,7 +30,6 @@ export const getServerSideProps = async ({params}) => {
     }
   }
   const slug = slugParamToPath(params?.slug)
-
 
   let data
 
@@ -120,7 +108,11 @@ const LandingPage = (props) => {
           alt: title,
         },
       ]
-    : []
+    : []    
+  
+  console.log("-------------------------------")
+  console.log(content)
+  console.log(props)
 
   return (
     <Layout config={config}>

@@ -13,6 +13,7 @@ import person from './documents/person';
 import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
+import section from './documents/section';
 
 // Object types
 import cta from './objects/cta';
@@ -64,5 +65,6 @@ export default createSchema({
     heroWithImage,
     localeString,
     localeText,
+    section,
   ]),
 });

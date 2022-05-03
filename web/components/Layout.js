@@ -14,6 +14,10 @@ function Layout(props) {
     return <div>Missing config</div>
   }
 
+  console.log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+  console.log(children);
+  console.log(props);
+
   const {title, mainNavigation, footerNavigation, footerText, logo, url} = config
   const logoUrl = logo && logo.asset && logo.asset.url
 

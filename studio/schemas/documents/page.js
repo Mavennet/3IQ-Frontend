@@ -20,7 +20,7 @@ export default {
     {
       name: 'content',
       type: 'array',
-      title: 'Page sections',
+      title: 'Page sections',      
       of: [
         { type: 'hero' },
         { type: 'heroWithImage' },
@@ -28,6 +28,7 @@ export default {
         { type: 'mailchimp' },
         { type: 'textSection' },
       ],
+      // of: [{type: 'reference', to: {type: 'section'}}]
     },
     {
       name: 'description',
@@ -54,8 +55,21 @@ export default {
 
   preview: {
     select: {
+    },
+  },
+  preview: {
+    select: {
       title: 'title',
       media: 'openGraphImage',
+      countries: 'countries',
+    },
+    prepare({ title, media, countries }) {
+      console.log(countries);
+      return {
+        title,
+        media,
+        subtitle: 'test'
+      };
     },
   },
 }
