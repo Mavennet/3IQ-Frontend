@@ -16,5 +16,8 @@
   "devDependencies": {
     "@sanity/cli": "^2.26.0",
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "@sanity/language-filter": "^2.29.8"
   }
 }
