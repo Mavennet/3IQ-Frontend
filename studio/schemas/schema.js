@@ -6,7 +6,6 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
 import page from './documents/page';
-import page2 from './documents/page2';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 import category from './documents/category';
@@ -14,7 +13,6 @@ import person from './documents/person';
 import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
-import section from './documents/section';
 import sectionHeroWithImage from './documents/sectionHeroWithImage';
 import sectionHero from './documents/sectionHero';
 
@@ -28,12 +26,10 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
-import heroWithImage from './objects/heroWithImage';
 import localeString from './objects/localeString'
 import localeText from './objects/localeText'
 
 // Landing page sections
-import hero from './objects/hero';
 import imageSection from './objects/imageSection';
 import mailchimp from './objects/mailchimp';
 import textSection from './objects/textSection';
@@ -47,7 +43,6 @@ export default createSchema({
     cta,
     embedHTML,
     figure,
-    hero,
     imageSection,
     internalLink,
     link,
@@ -65,12 +60,9 @@ export default createSchema({
     post,
     country,
     language,
-    heroWithImage,
     localeString,
     localeText,
-    section,
     sectionHeroWithImage,
-    sectionHero,
-    page2
+    sectionHero
   ]),
 });
