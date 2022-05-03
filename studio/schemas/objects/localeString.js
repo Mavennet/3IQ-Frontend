@@ -1,8 +1,4 @@
-const supportedLanguages = [
-  { id: 'en', title: 'English', isDefault: true },
-  { id: 'fr', title: 'French' },
-  { id: 'arb', title: 'Arabian' }
-]
+import supportedLanguages from './supportedLanguages';
 
 export default {
   title: 'Localized string',

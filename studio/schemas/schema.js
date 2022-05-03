@@ -6,6 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
 import page from './documents/page';
+import page2 from './documents/page2';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 import category from './documents/category';
@@ -14,6 +15,8 @@ import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
 import section from './documents/section';
+import sectionHeroWithImage from './documents/sectionHeroWithImage';
+import sectionHero from './documents/sectionHero';
 
 // Object types
 import cta from './objects/cta';
@@ -66,5 +69,8 @@ export default createSchema({
     localeString,
     localeText,
     section,
+    sectionHeroWithImage,
+    sectionHero,
+    page2
   ]),
 });
