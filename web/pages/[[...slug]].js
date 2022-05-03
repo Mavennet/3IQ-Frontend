@@ -31,7 +31,17 @@ content[] {
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 export const getServerSideProps = async ({params}) => {
+  const countries = ['ca', 'us', 'br', 'pt']
+  let country 
+
+  if(params?.slug){
+    if(countries.indexOf(params.slug[0]) >= 0){
+      country = params.slug[0]
+      params.slug.shift()
+    }
+  }
   const slug = slugParamToPath(params?.slug)
+
 
   let data
 
