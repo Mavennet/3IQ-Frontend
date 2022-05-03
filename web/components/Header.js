@@ -6,9 +6,29 @@ import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
 import HamburgerIcon from './icons/Hamburger'
 import {getPathFromSlug, slugParamToPath} from '../utils/urls'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import Button from '@mui/material/Button'
+import MenuItem from '@mui/material/MenuItem'
+import {FiMenu} from 'react-icons/fi'
 
 class Header extends Component {
   state = {showNav: false}
+
+  hideMenu = () => {
+    this.setState({showNav: false})
+  }
+
+  handleMenuToggle = () => {
+    const {showNav} = this.state
+    this.setState({
+      showNav: !showNav,
+    })
+  }
 
   static propTypes = {
     router: PropTypes.shape({
@@ -43,17 +63,6 @@ class Header extends Component {
     router.events.off('routeChangeComplete', this.hideMenu)
   }
 
-  hideMenu = () => {
-    this.setState({showNav: false})
-  }
-
-  handleMenuToggle = () => {
-    const {showNav} = this.state
-    this.setState({
-      showNav: !showNav,
-    })
-  }
-
   renderLogo = (logo) => {
     if (!logo || !logo.asset) {
       return null
@@ -63,7 +72,19 @@ class Header extends Component {
       return <SVG src={logo.asset.url} className={styles.logo} />
     }
 
-    return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />
+    return (
+      <Box
+        component="img"
+        sx={{
+          maxWidth: '14%',
+          mt: 3,
+          mb: 3,
+          ml: 4,
+        }}
+        alt="3iq"
+        src={logo.asset.url}
+      />
+    )
   }
 
   render() {
@@ -71,39 +92,68 @@ class Header extends Component {
     const {showNav} = this.state
 
     return (
-      <div className={styles.root} data-show-nav={showNav}>
-        <h1 className={styles.branding}>
-          <Link href={'/'}>
-            <a title={title}>{this.renderLogo(logo)}</a>
-          </Link>
-        </h1>
-        <nav className={styles.nav}>
-          <ul className={styles.navItems}>
-            <li className={styles.navItem}>Social media</li>
-            <li className={styles.navItem}>Search box</li>
-            <li className={styles.navItem}>Languages</li>
-          </ul>
-          <ul className={styles.navItems}>
+      <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
+        <Toolbar disableGutters>
+          <Link href={'/'}>{this.renderLogo(logo)}</Link>
+
+          <Box sx={{ml: 'auto', mr: 10, display: {xs: 'none', md: 'flex'}}}>
+            tw lin yt
             {navItems &&
               navItems.map((item) => {
                 const {slug, title, _id} = item
                 const isActive = slugParamToPath(router.query.slug) === slug.current
                 return (
-                  <li key={_id} className={styles.navItem}>
-                    <Link href={getPathFromSlug(slug.current)}>
-                      <a data-is-active={isActive ? 'true' : 'false'} aria-current={isActive}>
-                        {title}
-                      </a>
-                    </Link>
-                  </li>
+                  <Link href={getPathFromSlug(slug.current)}>
+                    <Button key={_id} sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
+                      {title}
+                    </Button>
+                  </Link>
                 )
               })}
-          </ul>
-          <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
-            <HamburgerIcon className={styles.hamburgerIcon} />
-          </button>
-        </nav>
-      </div>
+          </Box>
+
+          <Box sx={{ml: 'auto', display: {md: 'none'}}}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={this.handleMenuToggle}
+            >
+              <FiMenu />
+            </IconButton>
+            <Menu
+              sx={{mt: '45px'}}
+              id="menu-appbar"
+              anchorEl={showNav}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={showNav}
+              onClose={this.handleMenuToggle}
+            >
+              {navItems &&
+                navItems.map((item) => {
+                  const {slug, title, _id} = item
+                  const isActive = slugParamToPath(router.query.slug) === slug.current
+                  return (
+                    <Link href={getPathFromSlug(slug.current)}>
+                      <MenuItem key={_id}>
+                        <Typography textAlign="center">{title}</Typography>
+                      </MenuItem>
+                    </Link>
+                  )
+                })}
+            </Menu>
+          </Box>
+        </Toolbar>
+      </AppBar>
     )
   }
 }

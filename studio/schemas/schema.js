@@ -13,6 +13,7 @@ import person from './documents/person';
 import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
+import section from './documents/section';
 
 // Object types
 import cta from './objects/cta';
@@ -25,6 +26,8 @@ import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
 import heroWithImage from './objects/heroWithImage';
+import localeString from './objects/localeString'
+import localeText from './objects/localeText'
 
 // Landing page sections
 import hero from './objects/hero';
@@ -60,5 +63,8 @@ export default createSchema({
     country,
     language,
     heroWithImage,
+    localeString,
+    localeText,
+    section,
   ]),
 });

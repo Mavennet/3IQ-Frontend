@@ -10,18 +10,7 @@ import RenderSections from '../components/RenderSections'
 import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
-...,
-content[] {
-  ...,
-  cta {
-    ...,
-    route->
-  },
-  ctas[] {
-    ...,
-    route->
-  }
-}`
+...`
 
 /**
  * Fetches data for our pages.
@@ -31,6 +20,15 @@ content[] {
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 export const getServerSideProps = async ({params}) => {
+  const countries = ['ca', 'us', 'br', 'pt']
+  let country 
+
+  if(params?.slug){
+    if(countries.indexOf(params.slug[0]) >= 0){
+      country = params.slug[0]
+      params.slug.shift()
+    }
+  }
   const slug = slugParamToPath(params?.slug)
 
   let data
@@ -110,7 +108,11 @@ const LandingPage = (props) => {
           alt: title,
         },
       ]
-    : []
+    : []    
+  
+  console.log("-------------------------------")
+  console.log(content)
+  console.log(props)
 
   return (
     <Layout config={config}>

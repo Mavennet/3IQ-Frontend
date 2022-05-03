@@ -5,7 +5,7 @@ import * as styles from "./bigButton.module.css";
 export default function BigButton(props) {
   return (
     <Button className={styles.bigButton} sx={props.sx} style={props.style}>
-      Read Our Story
+      {props.children}
     </Button>
   );
 }

@@ -16,6 +16,7 @@
     "@sanity/default-layout": "^2.26.0",
     "@sanity/default-login": "^2.26.0",
     "@sanity/desk-tool": "^2.26.0",
+    "@sanity/language-filter": "^2.29.5",
     "@sanity/studio-hints": "^2.24.1",
     "@sanity/vision": "^2.26.0",
     "bcp47": "^1.1.2",
