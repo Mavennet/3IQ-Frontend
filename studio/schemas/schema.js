@@ -19,6 +19,7 @@ import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
+import imageBesideText from './documents/sections/imageBesideText';
 
 // Object types
 import cta from './objects/cta';
@@ -63,6 +64,7 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    imageBesideText,
     hero
   ]),
 });

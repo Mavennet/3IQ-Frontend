@@ -4,8 +4,8 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault)
 
 export default {
   type: 'document',
-  name: 'heroWithImage',
-  title: 'Hero with Image',
+  name: 'imageBesideText',
+  title: 'Image beside text',
   fields: [
     {
       name: 'heading',
@@ -33,7 +33,7 @@ export default {
     {
       name: 'cta',
       type: 'cta',
-      title: 'Call to action'
+      title: 'Call to actions'
     },
   ],
   preview: {

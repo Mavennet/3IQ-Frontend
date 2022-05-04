@@ -9,7 +9,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import BigButton from '../custom/BigButton/BigButton'
+import BigButton from '../BigButton'
+import Link from 'next/link'
 
 const builder = imageUrlBuilder(client)
 
@@ -20,7 +21,9 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, ctas} = props
+  const {mainImage, heading, backgroundImage, description, cta} = props
+
+  console.log(cta)
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,15 +61,15 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {ctas &&
-              ctas.map((cta) => (
+            {cta &&
+               (
                 <BigButton
                   key={cta._key}
                   sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
+                  title={cta.title}
                 >
-                  {cta.title}
                 </BigButton>
-              ))}
+              )}
           </Box>
         </Container>
       </Box>
@@ -83,7 +86,7 @@ HeroWithImage.propTypes = {
   heading: PropTypes.object,
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
-  ctas: PropTypes.arrayOf(PropTypes.object),
+  cta: PropTypes.object,
 }
 
 export default HeroWithImage

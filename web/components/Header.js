@@ -64,7 +64,7 @@ class Header extends Component {
 
   renderLogo = (logo) => {
     if (!logo || !logo.asset) {
-      return null
+      return (<></>)
     }
 
     if (logo.asset.extension === 'svg') {
@@ -93,7 +93,7 @@ class Header extends Component {
     return (
       <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
         <Toolbar disableGutters>
-          {/* <Link href={'/'}>{this.renderLogo(logo)}</Link> */}
+           <Link href={'/'}>{this.renderLogo(logo)}</Link> 
 
           <Box sx={{ml: 'auto', mr: 10, display: {xs: 'none', md: 'flex'}}}>
             tw lin yt
@@ -102,8 +102,8 @@ class Header extends Component {
                 const {slug, title, _id} = item
                 const isActive = slugParamToPath(router.query.slug) === slug.current
                 return (
-                  <Link href={getPathFromSlug(slug.current)}>
-                    <Button key={_id} sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
+                  <Link key={_id} href={getPathFromSlug(slug.current)}>
+                    <Button  sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
                       {title}
                     </Button>
                   </Link>
@@ -142,8 +142,8 @@ class Header extends Component {
                   const {slug, title, _id} = item
                   const isActive = slugParamToPath(router.query.slug) === slug.current
                   return (
-                    <Link href={getPathFromSlug(slug.current)}>
-                      <MenuItem key={_id}>
+                    <Link key={_id} href={getPathFromSlug(slug.current)}>
+                      <MenuItem >
                         <Typography textAlign="center">{title}</Typography>
                       </MenuItem>
                     </Link>

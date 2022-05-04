@@ -12,6 +12,7 @@ const hiddenDocTypes = (listItem) => ![
   'route',
   'hero',
   'heroWithImage',
+  'imageBesideText',
   'imageWithText',
   'mailchimp',
 ].includes(listItem.getId())
@@ -31,6 +32,7 @@ export default () =>
             .items([
               S.documentTypeListItem('hero').title('Hero'),
               S.documentTypeListItem('heroWithImage').title('Hero with Image'),
+              S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('imageWithText').title('Image'),
               S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
             ])
