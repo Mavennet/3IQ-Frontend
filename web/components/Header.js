@@ -93,14 +93,14 @@ class Header extends Component {
     return (
       <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
         <Toolbar disableGutters>
-          {/* <Link href={'/'}>{this.renderLogo(logo)}</Link> */}
+          <Link href={'/'}>{this.renderLogo(logo)}</Link>
 
           <Box sx={{ml: 'auto', mr: 10, display: {xs: 'none', md: 'flex'}}}>
             tw lin yt
             {navItems &&
               navItems.map((item) => {
                 const {slug, title, _id} = item
-                const isActive = slugParamToPath(router.query.slug) === slug.current
+                // const isActive = slugParamToPath(router.query.slug) === slug.current
                 return (
                   <Link href={getPathFromSlug(slug.current)}>
                     <Button key={_id} sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
