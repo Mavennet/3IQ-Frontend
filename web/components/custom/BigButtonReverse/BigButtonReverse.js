@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import * as styles from "./bigButtonReverse.module.css";
+import * as styles from "./BigButtonReverse.module.css";
 
 export default function BigButtonReverse(props) {
     return (

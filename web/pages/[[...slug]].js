@@ -10,7 +10,18 @@ import RenderSections from '../components/RenderSections'
 import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
-...`
+...,
+content[] {
+  ...,
+  cta {
+    ...,
+    route->
+  },
+  ctas[] {
+    ...,
+    route->
+  }
+}`
 
 /**
  * Fetches data for our pages.
@@ -109,11 +120,7 @@ const LandingPage = (props) => {
         },
       ]
     : []    
-  
-  console.log("-------------------------------")
-  console.log(content)
-  console.log(props)
-
+    
   return (
     <Layout config={config}>
       <NextSeo
