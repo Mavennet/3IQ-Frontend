@@ -24,11 +24,11 @@ const pageFragment = groq`
  */
 export const getServerSideProps = async ({params}) => {
   const countries = ['ca', 'us', 'br', 'pt']
-  let country
+  // let country
 
   if(params?.slug){
     if(countries.indexOf(params.slug[0]) >= 0){
-      country = params.slug[0]
+      // country = params.slug[0]
       params.slug.shift()
     }
   }

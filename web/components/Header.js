@@ -100,7 +100,7 @@ class Header extends Component {
             {navItems &&
               navItems.map((item) => {
                 const {slug, title, _id} = item
-                const isActive = slugParamToPath(router.query.slug) === slug.current
+                // const isActive = slugParamToPath(router.query.slug) === slug.current
                 return (
                   <Link key={_id} href={getPathFromSlug(slug.current)}>
                     <Button  sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
