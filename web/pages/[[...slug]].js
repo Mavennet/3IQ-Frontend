@@ -11,17 +11,9 @@ import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
 ...,
-content[] {
-  ...,
-  cta {
-    ...,
-    route->
-  },
-  ctas[] {
-    ...,
-    route->
-  }
-}`
+  content[] {
+    _type == 'reference' => @->,
+  }`
 
 /**
  * Fetches data for our pages.
@@ -31,9 +23,19 @@ content[] {
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 export const getServerSideProps = async ({params}) => {
+  const countries = ['ca', 'us', 'br', 'pt']
+  // let country
+
+  if(params?.slug){
+    if(countries.indexOf(params.slug[0]) >= 0){
+      // country = params.slug[0]
+      params.slug.shift()
+    }
+  }
   const slug = slugParamToPath(params?.slug)
 
   let data
+  // let dataCountries
 
   // Frontpage - fetch the linked `frontpage` from the global configuration document.
   if (slug === '/') {
@@ -48,6 +50,20 @@ export const getServerSideProps = async ({params}) => {
       `
       )
       .then((res) => (res?.frontpage ? {...res.frontpage, slug} : undefined))
+
+      // get all countries available
+      // dataCountries = await client
+      // .fetch(
+      //   groq`
+      //   *[_type == "country"]{
+      //     _id,
+      //     name,
+      //     tag,
+      //     languages[]->
+      //   }
+      // `
+      // )
+
   } else {
     // Regular route
     data = await client

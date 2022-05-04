@@ -1,5 +1,5 @@
 export default {
-  type: 'object',
+  type: 'document',
   name: 'hero',
   title: 'Hero',
   fields: [

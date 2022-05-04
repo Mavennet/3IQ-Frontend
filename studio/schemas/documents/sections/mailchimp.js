@@ -1,5 +1,5 @@
 export default {
-  type: 'object',
+  type: 'document',
   name: 'mailchimp',
   title: 'Mailchimp newsletter signup',
   fields: [

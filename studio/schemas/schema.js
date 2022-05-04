@@ -8,6 +8,18 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './documents/page';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
+import category from './documents/category';
+import person from './documents/person';
+import post from './documents/post';
+import country from './documents/country';
+import language from './documents/language';
+
+// Landing page sections
+import heroWithImage from './documents/sections/heroWithImage';
+import hero from './documents/sections/hero';
+import imageWithText from './documents/sections/imageWithText';
+import mailchimp from './documents/sections/mailchimp';
+import imageBesideText from './documents/sections/imageBesideText';
 
 // Object types
 import cta from './objects/cta';
@@ -17,11 +29,10 @@ import internalLink from './objects/internalLink';
 import link from './objects/link';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
-
-// Landing page sections
-import hero from './objects/hero';
-import imageSection from './objects/imageSection';
-import mailchimp from './objects/mailchimp';
+import bioPortableText from './objects/bioPortableText';
+import postPortableText from './objects/postPortableText';
+import localeString from './objects/localeString'
+import localeText from './objects/localeText'
 import textSection from './objects/textSection';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -33,8 +44,7 @@ export default createSchema({
     cta,
     embedHTML,
     figure,
-    hero,
-    imageSection,
+    imageWithText,
     internalLink,
     link,
     mailchimp,
@@ -44,5 +54,17 @@ export default createSchema({
     simplePortableText,
     siteConfig,
     textSection,
+    bioPortableText,
+    postPortableText,
+    category,
+    person,
+    post,
+    country,
+    language,
+    localeString,
+    localeText,
+    heroWithImage,
+    imageBesideText,
+    hero
   ]),
 });
