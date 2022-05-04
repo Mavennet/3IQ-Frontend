@@ -31,9 +31,9 @@ export default {
       },
     },
     {
-      name: 'cta',
+      name: 'button',
       type: 'cta',
-      title: 'Call to action'
+      title: 'Main button'
     },
   ],
   preview: {

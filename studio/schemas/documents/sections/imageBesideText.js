@@ -1,5 +1,4 @@
-
-import supportedLanguages from '../../objects/supportedLanguages';
+import supportedLanguages from '../../objects/supportedLanguages'
 const baseLanguage = supportedLanguages.find(l => l.isDefault)
 
 export default {
@@ -10,43 +9,43 @@ export default {
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading',
+      title: 'Heading'
     },
     {
       name: 'description',
       type: 'localeText',
-      title: 'Description',
+      title: 'Description'
     },
     {
       name: 'mainImage',
       type: 'figure',
-      title: 'Main image',
+      title: 'Main image'
     },
     {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image',
       options: {
-        hotspot: true,
-      },
+        hotspot: true
+      }
     },
     {
-      name: 'cta',
+      name: 'button',
       type: 'cta',
-      title: 'Call to actions'
-    },
+      title: 'Main Button'
+    }
   ],
   preview: {
     select: {
       title: `heading.${baseLanguage.id}`,
-      media: 'backgroundImage',
+      media: 'backgroundImage'
     },
     prepare({ title, media }) {
       return {
         title,
         subtitle: 'Hero with image section',
-        media,
-      };
-    },
-  },
-};
+        media
+      }
+    }
+  }
+}

@@ -68,7 +68,6 @@ export default {
       country0: 'countries.0.name',
     },
     prepare({ title, media, country0 }) {
-      console.log(country0);
       const subtitle = country0 ? country0 : 'All Countries'
       return {
         title,

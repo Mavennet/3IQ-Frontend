@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import BigButton from '../BigButton'
-import Link from 'next/link'
 
 const builder = imageUrlBuilder(client)
 
@@ -20,9 +19,8 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, cta} = props
+  const {mainImage, heading, backgroundImage, description, button} = props
 
-  console.log(cta)
 
   return (
     <ThemeProvider theme={theme}>
@@ -32,8 +30,6 @@ function HeroWithImage(props) {
           background:
             backgroundImage &&
             `url("${urlFor(backgroundImage)
-              .width(2000)
-              .auto('format')
               .url()}") no-repeat center center`,
           backgroundSize: 'cover',
           bgcolor: '#091b3f',
@@ -49,7 +45,7 @@ function HeroWithImage(props) {
                 maxWidth: {md: 400, xs: 300},
               }}
               alt="The house from the offer."
-              src={builder.image(mainImage).auto('format').width(500).url()}
+              src={builder.image(mainImage).url()}
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
@@ -60,12 +56,12 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {cta &&
+            {button &&
                (
                 <BigButton
-                  key={cta._key}
+                  key={button._key}
                   sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
-                  title={cta.title}
+                  title={button.title}
                 >
                 </BigButton>
               )}
@@ -85,7 +81,7 @@ HeroWithImage.propTypes = {
   heading: PropTypes.object,
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
-  cta: PropTypes.object,
+  button: PropTypes.object,
 }
 
 export default HeroWithImage

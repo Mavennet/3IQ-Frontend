@@ -1,10 +1,10 @@
-import React from 'react'
-import Button from '@mui/material/Button'
-import * as styles from './BigButton.module.css'
+import React from "react";
+import Button from "@mui/material/Button";
+import * as styles from "./BigButtonReverse.module.css"
 import PropTypes from 'prop-types'
 import {Link} from 'next/router'
 
-export default function BigButton(props) {
+export default function BigButtonReverse(props) {
   const {title, route, link, sx, styleProps} = props
 
   if (route && route.slug && route.slug.current) {
@@ -32,10 +32,10 @@ export default function BigButton(props) {
     )
   }
 
-  return <Button className={styles.bigButton} sx={sx} style={styleProps}>{title}</Button>
+  return <Button className={styles.bigButton} sx={sx} style={styleProps}>{title || 'Missing title'}</Button>
 }
 
-BigButton.propTypes = {
+BigButtonReverse.propTypes = {
   title: PropTypes.string.isRequired,
   route: PropTypes.shape({
     slug: PropTypes.shape({
@@ -46,3 +46,4 @@ BigButton.propTypes = {
   sx:PropTypes.object,
   styleProps: PropTypes.object
 }
+
