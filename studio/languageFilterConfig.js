@@ -8,7 +8,7 @@ export default {
   // Select Norwegian (Bokmål) by default
   defaultLanguages: ['en'],
   // Only show language filter for document type `page` (schemaType.name)
-  documentTypes: ['sectionHeroWithImage'],
+  documentTypes: ['HeroWithImage'],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
 }

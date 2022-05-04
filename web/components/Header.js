@@ -93,7 +93,7 @@ class Header extends Component {
     return (
       <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
         <Toolbar disableGutters>
-          <Link href={'/'}>{this.renderLogo(logo)}</Link>
+          {/* <Link href={'/'}>{this.renderLogo(logo)}</Link> */}
 
           <Box sx={{ml: 'auto', mr: 10, display: {xs: 'none', md: 'flex'}}}>
             tw lin yt

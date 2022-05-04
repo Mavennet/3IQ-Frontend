@@ -11,17 +11,9 @@ import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
 ...,
-content[] {
-  ...,
-  cta {
-    ...,
-    route->
-  },
-  ctas[] {
-    ...,
-    route->
-  }
-}`
+  content[] {
+    _type == 'reference' => @->,
+  }`
 
 /**
  * Fetches data for our pages.
@@ -32,7 +24,7 @@ content[] {
  */
 export const getServerSideProps = async ({params}) => {
   const countries = ['ca', 'us', 'br', 'pt']
-  let country 
+  let country
 
   if(params?.slug){
     if(countries.indexOf(params.slug[0]) >= 0){
@@ -119,8 +111,8 @@ const LandingPage = (props) => {
           alt: title,
         },
       ]
-    : []    
-    
+    : []
+
   return (
     <Layout config={config}>
       <NextSeo

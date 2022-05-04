@@ -20,9 +20,7 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, tagline, ctas} = props
-
-  console.log(ctas)
+  const {mainImage, heading, backgroundImage, description, ctas} = props
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,10 +51,10 @@ function HeroWithImage(props) {
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                {heading}
+                {heading.en}
               </Typography>
               <div className={styles.tagline}>
-                {tagline && <SimpleBlockContent blocks={tagline} />}
+                {description.en}
               </div>
             </Box>
 
@@ -82,9 +80,9 @@ HeroWithImage.propTypes = {
       _ref: PropTypes.string,
     }),
   }),
-  heading: PropTypes.string,
+  heading: PropTypes.object,
   backgroundImage: PropTypes.object,
-  tagline: PropTypes.array,
+  description: PropTypes.object,
   ctas: PropTypes.arrayOf(PropTypes.object),
 }
 

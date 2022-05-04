@@ -17,8 +17,6 @@ function resolveSections(section) {
 
 function RenderSections(props) {
   const {sections} = props
-
-  console.error('SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS')
   console.error(props)
 
   if (!sections) {
