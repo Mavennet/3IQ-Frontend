@@ -25,8 +25,10 @@ export default {
         {
           type: 'reference',
           to: [
-            {type: 'sectionHeroWithImage'},
-            {type: 'sectionHero'}
+            {type: 'hero'},
+            {type: 'heroWithImage'},
+            {type: 'imageWithText'},
+            {type: 'mailchimp'}
           ]
         }
       ]

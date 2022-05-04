@@ -13,8 +13,12 @@ import person from './documents/person';
 import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
-import sectionHeroWithImage from './documents/sectionHeroWithImage';
-import sectionHero from './documents/sectionHero';
+
+// Landing page sections
+import heroWithImage from './documents/sections/heroWithImage';
+import hero from './documents/sections/hero';
+import imageWithText from './documents/sections/imageWithText';
+import mailchimp from './documents/sections/mailchimp';
 
 // Object types
 import cta from './objects/cta';
@@ -28,10 +32,6 @@ import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
 import localeString from './objects/localeString'
 import localeText from './objects/localeText'
-
-// Landing page sections
-import imageSection from './objects/imageSection';
-import mailchimp from './objects/mailchimp';
 import textSection from './objects/textSection';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -43,7 +43,7 @@ export default createSchema({
     cta,
     embedHTML,
     figure,
-    imageSection,
+    imageWithText,
     internalLink,
     link,
     mailchimp,
@@ -62,7 +62,7 @@ export default createSchema({
     language,
     localeString,
     localeText,
-    sectionHeroWithImage,
-    sectionHero
+    heroWithImage,
+    hero
   ]),
 });
