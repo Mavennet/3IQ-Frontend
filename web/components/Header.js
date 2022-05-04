@@ -4,8 +4,10 @@ import Link from 'next/link'
 import {withRouter} from 'next/router'
 import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
-import HamburgerIcon from './icons/Hamburger'
-import {getPathFromSlug, slugParamToPath} from '../utils/urls'
+import {
+  getPathFromSlug,
+  // slugParamToPath
+} from '../utils/urls'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -38,7 +40,7 @@ class Header extends Component {
       }),
       events: PropTypes.any,
     }),
-    title: PropTypes.string,
+    // title: PropTypes.string,
     navItems: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -65,7 +67,7 @@ class Header extends Component {
 
   renderLogo = (logo) => {
     if (!logo || !logo.asset) {
-      return null
+      return <></>
     }
 
     if (logo.asset.extension === 'svg') {
@@ -88,25 +90,28 @@ class Header extends Component {
   }
 
   render() {
-    const {title = 'Missing title', navItems, router, logo} = this.props
+    const {
+      // title = 'Missing title',
+      navItems,
+      // router,
+      logo,
+    } = this.props
     const {showNav} = this.state
 
     return (
       <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
         <Toolbar disableGutters>
-          <Link href={'/'}>{this.renderLogo(logo)}</Link>
+          <Link href={'/'} passHref>{this.renderLogo(logo)}</Link>
 
           <Box sx={{ml: 'auto', mr: 10, display: {xs: 'none', md: 'flex'}}}>
             tw lin yt
             {navItems &&
               navItems.map((item) => {
                 const {slug, title, _id} = item
-                const isActive = slugParamToPath(router.query.slug) === slug.current
+                // const isActive = slugParamToPath(router.query.slug) === slug.current
                 return (
-                  <Link href={getPathFromSlug(slug.current)}>
-                    <Button key={_id} sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
-                      {title}
-                    </Button>
+                  <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
+                    <Button sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>{title}</Button>
                   </Link>
                 )
               })}
@@ -141,10 +146,10 @@ class Header extends Component {
               {navItems &&
                 navItems.map((item) => {
                   const {slug, title, _id} = item
-                  const isActive = slugParamToPath(router.query.slug) === slug.current
+                  // const isActive = slugParamToPath(router.query.slug) === slug.current
                   return (
-                    <Link href={getPathFromSlug(slug.current)}>
-                      <MenuItem key={_id}>
+                    <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
+                      <MenuItem>
                         <Typography textAlign="center">{title}</Typography>
                       </MenuItem>
                     </Link>

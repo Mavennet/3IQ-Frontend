@@ -10,7 +10,10 @@ import RenderSections from '../components/RenderSections'
 import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
-...`
+...,
+  content[] {
+    _type == 'reference' => @->,
+  }`
 
 /**
  * Fetches data for our pages.
@@ -21,17 +24,18 @@ const pageFragment = groq`
  */
 export const getServerSideProps = async ({params}) => {
   const countries = ['ca', 'us', 'br', 'pt']
-  let country 
+  // let country
 
   if(params?.slug){
     if(countries.indexOf(params.slug[0]) >= 0){
-      country = params.slug[0]
+      // country = params.slug[0]
       params.slug.shift()
     }
   }
   const slug = slugParamToPath(params?.slug)
 
   let data
+  // let dataCountries
 
   // Frontpage - fetch the linked `frontpage` from the global configuration document.
   if (slug === '/') {
@@ -46,6 +50,20 @@ export const getServerSideProps = async ({params}) => {
       `
       )
       .then((res) => (res?.frontpage ? {...res.frontpage, slug} : undefined))
+
+      // get all countries available
+      // dataCountries = await client
+      // .fetch(
+      //   groq`
+      //   *[_type == "country"]{
+      //     _id,
+      //     name,
+      //     tag,
+      //     languages[]->
+      //   }
+      // `
+      // )
+
   } else {
     // Regular route
     data = await client
@@ -108,11 +126,7 @@ const LandingPage = (props) => {
           alt: title,
         },
       ]
-    : []    
-  
-  console.log("-------------------------------")
-  console.log(content)
-  console.log(props)
+    : []
 
   return (
     <Layout config={config}>

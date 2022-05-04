@@ -1,22 +1,26 @@
+
+import supportedLanguages from '../../objects/supportedLanguages';
+const baseLanguage = supportedLanguages.find(l => l.isDefault)
+
 export default {
-  type: 'object',
+  type: 'document',
   name: 'heroWithImage',
   title: 'Hero with Image',
-  fields: [    
+  fields: [
+    {
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading',
+    },
+    {
+      name: 'description',
+      type: 'localeText',
+      title: 'Description',
+    },
     {
       name: 'mainImage',
       type: 'figure',
       title: 'Main image',
-    },
-    {
-      name: 'heading',
-      type: 'string',
-      title: 'Heading',
-    },
-    {
-      name: 'tagline',
-      type: 'simplePortableText',
-      title: 'Tagline',
     },
     {
       name: 'backgroundImage',
@@ -27,20 +31,14 @@ export default {
       },
     },
     {
-      name: 'ctas',
-      type: 'array',
-      title: 'Call to actions',
-      of: [
-        {
-          title: 'Call to action',
-          type: 'cta',
-        },
-      ],
+      name: 'button',
+      type: 'cta',
+      title: 'Main button'
     },
   ],
   preview: {
     select: {
-      title: 'heading',
+      title: `heading.${baseLanguage.id}`,
       media: 'backgroundImage',
     },
     prepare({ title, media }) {

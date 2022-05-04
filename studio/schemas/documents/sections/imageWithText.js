@@ -1,6 +1,6 @@
 export default {
-  type: 'object',
-  name: 'imageSection',
+  type: 'document',
+  name: 'imageWithText',
   title: 'Image with text',
   fields: [
     {

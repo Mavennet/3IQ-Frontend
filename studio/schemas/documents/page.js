@@ -20,15 +20,19 @@ export default {
     {
       name: 'content',
       type: 'array',
-      title: 'Page sections',      
+      title: 'Page sections',
       of: [
-        { type: 'hero' },
-        { type: 'heroWithImage' },
-        { type: 'imageSection' },
-        { type: 'mailchimp' },
-        { type: 'textSection' },
-      ],
-      // of: [{type: 'reference', to: {type: 'section'}}]
+        {
+          type: 'reference',
+          to: [
+            {type: 'hero'},
+            {type: 'heroWithImage'},
+            {type: 'imageWithText'},
+            {type: 'imageBesideText'},
+            {type: 'mailchimp'}
+          ]
+        }
+      ]
     },
     {
       name: 'description',
@@ -61,14 +65,14 @@ export default {
     select: {
       title: 'title',
       media: 'openGraphImage',
-      countries: 'countries',
+      country0: 'countries.0.name',
     },
-    prepare({ title, media, countries }) {
-      console.log(countries);
+    prepare({ title, media, country0 }) {
+      const subtitle = country0 ? country0 : 'All Countries'
       return {
         title,
         media,
-        subtitle: 'test'
+        subtitle: `${subtitle}`
       };
     },
   },
