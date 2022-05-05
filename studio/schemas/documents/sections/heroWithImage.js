@@ -1,6 +1,6 @@
-
 import supportedLanguages from '../../objects/supportedLanguages';
-const baseLanguage = supportedLanguages.find(l => l.isDefault)
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -32,7 +32,7 @@ export default {
     },
     {
       name: 'button',
-      type: 'cta',
+      type: 'localeCta',
       title: 'Main button'
     },
   ],

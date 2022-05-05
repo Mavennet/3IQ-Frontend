@@ -1,3 +1,7 @@
+import supportedLanguages from '../../objects/supportedLanguages';
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
+
 export default {
   type: 'document',
   name: 'mailchimp',
@@ -5,12 +9,12 @@ export default {
   fields: [
     {
       name: 'heading',
-      type: 'string',
+      type: 'localeString',
       title: 'Heading',
     },
     {
       name: 'subtitle',
-      type: 'string',
+      type: 'localeString',
       title: 'Subheading',
     },
     {
@@ -23,7 +27,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'heading',
+      title: `heading.${baseLanguage.id}`,
     },
     prepare({ title }) {
       return {

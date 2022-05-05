@@ -1,3 +1,7 @@
+import supportedLanguages from '../../objects/supportedLanguages';
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
+
 export default {
   type: 'document',
   name: 'imageWithText',
@@ -10,7 +14,7 @@ export default {
     },
     {
       name: 'label',
-      type: 'string',
+      type: 'localeString',
       title: 'Label',
     },
     {
@@ -31,13 +35,13 @@ export default {
   ],
   preview: {
     select: {
-      heading: 'heading',
+      title: `heading.${baseLanguage.id}`,
       subtitle: 'label',
       media: 'image',
     },
-    prepare({ heading, media }) {
+    prepare({ title, media }) {
       return {
-        title: `Image: ${heading}`,
+        title,
         subtitle: 'Image section',
         media,
       };

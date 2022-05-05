@@ -1,5 +1,6 @@
-import supportedLanguages from '../../objects/supportedLanguages'
-const baseLanguage = supportedLanguages.find(l => l.isDefault)
+import supportedLanguages from '../../objects/supportedLanguages';
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',

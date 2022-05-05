@@ -1,7 +1,4 @@
-// First, we must import the schema creator
 import createSchema from 'part:@sanity/base/schema-creator';
-
-// Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
 // Document types
@@ -14,7 +11,7 @@ import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
 
-// Landing page sections
+// Section documents
 import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
 import imageWithText from './documents/sections/imageWithText';
@@ -31,15 +28,15 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
-import localeString from './objects/localeString'
-import localeText from './objects/localeText'
 import textSection from './objects/textSection';
 
-// Then we give our schema to the builder and provide the result to Sanity
+// Locale objects
+import localeString from './objects/locale/localeString'
+import localeText from './objects/locale/localeText'
+import localeCta from './objects/locale/localeCta'
+
 export default createSchema({
   name: 'default',
-  // Then proceed to concatenate our our document type
-  // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     cta,
     embedHTML,
@@ -65,6 +62,7 @@ export default createSchema({
     localeText,
     heroWithImage,
     imageBesideText,
-    hero
+    hero,
+    localeCta,
   ]),
 });
