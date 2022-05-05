@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import BigButton from '../BigButton'
+import SimpleBlockContent from '../SimpleBlockContent'
 
 const builder = imageUrlBuilder(client)
 
@@ -21,6 +22,13 @@ const theme = createTheme()
 function HeroWithImage(props) {
   const {mainImage, heading, backgroundImage, description, button} = props
 
+  const currentCountry = 'Canada' // Obtained from the URL 
+  const availableLanguagesForCurrentCountry = ['en_US', 'en_CA', 'fr'] // Obtained from the currentCountry
+  const currentLanguage = 'en_CA' // Obtained from the URL (?) // TODO: Get dinamically
+
+  const localeHeading = heading[currentLanguage]
+  const localeDescription = description[currentLanguage]
+  const localeButton = button[currentLanguage]
 
   return (
     <ThemeProvider theme={theme}>
@@ -49,19 +57,18 @@ function HeroWithImage(props) {
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                {heading.en}
+                {localeHeading}
               </Typography>
-              <div className={styles.tagline}>
-                {description.en}
+              <div className={styles.description}>
+                {localeDescription && <SimpleBlockContent blocks={localeDescription} />}
               </div>
             </Box>
 
-            {button &&
+            {localeButton &&
                (
                 <BigButton
-                  key={button._key}
                   sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
-                  title={button.title}
+                  title={localeButton.title}
                 >
                 </BigButton>
               )}

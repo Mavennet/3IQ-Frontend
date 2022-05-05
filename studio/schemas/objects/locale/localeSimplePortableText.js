@@ -1,8 +1,8 @@
 import supportedLanguages from '../supportedLanguages';
 
 export default {
-  title: 'Localized Call to Action',
-  name: 'localeCta',
+  title: 'Localized Simple Portable Text',
+  name: 'localeSimplePortableText',
   type: 'object',
   fieldsets: [
     {
@@ -15,7 +15,7 @@ export default {
     supportedLanguages.map(lang => ({
       title: lang.title,
       name: lang.id,
-      type: 'cta',
+      type: 'simplePortableText',
       fieldset: lang.isDefault ? null : 'translations'
     }))
 }

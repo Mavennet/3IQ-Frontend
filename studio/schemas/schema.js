@@ -34,6 +34,8 @@ import textSection from './objects/textSection';
 import localeString from './objects/locale/localeString'
 import localeText from './objects/locale/localeText'
 import localeCta from './objects/locale/localeCta'
+import localeSimplePortableText from './objects/locale/localeSimplePortableText'
+
 
 export default createSchema({
   name: 'default',
@@ -64,5 +66,6 @@ export default createSchema({
     imageBesideText,
     hero,
     localeCta,
+    localeSimplePortableText,
   ]),
 });
