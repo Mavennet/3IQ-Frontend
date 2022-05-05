@@ -20,8 +20,6 @@ const theme = createTheme()
 function ImageBesideText(props) {
   const {mainImage, heading, backgroundImage, description, button} = props
 
-  console.log(mainImage)
-
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{height: '90vh'}}>
