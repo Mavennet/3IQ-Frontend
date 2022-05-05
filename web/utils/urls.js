@@ -19,7 +19,7 @@ export function slugToAbsUrl(slug, baseUrl) {
  * As editors can include leading and/or trailing slashes in routes' slugs,
  * we need to normalize them before searching routes by slug.
  */
-export function getSlugVariations(slug) {
+export function getSlugVariations(country, slug) {
   const slashless = slug.replace(/\//g, '')
   return [
     slashless,
@@ -29,6 +29,10 @@ export function getSlugVariations(slug) {
     `${slashless}/`,
     // /leading
     `/${slashless}`,
+    // /slash-on-both-ends with country/
+    `${country}/${slashless}/`,
+    // /leading with country/
+    `${country}/${slashless}`,
   ]
 }
 
