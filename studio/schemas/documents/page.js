@@ -29,6 +29,7 @@ export default {
             {type: 'heroWithImage'},
             {type: 'imageWithText'},
             {type: 'imageBesideText'},
+            {type: 'doubleOptions'},
             {type: 'mailchimp'}
           ]
         }

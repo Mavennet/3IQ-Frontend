@@ -20,11 +20,11 @@ const theme = createTheme()
 function ImageBesideText(props) {
   const {mainImage, heading, backgroundImage, description, button} = props
 
-  console.log(mainImage)
+  console.log(props)
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{height: '90vh'}}>
+      <Grid container component="main" >
         <CssBaseline />
         <Grid
           item
@@ -67,15 +67,16 @@ function ImageBesideText(props) {
             }}
           >
             <Typography component="h1" variant="h4" style={{fontWeight: 'bold'}} gutterBottom>
-              {heading.en}
+              {heading.en_CA}
             </Typography>
             <Typography variant="p" paragraph>
-              {description.en}
+              {description.en_CA}
             </Typography>
 
             <Box
               sx={{
                 mt: 5,
+                mb: 5
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>

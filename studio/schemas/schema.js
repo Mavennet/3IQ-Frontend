@@ -16,7 +16,8 @@ import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
-import imageBesideText from './documents/sections/imageBesideText';
+import imageBesideText from './documents/sections/imageBesideText'
+import doubleOptions from './documents/sections/doubleOptions';;
 
 // Object types
 import cta from './objects/cta';
@@ -35,6 +36,7 @@ import localeString from './objects/locale/localeString'
 import localeText from './objects/locale/localeText'
 import localeCta from './objects/locale/localeCta'
 import localeSimplePortableText from './objects/locale/localeSimplePortableText'
+
 
 
 export default createSchema({
@@ -57,6 +59,7 @@ export default createSchema({
     postPortableText,
     category,
     person,
+    doubleOptions,
     post,
     country,
     language,

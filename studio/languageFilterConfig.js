@@ -11,6 +11,7 @@ export default {
     'heroWithImage',
     'hero',
     'imageBesideText',
+    'doubleOptions',
     'mailchimp'
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
