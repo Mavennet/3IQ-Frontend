@@ -13,10 +13,10 @@ export default {
       validation: Rule => Rule.error('Information required.').required()
     },
     {
-      name: 'tag',
+      name: 'urlTag',
       type: 'string',
-      title: 'Tag',
-      description: 'IETF language tag with ISO 3166-1 country code, such as "en-US" or "pt-BR"',
+      title: 'URL Tag',
+      description: 'Tag for the URL internationalization, such as "us", "ca", "fr" or "br".',
       validation: Rule => Rule.error('Information required.').required()
     },
     {
