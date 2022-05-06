@@ -1,22 +1,21 @@
 import React from 'react'
 import Button from '@mui/material/Button'
-import * as styles from './BigButton.module.css'
 import PropTypes from 'prop-types'
-import {Link} from 'next/router'
+import { Link } from 'next/router'
 
-export default function   BigButton(props) {
-  const {title, route, link, sx} = props
+export default function BigButton(props) {
+  const { title, route, link, sx } = props
 
   if (route && route.slug && route.slug.current) {
     return (
       <Link
         href={{
           pathname: '/LandingPage',
-          query: {slug: route.slug.current},
+          query: { slug: route.slug.current },
         }}
         as={`/${route.slug.current}`}
       >
-        <Button className={styles.bigButton} sx={sx}>
+        <Button sx={sx}>
           {title || 'Missing title'}
         </Button>
       </Link>
@@ -25,14 +24,26 @@ export default function   BigButton(props) {
 
   if (link) {
     return (
-      
-      <Button className={styles.bigButton} sx={sx}>
+
+      <Button sx={sx}>
         {title || 'Missing title'}
       </Button>
     )
   }
 
-  return <Button className={styles.bigButton} sx={sx}>{title || 'Missing title'}</Button>
+  return <Button
+    sx={{
+      background: 'none',
+      border: '4px solid #dc6e19',
+      textTransform: 'none',
+      color: 'white',
+      fontWeight: 'bold',
+      '&:hover': {
+        background: '#dc6e19',
+      },
+      ...sx,
+    }}
+  >{title || 'Missing title'}</Button>
 }
 
 BigButton.propTypes = {
@@ -43,5 +54,5 @@ BigButton.propTypes = {
     }),
   }),
   link: PropTypes.string,
-  sx:PropTypes.object,
+  sx: PropTypes.object,
 }
