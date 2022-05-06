@@ -23,12 +23,12 @@ const pageFragment = groq`
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 export const getServerSideProps = async ({params}) => {
-  const countries = ['ca', 'us', 'br', 'pt']
-  // let country
+  const countries = ['ca', 'us', 'br', 'uae']
+  let country = '';
 
   if(params?.slug){
     if(countries.indexOf(params.slug[0]) >= 0){
-      // country = params.slug[0]
+      country = params.slug[0]
       params.slug.shift()
     }
   }
@@ -66,7 +66,20 @@ export const getServerSideProps = async ({params}) => {
 
   } else {
     // Regular route
-    data = await client
+    if(country) {
+      data = await client
+      .fetch(
+        // Get the route document with one of the possible slugs for the given requested path
+        groq`*[_type == "route" && slug.current in $possibleSlugs && $country in countries[]->urlTag][0]{
+          page-> {
+            ${pageFragment}
+          }
+        }`,
+        {possibleSlugs: getSlugVariations(country, slug), country: country}
+      )
+      .then((res) => (res?.page ? {...res.page, slug} : undefined))
+    } else {
+      data = await client
       .fetch(
         // Get the route document with one of the possible slugs for the given requested path
         groq`*[_type == "route" && slug.current in $possibleSlugs][0]{
@@ -74,9 +87,10 @@ export const getServerSideProps = async ({params}) => {
             ${pageFragment}
           }
         }`,
-        {possibleSlugs: getSlugVariations(slug)}
+        {possibleSlugs: getSlugVariations(country, slug)}
       )
       .then((res) => (res?.page ? {...res.page, slug} : undefined))
+    }
   }
 
   if (!data?._type === 'page') {

@@ -4,47 +4,52 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'imageWithText',
-  title: 'Image with text',
+  name: 'doubleOptions',
+  title: 'Double Options',
   fields: [
     {
       name: 'heading',
-      type: 'string',
+      type: 'localeString',
       title: 'Heading',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'label',
-      type: 'localeString',
-      title: 'Label',
+      name: 'description',
+      type: 'localeSimplePortableText',
+      title: 'Description',
     },
     {
-      name: 'text',
-      type: 'simplePortableText',
-      title: 'Text',
-    },
-    {
-      name: 'image',
+      name: 'firstImage',
       type: 'figure',
-      title: 'Image',
+      title: 'First image',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'cta',
-      type: 'cta',
-      title: 'Call to action',
+      name: 'secondImage',
+      type: 'figure',
+      title: 'Second image',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'firstButton',
+      type: 'localeCta',
+      title: 'First button',
+    },
+    {
+      name: 'secondButton',
+      type: 'localeCta',
+      title: 'Second button',
     },
   ],
   preview: {
     select: {
       title: `heading.${baseLanguage.id}`,
-      subtitle: 'label',
-      media: 'image',
+      media: 'firstImage',
     },
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Image section',
+        subtitle: 'Two options section',
         media,
       };
     },
