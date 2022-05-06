@@ -9,7 +9,6 @@ module.exports = {
     'plugin:react/recommended',
   ],
   rules: {
-    'object-curly-spacing': ['error', 'never'],
     'comma-dangle': 0,
     '@next/next/no-img-element': 0,
   },

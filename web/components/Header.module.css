@@ -1,0 +1,10 @@
+.countryButtons {
+  color: '#0a1b3f';
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.countryButtons:hover {
+  color: #dc6e19;
+}
