@@ -10,11 +10,13 @@ export default {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'page',
       type: 'reference',
       description: 'Select the page that this route should point to',
+      validation: Rule => Rule.error('Information required.').required(),
       to: [
         {
           type: 'page',
@@ -36,9 +38,10 @@ export default {
     {
       name: 'countries',
       title: 'Countries',
-      description: 'Choose one or more countries to display this content into (empty for all countries)',
+      description: 'Choose one or more countries to display this content into',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'country'}}]
+      validation: Rule => Rule.error('Information required.').required(),
+      of: [{type: 'reference', to: {type: 'country'}}],
     },
   ],
   preview: {

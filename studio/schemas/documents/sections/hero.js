@@ -1,4 +1,4 @@
-import supportedLanguages from '../../objects/supportedLanguages';
+import supportedLanguages from '../../supportedLanguages';
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 

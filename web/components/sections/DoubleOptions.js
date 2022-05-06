@@ -12,16 +12,20 @@ import BigButton from '../BigButton'
 
 const builder = imageUrlBuilder(client)
 
+/*
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
+*/
 
 const theme = createTheme()
 
 function DoubleOptions(props) {
-  const {heading, firstImage, seccondImage, description, firstButton, seccondButton} = props
+  const {heading, firstImage, secondImage, description, firstButton, secondButton} = props
 
   console.log(props)
+  console.log(heading)
+  console.log(description)
 
   return (
     <ThemeProvider theme={theme}>
@@ -123,11 +127,11 @@ function DoubleOptions(props) {
                 mt={2}
                 mb={5}
                 alt="The house from the offer."
-                src={builder.image(seccondImage).url()}
+                src={builder.image(secondImage).url()}
               />
               <BigButtonReverse
-                key={seccondButton._key}
-                title={seccondButton.title}
+                key={secondButton._key}
+                title={secondButton.title}
                 sx={{width: {md: 150}, padding: '10px 20px'}}
               />
             </Grid>
@@ -144,10 +148,15 @@ DoubleOptions.propTypes = {
       _ref: PropTypes.string,
     }),
   }),
+  secondImage: PropTypes.shape({
+    asset: PropTypes.shape({
+      _ref: PropTypes.string,
+    }),
+  }),
   heading: PropTypes.object,
-  backgroundImage: PropTypes.object,
   description: PropTypes.object,
-  button: PropTypes.object,
+  firstButton: PropTypes.object,  
+  secondButton: PropTypes.object,
 }
 
 export default DoubleOptions

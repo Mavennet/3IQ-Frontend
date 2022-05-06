@@ -1,4 +1,4 @@
-import supportedLanguages from '../../objects/supportedLanguages';
+import supportedLanguages from '../../supportedLanguages';
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -11,6 +11,7 @@ export default {
       name: 'heading',
       type: 'localeString',
       title: 'Heading',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'description',
@@ -21,22 +22,24 @@ export default {
       name: 'firstImage',
       type: 'figure',
       title: 'First image',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
-        name: 'seccondImage',
-        type: 'figure',
-        title: 'Seccond image',
-      },
+      name: 'secondImage',
+      type: 'figure',
+      title: 'Second image',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
     {
       name: 'firstButton',
       type: 'localeCta',
-      title: 'First button'
+      title: 'First button',
     },
     {
-        name: 'seccondButton',
-        type: 'localeCta',
-        title: 'Seccond button'
-      },
+      name: 'secondButton',
+      type: 'localeCta',
+      title: 'Second button',
+    },
   ],
   preview: {
     select: {

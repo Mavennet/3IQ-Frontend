@@ -1,4 +1,4 @@
-import supportedLanguages from '../../objects/supportedLanguages';
+import supportedLanguages from '../../supportedLanguages';
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -11,6 +11,7 @@ export default {
       name: 'heading',
       type: 'string',
       title: 'Heading',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'label',
@@ -26,6 +27,7 @@ export default {
       name: 'image',
       type: 'figure',
       title: 'Image',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'cta',

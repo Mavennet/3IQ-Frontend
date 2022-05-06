@@ -22,8 +22,8 @@ const theme = createTheme()
 function HeroWithImage(props) {
   const {mainImage, heading, backgroundImage, description, button} = props
 
-  const currentCountry = 'Canada' // Obtained from the URL 
-  const availableLanguagesForCurrentCountry = ['en_US', 'en_CA', 'fr'] // Obtained from the currentCountry
+  // const currentCountry = 'Canada' // Obtained from the URL 
+  // const availableLanguagesForCurrentCountry = ['en_US', 'en_CA', 'fr'] // Obtained from the currentCountry
   const currentLanguage = 'en_CA' // Obtained from the URL (?) // TODO: Get dinamically
 
   const localeHeading = heading[currentLanguage]

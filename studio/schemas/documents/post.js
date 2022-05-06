@@ -12,7 +12,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => Rule.error('Information required.').required()
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'slug',
@@ -23,12 +23,12 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      validation: Rule => Rule.error('Information required.').required()
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'mainImage',
       title: 'Main image',
-      type: 'figure'
+      type: 'figure',
     },
     {
       name: 'categories',
@@ -36,37 +36,38 @@ export default {
       type: 'array',
       icon: MdInsertDriveFile,
       of: [{type: 'reference', to: {type: 'category'}}],
-      validation: Rule => Rule.error('Information required.').required()
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'postPortableText'
+      type: 'postPortableText',
     },
     {
       name: 'person',
       title: 'Author',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'person'}}]
+      of: [{type: 'reference', to: {type: 'person'}}],
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      validation: Rule => Rule.error('Information required.').required()
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'relatedPosts',
       title: 'Related posts',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'post'}}]
+      of: [{type: 'reference', to: {type: 'post'}}],
     },
     {
       name: 'countries',
       title: 'Countries',
       description: 'Choose one or more countries to display this content into (empty for all countries)',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'country'}}]
+      of: [{type: 'reference', to: {type: 'country'}}],
     },
   ],
   preview: {
@@ -74,7 +75,7 @@ export default {
       title: 'title',
       publishedAt: 'publishedAt',
       slug: 'slug',
-      media: 'mainImage'
+      media: 'mainImage',
     },
     prepare({title = 'No title', publishedAt, slug = {}, media}) {
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM')

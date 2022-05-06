@@ -9,7 +9,7 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Name'
+      title: 'Name',
     },
     {
       name: 'slug',
@@ -18,24 +18,24 @@ export default {
       description: 'Some frontend will require a slug to be set to be able to show the person',
       options: {
         source: 'name',
-        maxLength: 96
+        maxLength: 96,
       }
     },
     {
       name: 'image',
       title: 'Image',
-      type: 'figure'
+      type: 'figure',
     },
     {
       name: 'bio',
       title: 'Bio',
-      type: 'bioPortableText'
+      type: 'bioPortableText',
     }
   ],
   preview: {
     select: {
       title: 'name',
-      media: 'image'
+      media: 'image',
     }
   }
 }
