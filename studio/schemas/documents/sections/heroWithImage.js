@@ -1,6 +1,6 @@
+import supportedLanguages from '../../supportedLanguages';
 
-import supportedLanguages from '../../objects/supportedLanguages';
-const baseLanguage = supportedLanguages.find(l => l.isDefault)
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -11,29 +11,32 @@ export default {
       name: 'heading',
       type: 'localeString',
       title: 'Heading',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'description',
-      type: 'localeText',
+      type: 'localeSimplePortableText',
       title: 'Description',
     },
     {
       name: 'mainImage',
       type: 'figure',
       title: 'Main image',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image',
+      validation: Rule => Rule.error('Information required.').required(),
       options: {
         hotspot: true,
       },
     },
     {
       name: 'button',
-      type: 'cta',
-      title: 'Main button'
+      type: 'localeCta',
+      title: 'Main button',
     },
   ],
   preview: {

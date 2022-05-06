@@ -17,7 +17,7 @@ export default function BigButtonReverse(props) {
         as={`/${route.slug.current}`}
       >
         <Button className={styles.bigButton} sx={sx} style={styleProps}>
-          {title}
+          {title || 'Missing title'}
         </Button>
       </Link>
     )
@@ -27,7 +27,7 @@ export default function BigButtonReverse(props) {
     return (
       
       <Button className={styles.bigButton} sx={sx} style={styleProps}>
-        {title}
+        {title || 'Missing title'}
       </Button>
     )
   }

@@ -4,8 +4,8 @@ import * as styles from './BigButton.module.css'
 import PropTypes from 'prop-types'
 import {Link} from 'next/router'
 
-export default function BigButton(props) {
-  const {title, route, link, sx, styleProps} = props
+export default function   BigButton(props) {
+  const {title, route, link, sx} = props
 
   if (route && route.slug && route.slug.current) {
     return (
@@ -16,8 +16,8 @@ export default function BigButton(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <Button className={styles.bigButton} sx={sx} style={styleProps}>
-          {title}
+        <Button className={styles.bigButton} sx={sx}>
+          {title || 'Missing title'}
         </Button>
       </Link>
     )
@@ -26,13 +26,13 @@ export default function BigButton(props) {
   if (link) {
     return (
       
-      <Button className={styles.bigButton} sx={sx} style={styleProps}>
-        {title}
+      <Button className={styles.bigButton} sx={sx}>
+        {title || 'Missing title'}
       </Button>
     )
   }
 
-  return <Button className={styles.bigButton} sx={sx} style={styleProps}>{title}</Button>
+  return <Button className={styles.bigButton} sx={sx}>{title || 'Missing title'}</Button>
 }
 
 BigButton.propTypes = {
@@ -44,5 +44,4 @@ BigButton.propTypes = {
   }),
   link: PropTypes.string,
   sx:PropTypes.object,
-  styleProps: PropTypes.object
 }

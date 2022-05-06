@@ -16,11 +16,13 @@ export default {
       name: 'title',
       type: 'string',
       title: 'Title',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'content',
       type: 'array',
       title: 'Page sections',
+      validation: Rule => Rule.error('Information required.').required(),
       of: [
         {
           type: 'reference',
@@ -29,14 +31,15 @@ export default {
             {type: 'heroWithImage'},
             {type: 'imageWithText'},
             {type: 'imageBesideText'},
-            {type: 'mailchimp'}
+            {type: 'doubleOptions'},
+            {type: 'mailchimp'},
           ]
         }
       ]
     },
     {
       name: 'description',
-      type: 'text',
+      type: 'localeText',
       title: 'Description',
       description: 'This description populates meta-tags on the webpage',
       fieldset: 'metadata',
@@ -51,9 +54,10 @@ export default {
     {
       name: 'countries',
       title: 'Countries',
-      description: 'Choose one or more countries to display this content into (empty for all countries)',
+      description: 'Choose the country to display this content into',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'country'}}]
+      validation: Rule => Rule.error('Information required.').required(),
+      of: [{type: 'reference', to: {type: 'country'}}],
     },
   ],
 
@@ -72,7 +76,7 @@ export default {
       return {
         title,
         media,
-        subtitle: `${subtitle}`
+        subtitle: `${subtitle}`,
       };
     },
   },
