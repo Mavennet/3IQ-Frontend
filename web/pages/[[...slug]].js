@@ -23,7 +23,7 @@ const pageFragment = groq`
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 export const getServerSideProps = async ({params}) => {
-  const countries = ['ca', 'us', 'br', 'uae']
+  const countries = ['ca', 'us', 'uae']
   let country = '';
 
   if(params?.slug){
@@ -50,20 +50,6 @@ export const getServerSideProps = async ({params}) => {
       `
       )
       .then((res) => (res?.frontpage ? {...res.frontpage, slug} : undefined))
-
-      // get all countries available
-      // dataCountries = await client
-      // .fetch(
-      //   groq`
-      //   *[_type == "country"]{
-      //     _id,
-      //     name,
-      //     tag,
-      //     languages[]->
-      //   }
-      // `
-      // )
-
   } else {
     // Regular route
     if(country) {
@@ -99,8 +85,22 @@ export const getServerSideProps = async ({params}) => {
     }
   }
 
+  // get all countries available
+  const dataCountries = await client
+  .fetch(
+    groq`
+    *[_type == "country"]{
+      name,
+      default,
+      urlTag,
+      languages[]->
+    }
+  `)
+
+  console.log(dataCountries);
+
   return {
-    props: data || {},
+    props:{ ...data, dataCountries, 'currentCountry' : country} || {},
   }
 }
 
@@ -115,6 +115,8 @@ const LandingPage = (props) => {
     content = [],
     config = {},
     slug,
+    dataCountries,
+    currentCountry
   } = props
 
   const openGraphImages = openGraphImage
@@ -167,6 +169,8 @@ LandingPage.propTypes = {
   openGraphImage: PropTypes.any,
   content: PropTypes.any,
   config: PropTypes.any,
+  dataCountries: PropTypes.array,
+  currentCountry: PropTypes.string
 }
 
 export default LandingPage
