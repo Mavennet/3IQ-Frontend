@@ -35,7 +35,6 @@ export const getServerSideProps = async ({params}) => {
   const slug = slugParamToPath(params?.slug)
 
   let data
-  // let dataCountries
 
   // Frontpage - fetch the linked `frontpage` from the global configuration document.
   if (slug === '/') {
@@ -91,13 +90,10 @@ export const getServerSideProps = async ({params}) => {
     groq`
     *[_type == "country"]{
       name,
-      default,
       urlTag,
       languages[]->
     }
   `)
-
-  console.log(dataCountries);
 
   return {
     props:{ ...data, dataCountries, 'currentCountry' : country} || {},
