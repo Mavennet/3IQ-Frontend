@@ -114,6 +114,9 @@ const LandingPage = (props) => {
     dataCountries,
     currentCountry
   } = props
+  
+  console.log(dataCountries) // Error: 'dataCountries' is assigned a value but never used.
+  console.log(currentCountry) // Error: 'currentCountry' is assigned a value but never used.
 
   const openGraphImages = openGraphImage
     ? [

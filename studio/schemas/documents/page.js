@@ -54,7 +54,7 @@ export default {
     {
       name: 'countries',
       title: 'Countries',
-      description: 'Choose the country to display this content into',
+      description: 'Choose the country that this content will be displayed into',
       type: 'array',
       validation: Rule => Rule.error('Information required.').required(),
       of: [{type: 'reference', to: {type: 'country'}}],
@@ -72,7 +72,7 @@ export default {
       country0: 'countries.0.name',
     },
     prepare({ title, media, country0 }) {
-      const subtitle = country0 ? country0 : 'All Countries'
+      const subtitle = country0 ? country0 : ''
       return {
         title,
         media,
