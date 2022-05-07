@@ -35,7 +35,6 @@ export const getServerSideProps = async ({params}) => {
   const slug = slugParamToPath(params?.slug)
 
   let data
-  // let dataCountries
 
   // Frontpage - fetch the linked `frontpage` from the global configuration document.
   if (slug === '/') {
@@ -90,7 +89,6 @@ export const getServerSideProps = async ({params}) => {
     groq`
     *[_type == "country"]{
       name,
-      default,
       urlTag,
       languages[]->
     }
@@ -118,6 +116,9 @@ const LandingPage = (props) => {
     dataCountries,
     currentCountry,
   } = props
+  
+  console.log(dataCountries) // Error: 'dataCountries' is assigned a value but never used.
+  console.log(currentCountry) // Error: 'currentCountry' is assigned a value but never used.
 
   const [country] = useState(
     currentCountry
