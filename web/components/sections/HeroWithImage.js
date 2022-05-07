@@ -20,15 +20,11 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
 
-  // const currentCountry = 'Canada' // Obtained from the URL 
-  // const availableLanguagesForCurrentCountry = ['en_US', 'en_CA', 'fr'] // Obtained from the currentCountry
-  const currentLanguage = 'en_CA' // Obtained from the URL (?) // TODO: Get dinamically
-
-  const localeHeading = heading[currentLanguage]
-  const localeDescription = description[currentLanguage]
-  const localeButton = button[currentLanguage]
+  const localeHeading = heading[currentLanguage.languageTag]
+  const localeDescription = description[currentLanguage.languageTag]
+  const localeButton = button[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -89,6 +85,7 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
+  currentLanguage: PropTypes.object
 }
 
 export default HeroWithImage

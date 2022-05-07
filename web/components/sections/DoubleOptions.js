@@ -21,11 +21,7 @@ function urlFor(source) {
 const theme = createTheme()
 
 function DoubleOptions(props) {
-  const {heading, firstImage, secondImage, description, firstButton, secondButton} = props
-
-  console.log(props)
-  console.log(heading)
-  console.log(description)
+  const {firstImage, secondImage, firstButton, secondButton} = props
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,7 +89,7 @@ function DoubleOptions(props) {
               <Box
                 component="img"
                 sx={{
-                  maxWidth: {xs: 350 ,md: 250, xl: 400},
+                  maxWidth: {xs: 350, md: 250, xl: 400},
                 }}
                 mt={2}
                 mb={5}
@@ -122,7 +118,7 @@ function DoubleOptions(props) {
               <Box
                 component="img"
                 sx={{
-                  maxWidth: {xs: 350 ,md: 250, xl: 400},
+                  maxWidth: {xs: 350, md: 250, xl: 400},
                 }}
                 mt={2}
                 mb={5}
@@ -153,9 +149,7 @@ DoubleOptions.propTypes = {
       _ref: PropTypes.string,
     }),
   }),
-  heading: PropTypes.object,
-  description: PropTypes.object,
-  firstButton: PropTypes.object,  
+  firstButton: PropTypes.object,
   secondButton: PropTypes.object,
 }
 

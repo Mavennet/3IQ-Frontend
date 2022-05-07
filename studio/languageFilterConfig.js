@@ -2,7 +2,7 @@ export default {
   supportedLanguages: [
     { "id": "en_US", "title": "English (US)" },
     { "id": "en_CA", "title": "English (CA)" },
-    { "id": "fr", "title": "French" },
+    { "id": "fr_CA", "title": "French (CA)" },
     { "id": "arb", "title": "Arabian" }
   ],
   defaultLanguages: ['en_US'], // With this property, there's no way to choose Canada without the default one --> English (US)

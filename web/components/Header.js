@@ -16,12 +16,17 @@ import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
-import Grid from '@mui/material/Grid'
 import {FiMenu} from 'react-icons/fi'
 import {FaGlobe, FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
+import CountryAndLanguageSwitch from './CountryAndLanguageSwitch'
 
 class Header extends Component {
-  state = {showNav: false, languages: ['EN', 'FR']}
+  state = {
+    showNav: false,
+    showCountryNav: false,
+    showLanguageNav: false,
+    languages: ['EN', 'FR'],
+  }
 
   hideMenu = () => {
     this.setState({showNav: false})
@@ -55,6 +60,10 @@ class Header extends Component {
       }),
       logo: PropTypes.string,
     }),
+    dataCountries: PropTypes.array,
+    currentLanguage: PropTypes.object,
+    currentCountry: PropTypes.object,
+    setLanguage: PropTypes.object,
   }
 
   componentDidMount() {
@@ -92,13 +101,17 @@ class Header extends Component {
   }
 
   render() {
+    const {showNav} = this.state
     const {
       // title = 'Missing title',
       navItems,
       // router,
       logo,
+      setLanguage,
+      dataCountries,
+      currentCountry,
+      currentLanguage,
     } = this.props
-    const {showNav} = this.state
 
     return (
       <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
@@ -117,7 +130,7 @@ class Header extends Component {
             }}
           >
             <Box sx={{color: 'black', ml: 'auto', mb: 1, display: 'flex'}}>
-              <Box sx={{ display: 'flex'}} mr={{md: 40, xs: 8}}>
+              <Box sx={{display: 'flex'}} mr={{md: 40, xs: 8}}>
                 <button
                   href={'/'}
                   style={{
@@ -159,21 +172,17 @@ class Header extends Component {
                 </button>
               </Box>
               <Box sx={{fontSize: 24, display: {md: 'flex', xs: 'none'}}}>
-                <FaGlobe style={{marginRight: 10}} />
-                {this.state.languages &&
-                  this.state.languages.map((lang) => {
-                    return (
-                      <button key={lang} className={styles.countryButtons}>
-                        {lang}
-                      </button>
-                    )
-                  })}
+                <CountryAndLanguageSwitch
+                  currentCountry={currentCountry}
+                  currentLanguage={currentLanguage}
+                  setLanguage={setLanguage}
+                  dataCountries={dataCountries}
+                />
               </Box>
             </Box>
             <Box sx={{ml: 'auto', display: {xs: 'none', md: 'flex'}}}>
               {navItems &&
                 navItems.map((item) => {
-                  console.log(item)
                   const {slug, title, _id} = item
                   // const isActive = slugParamToPath(router.query.slug) === slug.current
                   return (
@@ -188,14 +197,14 @@ class Header extends Component {
             <Box sx={{ml: 'auto', display: {md: 'none', xs: 'flex'}}}>
               <Box sx={{mr: 2.5}}>
                 <FaGlobe style={{marginRight: 10, fontSize: 20, color: 'black'}} />
-                {this.state.languages &&
+                {/* {this.state.languages &&
                   this.state.languages.map((lang) => {
                     return (
                       <button key={lang} className={styles.countryButtons}>
                         {lang}
                       </button>
                     )
-                  })}
+                  })} */}
               </Box>
               <Box>
                 <IconButton
@@ -205,7 +214,7 @@ class Header extends Component {
                   aria-haspopup="true"
                   onClick={this.handleMenuToggle}
                 >
-                  <FiMenu  />
+                  <FiMenu />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
