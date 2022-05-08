@@ -2,8 +2,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
 import {NextSeo} from 'next-seo'
 import PropTypes from 'prop-types'
-import React from 'react'
-
+import React, {useEffect, useState} from 'react'
 import client from '../client'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
@@ -22,12 +21,13 @@ const pageFragment = groq`
  * for every page requested - /, /about, /contact, etc..
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
+
 export const getServerSideProps = async ({params}) => {
   const countries = ['ca', 'us', 'uae']
-  let country = '';
+  let country = ''
 
-  if(params?.slug){
-    if(countries.indexOf(params.slug[0]) >= 0){
+  if (params?.slug) {
+    if (countries.indexOf(params.slug[0]) >= 0) {
       country = params.slug[0]
       params.slug.shift()
     }
@@ -51,30 +51,30 @@ export const getServerSideProps = async ({params}) => {
       .then((res) => (res?.frontpage ? {...res.frontpage, slug} : undefined))
   } else {
     // Regular route
-    if(country) {
+    if (country) {
       data = await client
-      .fetch(
-        // Get the route document with one of the possible slugs for the given requested path
-        groq`*[_type == "route" && slug.current in $possibleSlugs && $country in countries[]->urlTag][0]{
+        .fetch(
+          // Get the route document with one of the possible slugs for the given requested path
+          groq`*[_type == "route" && slug.current in $possibleSlugs && $country in countries[]->urlTag][0]{
           page-> {
             ${pageFragment}
           }
         }`,
-        {possibleSlugs: getSlugVariations(country, slug), country: country}
-      )
-      .then((res) => (res?.page ? {...res.page, slug} : undefined))
+          {possibleSlugs: getSlugVariations(country, slug), country: country}
+        )
+        .then((res) => (res?.page ? {...res.page, slug} : undefined))
     } else {
       data = await client
-      .fetch(
-        // Get the route document with one of the possible slugs for the given requested path
-        groq`*[_type == "route" && slug.current in $possibleSlugs][0]{
+        .fetch(
+          // Get the route document with one of the possible slugs for the given requested path
+          groq`*[_type == "route" && slug.current in $possibleSlugs][0]{
           page-> {
             ${pageFragment}
           }
         }`,
-        {possibleSlugs: getSlugVariations(country, slug)}
-      )
-      .then((res) => (res?.page ? {...res.page, slug} : undefined))
+          {possibleSlugs: getSlugVariations(country, slug)}
+        )
+        .then((res) => (res?.page ? {...res.page, slug} : undefined))
     }
   }
 
@@ -85,24 +85,26 @@ export const getServerSideProps = async ({params}) => {
   }
 
   // get all countries available
-  const dataCountries = await client
-  .fetch(
+  const dataCountries = await client.fetch(
     groq`
     *[_type == "country"]{
       name,
       urlTag,
       languages[]->
     }
-  `)
+  `
+  )
 
   return {
-    props:{ ...data, dataCountries, 'currentCountry' : country} || {},
+    props: {...data, dataCountries, currentCountry: country} || {},
   }
 }
 
 const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
+  const [currentLanguage, setCurrentLanguage] = useState('en')
+
   const {
     title = 'Missing title',
     description,
@@ -112,11 +114,44 @@ const LandingPage = (props) => {
     config = {},
     slug,
     dataCountries,
-    currentCountry
+    currentCountry,
   } = props
   
   console.log(dataCountries) // Error: 'dataCountries' is assigned a value but never used.
   console.log(currentCountry) // Error: 'currentCountry' is assigned a value but never used.
+
+  const [country] = useState(
+    currentCountry
+      ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
+      : dataCountries.filter((country) => country.urlTag === 'ca')[0]
+  )
+
+  const switchLanguage = (lang) => {
+    setCurrentLanguage(lang)
+  }
+
+  const [formatedContent, setFormatedContent] = useState([])
+  const [formatedConfig, setFormatedConfig] = useState({
+    ...config,
+    switchLanguage,
+    dataCountries,
+    currentCountry: country,
+    currentLanguage,
+  })
+
+  useEffect(() => {
+    const contentWithDefaultLanguage = []
+    content && content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage}))
+    setFormatedContent(contentWithDefaultLanguage)
+    config &&
+      setFormatedConfig({
+        ...config,
+        switchLanguage,
+        dataCountries,
+        currentCountry: country,
+        currentLanguage,
+      })
+  }, [currentLanguage])
 
   const openGraphImages = openGraphImage
     ? [
@@ -144,7 +179,7 @@ const LandingPage = (props) => {
     : []
 
   return (
-    <Layout config={config}>
+    <Layout config={formatedConfig}>
       <NextSeo
         title={title}
         titleTemplate={`%s | ${config.title}`}
@@ -155,7 +190,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {content && <RenderSections sections={content} />}
+      {formatedContent && <RenderSections sections={formatedContent} />}
     </Layout>
   )
 }
@@ -169,7 +204,7 @@ LandingPage.propTypes = {
   content: PropTypes.any,
   config: PropTypes.any,
   dataCountries: PropTypes.array,
-  currentCountry: PropTypes.string
+  currentCountry: PropTypes.string,
 }
 
 export default LandingPage
