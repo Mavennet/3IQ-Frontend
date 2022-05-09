@@ -12,7 +12,8 @@ export default {
     'hero',
     'imageBesideText',
     'doubleOptions',
-    'mailchimp'
+    'mailchimp',
+    'sideBySideImages',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
