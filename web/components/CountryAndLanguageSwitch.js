@@ -53,6 +53,9 @@ class CountryAndLanguageSwitch extends Component {
   renderLanguageSelect(currentCountry, currentLanguage, setLanguage) {
     const {showLanguageNav} = this.state
 
+    if (currentCountry.languages.length <= 1)
+      return <></>
+
     return (
       <>
         <button onClick={this.handleLanguageMenuToggle} className={styles.countryButtons}>
@@ -88,6 +91,9 @@ class CountryAndLanguageSwitch extends Component {
 
   renderCountrySelect(dataCountries, currentCountry) {
     const {showCountryNav} = this.state
+
+    if (dataCountries.length <= 1)
+      return <></>
 
     return (
       <>
