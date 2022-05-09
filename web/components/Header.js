@@ -196,15 +196,12 @@ class Header extends Component {
             </Box>
             <Box sx={{ml: 'auto', display: {md: 'none', xs: 'flex'}}}>
               <Box sx={{mr: 2.5}}>
-                <FaGlobe style={{marginRight: 10, fontSize: 20, color: 'black'}} />
-                {/* {this.state.languages &&
-                  this.state.languages.map((lang) => {
-                    return (
-                      <button key={lang} className={styles.countryButtons}>
-                        {lang}
-                      </button>
-                    )
-                  })} */}
+                <CountryAndLanguageSwitch
+                  currentCountry={currentCountry}
+                  currentLanguage={currentLanguage}
+                  setLanguage={setLanguage}
+                  dataCountries={dataCountries}
+                />
               </Box>
               <Box>
                 <IconButton
