@@ -17,7 +17,7 @@ import Menu from '@mui/material/Menu'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import {FiMenu} from 'react-icons/fi'
-import {FaGlobe, FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
+import {FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
 import CountryAndLanguageSwitch from './CountryAndLanguageSwitch'
 
 class Header extends Component {
@@ -114,7 +114,7 @@ class Header extends Component {
     } = this.props
 
     return (
-      <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
+      <AppBar position="static" sx={{bgcolor: 'white', /* pb: 4 */}}>
         <Toolbar disableGutters>
           <Box>
             <Link href={'/'} passHref>
@@ -132,41 +132,20 @@ class Header extends Component {
             <Box sx={{color: 'black', ml: 'auto', mb: 1, display: 'flex'}}>
               <Box sx={{display: 'flex'}} mr={{md: 40, xs: 8}}>
                 <button
+                  className={styles.socialTwitter}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaTwitter />
                 </button>
                 <button
+                  className={styles.socialLinkedin}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaLinkedinIn />
                 </button>
                 <button
+                  className={styles.socialYoutube}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaYoutube />
                 </button>

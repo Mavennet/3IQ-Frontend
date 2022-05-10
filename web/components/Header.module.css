@@ -8,3 +8,17 @@
 .countryButtons:hover {
   color: #dc6e19;
 }
+
+.socialTwitter, .socialLinkedin, .socialYoutube {  
+  font-size: medium;
+  border-radius: 200px;
+  border: 0;
+  padding: 6px 5px 2px 5px;
+  color: #0082e5;  
+  background-color: transparent;
+}
+
+.socialTwitter:hover, .socialLinkedin:hover, .socialYoutube:hover {
+  color: white;  
+  background-color: #dc6e19;
+}

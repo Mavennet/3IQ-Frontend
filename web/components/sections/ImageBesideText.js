@@ -107,6 +107,7 @@ ImageBesideText.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
+  currentLanguage: PropTypes.object, 
 }
 
 export default ImageBesideText
