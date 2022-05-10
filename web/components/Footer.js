@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {withRouter} from 'next/router'
 import styles from './Footer.module.css'
-import SimpleBlockContent from './SimpleBlockContent'
-import {getPathFromSlug, slugParamToPath} from '../utils/urls'
+// import SimpleBlockContent from './SimpleBlockContent' // no-unused-vars
+// import {getPathFromSlug, slugParamToPath} from '../utils/urls' // no-unused-vars
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {Link} from '@mui/material'
+import SVG from 'react-inlinesvg'
 
 const theme = createTheme()
 
@@ -49,6 +50,8 @@ function renderLogo(logo) {
 
 function Footer(props) {
   const {navItems, text, router} = props
+  console.log(navItems, text, router) // no-unused-vars
+
   return (
     <ThemeProvider theme={theme}>
       <Grid

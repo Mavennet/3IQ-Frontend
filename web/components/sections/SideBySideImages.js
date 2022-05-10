@@ -22,7 +22,17 @@ function SideBySideImages(props) {
     <ThemeProvider theme={theme}>
       <Grid container component="main" >
         <CssBaseline />
-        <Grid>
+        <Grid
+          xs={false}
+          sm={2}
+          md={8}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginLeft: '18%'
+          }}>
           <Box
           >
             <Typography className={styles.heading} gutterBottom>
@@ -40,6 +50,11 @@ function SideBySideImages(props) {
                         alt={image.alt}
                         src={builder.image(image).url()}
                         key={image._key}
+                        sx={{
+                          margin: '5px',
+                          padding: '30px',
+                          maxHeight: '110px',
+                        }}
                       />
                     )
                   )
