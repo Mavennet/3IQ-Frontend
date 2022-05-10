@@ -17,7 +17,7 @@ import Menu from '@mui/material/Menu'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import {FiMenu} from 'react-icons/fi'
-import {FaGlobe, FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
+import {FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
 import CountryAndLanguageSwitch from './CountryAndLanguageSwitch'
 
 class Header extends Component {
