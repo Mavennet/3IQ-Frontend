@@ -132,41 +132,20 @@ class Header extends Component {
             <Box sx={{color: 'black', ml: 'auto', mb: 1, display: 'flex'}}>
               <Box sx={{display: 'flex'}} mr={{md: 40, xs: 8}}>
                 <button
+                  className={styles.socialTwitter}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaTwitter />
                 </button>
                 <button
+                  className={styles.socialLinkedin}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaLinkedinIn />
                 </button>
                 <button
+                  className={styles.socialYoutube}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaYoutube />
                 </button>
