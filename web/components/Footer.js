@@ -83,7 +83,7 @@ function Footer(props) {
           </Box>
         </Grid>
         <Grid sm={6} xs={12} sx={{borderLeft: '8px solid #0082e5'}}>
-          <Box pl={4} pr={4}>
+          <Box pl={4} pr={4} mt={12}>
             <Grid container>
               <Grid
                 item
@@ -94,16 +94,16 @@ function Footer(props) {
                   alignItems: 'left',
                 }}
               >
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">Our Funds</Typography>
                 </Link>
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">Our Story</Typography>
                 </Link>
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">Our Team</Typography>
                 </Link>
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">Careers</Typography>
                 </Link>
               </Grid>
@@ -116,21 +116,43 @@ function Footer(props) {
                   alignItems: 'left',
                 }}
               >
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">3iQ in the News</Typography>
                 </Link>
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">Crypto 101</Typography>
                 </Link>
-                <Link sx={{color: '#fff', textDecoration: 'none'}}>
+                <Link sx={{color: '#fff', m: 1, textDecoration: 'none'}}>
                   <Typography variant="h5">Contact Us</Typography>
                 </Link>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'left',
+                }}
+              >
+                <Typography variant="p" sx={{fontSize: 14, mt: 20}}>
+                  © 2022 3iQ Corp. Disclaimer | Privacy Policy | Cookies Policy | Legal, Financial &
+                  Regulatory
+                </Typography>
               </Grid>
             </Grid>
           </Box>
         </Grid>
         <Grid sm={3} xs={12}>
-          kek
+          <Box pl={4} pr={4} mt={13}>
+            <Typography sx={{color: '#fff', textDecoration: 'none', mb: 2}} variant="h5">
+              Newsletter
+            </Typography>
+            <Typography variant="p" sx={{fontSize: 14, mt: 20}}>
+              Stay up to date on the latest from 3iQ
+            </Typography>
+            <input placeholder="Email"></input>
+          </Box>
         </Grid>
       </Grid>
     </ThemeProvider>
