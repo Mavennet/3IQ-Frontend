@@ -29,7 +29,7 @@ function SideBySideImages(props) {
               {localeHeading}
             </Typography>
 
-            <Box className='rowContent'
+            <Box
             >
               {images &&
                 images.map(image => {
