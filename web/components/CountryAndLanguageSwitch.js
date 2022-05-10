@@ -136,7 +136,7 @@ class CountryAndLanguageSwitch extends Component {
 
     return (
       <>
-        <FaGlobe style={{marginRight: 10, fontSize: 20, color: 'black', marginTop: 6}} />
+        <FaGlobe style={{marginRight: 8, fontSize: 20, color: 'black', marginTop: 3}} />
         {this.renderCountrySelect(dataCountries, currentCountry)}
         {this.renderLanguageSelect(currentCountry, currentLanguage, setLanguage)}
       </>

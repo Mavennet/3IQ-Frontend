@@ -31,6 +31,7 @@ export default {
             {type: 'heroWithImage'},
             {type: 'imageWithText'},
             {type: 'imageBesideText'},
+            {type: 'sideBySideImages'},
             {type: 'doubleOptions'},
             {type: 'mailchimp'},
           ]
