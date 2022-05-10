@@ -23,7 +23,21 @@ const pageFragment = groq`
  */
 
 export const getServerSideProps = async ({params}) => {
-  const countries = ['ca', 'us', 'uae']
+
+  const dataCountries = await client.fetch(
+    groq`
+    *[_type == "country"]{
+      name,
+      urlTag,
+      languages[]->
+    }
+  `
+  )
+
+  const countries = []
+
+  dataCountries.map(c => countries.push(c.urlTag))
+
   let country = ''
 
   if (params?.slug) {
@@ -85,15 +99,7 @@ export const getServerSideProps = async ({params}) => {
   }
 
   // get all countries available
-  const dataCountries = await client.fetch(
-    groq`
-    *[_type == "country"]{
-      name,
-      urlTag,
-      languages[]->
-    }
-  `
-  )
+
 
   return {
     props: {...data, dataCountries, currentCountry: country} || {},
@@ -103,8 +109,6 @@ export const getServerSideProps = async ({params}) => {
 const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
-  const [currentLanguage, setCurrentLanguage] = useState('en')
-
   const {
     title = 'Missing title',
     description,
@@ -117,14 +121,13 @@ const LandingPage = (props) => {
     currentCountry,
   } = props
   
-  console.log(dataCountries) // Error: 'dataCountries' is assigned a value but never used.
-  console.log(currentCountry) // Error: 'currentCountry' is assigned a value but never used.
-
   const [country] = useState(
     currentCountry
       ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
       : dataCountries.filter((country) => country.urlTag === 'ca')[0]
   )
+
+  const [currentLanguage, setCurrentLanguage] = useState(country.languages[0])
 
   const switchLanguage = (lang) => {
     setCurrentLanguage(lang)

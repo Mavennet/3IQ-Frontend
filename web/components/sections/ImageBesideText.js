@@ -18,7 +18,11 @@ function urlFor(source) {
 const theme = createTheme()
 
 function ImageBesideText(props) {
-  const {mainImage, heading, backgroundImage, description, button} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
+
+  const localeHeading = heading[currentLanguage.languageTag]
+  const localeDescription = description[currentLanguage.languageTag]
+  const localeButton = button[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -65,10 +69,10 @@ function ImageBesideText(props) {
             }}
           >
             <Typography component="h1" variant="h4" style={{fontWeight: 'bold'}} gutterBottom>
-              {heading.en_CA}
+              {localeHeading}
             </Typography>
             <Typography variant="p" paragraph>
-              {description.en_CA}
+              {localeDescription}
             </Typography>
 
             <Box
@@ -78,11 +82,13 @@ function ImageBesideText(props) {
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>
-              <BigButtonReverse
-                key={button._key}
-                title={button.title}
+              {localeButton &&
+               (
+                <BigButtonReverse
                 sx={{width: {xs: '100%', md: 180}, padding: '10px 20px', ml: {md: 8}}}
-              />
+                  title={localeButton.title}
+                />
+              )}
             </Box>
           </Box>
         </Grid>

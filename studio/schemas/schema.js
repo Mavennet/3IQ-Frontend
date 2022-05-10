@@ -17,7 +17,8 @@ import hero from './documents/sections/hero';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
-import doubleOptions from './documents/sections/doubleOptions';;
+import doubleOptions from './documents/sections/doubleOptions';
+import sideBySideImages from './documents/sections/sideBySideImages';
 
 // Object types
 import cta from './objects/cta';
@@ -70,5 +71,6 @@ export default createSchema({
     hero,
     localeCta,
     localeSimplePortableText,
+    sideBySideImages,
   ]),
 });

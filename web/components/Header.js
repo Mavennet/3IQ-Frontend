@@ -132,41 +132,20 @@ class Header extends Component {
             <Box sx={{color: 'black', ml: 'auto', mb: 1, display: 'flex'}}>
               <Box sx={{display: 'flex'}} mr={{md: 40, xs: 8}}>
                 <button
+                  className={styles.socialTwitter}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaTwitter />
                 </button>
                 <button
+                  className={styles.socialLinkedin}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaLinkedinIn />
                 </button>
                 <button
+                  className={styles.socialYoutube}
                   href={'/'}
-                  style={{
-                    fontSize: 16,
-                    borderRadius: '200px',
-                    border: 'none',
-                    padding: '5px 7px',
-                    background: 'none',
-                    color: '#0082e5',
-                  }}
                 >
                   <FaYoutube />
                 </button>
@@ -196,15 +175,12 @@ class Header extends Component {
             </Box>
             <Box sx={{ml: 'auto', display: {md: 'none', xs: 'flex'}}}>
               <Box sx={{mr: 2.5}}>
-                <FaGlobe style={{marginRight: 10, fontSize: 20, color: 'black'}} />
-                {/* {this.state.languages &&
-                  this.state.languages.map((lang) => {
-                    return (
-                      <button key={lang} className={styles.countryButtons}>
-                        {lang}
-                      </button>
-                    )
-                  })} */}
+                <CountryAndLanguageSwitch
+                  currentCountry={currentCountry}
+                  currentLanguage={currentLanguage}
+                  setLanguage={setLanguage}
+                  dataCountries={dataCountries}
+                />
               </Box>
               <Box>
                 <IconButton
