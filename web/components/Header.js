@@ -114,7 +114,7 @@ class Header extends Component {
     } = this.props
 
     return (
-      <AppBar position="static" sx={{bgcolor: 'white', pb: 4}}>
+      <AppBar position="static" sx={{bgcolor: 'white', /* pb: 4 */}}>
         <Toolbar disableGutters>
           <Box>
             <Link href={'/'} passHref>
