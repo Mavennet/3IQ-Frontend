@@ -1,10 +1,7 @@
-import { MasterDetailIcon } from '@sanity/icons'
-
 export default {
   name: 'page',
   type: 'document',
   title: 'Page',
-  icon: MasterDetailIcon,
   fieldsets: [
     {
       title: 'SEO & metadata',
