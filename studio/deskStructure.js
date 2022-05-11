@@ -24,7 +24,16 @@ export default () =>
     .items([
       S.documentListItem().id('global-config').schemaType('site-config').title('Site config'),
       S.divider(),
-      S.documentTypeListItem('page').title('Pages'),
+      S.listItem()
+        .title('Pages')
+        .child(
+          S.documentTypeList('country').title('Countries')
+            .child(countryId =>
+              S.documentTypeList('page').title('Pages')
+                .filter('_type == "page" && $countryId in countries[]._ref')
+                .params({ countryId })
+            )
+        ),
       S.listItem()
         .title('Sections')
         .child(
@@ -37,7 +46,7 @@ export default () =>
               S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
               S.documentTypeListItem('imageWithText').title('Image'),
-              S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),              
+              S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
             ])
         ),
       S.documentTypeListItem('route').title('Routes'),
