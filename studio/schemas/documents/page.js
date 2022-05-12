@@ -1,10 +1,7 @@
-import { MasterDetailIcon } from '@sanity/icons'
-
 export default {
   name: 'page',
   type: 'document',
   title: 'Page',
-  icon: MasterDetailIcon,
   fieldsets: [
     {
       title: 'SEO & metadata',
@@ -70,10 +67,10 @@ export default {
     select: {
       title: 'title',
       media: 'openGraphImage',
-      country0: 'countries.0.name',
+      countryName: 'countries.0.name', // TODO: Remove this and add slug in the future as the subtitle for the preview
     },
-    prepare({ title, media, country0 }) {
-      const subtitle = country0 ? country0 : ''
+    prepare({ title, media, countryName }) {
+      const subtitle = countryName ? countryName : ''
       return {
         title,
         media,
