@@ -1,4 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
+import { MasterDetailIcon, SplitHorizontalIcon } from '@sanity/icons'
 
 const hiddenDocTypes = (listItem) => ![
   'page',
@@ -16,6 +17,7 @@ const hiddenDocTypes = (listItem) => ![
   'doubleOptions',
   'imageWithText',
   'mailchimp',
+  'sideBySideImages',
 ].includes(listItem.getId())
 
 export default () =>
@@ -26,6 +28,7 @@ export default () =>
       S.divider(),
       S.listItem()
         .title('Pages')
+        .icon(MasterDetailIcon)
         .child(
           S.documentTypeList('country').title('Countries')
             .child(countryId =>
@@ -36,6 +39,7 @@ export default () =>
         ),
       S.listItem()
         .title('Sections')
+        .icon(SplitHorizontalIcon)
         .child(
           S.list()
             .title('Sections')
