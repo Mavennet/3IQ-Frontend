@@ -85,7 +85,7 @@ function Footer(props) {
             </Typography>
           </Box>
         </Grid>
-        <Grid sm={6} xs={12} sx={{borderLeft: '8px solid #0082e5'}}>
+        <Grid sm={6} xs={12} sx={{borderLeft: '8px solid #0082e5', display: {md: 'flex', xs: 'none'}}}>
           <Box pl={4} pr={4} mt={12}>
             <Grid container>
               <Grid
@@ -154,7 +154,12 @@ function Footer(props) {
             <Typography variant="p" sx={{fontSize: 14, mt: 20}}>
               Stay up to date on the latest from 3iQ
             </Typography>
-            <input placeholder="Email"></input>
+            <input placeholder="Email" style={{padding: 12}}></input>
+            <br />
+            <Typography variant="p" sx={{fontSize: 14, mt: 20}}>
+              We don't sell or rent your information. Please refer to the 3iQ privacy policy or
+              contact us for more information.
+            </Typography>
           </Box>
         </Grid>
       </Grid>

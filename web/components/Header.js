@@ -19,6 +19,7 @@ import MenuItem from '@mui/material/MenuItem'
 import {FiMenu} from 'react-icons/fi'
 import {FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
 import CountryAndLanguageSwitch from './CountryAndLanguageSwitch'
+import NavLink from './NavLink'
 
 class Header extends Component {
   state = {
@@ -114,7 +115,7 @@ class Header extends Component {
     } = this.props
 
     return (
-      <AppBar position="static" sx={{bgcolor: 'white', /* pb: 4 */}}>
+      <AppBar position="static" sx={{bgcolor: 'white' /* pb: 4 */}}>
         <Toolbar disableGutters>
           <Box>
             <Link href={'/'} passHref>
@@ -131,26 +132,17 @@ class Header extends Component {
           >
             <Box sx={{color: 'black', ml: 'auto', mb: 1, display: 'flex'}}>
               <Box sx={{display: 'flex'}} mr={{md: 40, xs: 8}}>
-                <button
-                  className={styles.socialTwitter}
-                  href={'/'}
-                >
+                <button className={styles.socialTwitter} href={'/'}>
                   <FaTwitter />
                 </button>
-                <button
-                  className={styles.socialLinkedin}
-                  href={'/'}
-                >
+                <button className={styles.socialLinkedin} href={'/'}>
                   <FaLinkedinIn />
                 </button>
-                <button
-                  className={styles.socialYoutube}
-                  href={'/'}
-                >
+                <button className={styles.socialYoutube} href={'/'}>
                   <FaYoutube />
                 </button>
               </Box>
-              <Box sx={{fontSize: 24, display: {md: 'flex', xs: 'none'}}}>
+              <Box sx={{fontSize: 24, display: {md: 'flex', xs: 'none'}, mr: 3}}>
                 <CountryAndLanguageSwitch
                   currentCountry={currentCountry}
                   currentLanguage={currentLanguage}
@@ -164,13 +156,7 @@ class Header extends Component {
                 navItems.map((item) => {
                   const {slug, title, _id} = item
                   // const isActive = slugParamToPath(router.query.slug) === slug.current
-                  return (
-                    <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
-                      <Button sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
-                        {title || 'Missing'}
-                      </Button>
-                    </Link>
-                  )
+                  return <NavLink id={_id} href={getPathFromSlug(slug.current)} title={title} />
                 })}
             </Box>
             <Box sx={{ml: 'auto', display: {md: 'none', xs: 'flex'}}}>
