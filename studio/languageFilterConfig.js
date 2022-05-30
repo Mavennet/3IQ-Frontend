@@ -4,7 +4,6 @@ export default {
     { "id": "en_CA", "title": "English (CA)" },
     { "id": "fr_CA", "title": "French (CA)" },
     { "id": "ar", "title": "Arabic" }, 
-    { id: 'ar', title: 'Arabic' },
     {id: "pr", title: "Portuguese"},
     {id: "zh", title:"Chinese"},
     {id: "ru", title:"Russian"},
