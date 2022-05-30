@@ -4,8 +4,6 @@
     { "id": "fr", "title": "French" },
     { "id": "ar", "title": "Arabic" },
     {"id": "pr", "title": "Portuguese"},
-    {"id": "ar", "title": "Arabic" },
-    {"id": "pr", "title": "Portuguese"},
     {"id": "zh", "title":"Chinese"},
     {"id": "ru", "title":"Russian"},
     {"id": "nl", "title":"Dutch"},
