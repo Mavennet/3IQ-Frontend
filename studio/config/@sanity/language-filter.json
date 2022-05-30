@@ -2,6 +2,17 @@
   "supportedLanguages": [
     { "id": "en", "title": "English" },
     { "id": "fr", "title": "French" },
-    { "id": "arb", "title": "Arabian" }
+    { "id": "ar", "title": "Arabic" },
+    {"id": "pr", "title": "Portuguese"},
+    {"id": "ar", "title": "Arabic" },
+    {"id": "pr", "title": "Portuguese"},
+    {"id": "zh", "title":"Chinese"},
+    {"id": "ru", "title":"Russian"},
+    {"id": "nl", "title":"Dutch"},
+    {"id": "de", "title":"German"},
+    {"id": "es", "title":"Spanish"},
+    {"id": "it", "title":"Italian"},
+    {"id": "id", "title":"Indonesian"},
+    {"id": "tl", "title":"Tagalog"}
   ]
 }
