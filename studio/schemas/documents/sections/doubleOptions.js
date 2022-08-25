@@ -10,7 +10,7 @@ export default {
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading',
+      title: 'Heading (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -21,24 +21,26 @@ export default {
     {
       name: 'firstImage',
       type: 'figure',
-      title: 'First image',
+      title: 'First image (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'secondImage',
       type: 'figure',
-      title: 'Second image',
+      title: 'Second image (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'firstButton',
       type: 'localeCta',
-      title: 'First button',
+      title: 'First button (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'secondButton',
       type: 'localeCta',
-      title: 'Second button',
+      title: 'Second button (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
@@ -49,7 +51,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Two options section',
+        subtitle: 'Double Options section',
         media,
       };
     },

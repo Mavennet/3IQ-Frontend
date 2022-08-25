@@ -9,15 +9,17 @@ export default {
     ),
   fieldsets: [
     {
-      title: 'Link',
+      title: 'Link (*)',
       name: 'link',
+      validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   fields: [
     {
-      title: 'Title',
+      title: 'Title (*)',
       name: 'title',
       type: 'string',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       title: 'Internal link',

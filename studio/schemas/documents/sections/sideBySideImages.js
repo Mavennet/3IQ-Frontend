@@ -10,13 +10,13 @@ export default {
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading',
+      title: 'Heading (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'images',
       type: 'array',
-      title: 'Images',
+      title: 'Images (*)',
       validation: Rule => Rule.error('Information required.').required(),
       of: [
         {
@@ -34,7 +34,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Side by side images section',
+        subtitle: 'Side by Side Images section',
         media,
       };
     },
