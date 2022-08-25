@@ -49,8 +49,8 @@ export default () =>
               S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
-              S.documentTypeListItem('imageWithText').title('Image'),
-              S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
+              // S.documentTypeListItem('imageWithText').title('Image'),
+              // S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
             ])
         ),
       S.documentTypeListItem('route').title('Routes'),

@@ -2,7 +2,7 @@ import supportedLanguages from '../../supportedLanguages';
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
-export default {
+export default { // Não utilizado no momento --> podemos remover
   type: 'document',
   name: 'mailchimp',
   title: 'Mailchimp newsletter signup',
@@ -32,7 +32,7 @@ export default {
     prepare({ title }) {
       return {
         title,
-        subtitle: 'Mailchimp newsletter signup section',
+        subtitle: 'Mailchimp Newsletter Signup section',
       };
     },
   },
