@@ -67,6 +67,10 @@ export default {
       title: 'Countries',
       description: 'Choose one or more countries to display this content into (empty for all countries)',
       type: 'array',
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select a country.'),
+      ],
       of: [{type: 'reference', to: {type: 'country'}}],
     },
   ],

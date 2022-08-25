@@ -1,7 +1,10 @@
+import { MasterDetailIcon } from '@sanity/icons'
+
 export default {
   name: 'page',
   type: 'document',
   title: 'Page',
+  icon: MasterDetailIcon,
   fieldsets: [
     {
       title: 'SEO & metadata',
@@ -54,7 +57,10 @@ export default {
       title: 'Countries',
       description: 'Choose the country that this content will be displayed into',
       type: 'array',
-      validation: Rule => Rule.error('Information required.').required(),
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select a country.'),
+      ],
       of: [{type: 'reference', to: {type: 'country'}}],
     },
   ],
