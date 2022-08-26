@@ -20,11 +20,13 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage, pageRoutes} = props
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
   const localeButton = button[currentLanguage.languageTag]
+  
+  console.log(pageRoutes) // A partir do _ref do objeto route do componente/botão, será preciso vasculhar o pageRoutes até encontrar a rota com _ref = _id
 
   return (
     <ThemeProvider theme={theme}>
