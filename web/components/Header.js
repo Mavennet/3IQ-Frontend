@@ -28,6 +28,8 @@ function Header(props) {
     currentLanguage
   } = props
 
+
+
   const [showNav, setShowNav] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -219,12 +221,7 @@ Header.propTypes = {
     }),
     events: PropTypes.any,
   }),
-  navItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.arrayOf(PropTypes.string),
-    })
-  ),
+  navItems: PropTypes.arrayOf(PropTypes.object),
   logo: PropTypes.shape({
     asset: PropTypes.shape({
       url: PropTypes.string,

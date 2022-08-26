@@ -27,6 +27,7 @@ function Layout(props) {
     currentLanguage
   } = config
 
+
   const logoUrl = logo && logo.asset && logo.asset.url
 
   return (
@@ -37,7 +38,7 @@ function Layout(props) {
       <div className="container">
         <Header
           title={title}
-          navItems={mainNavigation}
+          navItems={currentCountry.mainNavigation}
           logo={logo}
           setLanguage={switchLanguage}
           dataCountries={dataCountries}

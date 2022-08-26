@@ -29,6 +29,7 @@ export const getServerSideProps = async ({params}) => {
     *[_type == "country"]{
       name,
       urlTag,
+      mainNavigation[]->,
       languages[]->
     }
   `
