@@ -1,4 +1,5 @@
 import supportedLanguages from '../../supportedLanguages';
+import { SplitHorizontalIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -6,6 +7,7 @@ export default { // Não utilizado no momento --> podemos remover
   type: 'document',
   name: 'imageWithText',
   title: 'Image with text',
+  icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'heading',
