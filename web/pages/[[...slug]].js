@@ -29,12 +29,12 @@ export const getServerSideProps = async ({params}) => {
     *[_type == "country"]{
       name,
       urlTag,
-      mainNavigation[]->,
+      mainNavigation[]-> {..., page->},
       languages[]->
     }
   `
   )
-
+  
   const countries = []
 
   dataCountries.map(c => countries.push(c.urlTag))
