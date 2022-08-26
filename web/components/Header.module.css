@@ -9,16 +9,44 @@
   color: #dc6e19;
 }
 
-.socialTwitter, .socialLinkedin, .socialYoutube {  
+.socialTwitter, .socialLinkedin, .socialYoutube {
   font-size: medium;
   border-radius: 200px;
   border: 0;
   padding: 6px 5px 2px 5px;
-  color: #0082e5;  
+  color: #0082e5;
   background-color: transparent;
 }
 
 .socialTwitter:hover, .socialLinkedin:hover, .socialYoutube:hover {
-  color: white;  
+  color: white;
   background-color: #dc6e19;
+}
+
+.subArrow {
+  line-height: 1;
+  padding: 10px 0 10px 10px;
+  border-radius: 0px;
+}
+
+.subMenu ul {
+  background: #F9F9F9;
+  padding: 0;
+  border-top: 2px solid #DC6E19;
+}
+
+.subMenu ul li {
+  padding: 15px 20px;
+  background: none;
+  justify-content: center;
+}
+
+.subMenu ul li:hover {
+  background: none;
+  color: #F59B1E;
+  background-color: #E8E8EA;
+}
+
+.subMenu:hover ul li {
+  background: none;
 }

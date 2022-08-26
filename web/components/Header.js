@@ -1,82 +1,46 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
-import {withRouter} from 'next/router'
-import SVG from 'react-inlinesvg'
 import styles from './Header.module.css'
+import SVG from 'react-inlinesvg'
+import Link from 'next/link'
 import {
-  getPathFromSlug,
-  // slugParamToPath
-} from '../utils/urls'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
-import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import {FiMenu} from 'react-icons/fi'
-import {FaTwitter, FaLinkedinIn, FaYoutube} from 'react-icons/fa'
+  AppBar,
+  Toolbar,
+  Box,
+  Button,
+  Menu,
+  MenuItem,
+  IconButton,
+  Typography
+} from '@mui/material'
+import { FaTwitter, FaLinkedinIn, FaYoutube, FaCaretDown } from 'react-icons/fa'
+import { FiMenu } from 'react-icons/fi'
 import CountryAndLanguageSwitch from './CountryAndLanguageSwitch'
+import { getPathFromSlug } from '../utils/urls'
 
-class Header extends Component {
-  state = {
-    showNav: false,
-    showCountryNav: false,
-    showLanguageNav: false,
-    languages: ['EN', 'FR'],
-  }
+function Header(props) {
+  const {
+    navItems,
+    logo,
+    setLanguage,
+    dataCountries,
+    currentCountry,
+    currentLanguage
+  } = props
 
-  hideMenu = () => {
-    this.setState({showNav: false})
-  }
+  const [showNav, setShowNav] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-  handleMenuToggle = () => {
-    const {showNav} = this.state
-    this.setState({
-      showNav: !showNav,
-    })
-  }
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  static propTypes = {
-    router: PropTypes.shape({
-      pathname: PropTypes.string,
-      query: PropTypes.shape({
-        slug: PropTypes.string,
-      }),
-      events: PropTypes.any,
-    }),
-    // title: PropTypes.string,
-    navItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        slug: PropTypes.arrayOf(PropTypes.string),
-      })
-    ),
-    logo: PropTypes.shape({
-      asset: PropTypes.shape({
-        url: PropTypes.string,
-      }),
-      logo: PropTypes.string,
-    }),
-    dataCountries: PropTypes.array,
-    currentLanguage: PropTypes.object,
-    currentCountry: PropTypes.object,
-    setLanguage: PropTypes.object,
-  }
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-  componentDidMount() {
-    const {router} = this.props
-    router.events.on('routeChangeComplete', this.hideMenu)
-  }
-
-  componentWillUnmount() {
-    const {router} = this.props
-    router.events.off('routeChangeComplete', this.hideMenu)
-  }
-
-  renderLogo = (logo) => {
+  const renderLogo = (logo) => {
     if (!logo || !logo.asset) {
       return <></>
     }
@@ -100,37 +64,25 @@ class Header extends Component {
     )
   }
 
-  render() {
-    const {showNav} = this.state
-    const {
-      // title = 'Missing title',
-      navItems,
-      // router,
-      logo,
-      setLanguage,
-      dataCountries,
-      currentCountry,
-      currentLanguage,
-    } = this.props
-
-    return (
-      <AppBar position="static" sx={{bgcolor: 'white', /* pb: 4 */}}>
+  return (
+    <>
+      <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
         <Toolbar disableGutters>
           <Box>
             <Link href={'/'} passHref>
-              {this.renderLogo(logo)}
+              {renderLogo(logo)}
             </Link>
           </Box>
           <Box
-            mr={{md: 5}}
+            mr={{ md: 5 }}
             ml={'auto'}
             style={{
               display: 'flex',
               flexDirection: 'column',
             }}
           >
-            <Box sx={{color: 'black', ml: 'auto', mb: 1, display: 'flex'}}>
-              <Box sx={{display: 'flex'}} mr={{md: 40, xs: 8}}>
+            <Box sx={{ color: 'black', ml: 'auto', mb: 1, display: 'flex' }}>
+              <Box sx={{ display: 'flex' }} mr={{ md: 40, xs: 8 }}>
                 <button
                   className={styles.socialTwitter}
                   href={'/'}
@@ -150,7 +102,7 @@ class Header extends Component {
                   <FaYoutube />
                 </button>
               </Box>
-              <Box sx={{fontSize: 24, display: {md: 'flex', xs: 'none'}}}>
+              <Box sx={{ fontSize: 24, display: { md: 'flex', xs: 'none' } }}>
                 <CountryAndLanguageSwitch
                   currentCountry={currentCountry}
                   currentLanguage={currentLanguage}
@@ -159,20 +111,51 @@ class Header extends Component {
                 />
               </Box>
             </Box>
-            <Box sx={{ml: 'auto', display: {xs: 'none', md: 'flex'}}}>
+            {/* NavBar Menu - Desktop */}
+            <Box sx={{ ml: 'auto', display: { xs: 'none', md: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => {
-                  const {slug, title, _id} = item
+                  const { slug, title, _id } = item
                   // const isActive = slugParamToPath(router.query.slug) === slug.current
                   return (
                     <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
-                      <Button sx={{ml: 5, color: '#0a1b3f', display: 'block'}}>
+                      <Button sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}>
                         {title || 'Missing'}
                       </Button>
                     </Link>
                   )
                 })}
+              <Button
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                //onClick={handleClick}
+                onMouseOver={handleClick}
+                sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}
+              >
+                Dashboard
+                <span className={styles.subArrow}>
+                  <FaCaretDown/>
+                </span>
+              </Button>
+              <Menu
+                id="basic-menu"
+                className={styles.subMenu}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  'aria-labelledby': 'basic-button',
+                  onMouseLeave: handleClose
+                }}
+              >
+                <MenuItem onClick={handleClose}>Our Story</MenuItem>
+                <MenuItem onClick={handleClose}>Our Team</MenuItem>
+                <MenuItem onClick={handleClose}>Careers</MenuItem>
+              </Menu>
             </Box>
+            {/* NavBar Menu - Mobile */}
             <Box sx={{ml: 'auto', display: {md: 'none', xs: 'flex'}}}>
               <Box sx={{mr: 2.5}}>
                 <CountryAndLanguageSwitch
@@ -188,7 +171,7 @@ class Header extends Component {
                   aria-label="account of current user"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={this.handleMenuToggle}
+                  onClick={() => setShowNav(!showNav)}
                 >
                   <FiMenu />
                 </IconButton>
@@ -205,7 +188,7 @@ class Header extends Component {
                     horizontal: 'right',
                   }}
                   open={showNav}
-                  onClose={this.handleMenuToggle}
+                  onClose={() => setShowNav(false)}
                 >
                   {navItems &&
                     navItems.map((item) => {
@@ -225,8 +208,34 @@ class Header extends Component {
           </Box>
         </Toolbar>
       </AppBar>
-    )
-  }
+    </>
+  )
 }
 
-export default withRouter(Header)
+Header.propTypes = {
+  router: PropTypes.shape({
+    pathname: PropTypes.string,
+    query: PropTypes.shape({
+      slug: PropTypes.string,
+    }),
+    events: PropTypes.any,
+  }),
+  navItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
+  logo: PropTypes.shape({
+    asset: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+    logo: PropTypes.string,
+  }),
+  dataCountries: PropTypes.array,
+  currentLanguage: PropTypes.object,
+  currentCountry: PropTypes.object,
+  setLanguage: PropTypes.object,
+}
+
+export default Header
