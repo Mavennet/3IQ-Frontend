@@ -1,11 +1,13 @@
 import supportedLanguages from '../../supportedLanguages';
+import { SplitHorizontalIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
-export default {
+export default { // Não utilizado no momento --> podemos remover
   type: 'document',
   name: 'mailchimp',
   title: 'Mailchimp newsletter signup',
+  icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'heading',
@@ -32,7 +34,7 @@ export default {
     prepare({ title }) {
       return {
         title,
-        subtitle: 'Mailchimp newsletter signup section',
+        subtitle: 'Mailchimp Newsletter Signup section',
       };
     },
   },

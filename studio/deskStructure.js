@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MasterDetailIcon, SplitHorizontalIcon } from '@sanity/icons'
+import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon } from '@sanity/icons'
 
 const hiddenDocTypes = (listItem) => ![
   'page',
@@ -49,11 +49,21 @@ export default () =>
               S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
-              S.documentTypeListItem('imageWithText').title('Image'),
-              S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
+              // S.documentTypeListItem('imageWithText').title('Image'),
+              // S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
             ])
         ),
-      S.documentTypeListItem('route').title('Routes'),
+        S.listItem()
+        .title('Routes')
+        .icon(LinkIcon)
+        .child(
+          S.documentTypeList('country').title('Countries')
+            .child(countryId =>
+              S.documentTypeList('route').title('Routes')
+                .filter('_type == "route" && $countryId in countries[]._ref')
+                .params({ countryId })
+            )
+        ),
       S.divider(),
       S.documentTypeListItem('post').title('Posts'),
       S.documentTypeListItem('category').title('Categories'),

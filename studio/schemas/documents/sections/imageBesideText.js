@@ -1,4 +1,5 @@
 import supportedLanguages from '../../supportedLanguages';
+import { SplitHorizontalIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -6,36 +7,39 @@ export default {
   type: 'document',
   name: 'imageBesideText',
   title: 'Image beside text',
+  icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading',
+      title: 'Heading (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'description',
       type: 'localeText',
-      title: 'Description',
-    },
-    {
-      name: 'mainImage',
-      type: 'figure',
-      title: 'Main image',
+      title: 'Description (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image',
+      title: 'Background image (*)',
       validation: Rule => Rule.error('Information required.').required(),
       options: {
         hotspot: true
       }
     },
     {
+      name: 'mainImage',
+      type: 'figure',
+      title: 'Optional image',
+    },
+    {
       name: 'button',
       type: 'localeCta',
-      title: 'Main Button',
+      title: 'Main Button (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     }
   ],
   preview: {
@@ -46,7 +50,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero with image section',
+        subtitle: 'Image Beside Text section',
         media,
       }
     }

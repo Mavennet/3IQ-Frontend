@@ -1,4 +1,5 @@
 import supportedLanguages from '../../supportedLanguages';
+import { SplitHorizontalIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -10,7 +11,7 @@ export default {
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading',
+      title: 'Heading (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -21,13 +22,13 @@ export default {
     {
       name: 'mainImage',
       type: 'figure',
-      title: 'Main image',
+      title: 'Main image (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image',
+      title: 'Background image (*)',
       validation: Rule => Rule.error('Information required.').required(),
       options: {
         hotspot: true,
@@ -36,7 +37,8 @@ export default {
     {
       name: 'button',
       type: 'localeCta',
-      title: 'Main button',
+      title: 'Main button (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
@@ -47,7 +49,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero with image section',
+        subtitle: 'Hero With Image section',
         media,
       };
     },
