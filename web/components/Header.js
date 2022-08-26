@@ -45,8 +45,8 @@ function Header(props) {
       return <></>
     }
 
-    if (logo.asset.extension === 'svg') {
-      return <SVG src={logo.asset.url} className={styles.logo} />
+    if (logo?.asset?.extension === 'svg') {
+      return <SVG src={logo?.asset?.url} className={styles.logo} />
     }
 
     return (
@@ -130,7 +130,6 @@ function Header(props) {
                 aria-controls={open ? 'basic-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
-                //onClick={handleClick}
                 onMouseOver={handleClick}
                 sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}
               >
@@ -229,6 +228,7 @@ Header.propTypes = {
   logo: PropTypes.shape({
     asset: PropTypes.shape({
       url: PropTypes.string,
+      extension: PropTypes.string,
     }),
     logo: PropTypes.string,
   }),
