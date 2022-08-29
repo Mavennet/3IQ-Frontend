@@ -16,7 +16,7 @@ function Layout(props) {
 
   const {
     title,
-    mainNavigation,
+    // mainNavigation,
     footerNavigation,
     footerText,
     logo,
