@@ -98,10 +98,10 @@ export const getServerSideProps = async ({params}) => {
     }
   }
 
-  // Retrieve all routes for the specified page (used later on to get the buttons routes)
+  // Retrieve all routes (used later on to get the buttons routes)
   const pageRoutes = await client.fetch(
     groq`
-    *[_type == 'route' && page._ref == data._ref] { ... } // Precisa revisar o filtro, pois "&& page._ref == data._ref" não vai filtrar o que queremos
+    *[_type == 'route'] { ... }
     `
   )
 
