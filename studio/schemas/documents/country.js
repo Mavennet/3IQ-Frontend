@@ -37,9 +37,9 @@ export default {
       type: 'array',
       of: [
         {
-          title: 'Item',
+          title: 'Menu item',
           type: 'reference',
-          to: [{ type: 'route' }],
+          to: [{ type: 'menuItem' }],
         },
       ],
     },
