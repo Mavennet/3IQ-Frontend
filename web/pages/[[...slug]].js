@@ -30,7 +30,8 @@ export const getServerSideProps = async ({params}) => {
       urlTag,
       mainNavigation[]-> {
       ...,
-      "title": page->title
+      route-> { ..., 'localeTitle': page->description },
+      submenuRoutes[]-> { ..., 'localeTitle': page->description },      
     },
       languages[]->
     }
