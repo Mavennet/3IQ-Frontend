@@ -47,7 +47,7 @@ class CountryAndLanguageSwitch extends Component {
     dataCountries: PropTypes.array,
     currentLanguage: PropTypes.object,
     currentCountry: PropTypes.object,
-    setLanguage: PropTypes.object,
+    setLanguage: PropTypes.func,
   }
 
   renderLanguageSelect(currentCountry, currentLanguage, setLanguage) {
@@ -136,7 +136,7 @@ class CountryAndLanguageSwitch extends Component {
 
     return (
       <>
-        <FaGlobe style={{marginRight: 8, fontSize: 20, color: 'black', marginTop: 3}} />
+        <FaGlobe style={{fontSize: 20, color: 'black', marginRight: 7}} />
         {this.renderCountrySelect(dataCountries, currentCountry)}
         {this.renderLanguageSelect(currentCountry, currentLanguage, setLanguage)}
       </>
