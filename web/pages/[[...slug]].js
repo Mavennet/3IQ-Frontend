@@ -99,14 +99,17 @@ export const getServerSideProps = async ({params}) => {
   }
 
   // Retrieve all routes (used later on to get the buttons routes)
-  const pageRoutes = await client.fetch(
+  const allRoutes = await client.fetch(
     groq`
-    *[_type == 'route'] { ... }
+    *[_type == 'route'] {...}
     `
   )
 
+  // Routes filtered by the current country (can be used if necessary)
+  // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
+
   return {
-    props: {...data, dataCountries, currentCountry: country, pageRoutes} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes} || {},
   }
 }
 
@@ -123,7 +126,7 @@ const LandingPage = (props) => {
     slug,
     dataCountries,
     currentCountry,
-    pageRoutes,
+    allRoutes,
   } = props
   
   const [country] = useState(
@@ -149,7 +152,7 @@ const LandingPage = (props) => {
 
   useEffect(() => {
     const contentWithDefaultLanguage = []
-    content && content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage, pageRoutes}))
+    content && content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage, allRoutes}))
     setFormatedContent(contentWithDefaultLanguage)
     config &&
       setFormatedConfig({
@@ -213,7 +216,7 @@ LandingPage.propTypes = {
   config: PropTypes.any,
   dataCountries: PropTypes.array,
   currentCountry: PropTypes.string,
-  pageRoutes: PropTypes.any,
+  allRoutes: PropTypes.any,
 }
 
 export default LandingPage

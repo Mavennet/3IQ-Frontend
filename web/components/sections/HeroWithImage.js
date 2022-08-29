@@ -10,6 +10,7 @@ import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import BigButton from '../BigButton'
 import SimpleBlockContent from '../SimpleBlockContent'
+import { getButtonRoute } from '../../utils/shared'
 
 const builder = imageUrlBuilder(client)
 
@@ -20,13 +21,12 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage, pageRoutes} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage, allRoutes} = props
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
-  const localeButton = button[currentLanguage.languageTag]
-  
-  console.log(pageRoutes) // A partir do _ref do objeto route do componente/botão, será preciso vasculhar o pageRoutes até encontrar a rota com _ref = _id
+  const localeButton = button[currentLanguage.languageTag] 
+  const buttonRoute = localeButton.link ? {} : getButtonRoute(localeButton, allRoutes)
 
   return (
     <ThemeProvider theme={theme}>
@@ -62,11 +62,13 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {localeButton &&
+            {localeButton && buttonRoute &&
                (
                 <BigButton
                   sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
                   title={localeButton.title}
+                  route={buttonRoute}
+                  link={localeButton.link}
                 >
                 </BigButton>
               )}
@@ -87,7 +89,8 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object
+  currentLanguage: PropTypes.object,
+  allRoutes: PropTypes.object,
 }
 
 export default HeroWithImage

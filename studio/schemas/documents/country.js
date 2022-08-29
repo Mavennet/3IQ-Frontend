@@ -26,5 +26,17 @@ export default {
       of: [{type: 'reference', to: {type: 'language'}}],
       validation: Rule => Rule.error('Information required.').required()
     }
-  ]
+  ],
+  preview: {
+    select: {
+      name: 'name',
+      urlTag: 'urlTag'
+    },
+    prepare({ name, urlTag }) {
+      return {
+        title: `${name}`,
+        subtitle: `/${urlTag}`,
+      }
+    },
+  },
 }

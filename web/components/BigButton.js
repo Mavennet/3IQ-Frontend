@@ -6,6 +6,22 @@ import { Link } from 'next/router'
 export default function BigButton(props) {
   const { title, route, link, sx } = props
 
+  const buttonStyle = {
+    background: 'none',
+    border: '4px solid #dc6e19',
+    textTransform: 'none',
+    color: 'white',
+    fontWeight: 'bold',
+    '&:hover': {
+      background: '#dc6e19',
+    },
+    ...sx
+  }
+
+  const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   if (route && route.slug && route.slug.current) {
     return (
       <Link
@@ -15,7 +31,7 @@ export default function BigButton(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <Button sx={sx}>
+        <Button sx={ buttonStyle }>
           {title || 'Missing title'}
         </Button>
       </Link>
@@ -24,25 +40,14 @@ export default function BigButton(props) {
 
   if (link) {
     return (
-
-      <Button sx={sx}>
+      <Button sx={ buttonStyle } onClick={() => openInNewTab(link)}>
         {title || 'Missing title'}
       </Button>
     )
   }
 
   return <Button
-    sx={{
-      background: 'none',
-      border: '4px solid #dc6e19',
-      textTransform: 'none',
-      color: 'white',
-      fontWeight: 'bold',
-      '&:hover': {
-        background: '#dc6e19',
-      },
-      ...sx,
-    }}
+    sx={ buttonStyle }
   >{title || 'Missing title'}</Button>
 }
 
@@ -54,5 +59,5 @@ BigButton.propTypes = {
     }),
   }),
   link: PropTypes.string,
-  sx: PropTypes.object,
+  sx: PropTypes.object,  
 }
