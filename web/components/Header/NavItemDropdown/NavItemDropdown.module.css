@@ -1,0 +1,99 @@
+@import "../../../styles/custom-media.css";
+
+.menuItem {
+  font-size: 18px;
+  border-radius: 0px;
+  border-bottom: 3px solid transparent;
+  text-transform: capitalize;
+  text-align: center;
+  margin-left: 10px;
+  color: var(--color-black);
+  text-align: left;
+  padding: 8px;
+  @media (--media-min-large) {
+    margin-left: 20px;
+    margin-top: 8px;
+  }
+  @media (--media-min-x-large) {
+    margin-left: 30px;
+  }
+}
+
+.menuItem:hover {
+  background: none;
+  color: var(--color-dark-orange);
+  @media (--media-min-large) {
+    border-bottom: 3px solid var(--color-dark-orange);
+  }
+}
+
+.subMenu ul {
+  width: 130px;
+  background: #F9F9F9;
+  padding: 0;
+  border-top: 3px solid var(--color-dark-orange);
+}
+
+.subMenu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.subMenu ul li {
+  padding: 15px 20px;
+  background: none;
+  justify-content: center;
+}
+
+.subMenu ul li:hover {
+  background: none;
+  color: var(--color-orange);
+  background-color: var(--color-light-gray);
+}
+
+.subMenu:hover ul li {
+  background: none;
+}
+
+.accordion {
+  width: 100%;
+  box-shadow: none;
+  padding: 0px;
+  margin: 0px;
+  max-height: 60px;
+  border: none;
+}
+
+.content {
+  margin: 0;
+}
+
+.expansionPanel {
+  color: var(--color-dark-orange);
+  background: var(--color-very-light-gray);
+  margin: 0px;
+}
+
+.subArrow {
+  line-height: 1;
+  padding: 10px;
+  border-radius: 0px;
+}
+
+.menuItem {
+  font-size: 18px;
+  border-radius: 0px;
+  border-bottom: 3px solid transparent;
+  text-transform: capitalize;
+  text-align: center;
+  color: var(--color-black);
+  text-align: left;
+}
+
+.menuItem:hover {
+  background: none;
+  color: var(--color-dark-orange);
+  @media (--media-min-large) {
+    border-bottom: 3px solid var(--color-dark-orange);
+  }
+}

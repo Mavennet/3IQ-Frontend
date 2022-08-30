@@ -2,26 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Header.module.css'
 import SVG from 'react-inlinesvg'
-import Link from 'next/link'
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Button,
-  Menu,
-  MenuItem,
-  IconButton,
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails
-} from '@mui/material'
-import { FaTwitter, FaLinkedinIn, FaYoutube, FaCaretDown } from 'react-icons/fa'
+import { AppBar, Toolbar, Box, IconButton, Link } from '@mui/material'
+import Social from './Social'
+import NavItem from './NavItem'
+import NavItemDropdown from './NavItemDropdown'
 import { FiMenu } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch'
-import { getPathFromSlug } from '../../utils/urls'
-
 function Header(props) {
   const {
     navItems,
@@ -32,19 +19,7 @@ function Header(props) {
     currentLanguage
   } = props
 
-
-
-  const [showNav, setShowNav] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [showNav, setShowNav] = React.useState(false)
 
   const renderLogo = (logo) => {
     if (!logo || !logo.asset) {
@@ -78,7 +53,8 @@ function Header(props) {
           className={styles.container}
         >
           <Box>
-            <Link href={'/'} passHref>
+            {/* Logo */}
+            <Link href={'/'}>
               {renderLogo(logo)}
             </Link>
           </Box>
@@ -88,26 +64,9 @@ function Header(props) {
             className={styles.navbarContainer}
           >
             <Box sx={{ color: 'black', ml: 'auto', display: 'flex' }}>
-              <Box sx={{ display: 'flex' }} mr={{ xs: 0, sm: 20, md: 40 }}>
-                <button
-                  className={styles.socialTwitter}
-                  href={'/'}
-                >
-                  <FaTwitter />
-                </button>
-                <button
-                  className={styles.socialLinkedin}
-                  href={'/'}
-                >
-                  <FaLinkedinIn />
-                </button>
-                <button
-                  className={styles.socialYoutube}
-                  href={'/'}
-                >
-                  <FaYoutube />
-                </button>
-              </Box>
+              {/* Social Networks */}
+              <Social />
+              {/* Language Selector */}
               <Box sx={{ fontSize: 24, alignItems: 'center', display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
                 <CountryAndLanguageSwitch
                   currentCountry={currentCountry}
@@ -120,46 +79,23 @@ function Header(props) {
             {/* NavBar Menu - Desktop */}
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
               {navItems &&
-                navItems.map((item) => {
-                  const { slug, title, _id } = item
-                  // const isActive = slugParamToPath(router.query.slug) === slug.current
-                  return (
-                    <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
-                      <Button className={styles.menuItem} sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}>
-                        {title || 'Missing'}
-                      </Button>
-                    </Link>
-                  )
-                })}
-              <Button
-                id="basic-button"
-                className={styles.menuItem}
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onMouseOver={handleClick}
-                sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}
-              >
-                Dashboard
-                <span className={styles.subArrow}>
-                  <FaCaretDown />
-                </span>
-              </Button>
-              <Menu
-                id="basic-menu"
-                className={styles.subMenu}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  'aria-labelledby': 'basic-button',
-                  onMouseLeave: handleClose
-                }}
-              >
-                <MenuItem onClick={handleClose}>Our Story</MenuItem>
-                <MenuItem onClick={handleClose}>Our Team</MenuItem>
-                <MenuItem onClick={handleClose}>Careers</MenuItem>
-              </Menu>
+                navItems.map((item) => (
+                  item.submenuRoutes.length > 0
+                    ? (<NavItemDropdown
+                      name={item.name}
+                      _id={item.id}
+                      submenuRoutes={item.submenuRoutes}
+                      language={currentLanguage.languageTag}
+                      key={item._id}
+                      link={item.link}
+                    />)
+                    : (<NavItem
+                      name={item.name}
+                      _id={item.id}
+                      routes={item.route}
+                      key={item._id}
+                    />)
+                ))}
             </Box>
             {/* NavBar Menu - Mobile */}
             <Box
@@ -191,45 +127,22 @@ function Header(props) {
                     <div className={styles.menuMobile}>
                       <ul>
                         {navItems &&
-                          navItems.map((item) => {
-                            const { slug, title, _id } = item
-                            // const isActive = slugParamToPath(router.query.slug) === slug.current
-                            return (
-                              <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
-                                <MenuItem>
-                                  <Typography>{title}</Typography>
-                                </MenuItem>
-                              </Link>
-                            )
-                          })}
-                        <li>
-                          <Accordion>
-                            <AccordionSummary
-                              expandIcon={<FaCaretDown />}
-                              aria-controls="panel1a-content"
-                              classes={{ expanded: styles.expansionPanel }}
-                            >
-                              <Typography>Our Fund</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                              <Link href={'/home'} passHref>
-                                <MenuItem>
-                                  <Typography>exemplo 1</Typography>
-                                </MenuItem>
-                              </Link>
-                              <Link href={'/home'} passHref>
-                                <MenuItem>
-                                  <Typography>exemplo 2</Typography>
-                                </MenuItem>
-                              </Link>
-                              <Link href={'/home'} passHref>
-                                <MenuItem>
-                                  <Typography>exemplo 3</Typography>
-                                </MenuItem>
-                              </Link>
-                            </AccordionDetails>
-                          </Accordion>
-                        </li>
+                          navItems.map((item) => (
+                            item.submenuRoutes.length > 0
+                              ? (<NavItemDropdown
+                                name={item.name}
+                                _id={item.id}
+                                submenuRoutes={item.submenuRoutes}
+                                language={currentLanguage.languageTag}
+                                key={item._id}
+                                link={item.link}
+                              />)
+                              : (<NavItem name={item.name}
+                                _id={item.id}
+                                routes={item.route}
+                                key={item._id}
+                              />)
+                          ))}
                       </ul>
                     </div>
                   )
@@ -253,7 +166,7 @@ Header.propTypes = {
   }),
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       slug: PropTypes.shape(
         {
           current: PropTypes.string,

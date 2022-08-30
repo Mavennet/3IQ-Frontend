@@ -1,0 +1,28 @@
+@import "../../../styles/custom-media.css";
+
+.menuItem {
+  font-size: 18px;
+  border-radius: 0px;
+  border-bottom: 3px solid transparent;
+  text-transform: capitalize;
+  text-align: center;
+  margin-left: 10px;
+  color: var(--color-black);
+  text-align: left;
+  padding: 8px;
+  @media (--media-min-large) {
+    margin-left: 20px;
+    margin-top: 8px;
+  }
+  @media (--media-min-x-large) {
+    margin-left: 30px;
+  }
+}
+
+.menuItem:hover {
+  background: none;
+  color: var(--color-dark-orange);
+  @media (--media-min-large) {
+    border-bottom: 3px solid var(--color-dark-orange);
+  }
+}
