@@ -23,12 +23,16 @@ const pageFragment = groq`
  */
 
 export const getServerSideProps = async ({params}) => {
-
   const dataCountries = await client.fetch(
     groq`
     *[_type == "country"]{
       name,
       urlTag,
+      mainNavigation[]-> {
+      ...,
+      route-> { ..., 'localeTitle': page->description },
+      submenuRoutes[]-> { ..., 'localeTitle': page->description },      
+    },
       languages[]->
     }
   `
@@ -36,7 +40,7 @@ export const getServerSideProps = async ({params}) => {
 
   const countries = []
 
-  dataCountries.map(c => countries.push(c.urlTag))
+  dataCountries.map((c) => countries.push(c.urlTag))
 
   let country = ''
 
@@ -100,7 +104,6 @@ export const getServerSideProps = async ({params}) => {
 
   // get all countries available
 
-
   return {
     props: {...data, dataCountries, currentCountry: country} || {},
   }
@@ -120,7 +123,7 @@ const LandingPage = (props) => {
     dataCountries,
     currentCountry,
   } = props
-  
+
   const [country] = useState(
     currentCountry
       ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
