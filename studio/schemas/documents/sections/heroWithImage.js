@@ -7,6 +7,7 @@ export default {
   type: 'document',
   name: 'heroWithImage',
   title: 'Hero with Image',
+  icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'heading',

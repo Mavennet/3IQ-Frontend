@@ -6,7 +6,6 @@ const hiddenDocTypes = (listItem) => ![
   'route',
   'site-config',
   'post',
-  'category',
   'country',
   'language',
   'person',
@@ -37,23 +36,7 @@ export default () =>
                 .filter('_type == "page" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
-      S.listItem()
-        .title('Sections')
-        .icon(SplitHorizontalIcon)
-        .child(
-          S.list()
-            .title('Sections')
-            .items([
-              S.documentTypeListItem('hero').title('Hero'),
-              S.documentTypeListItem('heroWithImage').title('Hero with Image'),
-              S.documentTypeListItem('imageBesideText').title('Image beside Text'),
-              S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
-              S.documentTypeListItem('doubleOptions').title('Double Options'),
-              // S.documentTypeListItem('imageWithText').title('Image'),
-              // S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
-            ])
-        ),
+        ),      
         S.listItem()
         .title('Routes')
         .icon(LinkIcon)
@@ -65,9 +48,23 @@ export default () =>
                 .params({ countryId })
             )
         ),
-      S.divider(),
+      S.divider(),S.listItem()
+      .title('Sections')
+      .icon(SplitHorizontalIcon)
+      .child(
+        S.list()
+          .title('Sections')
+          .items([
+            S.documentTypeListItem('hero').title('Hero'),
+            S.documentTypeListItem('heroWithImage').title('Hero with Image'),
+            S.documentTypeListItem('imageBesideText').title('Image beside Text'),
+            S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
+            S.documentTypeListItem('doubleOptions').title('Double Options'),
+            // S.documentTypeListItem('imageWithText').title('Image'),
+            // S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
+          ])
+      ),
       S.documentTypeListItem('post').title('Posts'),
-      S.documentTypeListItem('category').title('Categories'),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
