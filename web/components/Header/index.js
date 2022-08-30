@@ -78,11 +78,12 @@ function Header(props) {
             </Box>
             {/* NavBar Menu - Desktop */}
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
+              {console.log(navItems)}
               {navItems &&
                 navItems.map((item) => (
                   item.submenuRoutes.length > 0
                     ? (<NavItemDropdown
-                      name={item.name}
+                      title={item.route?.localeTitle[currentLanguage.languageTag]}
                       _id={item.id}
                       submenuRoutes={item.submenuRoutes}
                       language={currentLanguage.languageTag}
@@ -90,7 +91,7 @@ function Header(props) {
                       link={item.link}
                     />)
                     : (<NavItem
-                      name={item.name}
+                      title={item.route?.localeTitle[currentLanguage.languageTag]}
                       _id={item.id}
                       routes={item.route}
                       key={item._id}
@@ -130,14 +131,15 @@ function Header(props) {
                           navItems.map((item) => (
                             item.submenuRoutes.length > 0
                               ? (<NavItemDropdown
-                                name={item.name}
+                                title={item.route?.localeTitle[currentLanguage.languageTag]}
                                 _id={item.id}
                                 submenuRoutes={item.submenuRoutes}
                                 language={currentLanguage.languageTag}
                                 key={item._id}
                                 link={item.link}
                               />)
-                              : (<NavItem name={item.name}
+                              : (<NavItem
+                                title={item.route?.localeTitle[currentLanguage.languageTag]}
                                 _id={item.id}
                                 routes={item.route}
                                 key={item._id}

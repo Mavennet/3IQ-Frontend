@@ -15,7 +15,7 @@ import { FaCaretDown } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 function NavItemDropdown(props) {
-  const { name, _id, submenuRoutes, link, language } = props
+  const { title, _id, submenuRoutes, link, language } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
 
@@ -41,7 +41,7 @@ function NavItemDropdown(props) {
               classes={{ content: styles.content, expanded: styles.expansionPanel }}
             >
               <Link href={link}>
-                <Typography className={styles.menuItem}>{name || 'Missing'}</Typography>
+                <Typography className={styles.menuItem}>{title || 'Missing'}</Typography>
               </Link>
             </AccordionSummary>
             <AccordionDetails>
@@ -75,7 +75,7 @@ function NavItemDropdown(props) {
           onMouseOver={handleOpen}
           sx={{ color: '#0a1b3f', display: 'block' }}
         >
-          {name || 'Missing'}
+          {title || 'Missing'}
           <span className={styles.subArrow}>
             <FaCaretDown />
           </span>
@@ -97,7 +97,7 @@ function NavItemDropdown(props) {
             link && (
               <MenuItem onClick={handleClose} key={_id}>
                 <Link href={link} key={_id}>
-                  <Typography>{name || 'Missing'}</Typography>
+                  <Typography>{title || 'Missing'}</Typography>
                 </Link>
               </MenuItem>
             )
@@ -120,7 +120,7 @@ function NavItemDropdown(props) {
 }
 
 NavItemDropdown.propTypes = {
-  name: PropTypes.string,
+  title: PropTypes.string,
   _id: PropTypes.string,
   language: PropTypes.string,
   link: PropTypes.string,
