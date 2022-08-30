@@ -47,7 +47,7 @@ function redirectButton(props) {
 
   if (link) {
     return (
-      <a href={link}>
+      <a href={link} style={{textDecoration: 'none'}}>
         <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
       </a>
     )
