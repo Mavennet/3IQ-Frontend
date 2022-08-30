@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-import styles from './Cta.module.css'
 import Button from '@mui/material/Button'
 
 function redirectButton(props) {
@@ -48,7 +47,7 @@ function redirectButton(props) {
 
   if (link) {
     return (
-      <a className={styles.button} href={link}>
+      <a href={link}>
         <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
       </a>
     )
