@@ -50,8 +50,7 @@ function renderLogo(logo) {
 
 function Footer(props) {
   const {navItems, text, router} = props
-  console.log(navItems, text, router) // no-unused-vars
-
+  console.log(navItems, text, router)
   return (
     <ThemeProvider theme={theme}>
       <Grid

@@ -102,10 +102,18 @@ export const getServerSideProps = async ({params}) => {
     }
   }
 
-  // get all countries available
+  // Retrieve all routes (used later on to get the buttons routes)
+  const allRoutes = await client.fetch(
+    groq`
+    *[_type == 'route'] {...}
+    `
+  )
 
+  // Routes filtered by the current country (can be used if necessary)
+  // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
+  
   return {
-    props: {...data, dataCountries, currentCountry: country} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes} || {},
   }
 }
 
@@ -122,6 +130,7 @@ const LandingPage = (props) => {
     slug,
     dataCountries,
     currentCountry,
+    allRoutes,
   } = props
 
   const [country] = useState(
@@ -196,7 +205,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -211,6 +220,7 @@ LandingPage.propTypes = {
   config: PropTypes.any,
   dataCountries: PropTypes.array,
   currentCountry: PropTypes.string,
+  allRoutes: PropTypes.any,
 }
 
 export default LandingPage

@@ -43,5 +43,17 @@ export default {
         },
       ],
     },
-  ]
+  ],
+  preview: {
+    select: {
+      name: 'name',
+      urlTag: 'urlTag'
+    },
+    prepare({ name, urlTag }) {
+      return {
+        title: `${name}`,
+        subtitle: `/${urlTag}`,
+      }
+    },
+  },
 }

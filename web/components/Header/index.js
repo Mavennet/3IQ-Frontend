@@ -119,8 +119,6 @@ function Header(props) {
             </Box>
             {/* NavBar Menu - Desktop */}
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
-            {console.log("aqui")}
-                        {console.log(navItems)}
               {navItems &&
                 navItems.map((item) => {
                   const { slug, title, _id } = item
