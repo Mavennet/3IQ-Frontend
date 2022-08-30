@@ -10,6 +10,7 @@ import person from './documents/person';
 import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
+import menuItem from './documents/menuItem';
 
 // Section documents
 import heroWithImage from './documents/sections/heroWithImage';
@@ -72,5 +73,6 @@ export default createSchema({
     localeCta,
     localeSimplePortableText,
     sideBySideImages,
+    menuItem
   ]),
 });

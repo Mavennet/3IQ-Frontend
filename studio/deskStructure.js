@@ -18,6 +18,7 @@ const hiddenDocTypes = (listItem) => ![
   'imageWithText',
   'mailchimp',
   'sideBySideImages',
+  'menuItem',
 ].includes(listItem.getId())
 
 export default () =>
