@@ -152,7 +152,7 @@ const LandingPage = (props) => {
 
   useEffect(() => {
     const contentWithDefaultLanguage = []
-    content && content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage, allRoutes}))
+    content && content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage}))
     setFormatedContent(contentWithDefaultLanguage)
     config &&
       setFormatedConfig({
@@ -201,7 +201,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} sections={formatedContent} />}
     </Layout>
   )
 }

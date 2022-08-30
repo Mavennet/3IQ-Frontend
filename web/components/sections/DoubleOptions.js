@@ -9,6 +9,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
 import BigButtonReverse from '../BigButtonReverse'
 import BigButton from '../BigButton'
+import RedirectButton from '../RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
@@ -96,8 +97,9 @@ function DoubleOptions(props) {
                 alt="The house from the offer."
                 src={builder.image(firstImage).url()}
               />
-              <BigButton
+              <RedirectButton
                 key={firstButton._key}
+                reverse
                 title={firstButton.title}
                 sx={{width: {md: 150}, padding: '10px 20px'}}
               />
@@ -125,7 +127,7 @@ function DoubleOptions(props) {
                 alt="The house from the offer."
                 src={builder.image(secondImage).url()}
               />
-              <BigButtonReverse
+              <RedirectButton
                 key={secondButton._key}
                 title={secondButton.title}
                 sx={{width: {md: 150}, padding: '10px 20px'}}

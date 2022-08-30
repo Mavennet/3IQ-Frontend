@@ -10,7 +10,7 @@ import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import BigButton from '../BigButton'
 import SimpleBlockContent from '../SimpleBlockContent'
-import { getButtonRoute } from '../../utils/shared'
+import RedirectButton from '../RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
@@ -25,8 +25,6 @@ function HeroWithImage(props) {
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
-  const localeButton = button[currentLanguage.languageTag] 
-  const buttonRoute = localeButton.link ? {} : getButtonRoute(localeButton, allRoutes)
 
   return (
     <ThemeProvider theme={theme}>
@@ -62,15 +60,13 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {localeButton && buttonRoute &&
+            {button &&
                (
-                <BigButton
-                  sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
-                  title={localeButton.title}
-                  route={buttonRoute}
-                  link={localeButton.link}
-                >
-                </BigButton>
+               <RedirectButton
+               {...button}
+               reverse
+               sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
+               ></RedirectButton>
               )}
           </Box>
         </Container>
