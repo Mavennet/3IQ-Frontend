@@ -7,8 +7,6 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
-import BigButtonReverse from '../BigButtonReverse'
-import BigButton from '../BigButton'
 import RedirectButton from '../RedirectButton'
 
 const builder = imageUrlBuilder(client)

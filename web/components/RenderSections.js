@@ -18,17 +18,17 @@ function resolveSections(section) {
 function RenderSections(props) {
   const {sections, routes} = props
 
-  sections.map(section => {
-    let {button, currentLanguage} = section
+  for(const section of sections){
+    const {button, currentLanguage} = section
     if(button && currentLanguage){
-      let localeButton = button[currentLanguage.languageTag]
+      const localeButton = button[currentLanguage.languageTag]
       if(localeButton && localeButton.route){
-        let formatedRoute = routes.filter(r => r._id == localeButton.route._ref)[0]
+        const formatedRoute = routes.filter(r => r._id === localeButton.route._ref)[0]
         localeButton.route = formatedRoute 
       }
       section.button = localeButton
     }
-  })
+  }
 
   if (!sections) {
     console.error('Missing section')
@@ -56,6 +56,7 @@ RenderSections.propTypes = {
       section: PropTypes.instanceOf(PropTypes.object),
     })
   ),
+  routes: PropTypes.object
 }
 
 export default RenderSections

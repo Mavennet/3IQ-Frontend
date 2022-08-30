@@ -8,7 +8,6 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import BigButton from '../BigButton'
 import SimpleBlockContent from '../SimpleBlockContent'
 import RedirectButton from '../RedirectButton'
 
@@ -21,7 +20,7 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage, allRoutes} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
@@ -86,7 +85,6 @@ HeroWithImage.propTypes = {
   description: PropTypes.object,
   button: PropTypes.object,
   currentLanguage: PropTypes.object,
-  allRoutes: PropTypes.object,
 }
 
 export default HeroWithImage
