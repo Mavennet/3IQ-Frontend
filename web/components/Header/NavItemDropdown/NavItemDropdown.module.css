@@ -52,7 +52,7 @@
   color: var(--color-dark-orange);
   background-color:  var(--color-light-gray)!important;
   @media (--media-min-large) {
-    background: none;
+    background-color: transparent!important;
   }
 }
 
@@ -106,7 +106,7 @@
 .subMenu ul li:hover {
   background: none;
   color: var(--color-orange);
-  background-color: var(--color-light-gray);
+  background-color: var(--color-light-gray)!important;
 }
 
 .subMenu:hover ul li {
