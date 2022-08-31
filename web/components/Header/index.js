@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Header.module.css'
-import SVG from 'react-inlinesvg'
 import { AppBar, Toolbar, Box, IconButton, Link } from '@mui/material'
+import Logo from './Logo'
 import Social from './Social'
 import NavItem from './NavItem'
 import NavItemDropdown from './NavItemDropdown'
@@ -21,30 +21,6 @@ function Header(props) {
 
   const [showNav, setShowNav] = React.useState(false)
 
-  const renderLogo = (logo) => {
-    if (!logo || !logo.asset) {
-      return <></>
-    }
-
-    if (logo?.asset?.extension === 'svg') {
-      return <SVG src={logo?.asset?.url} className={styles.logo} />
-    }
-
-    return (
-      <Box
-        component="img"
-        sx={{
-          mt: 3,
-          mb: 3,
-          ml: 4,
-        }}
-        alt="3iq"
-        className={styles.logo}
-        src={logo.asset.url}
-      />
-    )
-  }
-
   return (
     <>
       <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
@@ -55,7 +31,7 @@ function Header(props) {
           <Box>
             {/* Logo */}
             <Link href={'/'}>
-              {renderLogo(logo)}
+              <Logo logo={logo} />
             </Link>
           </Box>
           <Box
@@ -78,24 +54,27 @@ function Header(props) {
             </Box>
             {/* NavBar Menu - Desktop */}
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
-              {console.log(navItems)}
               {navItems &&
                 navItems.map((item) => (
                   item.submenuRoutes.length > 0
-                    ? (<NavItemDropdown
-                      title={item.route?.localeTitle[currentLanguage.languageTag]}
-                      _id={item.id}
-                      submenuRoutes={item.submenuRoutes}
-                      language={currentLanguage.languageTag}
-                      key={item._id}
-                      link={item.link}
-                    />)
-                    : (<NavItem
-                      title={item.route?.localeTitle[currentLanguage.languageTag]}
-                      _id={item.id}
-                      routes={item.route}
-                      key={item._id}
-                    />)
+                    ? (
+                      <NavItemDropdown
+                        title={item.route?.localeTitle[currentLanguage.languageTag]}
+                        _id={item.id}
+                        submenuRoutes={item.submenuRoutes}
+                        language={currentLanguage.languageTag}
+                        key={item._id}
+                        link={item.link}
+                      />
+                    )
+                    : (
+                      <NavItem
+                        title={item.route?.localeTitle[currentLanguage.languageTag]}
+                        _id={item.id}
+                        routes={item.route}
+                        key={item._id}
+                      />
+                    )
                 ))}
             </Box>
             {/* NavBar Menu - Mobile */}
@@ -130,20 +109,24 @@ function Header(props) {
                         {navItems &&
                           navItems.map((item) => (
                             item.submenuRoutes.length > 0
-                              ? (<NavItemDropdown
-                                title={item.route?.localeTitle[currentLanguage.languageTag]}
-                                _id={item.id}
-                                submenuRoutes={item.submenuRoutes}
-                                language={currentLanguage.languageTag}
-                                key={item._id}
-                                link={item.link}
-                              />)
-                              : (<NavItem
-                                title={item.route?.localeTitle[currentLanguage.languageTag]}
-                                _id={item.id}
-                                routes={item.route}
-                                key={item._id}
-                              />)
+                              ? (
+                                <NavItemDropdown
+                                  title={item.route?.localeTitle[currentLanguage.languageTag]}
+                                  _id={item.id}
+                                  submenuRoutes={item.submenuRoutes}
+                                  language={currentLanguage.languageTag}
+                                  key={item._id}
+                                  link={item.link}
+                                />
+                              )
+                              : (
+                                <NavItem
+                                  title={item.route?.localeTitle[currentLanguage.languageTag]}
+                                  _id={item.id}
+                                  routes={item.route}
+                                  key={item._id}
+                                />
+                              )
                           ))}
                       </ul>
                     </div>

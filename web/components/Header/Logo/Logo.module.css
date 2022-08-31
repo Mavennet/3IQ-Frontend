@@ -1,0 +1,13 @@
+@import "../../../styles/custom-media.css";
+
+.logo {
+  width: 110px;
+  margin-left: 10px;
+  @media (--media-min-large) {
+    width: 140px;
+    margin-left: 30px;
+  }
+  @media (--media-min-x-large) {
+    width: 190px;
+  }
+}
