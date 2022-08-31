@@ -24,7 +24,6 @@ const theme = createTheme()
 function DoubleOptions(props) {
   const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
   const localeTitle = heading[currentLanguage.languageTag]
-  console.log(description)
   const localeDescription = description[currentLanguage.languageTag]
 
   return (
