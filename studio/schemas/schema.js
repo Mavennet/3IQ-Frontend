@@ -19,6 +19,7 @@ import imageBesideText from './documents/sections/imageBesideText'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
+import newsCard from './documents/sections/newsCard';
 
 // Object types
 import cta from './objects/cta';
@@ -74,5 +75,6 @@ export default createSchema({
     sideBySideImages,
     menuItem,
     localePortableText,
+    newsCard,
   ]),
 });
