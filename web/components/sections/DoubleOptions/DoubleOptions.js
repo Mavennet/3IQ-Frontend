@@ -76,7 +76,7 @@ function DoubleOptions(props) {
                 )
               }
             </Grid>
-            <Grid item md={6} xs={12} pt={5} pb={10} className={styles.seccondBox}>
+            <Grid item md={6} xs={12} pt={5} pb={10} className={styles.secondBox}>
               <Box
                 component="img"
                 sx={{
