@@ -66,20 +66,21 @@ function NavItemDropdown(props) {
       </Box>
       {/* Desktop */}
       <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
-        <Typography
-          id={_id + '-button'}
-          className={styles.menuItem}
-          aria-controls={open ? _id + '-menu' : undefined}
-          aria-haspopup="false"
-          aria-expanded={open ? 'true' : undefined}
-          onMouseOver={handleOpen}
-          sx={{ color: '#0a1b3f', display: 'block' }}
-        >
-          {title || 'Missing'}
-          <span className={styles.subArrow}>
-            <FaCaretDown />
-          </span>
-        </Typography>
+        <Link href={link}>
+          <Typography
+            id={_id + '-button'}
+            className={styles.menuItem}
+            aria-controls={open ? _id + '-menu' : undefined}
+            aria-haspopup="false"
+            aria-expanded={open ? 'true' : undefined}
+            sx={{ color: '#0a1b3f', display: 'block' }}
+          >
+            {title || 'Missing'}
+            <span className={styles.subArrow} onMouseOver={handleOpen}>
+              <FaCaretDown />
+            </span>
+          </Typography>
+        </Link>
         <Menu
           id={_id + '-menu'}
           className={styles.subMenu}
@@ -93,15 +94,6 @@ function NavItemDropdown(props) {
             onMouseLeave: handleClose
           }}
         >
-          {
-            link && (
-              <MenuItem onClick={handleClose} key={_id}>
-                <Link href={link} key={_id}>
-                  <Typography>{title || 'Missing'}</Typography>
-                </Link>
-              </MenuItem>
-            )
-          }
           {
             submenuRoutes.map((item) => {
               return (
