@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
-import BigButtonReverse from '../BigButtonReverse'
+import RedirectButton from '../RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
@@ -22,7 +22,6 @@ function ImageBesideText(props) {
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
-  const localeButton = button[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -82,11 +81,12 @@ function ImageBesideText(props) {
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>
-              {localeButton &&
+              {button &&
                (
-                <BigButtonReverse
+                <RedirectButton
+                {...button}
                 sx={{width: {xs: '100%', md: 180}, padding: '10px 20px', ml: {md: 8}}}
-                  title={localeButton.title}
+                  // title={localeButton.title}
                 />
               )}
             </Box>

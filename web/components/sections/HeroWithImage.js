@@ -8,8 +8,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import BigButton from '../BigButton'
 import SimpleBlockContent from '../SimpleBlockContent'
+import RedirectButton from '../RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
@@ -24,7 +24,6 @@ function HeroWithImage(props) {
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
-  const localeButton = button[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,13 +59,13 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {localeButton &&
+            {button &&
                (
-                <BigButton
-                  sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
-                  title={localeButton.title}
-                >
-                </BigButton>
+               <RedirectButton
+               {...button}
+               reverse
+               sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
+               ></RedirectButton>
               )}
           </Box>
         </Container>
@@ -85,7 +84,7 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object
+  currentLanguage: PropTypes.object,
 }
 
 export default HeroWithImage
