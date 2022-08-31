@@ -50,6 +50,7 @@
 
 .menuItem:hover {
   color: var(--color-dark-orange);
+  font-weight: 300;
   background-color:  var(--color-light-gray)!important;
   @media (--media-min-large) {
     background-color: transparent!important;
@@ -105,7 +106,7 @@
 
 .subMenu ul li:hover {
   background: none;
-  color: var(--color-orange);
+  color: var(--color-dark-orange);
   background-color: var(--color-light-gray)!important;
 }
 
