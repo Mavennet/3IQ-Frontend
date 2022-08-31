@@ -9,6 +9,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton'
 import styles from './DoubleOptions.module.css'
+import SimpleBlockContent from '../../SimpleBlockContent'
 
 const builder = imageUrlBuilder(client)
 
@@ -23,6 +24,7 @@ const theme = createTheme()
 function DoubleOptions(props) {
   const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
   const localeTitle = heading[currentLanguage.languageTag]
+  console.log(description)
   const localeDescription = description[currentLanguage.languageTag]
 
   return (
@@ -43,9 +45,10 @@ function DoubleOptions(props) {
               </Typography>
             )}
             {localeDescription && (
-              <Typography mt={2} ml={2} mr={2} component="p" className={styles.description}>
-                {localeDescription}
-              </Typography>
+              <div className={styles.description}>
+                <SimpleBlockContent blocks={localeDescription} />
+              </div>
+               
             )}
           </Grid>
         </Grid>

@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'description',
-      type: 'localeString',
+      type: 'localeSimplePortableText',
       title: 'Description',
     },
     {
