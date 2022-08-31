@@ -33,25 +33,24 @@ function NavItemDropdown(props) {
       <Box sx={{ display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
         <li>
           <Accordion style={{ boxShadow: "none" }}>
-
             <AccordionSummary
+              className={styles.sumary}
               expandIcon={<FaCaretDown />}
               aria-controls="panel1a-content"
-              className={styles.accordion}
               classes={{ content: styles.content, expanded: styles.expansionPanel }}
             >
               <Link href={link}>
-                <Typography className={styles.menuItem}>{title || 'Missing'}</Typography>
+                <Typography className={styles.sumaryText}>{title || 'Missing'}</Typography>
               </Link>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails sx={{ p: 0 }}>
               <ul>
                 {
                   submenuRoutes.map((item) => {
                     return (
-                      <MenuItem key={item._id}>
+                      <MenuItem key={item._id} className={styles.menuItem}>
                         <Link href={getPathFromSlug(item?.slug?.current)} key={item._id}>
-                          <Typography className={styles.menuItem}>
+                          <Typography className={styles.sumaryText}>
                             {item.localeTitle[language] || 'Missing'}
                           </Typography>
                         </Link>
@@ -69,11 +68,11 @@ function NavItemDropdown(props) {
         <Link href={link}>
           <Typography
             id={_id + '-button'}
-            className={styles.menuItem}
             aria-controls={open ? _id + '-menu' : undefined}
             aria-haspopup="false"
             aria-expanded={open ? 'true' : undefined}
             sx={{ color: '#0a1b3f', display: 'block' }}
+            className={styles.menuItem}
           >
             {title || 'Missing'}
             <span className={styles.subArrow} onMouseOver={handleOpen}>
@@ -83,21 +82,21 @@ function NavItemDropdown(props) {
         </Link>
         <Menu
           id={_id + '-menu'}
-          className={styles.subMenu}
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          transformOrigin={{ vertical: "top", horizontal: "center" }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          transformOrigin={{ vertical: "top", horizontal: "right" }}
           MenuListProps={{
             'aria-labelledby': _id + '-button',
             onMouseLeave: handleClose
           }}
+          className={styles.subMenu}
         >
           {
             submenuRoutes.map((item) => {
               return (
-                <MenuItem onClick={handleClose} key={item._id}>
+                <MenuItem onClick={handleClose} key={item._id} style={{ backgroundColor: 'transparent' }}>
                   <Link href={getPathFromSlug(item?.slug?.current)} key={item._id}>
                     <Typography>{item.localeTitle[language] || 'Missing'}</Typography>
                   </Link>

@@ -10,9 +10,6 @@
 .navbarContainer {
   display: flex;
   flex-direction: column;
-  @media (--media-min-medium) {
-    margin-top: 15px;
-  }
 }
 
 .navbarContainer a {
@@ -51,8 +48,6 @@
 .menuMobile li {
   color: #000;
   width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 .menuMobile li:hover {

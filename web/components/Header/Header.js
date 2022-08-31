@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Header.module.css'
 import { AppBar, Toolbar, Box, IconButton, Link } from '@mui/material'
-import Logo from './Logo'
-import Social from './Social'
-import NavItem from './NavItem'
-import NavItemDropdown from './NavItemDropdown'
+import Logo from './Logo/Logo'
+import Social from './Social/Social'
+import NavItem from './NavItem/NavItem'
+import NavItemDropdown from './NavItemDropdown/NavItemDropdown'
 import { FiMenu } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
 import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch'
@@ -35,11 +35,15 @@ function Header(props) {
             </Link>
           </Box>
           <Box
-            mr={{ md: 5 }}
+            mr={{ xs: 1, md: 3, lg: '10%' }}
+            mt={{ md: 2 }}
             ml={'auto'}
             className={styles.navbarContainer}
           >
-            <Box sx={{ color: 'black', ml: 'auto', display: 'flex' }}>
+            <Box
+              mb={{ xs: 1, md: 2 }}
+              sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start' }}
+            >
               {/* Social Networks */}
               <Social />
               {/* Language Selector */}
