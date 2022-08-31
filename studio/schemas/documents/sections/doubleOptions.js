@@ -10,14 +10,14 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'heading',
+      name: 'title',
       type: 'localeString',
-      title: 'Heading (*)',
+      title: 'Title (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'description',
-      type: 'localeSimplePortableText',
+      type: 'localeString',
       title: 'Description',
     },
     {
