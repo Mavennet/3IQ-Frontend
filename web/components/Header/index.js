@@ -32,6 +32,8 @@ function Header(props) {
     currentLanguage
   } = props
 
+
+
   const [showNav, setShowNav] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -119,17 +121,15 @@ function Header(props) {
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => {
-                  const { slug, name, _id } = item
+                  const { slug, title, _id } = item
                   // const isActive = slugParamToPath(router.query.slug) === slug.current
-                  
-                    return (
-                      <Link key={_id} href={slug ? getPathFromSlug(slug.current) : '/'} passHref>
-                        <Button className={styles.menuItem} sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}>
-                          {name || 'Missing'}
-                        </Button>
-                      </Link>
-                    )
-                  
+                  return (
+                    <Link key={_id} href={getPathFromSlug(slug.current)} passHref>
+                      <Button className={styles.menuItem} sx={{ ml: 5, color: '#0a1b3f', display: 'block' }}>
+                        {title || 'Missing'}
+                      </Button>
+                    </Link>
+                  )
                 })}
               <Button
                 id="basic-button"

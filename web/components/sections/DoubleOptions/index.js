@@ -21,9 +21,8 @@ function urlFor(source) {
 const theme = createTheme()
 
 function DoubleOptions(props) {
-  const {title, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} =
-    props
-  const localeTitle = title[currentLanguage.languageTag]
+  const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
+  const localeTitle = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
 
   return (
@@ -114,6 +113,9 @@ DoubleOptions.propTypes = {
   }),
   firstButton: PropTypes.object,
   secondButton: PropTypes.object,
+  heading: PropTypes.object,
+  description: PropTypes.object,
+  currentLanguage: PropTypes.object
 }
 
 export default DoubleOptions
