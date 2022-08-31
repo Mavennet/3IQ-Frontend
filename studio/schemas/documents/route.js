@@ -9,12 +9,13 @@ export default {
     {
       name: 'slug',
       type: 'slug',
-      title: 'Slug',
+      title: 'Slug (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'page',
       type: 'reference',
+      title: 'Page (*)',
       description: 'Select the page that this route should point to',
       validation: Rule => Rule.error('Information required.').required(),
       to: [
@@ -22,6 +23,17 @@ export default {
           type: 'page',
         },
       ],
+    },
+    {
+      name: 'countries',
+      title: 'Countries (*)',
+      description: 'Choose one or more countries to display this content into',
+      type: 'array',
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select a country.'),
+      ],
+      of: [{type: 'reference', to: {type: 'country'}}],
     },
     {
       name: 'includeInSitemap',
@@ -34,17 +46,6 @@ export default {
       type: 'boolean',
       title: 'Disallow in robots.txt',
       description: 'Hide this route for search engines',
-    },
-    {
-      name: 'countries',
-      title: 'Countries',
-      description: 'Choose one or more countries to display this content into',
-      type: 'array',
-      validation: Rule => [
-        Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select a country.'),
-      ],
-      of: [{type: 'reference', to: {type: 'country'}}],
     },
   ],
   preview: {

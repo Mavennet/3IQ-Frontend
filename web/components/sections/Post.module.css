@@ -1,0 +1,36 @@
+@import "../../styles/custom-media.css";
+
+.mainImage {  
+  width: 100%;
+  max-width: fit-content;
+  margin: 0;
+  padding-top: 1.75rem;
+}
+
+.heading {
+  position: relative;
+  font-weight: 600;
+  font-size: var(--font-title2-size) !important;
+  line-height: var(--font-title2-line-height);
+  margin: 0;
+  padding: 0;
+  padding-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color:#0082E4;
+}
+
+.body {  
+  color:#0082E4;
+}
+
+.author {  
+  color:#0082E4;
+}
+
+.publishedAt {  
+  color:#0082E4;
+}
+
+.socialMedia {  
+  color:#0082E4;
+}
