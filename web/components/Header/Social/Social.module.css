@@ -1,0 +1,18 @@
+.socialTwitter, .socialLinkedin, .socialYoutube {
+  font-size: medium;
+  border-radius: 200px;
+  border: 0;
+  margin-right: 12px;
+  font-size: 17px;
+  padding: 7px 6px 3px 6px;
+  color: var(--color-accent);
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.socialTwitter:hover, .socialLinkedin:hover, .socialYoutube:hover {
+  color: white;
+  background-color: var(--color-orange);
+  transition: 0.3s;
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import {LogoJsonLd} from 'next-seo'
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 import Footer from './Footer'
 
 function Layout(props) {
