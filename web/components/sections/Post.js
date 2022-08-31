@@ -1,22 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import styles from './styles.css'
+import styles from './Post.module.css'
 import client from '../../client'
-import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import SimpleBlockContent from '../SimpleBlockContent'
-import RedirectButton from '../RedirectButton'
 import { PortableText } from "@portabletext/react";
 
 const builder = imageUrlBuilder(client)
-
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
-}
 
 const theme = createTheme()
 
@@ -41,20 +35,22 @@ function Post(props) {
             )
           }
           <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
-            <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
+            <Typography component="h1" variant="h5" style={{fontWeight: 'bold', color: 'red'}} gutterBottom>
               {localeHeading}
             </Typography>
             <div className={styles.body}>
-              {localeBody && <SimpleBlockContent blocks={localeDescription} />}
-              {localeBody && <PortableText value={blocks} components={components} />}              
+              {localeBody && <SimpleBlockContent blocks={localeBody} />}
+              {localeBody && <PortableText value={localeBody} />}              
             </div>
           </Box>
           <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
-            <div className={styles.body}>
+            <div className={styles.author}>
               {localeAuthor && <SimpleBlockContent blocks={localeAuthor.name} />}              
             </div>
-            <div className={styles.body}>
+            <div className={styles.publishedAt}>
               {publishedAt && <SimpleBlockContent blocks={publishedAt} />}              
+            </div>            
+            <div className={styles.socialMedia}>          
             </div>
           </Box>
         </Box>
