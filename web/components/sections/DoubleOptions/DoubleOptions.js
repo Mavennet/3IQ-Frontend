@@ -16,7 +16,7 @@ const theme = createTheme()
 
 function DoubleOptions(props) {
   const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
-  const localeTitle = heading[currentLanguage.languageTag]
+  const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
   const localefirstButton = firstButton[currentLanguage.languageTag]
   const localesecondButton = secondButton[currentLanguage.languageTag]
@@ -33,9 +33,9 @@ function DoubleOptions(props) {
         >
           <CssBaseline />
           <Grid md={12} style={{color: '#091b3f'}}>
-            {localeTitle && (
-              <Typography mt={8} ml={2} mr={2} component="h2" variant="h4" className={styles.title}>
-                {localeTitle}
+            {localeHeading && (
+              <Typography mt={8} ml={2} mr={2} component="h2" variant="h4" className={styles.heading}>
+                {localeHeading}
               </Typography>
             )}
             {localeDescription && (

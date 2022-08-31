@@ -1,6 +1,6 @@
 @import '../../../styles/custom-media.css';
 
-.title {
+.heading {
   font-weight: bold;
   display: flex;
   flex-direction: column;
