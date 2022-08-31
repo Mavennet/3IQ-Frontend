@@ -7,7 +7,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
-import RedirectButton from '../RedirectButton'
+import RedirectButton from '../RedirectButton/RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
