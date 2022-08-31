@@ -7,24 +7,19 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
-import RedirectButton from '../../RedirectButton'
+import RedirectButton from '../../RedirectButton/RedirectButton'
 import styles from './DoubleOptions.module.css'
 import SimpleBlockContent from '../../SimpleBlockContent'
 
 const builder = imageUrlBuilder(client)
-
-/*
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
-}
-*/
-
 const theme = createTheme()
 
 function DoubleOptions(props) {
   const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
   const localeTitle = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
+  const localefirstButton = firstButton[currentLanguage.languageTag]
+  const localesecondButton = secondButton[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,12 +66,15 @@ function DoubleOptions(props) {
                 alt="The house from the offer."
                 src={builder.image(firstImage).url()}
               />
-              <RedirectButton
-                key={firstButton._key}
-                reverse
-                title={firstButton.title}
-                sx={{width: {md: 150}, padding: '10px 20px'}}
-              />
+              {localefirstButton &&
+                (
+                <RedirectButton
+                  {...localefirstButton}
+                  reverse
+                  sx={{width: {md: 150}, padding: '10px 20px'}}
+                ></RedirectButton>
+                )
+              }
             </Grid>
             <Grid item md={6} xs={12} pt={5} pb={10} className={styles.seccondBox}>
               <Box
@@ -89,11 +87,14 @@ function DoubleOptions(props) {
                 alt="The house from the offer."
                 src={builder.image(secondImage).url()}
               />
-              <RedirectButton
-                key={secondButton._key}
-                title={secondButton.title}
-                sx={{width: {md: 150}, padding: '10px 20px'}}
-              />
+              {localesecondButton &&
+                (
+                <RedirectButton
+                  {...localesecondButton}
+                  sx={{width: {md: 150}, padding: '10px 20px'}}
+                ></RedirectButton>
+                )
+              }
             </Grid>
           </Grid>
         </Box>
