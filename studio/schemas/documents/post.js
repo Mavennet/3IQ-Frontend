@@ -17,7 +17,7 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'title',
+      name: 'heading',
       title: 'Heading (*)',
       type: 'localeString',
       validation: Rule => Rule.error('Information required.').required(),
@@ -45,8 +45,8 @@ export default {
       type: 'figure',
     },
     {
-      name: 'bodyText',
-      title: 'Body text (*)',
+      name: 'body',
+      title: 'Body (*)',
       type: 'localePortableText',
       validation: Rule => Rule.error('Information required.').required(),
     },

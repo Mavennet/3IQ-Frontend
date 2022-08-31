@@ -33,11 +33,11 @@ export default {
             {type: 'post'},
             {type: 'hero'},
             {type: 'heroWithImage'},
-            {type: 'imageWithText'},
             {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
             {type: 'doubleOptions'},
-            {type: 'mailchimp'},
+            // {type: 'imageWithText'},
+            // {type: 'mailchimp'},
           ]
         }
       ]

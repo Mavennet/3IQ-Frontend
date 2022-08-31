@@ -6,7 +6,6 @@ import page from './documents/page';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 import person from './documents/person';
-import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
 import menuItem from './documents/menuItem';
@@ -19,6 +18,7 @@ import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
+import post from './documents/post';
 
 // Object types
 import cta from './objects/cta';
