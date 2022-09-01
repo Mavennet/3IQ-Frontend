@@ -15,7 +15,7 @@ const builder = imageUrlBuilder(client)
 const theme = createTheme()
 
 function Post(props) {  
-  const {heading, body, publishedAt, author, mainImage, currentLanguage, footerBottomContent} = props
+  const {heading, body, publishedAt, author, mainImage, currentLanguage} = props
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeBody = body[currentLanguage.languageTag]
