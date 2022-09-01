@@ -1,7 +1,7 @@
-@import "../../../styles/custom-media.css";
+@import "../../styles/custom-media.css";
 
 .logo {
-  width: 110px;
+  width: 120px;
   margin-left: 10px;
   @media (--media-min-large) {
     width: 150px;

@@ -1,0 +1,27 @@
+.social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.social li {
+  border-radius: 50%;
+  border: 1px solid #fff;
+  padding: 8px 7px 1px 8px;
+  font-size: 17px;
+  margin-right: 7px;
+  transition: 0.3s;
+}
+
+.social li:hover {
+  background: #fff;
+  color: #091b3f;
+  transition: 0.3s;
+}
+
+.inputNewsletter {
+  width: 100%;
+  padding: 5px;
+  font-family: 'Europa';
+}
