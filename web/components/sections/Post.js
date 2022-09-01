@@ -15,12 +15,16 @@ const builder = imageUrlBuilder(client)
 const theme = createTheme()
 
 function Post(props) {  
-  const {heading, body, publishedAt, author, mainImage, currentLanguage} = props
+  const {heading, body, publishedAt, author, mainImage, currentLanguage, footerBottomContent} = props
 
   const localeHeading = heading[currentLanguage.languageTag]
   const localeBody = body[currentLanguage.languageTag]
   const localeAuthor = author[currentLanguage.languageTag]
 
+  // TODO
+  // Ajustar com layouts corretos para todos os itens de exibição
+  // Para ficar de acordo com: https://3iq.ca/3iq-launches-3iq-coinshares-bitcoin-feeder-etf-and-3iq-coinshares-ether-feeder-etf-on-cboe-australia/
+  // Falta obter o author com todas as suas propriedades preenchidas ao invés de somente a referência "_ref"
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="md">
@@ -45,10 +49,20 @@ function Post(props) {
           </Box>
           <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
             <div className={styles.author}>
-              {localeAuthor && <SimpleBlockContent blocks={localeAuthor.name} />}              
+              {
+                localeAuthor &&
+                <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
+                  {localeAuthor.name}
+                </Typography>
+              }              
             </div>
             <div className={styles.publishedAt}>
-              {publishedAt && <SimpleBlockContent blocks={publishedAt} />}              
+              {
+                publishedAt &&
+                <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
+                  {publishedAt}
+                </Typography>
+              }           
             </div>            
             <div className={styles.socialMedia}>          
             </div>

@@ -33,7 +33,9 @@ export const getServerSideProps = async ({params}) => {
       route-> { ..., 'localeTitle': page->description },
       submenuRoutes[]-> { ..., 'localeTitle': page->description },      
     },
-      languages[]->
+      languages[]->,
+      footerNavigation[]-> { ..., 'localeTitle': page->description },
+      ...
     }
   `
   )
