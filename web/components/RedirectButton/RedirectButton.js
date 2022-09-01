@@ -10,6 +10,9 @@ function redirectButton(props) {
     background: 'none',
     border: '4px solid #dc6e19',
     textTransform: 'none',
+    whiteSpace: 'normal',
+    display: 'block',
+    wordWrap: 'break-word',
     color: 'white',
     fontWeight: 'bold',
     '&:hover': {
@@ -22,6 +25,9 @@ function redirectButton(props) {
     background: '#dc6e19',
     border: '4px solid #dc6e19',
     textTransform: 'none',
+    whiteSpace: 'normal',
+    display: 'block',
+    wordWrap: 'break-word',
     color: 'white',
     fontWeight: 'bold',
     '&:hover': {

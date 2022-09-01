@@ -25,7 +25,7 @@ function ImageBesideText(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" >
+      <Grid container component="main">
         <CssBaseline />
         <Grid
           item
@@ -77,15 +77,14 @@ function ImageBesideText(props) {
             <Box
               sx={{
                 mt: 5,
-                mb: 5
+                mb: 5,
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>
-              {button &&
-               (
+              {button && (
                 <RedirectButton
-                {...button}
-                sx={{width: {xs: '100%', md: 180}, padding: '10px 20px', ml: {md: 8}}}
+                  {...button}
+                  sx={{width: {xs: '100%', md: 180}, padding: '10px 20px'}}
                   // title={localeButton.title}
                 />
               )}
@@ -107,7 +106,7 @@ ImageBesideText.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object, 
+  currentLanguage: PropTypes.object,
 }
 
 export default ImageBesideText
