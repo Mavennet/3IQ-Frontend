@@ -39,7 +39,7 @@ function NavItemDropdown(props) {
               aria-controls="panel1a-content"
               classes={{ content: styles.content, expanded: styles.expansionPanel }}
             >
-              <Link href={link}>
+              <Link href={link} sx={{textDecoration: 'none'}}>
                 <Typography className={styles.sumaryText}>{title || 'Missing'}</Typography>
               </Link>
             </AccordionSummary>
@@ -49,7 +49,7 @@ function NavItemDropdown(props) {
                   submenuRoutes.map((item) => {
                     return (
                       <MenuItem key={item._id} className={styles.menuItem}>
-                        <Link href={getPathFromSlug(item?.slug?.current)} key={item._id}>
+                        <Link href={getPathFromSlug(item?.slug?.current)} key={item._id} sx={{textDecoration: 'none'}}>
                           <Typography className={styles.sumaryText}>
                             {item.localeTitle[language] || 'Missing'}
                           </Typography>
@@ -65,7 +65,7 @@ function NavItemDropdown(props) {
       </Box>
       {/* Desktop */}
       <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
-        <Link href={link}>
+        <Link href={link} sx={{textDecoration: 'none'}}>
           <Typography
             id={_id + '-button'}
             aria-controls={open ? _id + '-menu' : undefined}
@@ -97,7 +97,7 @@ function NavItemDropdown(props) {
             submenuRoutes.map((item) => {
               return (
                 <MenuItem onClick={handleClose} key={item._id} style={{ backgroundColor: 'transparent' }}>
-                  <Link href={getPathFromSlug(item?.slug?.current)} key={item._id}>
+                  <Link href={getPathFromSlug(item?.slug?.current)} key={item._id} sx={{textDecoration: 'none'}}>
                     <Typography>{item.localeTitle[language] || 'Missing'}</Typography>
                   </Link>
                 </MenuItem>
