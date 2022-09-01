@@ -9,27 +9,20 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Name',
-    },
-    {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      description: 'Some frontend will require a slug to be set to be able to show the person',
-      options: {
-        source: 'name',
-        maxLength: 96,
-      }
+      title: 'Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'image',
-      title: 'Image',
       type: 'figure',
+      title: 'Image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'bio',
-      title: 'Bio',
       type: 'bioPortableText',
+      title: 'Bio (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     }
   ],
   preview: {

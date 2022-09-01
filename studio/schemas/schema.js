@@ -5,9 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type';
 import page from './documents/page';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
-import category from './documents/category';
 import person from './documents/person';
-import post from './documents/post';
 import country from './documents/country';
 import language from './documents/language';
 import menuItem from './documents/menuItem';
@@ -20,6 +18,7 @@ import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
+import post from './documents/post';
 
 // Object types
 import cta from './objects/cta';
@@ -38,6 +37,7 @@ import localeString from './objects/locale/localeString'
 import localeText from './objects/locale/localeText'
 import localeCta from './objects/locale/localeCta'
 import localeSimplePortableText from './objects/locale/localeSimplePortableText'
+import localePortableText from './objects/locale/localePortableText'
 
 
 
@@ -59,7 +59,6 @@ export default createSchema({
     textSection,
     bioPortableText,
     postPortableText,
-    category,
     person,
     doubleOptions,
     post,
@@ -73,6 +72,7 @@ export default createSchema({
     localeCta,
     localeSimplePortableText,
     sideBySideImages,
-    menuItem
+    menuItem,
+    localePortableText,
   ]),
 });

@@ -1,26 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import client from '../../client'
+import client from '../../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
-import RedirectButton from '../RedirectButton'
+import RedirectButton from '../../RedirectButton/RedirectButton'
+import styles from './DoubleOptions.module.css'
+import SimpleBlockContent from '../../SimpleBlockContent'
 
 const builder = imageUrlBuilder(client)
-
-/*
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
-}
-*/
-
 const theme = createTheme()
 
 function DoubleOptions(props) {
-  const {firstImage, secondImage, firstButton, secondButton} = props
+  const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
+  const localeHeading = heading[currentLanguage.languageTag]
+  const localeDescription = description[currentLanguage.languageTag]
+  const localefirstButton = firstButton[currentLanguage.languageTag]
+  const localesecondButton = secondButton[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -34,34 +33,17 @@ function DoubleOptions(props) {
         >
           <CssBaseline />
           <Grid md={12} style={{color: '#091b3f'}}>
-            <Typography
-              mt={8}
-              ml={2}
-              mr={2}
-              component="h2"
-              variant="h4"
-              style={{
-                fontWeight: 'bold',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              Learn more about our ETFs
-            </Typography>
-            <Typography
-              mt={2}
-              ml={2}
-              mr={2}
-              component="p"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              Our ETFs provide investors simple access to bitcoin and ether. No wallet required.
-            </Typography>
+            {localeHeading && (
+              <Typography mt={8} ml={2} mr={2} component="h2" variant="h4" className={styles.heading}>
+                {localeHeading}
+              </Typography>
+            )}
+            {localeDescription && (
+              <div className={styles.description}>
+                <SimpleBlockContent blocks={localeDescription} />
+              </div>
+               
+            )}
           </Grid>
         </Grid>
         <Box sx={{pt: 5, pb: 10, pl: {md: 10, sm: 0}, pr: {md: 10, sm: 0}}}>
@@ -73,18 +55,7 @@ function DoubleOptions(props) {
               alignItems: 'center',
             }}
           >
-            <Grid
-              item
-              md={6}
-              xs={12}
-              pt={5}
-              pb={10}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
+            <Grid item md={6} xs={12} pt={5} pb={10} className={styles.firstBox}>
               <Box
                 component="img"
                 sx={{
@@ -95,26 +66,17 @@ function DoubleOptions(props) {
                 alt="The house from the offer."
                 src={builder.image(firstImage).url()}
               />
-              <RedirectButton
-                key={firstButton._key}
-                reverse
-                title={firstButton.title}
-                sx={{width: {md: 150}, padding: '10px 20px'}}
-              />
+              {localefirstButton &&
+                (
+                <RedirectButton
+                  {...localefirstButton}
+                  reverse
+                  sx={{width: {md: 150}, padding: '10px 20px'}}
+                ></RedirectButton>
+                )
+              }
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-              pt={5}
-              pb={10}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                background: '#f0f0f1',
-              }}
-            >
+            <Grid item md={6} xs={12} pt={5} pb={10} className={styles.secondBox}>
               <Box
                 component="img"
                 sx={{
@@ -125,11 +87,14 @@ function DoubleOptions(props) {
                 alt="The house from the offer."
                 src={builder.image(secondImage).url()}
               />
-              <RedirectButton
-                key={secondButton._key}
-                title={secondButton.title}
-                sx={{width: {md: 150}, padding: '10px 20px'}}
-              />
+              {localesecondButton &&
+                (
+                <RedirectButton
+                  {...localesecondButton}
+                  sx={{width: {md: 150}, padding: '10px 20px'}}
+                ></RedirectButton>
+                )
+              }
             </Grid>
           </Grid>
         </Box>
@@ -151,6 +116,9 @@ DoubleOptions.propTypes = {
   }),
   firstButton: PropTypes.object,
   secondButton: PropTypes.object,
+  heading: PropTypes.object,
+  description: PropTypes.object,
+  currentLanguage: PropTypes.object
 }
 
 export default DoubleOptions
