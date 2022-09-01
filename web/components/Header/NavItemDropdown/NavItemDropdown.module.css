@@ -50,7 +50,6 @@
 
 .menuItem:hover {
   color: var(--color-dark-orange);
-  font-weight: 300;
   background-color:  var(--color-light-gray)!important;
   @media (--media-min-large) {
     background-color: transparent!important;
@@ -70,7 +69,7 @@
   display: block;
   position: absolute;
   width: 100%;
-  height: 3px;
+  height: 2.5px;
   background:  none;
   bottom: -10px;
   transition: 0.3s;
