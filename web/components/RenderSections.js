@@ -24,7 +24,7 @@ function RenderSections(props) {
       const localeButton = button[currentLanguage.languageTag]
       if(localeButton && localeButton.route){
         const formatedRoute = routes.filter(r => r._id === localeButton.route._ref)[0]
-        localeButton.route = formatedRoute 
+        localeButton.route = formatedRoute
       }
       section.button = localeButton
     }
@@ -42,7 +42,7 @@ function RenderSections(props) {
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>
         }
-        return <SectionComponent {...section} key={section._key} />
+        return <SectionComponent {...section} key={section._id} />
       })}
     </Fragment>
   )
