@@ -47,7 +47,7 @@
 
 .menuMobile li {
   color: #000;
-  width: 100%;
+  width: 100%!important;
 }
 
 .menuMobile li:hover {
