@@ -19,12 +19,17 @@ function RenderSections(props) {
   const {sections, routes} = props
 
   sections.forEach((section) => {
-    const toConvertItems = ['cta', 'localeCta']
+    const toConvertItems = [
+      'localeCta', 
+      'localeText', 
+      'localeString', 
+      'localeSimplePortableText'
+    ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
     const filteredSectionKeys = []
     sectionValues.forEach((value, index) => {
-      if (value._type && toConvertItems.indexOf(value._type) >= 0) {
+      if (value && value._type && toConvertItems.indexOf(value._type) >= 0) {
         filteredSectionKeys.push(sectionKeys[index])
       }
     })
