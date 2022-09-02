@@ -60,6 +60,8 @@ function Header(props) {
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => (
+                  item &&
+                  item.submenuRoutes &&
                   item.submenuRoutes.length > 0
                     ? (
                       <NavItemDropdown
