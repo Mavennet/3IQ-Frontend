@@ -60,7 +60,7 @@ function Header(props) {
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => (
-                  item.submenuRoutes.length > 0
+                  item.submenuRoutes && item.submenuRoutes.length > 0
                     ? (
                       <NavItemDropdown
                         title={item.route?.localeTitle[currentLanguage.languageTag]}
@@ -112,7 +112,7 @@ function Header(props) {
                       <ul>
                         {navItems &&
                           navItems.map((item) => (
-                            item.submenuRoutes.length > 0
+                            item.submenuRoutes && item.submenuRoutes.length > 0
                               ? (
                                 <NavItemDropdown
                                   title={item.route?.localeTitle[currentLanguage.languageTag]}
