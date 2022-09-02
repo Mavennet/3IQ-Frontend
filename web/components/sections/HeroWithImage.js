@@ -8,8 +8,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import BigButton from '../BigButton'
 import SimpleBlockContent from '../SimpleBlockContent'
+import RedirectButton from '../RedirectButton/RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
@@ -20,11 +20,8 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
+  const {mainImage, heading, backgroundImage, description, button} = props
 
-  const localeHeading = heading[currentLanguage.languageTag]
-  const localeDescription = description[currentLanguage.languageTag]
-  const localeButton = button[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,20 +50,20 @@ function HeroWithImage(props) {
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                {localeHeading}
+                {heading}
               </Typography>
               <div className={styles.description}>
-                {localeDescription && <SimpleBlockContent blocks={localeDescription} />}
+                {description && <SimpleBlockContent blocks={description} />}
               </div>
             </Box>
 
-            {localeButton &&
+            {button &&
                (
-                <BigButton
-                  sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
-                  title={localeButton.title}
-                >
-                </BigButton>
+               <RedirectButton
+               {...button}
+               reverse
+               sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
+               ></RedirectButton>
               )}
           </Box>
         </Container>
@@ -85,7 +82,6 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object
 }
 
 export default HeroWithImage

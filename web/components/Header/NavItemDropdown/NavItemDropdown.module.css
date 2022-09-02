@@ -1,0 +1,115 @@
+@import "../../../styles/custom-media.css";
+
+.sumary {
+  background-color:  var(--color-very-light-gray);
+}
+
+.sumary:hover {
+  background-color:  var(--color-light-gray);
+}
+
+.sumary:hover .sumaryText {
+  background-color:  var(--color-light-gray);
+  color: var(--color-dark-orange);
+}
+
+.sumaryText {
+  width: 100%;
+  font-size: 18px;
+  border-radius: 0px;
+  text-transform: capitalize;
+  color: var(--color-black);
+}
+
+.expansionPanel {
+  color: var(--color-dark-orange);
+  background: var(--color-light-gray);
+  margin: 0px;
+}
+
+.menuItem {
+  width: 100%;
+  font-size: 18px;
+  border-radius: 0px;
+  text-transform: capitalize;
+  color: var(--color-black);
+  position: relative;
+  background-color:  var(--color-very-light-gray);
+  padding: 12px 16px;
+  @media (--media-min-large) {
+    width: auto;
+    margin-left: 30px;
+    background: none;
+    padding: 0px;
+  }
+}
+
+.menuItem:hover .sumaryText {
+  color: var(--color-dark-orange);
+}
+
+.menuItem:hover {
+  color: var(--color-dark-orange);
+  font-weight: 300;
+  background-color:  var(--color-light-gray)!important;
+  @media (--media-min-large) {
+    background-color: transparent!important;
+  }
+}
+
+.menuItem:hover:after {
+  @media (--media-min-large) {
+    background: var(--color-dark-orange);
+    bottom: -7px;
+    transition: 0.3s;
+  }
+}
+
+.menuItem:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background:  none;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+.subArrow {
+  line-height: 1;
+  border-radius: 0px;
+  margin-left: 10px;
+}
+
+.subMenu {
+  margin-top: 7px;
+}
+
+.subMenu ul {
+  width: 130px;
+  background: #F9F9F9;
+  padding: 0;
+  border-top: 3px solid var(--color-dark-orange);
+}
+
+.subMenu a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.subMenu ul li {
+  padding: 15px 20px;
+  background: none;
+  justify-content: center;
+}
+
+.subMenu ul li:hover {
+  background: none;
+  color: var(--color-dark-orange);
+  background-color: var(--color-light-gray)!important;
+}
+
+.subMenu:hover ul li {
+  background: none;
+}

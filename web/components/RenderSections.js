@@ -16,8 +16,34 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections} = props
-  console.error(props)
+  const {sections, routes} = props
+
+  sections.forEach((section) => {
+    const toConvertItems = [
+      'localeCta', 
+      'localeText', 
+      'localeString', 
+      'localeSimplePortableText'
+    ]
+    const sectionKeys = Object.keys(section)
+    const sectionValues = Object.values(section)
+    const filteredSectionKeys = []
+    sectionValues.forEach((value, index) => {
+      if (value && value._type && toConvertItems.indexOf(value._type) >= 0) {
+        filteredSectionKeys.push(sectionKeys[index])
+      }
+    })
+    filteredSectionKeys.forEach((key) => {
+      if (section[key] && section.currentLanguage) {
+        const localeButton = section[key][section.currentLanguage.languageTag]
+        if (localeButton && localeButton.route) {
+          const formatedRoute = routes.filter((r) => r._id === localeButton.route._ref)[0]
+          localeButton.route = formatedRoute
+        }
+        section[key] = localeButton
+      }
+    })
+  })
 
   if (!sections) {
     console.error('Missing section')
@@ -45,6 +71,7 @@ RenderSections.propTypes = {
       section: PropTypes.instanceOf(PropTypes.object),
     })
   ),
+  routes: PropTypes.object,
 }
 
 export default RenderSections

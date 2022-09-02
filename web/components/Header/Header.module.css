@@ -1,0 +1,55 @@
+@import "../../styles/custom-media.css";
+
+.container {
+  align-items: center;
+  @media (--media-min-large) {
+    align-items: flex-start;
+  }
+}
+
+.navbarContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbarContainer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.countryButtons {
+  color: '#0a1b3f';
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.countryButtons:hover {
+  color: var(--color-dark-orange);
+}
+
+.menuMobile{
+  width: 100%;
+  padding-top: 15px;
+  position: absolute;
+  background: var(--color-white);
+  left: 0;
+  box-shadow: none;
+  z-index: 9999;
+  border: none;
+}
+
+.menuMobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuMobile li {
+  color: #000;
+  width: 100%!important;
+}
+
+.menuMobile li:hover {
+  background: none;
+}

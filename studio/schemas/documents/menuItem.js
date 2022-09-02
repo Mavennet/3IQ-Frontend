@@ -1,7 +1,10 @@
+import { MdMenu } from "react-icons/md";
+
 export default {
-  title: 'Call to action',
-  name: 'cta',
-  type: 'object',
+  name: 'menuItem',
+  type: 'document',
+  title: 'Menu Item',
+  icon: MdMenu,
   validation: Rule =>
     Rule.custom(
       (fields = {}) =>
@@ -16,9 +19,9 @@ export default {
   ],
   fields: [
     {
-      title: 'Title (*)',
-      name: 'title',
+      name: 'name',
       type: 'string',
+      title: 'Menu item name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -35,24 +38,32 @@ export default {
       type: 'url',
       fieldset: 'link',
     },
+    {
+      title: 'Submenu routes',
+      name: 'submenuRoutes',
+      type: 'array',
+      validation: Rule => [
+        Rule.max(5).warning('Are you sure you want more than 10 items?'),
+        Rule.unique().error('You have duplicate menu items.'),
+      ],
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'route' }],
+        },
+      ],
+    }
   ],
   preview: {
     select: {
-      title: 'title',
-      routeTitle: 'route.title',
-      slug: 'route.slug.current',
+      name: 'name',
       link: 'link',
     },
-    prepare({ title, routeTitle = '', slug, link }) {
-      const subtitleExtra = slug
-        ? `Slug:/${slug}/`
-        : link
-        ? `External link: ${link}`
-        : 'Not set';
+    prepare({ name, link }) {
       return {
-        title: `${title}`,
-        subtitle: `${routeTitle} ${subtitleExtra}`,
-      };
+        title: `${name}`,
+        subtitle: link ? `${link}` : '',
+      }
     },
-  },
-};
+  }
+}

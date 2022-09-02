@@ -23,6 +23,8 @@ export default {
     'doubleOptions',
     'mailchimp',
     'sideBySideImages',
+    'post',
+    'country',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),

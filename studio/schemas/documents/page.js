@@ -1,7 +1,10 @@
+import { MasterDetailIcon } from '@sanity/icons'
+
 export default {
   name: 'page',
   type: 'document',
   title: 'Page',
+  icon: MasterDetailIcon,
   fieldsets: [
     {
       title: 'SEO & metadata',
@@ -12,28 +15,43 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Title (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'content',
       type: 'array',
-      title: 'Page sections',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Page sections (*)',
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select a country.'),
+      ],
       of: [
         {
           type: 'reference',
           to: [
+            {type: 'post'},
             {type: 'hero'},
             {type: 'heroWithImage'},
-            {type: 'imageWithText'},
             {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
             {type: 'doubleOptions'},
-            {type: 'mailchimp'},
+            // {type: 'imageWithText'},
+            // {type: 'mailchimp'},
           ]
         }
       ]
+    },
+    {
+      name: 'countries',
+      title: 'Countries (*)',
+      description: 'Choose the country that this content will be displayed into',
+      type: 'array',
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select a country.'),
+      ],
+      of: [{type: 'reference', to: {type: 'country'}}],
     },
     {
       name: 'description',
@@ -49,14 +67,6 @@ export default {
       description: 'Image for sharing previews on Facebook, Twitter etc.',
       fieldset: 'metadata',
     },
-    {
-      name: 'countries',
-      title: 'Countries',
-      description: 'Choose the country that this content will be displayed into',
-      type: 'array',
-      validation: Rule => Rule.error('Information required.').required(),
-      of: [{type: 'reference', to: {type: 'country'}}],
-    },
   ],
 
   preview: {
@@ -67,9 +77,9 @@ export default {
     select: {
       title: 'title',
       media: 'openGraphImage',
-      countryName: 'countries.0.name', // TODO: Remove this and add slug in the future as the subtitle for the preview
+      countryName: 'countries.0.name',
     },
-    prepare({ title, media, countryName }) {
+    prepare({ title, media, countryName = '' }) {
       const subtitle = countryName ? countryName : ''
       return {
         title,

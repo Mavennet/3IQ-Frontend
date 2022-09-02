@@ -1,4 +1,5 @@
 import supportedLanguages from '../../supportedLanguages';
+import { SplitHorizontalIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -6,32 +7,35 @@ export default {
   type: 'document',
   name: 'hero',
   title: 'Hero',
+  icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading',
+      title: 'Heading (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'tagline',
       type: 'simplePortableText',
-      title: 'Tagline',
+      title: 'Description',
     },
     {
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image',
+      title: 'Background image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
       options: {
         hotspot: true,
       },
     },
     {
       name: 'ctas',
-      type: 'array',
+      type: 'array', // Talvez precise trocar no futuro para --> type: 'localeCta'
       title: 'Call to actions',
       of: [
         {
-          title: 'Call to action',
+          title: 'Main button',
           type: 'cta',
         },
       ],

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import {LogoJsonLd} from 'next-seo'
-import Header from './Header'
+import Header from '../components/Header/Header'
 import Footer from './Footer'
 
 function Layout(props) {
@@ -16,7 +16,7 @@ function Layout(props) {
 
   const {
     title,
-    mainNavigation,
+    // mainNavigation,
     footerNavigation,
     footerText,
     logo,
@@ -26,6 +26,7 @@ function Layout(props) {
     currentCountry,
     currentLanguage
   } = config
+
 
   const logoUrl = logo && logo.asset && logo.asset.url
 
@@ -37,7 +38,7 @@ function Layout(props) {
       <div className="container">
         <Header
           title={title}
-          navItems={mainNavigation}
+          navItems={currentCountry.mainNavigation}
           logo={logo}
           setLanguage={switchLanguage}
           dataCountries={dataCountries}
