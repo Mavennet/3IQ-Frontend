@@ -60,28 +60,28 @@ function Header(props) {
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => (
-                  item &&
-                  item.submenuRoutes &&
-                  item.submenuRoutes.length > 0
-                    ? (
-                      <NavItemDropdown
-                        title={item.route?.localeTitle[currentLanguage.languageTag]}
-                        _id={item.id}
-                        submenuRoutes={item.submenuRoutes}
-                        language={currentLanguage.languageTag}
-                        key={item._id}
-                        link={item.link}
-                      />
-                    )
-                    : (
-                      <NavItem
-                        title={item.route?.localeTitle[currentLanguage.languageTag]}
-                        _id={item.id}
-                        routes={item.route}
-                        key={item._id}
-                      />
-                    )
-                ))}
+                  item && (
+                    item.submenuRoutes &&
+                    item.submenuRoutes.length > 0
+                      ? (
+                        <NavItemDropdown
+                          title={item.route?.localeTitle[currentLanguage.languageTag]}
+                          _id={item.id}
+                          submenuRoutes={item.submenuRoutes}
+                          language={currentLanguage.languageTag}
+                          key={item._id}
+                          link={item.link}
+                        />
+                      )
+                      : (
+                        <NavItem
+                          title={item.route?.localeTitle[currentLanguage.languageTag]}
+                          _id={item.id}
+                          routes={item.route}
+                          key={item._id}
+                        />
+                      )
+                )))}
             </Box>
             {/* NavBar Menu - Mobile */}
             <Box
