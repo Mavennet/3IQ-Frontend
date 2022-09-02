@@ -34,8 +34,21 @@ export const getServerSideProps = async ({params}) => {
       submenuRoutes[]-> { ..., 'localeTitle': page->description },      
     },
       languages[]->,
+      headerLogo,
+      footerLogo,
       footerNavigation[]-> { ..., 'localeTitle': page->description },
-      ...
+      footerFirstLeftBlockContent,
+      footerFirstLeftBlockImage,
+      footerSecondLeftBlockContent,
+      footerSecondLeftBlockImage,
+      footerSecondLeftBlockButton,
+      footerBottomContent,
+      newsletterBody,
+      newsletterSubscribeButton,
+      followUsText,
+      twitterUrl,
+      linkedinUrl,
+      youtubeUrl,
     }
   `
   )
