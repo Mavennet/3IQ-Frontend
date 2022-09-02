@@ -10,48 +10,32 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'heading',
+      name: 'buttonText',
       type: 'localeString',
-      title: 'Heading (*)',
+      title: 'Button text (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'description',
-      type: 'localeText',
-      title: 'Description (*)',
+      name: 'post',
+      type: 'reference',
+      title: 'Post (*)',
+      description: 'Select the post that this card should point to',
       validation: Rule => Rule.error('Information required.').required(),
+      to: [
+        {
+          type: 'post',
+        },
+      ],
     },
-    {
-      name: 'backgroundImage',
-      type: 'image',
-      title: 'Background image (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-      options: {
-        hotspot: true
-      }
-    },
-    {
-      name: 'mainImage',
-      type: 'figure',
-      title: 'Optional image',
-    },
-    {
-      name: 'button',
-      type: 'localeCta',
-      title: 'Main Button (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    }
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
-      media: 'backgroundImage',
+      title: `post.name`
     },
-    prepare({ title, media }) {
+    prepare({ title }) {
       return {
         title,
         subtitle: 'News Card section',
-        media,
       }
     }
   }

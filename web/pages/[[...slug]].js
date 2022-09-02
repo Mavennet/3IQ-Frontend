@@ -124,6 +124,16 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all posts (used later on to get the news cards details)
+  const allPosts = await client.fetch(
+    groq`
+    *[_type == 'post'] {
+      ...,
+      author->
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
   
@@ -136,7 +146,7 @@ const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
   const {
-    title = 'Missing title',
+    title = 'Missing title', // TODO Alterar para ficar por idioma
     description,
     disallowRobots,
     openGraphImage,
@@ -181,7 +191,7 @@ const LandingPage = (props) => {
         currentCountry: country,
         currentLanguage,
       })
-  }, [currentLanguage])
+  }, [currentLanguage, config, content, country, dataCountries])
 
   const openGraphImages = openGraphImage
     ? [

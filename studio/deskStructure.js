@@ -18,6 +18,7 @@ const hiddenDocTypes = (listItem) => ![
   'mailchimp',
   'sideBySideImages',
   'menuItem',
+  'newsCard',
 ].includes(listItem.getId())
 
 export default () =>
@@ -55,6 +56,7 @@ export default () =>
         S.list()
           .title('Sections')
           .items([
+            S.documentTypeListItem('newsCard').title('News Card'),
             S.documentTypeListItem('hero').title('Hero'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
