@@ -15,7 +15,15 @@ const builder = imageUrlBuilder(client)
 const theme = createTheme()
 
 function DoubleOptions(props) {
-  const {heading, description, firstImage, secondImage, firstButton, secondButton, currentLanguage} = props
+  const {
+    heading,
+    description,
+    firstImage,
+    secondImage,
+    firstButton,
+    secondButton,
+    currentLanguage,
+  } = props
   const localeHeading = heading[currentLanguage.languageTag]
   const localeDescription = description[currentLanguage.languageTag]
   const localefirstButton = firstButton[currentLanguage.languageTag]
@@ -34,7 +42,14 @@ function DoubleOptions(props) {
           <CssBaseline />
           <Grid md={12} style={{color: '#091b3f'}}>
             {localeHeading && (
-              <Typography mt={8} ml={2} mr={2} component="h2" variant="h4" className={styles.heading}>
+              <Typography
+                mt={8}
+                ml={2}
+                mr={2}
+                component="h2"
+                variant="h4"
+                className={styles.heading}
+              >
                 {localeHeading}
               </Typography>
             )}
@@ -42,7 +57,6 @@ function DoubleOptions(props) {
               <div className={styles.description}>
                 <SimpleBlockContent blocks={localeDescription} />
               </div>
-               
             )}
           </Grid>
         </Grid>
@@ -55,26 +69,29 @@ function DoubleOptions(props) {
               alignItems: 'center',
             }}
           >
-            <Grid item md={6} xs={12} pt={5} pb={10} className={styles.firstBox}>
+            <Grid
+              item
+              md={6}
+              xs={12}
+              sx={{pt: {md: 0, xs: 5}, pb: {md: 0, xs: 10}}}
+              className={styles.firstBox}
+            >
               <Box
                 component="img"
                 sx={{
                   maxWidth: {xs: 350, md: 250, xl: 400},
                 }}
-                mt={2}
                 mb={5}
                 alt="The house from the offer."
                 src={builder.image(firstImage).url()}
               />
-              {localefirstButton &&
-                (
+              {localefirstButton && (
                 <RedirectButton
                   {...localefirstButton}
                   reverse
                   sx={{width: {md: 150}, padding: '10px 20px'}}
                 ></RedirectButton>
-                )
-              }
+              )}
             </Grid>
             <Grid item md={6} xs={12} pt={5} pb={10} className={styles.secondBox}>
               <Box
@@ -82,19 +99,17 @@ function DoubleOptions(props) {
                 sx={{
                   maxWidth: {xs: 350, md: 250, xl: 400},
                 }}
-                mt={2}
+                mt={3}
                 mb={5}
                 alt="The house from the offer."
                 src={builder.image(secondImage).url()}
               />
-              {localesecondButton &&
-                (
+              {localesecondButton && (
                 <RedirectButton
                   {...localesecondButton}
                   sx={{width: {md: 150}, padding: '10px 20px'}}
                 ></RedirectButton>
-                )
-              }
+              )}
             </Grid>
           </Grid>
         </Box>
@@ -118,7 +133,7 @@ DoubleOptions.propTypes = {
   secondButton: PropTypes.object,
   heading: PropTypes.object,
   description: PropTypes.object,
-  currentLanguage: PropTypes.object
+  currentLanguage: PropTypes.object,
 }
 
 export default DoubleOptions
