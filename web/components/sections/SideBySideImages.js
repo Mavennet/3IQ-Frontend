@@ -20,18 +20,19 @@ function SideBySideImages(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" >
+      <Grid container component="main" className={styles.container}>
         <CssBaseline />
         <Grid
-          xs={false}
-          sm={2}
-          md={8}
+          xs={10}
+          sm={10}
+          md={10}
+          lg={8}
           sx={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            marginLeft: '18%'
+            marginLeft: {xs: '8%', md:'8%', lg:'16%'}
           }}>
           <Box
           >
@@ -40,6 +41,7 @@ function SideBySideImages(props) {
             </Typography>
 
             <Box
+              sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', alignItems: 'center' }} 
             >
               {images &&
                 images.map(image => {
@@ -54,6 +56,8 @@ function SideBySideImages(props) {
                           margin: '5px',
                           padding: '30px',
                           maxHeight: '110px',
+                          marginLeft: {xs: '12%', md:'0' },
+                          justifyContent: 'center',
                         }}
                       />
                     )
