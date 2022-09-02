@@ -20,10 +20,8 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
+  const {mainImage, heading, backgroundImage, description, button} = props
 
-  const localeHeading = heading[currentLanguage.languageTag]
-  const localeDescription = description[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -52,10 +50,10 @@ function HeroWithImage(props) {
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                {localeHeading}
+                {heading}
               </Typography>
               <div className={styles.description}>
-                {localeDescription && <SimpleBlockContent blocks={localeDescription} />}
+                {description && <SimpleBlockContent blocks={description} />}
               </div>
             </Box>
 
@@ -84,7 +82,6 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object,
 }
 
 export default HeroWithImage

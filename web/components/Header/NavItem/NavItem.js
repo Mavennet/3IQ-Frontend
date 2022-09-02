@@ -10,6 +10,7 @@ function NavItem(props) {
     <Link
       key={_id}
       href={getPathFromSlug(route?.slug?.current)}
+      sx={{textDecoration: 'none'}}
     >
       <Typography className={styles.menuItem}>{title || 'Missing'}</Typography>
     </Link>
