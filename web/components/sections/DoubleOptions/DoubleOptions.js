@@ -21,11 +21,8 @@ function DoubleOptions(props) {
     firstImage,
     secondImage,
     firstButton,
-    secondButton,
-    currentLanguage,
+    secondButton
   } = props
-  const localeHeading = heading[currentLanguage.languageTag]
-  const localeDescription = description[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -39,7 +36,7 @@ function DoubleOptions(props) {
         >
           <CssBaseline />
           <Grid md={12} style={{color: '#091b3f'}}>
-            {localeHeading && (
+            {heading && (
               <Typography
                 mt={8}
                 ml={2}
@@ -48,12 +45,12 @@ function DoubleOptions(props) {
                 variant="h4"
                 className={styles.heading}
               >
-                {localeHeading}
+                {heading}
               </Typography>
             )}
-            {localeDescription && (
+            {description && (
               <div className={styles.description}>
-                <SimpleBlockContent blocks={localeDescription} />
+                <SimpleBlockContent blocks={description} />
               </div>
             )}
           </Grid>
@@ -130,8 +127,7 @@ DoubleOptions.propTypes = {
   firstButton: PropTypes.object,
   secondButton: PropTypes.object,
   heading: PropTypes.object,
-  description: PropTypes.object,
-  currentLanguage: PropTypes.object,
+  description: PropTypes.object
 }
 
 export default DoubleOptions

@@ -18,10 +18,7 @@ function urlFor(source) {
 const theme = createTheme()
 
 function ImageBesideText(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
-
-  const localeHeading = heading[currentLanguage.languageTag]
-  const localeDescription = description[currentLanguage.languageTag]
+  const {mainImage, heading, backgroundImage, description, button} = props
 
   return (
     <ThemeProvider theme={theme}>
@@ -68,10 +65,10 @@ function ImageBesideText(props) {
             }}
           >
             <Typography component="h1" variant="h4" style={{fontWeight: 'bold'}} gutterBottom>
-              {localeHeading}
+              {heading}
             </Typography>
             <Typography variant="p" paragraph>
-              {localeDescription}
+              {description}
             </Typography>
 
             <Box
@@ -106,7 +103,6 @@ ImageBesideText.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object,
 }
 
 export default ImageBesideText
