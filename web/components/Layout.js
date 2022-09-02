@@ -52,7 +52,11 @@ function Layout(props) {
           currentLanguage={currentLanguage}
         />
         <div className="content">{children}</div>
-        <Footer navItems={footerNavigation} text={footerText} />
+        <Footer
+          dataCountries={dataCountries}
+          currentCountry={currentCountry}
+          currentLanguage={currentLanguage}
+        />
         {logoUrl && url && <LogoJsonLd url={url} logo={logoUrl} />}
       </div>
       </ThemeProvider>

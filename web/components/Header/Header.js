@@ -114,6 +114,7 @@ function Header(props) {
                       <ul>
                         {navItems &&
                           navItems.map((item) => (
+                            item.submenuRoutes &&
                             item.submenuRoutes.length > 0
                               ? (
                                 <NavItemDropdown

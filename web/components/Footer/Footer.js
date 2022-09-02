@@ -6,9 +6,16 @@ import { Grid, Box, Typography, Button, CssBaseline, Link } from '@mui/material'
 import Logo from '../Logo/Logo'
 import Image from 'next/image'
 import { FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
-import icon1 from '../../assets/img/footer/icon-1.png'
 import icon2 from '../../assets/img/footer/icon-2.png'
 import styles from './Footer.module.css'
+import imageUrlBuilder from '@sanity/image-url'
+import client from '../../client'
+
+const builder = imageUrlBuilder(client)
+
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
 
 const theme = createTheme({
   typography: {
@@ -32,6 +39,13 @@ const logo = {
 }
 
 function Footer(props) {
+
+  const {
+    dataCountries,
+    currentCountry,
+    currentLanguage
+  } = props
+
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -48,37 +62,64 @@ function Footer(props) {
         <Grid item xs={12} md={3} sx={{ borderRight: '6px solid #0082e5', mb: { xs: 8, sm: 8 } }}>
           <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }} mb={4}>
             {/* Logo */}
-            <Link href={'/'}>
-              <Logo logo={logo} />
-            </Link>
+            {
+              logo ?
+                <Link href={'/'}>
+                  <Logo logo={logo} />
+                </Link> : (
+                  <Typography variant="p" paragraph mb={1}> Missing Footer Logo</Typography>
+                )
+            }
           </Box>
           <Box pl={2} pr={2}>
             <Grid container>
               <Grid item xs={3} mb={4}>
-                <Image
-                  src={icon1.src}
-                  width={100}
-                  height={100}
-                  alt={'3IQ Icon'}
-                />
+                {
+                  currentCountry.footerFirstLeftBlockImage ? (
+                    <Box
+                      component="img"
+                      src={urlFor(currentCountry.footerFirstLeftBlockImage.asset._ref).url()}
+                      alt={currentCountry.footerFirstLeftBlockImage.alt}
+                      width={100}
+                      height={100}
+                    />
+                  ) : (
+                    <Typography variant="p" paragraph mb={1}> Missing First Left Block Image</Typography>
+                  )
+                }
               </Grid>
               <Grid item xs={9} mb={4} pl={2}>
-                <Typography variant="p" paragraph mb={1}>
-                  1020 – 181 Bay Street, Box 760 Toronto, Ontario Canada M5J 2T3
-                </Typography>
-                <Link href={'tel:416-639-2130'} underline="hover" color="inherit">
-                  <Typography variant="p" paragraph mb={1}>
-                    +1 416 – 639 – 2130
-                  </Typography>
-                </Link>
-                <Link href={'mailto:info@3iq.ca'} underline="hover" color="inherit">
-                  <Typography variant="p" paragraph mb={1}>
-                    info@3iq.ca
-                  </Typography>
-                </Link>
-                <Typography variant="p" paragraph mb={1}>
-                  Monday to Friday 9:00AM – 5:00PM EST
-                </Typography>
+                {
+                  currentCountry?.footerFirstLeftBlockContent &&
+                    currentCountry?.footerFirstLeftBlockContent[currentLanguage?.languageTag] ?
+                    currentCountry?.footerFirstLeftBlockContent[currentLanguage?.languageTag].map((item) => {
+                      const links = item.markDefs
+                      return (
+                        <Typography variant="p" paragraph mb={1} key={item._key}>
+                          {
+                            item.children.map((item) => {
+                              if (item.marks[0]) {
+                                let currentLink = links.find(obj => {
+                                  return obj._key === item.marks[0]
+                                })
+                                return (
+                                  <Link
+                                    href={currentLink?.href}
+                                    underline="hover"
+                                    color="inherit"
+                                  >
+                                    {item.text}
+                                  </Link>
+                                )
+                              } else {
+                                return item.text
+                              }
+                            })
+                          }
+                        </Typography>
+                      )
+                    }) : <Typography variant="p" paragraph mb={1}>Missing - First Left Block Content</Typography>
+                }
               </Grid>
               <Grid item xs={3}>
                 <Image
@@ -187,11 +228,17 @@ function Footer(props) {
                 }}
               >
                 <Box mb={4}>
-                  <Typography variant='h5' color='#0082E5' mb={1}>Follow us:</Typography>
+                  <Typography variant='h5' color='#0082E5' mb={1}>
+                    {
+                      currentCountry?.followUsText &&
+                        currentCountry?.followUsText[currentLanguage?.languageTag] ?
+                        currentCountry?.followUsText[currentLanguage?.languageTag] : ''
+                    }
+                  </Typography>
                   <ul className={styles.social}>
                     <li><Link href="#" color="inherit"><FaTwitter /></Link></li>
                     <li><Link href="#" color="inherit"><FaLinkedinIn /></Link></li>
-                    <li><Link href="#" color="inherit"><FaYoutube /></Link></li>
+                    <li><Link href="#" c color="inherit"><FaYoutube /></Link></li>
                   </ul>
                 </Box>
                 <Typography variant="p" sx={{ fontSize: 12 }}>
@@ -202,7 +249,7 @@ function Footer(props) {
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Box sx={{marginTop: {xs: 6, md: 13}, pl: { xs: 3, md: 8 }, pr: { xs: 3, md: 4 }}}>
+          <Box sx={{ marginTop: { xs: 6, md: 13 }, pl: { xs: 3, md: 8 }, pr: { xs: 3, md: 4 } }}>
             <Grid container>
               <Grid item xs={12}>
                 <Typography sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant="h5">
@@ -221,7 +268,7 @@ function Footer(props) {
                 <Typography variant="p" paragraph sx={{ fontSize: 12 }}>We dont sell or rent your information. Please refer to the 3iQ <Link href="#">privacy policy</Link> or contact us for more information.
                 </Typography>
               </Grid>
-              <Grid item xs={12} sx={{display: 'flex', justifyContent: 'flex-end'}}>
+              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button variant="contained" sx={{ textTransform: 'inherit' }}>Subscribe</Button>
               </Grid>
             </Grid>
@@ -233,13 +280,9 @@ function Footer(props) {
 }
 
 Footer.propTypes = {
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-    query: PropTypes.shape({
-      slug: PropTypes.string,
-    }),
-    events: PropTypes.any,
-  }),
+  dataCountries: PropTypes.array,
+  currentLanguage: PropTypes.object,
+  currentCountry: PropTypes.object,
 }
 
 export default withRouter(Footer)
