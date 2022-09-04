@@ -10,8 +10,6 @@ import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import {format, parseISO} from 'date-fns'
 
-const builder = imageUrlBuilder(client)
-
 const theme = createTheme()
 
 function urlFor(source) {
@@ -22,9 +20,6 @@ function NewsCard(props) {
   const {post, buttonText, route, currentLanguage} = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
-  
-  console.log(post.author)
-  console.log(post.publishedAt)
 
   return (
     <ThemeProvider theme={theme}>
@@ -101,6 +96,7 @@ NewsCard.propTypes = {
   post: PropTypes.object,
   buttonText: PropTypes.object,
   currentLanguage: PropTypes.object,
+  route: PropTypes.object,
 }
 
 export default NewsCard

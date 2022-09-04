@@ -247,6 +247,7 @@ LandingPage.propTypes = {
   dataCountries: PropTypes.array,
   currentCountry: PropTypes.string,
   allRoutes: PropTypes.any,
+  allPosts: PropTypes.any,
 }
 
 export default LandingPage

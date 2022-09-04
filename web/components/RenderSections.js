@@ -93,6 +93,7 @@ RenderSections.propTypes = {
     })
   ),
   routes: PropTypes.object,
+  posts: PropTypes.object,
 }
 
 export default RenderSections
