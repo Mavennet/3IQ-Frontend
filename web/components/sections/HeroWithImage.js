@@ -45,7 +45,7 @@ function HeroWithImage(props) {
               sx={{
                 maxWidth: {md: 400, xs: 300},
               }}
-              alt="The house from the offer."
+              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
               src={builder.image(mainImage).url()}
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>

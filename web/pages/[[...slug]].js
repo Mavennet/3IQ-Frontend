@@ -124,11 +124,21 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all posts (used later on to get the news cards details)
+  const allPosts = await client.fetch(
+    groq`
+    *[_type == 'post'] {
+      ...,
+      author->
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
   
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts} || {},
   }
 }
 
@@ -136,7 +146,7 @@ const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
   const {
-    title = 'Missing title',
+    title = 'Missing title', // TODO Alterar para ficar por idioma
     description,
     disallowRobots,
     openGraphImage,
@@ -146,6 +156,7 @@ const LandingPage = (props) => {
     dataCountries,
     currentCountry,
     allRoutes,
+    allPosts,
   } = props
 
   const [country] = useState(
@@ -181,7 +192,7 @@ const LandingPage = (props) => {
         currentCountry: country,
         currentLanguage,
       })
-  }, [currentLanguage])
+  }, [currentLanguage, config, content, country, dataCountries])
 
   const openGraphImages = openGraphImage
     ? [
@@ -220,7 +231,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -236,6 +247,7 @@ LandingPage.propTypes = {
   dataCountries: PropTypes.array,
   currentCountry: PropTypes.string,
   allRoutes: PropTypes.any,
+  allPosts: PropTypes.any,
 }
 
 export default LandingPage

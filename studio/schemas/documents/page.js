@@ -19,6 +19,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'title2', // TODO Alterar
+      type: 'localeString',
+      title: 'Locale Title (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Page sections (*)',
@@ -31,6 +37,7 @@ export default {
           type: 'reference',
           to: [
             {type: 'post'},
+            {type: 'newsCard'},
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'imageBesideText'},
