@@ -10,9 +10,10 @@ export default class MyDocument extends Document {
     })
   }
 
+  // TODO Check if lang will be necessary
   render() {
     return (
-      <Html lang={this.props.lang || 'en'}>
+      <Html lang={this.props.lang || 'en_CA'}>
         <Head />
         <body>
           <Main />

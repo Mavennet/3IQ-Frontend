@@ -8,7 +8,10 @@ export default {
     {
       title: 'Translations',
       name: 'translations',
-      options: { collapsible: true }
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
     }
   ],
   fields: 

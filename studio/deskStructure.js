@@ -67,6 +67,8 @@ export default () =>
           ])
       ),
       S.documentTypeListItem('post').title('Posts'),
+      S.documentTypeListItem('page').title('PAGE DELETAR'),
+      S.documentTypeListItem('route').title('ROUTE DELETAR'),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
