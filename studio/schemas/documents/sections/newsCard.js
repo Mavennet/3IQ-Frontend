@@ -19,11 +19,23 @@ export default {
       name: 'post',
       type: 'reference',
       title: 'Post (*)',
-      description: 'Select the post that this card should point to',
+      description: 'Select the post that this card should refer to',
       validation: Rule => Rule.error('Information required.').required(),
       to: [
         {
           type: 'post',
+        },
+      ],
+    },
+    {
+      name: 'route',
+      type: 'reference',
+      title: 'Route (*)',
+      description: "Select the route that points to this post's Page",
+      validation: Rule => Rule.error('Information required.').required(),
+      to: [
+        {
+          type: 'route',
         },
       ],
     },

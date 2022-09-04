@@ -138,7 +138,7 @@ export const getServerSideProps = async ({params}) => {
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
   
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts} || {},
   }
 }
 
@@ -156,6 +156,7 @@ const LandingPage = (props) => {
     dataCountries,
     currentCountry,
     allRoutes,
+    allPosts,
   } = props
 
   const [country] = useState(
@@ -230,7 +231,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} sections={formatedContent} />}
     </Layout>
   )
 }

@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes} = props
+  const {sections, routes, posts} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -42,7 +42,28 @@ function RenderSections(props) {
         }
         section[key] = localeButton
       }
-    })
+    })    
+
+    if (section.post && section.post._ref) {
+      for (let i = 0; i < posts.length; i++) {
+        const post = posts[i]
+
+        if (post._id === section.post._ref) {
+          section.post = post
+          break
+        }              
+      }
+
+      if (section.route) {
+        for (let i = 0; i < routes.length; i++) {
+          const route = routes[i]
+          
+          if (route._id === section.route._ref) {
+            section.route = route
+          }
+        }
+      }
+    }
   })
 
   if (!sections) {

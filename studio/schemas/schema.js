@@ -39,8 +39,7 @@ import localeText from './objects/locale/localeText'
 import localeCta from './objects/locale/localeCta'
 import localeSimplePortableText from './objects/locale/localeSimplePortableText'
 import localePortableText from './objects/locale/localePortableText'
-
-
+import localeBioPortableText from './objects/locale/localeBioPortableText'
 
 export default createSchema({
   name: 'default',
@@ -76,5 +75,6 @@ export default createSchema({
     menuItem,
     localePortableText,
     newsCard,
+    localeBioPortableText,
   ]),
 });
