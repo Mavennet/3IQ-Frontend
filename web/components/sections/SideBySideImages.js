@@ -80,7 +80,6 @@ SideBySideImages.propTypes = {
     }),
   })),
   heading: PropTypes.object,
-  currentLanguage: PropTypes.object,
 }
 
 export default SideBySideImages
