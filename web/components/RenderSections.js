@@ -23,7 +23,8 @@ function RenderSections(props) {
       'localeCta', 
       'localeText', 
       'localeString', 
-      'localeSimplePortableText'
+      'localeSimplePortableText',
+      'localePortableText'
     ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
@@ -78,7 +79,7 @@ function RenderSections(props) {
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>
         }
-        return <SectionComponent {...section} key={section._key} />
+        return <SectionComponent {...section} key={section._id} />
       })}
     </Fragment>
   )
@@ -92,8 +93,8 @@ RenderSections.propTypes = {
       section: PropTypes.instanceOf(PropTypes.object),
     })
   ),
-  routes: PropTypes.object,
-  posts: PropTypes.object,
+  routes: PropTypes.array,
+  posts: PropTypes.array,
 }
 
 export default RenderSections

@@ -13,6 +13,7 @@ export default {
   defaultLanguages: ['en_CA'], // It will ALWAYS be necessary to fill content in English (CA) when filling a locale field
   documentTypes: [
     'page',
+    'textSection',
     'heroWithImage',
     'hero',
     'imageBesideText',
@@ -21,6 +22,7 @@ export default {
     'sideBySideImages',
     'post',
     'country',
+    'newsCard',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),

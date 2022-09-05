@@ -11,6 +11,7 @@ import language from './documents/language';
 import menuItem from './documents/menuItem';
 
 // Section documents
+import textSection from './documents/sections/textSection';
 import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
 import imageWithText from './documents/sections/imageWithText';
@@ -31,7 +32,7 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
-import textSection from './objects/textSection';
+
 
 // Locale objects
 import localeString from './objects/locale/localeString'

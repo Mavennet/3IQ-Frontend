@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Header.module.css'
 import { AppBar, Toolbar, Box, IconButton, Link } from '@mui/material'
-import Logo from './Logo/Logo'
+import Logo from '../Logo/Logo'
 import Social from './Social/Social'
 import NavItem from './NavItem/NavItem'
 import NavItemDropdown from './NavItemDropdown/NavItemDropdown'
@@ -12,7 +12,6 @@ import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch'
 function Header(props) {
   const {
     navItems,
-    logo,
     setLanguage,
     dataCountries,
     currentCountry,
@@ -31,12 +30,11 @@ function Header(props) {
           <Box>
             {/* Logo */}
             <Link href={'/'}>
-              <Logo logo={logo} />
+              <Logo logo={currentCountry.headerLogo} />
             </Link>
           </Box>
           <Box
             mr={{ xs: 1, md: 3, lg: '10%' }}
-            mt={{ md: 2 }}
             ml={'auto'}
             className={styles.navbarContainer}
           >
@@ -60,26 +58,28 @@ function Header(props) {
             <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => (
-                  item.submenuRoutes && item.submenuRoutes.length > 0
-                    ? (
-                      <NavItemDropdown
-                        title={item.route?.localeTitle[currentLanguage.languageTag]}
-                        _id={item.id}
-                        submenuRoutes={item.submenuRoutes}
-                        language={currentLanguage.languageTag}
-                        key={item._id}
-                        link={item.link}
-                      />
-                    )
-                    : (
-                      <NavItem
-                        title={item.route?.localeTitle[currentLanguage.languageTag]}
-                        _id={item.id}
-                        routes={item.route}
-                        key={item._id}
-                      />
-                    )
-                ))}
+                  item && (
+                    item.submenuRoutes &&
+                    item.submenuRoutes.length > 0
+                      ? (
+                        <NavItemDropdown
+                          title={item.route?.localeTitle[currentLanguage.languageTag]}
+                          _id={item.id}
+                          submenuRoutes={item.submenuRoutes}
+                          language={currentLanguage.languageTag}
+                          key={item._id}
+                          link={item.link}
+                        />
+                      )
+                      : (
+                        <NavItem
+                          title={item.route?.localeTitle[currentLanguage.languageTag]}
+                          _id={item.id}
+                          routes={item.route}
+                          key={item._id}
+                        />
+                      )
+                )))}
             </Box>
             {/* NavBar Menu - Mobile */}
             <Box
@@ -112,7 +112,8 @@ function Header(props) {
                       <ul>
                         {navItems &&
                           navItems.map((item) => (
-                            item.submenuRoutes && item.submenuRoutes.length > 0
+                            item.submenuRoutes &&
+                            item.submenuRoutes.length > 0
                               ? (
                                 <NavItemDropdown
                                   title={item.route?.localeTitle[currentLanguage.languageTag]}
@@ -164,13 +165,6 @@ Header.propTypes = {
       ),
     })
   ),
-  logo: PropTypes.shape({
-    asset: PropTypes.shape({
-      url: PropTypes.string,
-      extension: PropTypes.string,
-    }),
-    logo: PropTypes.string,
-  }),
   dataCountries: PropTypes.array,
   currentLanguage: PropTypes.object,
   currentCountry: PropTypes.object,

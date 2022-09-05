@@ -239,8 +239,8 @@ const LandingPage = (props) => {
 }
 
 LandingPage.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
+  title: PropTypes.object,
+  description: PropTypes.object,
   slug: PropTypes.string,
   disallowRobots: PropTypes.bool,
   openGraphImage: PropTypes.any,

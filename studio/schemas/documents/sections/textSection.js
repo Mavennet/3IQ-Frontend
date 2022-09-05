@@ -5,26 +5,19 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'hero',
-  title: 'Hero',
+  name: 'textSection',
+  title: 'Text',
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'heading',
-      type: 'localeString',
-      title: 'Heading (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
-      name: 'description',
-      type: 'localeSimplePortableText',
-      title: 'Description',
+      name: 'text',
+      type: 'localePortableText',
+      title: 'Text',
     },
   ],
   preview: {
     select: {
       title: `heading.${baseLanguage.id}`,
-      media: 'backgroundImage',
     },
     prepare({ title, media }) {
       return {
