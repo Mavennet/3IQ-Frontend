@@ -8,11 +8,6 @@
 
 .container {
   margin: 0 1rem;
-
-  @media (--typography-breakpoint) {
-    margin: 0;
-    width: 100%;
-  }
 }
 
 .normal-container {
