@@ -3,6 +3,12 @@ import { Box } from "@mui/material"
 import styles from './Logo.module.css'
 import SVG from 'react-inlinesvg'
 import PropTypes from 'prop-types'
+import imageUrlBuilder from '@sanity/image-url'
+import client from '../../client'
+
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
 
 function Logo (props) {
   const { logo } = props
@@ -23,9 +29,9 @@ function Logo (props) {
         mb: 3,
         ml: 4,
       }}
-      alt="3iq"
+      alt={logo.alt}
       className={styles.logo}
-      src={logo.asset.url}
+      src={urlFor(logo.asset._ref).url()}
     />
   )
 }
