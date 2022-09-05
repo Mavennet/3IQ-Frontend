@@ -7,6 +7,7 @@ import { FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import styles from './Footer.module.css'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../client'
+import { getPathFromSlug } from '../../utils/urls'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -42,7 +43,6 @@ const breakArray = (array) => {
 function Footer(props) {
 
   const {
-    dataCountries,
     currentCountry,
     currentLanguage
   } = props
@@ -105,7 +105,7 @@ function Footer(props) {
                           {
                             item.children.map((item) => {
                               if (item.marks[0]) {
-                                let currentLink = links.find(obj => {
+                                const currentLink = links.find(obj => {
                                   return obj._key === item.marks[0]
                                 })
                                 return (
@@ -152,7 +152,7 @@ function Footer(props) {
                           {
                             item.children.map((item) => {
                               if (item.marks[0]) {
-                                let currentLink = links.find(obj => {
+                                const currentLink = links.find(obj => {
                                   return obj._key === item.marks[0]
                                 })
                                 return (
@@ -206,9 +206,9 @@ function Footer(props) {
                         alignItems: 'left',
                       }}
                     >
-                      {breakArray(currentCountry.footerNavigation).firstBlock.map((item) => {
+                      {breakArray(currentCountry.footerNavigation).firstBlock.map((item, key) => {
                         return (
-                          <Link href={'#'} underline="hover" color="inherit">
+                          <Link key={key} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
                             <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
                           </Link>
                         )
@@ -230,9 +230,9 @@ function Footer(props) {
                         alignItems: 'left',
                       }}
                     >
-                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item) => {
+                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item, key) => {
                         return (
-                          <Link href={'#'} underline="hover" color="inherit">
+                          <Link key={key} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
                             <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
                           </Link>
                         )
@@ -284,7 +284,7 @@ function Footer(props) {
                           {
                             item.children.map((item) => {
                               if (item.marks[0]) {
-                                let currentLink = links.find(obj => {
+                                const currentLink = links.find(obj => {
                                   return obj._key === item.marks[0]
                                 })
                                 return (
@@ -314,14 +314,14 @@ function Footer(props) {
             <Grid container>
               {
                 currentCountry.newsletterBody && (
-                  currentCountry.newsletterBody[currentLanguage?.languageTag].map((item) => {
+                  currentCountry.newsletterBody[currentLanguage?.languageTag].map((item, key) => {
                     const links = item.markDefs
                     return (
-                      <Typography sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant={item.style === 'h2' ? 'h2' : 'p'}>
+                      <Typography key={key} sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant={item.style === 'h2' ? 'h2' : 'p'}>
                         {
                           item.children.map((item) => {
                             if (item.marks[0]) {
-                              let currentLink = links.find(obj => {
+                              const currentLink = links.find(obj => {
                                 return obj._key === item.marks[0]
                               })
                               return (
@@ -357,7 +357,6 @@ function Footer(props) {
 }
 
 Footer.propTypes = {
-  dataCountries: PropTypes.array,
   currentLanguage: PropTypes.object,
   currentCountry: PropTypes.object,
 }

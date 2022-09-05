@@ -23,8 +23,6 @@ function Layout(props) {
   const {
     title,
     // mainNavigation,
-    footerNavigation,
-    footerText,
     logo,
     url,
     switchLanguage,
