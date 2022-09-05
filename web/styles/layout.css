@@ -1,3 +1,26 @@
+
+@font-face {
+	font-family: 'Europa';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: url('../assets/fonts/europa-regular-webfont.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Europa';
+	font-style: normal;
+	font-weight: 700;
+	font-display: auto;
+	src: url('../assets/fonts/europa-bold-webfont.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Europa';
+	font-style: normal;
+	font-weight: 300;
+	font-display: auto;
+	src: url('../assets/fonts/europa-light-webfont.ttf') format('truetype');
+}
+
 html {
   font-family: var(--font-family-sans);
   font-size: var(--font-base-size);
