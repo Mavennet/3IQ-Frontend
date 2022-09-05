@@ -1,7 +1,4 @@
-import supportedLanguages from '../../supportedLanguages';
 import { SplitHorizontalIcon } from '@sanity/icons'
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',

@@ -1,4 +1,8 @@
+
+import supportedLanguages from '../supportedLanguages';
 import { MasterDetailIcon } from '@sanity/icons'
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   name: 'page',
@@ -14,14 +18,8 @@ export default {
   fields: [
     {
       name: 'title',
-      type: 'string',
-      title: 'Title (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
-      name: 'title2', // TODO Alterar
       type: 'localeString',
-      title: 'Locale Title (*)',
+      title: 'Title (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -43,8 +41,6 @@ export default {
             {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
             {type: 'doubleOptions'},
-            // {type: 'imageWithText'},
-            // {type: 'mailchimp'},
           ]
         }
       ]
@@ -82,7 +78,7 @@ export default {
   },
   preview: {
     select: {
-      title: 'title',
+      title: `title.${baseLanguage.id}`,
       media: 'openGraphImage',
       countryName: 'countries.0.name',
     },

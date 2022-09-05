@@ -146,7 +146,7 @@ const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
   const {
-    title = 'Missing title', // TODO Alterar para ficar por idioma
+    title = 'Missing title',
     description,
     disallowRobots,
     openGraphImage,
@@ -218,11 +218,13 @@ const LandingPage = (props) => {
         },
       ]
     : []
+    
+  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage.languageTag] : 'Title not filled on the corresponding language for this page'
 
   return (
     <Layout config={formatedConfig}>
       <NextSeo
-        title={title}
+        title={localeTitle}
         titleTemplate={`%s | ${config.title}`}
         description={description}
         canonical={config.url && `${config.url}/${slug}`}
