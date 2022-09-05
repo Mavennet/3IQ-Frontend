@@ -14,9 +14,7 @@ const builder = imageUrlBuilder(client)
 const theme = createTheme()
 
 function SideBySideImages(props) {
-  const { images, heading, currentLanguage } = props
-
-  const localeHeading = heading[currentLanguage.languageTag]
+  const { images, heading } = props
 
   return (
     <ThemeProvider theme={theme}>
@@ -27,17 +25,18 @@ function SideBySideImages(props) {
           sm={10}
           md={10}
           lg={8}
+          xl={6}
           sx={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            marginLeft: {xs: '8%', md:'8%', lg:'16%'}
+            marginLeft: {xs: '8%', md:'8%', lg:'16%', xl:'24%'}
           }}>
           <Box
           >
             <Typography className={styles.heading} gutterBottom>
-              {localeHeading}
+              {heading}
             </Typography>
 
             <Box
@@ -81,7 +80,6 @@ SideBySideImages.propTypes = {
     }),
   })),
   heading: PropTypes.object,
-  currentLanguage: PropTypes.object,
 }
 
 export default SideBySideImages

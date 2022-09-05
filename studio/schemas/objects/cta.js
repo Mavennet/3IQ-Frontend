@@ -12,6 +12,10 @@ export default {
       title: 'Link (*)',
       name: 'link',
       validation: Rule => Rule.error('Information required.').required(),
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
     },
   ],
   fields: [
@@ -23,7 +27,7 @@ export default {
     },
     {
       title: 'Internal link',
-      description: 'Use this to link between pages on the website',
+      description: 'Use this to link between routes from the website pages',
       name: 'route',
       type: 'reference',
       to: [{ type: 'route' }],
