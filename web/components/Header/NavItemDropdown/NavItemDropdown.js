@@ -118,7 +118,7 @@ function NavItemDropdown(props) {
           {
             submenuRoutes.map((item) => {
               return (
-                <MenuItem onClick={handleClose} key={item._id} style={{ backgroundColor: 'transparent' }}>
+                <MenuItem onClick={handleClose} key={item._id} style={{ backgroundColor: 'transparent', fontSize: '18px' }}>
                   <Link href={getPathFromSlug(item?.slug?.current)} key={item._id} sx={{textDecoration: 'none'}}>
                     <Typography>{item.localeTitle[language] || 'Missing'}</Typography>
                   </Link>
