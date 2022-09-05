@@ -36,7 +36,6 @@ function Header(props) {
           </Box>
           <Box
             mr={{ xs: 1, md: 3, lg: '10%' }}
-            mt={{ md: 2 }}
             ml={'auto'}
             className={styles.navbarContainer}
           >
