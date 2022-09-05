@@ -14,7 +14,7 @@ const builder = imageUrlBuilder(client)
 const theme = createTheme()
 
 function SideBySideImages(props) {
-  const { images, heading, currentLanguage } = props
+  const { images, heading } = props
 
   return (
     <ThemeProvider theme={theme}>
