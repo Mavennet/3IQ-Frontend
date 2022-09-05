@@ -32,7 +32,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero Section',
+        subtitle: 'Text Section',
         media,
       };
     },
