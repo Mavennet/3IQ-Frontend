@@ -1,6 +1,6 @@
 @import "../../styles/custom-media.css";
 
-.container {
+.headerContainer {
   align-items: center;
   @media (--media-min-large) {
     align-items: flex-start;

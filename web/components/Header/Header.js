@@ -26,7 +26,7 @@ function Header(props) {
       <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
         <Toolbar
           disableGutters
-          className={styles.container}
+          className={styles.headerContainer}
         >
           <Box>
             {/* Logo */}
