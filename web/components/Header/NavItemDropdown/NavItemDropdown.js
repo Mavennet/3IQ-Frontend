@@ -44,6 +44,7 @@ function NavItemDropdown(props) {
                   className={styles.sumaryText}
                   sx={{
                     width: {xs: '100%', md: 'auto'},
+                    backgroundColor: '#fbfbfb',
                     marginLeft: {xs: '0', md: '30px'},
                     color: '#000',
                     textTransform: 'capitalize',
