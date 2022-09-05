@@ -41,8 +41,9 @@ Logo.propTypes = {
     asset: PropTypes.shape({
       url: PropTypes.string,
       extension: PropTypes.string,
+      _ref: PropTypes.string,
     }),
-    logo: PropTypes.string,
+    alt: PropTypes.string,
   }),
 }
 
