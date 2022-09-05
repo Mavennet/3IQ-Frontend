@@ -39,27 +39,6 @@ export default {
           },
         },
       ],
-    },
-    {
-      title: 'Footer navigation items',
-      name: 'footerNavigation',
-      type: 'array',
-      validation: Rule => [
-        Rule.max(10).warning('Are you sure you want more than 10 items?'),
-        Rule.unique().error('You have duplicate menu items'),
-      ],
-      fieldset: 'footer',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'route' }],
-        },
-      ],
-    },
-    {
-      name: 'footerText',
-      type: 'simplePortableText',
-      fieldset: 'footer',
-    },
+    }, 
   ],
 };

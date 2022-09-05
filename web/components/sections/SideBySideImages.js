@@ -25,13 +25,12 @@ function SideBySideImages(props) {
           sm={10}
           md={10}
           lg={8}
-          xl={6}
           sx={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            marginLeft: {xs: '8%', md:'8%', lg:'16%', xl:'24%'}
+            marginLeft: {xs: '8%', md:'8%', lg:'16%'}
           }}>
           <Box
           >

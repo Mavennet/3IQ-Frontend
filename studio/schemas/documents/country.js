@@ -66,26 +66,29 @@ export default {
     },
     {
       name: 'footerFirstLeftBlockContent',
-      title: 'Footer first left block content (*)',
       type: 'localePortableText',
+      title: 'Footer first left block content (*)',
       description: "First block of content that will be shown below the footer logo",
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'footerSecondLeftBlockImage',
       type: 'figure',
-      title: 'Footer second left block image',
+      title: 'Footer second left block image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'footerSecondLeftBlockContent',
       type: 'localePortableText',
-      title: 'Footer second left block content',
-      description: "Second block of content that will be shown below the footer logo"
+      title: 'Footer second left block content (*)',
+      description: "Second block of content that will be shown below the footer logo",      
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'footerSecondLeftBlockButton',
       type: 'localeCta',
-      title: 'Footer second left block button',
+      title: 'Footer second left block button (*)',    
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'footerNavigation',

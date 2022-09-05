@@ -43,7 +43,12 @@ function DoubleOptions(props) {
                 mr={2}
                 component="h2"
                 variant="h4"
-                className={styles.heading}
+                sx={{
+                  fontWeight: 'bold',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
               >
                 {heading}
               </Typography>
@@ -68,8 +73,13 @@ function DoubleOptions(props) {
               item
               md={6}
               xs={12}
-              sx={{pt: {md: 0, xs: 5}, pb: {md: 0, xs: 10}}}
-              className={styles.firstBox}
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                pt: {md: 0, xs: 5},
+                pb: {md: 0, xs: 10},
+              }}
             >
               <Box
                 component="img"
@@ -88,7 +98,13 @@ function DoubleOptions(props) {
                 ></RedirectButton>
               )}
             </Grid>
-            <Grid item md={6} xs={12} pt={5} pb={10} className={styles.secondBox}>
+            <Grid item md={6} xs={12} pt={5} pb={10} 
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                background: '#f0f0f1',
+              }}>
               <Box
                 component="img"
                 sx={{
