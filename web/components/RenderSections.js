@@ -23,7 +23,8 @@ function RenderSections(props) {
       'localeCta', 
       'localeText', 
       'localeString', 
-      'localeSimplePortableText'
+      'localeSimplePortableText',
+      'localePortableText'
     ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
