@@ -63,7 +63,7 @@ function NavItemDropdown(props) {
                     return (
                       <MenuItem key={item._id} className={styles.menuItem}>
                         <Link href={getPathFromSlug(item?.slug?.current)} key={item._id} sx={{textDecoration: 'none'}}>
-                          <Typography className={styles.sumaryText}>
+                          <Typography className={styles.sumaryText} sx={{fontSize: '18px'}}>
                             {item.localeTitle[language] || 'Missing'}
                           </Typography>
                         </Link>
