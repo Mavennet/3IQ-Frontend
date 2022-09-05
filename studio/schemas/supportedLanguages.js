@@ -1,17 +1,11 @@
+// Combination of the language ISO 639-1 code (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+// and the country code TDL (https://en.wikipedia.org/wiki/Country_code_top-level_domain)
+// for specific language & country combinations, such as "en_CA", "en_US", "ar_AE" or "fr_CA".
+// **** THE "id" PROPERTY IT NEEDS TO MATCH THE LANGUAGE DOCUMENT'S "Language Tag" AND THE LANGUAGES'S "id" FROM "studio\languageFilterConfig.js" **** 
+
 export default  [
-  { id: 'en_US', title: 'English (US)', isDefault: true },
-  { id: 'en_CA', title: 'English (CA)' },
+  { id: 'en_CA', title: 'English (CA)', isDefault: true },
+  { id: 'en_US', title: 'English (US)' },
   { id: "fr_CA", title: "French (CA)" },
-  { id: 'ar', title: 'Arabic' },
-  {id: "pr", title: "Portuguese"},
-  {id: "zh", title:"Chinese"},
-  {id: "ru", title:"Russian"},
-  {id: "nl", title:"Dutch"},
-  {id: "de", title:"German"},
-  {id: "es", title:"Spanish"},
-  {id: "it", title:"Italian"},
-  {id: "id", title:"Indonesian"},
-  {id: "tl", title:"Tagalog"},
+  { id: 'ar_AE', title: 'Arabic (AE)' },
 ]
-
-

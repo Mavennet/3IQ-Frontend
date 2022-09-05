@@ -1,4 +1,7 @@
+import supportedLanguages from '../supportedLanguages';
 import { LinkIcon } from '@sanity/icons'
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   name: 'route',
@@ -51,7 +54,7 @@ export default {
   preview: {
     select: {
       slug: 'slug.current',
-      pageTitle: 'page.title',
+      pageTitle: `page.title.${baseLanguage.id}`,
       country0: 'countries.0.name',
     },
     prepare({ slug, pageTitle, country0 }) {

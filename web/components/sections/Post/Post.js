@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import styles from './Post.module.css'
-import client from '../../client'
+import client from '../../../client'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import SimpleBlockContent from '../SimpleBlockContent'
+import SimpleBlockContent from '../../SimpleBlockContent'
 import { PortableText } from "@portabletext/react";
 
 const builder = imageUrlBuilder(client)
@@ -17,7 +17,6 @@ const theme = createTheme()
 function Post(props) {  
   const {heading, body, publishedAt, author, mainImage, currentLanguage} = props
 
-  const localeHeading = heading[currentLanguage.languageTag]
   const localeBody = body[currentLanguage.languageTag]
   const localeAuthor = author[currentLanguage.languageTag]
 
@@ -40,7 +39,7 @@ function Post(props) {
           }
           <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
             <Typography component="h1" variant="h5" style={{fontWeight: 'bold', color: 'red'}} gutterBottom>
-              {localeHeading}
+              {heading}
             </Typography>
             <div className={styles.body}>
               {localeBody && <SimpleBlockContent blocks={localeBody} />}
