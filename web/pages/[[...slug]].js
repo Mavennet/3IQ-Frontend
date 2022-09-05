@@ -218,15 +218,8 @@ const LandingPage = (props) => {
         },
       ]
     : []
-
-  console.log('DAVID')
-  console.log(title)
-  console.log(currentLanguage)
-  console.log(currentLanguage.languageTag)
-  console.log(title[currentLanguage.languageTag])
-  console.log('asdasdasdasdasd')
+    
   const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage.languageTag] : 'Title not filled on the corresponding language for this page'
-  console.log(localeTitle)
 
   return (
     <Layout config={formatedConfig}>

@@ -16,8 +16,6 @@ const theme = createTheme()
 function SideBySideImages(props) {
   const { images, heading, currentLanguage } = props
 
-  const localeHeading = heading[currentLanguage.languageTag]
-
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" className={styles.container}>
@@ -38,7 +36,7 @@ function SideBySideImages(props) {
           <Box
           >
             <Typography className={styles.heading} gutterBottom>
-              {localeHeading}
+              {heading}
             </Typography>
 
             <Box
