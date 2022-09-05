@@ -22,8 +22,8 @@
 }
 
 .expansionPanel {
-  color: var(--color-dark-orange);
-  background: var(--color-light-gray);
+  color: var(--color-dark-orange)!important;
+  background: var(--color-light-gray)!important;
   margin: 0px;
 }
 
