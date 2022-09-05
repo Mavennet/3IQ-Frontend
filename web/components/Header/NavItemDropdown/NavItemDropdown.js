@@ -40,7 +40,17 @@ function NavItemDropdown(props) {
               classes={{ content: styles.content, expanded: styles.expansionPanel }}
             >
               <Link href={link} sx={{textDecoration: 'none'}}>
-                <Typography className={styles.sumaryText}>{title || 'Missing'}</Typography>
+                <Typography
+                  className={styles.sumaryText}
+                  sx={{
+                    width: {xs: '100%', md: 'auto'},
+                    marginLeft: {xs: '0', md: '30px'},
+                    color: '#000',
+                    textTransform: 'capitalize',
+                    fontSize: '18px',
+                    position: 'relative'
+                  }}
+                >{title || 'Missing'}</Typography>
               </Link>
             </AccordionSummary>
             <AccordionDetails sx={{ p: 0 }}>
@@ -71,7 +81,17 @@ function NavItemDropdown(props) {
             aria-controls={open ? _id + '-menu' : undefined}
             aria-haspopup="false"
             aria-expanded={open ? 'true' : undefined}
-            sx={{ color: '#0a1b3f', display: 'block' }}
+            sx={{
+              display: 'block',
+              width: {xs: '100%', md: 'auto'},
+              marginLeft: {xs: '0', md: '30px'},
+              padding: {xs: '12px 16px', md: '0px'},
+              backgroundColor: {xs: '#fbfbfb', md: 'none'},
+              color: '#0a1b3f',
+              textTransform: 'capitalize',
+              fontSize: '18px',
+              position: 'relative'
+            }}
             className={styles.menuItem}
           >
             {title || 'Missing'}
