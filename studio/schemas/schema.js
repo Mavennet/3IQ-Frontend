@@ -11,6 +11,7 @@ import language from './documents/language';
 import menuItem from './documents/menuItem';
 
 // Section documents
+import textSection from './documents/sections/textSection';
 import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
 import imageWithText from './documents/sections/imageWithText';
@@ -19,7 +20,6 @@ import imageBesideText from './documents/sections/imageBesideText'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
-
 // Object types
 import cta from './objects/cta';
 import embedHTML from './objects/embedHTML';
@@ -30,7 +30,7 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
-import textSection from './objects/textSection';
+
 
 // Locale objects
 import localeString from './objects/locale/localeString'

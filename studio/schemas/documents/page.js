@@ -31,6 +31,7 @@ export default {
           type: 'reference',
           to: [
             {type: 'post'},
+            {type: 'textSection'},
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'imageBesideText'},

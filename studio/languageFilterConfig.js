@@ -17,6 +17,7 @@ export default {
   defaultLanguages: ['en_US'], // With this property, there's no way to choose Canada without the default one --> English (US)
   documentTypes: [
     'page',
+    'textSection',
     'heroWithImage',
     'hero',
     'imageBesideText',

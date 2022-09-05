@@ -1,4 +1,4 @@
-export {default as Hero} from './Hero'
+export {default as Hero} from './Hero/Hero'
 export {default as HeroWithImage} from './HeroWithImage'
 export {default as ImageBesideText} from './ImageBesideText'
 export {default as SideBySideImages} from './SideBySideImages'

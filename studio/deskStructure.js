@@ -10,6 +10,7 @@ const hiddenDocTypes = (listItem) => ![
   'language',
   'person',
   'route',
+  'textSection',
   'hero',
   'heroWithImage',
   'imageBesideText',
@@ -55,11 +56,12 @@ export default () =>
         S.list()
           .title('Sections')
           .items([
+            S.documentTypeListItem('textSection').title('Text Section'),
             S.documentTypeListItem('hero').title('Hero'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
-            S.documentTypeListItem('doubleOptions').title('Double Options'),
+            S.documentTypeListItem('doubleOptions').title('Double options'),
             // S.documentTypeListItem('imageWithText').title('Image'),
             // S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
           ])
