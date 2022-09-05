@@ -12,7 +12,6 @@ import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch'
 function Header(props) {
   const {
     navItems,
-    logo,
     setLanguage,
     dataCountries,
     currentCountry,
@@ -31,7 +30,7 @@ function Header(props) {
           <Box>
             {/* Logo */}
             <Link href={'/'}>
-              <Logo logo={logo} />
+              <Logo logo={currentCountry.headerLogo} />
             </Link>
           </Box>
           <Box
@@ -166,13 +165,6 @@ Header.propTypes = {
       ),
     })
   ),
-  logo: PropTypes.shape({
-    asset: PropTypes.shape({
-      url: PropTypes.string,
-      extension: PropTypes.string,
-    }),
-    logo: PropTypes.string,
-  }),
   dataCountries: PropTypes.array,
   currentLanguage: PropTypes.object,
   currentCountry: PropTypes.object,

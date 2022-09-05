@@ -93,8 +93,8 @@ RenderSections.propTypes = {
       section: PropTypes.instanceOf(PropTypes.object),
     })
   ),
-  routes: PropTypes.object,
-  posts: PropTypes.object,
+  routes: PropTypes.array,
+  posts: PropTypes.array,
 }
 
 export default RenderSections
