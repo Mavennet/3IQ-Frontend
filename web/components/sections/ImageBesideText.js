@@ -47,7 +47,7 @@ function ImageBesideText(props) {
                 transform: {sm: 'scale(1)', md: 'scale(1.9)'},
                 display: {xs: 'none', sm: 'inherit'},
               }}
-              alt="The house from the offer."
+              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
               src={builder.image(mainImage).url()}
             />
           )}
@@ -82,7 +82,6 @@ function ImageBesideText(props) {
                 <RedirectButton
                   {...button}
                   sx={{width: {xs: '100%', md: 180}, padding: '10px 20px'}}
-                  // title={localeButton.title}
                 />
               )}
             </Box>

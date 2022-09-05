@@ -20,7 +20,7 @@ export default {
     },
     {
       name: 'bio',
-      type: 'bioPortableText',
+      type: 'localeBioPortableText',
       title: 'Bio (*)',
       validation: Rule => Rule.error('Information required.').required(),
     }

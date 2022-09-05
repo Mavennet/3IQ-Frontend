@@ -16,7 +16,7 @@ export default {
       name: 'languageTag',
       type: 'string',
       title: 'Language Tag (*)',
-      description: 'IETF language tag with ISO 3166-1 country code for specific language & country combinations, such as "en_US" or "pt_BR". And only IETF language tag for the main language, such as "fr" or "en".',
+      description: 'Combination of the language ISO 639-1 code (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) and the country code TDL (https://en.wikipedia.org/wiki/Country_code_top-level_domain) for specific language & country combinations, such as "en_CA", "en_US", "ar_AE" or "fr_CA".',
       validation: Rule => Rule.error('Information required.').required(),
     }
   ],

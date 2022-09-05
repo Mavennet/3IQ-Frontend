@@ -16,7 +16,7 @@ export default {
       name: 'urlTag',
       type: 'string',
       title: 'URL tag (*)',
-      description: 'Tag for the URL internationalization, such as "us", "ca", "fr" or "br".',
+      description: 'Language ISO 639-1 code (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for the URL internationalization, such as "ca", "us" or "ae".',
       validation: Rule => Rule.error('Information required.').required()
     },
     {
@@ -24,6 +24,7 @@ export default {
       title: 'Languages (*)',
       type: 'array',
       of: [{type: 'reference', to: {type: 'language'}}],
+      description: "Languages that will be available at the website header's language picker",
       validation: Rule => Rule.error('Information required.').required()
     },
     {
