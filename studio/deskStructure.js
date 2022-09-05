@@ -62,13 +62,9 @@ export default () =>
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             S.documentTypeListItem('sideBySideImages').title('Side by side Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
-            // S.documentTypeListItem('imageWithText').title('Image'),
-            // S.documentTypeListItem('mailchimp').title('Mailchimp Newsletter Signup'),
           ])
       ),
       S.documentTypeListItem('post').title('Posts'),
-      S.documentTypeListItem('page').title('PAGE DELETAR'),
-      S.documentTypeListItem('route').title('ROUTE DELETAR'),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
