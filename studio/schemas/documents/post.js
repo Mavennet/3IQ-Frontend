@@ -59,7 +59,7 @@ export default {
       author: 'author.name',
     },
     prepare({title = 'No title', publishedAt, media, author}) {
-      const subtitle = format(parseISO(publishedAt), 'yyyy/MM/dd') + " - " + author 
+      const subtitle = "Published at " +format(parseISO(publishedAt), 'yyyy/MM/dd') + " by " + author 
       return {
         title,
         media,

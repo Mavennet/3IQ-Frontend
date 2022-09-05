@@ -1,8 +1,8 @@
 import supportedLanguages from '../../supportedLanguages';
 
 export default {
-  title: 'Localized String',
-  name: 'localeString',
+  title: 'Localized Bio Portable Text',
+  name: 'localeBioPortableText',
   type: 'object',
   fieldsets: [
     {
@@ -18,7 +18,7 @@ export default {
     supportedLanguages.map(lang => ({
       title: lang.title,
       name: lang.id,
-      type: 'string',
+      type: 'bioPortableText',
       fieldset: lang.isDefault ? null : 'translations'
     }))
 }

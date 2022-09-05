@@ -1,5 +1,3 @@
-import bcp47 from 'bcp47';
-
 export default {
   name: 'site-config',
   type: 'document',
@@ -25,17 +23,6 @@ export default {
       to: { type: 'page' },
     },
     {
-      title: 'Site language',
-      description:
-        'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
-      name: 'lang',
-      type: 'string',
-      validation: Rule =>
-        Rule.custom(lang =>
-          bcp47.parse(lang) ? true : 'Please use a valid bcp47 code'
-        ),
-    },
-    {
       title: 'Brand logo',
       description:
         'Best choice is to use an SVG where the color are set with currentColor',
@@ -50,22 +37,6 @@ export default {
           options: {
             isHighlighted: true,
           },
-        },
-      ],
-    },
-    {
-      title: 'Main navigation',
-      name: 'mainNavigation',
-      description: 'Select pages for the top menu',
-      validation: Rule => [
-        Rule.max(5).warning('Are you sure you want more than 5 items?'),
-        Rule.unique().error('You have duplicate menu items'),
-      ],
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'route' }],
         },
       ],
     },

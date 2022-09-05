@@ -16,19 +16,55 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes} = props
+  const {sections, routes, posts} = props
 
-  for(const section of sections){
-    const {button, currentLanguage} = section
-    if(button && currentLanguage){
-      const localeButton = button[currentLanguage.languageTag]
-      if(localeButton && localeButton.route){
-        const formatedRoute = routes.filter(r => r._id === localeButton.route._ref)[0]
-        localeButton.route = formatedRoute
+  sections.forEach((section) => {
+    const toConvertItems = [
+      'localeCta', 
+      'localeText', 
+      'localeString', 
+      'localeSimplePortableText'
+    ]
+    const sectionKeys = Object.keys(section)
+    const sectionValues = Object.values(section)
+    const filteredSectionKeys = []
+    sectionValues.forEach((value, index) => {
+      if (value && value._type && toConvertItems.indexOf(value._type) >= 0) {
+        filteredSectionKeys.push(sectionKeys[index])
       }
-      section.button = localeButton
+    })
+    filteredSectionKeys.forEach((key) => {
+      if (section[key] && section.currentLanguage) {
+        const localeButton = section[key][section.currentLanguage.languageTag]
+        if (localeButton && localeButton.route) {
+          const formatedRoute = routes.filter((r) => r._id === localeButton.route._ref)[0]
+          localeButton.route = formatedRoute
+        }
+        section[key] = localeButton
+      }
+    })    
+
+    if (section.post && section.post._ref) {
+      for (let i = 0; i < posts.length; i++) {
+        const post = posts[i]
+
+        if (post._id === section.post._ref) {
+          section.post = post
+          break
+        }              
+      }
+
+      if (section.route) {
+        for (let i = 0; i < routes.length; i++) {
+          const route = routes[i]
+          
+          if (route._id === section.route._ref) {
+            section.route = route
+          }
+        }
+      }
     }
-  }
+  })
 
   if (!sections) {
     console.error('Missing section')
@@ -56,7 +92,8 @@ RenderSections.propTypes = {
       section: PropTypes.instanceOf(PropTypes.object),
     })
   ),
-  routes: PropTypes.object
+  routes: PropTypes.object,
+  posts: PropTypes.object,
 }
 
 export default RenderSections

@@ -18,14 +18,11 @@ function urlFor(source) {
 const theme = createTheme()
 
 function ImageBesideText(props) {
-  const {mainImage, heading, backgroundImage, description, button, currentLanguage} = props
-
-  const localeHeading = heading[currentLanguage.languageTag]
-  const localeDescription = description[currentLanguage.languageTag]
+  const {mainImage, heading, backgroundImage, description, button} = props
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" >
+      <Grid container component="main">
         <CssBaseline />
         <Grid
           item
@@ -50,7 +47,7 @@ function ImageBesideText(props) {
                 transform: {sm: 'scale(1)', md: 'scale(1.9)'},
                 display: {xs: 'none', sm: 'inherit'},
               }}
-              alt="The house from the offer."
+              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
               src={builder.image(mainImage).url()}
             />
           )}
@@ -68,25 +65,23 @@ function ImageBesideText(props) {
             }}
           >
             <Typography component="h1" variant="h4" style={{fontWeight: 'bold'}} gutterBottom>
-              {localeHeading}
+              {heading}
             </Typography>
             <Typography variant="p" paragraph>
-              {localeDescription}
+              {description}
             </Typography>
 
             <Box
               sx={{
                 mt: 5,
-                mb: 5
+                mb: 5,
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>
-              {button &&
-               (
+              {button && (
                 <RedirectButton
-                {...button}
-                sx={{width: {xs: '100%', md: 180}, padding: '10px 20px', ml: {md: 8}}}
-                  // title={localeButton.title}
+                  {...button}
+                  sx={{width: {xs: '100%', md: 180}, padding: '10px 20px'}}
                 />
               )}
             </Box>
@@ -107,7 +102,6 @@ ImageBesideText.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
-  currentLanguage: PropTypes.object, 
 }
 
 export default ImageBesideText
