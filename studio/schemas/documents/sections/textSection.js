@@ -10,16 +10,6 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'label',
-      type: 'localeString',
-      title: 'Label',
-    },
-    {
-      name: 'heading',
-      type: 'localeString',
-      title: 'Heading',
-    },
-    {
       name: 'text',
       type: 'localePortableText',
       title: 'Text',
@@ -32,7 +22,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Text Section',
+        subtitle: 'Hero Section',
         media,
       };
     },

@@ -2,24 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SimpleBlockContent from '../SimpleBlockContent'
 import styles from './TextSection.module.css'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
 
 function TextSection(props) {
-  const {heading, label, text} = props
+  const {text} = props
 
   return (
-    <div className={styles.root}>
-      <section className={styles.article}>
-        <div className={styles.label}>{label}</div>
-        <h2 className={styles.heading}>{heading}</h2>
-        {text && <SimpleBlockContent blocks={text} />}
-      </section>
-    </div>
+    <Box>
+      <Container maxWidth="md">
+        <Box sx={{p: 5, pt: 0, pl:{xs: 1}}}>
+          <Box sx={{pt: 5, align: 'left'}}>
+            <div className={styles.textSection}>{text && <SimpleBlockContent blocks={text} />}</div>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 
 TextSection.propTypes = {
-  heading: PropTypes.string,
-  label: PropTypes.string,
   text: PropTypes.arrayOf(PropTypes.object),
 }
 
