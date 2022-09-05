@@ -3,15 +3,10 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'next/router'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Grid, Box, Typography, Button, CssBaseline, Link } from '@mui/material'
-import Logo from '../Logo/Logo'
-import Image from 'next/image'
 import { FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
-import icon2 from '../../assets/img/footer/icon-2.png'
 import styles from './Footer.module.css'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../client'
-
-const builder = imageUrlBuilder(client)
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -23,6 +18,10 @@ const theme = createTheme({
     p: {
       fontSize: 14,
     },
+    h2: {
+      fontSize: 20,
+      fontWeight: 'bold'
+    },
     h5: {
       fontSize: 20,
       fontWeight: 'bold'
@@ -30,12 +29,14 @@ const theme = createTheme({
   },
 })
 
-const logo = {
-  asset: {
-    url: 'https://3iq.ca/wp-content/uploads/2022/01/3iQ-digital-asset-management-white.png',
-    extension: 'png'
-  },
-  logo: 'https://3iq.ca/wp-content/uploads/2022/01/3iQ-digital-asset-management-white.png',
+const breakArray = (array) => {
+  const half = Math.ceil(array.length / 2)
+  const firstHalf = array.slice(0, half)
+  const secondHalf = array.slice(half)
+  return {
+    firstBlock: firstHalf,
+    secondBlock: secondHalf
+  }
 }
 
 function Footer(props) {
@@ -63,9 +64,15 @@ function Footer(props) {
           <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }} mb={4}>
             {/* Logo */}
             {
-              logo ?
+              currentCountry.footerLogo ?
                 <Link href={'/'}>
-                  <Logo logo={logo} />
+                  <Box
+                    component="img"
+                    sx={{ maxWidth: '100%', ml: { md: 4 } }}
+                    width={180}
+                    alt={currentCountry.footerLogo.alt}
+                    src={urlFor(currentCountry.footerLogo.asset._ref).url()}
+                  />
                 </Link> : (
                   <Typography variant="p" paragraph mb={1}> Missing Footer Logo</Typography>
                 )
@@ -80,8 +87,7 @@ function Footer(props) {
                       component="img"
                       src={urlFor(currentCountry.footerFirstLeftBlockImage.asset._ref).url()}
                       alt={currentCountry.footerFirstLeftBlockImage.alt}
-                      width={100}
-                      height={100}
+                      sx={{ maxWidth: '100%' }}
                     />
                   ) : (
                     <Typography variant="p" paragraph mb={1}> Missing First Left Block Image</Typography>
@@ -122,48 +128,64 @@ function Footer(props) {
                 }
               </Grid>
               <Grid item xs={3}>
-                <Image
-                  src={icon2.src}
-                  width={90}
-                  height={90}
-                  alt={'Voxels Logo'}
-                />
+                {
+                  currentCountry.footerSecondLeftBlockImage ? (
+                    <Box
+                      component="img"
+                      src={urlFor(currentCountry.footerSecondLeftBlockImage.asset._ref).url()}
+                      alt={currentCountry.footerSecondLeftBlockImage.alt}
+                      sx={{ maxWidth: '100%' }}
+                    />
+                  ) : (
+                    <Typography variant="p" paragraph mb={1}> Missing Second Left Block Image</Typography>
+                  )
+                }
               </Grid>
               <Grid item xs={9} pl={2}>
-                <Link
-                  href={'https://www.cryptovoxels.com/play?coords=S@203W,469N'}
-                  underline="hover"
-                  color="inherit"
-                  target='_blank'
-                  rel="noopener"
-                >
-                  <Typography variant="p" paragraph mb={1}>
-                    3iQ Metaverse HQ
-                  </Typography>
-                </Link>
-                <Link
-                  href={'https://www.cryptovoxels.com/play?coords=S@203W,469N'}
-                  underline="hover"
-                  color="inherit"
-                  target='_blank'
-                  rel="noopener"
-                >
-                  <Typography variant="p" paragraph mb={1}>
-                    2 Turing Expressway
-                  </Typography>
-                </Link>
-                <Typography variant="p" paragraph mb={2}>
-                  Rome, Origin City
-                </Typography>
-                <Link
-                  href={'https://www.cryptovoxels.com/play?coords=S@203W,469N'}
-                  underline="hover"
-                  color="inherit"
-                  target='_blank'
-                  rel="noopener"
-                >
-                  <Button variant="contained" sx={{ textTransform: 'inherit' }}>Visit us on Voxels</Button>
-                </Link>
+                {
+                  currentCountry?.footerSecondLeftBlockContent &&
+                    currentCountry?.footerSecondLeftBlockContent[currentLanguage?.languageTag] ?
+                    currentCountry?.footerSecondLeftBlockContent[currentLanguage?.languageTag].map((item) => {
+                      const links = item.markDefs
+                      return (
+                        <Typography variant="p" paragraph mb={1} key={item._key}>
+                          {
+                            item.children.map((item) => {
+                              if (item.marks[0]) {
+                                let currentLink = links.find(obj => {
+                                  return obj._key === item.marks[0]
+                                })
+                                return (
+                                  <Link
+                                    href={currentLink?.href}
+                                    underline="hover"
+                                    color="inherit"
+                                  >
+                                    {item.text}
+                                  </Link>
+                                )
+                              } else {
+                                return item.text
+                              }
+                            })
+                          }
+                        </Typography>
+                      )
+                    }) : <Typography variant="p" paragraph mb={1}>Missing - Second Left Block Content</Typography>
+                }
+                {
+                  currentCountry.footerSecondLeftBlockButton && (
+                    <Link
+                      href={currentCountry.footerSecondLeftBlockButton[currentLanguage?.languageTag].link}
+                      underline="hover"
+                      color="inherit"
+                      target='_blank'
+                      rel="noopener"
+                    >
+                      <Button variant="contained" sx={{ textTransform: 'inherit' }}>{currentCountry.footerSecondLeftBlockButton[currentLanguage?.languageTag].title}</Button>
+                    </Link>
+                  )
+                }
               </Grid>
             </Grid>
           </Box>
@@ -171,49 +193,54 @@ function Footer(props) {
         <Grid item xs={12} md={5} sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <Box sx={{ pl: { xs: 3, md: 8 }, pr: { xs: 3, md: 0 } }}>
             <Grid container>
-              <Grid
-                item
-                xs={6}
-                md={6}
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'left',
-                }}
-              >
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>Our Funds</Typography>
-                </Link>
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>Our Story</Typography>
-                </Link>
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>Our Team</Typography>
-                </Link>
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>Careers</Typography>
-                </Link>
-              </Grid>
-              <Grid
-                item
-                xs={6}
-                md={6}
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'left',
-                }}
-              >
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>3iQ in the News</Typography>
-                </Link>
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>Crypto 101</Typography>
-                </Link>
-                <Link href={'#'} underline="hover" color="inherit">
-                  <Typography variant="h5" mb={2}>Contact Us</Typography>
-                </Link>
-              </Grid>
+              {
+                currentCountry.footerNavigation && (
+                  breakArray(currentCountry.footerNavigation).firstBlock && (
+                    <Grid
+                      item
+                      xs={6}
+                      md={6}
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'left',
+                      }}
+                    >
+                      {breakArray(currentCountry.footerNavigation).firstBlock.map((item) => {
+                        return (
+                          <Link href={'#'} underline="hover" color="inherit">
+                            <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
+                          </Link>
+                        )
+                      })}
+                    </Grid>
+                  )
+                )
+              }
+              {
+                currentCountry.footerNavigation && (
+                  breakArray(currentCountry.footerNavigation).secondBlock && (
+                    <Grid
+                      item
+                      xs={6}
+                      md={6}
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'left',
+                      }}
+                    >
+                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item) => {
+                        return (
+                          <Link href={'#'} underline="hover" color="inherit">
+                            <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
+                          </Link>
+                        )
+                      })}
+                    </Grid>
+                  )
+                )
+              }
               <Grid
                 item
                 xs={12}
@@ -236,14 +263,48 @@ function Footer(props) {
                     }
                   </Typography>
                   <ul className={styles.social}>
-                    <li><Link href="#" color="inherit"><FaTwitter /></Link></li>
-                    <li><Link href="#" color="inherit"><FaLinkedinIn /></Link></li>
-                    <li><Link href="#" c color="inherit"><FaYoutube /></Link></li>
+                    {currentCountry?.twitterUrl && (
+                      <li><Link href={currentCountry?.twitterUrl} color="inherit" target='_blank' rel="noopener"><FaTwitter /></Link></li>
+                    )}
+                    {currentCountry?.linkedinUrl && (
+                      <li><Link href={currentCountry?.linkedinUrl} color="inherit" target='_blank' rel="noopener"><FaLinkedinIn /></Link></li>
+                    )}
+                    {currentCountry?.youtubeUrl && (
+                      <li><Link href={currentCountry?.youtubeUrl} color="inherit" target='_blank' rel="noopener"><FaYoutube /></Link></li>
+                    )}
                   </ul>
                 </Box>
-                <Typography variant="p" sx={{ fontSize: 12 }}>
-                  © 2022 3iQ Corp. Disclaimer | <Link href={'#'} underline="hover" color="inherit">Privacy Policy</Link> | <Link href={'#'} underline="hover" color="inherit">Cookies Policy</Link> | <Link href={'#'} underline="hover" color="inherit">Legal, Financial & Regulatory</Link>
-                </Typography>
+                {
+                  currentCountry?.footerBottomContent &&
+                    currentCountry?.footerBottomContent[currentLanguage?.languageTag] ?
+                    currentCountry?.footerBottomContent[currentLanguage?.languageTag].map((item) => {
+                      const links = item.markDefs
+                      return (
+                        <Typography variant="p" sx={{ fontSize: 12 }} key={item._key}>
+                          {
+                            item.children.map((item) => {
+                              if (item.marks[0]) {
+                                let currentLink = links.find(obj => {
+                                  return obj._key === item.marks[0]
+                                })
+                                return (
+                                  <Link
+                                    href={currentLink?.href}
+                                    underline="hover"
+                                    color="inherit"
+                                  >
+                                    {item.text}
+                                  </Link>
+                                )
+                              } else {
+                                return item.text
+                              }
+                            })
+                          }
+                        </Typography>
+                      )
+                    }) : <Typography variant="p" paragraph mb={1}>Missing - Second Left Block Content</Typography>
+                }
               </Grid>
             </Grid>
           </Box>
@@ -251,22 +312,38 @@ function Footer(props) {
         <Grid item xs={12} md={4}>
           <Box sx={{ marginTop: { xs: 6, md: 13 }, pl: { xs: 3, md: 8 }, pr: { xs: 3, md: 4 } }}>
             <Grid container>
-              <Grid item xs={12}>
-                <Typography sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant="h5">
-                  Newsletter
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="p" paragraph sx={{ fontSize: 12 }}>
-                  Stay up to date on the latest from 3iQ
-                </Typography>
-              </Grid>
+              {
+                currentCountry.newsletterBody && (
+                  currentCountry.newsletterBody[currentLanguage?.languageTag].map((item) => {
+                    const links = item.markDefs
+                    return (
+                      <Typography sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant={item.style === 'h2' ? 'h2' : 'p'}>
+                        {
+                          item.children.map((item) => {
+                            if (item.marks[0]) {
+                              let currentLink = links.find(obj => {
+                                return obj._key === item.marks[0]
+                              })
+                              return (
+                                <Link
+                                  href={currentLink?.href}
+                                  color="inherit"
+                                >
+                                  {item.text}
+                                </Link>
+                              )
+                            } else {
+                              return item.text
+                            }
+                          })
+                        }
+                      </Typography>
+                    )
+                  })
+                )
+              }
               <Grid item xs={12} mb={2}>
                 <input className={styles.inputNewsletter} placeholder="Email"></input>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="p" paragraph sx={{ fontSize: 12 }}>We dont sell or rent your information. Please refer to the 3iQ <Link href="#">privacy policy</Link> or contact us for more information.
-                </Typography>
               </Grid>
               <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <Button variant="contained" sx={{ textTransform: 'inherit' }}>Subscribe</Button>
