@@ -19,7 +19,7 @@ function TextSection(props) {
         <Box sx={{p: 5, pr: 1, pt: 0, pl: {xs: 1}}}>
           <Grid container>
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
-              <Box sx={{pt: 5, pr: videoSrc && {md: 20, xs: 0}, align: 'left'}}>
+              <Box sx={{pt: 5, pr: videoSrc && {md: 20, sm: 0}, align: 'left'}}>
                 <div className={styles.textSection}>
                   {text && <SimpleBlockContent blocks={text} />}
                 </div>
@@ -33,8 +33,8 @@ function TextSection(props) {
                 <Box
                   sx={{
                     position: {md: 'absolute', xs: 'relative'},
-                    width: {md: '30%'},
-                    top: {md: '450px'},
+                    width: {xl: '20%', lg: '30%'},
+                    top: {md: '350px'},
                     mt: {md: 0, xs: 5},
                   }}
                 >
