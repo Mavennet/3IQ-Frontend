@@ -8,7 +8,7 @@ import NavItem from './NavItem/NavItem'
 import NavItemDropdown from './NavItemDropdown/NavItemDropdown'
 import { FiMenu } from 'react-icons/fi'
 import { IoMdClose } from 'react-icons/io'
-import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch'
+import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch/CountryAndLanguageSwitch'
 function Header(props) {
   const {
     navItems,
@@ -25,7 +25,9 @@ function Header(props) {
       <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
         <Toolbar
           disableGutters
-          className={styles.container}
+          sx={{
+            alignItems: { xs: 'center', md: 'flex-start' }
+          }}
         >
           <Box>
             {/* Logo */}
@@ -34,6 +36,7 @@ function Header(props) {
             </Link>
           </Box>
           <Box
+            mt={{ xs: 0, md: 2 }}
             mr={{ xs: 1, md: 3, lg: '10%' }}
             ml={'auto'}
             className={styles.navbarContainer}
@@ -43,7 +46,11 @@ function Header(props) {
               sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start' }}
             >
               {/* Social Networks */}
-              <Social />
+              <Social
+                youtubeUrl={currentCountry.youtubeUrl}
+                linkedinUrl={currentCountry.linkedinUrl}
+                twitterUrl={currentCountry.twitterUrl}
+              />
               {/* Language Selector */}
               <Box sx={{ fontSize: 24, alignItems: 'center', display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
                 <CountryAndLanguageSwitch
@@ -60,7 +67,7 @@ function Header(props) {
                 navItems.map((item) => (
                   item && (
                     item.submenuRoutes &&
-                    item.submenuRoutes.length > 0
+                      item.submenuRoutes.length > 0
                       ? (
                         <NavItemDropdown
                           title={item.route?.localeTitle[currentLanguage.languageTag]}
@@ -79,7 +86,7 @@ function Header(props) {
                           key={item._id}
                         />
                       )
-                )))}
+                  )))}
             </Box>
             {/* NavBar Menu - Mobile */}
             <Box
@@ -113,7 +120,7 @@ function Header(props) {
                         {navItems &&
                           navItems.map((item) => (
                             item.submenuRoutes &&
-                            item.submenuRoutes.length > 0
+                              item.submenuRoutes.length > 0
                               ? (
                                 <NavItemDropdown
                                   title={item.route?.localeTitle[currentLanguage.languageTag]}

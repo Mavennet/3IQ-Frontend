@@ -1,12 +1,5 @@
 @import "../../styles/custom-media.css";
 
-.container {
-  align-items: center;
-  @media (--media-min-large) {
-    align-items: flex-start;
-  }
-}
-
 .navbarContainer {
   display: flex;
   flex-direction: column;

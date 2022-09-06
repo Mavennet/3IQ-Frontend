@@ -110,6 +110,7 @@ function Footer(props) {
                                 })
                                 return (
                                   <Link
+                                    key={item._key}
                                     href={currentLink?.href}
                                     underline="hover"
                                     color="inherit"
@@ -157,6 +158,7 @@ function Footer(props) {
                                 })
                                 return (
                                   <Link
+                                    key={item._key}
                                     href={currentLink?.href}
                                     underline="hover"
                                     color="inherit"
@@ -208,7 +210,7 @@ function Footer(props) {
                     >
                       {breakArray(currentCountry.footerNavigation).firstBlock.map((item, key) => {
                         return (
-                          <Link key={key} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
+                          <Link key={item._id} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
                             <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
                           </Link>
                         )
@@ -230,9 +232,9 @@ function Footer(props) {
                         alignItems: 'left',
                       }}
                     >
-                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item, key) => {
+                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item) => {
                         return (
-                          <Link key={key} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
+                          <Link key={item._id} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
                             <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
                           </Link>
                         )
@@ -289,6 +291,7 @@ function Footer(props) {
                                 })
                                 return (
                                   <Link
+                                    key={item._key}
                                     href={currentLink?.href}
                                     underline="hover"
                                     color="inherit"
@@ -314,10 +317,10 @@ function Footer(props) {
             <Grid container>
               {
                 currentCountry.newsletterBody && (
-                  currentCountry.newsletterBody[currentLanguage?.languageTag].map((item, key) => {
+                  currentCountry.newsletterBody[currentLanguage?.languageTag].map((item) => {
                     const links = item.markDefs
                     return (
-                      <Typography key={key} sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant={item.style === 'h2' ? 'h2' : 'p'}>
+                      <Typography key={item._key} sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant={item.style === 'h2' ? 'h2' : 'p'}>
                         {
                           item.children.map((item) => {
                             if (item.marks[0]) {
@@ -326,6 +329,7 @@ function Footer(props) {
                               })
                               return (
                                 <Link
+                                  key={item._key}
                                   href={currentLink?.href}
                                   color="inherit"
                                 >
