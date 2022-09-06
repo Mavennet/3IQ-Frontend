@@ -237,13 +237,14 @@ const LandingPage = (props) => {
     : []
 
   const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage?.languageTag] : 'Title not filled on the corresponding language for this page'
+  const localeDescription = (description && currentLanguage.languageTag && description[currentLanguage.languageTag]) ? description[currentLanguage?.languageTag] : 'Description not filled on the corresponding language for this page'
 
   return (
     <Layout config={formatedConfig}>
       <NextSeo
         title={localeTitle}
         titleTemplate={`%s | ${config.title}`}
-        description={description}
+        description={localeDescription}
         canonical={config.url && `${config.url}/${slug}`}
         openGraph={{
           images: openGraphImages,
