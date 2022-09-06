@@ -31,7 +31,7 @@ export const getServerSideProps = async ({params}) => {
       mainNavigation[]-> {
       ...,
       route-> { ..., 'localeTitle': page->description },
-      submenuRoutes[]-> { ..., 'localeTitle': page->description },      
+      submenuRoutes[]-> { ..., 'localeTitle': page->description },
     },
       languages[]->,
       headerLogo,
@@ -136,7 +136,7 @@ export const getServerSideProps = async ({params}) => {
 
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
-  
+
   return {
     props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts} || {},
   }
@@ -165,9 +165,14 @@ const LandingPage = (props) => {
       : dataCountries.filter((country) => country.urlTag === 'ca')[0]
   )
 
-  const [currentLanguage, setCurrentLanguage] = useState(country.languages[0])
+  const [currentLanguage, setCurrentLanguage] = useState(
+    typeof window !== 'undefined'
+      ? country.languages.filter((language) => language.languageTag === localStorage.getItem('lang'))[0]
+      : country.languages[0]
+  )
 
   const switchLanguage = (lang) => {
+    localStorage.setItem('lang', lang.languageTag)
     setCurrentLanguage(lang)
   }
 
@@ -218,7 +223,7 @@ const LandingPage = (props) => {
         },
       ]
     : []
-    
+
   const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage.languageTag] : 'Title not filled on the corresponding language for this page'
 
   return (

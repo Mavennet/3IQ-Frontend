@@ -65,7 +65,7 @@ function Footer(props) {
             {/* Logo */}
             {
               currentCountry.footerLogo ?
-                <Link href={'/'}>
+                <Link href={`/${currentCountry.urlTag}/home`}>
                   <Box
                     component="img"
                     sx={{ maxWidth: '100%', ml: { md: 4 } }}
