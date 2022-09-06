@@ -58,7 +58,7 @@ export default () =>
           .title('Sections')
           .items([
             S.documentTypeListItem('newsCard').title('News Card'),
-            S.documentTypeListItem('textSection').title('Text Section'),
+            S.documentTypeListItem('textSection').title('Text Block'),
             S.documentTypeListItem('hero').title('Hero'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
