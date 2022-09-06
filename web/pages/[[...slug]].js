@@ -160,11 +160,10 @@ const LandingPage = (props) => {
   } = props
 
   const getLanguageFromStorage = () => {
-
-      let languageStorage = localStorage.getItem('lang')
-      let languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
+      const languageStorage = localStorage.getItem('lang')
+      const languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
       if (languageSelected.length > 0) {
-        return country.languages.filter((language) => language.languageTag === localStorage.getItem('lang'))[0]
+        return languageSelected[0]
       } else {
         localStorage.setItem('lang', country.languages[0].languageTag)
         return country.languages[0]
