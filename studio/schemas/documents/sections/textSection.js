@@ -14,6 +14,16 @@ export default {
       type: 'localePortableText',
       title: 'Text',
     },
+    {
+      name: 'videoSrc',
+      type: 'string',
+      title: 'Video Source',
+    },
+    {
+      name: 'button',
+      type: 'localeCta',
+      title: 'Main button (*)'
+    },
   ],
   preview: {
     select: {

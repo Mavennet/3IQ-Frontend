@@ -3,3 +3,14 @@
 .textSection > :is(h1, h2, h3, h4){
    color: #0082e5;
 }
+
+.video{
+   position: relative;
+   width: 100%;
+}
+
+.videoContainer{
+   position: absolute;
+   width: 30%;
+   top: 450px;
+}
