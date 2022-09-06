@@ -31,7 +31,7 @@ function Header(props) {
         >
           <Box>
             {/* Logo */}
-            <Link href={'/'}>
+            <Link href={`/${currentCountry.urlTag}/home`}>
               <Logo logo={currentCountry.headerLogo} />
             </Link>
           </Box>

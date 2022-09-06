@@ -30,13 +30,13 @@ export const getServerSideProps = async ({params}) => {
       urlTag,
       mainNavigation[]-> {
       ...,
-      route-> { ..., 'localeTitle': page->description },
-      submenuRoutes[]-> { ..., 'localeTitle': page->description },      
+      route-> { ..., 'localeTitle': page->title },
+      submenuRoutes[]-> { ..., 'localeTitle': page->title },
     },
       languages[]->,
       headerLogo,
       footerLogo,
-      footerNavigation[]-> { ..., 'localeTitle': page->description },
+      footerNavigation[]-> { ..., 'localeTitle': page->title },
       footerFirstLeftBlockContent,
       footerFirstLeftBlockImage,
       footerSecondLeftBlockContent,
@@ -136,7 +136,7 @@ export const getServerSideProps = async ({params}) => {
 
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
-  
+
   return {
     props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts} || {},
   }
@@ -159,15 +159,32 @@ const LandingPage = (props) => {
     allPosts,
   } = props
 
+  const getLanguageFromStorage = () => {
+      const languageStorage = localStorage.getItem('lang')
+      const languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
+      if (languageSelected.length > 0) {
+        return languageSelected[0]
+      } else {
+        localStorage.setItem('lang', country.languages[0].languageTag)
+        return country.languages[0]
+      }
+
+  }
+
   const [country] = useState(
     currentCountry
       ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
       : dataCountries.filter((country) => country.urlTag === 'ca')[0]
   )
 
-  const [currentLanguage, setCurrentLanguage] = useState(country.languages[0])
+  const [currentLanguage, setCurrentLanguage] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('lang')
+      ? getLanguageFromStorage()
+      : country.languages[0]
+  )
 
   const switchLanguage = (lang) => {
+    localStorage.setItem('lang', lang.languageTag)
     setCurrentLanguage(lang)
   }
 
@@ -218,15 +235,16 @@ const LandingPage = (props) => {
         },
       ]
     : []
-    
-  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage.languageTag] : 'Title not filled on the corresponding language for this page'
+
+  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage?.languageTag] : 'Title not filled on the corresponding language for this page'
+  const localeDescription = (description && currentLanguage.languageTag && description[currentLanguage.languageTag]) ? description[currentLanguage?.languageTag] : 'Description not filled on the corresponding language for this page'
 
   return (
     <Layout config={formatedConfig}>
       <NextSeo
         title={localeTitle}
         titleTemplate={`%s | ${config.title}`}
-        description={description}
+        description={localeDescription}
         canonical={config.url && `${config.url}/${slug}`}
         openGraph={{
           images: openGraphImages,

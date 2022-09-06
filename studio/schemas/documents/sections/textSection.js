@@ -1,18 +1,22 @@
-import supportedLanguages from '../../supportedLanguages';
 import { SplitHorizontalIcon } from '@sanity/icons'
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
   name: 'textSection',
-  title: 'Text',
+  title: 'Text Block',
   icon: SplitHorizontalIcon,
   fields: [
     {
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'text',
       type: 'localePortableText',
-      title: 'Text',
+      title: 'Text (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'videoSrc',
@@ -27,13 +31,12 @@ export default {
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
+      title: 'name',
     },
-    prepare({ title, media }) {
+    prepare({ title }) {
       return {
         title,
-        subtitle: 'Hero Section',
-        media,
+        subtitle: 'Text Block section',
       };
     },
   },

@@ -13,7 +13,7 @@ function getIconComponent (item) {
 function StructureMenuWidget (props) {
   return (
     <div className={styles.root}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h3 className={styles.title}>Edit your content</h3>
       </div>
 
@@ -31,7 +31,7 @@ function StructureMenuWidget (props) {
             </div>
           )
         })}
-      </div>
+      </div> */}
     </div>
   )
 }
