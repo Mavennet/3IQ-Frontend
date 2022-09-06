@@ -166,7 +166,7 @@ const LandingPage = (props) => {
   )
 
   const [currentLanguage, setCurrentLanguage] = useState(
-    typeof window !== 'undefined'
+    typeof window !== 'undefined' && localStorage.getItem('lang')
       ? country.languages.filter((language) => language.languageTag === localStorage.getItem('lang'))[0]
       : country.languages[0]
   )
@@ -224,7 +224,7 @@ const LandingPage = (props) => {
       ]
     : []
 
-  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage.languageTag] : 'Title not filled on the corresponding language for this page'
+  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage?.languageTag] : 'Title not filled on the corresponding language for this page'
 
   return (
     <Layout config={formatedConfig}>
