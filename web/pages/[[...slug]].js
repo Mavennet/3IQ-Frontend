@@ -159,6 +159,19 @@ const LandingPage = (props) => {
     allPosts,
   } = props
 
+  const getLanguageFromStorage = () => {
+
+      let languageStorage = localStorage.getItem('lang')
+      let languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
+      if (languageSelected.length > 0) {
+        return country.languages.filter((language) => language.languageTag === localStorage.getItem('lang'))[0]
+      } else {
+        localStorage.setItem('lang', country.languages[0].languageTag)
+        return country.languages[0]
+      }
+
+  }
+
   const [country] = useState(
     currentCountry
       ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
@@ -167,7 +180,7 @@ const LandingPage = (props) => {
 
   const [currentLanguage, setCurrentLanguage] = useState(
     typeof window !== 'undefined' && localStorage.getItem('lang')
-      ? country.languages.filter((language) => language.languageTag === localStorage.getItem('lang'))[0]
+      ? getLanguageFromStorage()
       : country.languages[0]
   )
 
