@@ -6,6 +6,7 @@
 export default  [
   { id: 'en_CA', title: 'English (CA)', isDefault: true },
   { id: 'en_US', title: 'English (US)' },
+  { id: 'en_AU', title: 'English (AU)' },
   { id: "fr_CA", title: "French (CA)" },
   { id: 'ar_AE', title: 'Arabic (AE)' },
 ]

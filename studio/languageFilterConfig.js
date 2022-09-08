@@ -7,6 +7,7 @@ export default {
   supportedLanguages: [
     { id: 'en_CA', title: 'English (CA)' },
     { id: 'en_US', title: 'English (US)' },
+    { id: 'en_AU', title: 'English (AU)' },
     { id: "fr_CA", title: "French (CA)" },
     { id: 'ar_AE', title: 'Arabic (AE)' },
   ],
@@ -24,6 +25,8 @@ export default {
     'post',
     'country',
     'newsCard',
+    'person',
+    'team',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
