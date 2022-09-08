@@ -34,12 +34,17 @@ export default {
       title: 'Linkedin URL',
     },
     {
+      name: 'email',
+      type: 'string',
+      title: 'E-mail',
+    },
+    {
       name: 'bio',
       type: 'localeBioPortableText',
       title: 'Bio (*)',
       validation: Rule => Rule.error('Information required.').required(),
     }
-  ], 
+  ],
   preview: {
     select: {
       name: 'name',

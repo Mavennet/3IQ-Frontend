@@ -147,7 +147,9 @@ export const getServerSideProps = async ({params}) => {
         name,
         'localeJobTitle': jobTitle,
         'localeBio': bio,
-        profilePhoto,        
+        profilePhoto,
+        linkedinUrl,
+        email
       },
       countries[]-> {_id},
     }

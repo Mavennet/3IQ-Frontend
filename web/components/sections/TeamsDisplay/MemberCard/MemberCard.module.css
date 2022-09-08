@@ -1,0 +1,28 @@
+.memberCard {
+  background: #091B3F;
+  height: 100%;
+  border-bottom: 8px solid transparent;
+  transition: 0.3s;
+}
+
+.memberCard:hover {
+  border-bottom: 8px solid #DC6E19;
+  transition: 0.3s;
+}
+
+.linkedin {
+  display: flex;
+  justify-content: center;
+  border: 2px solid #fff;
+  padding: 10px 10px 3px 10px;
+  color: #fff;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.linkedin:hover {
+  background-color: #fff;
+  color: #091B3F;
+  transition: 0.3s;
+}
