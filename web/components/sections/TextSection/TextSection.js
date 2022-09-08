@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SimpleBlockContent from '../SimpleBlockContent'
+import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TextSection.module.css'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
-import RedirectButton from '../RedirectButton/RedirectButton'
+import RedirectButton from '../../RedirectButton/RedirectButton'
 import CardMedia from '@mui/material/CardMedia'
 
 function TextSection(props) {
@@ -34,7 +34,7 @@ function TextSection(props) {
                   sx={{
                     position: {md: 'absolute', xs: 'relative'},
                     width: {xl: '20%', lg: '30%'},
-                    top: {md: '350px'},
+                    top: {md: '300px'},
                     mt: {md: 0, xs: 5},
                   }}
                 >

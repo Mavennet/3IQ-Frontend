@@ -38,6 +38,7 @@ export default {
             {type: 'newsCard'},
             {type: 'textSection'},
             {type: 'hero'},
+            {type: 'timeline'},
             {type: 'heroWithImage'},
             {type: 'imageBesideText'},
             {type: 'sideBySideImages'},

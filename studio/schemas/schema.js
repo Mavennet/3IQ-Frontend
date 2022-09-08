@@ -21,6 +21,7 @@ import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
+import timeline from './documents/sections/timeline';
 
 // Object types
 import cta from './objects/cta';
@@ -68,6 +69,7 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    timeline,
     imageBesideText,
     hero,
     localeCta,

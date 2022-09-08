@@ -1,4 +1,4 @@
-@import '../../styles/custom-media.css';
+@import '../../../styles/custom-media.css';
 
 .textSection > :is(h1, h2, h3, h4){
    color: #0082e5;
