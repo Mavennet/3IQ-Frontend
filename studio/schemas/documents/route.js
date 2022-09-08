@@ -55,13 +55,22 @@ export default {
     select: {
       slug: 'slug.current',
       pageTitle: `page.title.${baseLanguage.id}`,
-      country0: 'countries.0.name',
+      firstCountryName: `countries.0.name`,
+      secondCountryName: `countries.1.name`,
+      thirdCountryName: `countries.2.name`,
+      fourthCountryName: `countries.3.name`,
+      fifthCountryName: `countries.4.name`,  // By passing the countries names, it will be able to access them within prepare() without only receiving the reference _ref
     },
-    prepare({ slug, pageTitle, country0 }) {
-      const subtitle = country0 ? country0 : 'None'
+    prepare({ slug, pageTitle, firstCountryName = '', secondCountryName, thirdCountryName, fourthCountryName, fifthCountryName }) {
+      let countryNames = firstCountryName;
+      countryNames = secondCountryName ? countryNames.concat(', ' + secondCountryName) : countryNames;
+      countryNames = thirdCountryName ? countryNames.concat(', ' + thirdCountryName) : countryNames;
+      countryNames = fourthCountryName ? countryNames.concat(', ' + fourthCountryName) : countryNames;
+      countryNames = fifthCountryName ? countryNames.concat(', ' + fifthCountryName) : countryNames;
+
       return {
         title: slug === '/' ? '/' : `/${slug}`,
-        subtitle: `Page: ${pageTitle} - ${subtitle}`,
+        subtitle: `Page: ${pageTitle} - ${countryNames}`,
       }
     },
   },

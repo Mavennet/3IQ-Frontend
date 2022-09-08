@@ -7,12 +7,6 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'buttonText',
-      type: 'localeString',
-      title: 'Button text (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
       name: 'post',
       type: 'reference',
       title: 'Post (*)',
@@ -23,6 +17,12 @@ export default {
           type: 'post',
         },
       ],
+    },
+    {
+      name: 'buttonText',
+      type: 'localeString',
+      title: 'Button text (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'route',
