@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts} = props
+  const {sections, routes, posts, teams} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -64,6 +64,18 @@ function RenderSections(props) {
           }
         }
       }
+    }  
+
+    if (section.teams) {
+      for (let index = 0; index < section.teams.length; index++) {
+        for (let i = 0; i < teams.length; i++) {
+          const team = teams[i]
+  
+          if (team._id === section.teams[index]._ref) {
+            section.teams[index] = team
+          }              
+        }          
+      }
     }
   })
 
@@ -95,6 +107,7 @@ RenderSections.propTypes = {
   ),
   routes: PropTypes.array,
   posts: PropTypes.array,
+  teams: PropTypes.array,
 }
 
 export default RenderSections

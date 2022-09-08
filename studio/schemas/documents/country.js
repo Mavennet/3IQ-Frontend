@@ -107,14 +107,20 @@ export default {
     {
       name: 'newsletterBody',
       type: 'localePortableText',
-      title: 'Newsletter content (*)',
+      title: 'Newsletter Subscribe content (*)',
       description: "Content that will be shown above the user's e-mail input field",
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'newsletterSubscribeButton',
-      type: 'localeCta',
-      title: 'Newsletter subscribe button (*)',
+      name: 'newsletterSubscribeButtonText',
+      type: 'localeString',
+      title: 'Newsletter Subscribe Button Text (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'newsletterSubscribeSrc',
+      type: 'url',
+      title: 'Newsletter Subscribe Link (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {

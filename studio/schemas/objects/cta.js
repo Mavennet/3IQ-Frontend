@@ -11,6 +11,7 @@ export default {
     {
       title: 'Link (*)',
       name: 'link',
+      description: 'Choose one type of link',
       validation: Rule => Rule.error('Information required.').required(),
       options: {
         collapsible: true,
@@ -27,7 +28,7 @@ export default {
     },
     {
       title: 'Internal link',
-      description: 'Use this to link between routes from the website pages',
+      description: 'Use this route to link between routes from the website pages',
       name: 'route',
       type: 'reference',
       to: [{ type: 'route' }],

@@ -6,7 +6,7 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 export default {
   type: 'document',
   name: 'imageBesideText',
-  title: 'Image beside text',
+  title: 'Image beside Text',
   icon: SplitHorizontalIcon,
   fields: [
     {
