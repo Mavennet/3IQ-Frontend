@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import styles from './HeroWithImage.module.css'
-import client from '../../client'
+import styles from './Timeline.module.css'
+import client from '../../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import SimpleBlockContent from '../SimpleBlockContent'
-import RedirectButton from '../RedirectButton/RedirectButton'
+import SimpleBlockContent from '../../SimpleBlockContent'
+import RedirectButton from '../../RedirectButton/RedirectButton'
 
 const builder = imageUrlBuilder(client)
 
@@ -19,7 +19,7 @@ function urlFor(source) {
 
 const theme = createTheme()
 
-function HeroWithImage(props) {
+function Timeline(props) {
   const {mainImage, heading, backgroundImage, description, button} = props
 
 
@@ -72,7 +72,7 @@ function HeroWithImage(props) {
   )
 }
 
-HeroWithImage.propTypes = {
+Timeline.propTypes = {
   mainImage: PropTypes.shape({
     asset: PropTypes.shape({
       _ref: PropTypes.string,
@@ -84,4 +84,4 @@ HeroWithImage.propTypes = {
   button: PropTypes.object,
 }
 
-export default HeroWithImage
+export default Timeline

@@ -18,6 +18,16 @@ export default {
       title: 'Text (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
+    {
+      name: 'videoSrc',
+      type: 'string',
+      title: 'Video Source',
+    },
+    {
+      name: 'button',
+      type: 'localeCta',
+      title: 'Main button (*)'
+    },
   ],
   preview: {
     select: {
