@@ -12,8 +12,6 @@ import client from '../../../client'
 
 const theme = createTheme()
 
-const builder = imageUrlBuilder(client)
-
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
