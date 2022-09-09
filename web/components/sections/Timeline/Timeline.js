@@ -16,6 +16,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineDot from '@mui/lab/TimelineDot'
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
+import SimpleBlockContent from '../../SimpleBlockContent'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -25,19 +26,24 @@ const theme = createTheme()
 
 const timeLineDotSx = {border: '4px solid #DC6E19', background: '#DC6E19', margin: 0}
 
-function renderTimeline() {
+function renderTimeline(items) {
   return (
     <MuiTimeline position="right">
       <TimelineItem>
+        <TimelineOppositeContent
+          sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+        ></TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot sx={timeLineDotSx} variant="outlined" />
+          <TimelineDot sx={{...timeLineDotSx, margin: 2, marginBottom: 0}} variant="outlined" />
           <TimelineConnector sx={{border: '2px solid #DC6E19'}} />
         </TimelineSeparator>
         <TimelineContent sx={{paddingRight: '10px'}}></TimelineContent>
       </TimelineItem>
-      {ITEMS.map((item, index) => (
+      {items.map((item, index) => (
         <TimelineItem key={index}>
-          <TimelineOppositeContent sx={{color: '#0182e5', fontWeight: 'bold'}}>
+          <TimelineOppositeContent
+            sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+          >
             {item.year}
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -52,12 +58,22 @@ function renderTimeline() {
             />
             <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '200px'}} />
           </TimelineSeparator>
-          <TimelineContent sx={{paddingRight: '10px'}}>{item.text}</TimelineContent>
+          <TimelineContent sx={{paddingRight: '10px'}}>
+            <Typography
+              sx={{display: {md: 'none', xs: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+            >
+              {item.year}
+            </Typography>
+            <Typography> {item.text}</Typography>
+          </TimelineContent>
         </TimelineItem>
       ))}
       <TimelineItem>
+        <TimelineOppositeContent
+          sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+        ></TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot sx={timeLineDotSx} variant="outlined" />
+          <TimelineDot sx={{...timeLineDotSx, margin: 2, marginTop: 0}} variant="outlined" />
         </TimelineSeparator>
         <TimelineContent sx={{paddingRight: '10px'}}></TimelineContent>
       </TimelineItem>
@@ -66,11 +82,8 @@ function renderTimeline() {
 }
 
 function Timeline(props) {
+  console.log(props)
   const {backgroundImage, leftFirstTextBlock, leftSecondTextBlock, items} = props
-
-  console.log(leftFirstTextBlock)
-  console.log(leftSecondTextBlock)
-  console.log(items)
 
   return (
     <ThemeProvider theme={theme}>
@@ -87,20 +100,17 @@ function Timeline(props) {
       >
         <Container maxWidth="md">
           <Grid container>
-            <Grid item md={6} xs={12}>
+            <Grid style={{color: 'white', fontWeight: 'bold'}} item md={6} xs={12}>
               <Box pt={15} pr={{md: 30, xs: 0}}>
-                <Typography variant="h5" style={{color: 'white', fontWeight: 'bold'}}>
-                  Since 2012, 3iQ has continued to forge ahead with many “firsts” in digital asset
-                  investing…
-                </Typography>
-                <Typography variant="h5" pt={40} style={{color: 'white', fontWeight: 'bold'}}>
-                  … and now, 3iQ manages over $700M in AUM* (assets under management)
-                </Typography>
-                <span>*CAD as at June 30, 2022</span>
+                {leftFirstTextBlock && <SimpleBlockContent blocks={leftFirstTextBlock} />}
               </Box>
+              <Box pt={60} pr={{md: 30, xs: 0}}>
+                {leftSecondTextBlock && <SimpleBlockContent blocks={leftSecondTextBlock} />}
+              </Box>
+              <span>*CAD as at June 30, 2022</span>
             </Grid>
             <Grid item md={6} xs={12}>
-              <Box style={{color: 'white'}}>{renderTimeline()}</Box>
+              <Box style={{color: 'white'}}>{items && renderTimeline(items)}</Box>
             </Grid>
           </Grid>
         </Container>
