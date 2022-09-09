@@ -48,6 +48,8 @@ function Footer(props) {
     currentLanguage
   } = props
 
+  console.log(currentCountry)
+
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -237,15 +239,27 @@ function Footer(props) {
             <Grid container>
               {
                 currentCountry.newsletterBody && (
-                  <div className={styles.simpleBlockContent}><SimpleBlockContent blocks={currentCountry.newsletterBody[currentLanguage?.languageTag]} /></div>
+                  <Grid item xs={12}>
+                    <div className={styles.simpleBlockContent}><SimpleBlockContent blocks={currentCountry.newsletterBody[currentLanguage?.languageTag]} /></div>
+                  </Grid>
                 )
               }
-              <Grid item xs={12} mb={2}>
-                <input className={styles.inputNewsletter} placeholder="Email"></input>
-              </Grid>
-              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button variant="contained" sx={{ textTransform: 'inherit' }}>Subscribe</Button>
-              </Grid>
+              {
+                currentCountry.newsletterSubscribeSrc && (
+                  <Grid item xs={12} mb={2}>
+                    <iframe
+                      src={currentCountry.newsletterSubscribeSrc}
+                      width='100%'
+                      height='350'
+                      type='text/html'
+                      frameborder='0'
+                      aria-label='newsletter subscription'
+                      allowTransparency='true'
+                    >
+                    </iframe>
+                  </Grid>
+                )
+              }
             </Grid>
           </Box>
         </Grid>

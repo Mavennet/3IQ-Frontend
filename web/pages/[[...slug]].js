@@ -45,6 +45,7 @@ export const getServerSideProps = async ({params}) => {
       footerBottomContent,
       newsletterBody,
       newsletterSubscribeButton,
+      newsletterSubscribeSrc,
       followUsText,
       twitterUrl,
       linkedinUrl,
