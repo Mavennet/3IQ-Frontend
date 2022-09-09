@@ -39,12 +39,12 @@ export default {
             {type: 'newsCard'},
             {type: 'textSection'},
             {type: 'hero'},
-            {type: 'timeline'},
             {type: 'heroWithImage'},
             {type: 'teamsDisplay'},
             {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
             {type: 'doubleOptions'},
+            {type: 'timeline'},
           ]
         }
       ]
