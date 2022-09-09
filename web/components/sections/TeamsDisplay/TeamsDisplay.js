@@ -20,17 +20,19 @@ function TeamsDisplay(props) {
     setMemberSelected(member)
   }
 
-  const style = {
+  const modalStyle = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: { xs: '95%', md: '90%' },
-    height: '95%',
+    height: 'auto',
+    maxWidth: '1024px',
+    maxHeight: '95%',
     bgcolor: '#fff',
     outline: 'none',
     overflowY: 'scroll',
-    p: 4,
+    p: 2,
   };
 
   return (
@@ -122,7 +124,7 @@ function TeamsDisplay(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={modalStyle}>
           <Box
             onClick={() => setOpen(false)}
             sx={{

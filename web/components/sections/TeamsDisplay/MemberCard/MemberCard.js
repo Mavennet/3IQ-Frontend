@@ -83,7 +83,7 @@ function MemberCard(props) {
                 fontSize: '16px'
               }}
             >
-              ${`Read ${getFirstName(name)}'s Profile`}
+              {`Read ${getFirstName(name)}'s Profile`}
             </Typography>
           )
         }
