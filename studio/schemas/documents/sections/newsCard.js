@@ -19,6 +19,19 @@ export default {
       ],
     },
     {
+      name: 'isInvertedLayout',
+      type: 'boolean',
+      title: 'Invert layout?',
+      description: 'Enable this option to invert the content and show the image on the right side',
+      initialValue: false,
+    },
+    {
+      name: 'shortDescription',
+      type: 'localePortableText',
+      title: 'Short description',
+      description: "Optional overview about the selected post",
+    },
+    {
       name: 'buttonText',
       type: 'localeString',
       title: 'Button text (*)',
@@ -39,12 +52,14 @@ export default {
   ],
   preview: {
     select: {
-      title: `post.name`
+      title: `post.name`,
+      isInverted: `isInvertedLayout`,
     },
-    prepare({ title }) {
+    prepare({ title, isInverted }) {
+      const isInvertedText = isInverted ? ' - Inverted' : ''
       return {
         title,
-        subtitle: 'News Card section',
+        subtitle: 'News Card section' + isInvertedText
       }
     }
   }

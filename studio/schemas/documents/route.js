@@ -43,12 +43,14 @@ export default {
       type: 'boolean',
       title: 'Include page in sitemap',
       description: 'For search engines. Will be added to /sitemap.xml',
+      initialValue: true,
     },
     {
       name: 'disallowRobots',
       type: 'boolean',
       title: 'Disallow in robots.txt',
       description: 'Hide this route for search engines',
+      initialValue: false,
     },
   ],
   preview: {
