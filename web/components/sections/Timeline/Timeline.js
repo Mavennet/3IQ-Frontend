@@ -81,7 +81,11 @@ function renderTimeline() {
 }
 
 function Timeline(props) {
-  const {backgroundImage} = props
+  const {backgroundImage, leftFirstTextBlock, leftSecondTextBlock, items} = props
+
+  console.log(leftFirstTextBlock)
+  console.log(leftSecondTextBlock)
+  console.log(items)
 
   console.log(backgroundImage)
   return (
@@ -151,6 +155,9 @@ const ITEMS = [
 
 Timeline.propTypes = {
   backgroundImage: PropTypes.object,
+  leftFirstTextBlock: PropTypes.object,
+  leftSecondTextBlock: PropTypes.object,
+  items: PropTypes.array,
 }
 
 export default Timeline

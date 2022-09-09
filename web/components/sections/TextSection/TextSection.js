@@ -10,8 +10,6 @@ import RedirectButton from '../../RedirectButton/RedirectButton'
 function TextSection(props) {
   const {text, videoSrc, button} = props
 
-  console.log(videoSrc)
-
   return (
     <Box>
       <Container maxWidth="md">

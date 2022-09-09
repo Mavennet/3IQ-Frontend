@@ -63,12 +63,12 @@ export default () =>
             S.documentTypeListItem('newsCard').title('News Card'),
             S.documentTypeListItem('textSection').title('Text Block'),
             S.documentTypeListItem('hero').title('Hero'),
-            S.documentTypeListItem('timeline').title('Timeline'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('teamsDisplay').title('Teams Display'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
+            S.documentTypeListItem('timeline').title('Timeline'),
           ])
       ),
       S.documentTypeListItem('post').title('Posts'),
