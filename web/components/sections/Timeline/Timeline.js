@@ -29,15 +29,20 @@ function renderTimeline() {
   return (
     <MuiTimeline position="right">
       <TimelineItem>
+        <TimelineOppositeContent
+          sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+        ></TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot sx={timeLineDotSx} variant="outlined" />
+          <TimelineDot sx={{...timeLineDotSx, margin: 2, marginBottom: 0}} variant="outlined" />
           <TimelineConnector sx={{border: '2px solid #DC6E19'}} />
         </TimelineSeparator>
         <TimelineContent sx={{paddingRight: '10px'}}></TimelineContent>
       </TimelineItem>
       {ITEMS.map((item, index) => (
         <TimelineItem key={index}>
-          <TimelineOppositeContent sx={{color: '#0182e5', fontWeight: 'bold'}}>
+          <TimelineOppositeContent
+            sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+          >
             {item.year}
           </TimelineOppositeContent>
           <TimelineSeparator>
@@ -52,12 +57,22 @@ function renderTimeline() {
             />
             <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '200px'}} />
           </TimelineSeparator>
-          <TimelineContent sx={{paddingRight: '10px'}}>{item.text}</TimelineContent>
+          <TimelineContent sx={{paddingRight: '10px'}}>
+            <Typography
+              sx={{display: {md: 'none', xs: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+            >
+              {item.year}
+            </Typography>
+            <Typography> {item.text}</Typography>
+          </TimelineContent>
         </TimelineItem>
       ))}
       <TimelineItem>
+        <TimelineOppositeContent
+          sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+        ></TimelineOppositeContent>
         <TimelineSeparator>
-          <TimelineDot sx={timeLineDotSx} variant="outlined" />
+          <TimelineDot sx={{...timeLineDotSx, margin: 2, marginTop: 0 }} variant="outlined" />
         </TimelineSeparator>
         <TimelineContent sx={{paddingRight: '10px'}}></TimelineContent>
       </TimelineItem>
@@ -68,6 +83,7 @@ function renderTimeline() {
 function Timeline(props) {
   const {backgroundImage} = props
 
+  console.log(backgroundImage)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
