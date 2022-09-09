@@ -7,14 +7,10 @@ import client from '../../../../client'
 import { FaLinkedinIn } from 'react-icons/fa'
 
 function MemberCard(props) {
-  const { name, image, role, linkedin, showProfileBox, email } = props
+  const { name, image, role, linkedin, showProfileBox, email, contactText, readProfileText } = props
 
   function urlFor(source) {
     return imageUrlBuilder(client).image(source)
-  }
-
-  const getFirstName = (name) => {
-    return name.split(' ').slice(0, -1).join(' ')
   }
 
   return (
@@ -83,7 +79,7 @@ function MemberCard(props) {
                 fontSize: '16px'
               }}
             >
-              {`Read ${getFirstName(name)}'s Profile`}
+              {readProfileText !== null ? readProfileText : 'Missing - Read Profile Text'}
             </Typography>
           )
         }
@@ -101,7 +97,7 @@ function MemberCard(props) {
                   fontSize: '16px'
                 }}
               >
-                Contact {getFirstName(name)}
+                {contactText !== null ? contactText : 'Missing - Contact Text'}
               </Typography>
             </Link>
           )
@@ -117,7 +113,9 @@ MemberCard.propTypes = {
   role: PropTypes.string,
   linkedin: PropTypes.string,
   showProfileBox: PropTypes.bool,
-  email: PropTypes.string
+  email: PropTypes.string,
+  contactText: PropTypes.string,
+  readProfileText: PropTypes.string
 }
 
 export default MemberCard

@@ -108,6 +108,8 @@ function TeamsDisplay(props) {
                           image={item.profilePhoto.asset._ref}
                           showProfileBox={showProfile}
                           email={item.email}
+                          readProfileText={item.readProfileText}
+                          contactText={item.contactText}
                         />
                       </Grid>
                     )

@@ -48,8 +48,6 @@ function Footer(props) {
     currentLanguage
   } = props
 
-  console.log(currentCountry)
-
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -252,7 +250,7 @@ function Footer(props) {
                       width='100%'
                       height='350'
                       type='text/html'
-                      frameborder='0'
+                      frameBorder='0'
                       aria-label='newsletter subscription'
                       allowTransparency='true'
                     >
