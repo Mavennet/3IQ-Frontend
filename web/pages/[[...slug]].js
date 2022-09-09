@@ -45,6 +45,7 @@ export const getServerSideProps = async ({params}) => {
       footerBottomContent,
       newsletterBody,
       newsletterSubscribeButton,
+      newsletterSubscribeSrc,
       followUsText,
       twitterUrl,
       linkedinUrl,
@@ -149,7 +150,9 @@ export const getServerSideProps = async ({params}) => {
         'localeBio': bio,
         profilePhoto,
         linkedinUrl,
-        email
+        email,
+        contactText,
+        readProfileText,
       },
       countries[]-> {_id},
     }

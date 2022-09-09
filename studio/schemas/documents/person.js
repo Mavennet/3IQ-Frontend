@@ -34,15 +34,26 @@ export default {
       title: 'Linkedin URL',
     },
     {
+      name: 'contactText',
+      type: 'localeString',
+      title: 'Contact Text',
+      description: 'If you fill the e-mail, it is necessary to fill the Contact Text field and vice-versa'
+    },
+    {
       name: 'email',
       type: 'string',
       title: 'E-mail',
     },
     {
+      name: 'readProfileText',
+      type: 'localeString',
+      title: 'Read Profile Text',
+      description: 'If you fill the bio, it is necessary to fill the Read Profile Text field and vice-versa'
+    },
+    {
       name: 'bio',
       type: 'localeBioPortableText',
-      title: 'Bio (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Bio',
     }
   ],
   preview: {
