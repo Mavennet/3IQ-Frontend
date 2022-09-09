@@ -1,1 +1,36 @@
-@import '../../../styles/custom-media.css';
+.navTeam {
+  list-style: none;
+  display: flex
+}
+
+.navTeam li {
+  font-family: 'Europa';
+  margin-right: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  border-right: 2px solid #032b4c;
+  color: #032b4c;
+}
+
+.navTeam li a {
+  text-decoration: none;
+}
+
+.navTeam li a:visited {
+  color: #032b4c;
+}
+
+.navTeam li a:hover {
+  color: #DC6E19;
+}
+
+.navTeam li:last-child {
+  border-right: none;
+}
+
+.simpleBlockContent p {
+  font-size: 16px;
+  font-family: 'Europa';
+  color: rgb(82, 82, 82);
+}
