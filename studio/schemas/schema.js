@@ -10,6 +10,7 @@ import country from './documents/country';
 import language from './documents/language';
 import menuItem from './documents/menuItem';
 import team from './documents/team';
+import timelineItem from './documents/timelineItem';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -70,7 +71,6 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
-    timeline,
     imageBesideText,
     hero,
     localeCta,
@@ -82,5 +82,7 @@ export default createSchema({
     localeBioPortableText,
     team,
     teamsDisplay,
+    timeline,
+    timelineItem,
   ]),
 });

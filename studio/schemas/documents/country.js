@@ -35,9 +35,9 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      title: 'Main navigation',
       name: 'mainNavigation',
       description: 'Select pages for the top menu',
+      title: 'Main navigation',
       validation: Rule => [
         Rule.max(5).warning('Are you sure you want more than 5 items?'),
         Rule.unique().error('You have duplicate menu items'),
