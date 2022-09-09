@@ -1,10 +1,14 @@
-import { MdMenu } from "react-icons/md";
+
+import supportedLanguages from '../supportedLanguages';
+import { MdSchedule } from "react-icons/md";
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   name: 'timelineItem',
   type: 'document',
   title: 'Timeline Item',
-  icon: MdMenu,
+  icon: MdSchedule,
   fields: [
     {
       name: 'name',
@@ -28,7 +32,7 @@ export default {
   preview: {
     select: {
       name: 'name',
-      text: 'dateText',
+      text: `dateText.${baseLanguage.id}`,
     },
     prepare({ name, text }) {
       return {
