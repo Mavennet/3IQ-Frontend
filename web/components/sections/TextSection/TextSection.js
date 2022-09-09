@@ -6,7 +6,6 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
-import CardMedia from '@mui/material/CardMedia'
 
 function TextSection(props) {
   const {text, videoSrc, button} = props
@@ -42,7 +41,7 @@ function TextSection(props) {
                     className={styles.video}
                     // height={500}
                     src={videoSrc}
-                    autoplay=""
+                    autoPlay=""
                     loop=""
                     controls=""
                     muted="muted"
