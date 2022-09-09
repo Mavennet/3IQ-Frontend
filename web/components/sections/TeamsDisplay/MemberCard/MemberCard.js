@@ -15,6 +15,18 @@ function MemberCard(props) {
 
   return (
     <div className={styles.memberCard}>
+      {
+        !showProfileBox && email && (
+          <Link
+            href={`mailto:${email}`}
+            color="inherit"
+            target='_blank'
+            rel="noopener"
+            underline={'none'}
+            className={styles.link}
+          />
+        )
+      }
       <Box
         component="img"
         width={300}
@@ -85,21 +97,19 @@ function MemberCard(props) {
         }
         {
           !showProfileBox && email && (
-            <Link href={`mailto:${email}`} color="inherit" target='_blank' rel="noopener" underline={'none'}>
-              <Typography
-                variant="h2"
-                mb={2}
-                p={1}
-                sx={{
-                  textAlign: 'center',
-                  color: '#fff',
-                  backgroundColor: '#0082E5',
-                  fontSize: '16px'
-                }}
-              >
-                {contactText !== null ? contactText : 'Missing - Contact Text'}
-              </Typography>
-            </Link>
+            <Typography
+              variant="h2"
+              mb={2}
+              p={1}
+              sx={{
+                textAlign: 'center',
+                color: '#fff',
+                backgroundColor: '#0082E5',
+                fontSize: '16px'
+              }}
+            >
+              {contactText !== null ? contactText : 'Missing - Contact Text'}
+            </Typography>
           )
         }
       </Box>

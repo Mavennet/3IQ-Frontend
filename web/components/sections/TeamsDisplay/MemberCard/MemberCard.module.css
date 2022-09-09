@@ -3,6 +3,7 @@
   height: 100%;
   border-bottom: 8px solid transparent;
   transition: 0.3s;
+  position: relative;
 }
 
 .memberCard:hover {
@@ -25,4 +26,10 @@
   background-color: #fff;
   color: #091B3F;
   transition: 0.3s;
+}
+
+.link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }

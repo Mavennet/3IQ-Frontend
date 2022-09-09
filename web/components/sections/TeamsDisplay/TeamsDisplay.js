@@ -98,9 +98,9 @@ function TeamsDisplay(props) {
                         md={3}
                         key={item._id}
                         sx={{
-                          cursor: 'pointer'
+                          cursor: item.localeBio[currentLanguage.languageTag] || item.email ? 'pointer' : ''
                         }}
-                        onClick={item.localeBio ? () => handleOpen(item) : ''}
+                        onClick={item.localeBio[currentLanguage.languageTag] ? () => handleOpen(item) : null}
                       >
                         <MemberCard
                           name={item.name}
