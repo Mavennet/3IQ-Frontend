@@ -112,12 +112,6 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'newsletterSubscribeButtonText',
-      type: 'localeString',
-      title: 'Newsletter Subscribe Button Text (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
       name: 'newsletterSubscribeSrc',
       type: 'url',
       title: 'Newsletter Subscribe Link (*)',
