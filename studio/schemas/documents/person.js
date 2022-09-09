@@ -1,10 +1,14 @@
-import { UsersIcon } from '@sanity/icons'
+
+import supportedLanguages from '../supportedLanguages';
+import { UserIcon } from '@sanity/icons'
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   name: 'person',
   type: 'document',
   title: 'Person',
-  icon: UsersIcon,
+  icon: UserIcon,
   fields: [
     {
       name: 'name',
@@ -13,22 +17,57 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'image',
+      name: 'profilePhoto',
       type: 'figure',
-      title: 'Image (*)',
+      title: 'Profile photo (*)',
       validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'jobTitle',
+      type: 'localeString',
+      title: 'Job title (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'linkedinUrl',
+      type: 'url',
+      title: 'Linkedin URL',
+    },
+    {
+      name: 'contactText',
+      type: 'localeString',
+      title: 'Contact Text',
+      description: 'If you fill the e-mail, it is necessary to fill the Contact Text field and vice-versa'
+    },
+    {
+      name: 'email',
+      type: 'string',
+      title: 'E-mail',
+    },
+    {
+      name: 'readProfileText',
+      type: 'localeString',
+      title: 'Read Profile Text',
+      description: 'If you fill the bio, it is necessary to fill the Read Profile Text field and vice-versa'
     },
     {
       name: 'bio',
       type: 'localeBioPortableText',
-      title: 'Bio (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Bio',
     }
   ],
   preview: {
     select: {
-      title: 'name',
-      media: 'image',
+      name: 'name',
+      media: 'profilePhoto',
+      jobTitle: `jobTitle.${baseLanguage.id}`,
+    },
+    prepare({name = 'No name', media, jobTitle = 'No job title'}) {
+      return {
+        title: name,
+        media,
+        subtitle: jobTitle,
+      }
     }
   }
 }

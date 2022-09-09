@@ -5,8 +5,8 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'hero',
-  title: 'Hero',
+  name: 'timeline',
+  title: 'Timeline',
   icon: SplitHorizontalIcon,
   fields: [
     {
@@ -21,12 +21,25 @@ export default {
       title: 'Description',
     },
     {
+      name: 'mainImage',
+      type: 'figure',
+      title: 'Main image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'button',
+      type: 'localeCta',
+      title: 'Main button (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
@@ -37,7 +50,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero section',
+        subtitle: 'Timeline',
         media,
       };
     },

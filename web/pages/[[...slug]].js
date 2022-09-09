@@ -45,6 +45,7 @@ export const getServerSideProps = async ({params}) => {
       footerBottomContent,
       newsletterBody,
       newsletterSubscribeButton,
+      newsletterSubscribeSrc,
       followUsText,
       twitterUrl,
       linkedinUrl,
@@ -134,11 +135,35 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all teams (used later on to get the our team display blocks)
+  const allTeams = await client.fetch(
+    groq`
+    *[_type == 'team'] {
+      _id,
+      _type,
+      'localeName': name,
+      members[]-> {
+        _id,
+        _type,
+        name,
+        'localeJobTitle': jobTitle,
+        'localeBio': bio,
+        profilePhoto,
+        linkedinUrl,
+        email,
+        contactText,
+        readProfileText,
+      },
+      countries[]-> {_id},
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams} || {},
   }
 }
 
@@ -157,6 +182,7 @@ const LandingPage = (props) => {
     currentCountry,
     allRoutes,
     allPosts,
+    allTeams,
   } = props
 
   const getLanguageFromStorage = () => {
@@ -251,7 +277,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -268,6 +294,7 @@ LandingPage.propTypes = {
   currentCountry: PropTypes.string,
   allRoutes: PropTypes.any,
   allPosts: PropTypes.any,
+  allTeams: PropTypes.any,
 }
 
 export default LandingPage

@@ -26,6 +26,10 @@
   font-family: 'Europa';
 }
 
+.simpleBlockContent {
+  padding: 0px 20px;
+}
+
 .simpleBlockContent p {
   font-family: 'Europa';
   font-size: 14px

@@ -7,24 +7,35 @@ import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import SimpleBlockContent from '../../SimpleBlockContent'
+import imageUrlBuilder from '@sanity/image-url'
+import client from '../../../client'
 
 const theme = createTheme()
 
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
+
 function Hero(props) {
-  const {heading, description} = props
+  const {heading, description, backgroundImage} = props
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Box
         sx={{
+          background:
+          backgroundImage &&
+          `url("${urlFor(backgroundImage)
+            .url()}") no-repeat center center`,
+        backgroundSize: 'cover',
           bgcolor: '#091b3f',
-          pt: 20,
-          pb: 20,
+          pt: 15,
+          pb: 15,
         }}
       >
         <Container maxWidth="md">
-          <Box sx={{p: 5, pl:{xs: 1}}}>
+          <Box sx={{p: '5 1', pr: 1, pl:{xs: 1}}}>
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h3" style={{fontWeight: 'bold'}} gutterBottom>
                 {heading}
@@ -42,6 +53,7 @@ function Hero(props) {
 
 Hero.propTypes = {
   heading: PropTypes.object,
+  backgroundImage: PropTypes.object,
   description: PropTypes.object,
 }
 
