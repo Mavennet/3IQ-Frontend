@@ -27,6 +27,9 @@ export default {
     'newsCard',
     'person',
     'team',
+    'contactUsForm',
+    'locationsDisplay',
+    'location',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),

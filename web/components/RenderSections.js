@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, teams, timelines} = props
+  const {sections, routes, posts, teams, timelines, locationsDisplays} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -88,6 +88,17 @@ function RenderSections(props) {
         }        
       }
     }
+
+    if (section._type === 'locationsDisplay') {
+      for (let i = 0; i < locationsDisplays.length; i++) {
+        const locDisplay = locationsDisplays[i]
+
+        if (locDisplay._id === section._id) {
+          section.locations = locDisplay.locations
+          break
+        }        
+      }
+    }
   })
 
   if (!sections) {
@@ -120,6 +131,7 @@ RenderSections.propTypes = {
   posts: PropTypes.array,
   teams: PropTypes.array,
   timelines: PropTypes.array,
+  locationsDisplays: PropTypes.array,
 }
 
 export default RenderSections
