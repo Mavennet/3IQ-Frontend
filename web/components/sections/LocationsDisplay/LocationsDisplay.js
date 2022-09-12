@@ -33,11 +33,11 @@ const theme = createTheme({
 //   return imageUrlBuilder(client).image(source)
 // }
 
-function LocationsDisplay(props) {  
+function LocationsDisplay(props) {
   const {heading, locations, currentLanguage} = props
 
   console.log(heading, locations, currentLanguage)
-  
+
   return ( // TODO
     <ThemeProvider theme={theme}>
     </ThemeProvider>
@@ -47,6 +47,7 @@ function LocationsDisplay(props) {
 LocationsDisplay.propTypes = {
   heading: PropTypes.object,
   locations: PropTypes.object,
+  currentLanguage: PropTypes.string
 }
 
 export default LocationsDisplay

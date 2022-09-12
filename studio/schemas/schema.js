@@ -24,6 +24,7 @@ import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
+import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
@@ -82,6 +83,7 @@ export default createSchema({
     menuItem,
     localePortableText,
     newsCard,
+    readMoreCard,
     localeBioPortableText,
     team,
     teamsDisplay,
