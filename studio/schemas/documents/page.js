@@ -41,6 +41,8 @@ export default {
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'teamsDisplay'},
+            {type: 'contactUsForm'},
+            {type: 'locationsDisplay'},
             {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
             {type: 'doubleOptions'},

@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon } from '@sanity/icons'
+import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon } from '@sanity/icons'
 
 const hiddenDocTypes = (listItem) => ![
   'page',
@@ -24,13 +24,16 @@ const hiddenDocTypes = (listItem) => ![
   'teamsDisplay',
   'timeline',
   'timelineItem',
+  'contactUsForm',
+  'locationsDisplay',
+  'location',
 ].includes(listItem.getId())
 
 export default () =>
   S.list()
     .title('Site')
     .items([
-      S.documentListItem().id('global-config').schemaType('site-config').title('Site config'),
+      S.documentListItem().id('global-config').schemaType('site-config').title('Site config').icon(CogIcon),
       S.divider(),
       S.listItem()
         .title('Pages')
@@ -66,6 +69,8 @@ export default () =>
             S.documentTypeListItem('hero').title('Hero'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('teamsDisplay').title('Teams Display'),
+            S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
+            S.documentTypeListItem('locationsDisplay').title('Locations Display'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),

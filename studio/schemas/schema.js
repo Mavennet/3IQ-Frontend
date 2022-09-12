@@ -11,6 +11,7 @@ import language from './documents/language';
 import menuItem from './documents/menuItem';
 import team from './documents/team';
 import timelineItem from './documents/timelineItem';
+import location from './documents/location';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -25,6 +26,8 @@ import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
+import contactUsForm from './documents/sections/contactUsForm';
+import locationsDisplay from './documents/sections/locationsDisplay';
 
 // Object types
 import cta from './objects/cta';
@@ -84,5 +87,8 @@ export default createSchema({
     teamsDisplay,
     timeline,
     timelineItem,
+    contactUsForm,
+    locationsDisplay,
+    location,
   ]),
 });

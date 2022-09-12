@@ -178,11 +178,29 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all Locations Display sections (used to retrieve the section locations with necessary info)
+  const allLocationsDisplays = await client.fetch(
+    groq`
+    *[_type == 'locationsDisplay'] {
+      _id,
+      _type,
+      _rev,
+      locations[]-> {
+        _id,
+        _type,
+        'localeName': name,
+        'localeDescription': description,
+        googleMapsSrc,      
+      }
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays} || {},
   }
 }
 
@@ -203,6 +221,7 @@ const LandingPage = (props) => {
     allPosts,
     allTeams,
     allTimelines,
+    allLocationsDisplays,
   } = props
 
   const getLanguageFromStorage = () => {
@@ -297,7 +316,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} locationsDisplays={allLocationsDisplays} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -316,6 +335,7 @@ LandingPage.propTypes = {
   allPosts: PropTypes.any,
   allTeams: PropTypes.any,
   allTimelines: PropTypes.any,
+  allLocationsDisplays: PropTypes.any,
 }
 
 export default LandingPage
