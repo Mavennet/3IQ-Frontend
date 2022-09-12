@@ -50,7 +50,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero With Image section',
+        subtitle: 'Read More Card section',
         media,
       };
     },
