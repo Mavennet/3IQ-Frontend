@@ -39,15 +39,18 @@ export default {
             {type: 'newsCard'},
             {type: 'readMoreCard'},
             {type: 'textSection'},
+            {type: 'textSeparator'},            
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
-            {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
+            {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
+            {type: 'descriptionsWithButton'},
             {type: 'timeline'},
+            {type: 'imageBesideText'},
           ]
         }
       ]
