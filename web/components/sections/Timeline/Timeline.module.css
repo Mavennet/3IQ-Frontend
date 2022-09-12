@@ -1,0 +1,24 @@
+
+.simpleBlockContent p {
+  font-family: 'Europa';
+  margin: 0;
+}
+
+.simpleBlockContent a {
+  font-family: 'Europa';
+  color: #0082ef;
+  text-decoration: none;
+}
+
+.leftSimbleBlockContent a{
+  font-family: 'Europa';
+  color: #0082ef;
+  text-decoration: none;
+}
+
+.span{
+  color: #bbbabf;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+}

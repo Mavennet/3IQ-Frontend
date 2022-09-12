@@ -37,6 +37,11 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'span',
+      title: 'Span',
+      type: 'localeString',
+    },
+    {
       name: 'items',
       title: 'Timeline items',
       description: 'Select the timeline items that will be displayed in order',
