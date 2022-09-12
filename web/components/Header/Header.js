@@ -75,7 +75,7 @@ function Header(props) {
                           submenuRoutes={item.submenuRoutes}
                           language={currentLanguage.languageTag}
                           key={item._id}
-                          link={item.link}
+                          link={item.route.slug.current}
                         />
                       )
                       : (
@@ -128,7 +128,7 @@ function Header(props) {
                                   submenuRoutes={item.submenuRoutes}
                                   language={currentLanguage.languageTag}
                                   key={item._id}
-                                  link={item.link}
+                                  link={item.route.slug.current}
                                 />
                               )
                               : (
