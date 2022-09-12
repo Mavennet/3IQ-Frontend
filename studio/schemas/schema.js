@@ -31,6 +31,7 @@ import contactUsForm from './documents/sections/contactUsForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
 import textSeparator from './documents/sections/textSeparator';
 import headlineWithImages from './documents/sections/headlineWithImages';
+import descriptionsWithButton from './documents/sections/descriptionsWithButton';
 
 // Object types
 import cta from './objects/cta';
@@ -96,5 +97,6 @@ export default createSchema({
     location,
     textSeparator,
     headlineWithImages,
+    descriptionsWithButton,
   ]),
 });

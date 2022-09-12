@@ -30,6 +30,7 @@ const hiddenDocTypes = (listItem) => ![
   'location',
   'textSeparator',
   'headlineWithImages',
+  'descriptionsWithButton',
 ].includes(listItem.getId())
 
 export default () =>
@@ -79,6 +80,7 @@ export default () =>
             S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
             S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
+            S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
             S.documentTypeListItem('timeline').title('Timeline'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
           ])
