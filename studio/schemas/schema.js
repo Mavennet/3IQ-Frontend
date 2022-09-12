@@ -30,6 +30,7 @@ import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
 import textSeparator from './documents/sections/textSeparator';
+import headlineWithImages from './documents/sections/headlineWithImages';
 
 // Object types
 import cta from './objects/cta';
@@ -94,5 +95,6 @@ export default createSchema({
     locationsDisplay,
     location,
     textSeparator,
+    headlineWithImages,
   ]),
 });

@@ -29,6 +29,7 @@ const hiddenDocTypes = (listItem) => ![
   'locationsDisplay',
   'location',
   'textSeparator',
+  'headlineWithImages',
 ].includes(listItem.getId())
 
 export default () =>
@@ -75,10 +76,11 @@ export default () =>
             S.documentTypeListItem('teamsDisplay').title('Teams Display'),
             S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
             S.documentTypeListItem('locationsDisplay').title('Locations Display'),
-            S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
+            S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
             S.documentTypeListItem('timeline').title('Timeline'),
+            S.documentTypeListItem('imageBesideText').title('Image beside Text'),
           ])
       ),
       S.documentTypeListItem('post').title('Posts'),

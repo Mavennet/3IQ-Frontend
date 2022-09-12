@@ -45,10 +45,11 @@ export default {
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
-            {type: 'imageBesideText'},
             {type: 'sideBySideImages'},
+            {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
             {type: 'timeline'},
+            {type: 'imageBesideText'},
           ]
         }
       ]

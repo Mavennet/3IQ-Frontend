@@ -5,14 +5,20 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'sideBySideImages',
-  title: 'Side by side Images',
+  name: 'headlineWithImages',
+  title: 'Headline with Images',
   icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'heading',
       type: 'localeString',
       title: 'Heading (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'description',
+      type: 'localePortableText',
+      title: 'Description (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -29,19 +35,17 @@ export default {
           type: 'figure',
         },
       ],
-    }
+    },
   ],
   preview: {
     select: {
       title: `heading.${baseLanguage.id}`,
-      media: 'images.0',
     },
-    prepare({ title, media }) {
+    prepare({ title }) {
       return {
         title,
-        subtitle: 'Side by Side Images section',
-        media,
-      };
-    },
-  },
-};
+        subtitle: 'Headline with Images section'
+      }
+    }
+  }
+}

@@ -13,12 +13,11 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      title: 'Internal link (*)',
-      description: 'Use this route to link between pages on the website',
+      title: 'Internal link',
+      description: 'Use this route to link between pages on the website (mandatory only when there are submenu routes selected)',
       name: 'route',
       type: 'reference',
       to: [{ type: 'route' }],
-      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       title: 'Submenu routes',
