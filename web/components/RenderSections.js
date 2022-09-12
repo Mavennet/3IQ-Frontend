@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, teams} = props
+  const {sections, routes, posts, teams, timelines} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -24,7 +24,7 @@ function RenderSections(props) {
       'localeText', 
       'localeString', 
       'localeSimplePortableText',
-      'localePortableText'
+      'localePortableText',
     ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
@@ -60,11 +60,11 @@ function RenderSections(props) {
           const route = routes[i]
           
           if (route._id === section.route._ref) {
-            section.route = route
+            section.route = route // TODO Add break later and verify if breaks current functionality somehow
           }
         }
       }
-    }  
+    }
 
     if (section.teams) {
       for (let index = 0; index < section.teams.length; index++) {
@@ -72,9 +72,20 @@ function RenderSections(props) {
           const team = teams[i]
   
           if (team._id === section.teams[index]._ref) {
-            section.teams[index] = team
+            section.teams[index] = team // TODO Add break later and verify if breaks current functionality somehow
           }              
         }          
+      }
+    }
+
+    if (section._type === 'timeline') {
+      for (let i = 0; i < timelines.length; i++) {
+        const timeline = timelines[i]
+
+        if (timeline._id === section._id) {
+          section.items = timeline.items
+          break
+        }        
       }
     }
   })
@@ -108,6 +119,7 @@ RenderSections.propTypes = {
   routes: PropTypes.array,
   posts: PropTypes.array,
   teams: PropTypes.array,
+  timelines: PropTypes.array,
 }
 
 export default RenderSections

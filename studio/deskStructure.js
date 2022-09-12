@@ -12,7 +12,6 @@ const hiddenDocTypes = (listItem) => ![
   'route',
   'textSection',
   'hero',
-  'timeline',
   'heroWithImage',
   'imageBesideText',
   'doubleOptions',
@@ -23,6 +22,8 @@ const hiddenDocTypes = (listItem) => ![
   'newsCard',
   'team',
   'teamsDisplay',
+  'timeline',
+  'timelineItem',
 ].includes(listItem.getId())
 
 export default () =>
