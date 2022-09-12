@@ -29,6 +29,7 @@ import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
+import textSeparator from './documents/sections/textSeparator';
 
 // Object types
 import cta from './objects/cta';
@@ -92,5 +93,6 @@ export default createSchema({
     contactUsForm,
     locationsDisplay,
     location,
+    textSeparator,
   ]),
 });

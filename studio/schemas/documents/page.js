@@ -39,6 +39,7 @@ export default {
             {type: 'newsCard'},
             {type: 'readMoreCard'},
             {type: 'textSection'},
+            {type: 'textSeparator'},            
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'teamsDisplay'},

@@ -28,6 +28,7 @@ const hiddenDocTypes = (listItem) => ![
   'contactUsForm',
   'locationsDisplay',
   'location',
+  'textSeparator',
 ].includes(listItem.getId())
 
 export default () =>
@@ -68,6 +69,7 @@ export default () =>
             S.documentTypeListItem('newsCard').title('News Card'),
             S.documentTypeListItem('readMoreCard').title('Read More Card'),
             S.documentTypeListItem('textSection').title('Text Block'),
+            S.documentTypeListItem('textSeparator').title('Text Separator'),
             S.documentTypeListItem('hero').title('Hero'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('teamsDisplay').title('Teams Display'),
