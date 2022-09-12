@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon } from '@sanity/icons'
+import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon } from '@sanity/icons'
 
 const hiddenDocTypes = (listItem) => ![
   'page',
@@ -12,7 +12,6 @@ const hiddenDocTypes = (listItem) => ![
   'route',
   'textSection',
   'hero',
-  'timeline',
   'heroWithImage',
   'imageBesideText',
   'doubleOptions',
@@ -21,15 +20,24 @@ const hiddenDocTypes = (listItem) => ![
   'sideBySideImages',
   'menuItem',
   'newsCard',
+  'readMoreCard',
   'team',
   'teamsDisplay',
+  'timeline',
+  'timelineItem',
+  'contactUsForm',
+  'locationsDisplay',
+  'location',
+  'textSeparator',
+  'headlineWithImages',
+  'descriptionsWithButton',
 ].includes(listItem.getId())
 
 export default () =>
   S.list()
     .title('Site')
     .items([
-      S.documentListItem().id('global-config').schemaType('site-config').title('Site config'),
+      S.documentListItem().id('global-config').schemaType('site-config').title('Site config').icon(CogIcon),
       S.divider(),
       S.listItem()
         .title('Pages')
@@ -41,7 +49,7 @@ export default () =>
                 .filter('_type == "page" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-      ),      
+      ),
       S.listItem()
       .title('Routes')
       .icon(LinkIcon)
@@ -61,21 +69,27 @@ export default () =>
           .title('Sections')
           .items([
             S.documentTypeListItem('newsCard').title('News Card'),
+            S.documentTypeListItem('readMoreCard').title('Read More Card'),
             S.documentTypeListItem('textSection').title('Text Block'),
+            S.documentTypeListItem('textSeparator').title('Text Separator'),
             S.documentTypeListItem('hero').title('Hero'),
-            S.documentTypeListItem('timeline').title('Timeline'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
             S.documentTypeListItem('teamsDisplay').title('Teams Display'),
-            S.documentTypeListItem('imageBesideText').title('Image beside Text'),
+            S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
+            S.documentTypeListItem('locationsDisplay').title('Locations Display'),
             S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
+            S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
+            S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
+            S.documentTypeListItem('timeline').title('Timeline'),
+            S.documentTypeListItem('imageBesideText').title('Image beside Text'),
           ])
       ),
       S.documentTypeListItem('post').title('Posts'),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
-      S.divider(),      
+      S.divider(),
       S.listItem()
       .title('Teams')
       .icon(UsersIcon)

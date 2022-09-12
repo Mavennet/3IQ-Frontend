@@ -37,14 +37,20 @@ export default {
           to: [
             {type: 'post'},
             {type: 'newsCard'},
+            {type: 'readMoreCard'},
             {type: 'textSection'},
+            {type: 'textSeparator'},            
             {type: 'hero'},
-            {type: 'timeline'},
             {type: 'heroWithImage'},
             {type: 'teamsDisplay'},
-            {type: 'imageBesideText'},
+            {type: 'contactUsForm'},
+            {type: 'locationsDisplay'},
             {type: 'sideBySideImages'},
+            {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
+            {type: 'descriptionsWithButton'},
+            {type: 'timeline'},
+            {type: 'imageBesideText'},
           ]
         }
       ]

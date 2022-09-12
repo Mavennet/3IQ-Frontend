@@ -5,8 +5,8 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'sideBySideImages',
-  title: 'Side by side Images',
+  name: 'locationsDisplay',
+  title: 'Locations Display',
   icon: SplitHorizontalIcon,
   fields: [
     {
@@ -16,32 +16,34 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'images',
-      type: 'array',
-      title: 'Images (*)',
+      name: 'locations',
+      description: 'Select the locations that will be displayed',
+      title: 'Locations',
       validation: Rule => [
+        Rule.max(5).warning('Are you sure you want more than 5 items?'),
+        Rule.unique().error('You have duplicate locations'),
         Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select a country.'),
+        Rule.min(1).error('Please, select at least 1 page section.'),
       ],
+      type: 'array',
       of: [
         {
-          title: 'Image',
-          type: 'figure',
+          type: 'reference',
+          to: [{ type: 'location' }],
+          title: 'Location',
         },
       ],
-    }
+    },
   ],
   preview: {
     select: {
       title: `heading.${baseLanguage.id}`,
-      media: 'images.0',
     },
-    prepare({ title, media }) {
+    prepare({ title }) {
       return {
         title,
-        subtitle: 'Side by Side Images section',
-        media,
-      };
-    },
-  },
-};
+        subtitle: 'Locations Display section'
+      }
+    }
+  }
+}

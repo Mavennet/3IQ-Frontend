@@ -10,20 +10,9 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'heading',
-      type: 'localeString',
-      title: 'Heading (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
-      name: 'description',
-      type: 'localeSimplePortableText',
-      title: 'Description',
-    },
-    {
-      name: 'mainImage',
-      type: 'figure',
-      title: 'Main image (*)',
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -36,21 +25,51 @@ export default {
       },
     },
     {
-      name: 'button',
-      type: 'localeCta',
-      title: 'Main button (*)',
+      name: 'leftFirstTextBlock',
+      type: 'localePortableText',
+      title: 'Left First Text Block (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
+    {
+      name: 'leftSecondTextBlock',
+      type: 'localePortableText',
+      title: 'Left Second Text Block (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'span',
+      title: 'Short text',
+      description: 'Short text above the second text block on the left',
+      type: 'localeString',
+    },
+    {
+      name: 'items',
+      title: 'Timeline items',
+      description: 'Select the timeline items that will be displayed in order',
+      validation: Rule => [
+        Rule.max(10).warning('Are you sure you want more than 10 items?'),
+        Rule.unique().error('You have duplicate timeline items'),
+      ],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'timelineItem' }],
+          title: 'Timeline item',
+        },
+      ],
+    },
+
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
+      title: `name`,
       media: 'backgroundImage',
     },
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Timeline',
+        subtitle: 'Timeline section',
         media,
       };
     },

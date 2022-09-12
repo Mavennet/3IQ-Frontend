@@ -44,7 +44,6 @@ export const getServerSideProps = async ({params}) => {
       footerSecondLeftBlockButton,
       footerBottomContent,
       newsletterBody,
-      newsletterSubscribeButton,
       newsletterSubscribeSrc,
       followUsText,
       twitterUrl,
@@ -159,11 +158,49 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all timelines (used later on to get the Our Story timeline items)
+  const allTimelines = await client.fetch(
+    groq`
+    *[_type == 'timeline'] {
+      _id,
+      _type,
+      _rev,
+      backgroundImage,
+      leftFirstTextBlock,
+      leftSecondTextBlock,
+      items[]-> {
+        _id,
+        _type,
+        'localeDateText': dateText,
+        'localeDescriptionText': descriptionText
+      },
+    }
+    `
+  )
+
+  // Retrieve all Locations Display sections (used to retrieve the section locations with necessary info)
+  const allLocationsDisplays = await client.fetch(
+    groq`
+    *[_type == 'locationsDisplay'] {
+      _id,
+      _type,
+      _rev,
+      locations[]-> {
+        _id,
+        _type,
+        'localeName': name,
+        'localeDescription': description,
+        googleMapsSrc,      
+      }
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays} || {},
   }
 }
 
@@ -183,6 +220,8 @@ const LandingPage = (props) => {
     allRoutes,
     allPosts,
     allTeams,
+    allTimelines,
+    allLocationsDisplays,
   } = props
 
   const getLanguageFromStorage = () => {
@@ -277,7 +316,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} locationsDisplays={allLocationsDisplays} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -295,6 +334,8 @@ LandingPage.propTypes = {
   allRoutes: PropTypes.any,
   allPosts: PropTypes.any,
   allTeams: PropTypes.any,
+  allTimelines: PropTypes.any,
+  allLocationsDisplays: PropTypes.any,
 }
 
 export default LandingPage

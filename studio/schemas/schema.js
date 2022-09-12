@@ -10,6 +10,8 @@ import country from './documents/country';
 import language from './documents/language';
 import menuItem from './documents/menuItem';
 import team from './documents/team';
+import timelineItem from './documents/timelineItem';
+import location from './documents/location';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -22,8 +24,14 @@ import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
+import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
+import contactUsForm from './documents/sections/contactUsForm';
+import locationsDisplay from './documents/sections/locationsDisplay';
+import textSeparator from './documents/sections/textSeparator';
+import headlineWithImages from './documents/sections/headlineWithImages';
+import descriptionsWithButton from './documents/sections/descriptionsWithButton';
 
 // Object types
 import cta from './objects/cta';
@@ -70,7 +78,6 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
-    timeline,
     imageBesideText,
     hero,
     localeCta,
@@ -79,8 +86,17 @@ export default createSchema({
     menuItem,
     localePortableText,
     newsCard,
+    readMoreCard,
     localeBioPortableText,
     team,
     teamsDisplay,
+    timeline,
+    timelineItem,
+    contactUsForm,
+    locationsDisplay,
+    location,
+    textSeparator,
+    headlineWithImages,
+    descriptionsWithButton,
   ]),
 });

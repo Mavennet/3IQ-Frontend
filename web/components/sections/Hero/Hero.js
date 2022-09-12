@@ -10,7 +10,22 @@ import SimpleBlockContent from '../../SimpleBlockContent'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 
-const theme = createTheme()
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Europa',
+    p: {
+      fontSize: 14,
+    },
+    h3: {
+      fontSize: 60,
+      fontWeight: 'bold'
+    },
+    h5: {
+      fontSize: 20,
+      fontWeight: 'bold'
+    }
+  },
+})
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -30,8 +45,8 @@ function Hero(props) {
             .url()}") no-repeat center center`,
         backgroundSize: 'cover',
           bgcolor: '#091b3f',
-          pt: 15,
-          pb: 15,
+          pt: 24,
+          pb: 24,
         }}
       >
         <Container maxWidth="md">
@@ -40,7 +55,7 @@ function Hero(props) {
               <Typography component="h1" variant="h3" style={{fontWeight: 'bold'}} gutterBottom>
                 {heading}
               </Typography>
-              <div className={styles.description}>
+              <div className={styles.simpleBlockContent}>
                 {description && <SimpleBlockContent blocks={description} />}
               </div>
             </Box>

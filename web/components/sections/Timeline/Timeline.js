@@ -8,10 +8,15 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
+import Grid from '@mui/material/Grid'
+import {Timeline as MuiTimeline} from '@mui/lab'
+import TimelineItem from '@mui/lab/TimelineItem'
+import TimelineSeparator from '@mui/lab/TimelineSeparator'
+import TimelineConnector from '@mui/lab/TimelineConnector'
+import TimelineContent from '@mui/lab/TimelineContent'
+import TimelineDot from '@mui/lab/TimelineDot'
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import SimpleBlockContent from '../../SimpleBlockContent'
-import RedirectButton from '../../RedirectButton/RedirectButton'
-
-const builder = imageUrlBuilder(client)
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -19,9 +24,68 @@ function urlFor(source) {
 
 const theme = createTheme()
 
-function Timeline(props) {
-  const {mainImage, heading, backgroundImage, description, button} = props
+const timeLineDotSx = {border: '4px solid #DC6E19', background: '#DC6E19', margin: 0}
 
+function renderTimeline(items, langTag) {
+  return (
+    <MuiTimeline position="right">
+      <TimelineItem>
+        <TimelineOppositeContent
+          sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+        ></TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot sx={{...timeLineDotSx, margin: 2, marginBottom: 0}} variant="outlined" />
+          <TimelineConnector sx={{border: '2px solid #DC6E19'}} />
+        </TimelineSeparator>
+        <TimelineContent sx={{paddingRight: '10px'}}></TimelineContent>
+      </TimelineItem>
+      {items.map((item, index) => (
+        <TimelineItem key={index}>
+          <TimelineOppositeContent
+            sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+          >
+            {item.localeDateText[langTag]}
+          </TimelineOppositeContent>
+          <TimelineSeparator>
+            <TimelineDot
+              sx={{
+                ...timeLineDotSx,
+                background: 'white',
+                width: '45px',
+                height: '45px',
+              }}
+              variant="outlined"
+            />
+            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '200px'}} />
+          </TimelineSeparator>
+          <TimelineContent sx={{paddingRight: '10px'}}>
+            <Typography
+              sx={{display: {md: 'none', xs: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+            >
+              {item.localeDateText[langTag]}
+            </Typography>
+            <div className={styles.simpleBlockContent}>
+            <SimpleBlockContent blocks={item.localeDescriptionText[langTag]} />
+            </div>
+            
+          </TimelineContent>
+        </TimelineItem>
+      ))}
+      <TimelineItem>
+        <TimelineOppositeContent
+          sx={{display: {xs: 'none', md: 'block'}, color: '#0182e5', fontWeight: 'bold'}}
+        ></TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot sx={{...timeLineDotSx, margin: 2, marginTop: 0}} variant="outlined" />
+        </TimelineSeparator>
+        <TimelineContent sx={{paddingRight: '10px'}}></TimelineContent>
+      </TimelineItem>
+    </MuiTimeline>
+  )
+}
+
+function Timeline(props) {
+  const {backgroundImage, leftFirstTextBlock, leftSecondTextBlock, currentLanguage, span, items} = props
 
   return (
     <ThemeProvider theme={theme}>
@@ -29,9 +93,8 @@ function Timeline(props) {
       <Box
         sx={{
           background:
-            backgroundImage &&
-            `url("${urlFor(backgroundImage)
-              .url()}") no-repeat center center`,
+            backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat`,
+          backgroundPosition: '5vw -10vw',
           backgroundSize: 'cover',
           bgcolor: '#091b3f',
           pt: 2,
@@ -39,33 +102,23 @@ function Timeline(props) {
         }}
       >
         <Container maxWidth="md">
-          <Box sx={{p: 5, pl: 1, pr: 1}}>
-            <Box
-              component="img"
-              sx={{
-                maxWidth: {md: 400, xs: 300},
-              }}
-              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
-              src={builder.image(mainImage).url()}
-            />
-            <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
-              <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                {heading}
-              </Typography>
-              <div className={styles.description}>
-                {description && <SimpleBlockContent blocks={description} />}
-              </div>
-            </Box>
-
-            {button &&
-               (
-               <RedirectButton
-               {...button}
-               reverse
-               sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
-               ></RedirectButton>
-              )}
-          </Box>
+          <Grid container>
+            <Grid style={{color: 'white', fontWeight: 'bold'}} item md={5} xs={12}>
+              <Box className={styles.leftSimbleBlockContent} pt={15} pr={{md: 20, xs: 0}}>
+                {leftFirstTextBlock && <SimpleBlockContent blocks={leftFirstTextBlock} />}
+              </Box>
+              <Box className={styles.leftSimbleBlockContent} pt={60} pr={{md: 20, xs: 0}}>
+                {leftSecondTextBlock && <SimpleBlockContent blocks={leftSecondTextBlock} />}
+              </Box>
+              {span && (<span className={styles.span}>{span}</span>)}
+              
+            </Grid>
+            <Grid item md={7} xs={12}>
+              <Box style={{color: 'white'}}>
+                {items && renderTimeline(items, currentLanguage.languageTag)}
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </ThemeProvider>
@@ -73,15 +126,12 @@ function Timeline(props) {
 }
 
 Timeline.propTypes = {
-  mainImage: PropTypes.shape({
-    asset: PropTypes.shape({
-      _ref: PropTypes.string,
-    }),
-  }),
-  heading: PropTypes.object,
   backgroundImage: PropTypes.object,
-  description: PropTypes.object,
-  button: PropTypes.object,
+  leftFirstTextBlock: PropTypes.object,
+  leftSecondTextBlock: PropTypes.object,
+  currentLanguage: PropTypes.object,
+  items: PropTypes.array,
+  span: PropTypes.string,
 }
 
 export default Timeline
