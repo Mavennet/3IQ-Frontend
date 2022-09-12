@@ -37,6 +37,7 @@ export default {
           to: [
             {type: 'post'},
             {type: 'newsCard'},
+            {type: 'readMoreCard'},
             {type: 'textSection'},
             {type: 'hero'},
             {type: 'heroWithImage'},

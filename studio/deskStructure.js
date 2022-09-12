@@ -20,6 +20,7 @@ const hiddenDocTypes = (listItem) => ![
   'sideBySideImages',
   'menuItem',
   'newsCard',
+  'readMoreCard',
   'team',
   'teamsDisplay',
   'timeline',
@@ -45,7 +46,7 @@ export default () =>
                 .filter('_type == "page" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-      ),      
+      ),
       S.listItem()
       .title('Routes')
       .icon(LinkIcon)
@@ -65,6 +66,7 @@ export default () =>
           .title('Sections')
           .items([
             S.documentTypeListItem('newsCard').title('News Card'),
+            S.documentTypeListItem('readMoreCard').title('Read More Card'),
             S.documentTypeListItem('textSection').title('Text Block'),
             S.documentTypeListItem('hero').title('Hero'),
             S.documentTypeListItem('heroWithImage').title('Hero with Image'),
@@ -81,7 +83,7 @@ export default () =>
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
-      S.divider(),      
+      S.divider(),
       S.listItem()
       .title('Teams')
       .icon(UsersIcon)
