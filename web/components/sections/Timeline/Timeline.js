@@ -98,7 +98,7 @@ function Timeline(props) {
           backgroundSize: 'cover',
           bgcolor: '#091b3f',
           pt: 2,
-          pb: 2,
+          pb: 10,
         }}
       >
         <Container maxWidth="md">

@@ -1,4 +1,5 @@
 export {default as Hero} from './Hero/Hero'
+export {default as HeroFirstVariation} from './HeroFirstVariation/HeroFirstVariation'
 export {default as HeroWithImage} from './HeroWithImage'
 export {default as Timeline} from './Timeline/Timeline'
 export {default as ImageBesideText} from './ImageBesideText'

@@ -31,7 +31,7 @@ function Hero(props) {
         backgroundSize: 'cover',
           bgcolor: '#091b3f',
           pt: 15,
-          pb: 15,
+          pb: {lg: 20, md: 15},
         }}
       >
         <Container maxWidth="md">
