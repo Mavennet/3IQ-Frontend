@@ -158,11 +158,31 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all timelines (used later on to get the Our Story timeline items)
+  const allTimelines = await client.fetch(
+    groq`
+    *[_type == 'timeline'] {
+      _id,
+      _type,
+      _rev,
+      backgroundImage,
+      leftFirstTextBlock,
+      leftSecondTextBlock,
+      items[]-> {
+        _id,
+        _type,
+        'localeDateText': dateText,
+        'localeDescriptionText': descriptionText
+      },
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines} || {},
   }
 }
 
@@ -182,6 +202,7 @@ const LandingPage = (props) => {
     allRoutes,
     allPosts,
     allTeams,
+    allTimelines,
   } = props
 
   const getLanguageFromStorage = () => {
@@ -276,7 +297,7 @@ const LandingPage = (props) => {
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -294,6 +315,7 @@ LandingPage.propTypes = {
   allRoutes: PropTypes.any,
   allPosts: PropTypes.any,
   allTeams: PropTypes.any,
+  allTimelines: PropTypes.any,
 }
 
 export default LandingPage

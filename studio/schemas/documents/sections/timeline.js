@@ -41,7 +41,7 @@ export default {
       title: 'Timeline items',
       description: 'Select the timeline items that will be displayed in order',
       validation: Rule => [
-        Rule.max(10).warning('Are you sure you want more than 5 items?'),
+        Rule.max(10).warning('Are you sure you want more than 10 items?'),
         Rule.unique().error('You have duplicate timeline items'),
       ],
       type: 'array',
@@ -57,7 +57,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
+      title: `name`,
       media: 'backgroundImage',
     },
     prepare({ title, media }) {
