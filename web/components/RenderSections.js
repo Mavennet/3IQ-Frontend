@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts} = props
+  const {sections, routes, posts, teams, timelines, locationsDisplays} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -24,7 +24,7 @@ function RenderSections(props) {
       'localeText', 
       'localeString', 
       'localeSimplePortableText',
-      'localePortableText'
+      'localePortableText',
     ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
@@ -60,9 +60,43 @@ function RenderSections(props) {
           const route = routes[i]
           
           if (route._id === section.route._ref) {
-            section.route = route
+            section.route = route // TODO Add break later and verify if breaks current functionality somehow
           }
         }
+      }
+    }
+
+    if (section.teams) {
+      for (let index = 0; index < section.teams.length; index++) {
+        for (let i = 0; i < teams.length; i++) {
+          const team = teams[i]
+  
+          if (team._id === section.teams[index]._ref) {
+            section.teams[index] = team // TODO Add break later and verify if breaks current functionality somehow
+          }              
+        }          
+      }
+    }
+
+    if (section._type === 'timeline') {
+      for (let i = 0; i < timelines.length; i++) {
+        const timeline = timelines[i]
+
+        if (timeline._id === section._id) {
+          section.items = timeline.items
+          break
+        }        
+      }
+    }
+
+    if (section._type === 'locationsDisplay') {
+      for (let i = 0; i < locationsDisplays.length; i++) {
+        const locDisplay = locationsDisplays[i]
+
+        if (locDisplay._id === section._id) {
+          section.locations = locDisplay.locations
+          break
+        }        
       }
     }
   })
@@ -95,6 +129,9 @@ RenderSections.propTypes = {
   ),
   routes: PropTypes.array,
   posts: PropTypes.array,
+  teams: PropTypes.array,
+  timelines: PropTypes.array,
+  locationsDisplays: PropTypes.array,
 }
 
 export default RenderSections

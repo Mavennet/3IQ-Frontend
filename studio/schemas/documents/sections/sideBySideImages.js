@@ -19,7 +19,10 @@ export default {
       name: 'images',
       type: 'array',
       title: 'Images (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select a country.'),
+      ],
       of: [
         {
           title: 'Image',

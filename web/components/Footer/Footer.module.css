@@ -25,3 +25,22 @@
   padding: 5px;
   font-family: 'Europa';
 }
+
+.simpleBlockContent {
+  padding: 0px 20px;
+}
+
+.simpleBlockContent p {
+  font-family: 'Europa';
+  font-size: 14px
+}
+
+.simpleBlockContent a {
+  font-family: 'Europa';
+  color: #fff;
+  text-decoration: none;
+}
+
+.simpleBlockContent a:hover {
+  text-decoration: underline;
+}

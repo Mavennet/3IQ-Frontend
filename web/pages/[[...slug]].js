@@ -30,13 +30,13 @@ export const getServerSideProps = async ({params}) => {
       urlTag,
       mainNavigation[]-> {
       ...,
-      route-> { ..., 'localeTitle': page->description },
-      submenuRoutes[]-> { ..., 'localeTitle': page->description },      
+      route-> { ..., 'localeTitle': page->title },
+      submenuRoutes[]-> { ..., 'localeTitle': page->title },
     },
       languages[]->,
       headerLogo,
       footerLogo,
-      footerNavigation[]-> { ..., 'localeTitle': page->description },
+      footerNavigation[]-> { ..., 'localeTitle': page->title },
       footerFirstLeftBlockContent,
       footerFirstLeftBlockImage,
       footerSecondLeftBlockContent,
@@ -44,7 +44,7 @@ export const getServerSideProps = async ({params}) => {
       footerSecondLeftBlockButton,
       footerBottomContent,
       newsletterBody,
-      newsletterSubscribeButton,
+      newsletterSubscribeSrc,
       followUsText,
       twitterUrl,
       linkedinUrl,
@@ -134,11 +134,73 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all teams (used later on to get the our team display blocks)
+  const allTeams = await client.fetch(
+    groq`
+    *[_type == 'team'] {
+      _id,
+      _type,
+      'localeName': name,
+      members[]-> {
+        _id,
+        _type,
+        name,
+        'localeJobTitle': jobTitle,
+        'localeBio': bio,
+        profilePhoto,
+        linkedinUrl,
+        email,
+        contactText,
+        readProfileText,
+      },
+      countries[]-> {_id},
+    }
+    `
+  )
+
+  // Retrieve all timelines (used later on to get the Our Story timeline items)
+  const allTimelines = await client.fetch(
+    groq`
+    *[_type == 'timeline'] {
+      _id,
+      _type,
+      _rev,
+      backgroundImage,
+      leftFirstTextBlock,
+      leftSecondTextBlock,
+      items[]-> {
+        _id,
+        _type,
+        'localeDateText': dateText,
+        'localeDescriptionText': descriptionText
+      },
+    }
+    `
+  )
+
+  // Retrieve all Locations Display sections (used to retrieve the section locations with necessary info)
+  const allLocationsDisplays = await client.fetch(
+    groq`
+    *[_type == 'locationsDisplay'] {
+      _id,
+      _type,
+      _rev,
+      locations[]-> {
+        _id,
+        _type,
+        'localeName': name,
+        'localeDescription': description,
+        googleMapsSrc,      
+      }
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
-  
+
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts} || {},
+    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays} || {},
   }
 }
 
@@ -157,7 +219,22 @@ const LandingPage = (props) => {
     currentCountry,
     allRoutes,
     allPosts,
+    allTeams,
+    allTimelines,
+    allLocationsDisplays,
   } = props
+
+  const getLanguageFromStorage = () => {
+      const languageStorage = localStorage.getItem('lang')
+      const languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
+      if (languageSelected.length > 0) {
+        return languageSelected[0]
+      } else {
+        localStorage.setItem('lang', country.languages[0].languageTag)
+        return country.languages[0]
+      }
+
+  }
 
   const [country] = useState(
     currentCountry
@@ -165,9 +242,14 @@ const LandingPage = (props) => {
       : dataCountries.filter((country) => country.urlTag === 'ca')[0]
   )
 
-  const [currentLanguage, setCurrentLanguage] = useState(country.languages[0])
+  const [currentLanguage, setCurrentLanguage] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('lang')
+      ? getLanguageFromStorage()
+      : country.languages[0]
+  )
 
   const switchLanguage = (lang) => {
+    localStorage.setItem('lang', lang.languageTag)
     setCurrentLanguage(lang)
   }
 
@@ -218,22 +300,23 @@ const LandingPage = (props) => {
         },
       ]
     : []
-    
-  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage.languageTag] : 'Title not filled on the corresponding language for this page'
+
+  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage?.languageTag] : 'Title not filled on the corresponding language for this page'
+  const localeDescription = (description && currentLanguage.languageTag && description[currentLanguage.languageTag]) ? description[currentLanguage?.languageTag] : 'Description not filled on the corresponding language for this page'
 
   return (
     <Layout config={formatedConfig}>
       <NextSeo
         title={localeTitle}
         titleTemplate={`%s | ${config.title}`}
-        description={description}
+        description={localeDescription}
         canonical={config.url && `${config.url}/${slug}`}
         openGraph={{
           images: openGraphImages,
         }}
         noindex={disallowRobots}
       />
-      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} sections={formatedContent} />}
+      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} locationsDisplays={allLocationsDisplays} sections={formatedContent} />}
     </Layout>
   )
 }
@@ -250,6 +333,9 @@ LandingPage.propTypes = {
   currentCountry: PropTypes.string,
   allRoutes: PropTypes.any,
   allPosts: PropTypes.any,
+  allTeams: PropTypes.any,
+  allTimelines: PropTypes.any,
+  allLocationsDisplays: PropTypes.any,
 }
 
 export default LandingPage

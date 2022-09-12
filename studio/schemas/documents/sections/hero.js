@@ -20,6 +20,14 @@ export default {
       type: 'localeSimplePortableText',
       title: 'Description',
     },
+    {
+      name: 'backgroundImage',
+      type: 'image',
+      title: 'Background image (*)',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
   preview: {
     select: {
@@ -29,7 +37,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero Section',
+        subtitle: 'Hero section',
         media,
       };
     },

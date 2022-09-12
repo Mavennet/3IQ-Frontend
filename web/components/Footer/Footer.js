@@ -8,6 +8,7 @@ import styles from './Footer.module.css'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../client'
 import { getPathFromSlug } from '../../utils/urls'
+import SimpleBlockContent from '../SimpleBlockContent'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -65,7 +66,7 @@ function Footer(props) {
             {/* Logo */}
             {
               currentCountry.footerLogo ?
-                <Link href={'/'}>
+                <Link href={`/${currentCountry.urlTag}/home`}>
                   <Box
                     component="img"
                     sx={{ maxWidth: '100%', ml: { md: 4 } }}
@@ -96,35 +97,9 @@ function Footer(props) {
               </Grid>
               <Grid item xs={9} mb={4} pl={2}>
                 {
-                  currentCountry?.footerFirstLeftBlockContent &&
-                    currentCountry?.footerFirstLeftBlockContent[currentLanguage?.languageTag] ?
-                    currentCountry?.footerFirstLeftBlockContent[currentLanguage?.languageTag].map((item) => {
-                      const links = item.markDefs
-                      return (
-                        <Typography variant="p" paragraph mb={1} key={item._key}>
-                          {
-                            item.children.map((item) => {
-                              if (item.marks[0]) {
-                                const currentLink = links.find(obj => {
-                                  return obj._key === item.marks[0]
-                                })
-                                return (
-                                  <Link
-                                    href={currentLink?.href}
-                                    underline="hover"
-                                    color="inherit"
-                                  >
-                                    {item.text}
-                                  </Link>
-                                )
-                              } else {
-                                return item.text
-                              }
-                            })
-                          }
-                        </Typography>
-                      )
-                    }) : <Typography variant="p" paragraph mb={1}>Missing - First Left Block Content</Typography>
+                  currentCountry?.footerFirstLeftBlockContent && currentCountry?.footerFirstLeftBlockContent[currentLanguage?.languageTag]
+                    ? (<div className={styles.simpleBlockContent}><SimpleBlockContent blocks={currentCountry?.footerFirstLeftBlockContent[currentLanguage?.languageTag]} /></div>)
+                    : <Typography variant="p" paragraph mb={1}>Missing - First Left Block Content</Typography>
                 }
               </Grid>
               <Grid item xs={3}>
@@ -143,35 +118,9 @@ function Footer(props) {
               </Grid>
               <Grid item xs={9} pl={2}>
                 {
-                  currentCountry?.footerSecondLeftBlockContent &&
-                    currentCountry?.footerSecondLeftBlockContent[currentLanguage?.languageTag] ?
-                    currentCountry?.footerSecondLeftBlockContent[currentLanguage?.languageTag].map((item) => {
-                      const links = item.markDefs
-                      return (
-                        <Typography variant="p" paragraph mb={1} key={item._key}>
-                          {
-                            item.children.map((item) => {
-                              if (item.marks[0]) {
-                                const currentLink = links.find(obj => {
-                                  return obj._key === item.marks[0]
-                                })
-                                return (
-                                  <Link
-                                    href={currentLink?.href}
-                                    underline="hover"
-                                    color="inherit"
-                                  >
-                                    {item.text}
-                                  </Link>
-                                )
-                              } else {
-                                return item.text
-                              }
-                            })
-                          }
-                        </Typography>
-                      )
-                    }) : <Typography variant="p" paragraph mb={1}>Missing - Second Left Block Content</Typography>
+                  currentCountry?.footerSecondLeftBlockContent && currentCountry?.footerSecondLeftBlockContent[currentLanguage?.languageTag]
+                    ? (<div className={styles.simpleBlockContent}><SimpleBlockContent blocks={currentCountry?.footerSecondLeftBlockContent[currentLanguage?.languageTag]} /></div>)
+                    : <Typography variant="p" paragraph mb={1}>Missing - Second Left Block Content</Typography>
                 }
                 {
                   currentCountry.footerSecondLeftBlockButton && (
@@ -208,7 +157,7 @@ function Footer(props) {
                     >
                       {breakArray(currentCountry.footerNavigation).firstBlock.map((item, key) => {
                         return (
-                          <Link key={key} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
+                          <Link key={item._id} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
                             <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
                           </Link>
                         )
@@ -230,9 +179,9 @@ function Footer(props) {
                         alignItems: 'left',
                       }}
                     >
-                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item, key) => {
+                      {breakArray(currentCountry.footerNavigation).secondBlock.map((item) => {
                         return (
-                          <Link key={key} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
+                          <Link key={item._id} href={getPathFromSlug(item?.slug?.current)} underline="hover" color="inherit">
                             <Typography variant="h5" mb={2}>{item.localeTitle[currentLanguage?.languageTag]}</Typography>
                           </Link>
                         )
@@ -275,35 +224,9 @@ function Footer(props) {
                   </ul>
                 </Box>
                 {
-                  currentCountry?.footerBottomContent &&
-                    currentCountry?.footerBottomContent[currentLanguage?.languageTag] ?
-                    currentCountry?.footerBottomContent[currentLanguage?.languageTag].map((item) => {
-                      const links = item.markDefs
-                      return (
-                        <Typography variant="p" sx={{ fontSize: 12 }} key={item._key}>
-                          {
-                            item.children.map((item) => {
-                              if (item.marks[0]) {
-                                const currentLink = links.find(obj => {
-                                  return obj._key === item.marks[0]
-                                })
-                                return (
-                                  <Link
-                                    href={currentLink?.href}
-                                    underline="hover"
-                                    color="inherit"
-                                  >
-                                    {item.text}
-                                  </Link>
-                                )
-                              } else {
-                                return item.text
-                              }
-                            })
-                          }
-                        </Typography>
-                      )
-                    }) : <Typography variant="p" paragraph mb={1}>Missing - Second Left Block Content</Typography>
+                  currentCountry?.footerBottomContent && currentCountry?.footerBottomContent[currentLanguage?.languageTag]
+                    ? (<div className={styles.simpleBlockContent}><SimpleBlockContent blocks={currentCountry?.footerBottomContent && currentCountry?.footerBottomContent[currentLanguage?.languageTag]} /></div>)
+                    : <Typography variant="p" paragraph mb={1}>Missing - Second Left Block Content</Typography>
                 }
               </Grid>
             </Grid>
@@ -314,40 +237,27 @@ function Footer(props) {
             <Grid container>
               {
                 currentCountry.newsletterBody && (
-                  currentCountry.newsletterBody[currentLanguage?.languageTag].map((item, key) => {
-                    const links = item.markDefs
-                    return (
-                      <Typography key={key} sx={{ color: '#fff', textDecoration: 'none', mb: 2 }} variant={item.style === 'h2' ? 'h2' : 'p'}>
-                        {
-                          item.children.map((item) => {
-                            if (item.marks[0]) {
-                              const currentLink = links.find(obj => {
-                                return obj._key === item.marks[0]
-                              })
-                              return (
-                                <Link
-                                  href={currentLink?.href}
-                                  color="inherit"
-                                >
-                                  {item.text}
-                                </Link>
-                              )
-                            } else {
-                              return item.text
-                            }
-                          })
-                        }
-                      </Typography>
-                    )
-                  })
+                  <Grid item xs={12}>
+                    <div className={styles.simpleBlockContent}><SimpleBlockContent blocks={currentCountry.newsletterBody[currentLanguage?.languageTag]} /></div>
+                  </Grid>
                 )
               }
-              <Grid item xs={12} mb={2}>
-                <input className={styles.inputNewsletter} placeholder="Email"></input>
-              </Grid>
-              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button variant="contained" sx={{ textTransform: 'inherit' }}>Subscribe</Button>
-              </Grid>
+              {
+                currentCountry.newsletterSubscribeSrc && (
+                  <Grid item xs={12} mb={2}>
+                    <iframe
+                      src={currentCountry.newsletterSubscribeSrc}
+                      width='100%'
+                      height='350'
+                      type='text/html'
+                      frameBorder='0'
+                      aria-label='newsletter subscription'
+                      allowTransparency='true'
+                    >
+                    </iframe>
+                  </Grid>
+                )
+              }
             </Grid>
           </Box>
         </Grid>

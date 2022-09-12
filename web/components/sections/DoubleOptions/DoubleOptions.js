@@ -35,7 +35,7 @@ function DoubleOptions(props) {
           }}
         >
           <CssBaseline />
-          <Grid md={12} style={{color: '#091b3f'}}>
+          <Grid xs={12} md={12} style={{color: '#091b3f'}}>
             {heading && (
               <Typography
                 mt={8}
@@ -48,6 +48,7 @@ function DoubleOptions(props) {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
+                  textAlign: 'center'
                 }}
               >
                 {heading}
@@ -98,7 +99,7 @@ function DoubleOptions(props) {
                 ></RedirectButton>
               )}
             </Grid>
-            <Grid item md={6} xs={12} pt={5} pb={10} 
+            <Grid item md={6} xs={12} pt={5} pb={10}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',

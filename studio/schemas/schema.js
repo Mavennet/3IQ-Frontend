@@ -9,6 +9,9 @@ import person from './documents/person';
 import country from './documents/country';
 import language from './documents/language';
 import menuItem from './documents/menuItem';
+import team from './documents/team';
+import timelineItem from './documents/timelineItem';
+import location from './documents/location';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -21,6 +24,14 @@ import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
+import readMoreCard from './documents/sections/readMoreCard';
+import teamsDisplay from './documents/sections/teamsDisplay';
+import timeline from './documents/sections/timeline';
+import contactUsForm from './documents/sections/contactUsForm';
+import locationsDisplay from './documents/sections/locationsDisplay';
+import textSeparator from './documents/sections/textSeparator';
+import headlineWithImages from './documents/sections/headlineWithImages';
+import descriptionsWithButton from './documents/sections/descriptionsWithButton';
 
 // Object types
 import cta from './objects/cta';
@@ -32,7 +43,6 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
-
 
 // Locale objects
 import localeString from './objects/locale/localeString'
@@ -76,6 +86,17 @@ export default createSchema({
     menuItem,
     localePortableText,
     newsCard,
+    readMoreCard,
     localeBioPortableText,
+    team,
+    teamsDisplay,
+    timeline,
+    timelineItem,
+    contactUsForm,
+    locationsDisplay,
+    location,
+    textSeparator,
+    headlineWithImages,
+    descriptionsWithButton,
   ]),
 });

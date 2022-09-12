@@ -5,18 +5,6 @@ export default {
   type: 'document',
   title: 'Menu Item',
   icon: MdMenu,
-  validation: Rule =>
-    Rule.custom(
-      (fields = {}) =>
-        !fields.route || !fields.link || 'Only one link type is allowed'
-    ),
-  fieldsets: [
-    {
-      title: 'Link (*)',
-      name: 'link',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-  ],
   fields: [
     {
       name: 'name',
@@ -26,17 +14,10 @@ export default {
     },
     {
       title: 'Internal link',
-      description: 'Use this to link between pages on the website',
+      description: 'Use this route to link between pages on the website (mandatory only when there are submenu routes selected)',
       name: 'route',
       type: 'reference',
       to: [{ type: 'route' }],
-      fieldset: 'link',
-    },
-    {
-      title: 'External link',
-      name: 'link',
-      type: 'url',
-      fieldset: 'link',
     },
     {
       title: 'Submenu routes',

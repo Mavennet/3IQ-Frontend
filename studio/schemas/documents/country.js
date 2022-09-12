@@ -35,9 +35,9 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      title: 'Main navigation',
       name: 'mainNavigation',
       description: 'Select pages for the top menu',
+      title: 'Main navigation',
       validation: Rule => [
         Rule.max(5).warning('Are you sure you want more than 5 items?'),
         Rule.unique().error('You have duplicate menu items'),
@@ -107,14 +107,14 @@ export default {
     {
       name: 'newsletterBody',
       type: 'localePortableText',
-      title: 'Newsletter content (*)',
+      title: 'Newsletter Subscribe content (*)',
       description: "Content that will be shown above the user's e-mail input field",
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'newsletterSubscribeButton',
-      type: 'localeCta',
-      title: 'Newsletter subscribe button (*)',
+      name: 'newsletterSubscribeSrc',
+      type: 'url',
+      title: 'Newsletter Subscribe Link (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {

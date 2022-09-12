@@ -26,9 +26,10 @@ export default {
       name: 'content',
       type: 'array',
       title: 'Page sections (*)',
+      description: "Content that will be displayed in the page with the same order",
       validation: Rule => [
         Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select a country.'),
+        Rule.min(1).error('Please, select at least 1 page section.'),
       ],
       of: [
         {
@@ -36,12 +37,20 @@ export default {
           to: [
             {type: 'post'},
             {type: 'newsCard'},
+            {type: 'readMoreCard'},
             {type: 'textSection'},
+            {type: 'textSeparator'},            
             {type: 'hero'},
             {type: 'heroWithImage'},
-            {type: 'imageBesideText'},
+            {type: 'teamsDisplay'},
+            {type: 'contactUsForm'},
+            {type: 'locationsDisplay'},
             {type: 'sideBySideImages'},
+            {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
+            {type: 'descriptionsWithButton'},
+            {type: 'timeline'},
+            {type: 'imageBesideText'},
           ]
         }
       ]
@@ -81,14 +90,23 @@ export default {
     select: {
       title: `title.${baseLanguage.id}`,
       media: 'openGraphImage',
-      countryName: 'countries.0.name',
+      firstCountryName: `countries.0.name`,
+      secondCountryName: `countries.1.name`,
+      thirdCountryName: `countries.2.name`,
+      fourthCountryName: `countries.3.name`,
+      fifthCountryName: `countries.4.name`,  // By passing the countries names, it will be able to access them within prepare() without only receiving the reference _ref
     },
-    prepare({ title, media, countryName = '' }) {
-      const subtitle = countryName ? countryName : ''
+    prepare({ title, media, firstCountryName = '', secondCountryName, thirdCountryName, fourthCountryName, fifthCountryName }) {
+      let countryNames = firstCountryName;
+      countryNames = secondCountryName ? countryNames.concat(', ' + secondCountryName) : countryNames;
+      countryNames = thirdCountryName ? countryNames.concat(', ' + thirdCountryName) : countryNames;
+      countryNames = fourthCountryName ? countryNames.concat(', ' + fourthCountryName) : countryNames;
+      countryNames = fifthCountryName ? countryNames.concat(', ' + fifthCountryName) : countryNames;
+
       return {
         title,
         media,
-        subtitle: `${subtitle}`,
+        subtitle: `${countryNames}`,
       };
     },
   },

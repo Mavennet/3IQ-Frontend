@@ -1,12 +1,13 @@
 // Combination of the language ISO 639-1 code (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
 // and the country code TDL (https://en.wikipedia.org/wiki/Country_code_top-level_domain)
 // for specific language & country combinations, such as "en_CA", "en_US", "ar_AE" or "fr_CA".
-// **** THE "id" PROPERTY IT NEEDS TO MATCH THE LANGUAGE DOCUMENT'S "Language Tag" AND THE LANGUAGES'S "id" FROM "studio\schemas\supportedLanguages.js" **** 
+// **** THE "id" PROPERTY IT NEEDS TO MATCH THE LANGUAGE DOCUMENT'S "Language Tag" AND THE LANGUAGES'S "id" FROM "studio\schemas\supportedLanguages.js" ****
 
 export default {
   supportedLanguages: [
     { id: 'en_CA', title: 'English (CA)' },
     { id: 'en_US', title: 'English (US)' },
+    { id: 'en_AU', title: 'English (AU)' },
     { id: "fr_CA", title: "French (CA)" },
     { id: 'ar_AE', title: 'Arabic (AE)' },
   ],
@@ -15,6 +16,7 @@ export default {
     'page',
     'textSection',
     'heroWithImage',
+    'timeline',
     'hero',
     'imageBesideText',
     'doubleOptions',
@@ -23,6 +25,15 @@ export default {
     'post',
     'country',
     'newsCard',
+    'readMoreCard',
+    'person',
+    'team',
+    'contactUsForm',
+    'locationsDisplay',
+    'location',
+    'textSeparator',
+    'headlineWithImages',
+    'descriptionsWithButton',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
