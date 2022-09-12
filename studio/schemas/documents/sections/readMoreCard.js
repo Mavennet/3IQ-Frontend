@@ -44,6 +44,7 @@ export default {
     prepare({ title }) {
       return {
         title,
+        subtitle: 'Read More Card section',
       }
     }
   }
