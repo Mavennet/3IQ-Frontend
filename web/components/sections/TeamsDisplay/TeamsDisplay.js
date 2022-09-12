@@ -103,13 +103,13 @@ function TeamsDisplay(props) {
                         onClick={item.localeBio[currentLanguage.languageTag] ? () => handleOpen(item) : null}
                       >
                         <MemberCard
-                          name={item.name}
-                          role={item.localeJobTitle[currentLanguage.languageTag]}
-                          image={item.profilePhoto.asset._ref}
+                          name={item.name && item.name}
+                          role={item.localeJobTitle[currentLanguage.languageTag] && item.localeJobTitle[currentLanguage.languageTag]}
+                          image={item.profilePhoto.asset._ref && item.profilePhoto.asset._ref}
                           showProfileBox={showProfile}
-                          email={item.email}
-                          readProfileText={item.readProfileText}
-                          contactText={item.contactText}
+                          email={item.email && item.email}
+                          readProfileText={item.readProfileText && item.readProfileText[currentLanguage.languageTag]}
+                          contactText={item.contactText && item.contactText[currentLanguage.languageTag]}
                         />
                       </Grid>
                     )
