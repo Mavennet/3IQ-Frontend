@@ -192,6 +192,7 @@ export const getServerSideProps = async ({ params }) => {
         'localeName': name,
         'localeDescription': description,
         googleMapsSrc,
+        mainImage,
       }
     }
     `
