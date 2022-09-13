@@ -89,7 +89,7 @@ function ReadMoreCard(props) {
                 justifyContent: 'flex-end'
               }}
             >
-            {button.route && button && (
+            {button && button.route && (
               <RedirectButton
                   title={button.title}
                   route={button.route}

@@ -13,11 +13,19 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      title: 'Internal link',
-      description: 'Use this route to link between pages on the website (mandatory only when there are submenu routes selected)',
       name: 'route',
       type: 'reference',
+      title: 'Internal link (*)',
+      description: 'Use this route to link the page that will be attached to this menu item',
+      validation: Rule => Rule.error('Information required.').required(),
       to: [{ type: 'route' }],
+    },
+    {
+      name: 'isLinkEnabled',
+      type: 'boolean',
+      title: 'Enable clickable link?',
+      description: 'Enable this option to allow the user to click on this menu item and be redirected to the selected route',
+      initialValue: false,
     },
     {
       title: 'Submenu routes',
@@ -37,13 +45,16 @@ export default {
   ],
   preview: {
     select: {
-      name: 'name',
-      link: 'link',
+      name: `name`,
+      isLinkEnabled: `isLinkEnabled`,
+      submenuRoutesLength: `submenuRoutes.length`
     },
-    prepare({ name, link }) {
+    prepare({ name, isLinkEnabled, submenuRoutesLength }) {
+      const isLinkEnabledText = isLinkEnabled ? 'Link enabled' : 'Link disabled'
+      const submenuRoutesLengthText = submenuRoutesLength > 0 ? ' & ' + submenuRoutesLength + ' submenu route(s)' : ''
       return {
         title: `${name}`,
-        subtitle: link ? `${link}` : '',
+        subtitle: isLinkEnabledText + submenuRoutesLengthText,
       }
     },
   }

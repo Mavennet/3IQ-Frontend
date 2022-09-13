@@ -16,6 +16,15 @@
   text-decoration: none;
 }
 
+.simpleBlockContent a:hover {
+  cursor: pointer;
+}
+
+.leftSimbleBlockContent a:hover {
+  cursor: pointer;
+}
+
+
 .span{
   color: #bbbabf;
   text-decoration: none;
