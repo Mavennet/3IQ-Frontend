@@ -45,13 +45,16 @@ export default {
   ],
   preview: {
     select: {
-      name: 'name',
-      link: 'link',
+      name: `name`,
+      isLinkEnabled: `isLinkEnabled`,
+      submenuRoutesLength: `submenuRoutes.length`
     },
-    prepare({ name, link }) {
+    prepare({ name, isLinkEnabled, submenuRoutesLength }) {
+      const isLinkEnabledText = isLinkEnabled ? 'Link enabled' : 'Link disabled'
+      const submenuRoutesLengthText = submenuRoutesLength > 0 ? ' & ' + submenuRoutesLength + ' submenu route(s)' : ''
       return {
         title: `${name}`,
-        subtitle: link ? `${link}` : '',
+        subtitle: isLinkEnabledText + submenuRoutesLengthText,
       }
     },
   }
