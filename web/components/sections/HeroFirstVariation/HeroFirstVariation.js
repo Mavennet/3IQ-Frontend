@@ -41,12 +41,12 @@ function HeroFirstVariation(props) {
               </div>
             </Box>
             <Grid container>
-              <Grid item md={3} xs={12}>
+              <Grid item md={5} xs={12}>
                 {firstButton && (
                   <RedirectButton {...firstButton} sx={{padding: '10px 20px'}}></RedirectButton>
                 )}
               </Grid>
-              <Grid item md={6} xs={12} pt={{xs: 2, md: 0}}>
+              <Grid item md={7} xs={12} pt={{xs: 2, md: 0}}>
                 {secondButton && (
                   <RedirectButton
                     {...secondButton}
