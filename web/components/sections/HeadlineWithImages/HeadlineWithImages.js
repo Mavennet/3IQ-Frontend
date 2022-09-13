@@ -1,45 +1,76 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {createTheme, ThemeProvider} from '@mui/material/styles'
-// import imageUrlBuilder from '@sanity/image-url'
-// import client from '../../../client'
-// import CssBaseline from '@mui/material/CssBaseline'
-// import Box from '@mui/material/Box'
-// import Typography from '@mui/material/Typography'
-// import Grid from '@mui/material/Grid'
-// import RedirectButton from '../../RedirectButton/RedirectButton'
-// import {format, parseISO} from 'date-fns'
-// import SimpleBlockContent from '../../SimpleBlockContent'
-// import styles from './HeadlineWithImages.module.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { Grid, Container, Box, Typography } from '@mui/material'
+import imageUrlBuilder from '@sanity/image-url'
+import client from '../../../client'
+import SimpleBlockContent from '../../SimpleBlockContent'
+import styles from './HeadlineWithImages.module.css'
+import Image from 'next/image'
 
 const theme = createTheme({
   typography: {
     fontFamily: 'Europa',
-    p: {
-      fontSize: 14,
-    },
     h2: {
-      fontSize: 20,
-      fontWeight: 'bold'
-    },
-    h5: {
-      fontSize: 20,
-      fontWeight: 'bold'
+      fontSize: 26,
+      fontWeight: 'bold',
+      lineHeight: '32px',
+      color: '#0082E5',
+      textAlign: 'center',
+      marginBottom: '20px'
     }
   },
 })
 
-// function urlFor(source) {
-//   return imageUrlBuilder(client).image(source)
-// }
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
 
 function HeadlineWithImages(props) {
-  const {heading, description, images} = props
+  const { heading, description, images } = props
 
-  console.log(heading, description, images)
-
-  return ( // TODO
+  return (
     <ThemeProvider theme={theme}>
+      <Box sx={{ backgroundColor: '#091B3F', pt: 10, pb: 10 }}>
+        <Container maxWidth="lg" >
+          <Grid container>
+            <Grid item xs={12}>
+              {
+                heading && (
+                  <Typography variant="h2">{heading}</Typography>
+                )
+              }
+            </Grid>
+            <Grid item xs={12}>
+              {
+                description && (
+                  <div className={styles.simpleBlockContent}>
+                    <SimpleBlockContent blocks={description} />
+                  </div>
+                )
+              }
+            </Grid>
+            <Grid item xs={12}>
+              <div className={styles.imgGrid}>
+                {
+                  images && images.map((item) => {
+                    return (
+                      <Image
+                        key={item._key}
+                        src={urlFor(item.asset._ref).url()}
+                        alt={item.alt}
+                        width={250}
+                        height={255}
+                        objectFit={'contain'}
+                      />
+                    )
+                  })
+                }
+              </div>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </ThemeProvider>
   )
 }
