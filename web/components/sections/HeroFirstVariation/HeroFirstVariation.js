@@ -40,7 +40,7 @@ function HeroFirstVariation(props) {
                 {heading && <SimpleBlockContent blocks={heading} />}
               </div>
             </Box>
-            <Grid container>
+            <Grid container pt={5}>
               <Grid item md={5} xs={12}>
                 {firstButton && (
                   <RedirectButton {...firstButton} sx={{padding: '10px 20px'}}></RedirectButton>

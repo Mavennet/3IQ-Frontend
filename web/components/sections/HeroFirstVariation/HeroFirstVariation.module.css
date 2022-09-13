@@ -1,5 +1,9 @@
 @import "../../../styles/custom-media.css";
 
+.heading {
+font-family: 'Europa';
+   color: #091b3f;
+}
 
 .heading a{
     font-family: 'Europa';
