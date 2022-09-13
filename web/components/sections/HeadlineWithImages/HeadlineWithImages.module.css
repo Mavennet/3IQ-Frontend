@@ -3,19 +3,33 @@
 .simpleBlockContent {
     padding: 0 1em 0 0;
   }
-  
+
   .simpleBlockContent p {
     font-family: 'Europa';
-    font-size: 16px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
   }
-  
+
+  .simpleBlockContent p strong {
+    color: #0082E5;
+  }
+
+
   .simpleBlockContent a {
     font-family: 'Europa';
     color: #0082E5;
     text-decoration: none;
     font-weight: 600;
   }
-  
+
   .simpleBlockContent a:hover {
     text-decoration: underline;
+  }
+
+  .imgGrid {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 50px;
   }
