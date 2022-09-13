@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Button from '@mui/material/Button'
 
 function redirectButton(props) {
-  const {title, route, link, sx, reverse = false} = props
+  const {title, route, link, sx, reverse = false, className} = props
 
   const buttonStyle = {
     background: 'none',
@@ -46,7 +46,7 @@ function redirectButton(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
+        <Button className={className} sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
       </Link>
     )
   }
@@ -54,12 +54,12 @@ function redirectButton(props) {
   if (link) {
     return (
       <a href={link} style={{textDecoration: 'none'}}>
-        <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
+        <Button className={className} sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
       </a>
     )
   }
 
-  return <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
+  return <Button className={className} sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
 }
 
 redirectButton.propTypes = {
@@ -69,6 +69,7 @@ redirectButton.propTypes = {
       current: PropTypes.string,
     }),
   }),
+  className: PropTypes.object,
   link: PropTypes.string,
 }
 

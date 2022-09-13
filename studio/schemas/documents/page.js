@@ -42,6 +42,7 @@ export default {
             {type: 'textSeparator'},            
             {type: 'hero'},
             {type: 'heroWithImage'},
+            {type: 'heroFirstVariation'},
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},

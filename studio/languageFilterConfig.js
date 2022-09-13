@@ -16,6 +16,7 @@ export default {
     'page',
     'textSection',
     'heroWithImage',
+    'heroFirstVariation',
     'timeline',
     'hero',
     'imageBesideText',
