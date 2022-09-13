@@ -30,6 +30,15 @@ export default {
       title: 'Second description (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
+    {
+      name: 'backgroundImage',
+      type: 'image',
+      title: 'Background image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+      options: {
+        hotspot: true
+      }
+    },
   ],
   preview: {
     select: {
