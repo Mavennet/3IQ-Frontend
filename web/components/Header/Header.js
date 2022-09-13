@@ -82,7 +82,7 @@ function Header(props) {
                         <NavItem
                           title={item.route?.localeTitle[currentLanguage.languageTag]}
                           _id={item.id}
-                          routes={item.route}
+                          route={item.route}
                           key={item._id}
                         />
                       )

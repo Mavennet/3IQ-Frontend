@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'heading',
+      type: 'localePortableText',
+      title: 'Heading (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'contactUsFormSrc',
       type: 'url',
       title: 'Form Link (*)',
