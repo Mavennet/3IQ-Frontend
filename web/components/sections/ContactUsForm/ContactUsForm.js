@@ -37,7 +37,7 @@ function urlFor(source) {
 }
 
 function ContactUsForm(props) {
-  const {contactUsFormSrc, mainImage, description, currentLanguage} = props
+  const {heading, contactUsFormSrc, mainImage, description, currentLanguage} = props
 
   console.log(contactUsFormSrc, mainImage, description, currentLanguage)
 
@@ -65,8 +65,7 @@ function ContactUsForm(props) {
               backgroundSize: 'cover',
               bgcolor: '#091b3f',
             }}
-          >
-          </Grid>
+          ></Grid>
           <Grid
             item
             container
@@ -76,15 +75,24 @@ function ContactUsForm(props) {
               color: 'white',
             }}
           >
-            <Grid md={6} sx={{height: '100%'}}></Grid>
-            <Grid md={6} sx={{height: '100%'}}>
-              <Box className={styles.description} mt={10}>{description && <SimpleBlockContent blocks={description} />}</Box>
+            <Grid md={6} xs={false} sx={{height: '100%'}}></Grid>
+            <Grid md={6} xs={12} sx={{height: '100%'}} pl={{xs: 2}}>
+              <Box className={styles.description} mt={10}>
+                {description && <SimpleBlockContent blocks={description} />}
+              </Box>
             </Grid>
           </Grid>
         </Grid>
         <Grid item md={6} xs={12} order={{md: 2, xs: 1}} sx={{height: '1000px'}}>
-          <Box sx={{height: '100%'}} pl={10} pr={10}>
-          <iframe style={{width: '100%', height: '100%', border: 'none'}} name="my_iframe" src={contactUsFormSrc}></iframe>
+          <Box className={styles.heading} pt={2} sx={{height: '150px', textAlign: 'center'}}>
+            {heading && <SimpleBlockContent blocks={heading} />}
+          </Box>
+          <Box sx={{height: '850px'}} pl={{md: 10, sm: 2}} pr={{md: 10, sm: 2}}>
+            <iframe
+              style={{width: '100%', height: '100%', border: 'none'}}
+              name="my_iframe"
+              src={contactUsFormSrc}
+            ></iframe>
           </Box>
         </Grid>
       </Grid>
@@ -93,6 +101,7 @@ function ContactUsForm(props) {
 }
 
 ContactUsForm.propTypes = {
+  heading: PropTypes.object,
   contactUsFormSrc: PropTypes.object,
   mainImage: PropTypes.object,
   description: PropTypes.object,
