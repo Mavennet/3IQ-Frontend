@@ -19,3 +19,26 @@
   .simpleBlockContent a:hover {
     text-decoration: underline;
   }
+
+  .description p{
+    font-family: 'Europa';
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .description a{
+    font-size: 22px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .description > :is(h1, h2, h3, h4){
+    font-family: 'Europa';
+    color: #0082e5;
+    font-weight: bold;
+    text-decoration: none;
+  }
