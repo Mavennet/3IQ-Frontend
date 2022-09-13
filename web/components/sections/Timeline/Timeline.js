@@ -56,7 +56,7 @@ function renderTimeline(items, langTag) {
               }}
               variant="outlined"
             />
-            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '200px'}} />
+            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '170px'}} />
           </TimelineSeparator>
           <TimelineContent sx={{paddingRight: '10px'}}>
             <Typography

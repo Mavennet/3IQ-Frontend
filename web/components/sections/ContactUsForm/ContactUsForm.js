@@ -75,8 +75,8 @@ function ContactUsForm(props) {
               color: 'white',
             }}
           >
-            <Grid md={6} xs={false} sx={{height: '100%'}}></Grid>
-            <Grid md={6} xs={12} sx={{height: '100%'}} pl={{xs: 2}}>
+            <Grid md={4} xs={false} sx={{height: '100%'}}></Grid>
+            <Grid md={8} xs={12} sx={{height: '100%'}} pl={{xs: 2}}>
               <Box className={styles.description} mt={10}>
                 {description && <SimpleBlockContent blocks={description} />}
               </Box>
@@ -84,10 +84,10 @@ function ContactUsForm(props) {
           </Grid>
         </Grid>
         <Grid item md={6} xs={12} order={{md: 2, xs: 1}} sx={{height: '1000px'}}>
-          <Box className={styles.heading} pt={2} sx={{height: '150px', textAlign: 'center'}}>
+          <Box className={styles.heading} pt={5} sx={{height: '200px', textAlign: 'center'}}>
             {heading && <SimpleBlockContent blocks={heading} />}
           </Box>
-          <Box sx={{height: '850px'}} pl={{md: 10, sm: 2}} pr={{md: 10, sm: 2}}>
+          <Box sx={{height: '800px'}} pl={{md: 10, sm: 2}} pr={{md: 10, sm: 2}}>
             <iframe
               style={{width: '100%', height: '100%', border: 'none'}}
               name="my_iframe"
