@@ -15,7 +15,7 @@ import { FaCaretDown } from 'react-icons/fa'
 import PropTypes from 'prop-types'
 
 function NavItemDropdown(props) {
-  const { title, _id, submenuRoutes, link, language } = props
+  const { title, _id, submenuRoutes, link, language, isLinkEnabled } = props
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
 
@@ -42,7 +42,7 @@ function NavItemDropdown(props) {
                 backgroundColor: '#fbfbfb',
               }}
             >
-              <Link href={link} sx={{textDecoration: 'none'}}>
+              <Link href={isLinkEnabled && link} sx={{textDecoration: 'none'}}>
                 <Typography
                   className={styles.sumaryText}
                   sx={{
@@ -78,7 +78,7 @@ function NavItemDropdown(props) {
       </Box>
       {/* Desktop */}
       <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
-        <Link href={link} sx={{textDecoration: 'none'}}>
+        <Link href={isLinkEnabled && link} sx={{textDecoration: 'none'}}>
           <Typography
             id={_id + '-button'}
             aria-controls={open ? _id + '-menu' : undefined}
@@ -137,6 +137,7 @@ NavItemDropdown.propTypes = {
   _id: PropTypes.string,
   language: PropTypes.string,
   link: PropTypes.string,
+  isLinkEnabled: PropTypes.bool,
   submenuRoutes: PropTypes.arrayOf(
     PropTypes.shape({
       localeTitle: PropTypes.shape({
