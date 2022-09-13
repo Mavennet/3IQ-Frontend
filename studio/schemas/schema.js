@@ -17,6 +17,7 @@ import location from './documents/location';
 import textSection from './documents/sections/textSection';
 import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
+import heroFirstVariation from './documents/sections/heroFirstVariation';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
@@ -78,6 +79,7 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    heroFirstVariation,
     imageBesideText,
     hero,
     localeCta,

@@ -45,8 +45,8 @@ function Hero(props) {
             .url()}") no-repeat center center`,
         backgroundSize: 'cover',
           bgcolor: '#091b3f',
-          pt: 24,
-          pb: 24,
+          pt: 15,
+          pb: {lg: 20, md: 15},
         }}
       >
         <Container maxWidth="md">
