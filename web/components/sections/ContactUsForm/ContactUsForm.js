@@ -5,13 +5,9 @@ import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import RedirectButton from '../../RedirectButton/RedirectButton'
-import {format, parseISO} from 'date-fns'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './ContactUsForm.module.css'
-import isWithinInterval from 'date-fns/isWithinInterval/index.js'
 
 const theme = createTheme({
   typography: {
@@ -29,8 +25,6 @@ const theme = createTheme({
     },
   },
 })
-
-const builder = imageUrlBuilder(client)
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
