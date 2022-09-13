@@ -34,6 +34,7 @@ function TextSection(props) {
                     top: {md: '300px'},
                     mt: {md: 0, xs: 5},
                   }}
+                  ml={{md: 5}}
                 >
                   <video
                     className={styles.video}
