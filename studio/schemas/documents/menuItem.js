@@ -13,12 +13,19 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      title: 'Internal link (*)',
-      description: 'Use this route to link between pages on the website',
       name: 'route',
       type: 'reference',
-      to: [{ type: 'route' }],
+      title: 'Internal link (*)',
+      description: 'Use this route to link the page that will be attached to this menu item',
       validation: Rule => Rule.error('Information required.').required(),
+      to: [{ type: 'route' }],
+    },
+    {
+      name: 'isLinkEnabled',
+      type: 'boolean',
+      title: 'Enable clickable link?',
+      description: 'Enable this option to allow the user to click on this menu item and be redirected to the selected route',
+      initialValue: false,
     },
     {
       title: 'Submenu routes',

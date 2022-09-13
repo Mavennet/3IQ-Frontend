@@ -38,7 +38,8 @@ export default {
     },
     {
       name: 'span',
-      title: 'Span',
+      title: 'Short text',
+      description: 'Short text above the second text block on the left',
       type: 'localeString',
     },
     {

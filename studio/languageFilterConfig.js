@@ -32,6 +32,9 @@ export default {
     'contactUsForm',
     'locationsDisplay',
     'location',
+    'textSeparator',
+    'headlineWithImages',
+    'descriptionsWithButton',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
