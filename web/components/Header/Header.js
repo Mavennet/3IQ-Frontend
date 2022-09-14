@@ -76,6 +76,7 @@ function Header(props) {
                           language={currentLanguage.languageTag}
                           key={item._id}
                           link={item.route.slug.current}
+                          isLinkEnabled={item.isLinkEnabled}
                         />
                       )
                       : (
@@ -84,6 +85,7 @@ function Header(props) {
                           _id={item.id}
                           route={item.route}
                           key={item._id}
+                          isLinkEnabled={item.isLinkEnabled}
                         />
                       )
                   )))}
@@ -129,6 +131,7 @@ function Header(props) {
                                   language={currentLanguage.languageTag}
                                   key={item._id}
                                   link={item.route.slug.current}
+                                  isLinkEnabled={item.isLinkEnabled}
                                 />
                               )
                               : (
@@ -137,6 +140,7 @@ function Header(props) {
                                   _id={item.id}
                                   routes={item.route}
                                   key={item._id}
+                                  isLinkEnabled={item.isLinkEnabled}
                                 />
                               )
                           ))}
