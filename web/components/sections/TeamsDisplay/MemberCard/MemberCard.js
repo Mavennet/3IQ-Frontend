@@ -49,6 +49,7 @@ function MemberCard(props) {
           variant="h2"
           p={2}
           sx={{
+            fontFamily: 'Europa',
             textAlign: 'center',
             color: '#fff',
             fontSize: '22px'
@@ -59,12 +60,14 @@ function MemberCard(props) {
         <Typography
           variant="h2"
           mb={2}
-          p={2}
+          p={1}
+          pb={8}
           sx={{
             textAlign: 'center',
+            fontFamily: 'Europa',
             color: '#0082E5',
-            fontSize: '16px',
-            minHeight: '80px'
+            fontSize: '18px',
+            fontWeight: '700',
           }}
         >
           {role}
@@ -82,13 +85,17 @@ function MemberCard(props) {
           showProfileBox && (
             <Typography
               variant="h2"
-              mb={2}
               p={1}
               sx={{
+                fontFamily: 'Europa',
                 textAlign: 'center',
                 color: '#fff',
                 backgroundColor: '#0082E5',
-                fontSize: '16px'
+                fontSize: '20px',
+                position: 'absolute',
+                bottom: '10px',
+                width: '100%',
+                fontWeight: '500',
               }}
             >
               {readProfileText !== null ? readProfileText : 'Missing - Read Profile Text'}
@@ -99,13 +106,17 @@ function MemberCard(props) {
           !showProfileBox && email && (
             <Typography
               variant="h2"
-              mb={2}
               p={1}
               sx={{
+                fontFamily: 'Europa',
                 textAlign: 'center',
                 color: '#fff',
                 backgroundColor: '#0082E5',
-                fontSize: '16px'
+                fontSize: '20px',
+                position: 'absolute',
+                bottom: '10px',
+                width: '100%',
+                fontWeight: '500',
               }}
             >
               {contactText !== null ? contactText : 'Missing - Contact Text'}
