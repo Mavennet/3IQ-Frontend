@@ -22,7 +22,7 @@ function Header(props) {
 
   return (
     <>
-      <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
+      <AppBar position="static" sx={{ bgcolor: 'white', boxShadow: 'none' }}>
         <Toolbar
           disableGutters
           sx={{
