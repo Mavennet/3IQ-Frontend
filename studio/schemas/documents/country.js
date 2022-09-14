@@ -124,6 +124,12 @@ export default {
       description: "Title of the footer's social media section",
     },
     {
+      name: 'shareThisStoryText',
+      type: 'localeString',
+      title: 'Share this Story text',
+      description: "Social media share text that will be displayed on each Post page",
+    },
+    {
       name: 'twitterUrl',
       type: 'url',
       title: 'Twitter URL',

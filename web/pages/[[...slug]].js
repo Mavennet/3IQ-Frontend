@@ -50,6 +50,7 @@ export const getServerSideProps = async ({ params }) => {
       twitterUrl,
       linkedinUrl,
       youtubeUrl,
+      shareThisStoryText,
     }
   `
   )
