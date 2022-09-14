@@ -47,7 +47,7 @@ function ImageBesideText(props) {
                 transform: {sm: 'scale(1)', md: 'scale(1.9)'},
                 display: {xs: 'none', sm: 'inherit'},
               }}
-              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+              alt={mainImage.alt}
               src={builder.image(mainImage).url()}
             />
           )}

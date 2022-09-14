@@ -88,7 +88,7 @@ function DoubleOptions(props) {
                   maxWidth: {xs: 350, md: 250, xl: 400},
                 }}
                 mb={5}
-                alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+                alt={firstImage.alt}
                 src={builder.image(firstImage).url()}
               />
               {firstButton && (
@@ -113,7 +113,7 @@ function DoubleOptions(props) {
                 }}
                 mt={3}
                 mb={5}
-                alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+                alt={secondImage.alt}
                 src={builder.image(secondImage).url()}
               />
               {secondButton && (
