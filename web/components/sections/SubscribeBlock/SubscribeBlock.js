@@ -75,7 +75,10 @@ function SubscribeBlock(props) {
                       sx={{
                         backgroundColor: '#092047',
                         textTransform: 'capitalize',
-                        fontSize: '16px'
+                        fontSize: '16px',
+                        ':hover': {
+                          bgcolor: ' #0082e5',
+                        },
                       }}>
                       {firstSubscribeButtonText || 'Missing firstSubscribeButtonText'}
                     </Button>
@@ -98,7 +101,10 @@ function SubscribeBlock(props) {
                       sx={{
                         backgroundColor: '#092047',
                         textTransform: 'capitalize',
-                        fontSize: '16px'
+                        fontSize: '16px',
+                        ':hover': {
+                          bgcolor: ' #0082e5',
+                        },
                       }}>
                       {secondSubscribeButtonText || 'Missing secondSubscribeButtonText'}
                     </Button>
@@ -121,7 +127,10 @@ function SubscribeBlock(props) {
                       sx={{
                         backgroundColor: '#092047',
                         textTransform: 'capitalize',
-                        fontSize: '16px'
+                        fontSize: '16px',
+                        ':hover': {
+                          bgcolor: ' #0082e5',
+                        },
                       }}>
                       {thirdSubscribeButtonText || 'Missing thirdSubscribeButtonText'}
                     </Button>
