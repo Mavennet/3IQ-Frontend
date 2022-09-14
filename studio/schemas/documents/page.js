@@ -47,6 +47,7 @@ export default {
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
             {type: 'sideBySideImages'},
+            {type: 'subscribeBlock'},            
             {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
             {type: 'descriptionsWithButton'},

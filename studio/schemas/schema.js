@@ -35,6 +35,7 @@ import textSeparator from './documents/sections/textSeparator';
 import headlineWithImages from './documents/sections/headlineWithImages';
 import descriptionsWithButton from './documents/sections/descriptionsWithButton';
 import tabsContent from './documents/sections/tabsContent';
+import subscribeBlock from './documents/sections/subscribeBlock';
 
 // Object types
 import cta from './objects/cta';
@@ -104,5 +105,6 @@ export default createSchema({
     descriptionsWithButton,
     tabsContent,
     tabItem,
+    subscribeBlock,
   ]),
 });
