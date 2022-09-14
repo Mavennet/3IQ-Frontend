@@ -34,6 +34,7 @@ const hiddenDocTypes = (listItem) => ![
   'descriptionsWithButton',
   'tabsContent',
   'tabItem',
+  'subscribeBlock',
 ].includes(listItem.getId())
 
 export default () =>
@@ -82,6 +83,7 @@ export default () =>
             S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
             S.documentTypeListItem('locationsDisplay').title('Locations Display'),
             S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
+            S.documentTypeListItem('subscribeBlock').title('Subscribe Block'),
             S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
             S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
