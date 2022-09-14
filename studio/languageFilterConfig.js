@@ -35,6 +35,7 @@ export default {
     'textSeparator',
     'headlineWithImages',
     'descriptionsWithButton',
+    'tabItem'
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),

@@ -32,6 +32,8 @@ const hiddenDocTypes = (listItem) => ![
   'textSeparator',
   'headlineWithImages',
   'descriptionsWithButton',
+  'tabsContent',
+  'tabItem',
 ].includes(listItem.getId())
 
 export default () =>
@@ -83,6 +85,7 @@ export default () =>
             S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
             S.documentTypeListItem('doubleOptions').title('Double Options'),
             S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
+            S.documentTypeListItem('tabsContent').title('Tabs Content'),
             S.documentTypeListItem('timeline').title('Timeline'),
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
           ])

@@ -9,7 +9,7 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Menu item name (*)',
+      title: 'Menu item Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
