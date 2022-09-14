@@ -132,11 +132,13 @@ function DoubleOptions(props) {
 
 DoubleOptions.propTypes = {
   firstImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),
   }),
   secondImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),

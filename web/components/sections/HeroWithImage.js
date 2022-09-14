@@ -74,6 +74,7 @@ function HeroWithImage(props) {
 
 HeroWithImage.propTypes = {
   mainImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),

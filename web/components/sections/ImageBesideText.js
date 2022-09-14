@@ -94,6 +94,7 @@ function ImageBesideText(props) {
 
 ImageBesideText.propTypes = {
   mainImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),
