@@ -9,6 +9,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
+import RedirectButton from '../../RedirectButton/RedirectButton'
 
 const theme = createTheme({
   typography: {
@@ -17,7 +18,7 @@ const theme = createTheme({
       fontSize: 14,
     },
     h3: {
-      fontSize: 60,
+      fontSize: 50,
       fontWeight: 'bold'
     },
     h5: {
@@ -32,7 +33,9 @@ function urlFor(source) {
 }
 
 function Hero(props) {
-  const {heading, description, backgroundImage} = props
+  const {heading, description, backgroundImage, button, isSubscriptionSrcLink, isButtonReverse} = props
+
+  console.log(isSubscriptionSrcLink) // TODO Add logic to show button that opens popup on click with the Subscription SRC
 
   return (
     <ThemeProvider theme={theme}>
@@ -45,8 +48,8 @@ function Hero(props) {
             .url()}") no-repeat center center`,
         backgroundSize: 'cover',
           bgcolor: '#091b3f',
-          pt: 15,
-          pb: {lg: 20, xs: 15},
+          pt: {lg: 12, xs: 8},
+          pb: {lg: 18, xs: 14},
         }}
       >
         <Container maxWidth="md">
@@ -59,6 +62,14 @@ function Hero(props) {
                 {description && <SimpleBlockContent blocks={description} />}
               </div>
             </Box>
+
+            {button && (
+              <RedirectButton
+              {...button}
+              reverse={!!isButtonReverse}
+              sx={{mt: 8, width: {xs: '100%', md: 'auto'}, padding: '8px 25px', fontSize: '20px', fontWeight: '400'}}
+              ></RedirectButton>
+            )}
           </Box>
         </Container>
       </Box>
@@ -70,6 +81,9 @@ Hero.propTypes = {
   heading: PropTypes.object,
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
+  button: PropTypes.object,
+  isSubscriptionSrcLink: PropTypes.bool,
+  isButtonReverse: PropTypes.bool,
 }
 
 export default Hero

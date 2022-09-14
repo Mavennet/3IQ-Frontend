@@ -20,6 +20,8 @@ export default {
       name: 'profilePhoto',
       type: 'figure',
       title: 'Profile photo (*)',
+      title: 'Contact Text',
+      description: 'Recommended to add profile photos with 1:1 (square) proportion',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
