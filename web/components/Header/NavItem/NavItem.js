@@ -5,11 +5,11 @@ import styles from './NavItem.module.css'
 import PropTypes from 'prop-types'
 
 function NavItem(props) {
-  const { route, title, _id } = props
+  const { route, title, _id, isLinkEnabled } = props
   return (
     <Link
       key={_id}
-      href={getPathFromSlug(route?.slug?.current)}
+      href={isLinkEnabled && getPathFromSlug(route?.slug?.current)}
       sx={{textDecoration: 'none'}}
     >
       <Typography
@@ -32,6 +32,7 @@ function NavItem(props) {
 NavItem.propTypes = {
   title: PropTypes.string,
   _id: PropTypes.string,
+  isLinkEnabled: PropTypes.bool,
   route: PropTypes.shape({
     slug: PropTypes.shape({
       current: PropTypes.string,
