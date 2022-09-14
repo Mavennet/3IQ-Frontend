@@ -9,9 +9,6 @@ import { AiOutlineClose } from 'react-icons/ai'
 const theme = createTheme({
   typography: {
     fontFamily: 'Europa',
-    p: {
-      fontSize: 14,
-    },
     h2: {
       fontSize: 20,
       fontWeight: 'bold',
@@ -63,10 +60,10 @@ function SubscribeBlock(props) {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
-        <Grid container mb={10} py={5} sx={{ backgroundColor: '#E8E8EA' }}>
+        <Grid container mb={10} py={7} sx={{ backgroundColor: '#E8E8EA' }}>
           {
             firstSubscribeDescription && (
-              <Grid item xs={12} px={10} py={2}>
+              <Grid item xs={12} px={12} py={2}>
                 <div className={styles.simpleBlockContent}>
                   <SimpleBlockContent blocks={firstSubscribeDescription} />
                 </div>
@@ -76,8 +73,9 @@ function SubscribeBlock(props) {
                       variant="contained"
                       onClick={() => handleOpen(firstSubscribeSrc)}
                       sx={{
-                        backgroundColor: '#336',
-                        textTransform: 'capitalize'
+                        backgroundColor: '#092047',
+                        textTransform: 'capitalize',
+                        fontSize: '16px'
                       }}>
                       {firstSubscribeButtonText || 'Missing firstSubscribeButtonText'}
                     </Button>
@@ -88,7 +86,7 @@ function SubscribeBlock(props) {
           }
           {
             secondSubscribeDescription && (
-              <Grid item xs={12} px={10} py={2}>
+              <Grid item xs={12} px={12} py={2}>
                 <div className={styles.simpleBlockContent}>
                   <SimpleBlockContent blocks={secondSubscribeDescription} />
                 </div>
@@ -98,8 +96,9 @@ function SubscribeBlock(props) {
                       variant="contained"
                       onClick={() => handleOpen(secondSubscribeSrc)}
                       sx={{
-                        backgroundColor: '#336',
-                        textTransform: 'capitalize'
+                        backgroundColor: '#092047',
+                        textTransform: 'capitalize',
+                        fontSize: '16px'
                       }}>
                       {secondSubscribeButtonText || 'Missing secondSubscribeButtonText'}
                     </Button>
@@ -110,7 +109,7 @@ function SubscribeBlock(props) {
           }
           {
             thirdSubscribeDescription && (
-              <Grid item xs={12} px={10} py={2}>
+              <Grid item xs={12} px={12} py={2}>
                 <div className={styles.simpleBlockContent}>
                   <SimpleBlockContent blocks={thirdSubscribeDescription} />
                 </div>
@@ -120,8 +119,9 @@ function SubscribeBlock(props) {
                       variant="contained"
                       onClick={() => handleOpen(thirdSubscribeSrc)}
                       sx={{
-                        backgroundColor: '#336',
-                        textTransform: 'capitalize'
+                        backgroundColor: '#092047',
+                        textTransform: 'capitalize',
+                        fontSize: '16px'
                       }}>
                       {thirdSubscribeButtonText || 'Missing thirdSubscribeButtonText'}
                     </Button>
