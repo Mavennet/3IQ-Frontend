@@ -25,7 +25,7 @@ export default {
         ],
       },
     },
-    // { type: 'figure' },
+    { type: 'figure' },
     // { type: 'embedHTML' },
   ],
 };

@@ -217,7 +217,7 @@ export const getServerSideProps = async ({ params }) => {
           email,
           profilePhoto,
         },
-        ...        
+        ...
       },
     }
     `
@@ -295,7 +295,7 @@ const LandingPage = (props) => {
   useEffect(() => {
     if (content) {
       const contentWithDefaultLanguage = []
-      content && content.map((c) => contentWithDefaultLanguage.push({ ...c, currentLanguage }))
+      content && content.map((c) => contentWithDefaultLanguage.push({ ...c, currentLanguage, currentCountry: country }))
       setFormatedContent(contentWithDefaultLanguage)
       config &&
         setFormatedConfig({
@@ -351,13 +351,13 @@ const LandingPage = (props) => {
           }}
           noindex={disallowRobots}
         />
-        {formatedContent && 
-        <RenderSections 
-          routes={allRoutes} 
-          posts={allPosts} 
-          teams={allTeams} 
-          timelines={allTimelines} 
-          locationsDisplays={allLocationsDisplays} 
+        {formatedContent &&
+        <RenderSections
+          routes={allRoutes}
+          posts={allPosts}
+          teams={allTeams}
+          timelines={allTimelines}
+          locationsDisplays={allLocationsDisplays}
           tabItems={allTabItems}
           sections={formatedContent}
         />}
