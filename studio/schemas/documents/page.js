@@ -50,6 +50,7 @@ export default {
             {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
             {type: 'descriptionsWithButton'},
+            {type: 'tabsContent'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
           ]

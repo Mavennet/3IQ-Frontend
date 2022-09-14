@@ -198,11 +198,35 @@ export const getServerSideProps = async ({ params }) => {
     `
   )
 
+  // Retrieve all Tab Items
+  const allTabItems = await client.fetch(
+    groq`
+    *[_type == 'tabItem'] {
+      _id,
+      _type,
+      _rev,
+      contentBlock,
+      'localeButton': button,
+      'localeName': name,
+      posts[]-> {
+        author-> {
+          _id,
+          _type,
+          name,
+          email,
+          profilePhoto,
+        },
+        ...        
+      },
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: { ...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays } || {},
+    props: { ...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays, allTabItems } || {},
   }
 }
 
@@ -224,6 +248,7 @@ const LandingPage = (props) => {
     allTeams,
     allTimelines,
     allLocationsDisplays,
+    allTabItems,
   } = props
 
   const router = useRouter()
@@ -325,7 +350,16 @@ const LandingPage = (props) => {
           }}
           noindex={disallowRobots}
         />
-        {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} locationsDisplays={allLocationsDisplays} sections={formatedContent} />}
+        {formatedContent && 
+        <RenderSections 
+          routes={allRoutes} 
+          posts={allPosts} 
+          teams={allTeams} 
+          timelines={allTimelines} 
+          locationsDisplays={allLocationsDisplays} 
+          tabItems={allTabItems}
+          sections={formatedContent}
+        />}
       </Layout>
     )
   )
@@ -346,6 +380,7 @@ LandingPage.propTypes = {
   allTeams: PropTypes.any,
   allTimelines: PropTypes.any,
   allLocationsDisplays: PropTypes.any,
+  allTabItems: PropTypes.any,
 }
 
 export default LandingPage

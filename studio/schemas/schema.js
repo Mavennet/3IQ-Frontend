@@ -8,10 +8,12 @@ import siteConfig from './documents/siteConfig';
 import person from './documents/person';
 import country from './documents/country';
 import language from './documents/language';
+import post from './documents/post';
 import menuItem from './documents/menuItem';
 import team from './documents/team';
 import timelineItem from './documents/timelineItem';
 import location from './documents/location';
+import tabItem from './documents/tabItem';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -23,7 +25,6 @@ import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
-import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
 import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
@@ -33,6 +34,7 @@ import locationsDisplay from './documents/sections/locationsDisplay';
 import textSeparator from './documents/sections/textSeparator';
 import headlineWithImages from './documents/sections/headlineWithImages';
 import descriptionsWithButton from './documents/sections/descriptionsWithButton';
+import tabsContent from './documents/sections/tabsContent';
 
 // Object types
 import cta from './objects/cta';
@@ -100,5 +102,7 @@ export default createSchema({
     textSeparator,
     headlineWithImages,
     descriptionsWithButton,
+    tabsContent,
+    tabItem,
   ]),
 });
