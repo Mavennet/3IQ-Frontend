@@ -5,6 +5,7 @@ import styles from './MemberCard.module.css'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
 import { FaLinkedinIn } from 'react-icons/fa'
+import Image from 'next/image'
 
 function MemberCard(props) {
   const { name, image, role, linkedin, showProfileBox, email, contactText, readProfileText } = props
@@ -27,19 +28,18 @@ function MemberCard(props) {
           />
         )
       }
-      <Box
-        component="img"
-        width={300}
-        height={300}
-        sx={{
-          width: '100%',
-          maxHeight: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center'
-        }}
-        alt={name}
-        src={urlFor(image).url()}
-      />
+      <div className={styles.imgGrid}>
+        {
+          image && (
+            <Image
+              src={urlFor(image).url()}
+              alt={name}
+              layout='fill'
+              objectFit='cover'
+            />
+          )
+        }
+      </div>
       <Box
         sx={{
           width: '100%'
