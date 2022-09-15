@@ -33,9 +33,9 @@ function urlFor(source) {
 }
 
 function ReadMoreCard(props) {
-  const {button, heading, backgroundImage, description } = props
+  const {button, heading, backgroundImage, description, currentLanguage } = props
 
-  const localeHeading = heading
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -71,9 +71,9 @@ function ReadMoreCard(props) {
               color: '#091b3f',
             }}
           >
-            {localeHeading && (
+            {heading && (
               <Typography component="h1" variant="h4" style={{fontWeight: 'bold', color: '#0082E5'}} gutterBottom>
-                {localeHeading}
+                {heading}
               </Typography>
             )}
             {description && (
@@ -89,11 +89,10 @@ function ReadMoreCard(props) {
                 justifyContent: 'flex-end'
               }}
             >
-            {button && button.route && (
+            {localeButton && localeButton.route && (
               <RedirectButton
-                  title={button.title}
-                  route={button.route}
-                  sx={{width: {xs: '96%', md: 180}, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
+                {...localeButton}
+                sx={{width: {xs: '96%', md: 180}, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
               />
             )}
             </Box>
@@ -108,7 +107,8 @@ ReadMoreCard.propTypes = {
   button: PropTypes.object,
   description: PropTypes.string,
   backgroundImage: PropTypes.object,
-  heading: PropTypes.string
+  heading: PropTypes.string,
+  currentLanguage: PropTypes.object,
 }
 
 export default ReadMoreCard

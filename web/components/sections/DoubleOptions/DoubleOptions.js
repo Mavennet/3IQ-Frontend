@@ -21,8 +21,12 @@ function DoubleOptions(props) {
     firstImage,
     secondImage,
     firstButton,
-    secondButton
+    secondButton,
+    currentLanguage
   } = props
+
+  const localeFirstButton = firstButton[currentLanguage?.languageTag]
+  const localeSecondButton = secondButton[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -91,9 +95,9 @@ function DoubleOptions(props) {
                 alt={firstImage.alt}
                 src={builder.image(firstImage).url()}
               />
-              {firstButton && (
+              {localeFirstButton && localeFirstButton.route && (
                 <RedirectButton
-                  {...firstButton}
+                  {...localeFirstButton}
                   reverse
                   sx={{width: {md: 150}, padding: '10px 20px'}}
                 ></RedirectButton>
@@ -116,9 +120,9 @@ function DoubleOptions(props) {
                 alt={secondImage.alt}
                 src={builder.image(secondImage).url()}
               />
-              {secondButton && (
+              {localeSecondButton && localeSecondButton.route && (
                 <RedirectButton
-                  {...secondButton}
+                  {...localeSecondButton}
                   sx={{width: {md: 150}, padding: '10px 20px'}}
                 ></RedirectButton>
               )}
@@ -146,7 +150,8 @@ DoubleOptions.propTypes = {
   firstButton: PropTypes.object,
   secondButton: PropTypes.object,
   heading: PropTypes.object,
-  description: PropTypes.object
+  description: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default DoubleOptions

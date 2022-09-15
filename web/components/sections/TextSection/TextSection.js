@@ -8,7 +8,9 @@ import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 
 function TextSection(props) {
-  const {text, videoSrc, button} = props
+  const {text, videoSrc, button, currentLanguage } = props
+
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <Box>
@@ -20,8 +22,8 @@ function TextSection(props) {
                 <div className={styles.textSection}>
                   {text && <SimpleBlockContent blocks={text} />}
                 </div>
-                {button && (
-                  <RedirectButton {...button} sx={{width: {xs: '100%', md: 250}, mt: 5}} />
+                {localeButton && localeButton.route && (
+                  <RedirectButton {...localeButton} sx={{width: {xs: '100%', md: 250}, mt: 5}} />
                 )}
               </Box>
             </Grid>
@@ -61,6 +63,7 @@ TextSection.propTypes = {
   text: PropTypes.arrayOf(PropTypes.object),
   videoSrc: PropTypes.string,
   button: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default TextSection
