@@ -14,7 +14,7 @@ function TextSection(props) {
 
   return (
     <Box>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box sx={{p: 5, pr: 1, pt: 0, pl: {xs: 1}}}>
           <Grid container>
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>

@@ -35,7 +35,7 @@ function LocationsDisplay(props) {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: '#E8E8EA', pt: 15, pb: 15 }}>
-        <Container maxWidth="md" >
+        <Container maxWidth="lg" >
           <Grid container>
             <Grid item xs={12} mb={5}>
               {
@@ -52,7 +52,7 @@ function LocationsDisplay(props) {
                       <Grid container key={i}>
                         {
                           item.googleMapsSrc && (
-                            <Grid item xs={12} md={6} mb={4}>
+                            <Grid item xs={12} md={7} mb={4}>
                               <iframe
                                 frameBorder="0"
                                 scrolling="no"
@@ -61,15 +61,13 @@ function LocationsDisplay(props) {
                                 src={item.googleMapsSrc}
                                 width={'100%'}
                                 height={300}
-                                title="181 Bay Street  Toronto, Ontario Canada M5J 2T3"
-                                ariaLabel="181 Bay Street  Toronto, Ontario Canada M5J 2T3"
                               ></iframe>
                             </Grid>
                           )
                         }
                         {
                           item.mainImage && (
-                            <Grid item xs={12} md={6} mb={4}>
+                            <Grid item xs={12} md={7} mb={4}>
                               <div style={{ width: '100%', height: '300px', position: 'relative' }}>
                                 <Image
                                   src={urlFor(item.mainImage.asset._ref).url()}
@@ -81,7 +79,7 @@ function LocationsDisplay(props) {
                             </Grid>
                           )
                         }
-                        <Grid item xs={12} md={6} py={{md: 5}} px={{md: 10}} mb={4}>
+                        <Grid item xs={12} md={5} py={{md: 5}} px={{md: 10}} mb={4}>
                           {
                             item.localeName && (
                               <Typography variant="h3" sx={{textAlign: {xs: 'center', md: 'left'}}}>{item.localeName[currentLanguage.languageTag]}</Typography>

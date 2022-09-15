@@ -3,7 +3,7 @@
 .simpleBlockContent {
   position: relative;
   @media (--media-min-large) {
-    margin-left: 50px;
+    margin-left: 38px;
   }
 }
 
