@@ -9,7 +9,7 @@ import RedirectButton from '../../RedirectButton/RedirectButton'
 
 function TextSection(props) {
   const {text, videoSrc, button, currentLanguage } = props
-  
+
   const localeButton = button && button[currentLanguage?.languageTag]
 
   return (
