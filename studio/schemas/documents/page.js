@@ -49,6 +49,7 @@ export default {
             {type: 'sideBySideImages'},
             {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
+            {type: 'tabsContent'},
             {type: 'descriptionsWithButton'},
             {type: 'timeline'},
             {type: 'imageBesideText'},

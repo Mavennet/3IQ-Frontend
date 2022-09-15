@@ -22,6 +22,7 @@ import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import doubleOptions from './documents/sections/doubleOptions';
+import tabsContent from './documents/sections/tabsContent';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import post from './documents/post';
 import newsCard from './documents/sections/newsCard';
@@ -73,6 +74,7 @@ export default createSchema({
     postPortableText,
     person,
     doubleOptions,
+    tabsContent,
     post,
     country,
     language,

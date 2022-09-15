@@ -1,0 +1,19 @@
+.heading{
+    font-family: 'Europa';
+}
+
+.heading h2{
+    color: #0082e5;
+    font-weight: bold;
+}
+
+.accordion{
+    background: none;
+    border: 4px solid orange;
+    border-bottom: 4px solid orange;
+}
+
+.accordionSumary{
+    background: none;
+    border-bottom: 2px solid orange;
+}

@@ -33,8 +33,6 @@ function urlFor(source) {
 function ContactUsForm(props) {
   const {heading, contactUsFormSrc, mainImage, description, currentLanguage} = props
 
-  console.log(contactUsFormSrc, mainImage, description, currentLanguage)
-
   return (
     <ThemeProvider theme={theme}>
       <Grid container>

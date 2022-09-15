@@ -21,6 +21,7 @@ export default {
     'hero',
     'imageBesideText',
     'doubleOptions',
+    'tabsContent',
     'mailchimp',
     'sideBySideImages',
     'post',
