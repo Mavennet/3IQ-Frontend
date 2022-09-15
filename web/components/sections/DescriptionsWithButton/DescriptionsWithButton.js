@@ -30,7 +30,9 @@ function urlFor(source) {
 }
 
 function DescriptionsWithButton(props) {
-  const { firstDescription, secondDescription, button, backgroundImage } = props
+  const { firstDescription, secondDescription, button, backgroundImage, currentLanguage } = props
+
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,10 +56,9 @@ function DescriptionsWithButton(props) {
               }
             </Grid>
             <Grid item xs={12}>
-              {button.route && button && (
+              {localeButton && localeButton.route && (
                 <RedirectButton
-                  title={button.title}
-                  route={button.route}
+                  {...localeButton}
                   sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff' }}
                 />
               )}
@@ -83,6 +84,7 @@ DescriptionsWithButton.propTypes = {
   secondDescription: PropTypes.object,
   button: PropTypes.object,
   backgroundImage: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default DescriptionsWithButton

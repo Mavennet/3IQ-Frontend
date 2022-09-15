@@ -33,7 +33,9 @@ function urlFor(source) {
 }
 
 function Hero(props) {
-  const {heading, description, backgroundImage, button, isSubscriptionSrcLink, isButtonReverse} = props
+  const {heading, description, backgroundImage, button, isSubscriptionSrcLink, isButtonReverse, currentLanguage } = props
+
+  const localeButton = button && button[currentLanguage?.languageTag]
 
   console.log(isSubscriptionSrcLink) // TODO Add logic to show button that opens popup on click with the Subscription SRC
 
@@ -63,9 +65,9 @@ function Hero(props) {
               </div>
             </Box>
 
-            {button && (
+            {localeButton && localeButton.route && (
               <RedirectButton
-              {...button}
+              {...localeButton}
               reverse={!!isButtonReverse}
               sx={{mt: 8, width: {xs: '100%', md: 'auto'}, padding: '8px 25px', fontSize: '20px', fontWeight: '400'}}
               ></RedirectButton>
@@ -84,6 +86,7 @@ Hero.propTypes = {
   button: PropTypes.object,
   isSubscriptionSrcLink: PropTypes.bool,
   isButtonReverse: PropTypes.bool,
+  currentLanguage: PropTypes.object,
 }
 
 export default Hero

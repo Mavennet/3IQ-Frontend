@@ -20,7 +20,7 @@ function RenderSections(props) {
 
   sections.forEach((section) => {
     const toConvertItems = [
-      'localeCta', 
+      'localeCta',
       'localeText', 
       'localeString', 
       'localeSimplePortableText',
@@ -28,7 +28,9 @@ function RenderSections(props) {
     ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
-    const filteredSectionKeys = []
+    const filteredSectionKeys = []    
+    const countryLanguageTags = section.currentCountry.languages.map(language => language.languageTag)
+
     sectionValues.forEach((value, index) => {
       if (value && value._type && toConvertItems.indexOf(value._type) >= 0) {
         filteredSectionKeys.push(sectionKeys[index])
@@ -36,12 +38,18 @@ function RenderSections(props) {
     })
     filteredSectionKeys.forEach((key) => {
       if (section[key] && section.currentLanguage) {
-        const localeButton = section[key][section.currentLanguage.languageTag]
-        if (localeButton && localeButton.route) {
-          const formatedRoute = routes.filter((r) => r._id === localeButton.route._ref)[0]
-          localeButton.route = formatedRoute
+        if (section[key]._type === 'localeCta') {
+          countryLanguageTags.forEach(tag => {
+            const localeRoute = routes.filter((r) => r._id === section[key][tag]?.route?._ref)[0]
+            if (localeRoute) {
+              section[key][tag].route = localeRoute
+              console.log(section[key][tag])
+            }
+          })
+        } else {
+          const localeParameter = section[key][section.currentLanguage.languageTag]
+          section[key] = localeParameter
         }
-        section[key] = localeButton
       }
     })    
 

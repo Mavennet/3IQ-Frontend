@@ -18,7 +18,10 @@ function urlFor(source) {
 }
 
 function HeroFirstVariation(props) {
-  const {heading, backgroundImage, firstButton, secondButton} = props
+  const {heading, backgroundImage, firstButton, secondButton, currentLanguage } = props
+
+  const localeFirstButton = firstButton[currentLanguage?.languageTag]
+  const localeSecondButton = secondButton[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -42,14 +45,14 @@ function HeroFirstVariation(props) {
             </Box>
             <Grid container pt={5}>
               <Grid item md={5} xs={12}>
-                {firstButton && (
-                  <RedirectButton {...firstButton} sx={{padding: '10px 20px'}}></RedirectButton>
+                {localeFirstButton && localeFirstButton.route && (
+                  <RedirectButton {...localeFirstButton} sx={{padding: '10px 20px'}}></RedirectButton>
                 )}
               </Grid>
               <Grid item md={7} xs={12} pt={{xs: 2, md: 0}}>
-                {secondButton && (
+                {localeSecondButton && localeSecondButton.route && (
                   <RedirectButton
-                    {...secondButton}
+                    {...localeSecondButton}
                     reverse
                     className={styles.secondButton}
                     sx={{padding: '10px 20px'}}
@@ -70,6 +73,7 @@ HeroFirstVariation.propTypes = {
   description: PropTypes.object,
   firstButton: PropTypes.object,
   secondButton: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default HeroFirstVariation

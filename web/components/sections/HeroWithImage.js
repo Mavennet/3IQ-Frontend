@@ -20,8 +20,9 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage } = props
 
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,10 +58,10 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {button &&
+            {localeButton && localeButton.route &&
                (
                <RedirectButton
-               {...button}
+               {...localeButton}
                reverse
                sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
                ></RedirectButton>
@@ -83,6 +84,7 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default HeroWithImage
