@@ -1,4 +1,7 @@
+import supportedLanguages from '../../supportedLanguages';
 import { SplitHorizontalIcon } from '@sanity/icons'
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -7,14 +10,19 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'name',
-      type: 'string',
-      title: 'Name (*)',
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'description',
+      type: 'localePortableText',
+      title: 'Description',
+    },
+    {
       name: 'tabItems',
-      title: 'Tab items',
+      title: 'Tab items (*)',
       description: 'Select the tab items that will be displayed in order',
       validation: Rule => [
         Rule.max(10).warning('Are you sure you want more than 10 items?'),
@@ -34,7 +42,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `name`,
+      title: `heading.${baseLanguage.id}`,
       tabItemsLength: `tabItems.length`,
     },
     prepare({ title, tabItemsLength }) {
