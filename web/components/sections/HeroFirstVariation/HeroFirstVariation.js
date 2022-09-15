@@ -54,7 +54,7 @@ function HeroFirstVariation(props) {
                   <RedirectButton
                     {...localeSecondButton}
                     reverse
-                    sx={{padding: '10px 20px', color: '#dc6e19'}}
+                    sx={{padding: '10px 20px', color: '#dc6e19', "&:hover": {background: '#dc6e19', color: 'white'}}}
                   ></RedirectButton>
                 )}
               </Grid>
