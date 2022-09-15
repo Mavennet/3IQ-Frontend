@@ -10,7 +10,7 @@ import RedirectButton from '../../RedirectButton/RedirectButton'
 function TextSection(props) {
   const {text, videoSrc, button, currentLanguage } = props
 
-  const localeButton = button[currentLanguage?.languageTag]
+  const localeButton = button && button[currentLanguage?.languageTag]
 
   return (
     <Box>
@@ -40,7 +40,6 @@ function TextSection(props) {
                 >
                   <video
                     className={styles.video}
-                    // height={500}
                     src={videoSrc}
                     autoPlay=""
                     loop=""
