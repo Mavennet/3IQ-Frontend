@@ -11,8 +11,8 @@ font-family: 'Europa';
     text-decoration: none;
 }
 
-.secondButton{
-    color: #dc6e19;
+.secondButton:hover{
+    color: white;
 }
 
 .secondButton:hover {
