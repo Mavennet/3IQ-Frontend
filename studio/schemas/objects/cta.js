@@ -39,6 +39,11 @@ export default {
       name: 'link',
       type: 'url',
       fieldset: 'link',
+      validation: Rule =>
+        Rule.uri({
+          allowRelative: true,
+          scheme: ['https', 'http', 'mailto', 'tel'],
+        }),
     },
   ],
   preview: {

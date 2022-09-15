@@ -3,70 +3,116 @@ import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import styles from './Post.module.css'
 import client from '../../../client'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Container from '@mui/material/Container'
-import {createTheme, ThemeProvider} from '@mui/material/styles'
+import { Grid, Container, Typography, Link } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 import SimpleBlockContent from '../../SimpleBlockContent'
-import { PortableText } from "@portabletext/react";
+import Image from 'next/image'
+import { format } from 'date-fns'
+import { FaTwitter, FaLinkedinIn } from 'react-icons/fa'
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Europa',
+    p: {
+      fontSize: 16,
+      color: '#091B3F'
+    },
+    h1: {
+      fontSize: 26,
+      fontWeight: 'bold',
+      color: '#0082E5',
+    },
+  },
+})
 
 const builder = imageUrlBuilder(client)
 
-const theme = createTheme()
+function Post(props) {
 
-function Post(props) {  
-  const {heading, body, publishedAt, author, mainImage, currentLanguage} = props
+  const { heading, body, publishedAt, mainImage, currentLanguage, currentCountry } = props
 
-  const localeBody = body[currentLanguage.languageTag]
-  const localeAuthor = author[currentLanguage.languageTag]
+  const [publishedDate, setPublishedDate] = React.useState('')
 
-  // TODO
-  // Ajustar com layouts corretos para todos os itens de exibição
-  // Para ficar de acordo com: https://3iq.ca/3iq-launches-3iq-coinshares-bitcoin-feeder-etf-and-3iq-coinshares-ether-feeder-etf-on-cboe-australia/
-  // Falta obter o author com todas as suas propriedades preenchidas ao invés de somente a referência "_ref"
+  React.useEffect(() => {
+    if (currentLanguage.languageTag) {
+      const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
+      const newYears = new Date(publishedAt)
+      const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+      setPublishedDate(formattedDate)
+    }
+  }, [currentLanguage, publishedAt])
+
+  const shareHistoryText = currentCountry.shareThisStoryText[currentLanguage.languageTag]
+
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="md">
-        <Box sx={{p: 5}}>
-          {mainImage &&
-              (
-              <Box
-                component="img"
-                alt="mainImage.alt"
-                src={builder.image(mainImage).url()}
-              />
+      <Container maxWidth="lg">
+        <Grid container my={2}>
+          <Grid item xs={12} mb={4}>
+            <div className={styles.imgGrid}>
+              {
+                mainImage && (
+                  <Image
+                    src={builder.image(mainImage).url()}
+                    alt={heading}
+                    layout='fill'
+                    objectFit='cover'
+                  />
+                )
+              }
+            </div>
+          </Grid>
+          {
+            heading && (
+              <Grid item xs={12} my={6}>
+                <Typography component="h1" variant="h1">
+                  {heading}
+                </Typography>
+              </Grid>
             )
           }
-          <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
-            <Typography component="h1" variant="h5" style={{fontWeight: 'bold', color: 'red'}} gutterBottom>
-              {heading}
-            </Typography>
-            <div className={styles.body}>
-              {localeBody && <SimpleBlockContent blocks={localeBody} />}
-              {localeBody && <PortableText value={localeBody} />}              
-            </div>
-          </Box>
-          <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
-            <div className={styles.author}>
-              {
-                localeAuthor &&
-                <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                  {localeAuthor.name}
+          {
+            body && (
+              <Grid item xs={12}>
+                <div className={styles.body}>
+                  {body && <SimpleBlockContent blocks={body} />}
+                </div>
+              </Grid>
+            )
+          }
+          {
+            publishedDate && (
+              <Grid item xs={12} my={2}>
+                <div className={styles.publishedAt}>
+                  <Typography component="h2" variant="h2" style={{ fontWeight: '300', fontSize: 16, textTransform: 'capitalize' }}>
+                    {publishedDate}
+                  </Typography>
+                </div>
+              </Grid>
+            )
+          }
+          {
+            shareHistoryText && (
+              <Grid item xs={12} mb={6} sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                <Typography component="h4" variant="h4" style={{ fontWeight: '900', fontSize: 24, textTransform: 'capitalize', color: '#0082E4' }}>
+                  <strong>{shareHistoryText}</strong>
                 </Typography>
-              }              
-            </div>
-            <div className={styles.publishedAt}>
-              {
-                publishedAt &&
-                <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
-                  {publishedAt}
-                </Typography>
-              }           
-            </div>            
-            <div className={styles.socialMedia}>          
-            </div>
-          </Box>
-        </Box>
+                <ul className={styles.social}>
+                  <Link href={`http://twitter.com/share?text=${heading}&url=${window.location.href}`} color="inherit" target='_blank' rel="noopener">
+                    <li>
+                      <FaTwitter />
+                    </li>
+                  </Link>
+                  <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${heading}&summary=${heading}&source=LinkedIn`} color="inherit" target='_blank' rel="noopener">
+                    <li>
+                      <FaLinkedinIn />
+                    </li>
+                  </Link>
+                </ul>
+              </Grid>
+            )
+          }
+        </Grid>
       </Container>
     </ThemeProvider>
   )
@@ -81,8 +127,8 @@ Post.propTypes = {
   heading: PropTypes.object,
   body: PropTypes.object,
   publishedAt: PropTypes.object,
-  author: PropTypes.object,
   currentLanguage: PropTypes.object,
+  currentCountry: PropTypes.object,
 }
 
 export default Post

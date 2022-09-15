@@ -40,7 +40,7 @@ function LocationsDisplay(props) {
             <Grid item xs={12} mb={5}>
               {
                 heading && (
-                  <Typography variant="h2">{heading}</Typography>
+                  <Typography variant="h2" sx={{textAlign: {xs: 'center', md: 'left'}}}>{heading}</Typography>
                 )
               }
             </Grid>
@@ -81,7 +81,7 @@ function LocationsDisplay(props) {
                             </Grid>
                           )
                         }
-                        <Grid item xs={12} md={6} py={5} px={10}>
+                        <Grid item xs={12} md={6} py={{md: 5}} px={{md: 10}} mb={4}>
                           {
                             item.localeName && (
                               <Typography variant="h3" sx={{textAlign: {xs: 'center', md: 'left'}}}>{item.localeName[currentLanguage.languageTag]}</Typography>

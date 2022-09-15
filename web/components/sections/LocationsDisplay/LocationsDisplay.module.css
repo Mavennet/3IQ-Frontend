@@ -2,13 +2,19 @@
 
 .simpleBlockContent {
   position: relative;
-  margin-left: 50px;
+  @media (--media-min-large) {
+    margin-left: 50px;
+  }
 }
 
 .simpleBlockContent p {
   font-family: 'Europa';
   font-size: 18px;
   color: #091B3F;
+  text-align: center;
+  @media (--media-min-large) {
+    text-align: left;
+  }
 }
 
 .simpleBlockContent p strong {

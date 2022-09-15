@@ -18,7 +18,9 @@ function urlFor(source) {
 const theme = createTheme()
 
 function ImageBesideText(props) {
-  const {mainImage, heading, backgroundImage, description, button} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage } = props
+
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -47,7 +49,7 @@ function ImageBesideText(props) {
                 transform: {sm: 'scale(1)', md: 'scale(1.9)'},
                 display: {xs: 'none', sm: 'inherit'},
               }}
-              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+              alt={mainImage.alt}
               src={builder.image(mainImage).url()}
             />
           )}
@@ -78,9 +80,9 @@ function ImageBesideText(props) {
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>
-              {button && (
+              {localeButton && localeButton.route && (
                 <RedirectButton
-                  {...button}
+                  {...localeButton}
                   sx={{width: {xs: '100%', md: 180}, padding: '10px 20px'}}
                 />
               )}
@@ -94,6 +96,7 @@ function ImageBesideText(props) {
 
 ImageBesideText.propTypes = {
   mainImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),
@@ -102,6 +105,7 @@ ImageBesideText.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default ImageBesideText

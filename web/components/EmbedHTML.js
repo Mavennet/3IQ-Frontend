@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 function EmbedHTML({node}) {
   const {html} = node
+
   if (!html) {
     return undefined
   }

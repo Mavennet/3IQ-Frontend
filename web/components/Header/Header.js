@@ -22,7 +22,7 @@ function Header(props) {
 
   return (
     <>
-      <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
+      <AppBar position="static" sx={{ bgcolor: 'white', boxShadow: 'none' }}>
         <Toolbar
           disableGutters
           sx={{
@@ -138,7 +138,7 @@ function Header(props) {
                                 <NavItem
                                   title={item.route?.localeTitle[currentLanguage.languageTag]}
                                   _id={item.id}
-                                  routes={item.route}
+                                  route={item.route}
                                   key={item._id}
                                   isLinkEnabled={item.isLinkEnabled}
                                 />
