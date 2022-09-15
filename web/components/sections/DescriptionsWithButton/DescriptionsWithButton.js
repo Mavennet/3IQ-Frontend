@@ -56,8 +56,8 @@ function DescriptionsWithButton(props) {
             <Grid item xs={12}>
               {button.route && button && (
                 <RedirectButton
-                  title={button.title}
-                  route={button.route}
+                  {...button}
+                  reverse
                   sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff' }}
                 />
               )}
