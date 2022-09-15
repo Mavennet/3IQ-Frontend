@@ -22,7 +22,7 @@ function TextSection(props) {
                 <div className={styles.textSection}>
                   {text && <SimpleBlockContent blocks={text} />}
                 </div>
-                {localeButton && localeButton.route && (
+                {localeButton && (localeButton.route || localeButton.link) && (
                   <RedirectButton {...localeButton} sx={{width: {xs: '100%', md: 250}, mt: 5}} />
                 )}
               </Box>

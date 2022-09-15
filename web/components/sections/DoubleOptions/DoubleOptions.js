@@ -95,7 +95,7 @@ function DoubleOptions(props) {
                 alt={firstImage.alt}
                 src={builder.image(firstImage).url()}
               />
-              {localeFirstButton && localeFirstButton.route && (
+              {localeFirstButton && (localeFirstButton.route || localeFirstButton.link) && (
                 <RedirectButton
                   {...localeFirstButton}
                   reverse
@@ -120,7 +120,7 @@ function DoubleOptions(props) {
                 alt={secondImage.alt}
                 src={builder.image(secondImage).url()}
               />
-              {localeSecondButton && localeSecondButton.route && (
+              {localeSecondButton && (localeSecondButton.route || localeSecondButton.link) && (
                 <RedirectButton
                   {...localeSecondButton}
                   sx={{width: {md: 150}, padding: '10px 20px'}}

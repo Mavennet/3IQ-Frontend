@@ -89,10 +89,10 @@ function ReadMoreCard(props) {
                 justifyContent: 'flex-end'
               }}
             >
-            {localeButton && localeButton.route && (
+            {localeButton && (localeButton.route || localeButton.link) && (
               <RedirectButton
                 {...localeButton}
-                sx={{width: {xs: '96%', md: 180}, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
+                sx={{width: {xs: '96%', md: 180}, padding: '10px 20px', margin: {xs: '0 14px 0 0', md: '0'}, fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
               />
             )}
             </Box>
