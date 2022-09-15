@@ -58,7 +58,7 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {localeButton && localeButton.route &&
+            {localeButton && (localeButton.route || localeButton.link) &&
                (
                <RedirectButton
                {...localeButton}

@@ -65,7 +65,7 @@ function Hero(props) {
               </div>
             </Box>
 
-            {localeButton && localeButton.route && (
+            {localeButton && (localeButton.route || localeButton.link) && (
               <RedirectButton
               {...localeButton}
               reverse={!!isButtonReverse}
@@ -80,9 +80,9 @@ function Hero(props) {
 }
 
 Hero.propTypes = {
-  heading: PropTypes.object,
+  heading: PropTypes.string,
   backgroundImage: PropTypes.object,
-  description: PropTypes.object,
+  description: PropTypes.any,
   button: PropTypes.object,
   isSubscriptionSrcLink: PropTypes.bool,
   isButtonReverse: PropTypes.bool,

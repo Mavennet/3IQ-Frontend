@@ -56,7 +56,7 @@ function DescriptionsWithButton(props) {
               }
             </Grid>
             <Grid item xs={12}>
-              {localeButton && localeButton.route && (
+              {localeButton && (localeButton.route || localeButton.link) && (
                 <RedirectButton
                   {...localeButton}
                   sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff' }}

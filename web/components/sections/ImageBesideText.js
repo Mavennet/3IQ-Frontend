@@ -80,7 +80,7 @@ function ImageBesideText(props) {
               }}
             >
               <Typography variant="p">April 25, 2022</Typography>
-              {localeButton && localeButton.route && (
+              {localeButton && (localeButton.route || localeButton.link) && (
                 <RedirectButton
                   {...localeButton}
                   sx={{width: {xs: '100%', md: 180}, padding: '10px 20px'}}

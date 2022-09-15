@@ -199,7 +199,7 @@ function NewsCard(props) {
 
 NewsCard.propTypes = {
   post: PropTypes.object,
-  buttonText: PropTypes.object,
+  buttonText: PropTypes.string,
   currentLanguage: PropTypes.object,
   route: PropTypes.object,
   isInvertedLayout: PropTypes.bool,
