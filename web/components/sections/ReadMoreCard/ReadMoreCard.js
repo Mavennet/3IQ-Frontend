@@ -43,7 +43,8 @@ function ReadMoreCard(props) {
         <CssBaseline />
         <Grid
           item
-          xs={false}
+          xs={12}
+          py={{xs: 40}}
           sm={4}
           md={6}
           sx={{
@@ -86,13 +87,13 @@ function ReadMoreCard(props) {
                 mt: 5,
                 mb: 5,
                 display: 'flex',
-                justifyContent: 'flex-end'
+                justifyContent: {xs: 'center', md: 'flex-end'}
               }}
             >
             {localeButton && (localeButton.route || localeButton.link) && (
               <RedirectButton
                 {...localeButton}
-                sx={{width: {xs: '96%', md: 180}, padding: '10px 20px', margin: {xs: '0 14px 0 0', md: '0'}, fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
+                sx={{width: {xs: 'auto', md: 180}, padding: '10px 20px', margin: {xs: '0 14px 0 0', md: '0'}, fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
               />
             )}
             </Box>
