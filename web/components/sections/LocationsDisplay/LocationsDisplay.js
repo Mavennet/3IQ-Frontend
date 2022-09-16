@@ -35,7 +35,7 @@ function LocationsDisplay(props) {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: '#E8E8EA', pt: 15, pb: 15 }}>
-        <Container maxWidth="lg" >
+        <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }} >
           <Grid container>
             <Grid item xs={12} mb={5}>
               {

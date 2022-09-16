@@ -8,7 +8,7 @@ function redirectButton(props) {
 
   const buttonStyle = {
     background: 'none',
-    border: '4px solid #dc6e19',
+    border: '3px solid #dc6e19',
     textTransform: 'none',
     whiteSpace: 'normal',
     display: 'block',
@@ -23,7 +23,7 @@ function redirectButton(props) {
 
   const buttonReverseStyle = {
     background: '#dc6e19',
-    border: '4px solid #dc6e19',
+    border: '3px solid #dc6e19',
     textTransform: 'none',
     whiteSpace: 'normal',
     display: 'block',

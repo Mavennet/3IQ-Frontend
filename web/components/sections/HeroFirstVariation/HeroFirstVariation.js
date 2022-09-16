@@ -46,7 +46,7 @@ function HeroFirstVariation(props) {
             <Grid container pt={5}>
               <Grid item md={5} xs={12}>
                 {localeFirstButton && (localeFirstButton.route || localeFirstButton.link) && (
-                  <RedirectButton {...localeFirstButton} sx={{padding: '10px 20px'}}></RedirectButton>
+                  <RedirectButton {...localeFirstButton} sx={{padding: '10px 20px', fontSize: '16px'}}></RedirectButton>
                 )}
               </Grid>
               <Grid item md={7} xs={12} pt={{xs: 2, md: 0}}>
@@ -54,7 +54,7 @@ function HeroFirstVariation(props) {
                   <RedirectButton
                     {...localeSecondButton}
                     reverse
-                    sx={{padding: '10px 20px', color: '#dc6e19', "&:hover": {background: '#dc6e19', color: 'white'}}}
+                    sx={{padding: '10px 20px', color: '#dc6e19', "&:hover": {background: '#dc6e19', color: 'white'}, fontSize: '16px'}}
                   ></RedirectButton>
                 )}
               </Grid>

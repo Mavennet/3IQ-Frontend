@@ -23,7 +23,7 @@ export default {
     {
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image (*)',
+      title: 'Background image',
       options: {
         hotspot: true,
       },
