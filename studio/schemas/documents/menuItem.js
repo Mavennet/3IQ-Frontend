@@ -33,7 +33,7 @@ export default {
       type: 'array',
       validation: Rule => [
         Rule.max(5).warning('Are you sure you want more than 10 items?'),
-        Rule.unique().error('You have duplicate menu items.'),
+        Rule.unique().error('You have duplicate items.'),
       ],
       of: [
         {

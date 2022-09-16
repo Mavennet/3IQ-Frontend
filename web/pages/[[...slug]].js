@@ -206,18 +206,32 @@ export const getServerSideProps = async ({ params }) => {
       _id,
       _type,
       _rev,
-      contentBlock,
+      'localecontentBlock': contentBlock,
       'localeButton': button,
       'localeName': name,
-      posts[]-> {
-        author-> {
+      isAccordionLayout,
+      newsCards[]-> {
+        _id,
+        _type,
+        _rev,
+        'localeButtonText': buttonText,
+        'localeShortDescription': shortDescription,
+        route->,
+        isNewsCardsHorizontalLayout,
+        post-> {
           _id,
           _type,
-          name,
-          email,
-          profilePhoto,
+          mainImage,
+          'localeHeading': heading,
+          publishedAt,
+          author-> {
+            _id,
+            _type,
+            name,
+            email,
+            profilePhoto,
+          },
         },
-        ...
       },
     }
     `

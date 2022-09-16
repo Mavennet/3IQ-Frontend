@@ -21,12 +21,19 @@ export default {
       title: 'Description',
     },
     {
+      name: 'isAccordionLayout',
+      type: 'boolean',
+      title: 'Tabs with accordion layout?',
+      description: 'Enable this option to display the tabs as an accordion for mobile resolution',
+      initialValue: false,
+    },    
+    {
       name: 'tabItems',
       title: 'Tab items (*)',
       description: 'Select the tab items that will be displayed in order',
       validation: Rule => [
         Rule.max(10).warning('Are you sure you want more than 10 items?'),
-        Rule.unique().error('You have duplicate timeline items'),
+        Rule.unique().error('You have duplicate tab items'),
         Rule.min(1).error('Please, select at least 1 page section.'),
       ],
       type: 'array',
