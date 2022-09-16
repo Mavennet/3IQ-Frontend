@@ -50,8 +50,8 @@ const theme = createTheme({
   }
 })
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+function TabPanel(values) {
+  const { children, value, index, ...other } = values;
 
   return (
     <div
