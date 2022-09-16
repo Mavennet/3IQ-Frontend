@@ -29,14 +29,14 @@ function HeroFirstVariation(props) {
       <Box
         sx={{
           background: backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat`,
-          backgroundPosition: '555px 0px',
+          backgroundPosition: '500px 0px',
           backgroundSize: 'contain',
           bgcolor: '#d2d1d4',
-          pt: 5,
-          pb: 15,
+          pt: 0,
+          pb: 10,
         }}
       >
-        <Container maxWidth="md">
+        <Container  sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Box sx={{p: '5 1', pr: 1, pl: {xs: 1}}}>
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <div className={styles.heading}>
@@ -46,7 +46,7 @@ function HeroFirstVariation(props) {
             <Grid container pt={5}>
               <Grid item md={5} xs={12}>
                 {localeFirstButton && (localeFirstButton.route || localeFirstButton.link) && (
-                  <RedirectButton {...localeFirstButton} sx={{padding: '10px 20px'}}></RedirectButton>
+                  <RedirectButton {...localeFirstButton} sx={{padding: '10px 20px', fontSize: '16px'}}></RedirectButton>
                 )}
               </Grid>
               <Grid item md={7} xs={12} pt={{xs: 2, md: 0}}>
@@ -54,7 +54,7 @@ function HeroFirstVariation(props) {
                   <RedirectButton
                     {...localeSecondButton}
                     reverse
-                    sx={{padding: '10px 20px', color: '#dc6e19', "&:hover": {background: '#dc6e19', color: 'white'}}}
+                    sx={{padding: '10px 20px', color: '#dc6e19', "&:hover": {background: '#dc6e19', color: 'white'}, fontSize: '16px'}}
                   ></RedirectButton>
                 )}
               </Grid>

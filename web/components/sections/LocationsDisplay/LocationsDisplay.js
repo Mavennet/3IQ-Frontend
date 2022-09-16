@@ -35,7 +35,7 @@ function LocationsDisplay(props) {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ backgroundColor: '#E8E8EA', pt: 15, pb: 15 }}>
-        <Container maxWidth="lg" >
+        <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }} >
           <Grid container>
             <Grid item xs={12} mb={5}>
               {
@@ -79,10 +79,10 @@ function LocationsDisplay(props) {
                             </Grid>
                           )
                         }
-                        <Grid item xs={12} md={5} py={{md: 5}} px={{md: 10}} mb={4}>
+                        <Grid item xs={12} md={5} py={{md: 5}} px={{md: 10}} mb={4} ml={{xs: 8, md:0}}>
                           {
                             item.localeName && (
-                              <Typography variant="h3" sx={{textAlign: {xs: 'center', md: 'left'}}}>{item.localeName[currentLanguage.languageTag]}</Typography>
+                              <Typography variant="h3" sx={{textAlign: {xs: 'left', md: 'left'}}}>{item.localeName[currentLanguage.languageTag]}</Typography>
                             )
                           }
                           {
