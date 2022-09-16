@@ -29,14 +29,14 @@ function HeroFirstVariation(props) {
       <Box
         sx={{
           background: backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat`,
-          backgroundPosition: '555px 0px',
+          backgroundPosition: '500px 0px',
           backgroundSize: 'contain',
           bgcolor: '#d2d1d4',
-          pt: 5,
-          pb: 15,
+          pt: 0,
+          pb: 10,
         }}
       >
-        <Container maxWidth="md">
+        <Container  sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Box sx={{p: '5 1', pr: 1, pl: {xs: 1}}}>
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <div className={styles.heading}>
