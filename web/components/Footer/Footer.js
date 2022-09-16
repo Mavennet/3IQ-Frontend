@@ -141,7 +141,7 @@ function Footer(props) {
         </Grid>
         <Grid item xs={12} md={5} sx={{ display: 'flex', alignItems: 'flex-end' }}>
           <Box sx={{ pl: { xs: 3, md: 8 }, pr: { xs: 3, md: 0 } }}>
-            <Grid container>
+            <Grid container spacing={1}>
               {
                 currentCountry.footerNavigation && (
                   breakArray(currentCountry.footerNavigation).firstBlock && (
