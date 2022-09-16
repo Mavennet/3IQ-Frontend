@@ -56,7 +56,7 @@ function renderTimeline(items, langTag) {
               }}
               variant="outlined"
             />
-            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '170px'}} />
+            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '160px'}} />
           </TimelineSeparator>
           <TimelineContent sx={{paddingRight: '10px'}}>
             <Typography
@@ -104,16 +104,16 @@ function Timeline(props) {
         <Container maxWidth="md">
           <Grid container>
             <Grid style={{color: 'white', fontWeight: 'bold'}} item md={5} xs={12}>
-              <Box className={styles.leftSimbleBlockContent} pt={15} pr={{md: 20, xs: 0}}>
+              <Box className={styles.leftSimbleBlockContent} pt={{md: 15, xs: 0}} pr={{md: 20, xs: 0}}>
                 {leftFirstTextBlock && <SimpleBlockContent blocks={leftFirstTextBlock} />}
               </Box>
-              <Box className={styles.leftSimbleBlockContent} pt={60} pr={{md: 20, xs: 0}}>
+              <Box className={styles.leftSimbleBlockContent} pt={{md: 60, xs: 12}} pr={{md: 20, xs: 0}} mb={{md: 0, xs: -6}}>
                 {leftSecondTextBlock && <SimpleBlockContent blocks={leftSecondTextBlock} />}
               </Box>
               {span && (<span className={styles.span}>{span}</span>)}
               
             </Grid>
-            <Grid item md={7} xs={12}>
+            <Grid item md={7} xs={12} pt={{md: 0, xs: 10}}>
               <Box style={{color: 'white'}}>
                 {items && renderTimeline(items, currentLanguage.languageTag)}
               </Box>

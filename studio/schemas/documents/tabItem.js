@@ -18,21 +18,27 @@ export default {
     {
       name: 'contentBlock',
       type: 'localePortableText',
-      title: 'Content Block (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Content Block',
     },
     {
-      name: 'posts',
+      name: 'isNewsCardsHorizontalLayout',
+      type: 'boolean',
+      title: 'News Cards with Horizontal layout?',
+      description: 'Enable this option to display the selected News Cards with horizontal layout.',
+      initialValue: false,
+    },  
+    {
+      name: 'newsCards',
       type: 'array',
-      title: 'Posts',
+      title: 'News Cards from Posts',
       validation: Rule => [
-        Rule.max(3).error('Only 3 posts are allowed.'),
-        Rule.unique().error('You have duplicate menu items.'),
+        Rule.max(3).error('Maximum 3 News Cards from Posts are allowed.'),
+        Rule.unique().error('You have duplicate items.'),
       ],
       of: [
         {
           type: 'reference',
-          to: [{ type: 'post' }],
+          to: [{ type: 'newsCard' }],
         },
       ],
     },
@@ -40,18 +46,19 @@ export default {
       name: 'button',
       type: 'localeCta',
       title: 'Read more posts Button',
+      description: 'Optional button to show the route/link to more Posts'
     },
   ],
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
-      postsLength: `posts.length`
+      newsCardsLength: `newsCards.length`
     },
-    prepare({ name, postsLength }) {
-      const postsLengthText = postsLength > 0 ? postsLength + ' post(s) included' : 'No post included'
+    prepare({ name, newsCardsLength }) {
+      const newsCardsLengthText = newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included'
       return {
         title: `${name}`,
-        subtitle: postsLengthText,
+        subtitle: newsCardsLengthText,
       }
     },
   }

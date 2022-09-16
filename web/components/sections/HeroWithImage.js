@@ -39,7 +39,7 @@ function HeroWithImage(props) {
           pb: 2,
         }}
       >
-        <Container maxWidth="lg">
+        <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Box sx={{p: 5, pl: 1, pr: 1}}>
             <Box
               component="img"
