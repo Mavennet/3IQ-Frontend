@@ -47,6 +47,7 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import bioPortableText from './objects/bioPortableText';
 import postPortableText from './objects/postPortableText';
+import youtube from './objects/youtube';
 
 // Locale objects
 import localeString from './objects/locale/localeString'
@@ -106,5 +107,6 @@ export default createSchema({
     tabsContent,
     tabItem,
     subscribeBlock,
+    youtube,
   ]),
 });
