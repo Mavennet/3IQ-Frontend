@@ -40,14 +40,13 @@ function TextSection(props) {
                 >
                   <video
                     className={styles.video}
-                    src={videoSrc}
-                    autoPlay=""
-                    loop=""
-                    controls=""
-                    muted="muted"
-                    playsinline=""
-                    controlslist="nodownload"
-                  ></video>
+                    autoPlay
+                    loop
+                    muted
+                    controls="controls"
+                  >
+                    <source src={videoSrc} type="video/mp4"  />
+                  </video>
                 </Box>
               </Grid>
             )}
