@@ -14,7 +14,7 @@ function TextSection(props) {
 
   return (
     <Box>
-      <Container maxWidth="lg">
+      <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
         <Box sx={{p: 5, pr: 1, pt: 0, pl: {xs: 1}}}>
           <Grid container>
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
@@ -34,19 +34,20 @@ function TextSection(props) {
                     position: {md: 'absolute', xs: 'relative'},
                     width: {xl: '20%', lg: '30%'},
                     top: {md: '300px'},
-                    mt: {md: 0, xs: 5},
+                    mt: {md: 5, xs: 5},
                   }}
                   ml={{md: 5}}
                 >
                   <video
                     className={styles.video}
-                    autoPlay
-                    loop
-                    muted
-                    controls="controls"
-                  >
-                    <source src={videoSrc} type="video/mp4"  />
-                  </video>
+                    src={videoSrc}
+                    autoPlay=""
+                    loop=""
+                    controls=""
+                    muted="muted"
+                    playsinline=""
+                    controlslist="nodownload"
+                  ></video>
                 </Box>
               </Grid>
             )}

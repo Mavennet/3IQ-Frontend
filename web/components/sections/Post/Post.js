@@ -46,7 +46,7 @@ function Post(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="lg">
+      <Container  sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
         <Grid container my={2}>
           <Grid item xs={12} mb={4}>
             <div className={styles.imgGrid}>
