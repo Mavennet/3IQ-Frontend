@@ -1,38 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {createTheme, ThemeProvider} from '@mui/material/styles'
-
-const theme = createTheme({
-  typography: {
-    fontFamily: 'Europa',
-    p: {
-      fontSize: 14,
-    },
-    h2: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-    h5: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  },
-})
-
+import TabsLayout from './TabsLayout/TabsLayout'
 function TabsContent(props) {
-  const {tabItems, currentLanguage} = props
+  const {isAccordionLayout} = props
 
-  console.log(tabItems, currentLanguage)
+  if (isAccordionLayout) {
+    return (
+      null // componente do Jordan com accordion
+    )
+  } else {
+    return (
+      <TabsLayout {...props}/>
+    )
+  }
 
-  return (
-    <ThemeProvider theme={theme}>
-    </ThemeProvider>
-  )
 }
 
 TabsContent.propTypes = {
-  tabItems: PropTypes.object,
-  currentLanguage: PropTypes.object,
+  isAccordionLayout: PropTypes.bool,
 }
 
 export default TabsContent
