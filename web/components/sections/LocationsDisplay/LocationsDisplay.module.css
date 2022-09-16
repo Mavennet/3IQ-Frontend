@@ -11,7 +11,7 @@
   font-family: 'Europa';
   font-size: 18px;
   color: #091B3F;
-  text-align: center;
+  text-align: left;
   @media (--media-min-large) {
     text-align: left;
   }
