@@ -26,7 +26,7 @@ export default {
       title: 'News Cards with Horizontal layout?',
       description: 'Enable this option to display the selected News Cards with horizontal layout.',
       initialValue: false,
-    },  
+    },
     {
       name: 'newsCards',
       type: 'array',

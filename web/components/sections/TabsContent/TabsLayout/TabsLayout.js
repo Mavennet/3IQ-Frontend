@@ -183,7 +183,9 @@ function TabsLayout(props) {
                             )
                           })
                         ) : (
-                          <SimpleBlockContent blocks={item.localecontentBlock[currentLanguage.languageTag]} />
+                          <Grid container spacing={2}>
+                            <SimpleBlockContent blocks={item.localecontentBlock[currentLanguage.languageTag]} />
+                          </Grid>
                         )
                       }
                       {
