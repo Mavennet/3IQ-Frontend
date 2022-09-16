@@ -1,6 +1,8 @@
 .navTeam {
   list-style: none;
-  display: flex
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .navTeam li {
@@ -11,6 +13,7 @@
   font-weight: 700;
   border-right: 2px solid #032b4c;
   color: #032b4c;
+  margin-bottom: 5px;
 }
 
 .navTeam li a {
