@@ -54,7 +54,7 @@ function Hero(props) {
           pb: {lg: 18, xs: 14},
         }}
       >
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Box sx={{p: '5 1', pr: 1, pl:{xs: 1}}}>
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h3" style={{fontWeight: 'bold'}} gutterBottom>
