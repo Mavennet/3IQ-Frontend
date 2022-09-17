@@ -3,10 +3,12 @@ import MuiAccordion from '@mui/material/Accordion'
 import MuiAccordionSummary from '@mui/material/AccordionSummary'
 import MuiAccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
 import {useState} from 'react'
 import Box from '@mui/material/Box'
 import SimpleBlockContent from '../../../SimpleBlockContent'
 import styles from './CustomizedAccordion.module.css'
+import CustomizedPostCard from '../../CustomizedPostCard/CustomizedPostCard'
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -49,7 +51,6 @@ export default function CustomizedAccordions(props) {
     setExpanded(newExpanded ? panel : false)
   }
 
-  console.log(items)
 
   return (
     <div>
@@ -72,6 +73,15 @@ export default function CustomizedAccordions(props) {
                 //   <Typography style={{fontSize: '18px'}} mb={2}>{sectionItem}</Typography>
                 // ))}
               ))}
+              <Grid container>
+              {
+                item.posts && item.posts.map((post) =>(
+                  <Grid item md={4} pr={2} >
+                    <CustomizedPostCard post={post} languageTag={languageTag}/>
+                  </Grid>
+                ))
+              }
+              </Grid>          
             
           </AccordionDetails>
         </Accordion>
