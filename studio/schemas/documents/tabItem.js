@@ -21,6 +21,13 @@ export default {
       title: 'Content Block',
     },
     {
+      name: 'isPaginatedNewsletter',
+      type: 'boolean',
+      title: 'Is tab item only for Paginated Newsletter?',
+      description: 'Enable this option to display all the News Cards with a pagination layout',
+      initialValue: false,
+    },
+    {
       name: 'isNewsCardsHorizontalLayout',
       type: 'boolean',
       title: 'News Cards with Horizontal layout?',
@@ -48,17 +55,27 @@ export default {
       title: 'Read more posts Button',
       description: 'Optional button to show the route/link to more Posts'
     },
+    {
+      name: 'backgroundImage',
+      type: 'image',
+      title: 'Background image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
-      newsCardsLength: `newsCards.length`
+      newsCardsLength: `newsCards.length`,
+      media: 'backgroundImage',
     },
-    prepare({ name, newsCardsLength }) {
+    prepare({ name, newsCardsLength, media }) {
       const newsCardsLengthText = newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included'
       return {
         title: `${name}`,
         subtitle: newsCardsLengthText,
+        media,
       }
     },
   }
