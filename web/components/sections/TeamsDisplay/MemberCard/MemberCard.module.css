@@ -14,6 +14,7 @@
   border-bottom: 8px solid transparent;
   transition: 0.3s;
   position: relative;
+  z-index: 90;
 }
 
 .memberCard:hover {
@@ -42,4 +43,5 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 100;
 }
