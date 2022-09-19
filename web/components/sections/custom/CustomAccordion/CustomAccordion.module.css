@@ -1,0 +1,19 @@
+.simpleBlockContent > :is(h1, h2, h3, h4) {
+    margin-top: 25px;
+    color: #091b3f;
+    font-family: 'Europa';
+    font-weight: normal;
+}
+
+.simpleBlockContent p{
+    font-family: 'Europa';
+   font-size: 18px;
+}
+
+.simpleBlockContent a{
+    font-family: 'Europa';
+    color: #0f4b7d;
+   font-size: 18px;
+   text-decoration: none;
+}
+
