@@ -1,7 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import imageUrlBuilder from '@sanity/image-url'
-import client from '../../../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -12,12 +10,13 @@ import SimpleBlockContent from '../../../SimpleBlockContent'
 import {Container} from '@mui/material'
 import CustomAccordions from '../../custom/CustomAccordion/CustomAccordion'
 import CustomTab from '../../custom/CustomTab/CustomTab'
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const theme = createTheme()
 
 function AccordionLayout(props) {
   const {heading, description, tabItems, currentLanguage} = props
+
+  console.log(props)
 
   return (
     <ThemeProvider theme={theme}>

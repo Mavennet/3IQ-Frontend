@@ -4,11 +4,13 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import imageUrlBuilder from '@sanity/image-url'
-import {Button, CardActionArea, CardActions} from '@mui/material'
+import {Button, CardActions} from '@mui/material'
 import SimpleBlockContent from '../../../SimpleBlockContent'
 import client from '../../../../client'
 import {format, parseISO} from 'date-fns'
 import styles from './CustomPostCard.module.css'
+import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -16,7 +18,6 @@ function urlFor(source) {
 
 export default function CustomPostCard(props) {
   const {
-    isNewsCardsHorizontalLayout,
     languageTag,
     localeButtonText,
     localeShortDescription,
@@ -30,36 +31,60 @@ export default function CustomPostCard(props) {
       style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'column'}}
     >
       <div>
-        <CardMedia
-          sx={{cursor: 'pointer'}}
-          component="img"
-          image={urlFor(post.mainImage)}
-          alt="green iguana"
-        />
+        <Link
+          href={{
+            pathname: '/LandingPage',
+            query: {slug: route.slug.current},
+          }}
+          as={`/${route.slug.current}`}
+        >
+          <CardMedia
+            sx={{cursor: 'pointer', maxHeight: {md: '110px'}}}
+            component="img"
+            image={urlFor(post.mainImage)}
+            alt="green iguana"
+          />
+        </Link>
         <CardContent className={styles.cardContent}>
-          <Typography
-            sx={{
-              color: '#0f4b7d',
-              fontWeight: 'bold',
-              fontSize: '18px',
-              fontFamily: 'Europa',
-              cursor: 'pointer',
+          <Link
+            href={{
+              pathname: '/LandingPage',
+              query: {slug: route.slug.current},
             }}
-            gutterBottom
-            variant="h6"
-            component="div"
+            as={`/${route.slug.current}`}
           >
-            {post.localeHeading && post.localeHeading[languageTag]}
-          </Typography>
+            <Typography
+              sx={{
+                color: '#0f4b7d',
+                fontWeight: 'bold',
+                fontSize: '18px',
+                fontFamily: 'Europa',
+                cursor: 'pointer',
+              }}
+              gutterBottom
+              variant="h6"
+              component="div"
+            >
+              {post.localeHeading && post.localeHeading[languageTag]}
+            </Typography>
+          </Link>
           <div className={styles.simpleBlockContent}>
             <SimpleBlockContent
               blocks={localeShortDescription && localeShortDescription[languageTag]}
             />
           </div>
           {localeButtonText && (
-            <Button className={styles.button} size="small" color="primary">
-              {localeButtonText[languageTag]}
-            </Button>
+            <Link
+              href={{
+                pathname: '/LandingPage',
+                query: {slug: route.slug.current},
+              }}
+              as={`/${route.slug.current}`}
+            >
+              <Button className={styles.button} size="small" color="primary">
+                {localeButtonText[languageTag]} »
+              </Button>
+            </Link>
           )}
         </CardContent>
       </div>
@@ -75,4 +100,12 @@ export default function CustomPostCard(props) {
       </CardActions>
     </Card>
   )
+}
+
+CustomPostCard.propTypes = {
+  languageTag: PropTypes.string,
+  localeButtonText: PropTypes.object,
+  localeShortDescription: PropTypes.object,
+  post: PropTypes.object,
+  route: PropTypes.object,
 }
