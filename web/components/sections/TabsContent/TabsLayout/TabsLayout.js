@@ -152,6 +152,7 @@ function TabsLayout(props) {
                         item.localeButton && (
                           <Grid container>
                             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }} my={4}>
+                              {console.log(item.localeButton[currentLanguage.languageTag])}
                               <RedirectButton
                                 {...item.localeButton[currentLanguage.languageTag]}
                                 sx={{ padding: '10px 20px', fontSize: '16px', background: '#DC6E19', borderColor: '#DC6E19', color: '#fff', fontWeight: '300' }}
