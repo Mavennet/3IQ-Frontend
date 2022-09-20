@@ -7,6 +7,7 @@ import RedirectButton from '../../../RedirectButton/RedirectButton'
 import styles from './TabsLayout.module.css'
 import NewsHorizontalLayout from '../NewsHorizontalLayout/NewsHorizontalLayout'
 import CustomPostCard from '../../custom/CustomPostCard/CustomPostCard'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 const theme = createTheme({
   typography: {
@@ -37,9 +38,9 @@ const theme = createTheme({
           textTransform: 'capitalize',
           '&.Mui-selected': {
             border: 'none',
-            color: '#fff',
-            textDecoration: 'underline',
-            textUnderlineOffset: '10px',
+            color: '#fff!important',
+            textDecoration: 'underline!important',
+            textUnderlineOffset: '10px!important',
             fontWeight: '900',
           },
         },
@@ -76,6 +77,8 @@ function TabsLayout(props) {
 
   const [value, setValue] = React.useState(0)
 
+  const mediumViewport = useMediaQuery('(min-width:1024px)')
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
@@ -87,8 +90,7 @@ function TabsLayout(props) {
           <Grid item xs={12}>
             <Box sx={{mt: -2, mb: 4, display: 'flex', justifyContent: 'center'}}>
               <Tabs
-                variant="scrollable"
-                scrollButtons="auto"
+                orientation={mediumViewport ? "horizontal" : "vertical"}
                 value={value}
                 onChange={handleChange}
                 aria-label="basic tabs example"
@@ -141,7 +143,7 @@ function TabsLayout(props) {
                         </Grid>
                       ))}
                     {item.localecontentBlock && (
-                      <Grid container spacing={2}>
+                      <Grid container spacing={2} px={2}>
                         <SimpleBlockContent
                           blocks={item.localecontentBlock[currentLanguage.languageTag]}
                         />
