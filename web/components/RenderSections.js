@@ -43,7 +43,6 @@ function RenderSections(props) {
             const localeRoute = routes.filter((r) => r._id === section[key][tag]?.route?._ref)[0]
             if (localeRoute) {
               section[key][tag].route = localeRoute
-              console.log(section[key][tag])
             }
           })
         } else {
@@ -115,6 +114,16 @@ function RenderSections(props) {
   
           if (item._id === section.tabItems[index]._ref) {
             section.tabItems[index] = item
+
+            if (section.tabItems[index].localeButton) {
+              countryLanguageTags.forEach(tag => {
+                const localeRoute = routes.filter((r) => r._id === section.tabItems[index].localeButton[tag]?.route?._ref)[0]
+                if (localeRoute) {
+                  section.tabItems[index].localeButton[tag].route = localeRoute
+                }
+              })
+            }
+
             break
           }              
         }          
