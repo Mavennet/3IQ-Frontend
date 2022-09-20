@@ -55,27 +55,17 @@ export default {
       title: 'Read more posts Button',
       description: 'Optional button to show the route/link to more Posts'
     },
-    {
-      name: 'backgroundImage',
-      type: 'image',
-      title: 'Background image',
-      options: {
-        hotspot: true,
-      },
-    },
   ],
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
       newsCardsLength: `newsCards.length`,
-      media: 'backgroundImage',
     },
-    prepare({ name, newsCardsLength, media }) {
+    prepare({ name, newsCardsLength }) {
       const newsCardsLengthText = newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included'
       return {
         title: `${name}`,
         subtitle: newsCardsLengthText,
-        media,
       }
     },
   }

@@ -111,6 +111,8 @@ function TabsLayout(props) {
           <Grid item xs={12} mt={5}>
             {tabItems &&
               tabItems.map((item, i) => {
+                const translatedButton = item.localeButton && item.localeButton[currentLanguage.languageTag];
+
                 return (
                   <TabPanel key={item._id} value={value} index={i}>
                     {item.newsCards?.length > 0 &&
@@ -145,11 +147,11 @@ function TabsLayout(props) {
                         />
                       </Grid>
                     )}
-                    {item.localeButton && (
+                    {translatedButton && (
                       <Grid container>
                         <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center'}} my={4}>
                           <RedirectButton
-                            {...item.localeButton[currentLanguage.languageTag]}
+                            {...translatedButton}
                             sx={{
                               padding: '10px 20px',
                               fontSize: '16px',

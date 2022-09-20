@@ -26,7 +26,7 @@ export default {
       title: 'Tabs with accordion layout?',
       description: 'Enable this option to display the tabs as an accordion for mobile resolution',
       initialValue: false,
-    },    
+    }, 
     {
       name: 'tabItems',
       title: 'Tab items (*)',
@@ -45,18 +45,27 @@ export default {
         },
       ],
     },
-
+    {
+      name: 'backgroundImage',
+      type: 'image',
+      title: 'Background image',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
   preview: {
     select: {
       title: `heading.${baseLanguage.id}`,
       tabItemsLength: `tabItems.length`,
+      media: 'backgroundImage',
     },
-    prepare({ title, tabItemsLength }) {
+    prepare({ title, tabItemsLength, media }) {
       const tabItemsLengthText = tabItemsLength > 0 ? ' - ' + tabItemsLength + ' tab(s)' : ''
       return {
         title,
         subtitle: 'Tabs Content section' + tabItemsLengthText,
+        media,
       };
     },
   },
