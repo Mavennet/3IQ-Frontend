@@ -35,7 +35,8 @@ const hiddenDocTypes = (listItem) => ![
   'tabsContent',
   'tabItem',
   'subscribeBlock',
-  'productSummary',
+  'fundsContent',
+  'fundItem',
   'product',
 ].includes(listItem.getId())
 
@@ -102,7 +103,7 @@ export default () =>
         S.list()
           .title('Fund Sections')
           .items([
-            S.documentTypeListItem('productSummary').title('Product Summary'),
+            S.documentTypeListItem('fundsContent').title('Funds Content'),
           ])
       ),
       S.divider(),
@@ -115,6 +116,7 @@ export default () =>
           .title('Utilities')
           .items([
             S.documentTypeListItem('product').title('Product'),
+            S.documentTypeListItem('fundItem').title('Fund Item'),
             S.documentTypeListItem('tabItem').title('Tab Item'),
             S.documentTypeListItem('menuItem').title('Menu Item'),
           ])

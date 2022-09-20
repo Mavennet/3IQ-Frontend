@@ -37,7 +37,8 @@ export default {
     'descriptionsWithButton',
     'tabItem',
     'subscribeBlock',
-    'productSummary',
+    'fundsContent',
+    'fundItem',
     'product',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
