@@ -7,6 +7,7 @@ function redirectButton(props) {
   const {title, route, link, sx, reverse = false, className} = props
 
   const buttonStyle = {
+    fontFamily: 'Europa',
     background: 'none',
     border: '3px solid #dc6e19',
     textTransform: 'none',
@@ -22,6 +23,7 @@ function redirectButton(props) {
   }
 
   const buttonReverseStyle = {
+    fontFamily: 'Europa',
     background: '#dc6e19',
     border: '3px solid #dc6e19',
     textTransform: 'none',

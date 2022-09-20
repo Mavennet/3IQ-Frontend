@@ -20,7 +20,11 @@ function TextSection(props) {
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
               <Box sx={{pt: 5, pr: videoSrc && {md: 20, sm: 0}, align: 'left'}}>
                 <div className={styles.textSection}>
-                  {text && <SimpleBlockContent blocks={text} />}
+                  {text && (
+                    <Grid container spacing={2}>
+                      <SimpleBlockContent blocks={text} />
+                    </Grid>
+                  )}
                 </div>
                 {localeButton && (localeButton.route || localeButton.link) && (
                   <RedirectButton {...localeButton} sx={{width: {xs: '100%', md: 250}, mt: 5}} />

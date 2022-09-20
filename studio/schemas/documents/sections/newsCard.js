@@ -29,7 +29,13 @@ export default {
       name: 'shortDescription',
       type: 'localePortableText',
       title: 'Short description',
-      description: "Optional overview about the selected post",
+      description: "Optional overview about the selected post for the normal-sized News Card",
+    },
+    {
+      name: 'smallCardText',
+      type: 'localeString',
+      title: 'Short text for compacted News Card',
+      description: "Optional short text about the selected post that will be shown only in the compacted/small view of the News Card",
     },
     {
       name: 'buttonText',
