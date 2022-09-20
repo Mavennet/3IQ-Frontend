@@ -14,6 +14,7 @@ import team from './documents/team';
 import timelineItem from './documents/timelineItem';
 import location from './documents/location';
 import tabItem from './documents/tabItem';
+import product from './documents/product';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -36,6 +37,8 @@ import headlineWithImages from './documents/sections/headlineWithImages';
 import descriptionsWithButton from './documents/sections/descriptionsWithButton';
 import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
+import productSummary from './documents/sections/productSummary';
+
 
 // Object types
 import cta from './objects/cta';
@@ -108,5 +111,7 @@ export default createSchema({
     tabItem,
     subscribeBlock,
     youtube,
+    productSummary,
+    product,
   ]),
 });

@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon } from '@sanity/icons'
+import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon, ComponentIcon, TiersIcon } from '@sanity/icons'
 
 const hiddenDocTypes = (listItem) => ![
   'page',
@@ -35,6 +35,8 @@ const hiddenDocTypes = (listItem) => ![
   'tabsContent',
   'tabItem',
   'subscribeBlock',
+  'productSummary',
+  'product',
 ].includes(listItem.getId())
 
 export default () =>
@@ -65,12 +67,13 @@ export default () =>
               .params({ countryId })
           )
       ),
-      S.divider(),S.listItem()
-      .title('Sections')
+      S.divider(),
+      S.listItem()
+      .title('Page Sections')
       .icon(SplitHorizontalIcon)
       .child(
         S.list()
-          .title('Sections')
+          .title('Page Sections')
           .items([
             S.documentTypeListItem('newsCard').title('News Card'),
             S.documentTypeListItem('readMoreCard').title('Read More Card'),
@@ -92,7 +95,30 @@ export default () =>
             S.documentTypeListItem('imageBesideText').title('Image beside Text'),
           ])
       ),
+      S.listItem()
+      .title('Fund Sections')
+      .icon(ComponentIcon)
+      .child(
+        S.list()
+          .title('Fund Sections')
+          .items([
+            S.documentTypeListItem('productSummary').title('Product Summary'),
+          ])
+      ),
+      S.divider(),
       S.documentTypeListItem('post').title('Posts'),
+      S.listItem()
+      .title('Utilities')
+      .icon(TiersIcon)
+      .child(
+        S.list()
+          .title('Utilities')
+          .items([
+            S.documentTypeListItem('product').title('Product'),
+            S.documentTypeListItem('tabItem').title('Tab Item'),
+            S.documentTypeListItem('menuItem').title('Menu Item'),
+          ])
+      ),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
