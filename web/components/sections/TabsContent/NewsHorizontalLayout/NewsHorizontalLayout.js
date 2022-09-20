@@ -41,7 +41,7 @@ function NewsHorizontalLayout(props) {
           </Typography>
         )}
         {
-          localeSmallCardText && (
+          localeSmallCardText && localeSmallCardText[currentLanguage.languageTag] && (
             <Typography variant="p">
               {`${localeSmallCardText[currentLanguage.languageTag].substring(0, 200)}...`}
             </Typography>
