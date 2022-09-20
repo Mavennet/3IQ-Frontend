@@ -29,7 +29,8 @@ function NewsHorizontalLayout(props) {
           }
         </div>
       </Grid>
-      <Grid item xs={12} sm={12} md={9}>
+      <Grid item xs={12} sm={12} md={9} sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+        <div>
         {post?.localeHeading && (
           <Typography component="h1" variant="h1">
             {post?.localeHeading[currentLanguage.languageTag]}
@@ -47,6 +48,7 @@ function NewsHorizontalLayout(props) {
             </Typography>
           )
         }
+        </div>
         {
           route && localeButtonText && (
             <RedirectButton
