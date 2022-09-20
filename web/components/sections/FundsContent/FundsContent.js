@@ -19,8 +19,10 @@ const theme = createTheme({
   },
 })
 
-function ProductSummary(props) {  
+function FundsContent(props) {  
   const {title} = props
+
+  console.log(title) // REMOVER
   
   return (
     <ThemeProvider theme={theme}>      
@@ -28,8 +30,8 @@ function ProductSummary(props) {
   )
 }
 
-ProductSummary.propTypes = {
+FundsContent.propTypes = {
   title: PropTypes.string,
 }
 
-export default ProductSummary
+export default FundsContent

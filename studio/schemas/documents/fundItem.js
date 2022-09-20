@@ -1,18 +1,18 @@
-import supportedLanguages from '../../supportedLanguages';
-import { ComponentIcon } from '@sanity/icons'
+import supportedLanguages from '../supportedLanguages';
+import { MdInsights } from "react-icons/md";
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'productSummary',
-  title: 'Product Summary',
-  icon: ComponentIcon,
+  name: 'fundItem',
+  title: 'Fund Item',
+  icon: MdInsights,
   fields: [
     {
-      name: 'title',
+      name: 'name',
       type: 'localeString',
-      title: 'Title (*)',
+      title: 'Fund item Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -41,25 +41,23 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'contactUsButton',
-      type: 'localeCta',
-      title: 'Contact Us Button (*)',
-      description: 'Button that will be displayed in each product',
+      name: 'contactUsText',
+      type: 'localeString',
+      title: 'Contact Us Button text (*)',
+      description: 'Text that will be displayed in the Contact Us button for each product',
       validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
     select: {
-      title: `title.${baseLanguage.id}`,
+      title: `name.${baseLanguage.id}`,
       productsLength: `products.length`,
-      media: 'products.0.mainImage',
     },
-    prepare({ title = '', productsLength, media }) {
-      const productsLengthText = productsLength > 0 ? ' - ' + productsLength + ' products(s)' : ''
+    prepare({ title = '', productsLength }) {
+      const productsLengthText = productsLength > 0 ? productsLength + ' fund item(s) included' : 'No fund item included'
       return {
         title,
-        subtitle: 'Product Summary section' + productsLengthText,
-        media,
+        subtitle: productsLengthText,
       };
     },
   },

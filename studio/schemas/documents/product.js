@@ -33,17 +33,29 @@ export default {
         },
       ],
     },
+    {
+      title: 'Contact us Mailto link',
+      name: 'link',
+      type: 'url',
+      description: "Write the 'mailto:' link that will be used for e-mail contact",
+      validation: Rule =>
+        Rule.error('Information required.').required()
+            .uri({
+              allowRelative: true,
+              scheme: ['mailto'],
+            }),
+    },
   ],
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
-      readMoreSlug: 'readMoreRoute.slug',
+      readMoreSlug: `readMoreRoute.slug.current`,
       media: 'mainImage',
     },
     prepare({ name = '', readMoreSlug, media }) {
       return {
         title: `${name}`,
-        subtitle: 'Details route: ' + readMoreSlug,
+        subtitle: 'Product details route: /' + readMoreSlug,
         media,
       }
     },
