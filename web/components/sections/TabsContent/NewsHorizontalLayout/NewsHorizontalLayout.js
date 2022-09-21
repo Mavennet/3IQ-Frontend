@@ -7,6 +7,7 @@ import Image from 'next/image'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
 import { format, parseISO } from 'date-fns'
+import Link from 'next/link'
 
 function NewsHorizontalLayout(props) {
   const { post, route, currentLanguage, localeButtonText, localeSmallCardText } = props
@@ -15,39 +16,59 @@ function NewsHorizontalLayout(props) {
 
   return (
     <Grid container mb={4} spacing={2}>
-      <Grid item xs={12} sm={12} md={3} sx={{ display: 'flex', alignItems: 'center' }}>
+      <Grid item xs={12} sm={12} md={4} sx={{ display: 'flex', alignItems: 'center' }}>
         <div className={styles.imgGrid}>
           {
-            post?.mainImage && (
-              <Image
-                src={builder.image(post?.mainImage.asset._ref).url()}
-                alt={post?.heading}
-                layout='fill'
-                objectFit='cover'
-              />
+            post?.mainImage && route && (
+              <Link
+                href={{
+                  pathname: `/${post?.localeHeading[currentLanguage.languageTag]}`,
+                  query: { slug: route.slug.current },
+                }}
+                as={`/${route.slug.current}`}
+              >
+                <a>
+                  <Image
+                    src={builder.image(post?.mainImage.asset._ref).url()}
+                    alt={post?.heading}
+                    layout='fill'
+                    objectFit='contain'
+                  />
+                </a>
+              </Link>
             )
           }
         </div>
       </Grid>
-      <Grid item xs={12} sm={12} md={9} sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+      <Grid item xs={12} sm={12} md={8} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-        {post?.localeHeading && (
-          <Typography component="h1" variant="h1">
-            {post?.localeHeading[currentLanguage.languageTag]}
-          </Typography>
-        )}
-        {post?.publishedAt && (
-          <Typography variant="h5" my={1}>
-            {format(parseISO(post?.publishedAt), 'MMMM d, yyyy')}
-          </Typography>
-        )}
-        {
-          localeSmallCardText && localeSmallCardText[currentLanguage.languageTag] && (
-            <Typography variant="p">
-              {`${localeSmallCardText[currentLanguage.languageTag].substring(0, 200)}...`}
+          {post?.localeHeading && route && (
+            <Link
+              href={{
+                pathname: `/${post?.localeHeading[currentLanguage.languageTag]}`,
+                query: { slug: route.slug.current },
+              }}
+              as={`/${route.slug.current}`}
+            >
+              <a className={styles.noDecoration}>
+                <Typography component="h1" variant="h1" sx={{ fontSize: '24px' }}>
+                  {post?.localeHeading[currentLanguage.languageTag]}
+                </Typography>
+              </a>
+            </Link>
+          )}
+          {post?.publishedAt && (
+            <Typography variant="h5" my={1} sx={{ fontSize: '14px' }}>
+              {format(parseISO(post?.publishedAt), 'MMMM d, yyyy')}
             </Typography>
-          )
-        }
+          )}
+          {
+            localeSmallCardText && localeSmallCardText[currentLanguage.languageTag] && (
+              <Typography variant="p" sx={{ fontSize: '16px' }}>
+                {`${localeSmallCardText[currentLanguage.languageTag].substring(0, 200)}...`}
+              </Typography>
+            )
+          }
         </div>
         {
           route && localeButtonText && (
@@ -56,7 +77,7 @@ function NewsHorizontalLayout(props) {
               title={`${localeButtonText[currentLanguage.languageTag]} »`}
               sx={{
                 width: 'auto',
-                fontSize: '14px',
+                fontSize: '16px',
                 mt: 2,
                 border: '2px solid #DC6E19',
                 padding: '2px 5px',
