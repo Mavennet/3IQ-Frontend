@@ -239,22 +239,24 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
-  const allFundsContent = await client.fetch(
+  // Retrieve all Fund Items
+  const allFundItems = await client.fetch(
     groq`
-    *[_type == 'fundItems'] {
+    *[_type == 'fundItem'] {
       _id,
       _type,
       _rev,
-      'name': name,
-      readMoreText,
-      contactUsText,
+      'localeName': name,
+      'localeReadMoreText': readMoreText,
+      'localeContactUsText': contactUsText,
       products[]-> {
         _id,
         _type,
         _rev,
+        'localeName': name,
         mainImage,
-        name,
-        readMoreRoute
+        mailtoLink,
+        readMoreRoute->,
       },
     }
     `
@@ -275,7 +277,7 @@ export const getServerSideProps = async ({params}) => {
         allTimelines,
         allLocationsDisplays,
         allTabItems,
-        allFundsContent
+        allFundItems
       } || {},
   }
 }
@@ -299,7 +301,7 @@ const LandingPage = (props) => {
     allTimelines,
     allLocationsDisplays,
     allTabItems,
-    allFundsContent
+    allFundItems
   } = props
 
   const router = useRouter()
@@ -415,11 +417,11 @@ const LandingPage = (props) => {
           <RenderSections
             routes={allRoutes}
             posts={allPosts}
-            fundsContent={allFundsContent}
             teams={allTeams}
             timelines={allTimelines}
             locationsDisplays={allLocationsDisplays}
             tabItems={allTabItems}
+            fundItems={allFundItems}
             sections={formatedContent}
           />
         )}
@@ -444,6 +446,7 @@ LandingPage.propTypes = {
   allTimelines: PropTypes.any,
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
+  allFundItems: PropTypes.any,
 }
 
 export default LandingPage

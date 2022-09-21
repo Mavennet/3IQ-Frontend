@@ -35,7 +35,7 @@ export default {
     },
     {
       title: 'Contact us Mailto link',
-      name: 'link',
+      name: 'mailtoLink',
       type: 'url',
       description: "Write the 'mailto:' link that will be used for e-mail contact",
       validation: Rule =>
