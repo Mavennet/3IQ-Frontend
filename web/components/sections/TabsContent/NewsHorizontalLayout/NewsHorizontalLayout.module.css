@@ -8,3 +8,7 @@
       height: 200px;
     }
   }
+
+  .noDecoration:hover {
+    text-decoration: none!important;
+  }
