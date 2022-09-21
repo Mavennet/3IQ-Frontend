@@ -34,7 +34,7 @@ export default {
       validation: Rule => [
         Rule.max(10).warning('Are you sure you want more than 10 items?'),
         Rule.unique().error('You have duplicate tab items'),
-        Rule.min(1).error('Please, select at least 1 page section.'),
+        Rule.min(1).error('Please, select at least 1 item.'),
       ],
       type: 'array',
       of: [

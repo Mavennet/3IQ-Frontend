@@ -19,3 +19,4 @@ export {default as HeadlineWithImages} from './HeadlineWithImages/HeadlineWithIm
 export {default as DescriptionsWithButton} from './DescriptionsWithButton/DescriptionsWithButton'
 export {default as TabsContent} from './TabsContent/TabsContent'
 export {default as SubscribeBlock} from './SubscribeBlock/SubscribeBlock'
+export {default as FundsContent} from './FundsContent/FundsContent'

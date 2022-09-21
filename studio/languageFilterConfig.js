@@ -37,6 +37,9 @@ export default {
     'descriptionsWithButton',
     'tabItem',
     'subscribeBlock',
+    'fundsContent',
+    'fundItem',
+    'product',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
