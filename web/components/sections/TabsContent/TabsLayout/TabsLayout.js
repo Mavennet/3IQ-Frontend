@@ -10,7 +10,6 @@ import {
   CircularProgress,
   Pagination,
   CssBaseline,
-  Button,
   PaginationItem,
 } from '@mui/material'
 import SimpleBlockContent from '../../../SimpleBlockContent'
@@ -170,41 +169,44 @@ function TabsLayout(props) {
   )
   const isNewsletter = tabItems.filter((item) => item.isPaginatedNewsletter).length > 0
 
-  useEffect(async () => {
-    if (isNewsletter) {
-      await client
-        .fetch(
-          groq`
-      *[_type == 'newsCard'] {
-        _id,
-        _type,
-        _rev,
-        'localeButtonText': buttonText,
-        'localeShortDescription': shortDescription,
-        route->,
-        post-> {
+  useEffect(() => {
+    const fetchNewsletters = async () => {
+      if (isNewsletter) {
+        await client
+          .fetch(
+            groq`
+        *[_type == 'newsCard'] {
           _id,
           _type,
-          mainImage,
-          'localeHeading': heading,
-          publishedAt,
-          author-> {
+          _rev,
+          'localeButtonText': buttonText,
+          'localeShortDescription': shortDescription,
+          route->,
+          post-> {
             _id,
             _type,
-            name,
-            email,
-            profilePhoto,
+            mainImage,
+            'localeHeading': heading,
+            publishedAt,
+            author-> {
+              _id,
+              _type,
+              name,
+              email,
+              profilePhoto,
+            },
           },
-        },
+        }
+        `
+          )
+          .then((response) => {
+            newsletters = response
+            setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
+            setIsLoading(false)
+          })
       }
-      `
-        )
-        .then((response) => {
-          newsletters = response
-          setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
-          setIsLoading(false)
-        })
     }
+    fetchNewsletters()
   }, [])
 
   return (
@@ -321,7 +323,7 @@ function TabsLayout(props) {
                           </Grid>
                         ))}
                       {item.localecontentBlock && (
-                        <Grid container spacing={2} px={2} sx={{ background: "#fff" }}>
+                        <Grid container spacing={2} px={2} sx={{background: '#fff'}}>
                           <div className={styles.simpleBlockContent}>
                             <SimpleBlockContent
                               blocks={item.localecontentBlock[currentLanguage.languageTag]}
