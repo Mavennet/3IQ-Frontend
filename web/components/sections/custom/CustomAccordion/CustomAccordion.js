@@ -46,7 +46,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({theme}) => ({
 
 export default function CustomAccordions(props) {
   const {items, languageTag} = props
-  const [expanded, setExpanded] = useState('panel1')
+  const [expanded, setExpanded] = useState('panel0')
 
   const handleAccordionChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false)
