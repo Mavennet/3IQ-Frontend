@@ -52,6 +52,7 @@ export default {
             {type: 'doubleOptions'},
             {type: 'descriptionsWithButton'},
             {type: 'tabsContent'},
+            {type: 'fundsContent'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
           ]

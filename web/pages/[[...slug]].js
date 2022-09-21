@@ -211,6 +211,7 @@ export const getServerSideProps = async ({ params }) => {
       'localeName': name,
       isPaginatedNewsletter,
       isNewsCardsHorizontalLayout,
+      selectedPostCategory->,
       newsCards[]-> {
         _id,
         _type,
