@@ -106,7 +106,6 @@ export default function CustomTab(props) {
                     textTransform: 'none',
                     padding: '10px 30px',
                   }}
-                  title="Show More"
                 ></RedirectButton>
               )
             }
