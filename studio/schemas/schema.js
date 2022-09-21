@@ -16,6 +16,7 @@ import location from './documents/location';
 import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
+import category from './documents/category';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -114,5 +115,6 @@ export default createSchema({
     fundsContent,
     fundItem,
     product,
+    category,
   ]),
 });
