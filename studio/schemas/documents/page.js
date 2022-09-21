@@ -54,7 +54,7 @@ export default {
             {type: 'tabsContent'},
             {type: 'fundsContent'},
             {type: 'timeline'},
-            {type: 'imageBesideText'},
+            {type: 'imageBesideText'}
           ]
         }
       ]

@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, teams, timelines, locationsDisplays, tabItems} = props
+  const {sections, routes, posts, teams, timelines, locationsDisplays, tabItems, fundsContent} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -159,6 +159,7 @@ RenderSections.propTypes = {
   ),
   routes: PropTypes.array,
   posts: PropTypes.array,
+  fundsContent: PropTypes.array,
   teams: PropTypes.array,
   timelines: PropTypes.array,
   locationsDisplays: PropTypes.array,
