@@ -177,6 +177,7 @@ RenderSections.propTypes = {
   timelines: PropTypes.array,
   locationsDisplays: PropTypes.array,
   tabItems: PropTypes.array,
+  fundItems: PropTypes.array,
 }
 
 export default RenderSections

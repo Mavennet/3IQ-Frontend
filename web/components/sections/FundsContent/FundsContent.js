@@ -26,9 +26,9 @@ const gridSx = {
 }
 
 function FundsContent(props) {
-  const {currentCountry, currentLanguage, fundItems} = props
+  const {currentCountry, currentLanguage, fundItems} = props // ajustar props para pegar as consts necessárias
 
-  console.log(props) // REMOVER
+  console.log(currentCountry, currentLanguage, fundItems) // REMOVER
 
   return (
     <ThemeProvider theme={theme}>
