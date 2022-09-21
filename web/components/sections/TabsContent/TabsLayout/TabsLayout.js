@@ -211,7 +211,7 @@ function TabsLayout(props) {
         })
       }
     }
-    fetchNewsletters(selectedCategory, isPaginatedNewsletter)
+    fetchNewsletters()
   }, [])
 
   return (
