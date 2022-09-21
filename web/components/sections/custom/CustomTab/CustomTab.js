@@ -96,15 +96,20 @@ export default function CustomTab(props) {
             alignItems="center"
             justifyContent="center"
           >
-            <RedirectButton
-              sx={{
-                fontWeight: 'normal',
-                fontSize: '18px',
-                textTransform: 'none',
-                padding: '10px 30px',
-              }}
-              title="Show More"
-            ></RedirectButton>
+            {
+              item.localeButton && item.localeButton[languageTag] && (
+                <RedirectButton
+                  {...item.localeButton[languageTag]}
+                  sx={{
+                    fontWeight: 'normal',
+                    fontSize: '18px',
+                    textTransform: 'none',
+                    padding: '10px 30px',
+                  }}
+                  title="Show More"
+                ></RedirectButton>
+              )
+            }
           </Grid>
         </TabPanel>
       ))}
@@ -113,7 +118,7 @@ export default function CustomTab(props) {
 }
 
 CustomTab.propTypes = {
-    items: PropTypes.object, 
+    items: PropTypes.object,
     languageTag: PropTypes.string
 }
 
