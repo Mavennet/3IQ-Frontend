@@ -121,7 +121,6 @@ function TabsLayout(props) {
     },
   })
 
-  console.log(props)
   const [isLoading, setIsLoading] = useState(true)
 
   const itemsPerPage = 6
@@ -203,7 +202,6 @@ function TabsLayout(props) {
         .then((response) => {
           newsletters = response
           setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
-          console.log(newsletters)
           setIsLoading(false)
         })
     }
@@ -268,7 +266,17 @@ function TabsLayout(props) {
                         ) : item.isPaginatedNewsletter ? (
                           <Grid container alignItems="stretch">
                             {isLoading ? (
-                              <CircularProgress />
+                              <Grid
+                                item
+                                key={item._id}
+                                style={{display: 'flex'}}
+                                py={5}
+                                md={12}
+                                pr={2}
+                                justifyContent="center"
+                              >
+                                <CircularProgress />
+                              </Grid>
                             ) : (
                               newsletters
                                 ?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
@@ -385,7 +393,7 @@ function TabsLayout(props) {
 }
 
 TabsLayout.propTypes = {
-  tabItems: PropTypes.object,
+  tabItems: PropTypes.array,
   currentLanguage: PropTypes.object,
   backgroundImage: PropTypes.object,
   heading: PropTypes.string,
