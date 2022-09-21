@@ -16,7 +16,8 @@
     "@sanity/language-filter",
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
-    "dashboard-widget-netlify"
+    "dashboard-widget-netlify",
+    "table"
   ],
   "env": {
     "development": {
