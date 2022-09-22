@@ -39,6 +39,7 @@ const hiddenDocTypes = (listItem) => ![
   'fundItem',
   'product',
   'category',
+  'imagesContainer',
 ].includes(listItem.getId())
 
 export default () =>
@@ -131,6 +132,7 @@ export default () =>
               S.documentTypeListItem('fundItem').title('Fund Item'),
               S.documentTypeListItem('tabItem').title('Tab Item'),
               S.documentTypeListItem('menuItem').title('Menu Item'),
+              S.documentTypeListItem('imagesContainer').title('Images Container'),              
             ])
       ),
       S.divider(),
