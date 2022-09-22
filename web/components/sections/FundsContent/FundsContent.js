@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import {Container, Grid, Box, Tabs, Tab, Typography} from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import imageUrlBuilder from '@sanity/image-url'
+import client from '../../../client'
+import RedirectButton from '../../RedirectButton/RedirectButton'
+import SimpleBlockContent from '../../SimpleBlockContent'
 
 const theme = createTheme({
   typography: {
@@ -21,6 +25,10 @@ const theme = createTheme({
   },
 })
 
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
+
 function handleTab(index) {
   return {
     id: `simple-tab-${index}`,
@@ -30,7 +38,7 @@ function handleTab(index) {
 
 const tabGridSx = {
   background: '#e8e8ea',
-  height: '200px',
+  height: '250px',
 }
 
 const gridMainHeaderSx = {
@@ -54,7 +62,7 @@ const gridGeneratedHeaderSx = {
 }
 
 function FundsContent(props) {
-  const {currentCountry, currentLanguage, fundItems} = props // ajustar props para pegar as consts necessárias
+  const {currentCountry, currentLanguage, fundItems, localeHighlights} = props // ajustar props para pegar as consts necessárias
 
   console.log(props)
   const [value, setValue] = useState(0)
@@ -131,14 +139,13 @@ function FundsContent(props) {
               {fundTypes &&
                 fundTypes.map((item, i) => {
                   return (
-                         <Tab
+                    <Tab
                       key={`fundType_${i}`}
                       wrapped
                       href={`#section_${i}`}
                       label={item || 'Missing Tab Label'}
                       {...handleTab(i)}
-                    >
-                    </Tab>
+                    ></Tab>
                   )
                 })}
             </Tabs>
@@ -154,35 +161,44 @@ function FundsContent(props) {
                 </Typography>
               </Grid>
               <Grid item container alignItems="stretch" spacing={2} xs={12}>
-                <Grid item sx={gridMainHeaderSx} sm={false} md={3}>
+                <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
                   <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                     Product
                   </Typography>
                 </Grid>
-                <Grid item sx={gridMainHeaderSx} sm={false} md={2}>
+                <Grid item sx={gridMainHeaderSx} xs={false} md={2}>
                   <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                     Ticker
                   </Typography>
                 </Grid>
-                <Grid item sx={gridMainHeaderSx} sm={false} md={5}>
+                <Grid item sx={gridMainHeaderSx} xs={false} md={5}>
                   <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                     Highlights
                   </Typography>
                 </Grid>
-                <Grid item sx={gridMainHeaderSx} sm={false} md={2}></Grid>
+                <Grid item sx={gridMainHeaderSx} xs={false} md={2}></Grid>
               </Grid>
               {fundItem.products &&
                 fundItem.products.map((product, index) => (
-                  <Grid container item alignItems="stretch" spacing={2} >
-                    <Grid item container sm={12} md={3}>
+                  <Grid container item mb={4} alignItems="stretch" spacing={2}>
+                    {/*Product Image*/}
+                    <Grid item container xs={12} md={3}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                           Product
                         </Typography>
                       </Grid>
-                      <Grid sx={tabGridSx} container></Grid>
+                      <Grid sx={tabGridSx} container>
+                        <Box my={'auto'} style={{textAlign: 'center', width: '100%'}}>
+                          <img
+                            style={{maxWidth: '90%', maxHeight: '220px', margin: '0 auto'}}
+                            src={urlFor(product.mainImage.asset._ref).url()}
+                          />
+                        </Box>
+                      </Grid>
                     </Grid>
-                    <Grid item container sm={12} md={2}>
+                    {/*Ticker or equivalent*/}
+                    <Grid item container xs={12} md={2}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                           Ticker
@@ -190,16 +206,44 @@ function FundsContent(props) {
                       </Grid>
                       <Grid sx={tabGridSx} container></Grid>
                     </Grid>
-                    <Grid item container sm={12} md={5}>
+                    {/*Highlights*/}
+                    <Grid item container xs={12} md={5}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                           Highlights
                         </Typography>
                       </Grid>
-                      <Grid sx={tabGridSx} container></Grid>
+                      <Grid sx={tabGridSx} container>
+                        <Box sx={{my: 'auto'}}>
+                        {(product.localeHighlights && product.localeHighlights[currentLanguage.languageTag]) && (
+                            <SimpleBlockContent blocks={product.localeHighlights[currentLanguage.languageTag]}/>
+                        )}
+                        </Box>
+                      
+                      </Grid>
                     </Grid>
-                    <Grid item container sm={12} md={2}>
-                      <Grid sx={tabGridSx} container></Grid>
+                    {/*Buttons*/}
+                    <Grid item container xs={12} md={2}>
+                      <Grid sx={tabGridSx} container>
+                        <Box my={'auto'} style={{ width: '100%'}}>
+                          {fundItem.localeReadMoreText && (
+                            <RedirectButton
+                              sx={{mx:'auto', width: '130px', mb: 3, background: '#0082E5', border: '3px solid #0082E5', fontWeight: 'normal',  '&:hover': {
+                                color: '#0082E5',
+                              },}}
+                              route={product.readMoreRoute && product.readMoreRoute}
+                              title={fundItem.localeReadMoreText[currentLanguage.languageTag]}
+                            />
+                          )}
+                            {fundItem.localeContactUsText && (
+                            <RedirectButton
+                              sx={{mx:'auto', width: '130px', fontWeight: 'normal'}}
+                              link={product.mailtoLink}
+                              title={fundItem.localeContactUsText[currentLanguage.languageTag]}
+                            />
+                          )}
+                        </Box>
+                      </Grid>
                     </Grid>
                   </Grid>
                 ))}

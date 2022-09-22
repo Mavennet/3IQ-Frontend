@@ -254,6 +254,7 @@ export const getServerSideProps = async ({params}) => {
         _type,
         _rev,
         'localeName': name,
+        'localeHighlights': highlights,
         mainImage,
         mailtoLink,
         readMoreRoute->,

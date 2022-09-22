@@ -22,6 +22,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'highlights',
+      type: 'localeSimplePortableText',
+      title: 'Highlights (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'readMoreRoute',
       type: 'reference',
       title: 'Read More Route (*)',
