@@ -10,7 +10,7 @@ export default {
   icon: MdPhotoLibrary,
   fields: [
     {
-      name: 'Title',
+      name: 'title',
       type: 'localeString',
       title: 'Title (*)',
       validation: Rule => Rule.error('Information required.').required(),
@@ -21,7 +21,7 @@ export default {
       title: 'Hide title?',
       description: 'Enable this option to not display the title. Recommended when only one images container will be used',
       initialValue: false,
-    }, 
+    },
     {
       name: 'images',
       type: 'array',

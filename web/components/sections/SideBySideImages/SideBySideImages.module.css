@@ -11,3 +11,39 @@
     color:#0082E4;
     text-align: center;
 }
+
+.simpleBlockContent {
+  text-align: center;
+  font-family: 'Europa';
+}
+
+.simpleBlockContent > :is(h1, h2, h3, h4, b, strong){
+  color: #0082e5;
+}
+
+.simpleBlockContent h1 {
+  font-size: 38px;
+}
+
+.simpleBlockContent h2 {
+  font-size: 34px;
+}
+
+.simpleBlockContent h3 {
+  font-size: 28px;
+}
+
+.simpleBlockContent h4 {
+  font-size: 24px;
+}
+
+.simpleBlockContent h5 {
+  font-size: 20px;
+}
+
+.simpleBlockContent p{
+  margin-top: 0px;
+  margin-bottom: 0.2rem;
+  font-size: 16px;
+  color: #091B3F
+}
