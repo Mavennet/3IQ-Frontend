@@ -38,7 +38,12 @@ export default {
           type: 'imagesContainer',
         },
       ],
-    }
+    },
+    {
+      name: 'footerText',
+      type: 'localePortableText',
+      title: 'Footer text'
+    },
   ],
   preview: {
     select: {
