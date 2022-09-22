@@ -8,6 +8,22 @@ export default {
   type: 'document',
   title: 'Tab Item',
   icon: MdLinearScale,
+  validation: Rule =>
+    Rule.custom(
+      (fields = {}) =>
+        (fields.isPaginatedNewsletter && !fields.selectedPostCategory) ? "You need to select a Post Category in order to use the Paginated News Cards Layout." : true
+    ),
+  fieldsets: [
+    {
+      title: 'Paginated News Cards Layout',
+      name: 'paginatedLayout',
+      description: 'Enable this option to display all the News Cards with a pagination layout filtered by a post category',
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
+    },
+  ],
   fields: [
     {
       name: 'name',
@@ -23,9 +39,18 @@ export default {
     {
       name: 'isPaginatedNewsletter',
       type: 'boolean',
-      title: 'Is tab item only for Paginated Newsletter?',
-      description: 'Enable this option to display all the News Cards with a pagination layout',
+      title: 'Is this tab item only for Paginated News Cards layout?',
+      description: 'Enabling this layout will override the other layouts.',
       initialValue: false,
+      fieldset: 'paginatedLayout',
+    },
+    {
+      name: 'selectedPostCategory',
+      title: 'Post Category',
+      description: 'Select a category that will be used to filter the posts only for the Paginated News Cards layout',
+      type: 'reference',
+      to: [{ type: 'category' }],
+      fieldset: 'paginatedLayout',
     },
     {
       name: 'isNewsCardsHorizontalLayout',

@@ -1,22 +1,34 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Grid, Container, Box, Tabs, Tab } from '@mui/material'
+import {createTheme, ThemeProvider} from '@mui/material/styles'
+import {
+  Grid,
+  Container,
+  Box,
+  Tabs,
+  Tab,
+  CircularProgress,
+  Pagination,
+  CssBaseline,
+  PaginationItem,
+} from '@mui/material'
 import SimpleBlockContent from '../../../SimpleBlockContent'
 import RedirectButton from '../../../RedirectButton/RedirectButton'
 import styles from './TabsLayout.module.css'
 import NewsHorizontalLayout from '../NewsHorizontalLayout/NewsHorizontalLayout'
 import CustomPostCard from '../../custom/CustomPostCard/CustomPostCard'
+import CustomNewsletterCard from '../../custom/CustomNewsletterCard/CustomNewsletterCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
+import groq from 'groq'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
 function TabPanel(values) {
-  const { children, value, index, ...other } = values
+  const {children, value, index, ...other} = values
 
   return (
     <div
@@ -38,10 +50,11 @@ function handleTab(index) {
   }
 }
 
+let newsletters
 function TabsLayout(props) {
-  const { tabItems, currentLanguage, backgroundImage, heading } = props
+  const {tabItems, currentLanguage, backgroundImage, heading} = props
 
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = useState(0)
 
   const mediumViewport = useMediaQuery('(min-width:1024px)')
 
@@ -87,29 +100,142 @@ function TabsLayout(props) {
           },
         },
       },
+      MuiCssBaseline: {
+        styleOverrides: `
+      .MuiButtonBase-root.MuiPaginationItem-root {
+          color: #dc6e19;
+      }
+      .MuiButtonBase-root.MuiPaginationItem-root:hover {
+          color: #fff;
+      }
+      .MuiButtonBase-root.Mui-selected.MuiPaginationItem-root {
+          color: #fff;
+      }
+      .MuiButtonBase-root.Mui-disabled.MuiPaginationItem-root {
+          display: none;
+      }
+      
+      `,
+      },
     },
   })
 
+  const [isLoading, setIsLoading] = useState(true)
+
+  const itemsPerPage = 6
+  const [page, setPage] = React.useState(1)
+  const [noOfPages, setNoOfPages] = useState(1)
+
+  const handlePageChange = (event, value) => {
+    setPage(value)
+  }
+
+  const PageBackButton = () => (
+    <RedirectButton
+      title="← Previous"
+      reverse={false}
+      sx={{
+        padding: '10px 20px',
+        fontSize: '16px',
+        borderColor: '#DC6E19',
+        background: 'none',
+        color: '#dc6e19',
+        fontWeight: '300',
+        '&:hover': {
+          color: '#fff',
+          borderColor: '#fff',
+        },
+      }}
+    />
+  )
+
+  const PageForwardButton = () => (
+    <RedirectButton
+      title="Next →"
+      reverse={false}
+      sx={{
+        padding: '10px 20px',
+        fontSize: '16px',
+        borderColor: '#DC6E19',
+        background: 'none',
+        color: '#dc6e19',
+        fontWeight: '300',
+        '&:hover': {
+          color: '#fff',
+          borderColor: '#fff',
+        },
+      }}
+    />
+  )
+
+  useEffect((selectedCategory, isPaginatedNewsletter) => {
+    console.log(selectedCategory) // Vou utilizar na query, vai vir do tabItem (item.selectedCategory)
+
+    const fetchNewsletters = async () => {
+      if (isPaginatedNewsletter) { // Vem do tabItem (item.isPaginatedNewsletter)
+        await client.fetch(
+          groq`
+          *[_type == 'newsCard'] {
+            _id,
+            _type,
+            _rev,
+            'localeButtonText': buttonText,
+            'localeShortDescription': shortDescription,
+            route->,
+            post-> {
+              _id,
+              _type,
+              mainImage,
+              'localeHeading': heading,
+              publishedAt,
+              categories[]-> {
+                _id,
+                _type,
+                'localeName': name,
+              },
+              author-> {
+                _id,
+                _type,
+                name,
+                email,
+                profilePhoto,
+              },
+            },
+          }
+          `
+        )
+        .then((response) => {
+          newsletters = response
+          setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
+          setIsLoading(false)
+        })
+      }
+    }
+    
+    fetchNewsletters()
+  }, [])
+
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{
-        background:
-          backgroundImage &&
-          `url("${urlFor(backgroundImage)
-            .url()}") no-repeat center center`,
-        backgroundSize: 'cover',
-        bgcolor: backgroundImage ? '#091b3f' : '#fff',
-      }}>
+      <CssBaseline />
+      <Box
+        sx={{
+          background:
+            backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat center center`,
+          backgroundSize: 'cover',
+          bgcolor: backgroundImage ? '#091b3f' : '#fff',
+        }}
+      >
         <Container maxWidth="lg">
-          <Grid container>
+          <Grid container pb={4}>
             <Grid item xs={12}>
-              <Box sx={{ mt: -2, mb: 4, display: 'flex', justifyContent: 'center' }}>
+              <Box sx={{mt: -2, mb: 4, display: 'flex', justifyContent: 'center'}}>
                 <Tabs
-                  orientation={mediumViewport ? "horizontal" : "vertical"}
+                  orientation={mediumViewport ? 'horizontal' : 'vertical'}
                   value={value}
                   onChange={handleChange}
                   aria-label={`${heading} - Tab`}
-                  TabIndicatorProps={{ style: { display: 'none' } }}
+                  TabIndicatorProps={{style: {display: 'none'}}}
                 >
                   {tabItems &&
                     tabItems.map((item, i) => {
@@ -117,7 +243,9 @@ function TabsLayout(props) {
                         <Tab
                           key={item._id}
                           wrapped
-                          label={item.localeName[currentLanguage.languageTag] || 'Missing Tab Label'}
+                          label={
+                            item.localeName[currentLanguage.languageTag] || 'Missing Tab Label'
+                          }
                           {...handleTab(i)}
                         />
                       )
@@ -128,7 +256,8 @@ function TabsLayout(props) {
             <Grid item xs={12} mt={5}>
               {tabItems &&
                 tabItems.map((item, i) => {
-                  const translatedButton = item.localeButton && item.localeButton[currentLanguage.languageTag]
+                  const translatedButton =
+                    item.localeButton && item.localeButton[currentLanguage.languageTag]
                   return (
                     <TabPanel key={item._id} value={value} index={i}>
                       {item.newsCards?.length > 0 &&
@@ -142,11 +271,54 @@ function TabsLayout(props) {
                               />
                             )
                           })
+                        ) : item.isPaginatedNewsletter ? (
+                          <Grid container alignItems="stretch">
+                            {isLoading ? (
+                              <Grid
+                                item
+                                key={item._id}
+                                style={{display: 'flex'}}
+                                py={5}
+                                md={12}
+                                pr={2}
+                                justifyContent="center"
+                              >
+                                <CircularProgress />
+                              </Grid>
+                            ) : (
+                              newsletters
+                                ?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
+                                .map((item) => {
+                                  return (
+                                    <Grid
+                                      item
+                                      key={item._id}
+                                      style={{display: 'flex'}}
+                                      pt={5}
+                                      md={4}
+                                      pr={2}
+                                    >
+                                      <CustomNewsletterCard
+                                        {...item}
+                                        languageTag={currentLanguage.languageTag}
+                                      />
+                                    </Grid>
+                                  )
+                                })
+                            )}
+                          </Grid>
                         ) : (
                           <Grid container alignItems="stretch">
                             {item.newsCards?.map((item) => {
                               return (
-                                <Grid item key={item._id} style={{ display: 'flex' }} pt={5} md={4} pr={2}>
+                                <Grid
+                                  item
+                                  key={item._id}
+                                  style={{display: 'flex'}}
+                                  pt={5}
+                                  md={4}
+                                  pr={2}
+                                >
                                   <CustomPostCard
                                     {...item}
                                     languageTag={currentLanguage.languageTag}
@@ -157,7 +329,7 @@ function TabsLayout(props) {
                           </Grid>
                         ))}
                       {item.localecontentBlock && (
-                        <Grid container spacing={2} px={2} sx={{ background: "#fff" }}>
+                        <Grid container spacing={2} px={2} sx={{background: '#fff'}}>
                           <div className={styles.simpleBlockContent}>
                             <SimpleBlockContent
                               blocks={item.localecontentBlock[currentLanguage.languageTag]}
@@ -167,7 +339,12 @@ function TabsLayout(props) {
                       )}
                       {translatedButton && (
                         <Grid container>
-                          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }} my={4}>
+                          <Grid
+                            item
+                            xs={12}
+                            sx={{display: 'flex', justifyContent: 'center'}}
+                            my={4}
+                          >
                             <RedirectButton
                               {...translatedButton}
                               sx={{
@@ -182,6 +359,38 @@ function TabsLayout(props) {
                           </Grid>
                         </Grid>
                       )}
+                      {!isLoading && item.isPaginatedNewsletter && (
+                        <Box component="span">
+                          <Pagination
+                            showFirstButton={true}
+                            showLastButton={true}
+                            count={noOfPages}
+                            page={page}
+                            renderItem={(item) => (
+                              <PaginationItem
+                                components={{previous: PageBackButton, next: PageForwardButton}}
+                                {...item}
+                              />
+                            )}
+                            onChange={handlePageChange}
+                            defaultPage={1}
+                            size="small"
+                            siblingCount={2}
+                            boundaryCount={1}
+                            sx={{
+                              '& .MuiPagination-ul': {
+                                justifyContent: 'center',
+                                padding: '10px',
+                                rowGap: 1,
+                              },
+                              mt: '3em',
+                              mb: '3em',
+                              textAlign: 'center',
+                              color: '#dc6e19',
+                            }}
+                          />
+                        </Box>
+                      )}
                     </TabPanel>
                   )
                 })}
@@ -194,10 +403,10 @@ function TabsLayout(props) {
 }
 
 TabsLayout.propTypes = {
-  tabItems: PropTypes.object,
+  tabItems: PropTypes.array,
   currentLanguage: PropTypes.object,
   backgroundImage: PropTypes.object,
-  heading: PropTypes.string
+  heading: PropTypes.string,
 }
 
 export default TabsLayout
