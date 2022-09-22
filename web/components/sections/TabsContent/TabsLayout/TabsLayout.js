@@ -167,45 +167,51 @@ function TabsLayout(props) {
       }}
     />
   )
-  const isNewsletter = tabItems.filter((item) => item.isPaginatedNewsletter).length > 0
 
-  useEffect(() => {
+  useEffect((selectedCategory, isPaginatedNewsletter) => {
+    console.log(selectedCategory) // Vou utilizar na query, vai vir do tabItem (item.selectedCategory)
+
     const fetchNewsletters = async () => {
-      if (isNewsletter) {
-        await client
-          .fetch(
-            groq`
-        *[_type == 'newsCard'] {
-          _id,
-          _type,
-          _rev,
-          'localeButtonText': buttonText,
-          'localeShortDescription': shortDescription,
-          route->,
-          post-> {
+      if (isPaginatedNewsletter) { // Vem do tabItem (item.isPaginatedNewsletter)
+        await client.fetch(
+          groq`
+          *[_type == 'newsCard'] {
             _id,
             _type,
-            mainImage,
-            'localeHeading': heading,
-            publishedAt,
-            author-> {
+            _rev,
+            'localeButtonText': buttonText,
+            'localeShortDescription': shortDescription,
+            route->,
+            post-> {
               _id,
               _type,
-              name,
-              email,
-              profilePhoto,
+              mainImage,
+              'localeHeading': heading,
+              publishedAt,
+              categories[]-> {
+                _id,
+                _type,
+                'localeName': name,
+              },
+              author-> {
+                _id,
+                _type,
+                name,
+                email,
+                profilePhoto,
+              },
             },
-          },
-        }
-        `
-          )
-          .then((response) => {
-            newsletters = response
-            setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
-            setIsLoading(false)
-          })
+          }
+          `
+        )
+        .then((response) => {
+          newsletters = response
+          setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
+          setIsLoading(false)
+        })
       }
     }
+    
     fetchNewsletters()
   }, [])
 
@@ -221,7 +227,7 @@ function TabsLayout(props) {
         }}
       >
         <Container maxWidth="lg">
-          <Grid container mb={4}>
+          <Grid container pb={4}>
             <Grid item xs={12}>
               <Box sx={{mt: -2, mb: 4, display: 'flex', justifyContent: 'center'}}>
                 <Tabs
@@ -353,11 +359,11 @@ function TabsLayout(props) {
                           </Grid>
                         </Grid>
                       )}
-                      {!isLoading && isNewsletter && (
+                      {!isLoading && item.isPaginatedNewsletter && (
                         <Box component="span">
                           <Pagination
-                            showFirstButton={false}
-                            showLastButton={false}
+                            showFirstButton={true}
+                            showLastButton={true}
                             count={noOfPages}
                             page={page}
                             renderItem={(item) => (
@@ -377,8 +383,8 @@ function TabsLayout(props) {
                                 padding: '10px',
                                 rowGap: 1,
                               },
-                              mt: '4em',
-                              mb: '4em',
+                              mt: '3em',
+                              mb: '3em',
                               textAlign: 'center',
                               color: '#dc6e19',
                             }}
