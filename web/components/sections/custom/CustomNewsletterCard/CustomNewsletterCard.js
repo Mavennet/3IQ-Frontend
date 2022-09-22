@@ -71,7 +71,7 @@ export default function CustomNewsletterCard(props) {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '10vh',
+                height: 'auto',
                 mb: 2,
               }}
               gutterBottom
