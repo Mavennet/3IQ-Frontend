@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import {createTheme, ThemeProvider} from '@mui/material/styles'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 import {
   Grid,
   Container,
@@ -28,7 +28,7 @@ function urlFor(source) {
 }
 
 function TabPanel(values) {
-  const {children, value, index, ...other} = values
+  const { children, value, index, ...other } = values
 
   return (
     <div
@@ -43,16 +43,9 @@ function TabPanel(values) {
   )
 }
 
-function handleTab(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  }
-}
-
 let newsletters
 function TabsLayout(props) {
-  const {tabItems, currentLanguage, backgroundImage, heading} = props
+  const { tabItems, currentLanguage, backgroundImage, heading } = props
 
   const [value, setValue] = useState(0)
 
@@ -114,7 +107,7 @@ function TabsLayout(props) {
       .MuiButtonBase-root.Mui-disabled.MuiPaginationItem-root {
           display: none;
       }
-      
+
       `,
       },
     },
@@ -123,11 +116,19 @@ function TabsLayout(props) {
   const [isLoading, setIsLoading] = useState(true)
 
   const itemsPerPage = 6
-  const [page, setPage] = React.useState(1)
+  const [page, setPage] = useState(1)
   const [noOfPages, setNoOfPages] = useState(1)
 
   const handlePageChange = (event, value) => {
     setPage(value)
+  }
+
+  const handleTab = (index) => {
+    setPage(1);
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    }
   }
 
   const PageBackButton = () => (
@@ -168,7 +169,7 @@ function TabsLayout(props) {
     />
   )
 
-  useEffect((selectedCategory, isPaginatedNewsletter) => {
+  useEffect((selectedCategory, isPaginatedNewsletter = true) => {
     console.log(selectedCategory) // Vou utilizar na query, vai vir do tabItem (item.selectedCategory)
 
     const fetchNewsletters = async () => {
@@ -204,14 +205,14 @@ function TabsLayout(props) {
           }
           `
         )
-        .then((response) => {
-          newsletters = response
-          setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
-          setIsLoading(false)
-        })
+          .then((response) => {
+            newsletters = response
+            setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
+            setIsLoading(false)
+          })
       }
     }
-    
+
     fetchNewsletters()
   }, [])
 
@@ -229,13 +230,13 @@ function TabsLayout(props) {
         <Container maxWidth="lg">
           <Grid container pb={4}>
             <Grid item xs={12}>
-              <Box sx={{mt: -2, mb: 4, display: 'flex', justifyContent: 'center'}}>
+              <Box sx={{ mt: -2, mb: 4, display: 'flex', justifyContent: 'center' }}>
                 <Tabs
                   orientation={mediumViewport ? 'horizontal' : 'vertical'}
                   value={value}
                   onChange={handleChange}
                   aria-label={`${heading} - Tab`}
-                  TabIndicatorProps={{style: {display: 'none'}}}
+                  TabIndicatorProps={{ style: { display: 'none' } }}
                 >
                   {tabItems &&
                     tabItems.map((item, i) => {
@@ -246,7 +247,7 @@ function TabsLayout(props) {
                           label={
                             item.localeName[currentLanguage.languageTag] || 'Missing Tab Label'
                           }
-                          {...handleTab(i)}
+                          onClick={() => handleTab(i)}
                         />
                       )
                     })}
@@ -272,12 +273,12 @@ function TabsLayout(props) {
                             )
                           })
                         ) : item.isPaginatedNewsletter ? (
-                          <Grid container alignItems="stretch">
+                          <Grid container spacing={2}>
                             {isLoading ? (
                               <Grid
                                 item
                                 key={item._id}
-                                style={{display: 'flex'}}
+                                style={{ display: 'flex' }}
                                 py={5}
                                 md={12}
                                 pr={2}
@@ -293,10 +294,9 @@ function TabsLayout(props) {
                                     <Grid
                                       item
                                       key={item._id}
-                                      style={{display: 'flex'}}
-                                      pt={5}
+                                      style={{ display: 'flex' }}
+                                      xs={12}
                                       md={4}
-                                      pr={2}
                                     >
                                       <CustomNewsletterCard
                                         {...item}
@@ -314,7 +314,7 @@ function TabsLayout(props) {
                                 <Grid
                                   item
                                   key={item._id}
-                                  style={{display: 'flex'}}
+                                  style={{ display: 'flex' }}
                                   pt={5}
                                   md={4}
                                   pr={2}
@@ -329,7 +329,7 @@ function TabsLayout(props) {
                           </Grid>
                         ))}
                       {item.localecontentBlock && (
-                        <Grid container spacing={2} px={2} sx={{background: '#fff'}}>
+                        <Grid container spacing={2} px={2} sx={{ background: '#fff' }}>
                           <div className={styles.simpleBlockContent}>
                             <SimpleBlockContent
                               blocks={item.localecontentBlock[currentLanguage.languageTag]}
@@ -342,7 +342,7 @@ function TabsLayout(props) {
                           <Grid
                             item
                             xs={12}
-                            sx={{display: 'flex', justifyContent: 'center'}}
+                            sx={{ display: 'flex', justifyContent: 'center' }}
                             my={4}
                           >
                             <RedirectButton
@@ -368,7 +368,7 @@ function TabsLayout(props) {
                             page={page}
                             renderItem={(item) => (
                               <PaginationItem
-                                components={{previous: PageBackButton, next: PageForwardButton}}
+                                components={{ previous: PageBackButton, next: PageForwardButton }}
                                 {...item}
                               />
                             )}

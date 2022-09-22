@@ -4,10 +4,10 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import imageUrlBuilder from '@sanity/image-url'
-import {CardActions} from '@mui/material'
+import { CardActions } from '@mui/material'
 import SimpleBlockContent from '../../../SimpleBlockContent'
 import client from '../../../../client'
-import {format, parseISO} from 'date-fns'
+import { format } from 'date-fns'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import RedirectButton from '../../../RedirectButton/RedirectButton'
@@ -17,7 +17,18 @@ function urlFor(source) {
 }
 
 export default function CustomNewsletterCard(props) {
-  const {languageTag, localeButtonText, localeShortDescription, post, route} = props
+  const { languageTag, localeButtonText, localeShortDescription, post, route } = props
+
+  const [publishedDate, setPublishedDate] = React.useState('')
+
+  React.useEffect(() => {
+    if (languageTag) {
+      const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
+      const newYears = new Date(post.publishedAt)
+      const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(languageTag.replace("_", "-")) })
+      setPublishedDate(formattedDate)
+    }
+  }, [languageTag, post.publishedAt])
 
   return (
     <Card
@@ -32,12 +43,12 @@ export default function CustomNewsletterCard(props) {
         <Link
           href={{
             pathname: '/LandingPage',
-            query: {slug: route.slug.current},
+            query: { slug: route.slug.current },
           }}
           as={`/${route.slug.current}`}
         >
           <CardMedia
-            sx={{cursor: 'pointer', maxHeight: {md: '20vh'}}}
+            sx={{ cursor: 'pointer', maxHeight: { md: '20vh' } }}
             component="img"
             image={urlFor(post.mainImage)}
             alt="green iguana"
@@ -47,7 +58,7 @@ export default function CustomNewsletterCard(props) {
           <Link
             href={{
               pathname: '/LandingPage',
-              query: {slug: route.slug.current},
+              query: { slug: route.slug.current },
             }}
             as={`/${route.slug.current}`}
           >
@@ -90,7 +101,7 @@ export default function CustomNewsletterCard(props) {
           <Link
             href={{
               pathname: '/LandingPage',
-              query: {slug: route.slug.current},
+              query: { slug: route.slug.current },
             }}
             as={`/${route.slug.current}`}
           >
@@ -98,12 +109,12 @@ export default function CustomNewsletterCard(props) {
               title={localeButtonText[languageTag]}
               reverse
               sx={{
-                width: {xs: '100%', md: '100%'},
+                width: { xs: '100%', md: '100%' },
                 padding: '8px 15px',
                 fontSize: '16px',
                 fontWeight: '600',
                 color: '#dc6e19',
-                height: '5vh',
+                height: 'auto',
                 mb: 1,
                 border: '2px solid #dc6e19',
                 textAlign: 'center',
@@ -114,8 +125,8 @@ export default function CustomNewsletterCard(props) {
             ></RedirectButton>
           </Link>
         )}
-        <Typography sx={{alignSelf: 'flex-start'}}>
-          {post.publishedAt && format(parseISO(post.publishedAt), 'MMMM d, yyyy')}
+        <Typography sx={{ alignSelf: 'flex-start' }}>
+          {post.publishedAt && publishedDate}
         </Typography>
       </CardActions>
     </Card>
