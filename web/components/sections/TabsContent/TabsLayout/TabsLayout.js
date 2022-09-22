@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import {
@@ -7,21 +7,17 @@ import {
   Box,
   Tabs,
   Tab,
-  CircularProgress,
-  Pagination,
   CssBaseline,
-  PaginationItem,
 } from '@mui/material'
 import SimpleBlockContent from '../../../SimpleBlockContent'
 import RedirectButton from '../../../RedirectButton/RedirectButton'
 import styles from './TabsLayout.module.css'
 import NewsHorizontalLayout from '../NewsHorizontalLayout/NewsHorizontalLayout'
 import CustomPostCard from '../../custom/CustomPostCard/CustomPostCard'
-import CustomNewsletterCard from '../../custom/CustomNewsletterCard/CustomNewsletterCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import NewsletterGrid from '../NewsletterGrid/NewsletterGrid'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
-import groq from 'groq'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -43,11 +39,10 @@ function TabPanel(values) {
   )
 }
 
-let newsletters
 function TabsLayout(props) {
   const { tabItems, currentLanguage, backgroundImage, heading } = props
 
-  const [value, setValue] = useState(0)
+  const [value, setValue] = React.useState(0)
 
   const mediumViewport = useMediaQuery('(min-width:1024px)')
 
@@ -113,108 +108,12 @@ function TabsLayout(props) {
     },
   })
 
-  const [isLoading, setIsLoading] = useState(true)
-
-  const itemsPerPage = 6
-  const [page, setPage] = useState(1)
-  const [noOfPages, setNoOfPages] = useState(1)
-
-  const handlePageChange = (event, value) => {
-    setPage(value)
-  }
-
   const handleTab = (index) => {
-    setPage(1);
     return {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     }
   }
-
-  const PageBackButton = () => (
-    <RedirectButton
-      title="← Previous"
-      reverse={false}
-      sx={{
-        padding: '10px 20px',
-        fontSize: '16px',
-        borderColor: '#DC6E19',
-        background: 'none',
-        color: '#dc6e19',
-        fontWeight: '300',
-        '&:hover': {
-          color: '#fff',
-          borderColor: '#fff',
-        },
-      }}
-    />
-  )
-
-  const PageForwardButton = () => (
-    <RedirectButton
-      title="Next →"
-      reverse={false}
-      sx={{
-        padding: '10px 20px',
-        fontSize: '16px',
-        borderColor: '#DC6E19',
-        background: 'none',
-        color: '#dc6e19',
-        fontWeight: '300',
-        '&:hover': {
-          color: '#fff',
-          borderColor: '#fff',
-        },
-      }}
-    />
-  )
-
-  useEffect((selectedCategory, isPaginatedNewsletter = true) => {
-    console.log(selectedCategory) // Vou utilizar na query, vai vir do tabItem (item.selectedCategory)
-
-    const fetchNewsletters = async () => {
-      if (isPaginatedNewsletter) { // Vem do tabItem (item.isPaginatedNewsletter)
-        await client.fetch(
-          groq`
-          *[_type == 'newsCard'] {
-            _id,
-            _type,
-            _rev,
-            'localeButtonText': buttonText,
-            'localeShortDescription': shortDescription,
-            route->,
-            post-> {
-              _id,
-              _type,
-              mainImage,
-              'localeHeading': heading,
-              publishedAt,
-              categories[]-> {
-                _id,
-                _type,
-                'localeName': name,
-              },
-              author-> {
-                _id,
-                _type,
-                name,
-                email,
-                profilePhoto,
-              },
-            },
-          }
-          `
-        )
-          .then((response) => {
-            newsletters = response
-            setNoOfPages(Math.ceil(newsletters.length / itemsPerPage))
-            setIsLoading(false)
-          })
-      }
-    }
-
-    fetchNewsletters()
-  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -273,40 +172,11 @@ function TabsLayout(props) {
                             )
                           })
                         ) : item.isPaginatedNewsletter ? (
-                          <Grid container spacing={2}>
-                            {isLoading ? (
-                              <Grid
-                                item
-                                key={item._id}
-                                style={{ display: 'flex' }}
-                                py={5}
-                                md={12}
-                                pr={2}
-                                justifyContent="center"
-                              >
-                                <CircularProgress />
-                              </Grid>
-                            ) : (
-                              newsletters
-                                ?.slice((page - 1) * itemsPerPage, page * itemsPerPage)
-                                .map((item) => {
-                                  return (
-                                    <Grid
-                                      item
-                                      key={item._id}
-                                      style={{ display: 'flex' }}
-                                      xs={12}
-                                      md={4}
-                                    >
-                                      <CustomNewsletterCard
-                                        {...item}
-                                        languageTag={currentLanguage.languageTag}
-                                      />
-                                    </Grid>
-                                  )
-                                })
-                            )}
-                          </Grid>
+                          <NewsletterGrid
+                            {...item}
+                            currentLanguage={currentLanguage}
+                            key={item._id}
+                          />
                         ) : (
                           <Grid container alignItems="stretch">
                             {item.newsCards?.map((item) => {
@@ -358,38 +228,6 @@ function TabsLayout(props) {
                             />
                           </Grid>
                         </Grid>
-                      )}
-                      {!isLoading && item.isPaginatedNewsletter && (
-                        <Box component="span">
-                          <Pagination
-                            showFirstButton={true}
-                            showLastButton={true}
-                            count={noOfPages}
-                            page={page}
-                            renderItem={(item) => (
-                              <PaginationItem
-                                components={{ previous: PageBackButton, next: PageForwardButton }}
-                                {...item}
-                              />
-                            )}
-                            onChange={handlePageChange}
-                            defaultPage={1}
-                            size="small"
-                            siblingCount={2}
-                            boundaryCount={1}
-                            sx={{
-                              '& .MuiPagination-ul': {
-                                justifyContent: 'center',
-                                padding: '10px',
-                                rowGap: 1,
-                              },
-                              mt: '3em',
-                              mb: '3em',
-                              textAlign: 'center',
-                              color: '#dc6e19',
-                            }}
-                          />
-                        </Box>
                       )}
                     </TabPanel>
                   )
