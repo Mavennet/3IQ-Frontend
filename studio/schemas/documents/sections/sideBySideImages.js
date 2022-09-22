@@ -1,7 +1,4 @@
-import supportedLanguages from '../../supportedLanguages';
 import { SplitHorizontalIcon } from '@sanity/icons'
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -10,41 +7,43 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'heading',
-      type: 'localeString',
-      title: 'Heading (*)',
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'description',
-      type: 'localeText',
-      title: 'Description',
+      name: 'heading',
+      type: 'localePortableText',
+      title: 'Heading (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'backgroundColor',
       type: 'string',
       title: 'Background Color',
+      description: "Use this field to input the background color in the same pattern as '#FFFFFF'.",
     },
     {
-      name: 'images',
+      name: 'imagesContainers',
       type: 'array',
-      title: 'Images (*)',
+      title: 'Image Containers (*)',
       validation: Rule => [
         Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select a country.'),
+        Rule.min(1).error('Please, select at least one item.'),
       ],
       of: [
         {
-          title: 'Image',
-          type: 'figure',
+          title: 'Image Container',
+          type: 'imagesContainer',
         },
       ],
     }
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
-      media: 'images.0',
+      title: `name`,
+      media: 'imagesContainers.0.images.0',
     },
     prepare({ title, media }) {
       return {

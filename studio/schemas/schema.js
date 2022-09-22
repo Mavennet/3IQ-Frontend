@@ -17,6 +17,7 @@ import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
 import category from './documents/category';
+import imagesContainer from './documents/imagesContainer';
 
 // Section documents
 import textSection from './documents/sections/textSection';
@@ -116,5 +117,6 @@ export default createSchema({
     fundItem,
     product,
     category,
+    imagesContainer,
   ]),
 });
