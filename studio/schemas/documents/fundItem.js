@@ -16,6 +16,17 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'codeTitle',
+      type: 'localeString',
+      title: 'Code Title (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'codeObservation',
+      type: 'localeString',
+      title: 'Code Observation (*)',
+    },
+    {
       name: 'products',
       title: 'Products (*)',
       description: 'Select the product(s) that will be displayed in order',
@@ -34,6 +45,11 @@ export default {
       ],
     },
     {
+      name: 'textBetweenButtons',
+      type: 'localeString',
+      title: 'Text Between Buttons'
+    },
+    {
       name: 'readMoreText',
       type: 'localeString',
       title: 'Read More Button text (*)',
@@ -47,6 +63,11 @@ export default {
       description: 'Text that will be displayed in the Contact Us button for each product',
       validation: Rule => Rule.error('Information required.').required(),
     },
+    {
+      name: 'observation',
+      type: 'localeString',
+      title: 'Observation'
+    }
   ],
   preview: {
     select: {

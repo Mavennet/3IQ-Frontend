@@ -1,13 +1,13 @@
 import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
-import { NextSeo } from 'next-seo'
-import { useRouter } from "next/router"
+import {NextSeo} from 'next-seo'
+import {useRouter} from 'next/router'
 import PropTypes from 'prop-types'
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import client from '../client'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
-import { getSlugVariations, slugParamToPath } from '../utils/urls'
+import {getSlugVariations, slugParamToPath} from '../utils/urls'
 
 const pageFragment = groq`
 ...,
@@ -23,7 +23,7 @@ const pageFragment = groq`
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({params}) => {
   const dataCountries = await client.fetch(
     groq`
     *[_type == "country"]{
@@ -83,7 +83,7 @@ export const getServerSideProps = async ({ params }) => {
         }
       `
       )
-      .then((res) => (res?.frontpage ? { ...res.frontpage, slug } : undefined))
+      .then((res) => (res?.frontpage ? {...res.frontpage, slug} : undefined))
   } else {
     // Regular route
     if (country) {
@@ -95,9 +95,9 @@ export const getServerSideProps = async ({ params }) => {
             ${pageFragment}
           }
         }`,
-          { possibleSlugs: getSlugVariations(country, slug), country: country }
+          {possibleSlugs: getSlugVariations(country, slug), country: country}
         )
-        .then((res) => (res?.page ? { ...res.page, slug } : undefined))
+        .then((res) => (res?.page ? {...res.page, slug} : undefined))
     } else {
       data = await client
         .fetch(
@@ -107,9 +107,9 @@ export const getServerSideProps = async ({ params }) => {
             ${pageFragment}
           }
         }`,
-          { possibleSlugs: getSlugVariations(country, slug) }
+          {possibleSlugs: getSlugVariations(country, slug)}
         )
-        .then((res) => (res?.page ? { ...res.page, slug } : undefined))
+        .then((res) => (res?.page ? {...res.page, slug} : undefined))
     }
   }
 
@@ -239,11 +239,52 @@ export const getServerSideProps = async ({ params }) => {
     `
   )
 
+  // Retrieve all Fund Items
+  const allFundItems = await client.fetch(
+    groq`
+    *[_type == 'fundItem'] {
+      _id,
+      _type,
+      _rev,
+      'localeName': name,
+      'localeCodeTitle': codeTitle,
+      'localeCodeObservation': codeObservation,
+      'localeReadMoreText': readMoreText,
+      'localeTextBetweenButtons': textBetweenButtons,
+      'localeContactUsText': contactUsText,
+      'localeObservation' : observation,
+      products[]-> {
+        _id,
+        _type,
+        _rev,
+        codes,
+        'localeName': name,
+        'localeHighlights': highlights,
+        mainImage,
+        mailtoLink,
+        readMoreRoute->,
+      },
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: { ...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays, allTabItems } || {},
+    props:
+      {
+        ...data,
+        dataCountries,
+        currentCountry: country,
+        allRoutes,
+        allPosts,
+        allTeams,
+        allTimelines,
+        allLocationsDisplays,
+        allTabItems,
+        allFundItems
+      } || {},
   }
 }
 
@@ -266,20 +307,22 @@ const LandingPage = (props) => {
     allTimelines,
     allLocationsDisplays,
     allTabItems,
+    allFundItems
   } = props
 
   const router = useRouter()
 
   const getLanguageFromStorage = () => {
     const languageStorage = localStorage.getItem('lang')
-    const languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
+    const languageSelected = country.languages.filter(
+      (language) => language.languageTag === languageStorage
+    )
     if (languageSelected.length > 0) {
       return languageSelected[0]
     } else {
       localStorage.setItem('lang', country.languages[0].languageTag)
       return country.languages[0]
     }
-
   }
 
   const [country] = useState(
@@ -311,7 +354,10 @@ const LandingPage = (props) => {
   useEffect(() => {
     if (content) {
       const contentWithDefaultLanguage = []
-      content && content.map((c) => contentWithDefaultLanguage.push({ ...c, currentLanguage, currentCountry: country }))
+      content &&
+        content.map((c) =>
+          contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry: country})
+        )
       setFormatedContent(contentWithDefaultLanguage)
       config &&
         setFormatedConfig({
@@ -328,31 +374,37 @@ const LandingPage = (props) => {
 
   const openGraphImages = openGraphImage
     ? [
-      {
-        url: builder.image(openGraphImage).width(800).height(600).url(),
-        width: 800,
-        height: 600,
-        alt: title,
-      },
-      {
-        // Facebook recommended size
-        url: builder.image(openGraphImage).width(1200).height(630).url(),
-        width: 1200,
-        height: 630,
-        alt: title,
-      },
-      {
-        // Square 1:1
-        url: builder.image(openGraphImage).width(600).height(600).url(),
-        width: 600,
-        height: 600,
-        alt: title,
-      },
-    ]
+        {
+          url: builder.image(openGraphImage).width(800).height(600).url(),
+          width: 800,
+          height: 600,
+          alt: title,
+        },
+        {
+          // Facebook recommended size
+          url: builder.image(openGraphImage).width(1200).height(630).url(),
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+        {
+          // Square 1:1
+          url: builder.image(openGraphImage).width(600).height(600).url(),
+          width: 600,
+          height: 600,
+          alt: title,
+        },
+      ]
     : []
 
-  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage?.languageTag] : 'Title not filled on the corresponding language for this page'
-  const localeDescription = (description && currentLanguage.languageTag && description[currentLanguage.languageTag]) ? description[currentLanguage?.languageTag] : 'Description not filled on the corresponding language for this page'
+  const localeTitle =
+    title && currentLanguage.languageTag && title[currentLanguage.languageTag]
+      ? title[currentLanguage?.languageTag]
+      : 'Title not filled on the corresponding language for this page'
+  const localeDescription =
+    description && currentLanguage.languageTag && description[currentLanguage.languageTag]
+      ? description[currentLanguage?.languageTag]
+      : 'Description not filled on the corresponding language for this page'
 
   return (
     content && (
@@ -367,16 +419,18 @@ const LandingPage = (props) => {
           }}
           noindex={disallowRobots}
         />
-        {formatedContent &&
-        <RenderSections
-          routes={allRoutes}
-          posts={allPosts}
-          teams={allTeams}
-          timelines={allTimelines}
-          locationsDisplays={allLocationsDisplays}
-          tabItems={allTabItems}
-          sections={formatedContent}
-        />}
+        {formatedContent && (
+          <RenderSections
+            routes={allRoutes}
+            posts={allPosts}
+            teams={allTeams}
+            timelines={allTimelines}
+            locationsDisplays={allLocationsDisplays}
+            tabItems={allTabItems}
+            fundItems={allFundItems}
+            sections={formatedContent}
+          />
+        )}
       </Layout>
     )
   )
@@ -398,6 +452,7 @@ LandingPage.propTypes = {
   allTimelines: PropTypes.any,
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
+  allFundItems: PropTypes.any,
 }
 
 export default LandingPage
