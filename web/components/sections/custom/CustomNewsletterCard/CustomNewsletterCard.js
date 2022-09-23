@@ -107,6 +107,7 @@ export default function CustomNewsletterCard(props) {
           >
             <RedirectButton
               title={localeButtonText[languageTag]}
+              route={route}
               reverse
               sx={{
                 width: { xs: '100%', md: '100%' },
