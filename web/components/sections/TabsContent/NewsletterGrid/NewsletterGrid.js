@@ -15,8 +15,6 @@ import groq from 'groq'
 function NewsletterGrid(props) {
   const { currentLanguage, isPaginatedNewsletter, selectedPostCategory } = props
 
-  console.log(selectedPostCategory) // categoria para passar no filtro
-
   const [isLoading, setIsLoading] = useState(true)
 
   const itemsPerPage = 6
@@ -69,7 +67,7 @@ function NewsletterGrid(props) {
   const fetchNewsletters = async () => {
     await client.fetch(
       groq`
-      *[_type == 'newsCard'] {
+      *[_type == 'newsCard' && $categoryId in post->categories[]._ref] {
         _id,
         _type,
         _rev,
@@ -96,7 +94,8 @@ function NewsletterGrid(props) {
           },
         },
       }
-      `
+      `,
+      { categoryId: selectedPostCategory._id }
     )
       .then((response) => {
         setNewsletters(response)

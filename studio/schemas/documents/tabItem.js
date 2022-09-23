@@ -85,12 +85,14 @@ export default {
     select: {
       name: `name.${baseLanguage.id}`,
       newsCardsLength: `newsCards.length`,
+      isPaginatedNewsletter: `isPaginatedNewsletter`,
     },
-    prepare({ name, newsCardsLength }) {
+    prepare({ name, newsCardsLength, isPaginatedNewsletter }) {
       const newsCardsLengthText = newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included'
+      const isPaginatedNewsletterText = isPaginatedNewsletter ? ' - Paginated News' : ''
       return {
         title: `${name}`,
-        subtitle: newsCardsLengthText,
+        subtitle: newsCardsLengthText + isPaginatedNewsletterText,
       }
     },
   }
