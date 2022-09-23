@@ -6,13 +6,24 @@ import styles from './NewsHorizontalLayout.module.css'
 import Image from 'next/image'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
-import { format, parseISO } from 'date-fns'
+import { format } from 'date-fns'
 import Link from 'next/link'
 
 function NewsHorizontalLayout(props) {
   const { post, route, currentLanguage, localeButtonText, localeSmallCardText } = props
 
+  const [publishedDate, setPublishedDate] = React.useState('')
+
   const builder = imageUrlBuilder(client)
+
+  React.useEffect(() => {
+    if (currentLanguage.languageTag) {
+      const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
+      const newYears = new Date(post.publishedAt)
+      const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+      setPublishedDate(formattedDate)
+    }
+  }, [currentLanguage, post.publishedAt])
 
   return (
     <Grid container mb={4} spacing={2}>
@@ -57,9 +68,9 @@ function NewsHorizontalLayout(props) {
               </a>
             </Link>
           )}
-          {post?.publishedAt && (
+          {post?.publishedAt && publishedDate &&(
             <Typography variant="h5" my={1} sx={{ fontSize: '14px' }}>
-              {format(parseISO(post?.publishedAt), 'MMMM d, yyyy')}
+              {publishedDate}
             </Typography>
           )}
           {
