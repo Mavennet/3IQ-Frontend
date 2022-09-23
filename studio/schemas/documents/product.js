@@ -22,6 +22,27 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'codes',
+      type: 'array',
+      title: 'Codes',
+      description: 'Codes of the fund',
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select at least 1 category'),
+      ],
+      of: [
+        {
+          type: 'string',
+        },
+      ],
+    },
+    {
+      name: 'highlights',
+      type: 'localeSimplePortableText',
+      title: 'Highlights (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'readMoreRoute',
       type: 'reference',
       title: 'Read More Route (*)',
@@ -35,7 +56,7 @@ export default {
     },
     {
       title: 'Contact us Mailto link',
-      name: 'link',
+      name: 'mailtoLink',
       type: 'url',
       description: "Write the 'mailto:' link that will be used for e-mail contact",
       validation: Rule =>

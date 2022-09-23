@@ -29,6 +29,7 @@
 .image {
   display: block;
   max-width: 100%;
+  margin-top: -15px;
 }
 
 .content {
@@ -43,7 +44,7 @@
 
   @media (--media-min-medium) {
     margin: 0 0;
-    padding-top: 2rem;
+    padding-top: 0;
 
     @nest & figcaption {
       position: absolute;
