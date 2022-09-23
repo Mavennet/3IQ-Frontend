@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function EmbedHTML({node}) {
-  const {html} = node
+function EmbedHTML(node) {
+  const {html} = node.value
 
   if (!html) {
     return undefined
