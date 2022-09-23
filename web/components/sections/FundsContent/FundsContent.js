@@ -167,7 +167,14 @@ function FundsContent(props) {
               </Grid>
               {fundItem.products &&
                 fundItem.products.map((product, index) => (
-                  <Grid key={`product_${index}`} container item mb={4} alignItems="stretch" spacing={2}>
+                  <Grid
+                    key={`product_${index}`}
+                    container
+                    item
+                    mb={4}
+                    alignItems="stretch"
+                    spacing={2}
+                  >
                     <Grid item container xs={12} md={3}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
@@ -187,7 +194,12 @@ function FundsContent(props) {
                     <Grid item container xs={12} md={2}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                          Ticker
+                          {fundItem.localeCodeTitle &&
+                            fundItem.localeCodeTitle[currentLanguage.languageTag]}
+                        </Typography>
+                        <Typography sx={{color: 'gray', fontSize: '12px'}}>
+                          {fundItem.localeCodeObservation &&
+                            fundItem.localeCodeObservation[currentLanguage.languageTag]}
                         </Typography>
                       </Grid>
                       <Grid sx={{...tabGridSx, background: 'none'}} container>
@@ -232,6 +244,15 @@ function FundsContent(props) {
                             )}
                         </Box>
                       </Grid>
+                      {
+                        index === (fundItem.products.length - 1) && (
+                          <Typography sx={{color: 'gray', fontSize: '14px', ml: 3, mt: 3}}>
+                          {fundItem.localeObservation &&
+                            fundItem.localeObservation[currentLanguage.languageTag]}
+                        </Typography>
+                        )
+                      }
+                     
                     </Grid>
                     <Grid item container xs={12} md={2}>
                       <Grid sx={tabGridSx} container>
@@ -253,6 +274,11 @@ function FundsContent(props) {
                               title={fundItem.localeReadMoreText[currentLanguage.languageTag]}
                             />
                           )}
+                          {fundItem.localeTextBetweenButtons && (
+                            <Typography m={3}>
+                                { fundItem.localeTextBetweenButtons[currentLanguage.languageTag]}
+                            </Typography>
+                            )}
                           {fundItem.localeContactUsText && (
                             <RedirectButton
                               sx={{mx: 'auto', width: '130px', fontWeight: 'normal'}}

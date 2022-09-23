@@ -250,7 +250,9 @@ export const getServerSideProps = async ({params}) => {
       'localeCodeTitle': codeTitle,
       'localeCodeObservation': codeObservation,
       'localeReadMoreText': readMoreText,
+      'localeTextBetweenButtons': textBetweenButtons,
       'localeContactUsText': contactUsText,
+      'localeObservation' : observation,
       products[]-> {
         _id,
         _type,
