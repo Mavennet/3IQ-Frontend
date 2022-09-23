@@ -2,7 +2,6 @@
 
   .simpleBlockContent {
     padding: 0 1em 0 0;
-    display: block;
   }
 
   .simpleBlockContent > :is(h1, h2, h3, h4, b, strong){
