@@ -159,7 +159,14 @@ function TabsLayout(props) {
                   const translatedButton =
                     item.localeButton && item.localeButton[currentLanguage.languageTag]
                   return (
-                    <TabPanel key={item._id} value={value} index={i}>
+                    <TabPanel key={item._id} value={value} index={i}>                      
+                      {item.localecontentBlock && (
+                        <Grid container ml={0} spacing={2} sx={{ background: '#fff' }} className={styles.simpleBlockContent}>
+                          <SimpleBlockContent
+                            blocks={item.localecontentBlock[currentLanguage.languageTag]}
+                          />
+                        </Grid>
+                      )}
                       {item.newsCards?.length > 0 &&
                         (item.isNewsCardsHorizontalLayout ? (
                           item.newsCards?.map((item) => {
@@ -197,14 +204,8 @@ function TabsLayout(props) {
                               )
                             })}
                           </Grid>
-                        ))}
-                      {item.localecontentBlock && (
-                        <Grid container spacing={2} sx={{ background: '#fff' }} className={styles.simpleBlockContent}>
-                          <SimpleBlockContent
-                            blocks={item.localecontentBlock[currentLanguage.languageTag]}
-                          />
-                        </Grid>
-                      )}
+                        ))
+                      }
                       {translatedButton && (
                         <Grid container>
                           <Grid
