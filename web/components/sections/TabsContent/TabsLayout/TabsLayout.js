@@ -199,12 +199,10 @@ function TabsLayout(props) {
                           </Grid>
                         ))}
                       {item.localecontentBlock && (
-                        <Grid container spacing={2} px={2} sx={{ background: '#fff' }}>
-                          <div className={styles.simpleBlockContent}>
-                            <SimpleBlockContent
-                              blocks={item.localecontentBlock[currentLanguage.languageTag]}
-                            />
-                          </div>
+                        <Grid container spacing={2} sx={{ background: '#fff' }} className={styles.simpleBlockContent}>
+                          <SimpleBlockContent
+                            blocks={item.localecontentBlock[currentLanguage.languageTag]}
+                          />
                         </Grid>
                       )}
                       {translatedButton && (

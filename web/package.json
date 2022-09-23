@@ -18,6 +18,7 @@
     "@portabletext/react": "^1.0.2",
     "@sanity/client": "^3.0.3",
     "@sanity/image-url": "^1.0.1",
+    "chart.js": "^3.9.1",
     "date-fns": "^2.28.0",
     "get-youtube-id": "^1.0.1",
     "groq": "^2.15.0",
