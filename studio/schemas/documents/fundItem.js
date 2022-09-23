@@ -16,6 +16,17 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'codeTitle',
+      type: 'localeString',
+      title: 'Code Title (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'codeObservation',
+      type: 'localeString',
+      title: 'Code Observation (*)',
+    },
+    {
       name: 'products',
       title: 'Products (*)',
       description: 'Select the product(s) that will be displayed in order',

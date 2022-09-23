@@ -8,23 +8,6 @@ import client from '../../../client'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import SimpleBlockContent from '../../SimpleBlockContent'
 
-const theme = createTheme({
-  typography: {
-    fontFamily: 'Europa',
-    p: {
-      fontSize: 14,
-    },
-    h2: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-    h5: {
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-  },
-})
-
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
@@ -62,11 +45,10 @@ const gridGeneratedHeaderSx = {
 }
 
 function FundsContent(props) {
-  const {currentCountry, currentLanguage, fundItems, localeHighlights} = props // ajustar props para pegar as consts necessárias
-
-  console.log(props)
+  const {currentLanguage, fundItems} = props
   const [value, setValue] = useState(0)
   const mediumViewport = useMediaQuery('(min-width:1024px)')
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
@@ -115,9 +97,9 @@ function FundsContent(props) {
     },
   })
 
-  let fundTypes = []
+  const fundTypes = []
 
-  fundItems.map((fundItem) => {
+  fundItems.forEach((fundItem) => {
     const localeName = fundItem.localeName[currentLanguage.languageTag]
     if (localeName) {
       !(fundTypes.indexOf(localeName) >= 0) && fundTypes.push(localeName)
@@ -154,7 +136,7 @@ function FundsContent(props) {
 
         {fundItems &&
           fundItems.map((fundItem, index) => (
-            <Grid container mt={10} id={`section_${index}`}>
+            <Grid key={`fundItem${index}`} container mt={10} id={`section_${index}`}>
               <Grid item sx={{borderBottom: '5px solid #0082e5', color: '#0082e5'}} xs={12}>
                 <Typography component="h2" variant="h4" sx={{fontWeight: 'bold'}}>
                   {fundItem.localeName[currentLanguage.languageTag]}
@@ -168,7 +150,12 @@ function FundsContent(props) {
                 </Grid>
                 <Grid item sx={gridMainHeaderSx} xs={false} md={2}>
                   <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                    Ticker
+                    {fundItem.localeCodeTitle &&
+                      fundItem.localeCodeTitle[currentLanguage.languageTag]}
+                  </Typography>
+                  <Typography sx={{color: 'gray', fontSize: '12px'}}>
+                    {fundItem.localeCodeObservation &&
+                      fundItem.localeCodeObservation[currentLanguage.languageTag]}
                   </Typography>
                 </Grid>
                 <Grid item sx={gridMainHeaderSx} xs={false} md={5}>
@@ -180,8 +167,7 @@ function FundsContent(props) {
               </Grid>
               {fundItem.products &&
                 fundItem.products.map((product, index) => (
-                  <Grid container item mb={4} alignItems="stretch" spacing={2}>
-                    {/*Product Image*/}
+                  <Grid key={`product_${index}`} container item mb={4} alignItems="stretch" spacing={2}>
                     <Grid item container xs={12} md={3}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
@@ -193,20 +179,43 @@ function FundsContent(props) {
                           <img
                             style={{maxWidth: '90%', maxHeight: '220px', margin: '0 auto'}}
                             src={urlFor(product.mainImage.asset._ref).url()}
+                            alt={product.mainImage.alt}
                           />
                         </Box>
                       </Grid>
                     </Grid>
-                    {/*Ticker or equivalent*/}
                     <Grid item container xs={12} md={2}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
                           Ticker
                         </Typography>
                       </Grid>
-                      <Grid sx={tabGridSx} container></Grid>
+                      <Grid sx={{...tabGridSx, background: 'none'}} container>
+                        {product.codes ? (
+                          product.codes.map((code, index) => (
+                            <Grid
+                              item
+                              container
+                              xs={12}
+                              key={`code_${index}`}
+                              sx={{
+                                background: '#e8e8ea',
+                                height: `${230 / product.codes.length}px`,
+                                mt: index > 0 && `${20 / (product.codes.length - 1)}px`,
+                              }}
+                            >
+                              <Box sx={{width: '100%', my: 'auto', textAlign: 'center'}}>
+                                <Typography component="h4" variant="h6">
+                                  {code}
+                                </Typography>
+                              </Box>
+                            </Grid>
+                          ))
+                        ) : (
+                          <Grid container sx={tabGridSx}></Grid>
+                        )}
+                      </Grid>
                     </Grid>
-                    {/*Highlights*/}
                     <Grid item container xs={12} md={5}>
                       <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                         <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
@@ -215,29 +224,38 @@ function FundsContent(props) {
                       </Grid>
                       <Grid sx={tabGridSx} container>
                         <Box sx={{my: 'auto'}}>
-                        {(product.localeHighlights && product.localeHighlights[currentLanguage.languageTag]) && (
-                            <SimpleBlockContent blocks={product.localeHighlights[currentLanguage.languageTag]}/>
-                        )}
+                          {product.localeHighlights &&
+                            product.localeHighlights[currentLanguage.languageTag] && (
+                              <SimpleBlockContent
+                                blocks={product.localeHighlights[currentLanguage.languageTag]}
+                              />
+                            )}
                         </Box>
-                      
                       </Grid>
                     </Grid>
-                    {/*Buttons*/}
                     <Grid item container xs={12} md={2}>
                       <Grid sx={tabGridSx} container>
-                        <Box my={'auto'} style={{ width: '100%'}}>
+                        <Box my={'auto'} style={{width: '100%'}}>
                           {fundItem.localeReadMoreText && (
                             <RedirectButton
-                              sx={{mx:'auto', width: '130px', mb: 3, background: '#0082E5', border: '3px solid #0082E5', fontWeight: 'normal',  '&:hover': {
-                                color: '#0082E5',
-                              },}}
+                              sx={{
+                                mx: 'auto',
+                                width: '130px',
+                                mb: 3,
+                                background: '#0082E5',
+                                border: '3px solid #0082E5',
+                                fontWeight: 'normal',
+                                '&:hover': {
+                                  color: '#0082E5',
+                                },
+                              }}
                               route={product.readMoreRoute && product.readMoreRoute}
                               title={fundItem.localeReadMoreText[currentLanguage.languageTag]}
                             />
                           )}
-                            {fundItem.localeContactUsText && (
+                          {fundItem.localeContactUsText && (
                             <RedirectButton
-                              sx={{mx:'auto', width: '130px', fontWeight: 'normal'}}
+                              sx={{mx: 'auto', width: '130px', fontWeight: 'normal'}}
                               link={product.mailtoLink}
                               title={fundItem.localeContactUsText[currentLanguage.languageTag]}
                             />
@@ -255,7 +273,6 @@ function FundsContent(props) {
 }
 
 FundsContent.propTypes = {
-  currentCountry: PropTypes.object,
   currentLanguage: PropTypes.object,
   fundItems: PropTypes.fundItems,
 }
