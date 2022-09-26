@@ -17,6 +17,7 @@ export default {
     'textSection',
     'heroWithImage',
     'heroFirstVariation',
+    'heroDoubleButton',
     'timeline',
     'hero',
     'imageBesideText',
