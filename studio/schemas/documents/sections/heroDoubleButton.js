@@ -6,7 +6,7 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault)
 export default {
   type: 'document',
   name: 'heroDoubleButton',
-  title: 'Hero with two buttons',
+  title: 'Hero with 2 Buttons',
   icon: SplitHorizontalIcon,
   fields: [
     {
@@ -55,7 +55,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Image Beside Text section',
+        subtitle: 'Hero with 2 Buttons section',
         media
       }
     }
