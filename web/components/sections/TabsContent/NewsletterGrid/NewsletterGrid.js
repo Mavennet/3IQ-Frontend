@@ -164,7 +164,7 @@ function NewsletterGrid(props) {
                 '& .MuiPagination-ul': {
                   justifyContent: 'center',
                   padding: '10px',
-                  rowGap: 1,
+                  rowGap: 6,
                 },
                 mt: '3em',
                 mb: '3em',
