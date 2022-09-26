@@ -6,7 +6,7 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 export default {
   type: 'document',
   name: 'tabsContent',
-  title: 'Timeline',
+  title: 'Tabs Content',
   icon: SplitHorizontalIcon,
   fields: [
     {
