@@ -43,6 +43,7 @@ export default {
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'heroFirstVariation'},
+            {type: 'heroDoubleButton'},
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
