@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import styles from './Figure.module.css'
 import client from '../client'
+import { Link } from '@mui/material'
 const builder = imageUrlBuilder(client)
 function Figure(node) {
   const { alt, caption, imageExternalLink, asset } = node.value
