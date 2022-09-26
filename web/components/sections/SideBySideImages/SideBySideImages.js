@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Grid, Container, Box, CssBaseline, Typography } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './SideBySideImages.module.css'
+import Link from 'next/link'
 
 const builder = imageUrlBuilder(client)
 
@@ -59,20 +60,41 @@ function SideBySideImages(props) {
                       >
                         {
                           item.images.map((image) => {
-                            return (
-                              <Box
-                                component="img"
-                                alt={image.alt}
-                                src={builder.image(image).url()}
-                                key={image._key}
-                                sx={{
-                                  margin: '5px',
-                                  padding: '30px',
-                                  maxHeight: '110px',
-                                  justifyContent: 'center',
-                                }}
-                              />
-                            )
+                            if (image.imageExternalLink) {
+                              return (
+                                <Link href={image.imageExternalLink}>
+                                  <a target='_blank' rel="noopener">
+                                    <Box
+                                      component="img"
+                                      alt={image.alt}
+                                      src={builder.image(image).url()}
+                                      key={image._key}
+                                      sx={{
+                                        margin: '5px',
+                                        padding: '30px',
+                                        maxHeight: '110px',
+                                        justifyContent: 'center',
+                                      }}
+                                    />
+                                  </a>
+                                </Link>
+                              )
+                            } else {
+                              return (
+                                <Box
+                                  component="img"
+                                  alt={image.alt}
+                                  src={builder.image(image).url()}
+                                  key={image._key}
+                                  sx={{
+                                    margin: '5px',
+                                    padding: '30px',
+                                    maxHeight: '110px',
+                                    justifyContent: 'center',
+                                  }}
+                                />
+                              )
+                            }
                           })
                         }
                       </Box>
@@ -86,7 +108,7 @@ function SideBySideImages(props) {
             {
               footerText && (
                 <Grid item xs={12}>
-                  <div style={{textAlign:'justify', padding: '20px'}}>
+                  <div style={{ textAlign: 'justify', padding: '20px' }}>
                     <SimpleBlockContent blocks={footerText} />
                   </div>
                 </Grid>

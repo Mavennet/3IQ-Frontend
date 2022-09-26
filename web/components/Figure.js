@@ -7,7 +7,7 @@ import client from '../client'
 const builder = imageUrlBuilder(client)
 
 function Figure(node) {
-  const { alt, caption, imageExternalLink, asset } = node.value
+  const { alt, caption, asset } = node.value
 
   if (!asset) {
     return undefined
@@ -15,13 +15,11 @@ function Figure(node) {
 
   return (
     <figure className={styles.content}>
-      <Link href={imageExternalLink && imageExternalLink} sx={{textDecoration: 'none'}}>
-        <img
-          src={builder.image(asset).auto('format').url()}
-          className={styles.image}
-          alt={alt}
-        />
-      </Link>
+      <img
+        src={builder.image(asset).auto('format').url()}
+        className={styles.image}
+        alt={alt}
+      />
       {caption && (
         <figcaption>
           <div className={styles.caption}>
@@ -39,7 +37,6 @@ Figure.propTypes = {
   node: PropTypes.shape({
     alt: PropTypes.string,
     caption: PropTypes.string,
-    imageExternalLink: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),

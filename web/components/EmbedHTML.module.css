@@ -1,0 +1,9 @@
+.embed {
+  width: 100%;
+}
+
+.embed .center {
+  display: flex;
+  justify-content: center;
+  margin-left: 0px!important;
+}
