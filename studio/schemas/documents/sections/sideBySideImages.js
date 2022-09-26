@@ -34,8 +34,9 @@ export default {
       ],
       of: [
         {
-          title: 'Image Container',
-          type: 'imagesContainer',
+          type: 'reference',
+          to: [{ type: 'imagesContainer' }],
+          title: 'Images Container',
         },
       ],
     },
