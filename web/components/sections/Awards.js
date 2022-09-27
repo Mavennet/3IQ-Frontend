@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import Grid from '@mui/material/Grid'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
@@ -141,8 +140,6 @@ function Awards(props) {
           sx={{
             mx: 'auto',
             maxWidth: '50%',
-            mx: 'auto',
-            maxWidth: '50%',
             display: 'block',
             p: '10px',
             mb: 1.25,
@@ -189,6 +186,14 @@ Awards.propTypes = {
       }),
     })
   ),
+  video: PropTypes.shape({
+    alt: PropTypes.string,
+    _key: PropTypes.string,
+    asset: PropTypes.shape({
+      _ref: PropTypes.string,
+    }),
+  }),
+  description: PropTypes.object,
   heading: PropTypes.object,
 }
 
