@@ -5,6 +5,8 @@ import { Grid, Typography } from '@mui/material'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import Chart from "chart.js/auto"
 import mock from './mock.json'
+import { CSVLink } from "react-csv"
+import * as XLSX from 'xlsx';
 
 function LineChart(props) {
   const {
@@ -31,6 +33,13 @@ function LineChart(props) {
       return data.push(item.value)
     })
     return (data)
+  }
+
+  function downloadExcel() {
+    const worksheet = XLSX.utils.json_to_sheet(mock.data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+    XLSX.writeFile(workbook, "DataSheet.xlsx");
   }
 
   React.useEffect(() => {
@@ -85,16 +94,23 @@ function LineChart(props) {
           )
         }
         <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
-          <RedirectButton
-            title={'CSV'}
-            // route={route}
-            sx={{ padding: '1px 5px', fontSize: '14px', fontWeight: '300' }}
-          />
-          <RedirectButton
-            title={'Excel'}
-            // route={route}
-            sx={{ padding: '1px 5px', fontSize: '14px', fontWeight: '300' }}
-          />
+          <CSVLink
+            data={mock.data}
+            filename={`line-chart.csv`}
+            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-164s4cv-MuiButtonBase-root-MuiButton-root"
+            target="_blank"
+            style={{ textAlign: 'center' }}
+          >
+            CSV
+          </CSVLink>
+          <div onClick={() => downloadExcel()}>
+            <RedirectButton
+              title={'Excel'}
+              // route={route}
+              sx={{ padding: '1px 5px', fontSize: '14px', fontWeight: '300' }}
+            />
+          </div>
+
         </Grid>
         <Grid item xs={12} mb={4}>
           <canvas id="myChart" ref={canvasEl} height={chartHeight} />

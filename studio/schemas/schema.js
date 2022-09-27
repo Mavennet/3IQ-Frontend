@@ -24,6 +24,7 @@ import textSection from './documents/sections/textSection';
 import heroWithImage from './documents/sections/heroWithImage';
 import hero from './documents/sections/hero';
 import heroFirstVariation from './documents/sections/heroFirstVariation';
+import heroDoubleButton from './documents/sections/heroDoubleButton';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
@@ -89,6 +90,7 @@ export default createSchema({
     localeText,
     heroWithImage,
     heroFirstVariation,
+    heroDoubleButton,
     imageBesideText,
     hero,
     localeCta,

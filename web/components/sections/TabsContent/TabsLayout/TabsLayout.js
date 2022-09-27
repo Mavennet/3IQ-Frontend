@@ -85,6 +85,11 @@ function TabsLayout(props) {
               textUnderlineOffset: '10px!important',
               fontWeight: '900',
             },
+            '&:hover': {
+              textDecoration: 'underline!important',
+              textUnderlineOffset: '10px!important',
+              transition: '0.3s'
+            }
           },
         },
       },
@@ -159,7 +164,7 @@ function TabsLayout(props) {
                   const translatedButton =
                     item.localeButton && item.localeButton[currentLanguage.languageTag]
                   return (
-                    <TabPanel key={item._id} value={value} index={i}>                      
+                    <TabPanel key={item._id} value={value} index={i}>
                       {item.localecontentBlock && (
                         <Grid container ml={0} spacing={2} sx={{ background: '#fff' }} className={styles.simpleBlockContent}>
                           <SimpleBlockContent
@@ -167,6 +172,15 @@ function TabsLayout(props) {
                           />
                         </Grid>
                       )}
+                      {
+                        item.isPaginatedNewsletter && (
+                          <NewsletterGrid
+                            {...item}
+                            currentLanguage={currentLanguage}
+                            key={item._id}
+                          />
+                        )
+                      }
                       {item.newsCards?.length > 0 &&
                         (item.isNewsCardsHorizontalLayout ? (
                           item.newsCards?.map((item) => {
@@ -178,12 +192,6 @@ function TabsLayout(props) {
                               />
                             )
                           })
-                        ) : item.isPaginatedNewsletter ? (
-                          <NewsletterGrid
-                            {...item}
-                            currentLanguage={currentLanguage}
-                            key={item._id}
-                          />
                         ) : (
                           <Grid container alignItems="stretch">
                             {item.newsCards?.map((item) => {
