@@ -5,6 +5,7 @@ import styles from './MemberCard.module.css'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
 import { FaLinkedinIn } from 'react-icons/fa'
+import Image from 'next/image'
 
 function MemberCard(props) {
   const { name, image, role, linkedin, showProfileBox, email, contactText, readProfileText } = props
@@ -27,19 +28,18 @@ function MemberCard(props) {
           />
         )
       }
-      <Box
-        component="img"
-        width={300}
-        height={300}
-        sx={{
-          width: '100%',
-          maxHeight: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center'
-        }}
-        alt={name}
-        src={urlFor(image).url()}
-      />
+      <div className={styles.imgGrid}>
+        {
+          image && (
+            <Image
+              src={urlFor(image).url()}
+              alt={name}
+              layout='fill'
+              objectFit='cover'
+            />
+          )
+        }
+      </div>
       <Box
         sx={{
           width: '100%'
@@ -49,6 +49,7 @@ function MemberCard(props) {
           variant="h2"
           p={2}
           sx={{
+            fontFamily: 'Europa',
             textAlign: 'center',
             color: '#fff',
             fontSize: '22px'
@@ -59,12 +60,14 @@ function MemberCard(props) {
         <Typography
           variant="h2"
           mb={2}
-          p={2}
+          p={1}
+          pb={8}
           sx={{
             textAlign: 'center',
+            fontFamily: 'Europa',
             color: '#0082E5',
-            fontSize: '16px',
-            minHeight: '80px'
+            fontSize: '18px',
+            fontWeight: '700',
           }}
         >
           {role}
@@ -82,13 +85,17 @@ function MemberCard(props) {
           showProfileBox && (
             <Typography
               variant="h2"
-              mb={2}
               p={1}
               sx={{
+                fontFamily: 'Europa',
                 textAlign: 'center',
                 color: '#fff',
                 backgroundColor: '#0082E5',
-                fontSize: '16px'
+                fontSize: '20px',
+                position: 'absolute',
+                bottom: '10px',
+                width: '100%',
+                fontWeight: '500',
               }}
             >
               {readProfileText !== null ? readProfileText : 'Missing - Read Profile Text'}
@@ -99,13 +106,17 @@ function MemberCard(props) {
           !showProfileBox && email && (
             <Typography
               variant="h2"
-              mb={2}
               p={1}
               sx={{
+                fontFamily: 'Europa',
                 textAlign: 'center',
                 color: '#fff',
                 backgroundColor: '#0082E5',
-                fontSize: '16px'
+                fontSize: '20px',
+                position: 'absolute',
+                bottom: '10px',
+                width: '100%',
+                fontWeight: '500',
               }}
             >
               {contactText !== null ? contactText : 'Missing - Contact Text'}

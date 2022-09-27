@@ -4,11 +4,12 @@ import Link from 'next/link'
 import Button from '@mui/material/Button'
 
 function redirectButton(props) {
-  const {title, route, link, sx, reverse = false} = props
+  const {title, route, link, sx, reverse = false, className} = props
 
   const buttonStyle = {
+    fontFamily: 'Europa',
     background: 'none',
-    border: '4px solid #dc6e19',
+    border: '3px solid #dc6e19',
     textTransform: 'none',
     whiteSpace: 'normal',
     display: 'block',
@@ -22,11 +23,11 @@ function redirectButton(props) {
   }
 
   const buttonReverseStyle = {
+    fontFamily: 'Europa',
     background: '#dc6e19',
-    border: '4px solid #dc6e19',
+    border: '3px solid #dc6e19',
     textTransform: 'none',
     whiteSpace: 'normal',
-    display: 'block',
     wordWrap: 'break-word',
     color: 'white',
     fontWeight: 'bold',
@@ -46,7 +47,7 @@ function redirectButton(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
+        <Button className={className} sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
       </Link>
     )
   }
@@ -54,12 +55,12 @@ function redirectButton(props) {
   if (link) {
     return (
       <a href={link} style={{textDecoration: 'none'}}>
-        <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
+        <Button className={className} sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
       </a>
     )
   }
 
-  return <Button sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
+  return <Button className={className} sx={reverse ? buttonStyle : buttonReverseStyle}>{title || 'Missing title'}</Button>
 }
 
 redirectButton.propTypes = {
@@ -69,6 +70,7 @@ redirectButton.propTypes = {
       current: PropTypes.string,
     }),
   }),
+  className: PropTypes.object,
   link: PropTypes.string,
 }
 

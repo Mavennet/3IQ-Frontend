@@ -22,7 +22,7 @@ function Header(props) {
 
   return (
     <>
-      <AppBar position="static" sx={{ bgcolor: 'white', /* pb: 4 */ }}>
+      <AppBar position="static" sx={{ bgcolor: 'white', boxShadow: 'none' }}>
         <Toolbar
           disableGutters
           sx={{
@@ -43,7 +43,7 @@ function Header(props) {
           >
             <Box
               mb={{ xs: 1, md: 2 }}
-              sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start' }}
+              sx={{ color: 'black', display: 'flex', justifyContent: 'space-between' }}
             >
               {/* Social Networks */}
               <Social
@@ -76,14 +76,16 @@ function Header(props) {
                           language={currentLanguage.languageTag}
                           key={item._id}
                           link={item.route.slug.current}
+                          isLinkEnabled={item.isLinkEnabled}
                         />
                       )
                       : (
                         <NavItem
                           title={item.route?.localeTitle[currentLanguage.languageTag]}
                           _id={item.id}
-                          routes={item.route}
+                          route={item.route}
                           key={item._id}
+                          isLinkEnabled={item.isLinkEnabled}
                         />
                       )
                   )))}
@@ -129,14 +131,16 @@ function Header(props) {
                                   language={currentLanguage.languageTag}
                                   key={item._id}
                                   link={item.route.slug.current}
+                                  isLinkEnabled={item.isLinkEnabled}
                                 />
                               )
                               : (
                                 <NavItem
                                   title={item.route?.localeTitle[currentLanguage.languageTag]}
                                   _id={item.id}
-                                  routes={item.route}
+                                  route={item.route}
                                   key={item._id}
+                                  isLinkEnabled={item.isLinkEnabled}
                                 />
                               )
                           ))}

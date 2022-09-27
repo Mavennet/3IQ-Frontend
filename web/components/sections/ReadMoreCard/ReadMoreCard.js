@@ -33,9 +33,9 @@ function urlFor(source) {
 }
 
 function ReadMoreCard(props) {
-  const {button, heading, backgroundImage, description } = props
+  const {button, heading, backgroundImage, description, currentLanguage } = props
 
-  const localeHeading = heading
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,7 +43,8 @@ function ReadMoreCard(props) {
         <CssBaseline />
         <Grid
           item
-          xs={false}
+          xs={12}
+          py={{xs: 40}}
           sm={4}
           md={6}
           sx={{
@@ -71,9 +72,9 @@ function ReadMoreCard(props) {
               color: '#091b3f',
             }}
           >
-            {localeHeading && (
+            {heading && (
               <Typography component="h1" variant="h4" style={{fontWeight: 'bold', color: '#0082E5'}} gutterBottom>
-                {localeHeading}
+                {heading}
               </Typography>
             )}
             {description && (
@@ -86,14 +87,13 @@ function ReadMoreCard(props) {
                 mt: 5,
                 mb: 5,
                 display: 'flex',
-                justifyContent: 'flex-end'
+                justifyContent: {xs: 'center', md: 'flex-end'}
               }}
             >
-            {button.route && button && (
+            {localeButton && (localeButton.route || localeButton.link) && (
               <RedirectButton
-                  title={button.title}
-                  route={button.route}
-                  sx={{width: {xs: '96%', md: 180}, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
+                {...localeButton}
+                sx={{width: {xs: 'auto', md: 180}, padding: '10px 20px', margin: {xs: '0 14px 0 0', md: '0'}, fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff'}}
               />
             )}
             </Box>
@@ -108,7 +108,8 @@ ReadMoreCard.propTypes = {
   button: PropTypes.object,
   description: PropTypes.string,
   backgroundImage: PropTypes.object,
-  heading: PropTypes.string
+  heading: PropTypes.string,
+  currentLanguage: PropTypes.object,
 }
 
 export default ReadMoreCard

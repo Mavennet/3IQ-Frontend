@@ -21,8 +21,12 @@ function DoubleOptions(props) {
     firstImage,
     secondImage,
     firstButton,
-    secondButton
+    secondButton,
+    currentLanguage
   } = props
+
+  const localeFirstButton = firstButton[currentLanguage?.languageTag]
+  const localeSecondButton = secondButton[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -88,12 +92,12 @@ function DoubleOptions(props) {
                   maxWidth: {xs: 350, md: 250, xl: 400},
                 }}
                 mb={5}
-                alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+                alt={firstImage.alt}
                 src={builder.image(firstImage).url()}
               />
-              {firstButton && (
+              {localeFirstButton && (localeFirstButton.route || localeFirstButton.link) && (
                 <RedirectButton
-                  {...firstButton}
+                  {...localeFirstButton}
                   reverse
                   sx={{width: {md: 150}, padding: '10px 20px'}}
                 ></RedirectButton>
@@ -113,12 +117,12 @@ function DoubleOptions(props) {
                 }}
                 mt={3}
                 mb={5}
-                alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+                alt={secondImage.alt}
                 src={builder.image(secondImage).url()}
               />
-              {secondButton && (
+              {localeSecondButton && (localeSecondButton.route || localeSecondButton.link) && (
                 <RedirectButton
-                  {...secondButton}
+                  {...localeSecondButton}
                   sx={{width: {md: 150}, padding: '10px 20px'}}
                 ></RedirectButton>
               )}
@@ -132,11 +136,13 @@ function DoubleOptions(props) {
 
 DoubleOptions.propTypes = {
   firstImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),
   }),
   secondImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),
@@ -144,7 +150,8 @@ DoubleOptions.propTypes = {
   firstButton: PropTypes.object,
   secondButton: PropTypes.object,
   heading: PropTypes.object,
-  description: PropTypes.object
+  description: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default DoubleOptions

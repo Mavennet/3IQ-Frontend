@@ -1,0 +1,82 @@
+@import '../../../../styles/custom-media.css';
+
+  .simpleBlockContent {
+    padding: 0 1em 0 0;
+  }
+
+  .simpleBlockContent > :is(h1, h2, h3, h4, b, strong){
+    color: #0082e5;
+  }
+
+  .simpleBlockContent p {
+    font-family: 'Europa';
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .simpleBlockContent a {
+    font-family: 'Europa';
+    color: #0082E5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .simpleBlockContent a:hover {
+    text-decoration: underline;
+  }
+
+  .description p{
+    font-family: 'Europa';
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .description a{
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .description > :is(h1, h2, h3, h4){
+    font-family: 'Europa';
+    color: #0082e5;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+
+  .heading p{
+    font-family: 'Europa';
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .heading a{
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .heading > :is(h1, h2, h3, h4){
+    font-family: 'Europa';
+    color: #0082e5;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .imgGrid {
+    width: 100%;
+    max-width: 100%;
+    height: 250px;
+    position: relative;
+    @media (--media-min-large) {
+      height: 100%;
+    }
+  }

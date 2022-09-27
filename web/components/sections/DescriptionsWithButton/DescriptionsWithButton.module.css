@@ -3,19 +3,42 @@
 .simpleBlockContent {
     padding: 0 1em 0 0;
   }
-  
-  .simpleBlockContent p {
+
+  .simpleBlockContent h3 p {
+    font-family: 'Europa';
+    font-size: 18px;
+    color: #091B3F;
+  }
+
+  .simpleBlockContent h3 {
+    color: #0082E5;
+    font-size: 26px;
+  }
+
+  .simpleBlockContent p strong {
+    color: #0082E5;
+  }
+
+  .simpleBlockContent ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .simpleBlockContent ul li {
     font-family: 'Europa';
     font-size: 16px;
+    color: #091B3F;
+    list-style: none;
   }
-  
-  .simpleBlockContent a {
-    font-family: 'Europa';
-    color: #0082E5;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .simpleBlockContent a:hover {
-    text-decoration: underline;
+
+  .simpleBlockContent ul li::before {
+    content: "";
+    background-color: #0082E5;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-top: -10px;
+    border: none;
+    margin-right: 10px;
+    border-radius: 50%;
   }

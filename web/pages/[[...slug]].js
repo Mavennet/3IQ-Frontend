@@ -1,6 +1,7 @@
 import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
 import {NextSeo} from 'next-seo'
+import {useRouter} from 'next/router'
 import PropTypes from 'prop-types'
 import React, {useEffect, useState} from 'react'
 import client from '../client'
@@ -49,6 +50,7 @@ export const getServerSideProps = async ({params}) => {
       twitterUrl,
       linkedinUrl,
       youtubeUrl,
+      shareThisStoryText,
     }
   `
   )
@@ -190,8 +192,78 @@ export const getServerSideProps = async ({params}) => {
         _type,
         'localeName': name,
         'localeDescription': description,
-        googleMapsSrc,      
+        googleMapsSrc,
+        mainImage,
       }
+    }
+    `
+  )
+
+  // Retrieve all Tab Items
+  const allTabItems = await client.fetch(
+    groq`
+    *[_type == 'tabItem'] {
+      _id,
+      _type,
+      _rev,
+      'localecontentBlock': contentBlock, 
+      'localeButton': button,
+      'localeName': name,
+      isPaginatedNewsletter,
+      isNewsCardsHorizontalLayout,
+      selectedPostCategory->,
+      newsCards[]-> {
+        _id,
+        _type,
+        _rev,
+        'localeButtonText': buttonText,
+        'localeShortDescription': shortDescription,
+        'localeSmallCardText': smallCardText,
+        route->,
+        post-> {
+          _id,
+          _type,
+          mainImage,
+          'localeHeading': heading,
+          publishedAt,
+          author-> {
+            _id,
+            _type,
+            name,
+            email,
+            profilePhoto,
+          },
+        },
+      },
+    }
+    `
+  )
+
+  // Retrieve all Fund Items
+  const allFundItems = await client.fetch(
+    groq`
+    *[_type == 'fundItem'] {
+      _id,
+      _type,
+      _rev,
+      'localeName': name,
+      'localeCodeTitle': codeTitle,
+      'localeCodeObservation': codeObservation,
+      'localeReadMoreText': readMoreText,
+      'localeTextBetweenButtons': textBetweenButtons,
+      'localeContactUsText': contactUsText,
+      'localeObservation' : observation,
+      products[]-> {
+        _id,
+        _type,
+        _rev,
+        codes,
+        'localeName': name,
+        'localeHighlights': highlights,
+        mainImage,
+        mailtoLink,
+        readMoreRoute->,
+      },
     }
     `
   )
@@ -200,7 +272,19 @@ export const getServerSideProps = async ({params}) => {
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
   return {
-    props: {...data, dataCountries, currentCountry: country, allRoutes, allPosts, allTeams, allTimelines, allLocationsDisplays} || {},
+    props:
+      {
+        ...data,
+        dataCountries,
+        currentCountry: country,
+        allRoutes,
+        allPosts,
+        allTeams,
+        allTimelines,
+        allLocationsDisplays,
+        allTabItems,
+        allFundItems
+      } || {},
   }
 }
 
@@ -212,7 +296,7 @@ const LandingPage = (props) => {
     description,
     disallowRobots,
     openGraphImage,
-    content = [],
+    content = null,
     config = {},
     slug,
     dataCountries,
@@ -222,18 +306,23 @@ const LandingPage = (props) => {
     allTeams,
     allTimelines,
     allLocationsDisplays,
+    allTabItems,
+    allFundItems
   } = props
 
-  const getLanguageFromStorage = () => {
-      const languageStorage = localStorage.getItem('lang')
-      const languageSelected = country.languages.filter((language) => language.languageTag === languageStorage)
-      if (languageSelected.length > 0) {
-        return languageSelected[0]
-      } else {
-        localStorage.setItem('lang', country.languages[0].languageTag)
-        return country.languages[0]
-      }
+  const router = useRouter()
 
+  const getLanguageFromStorage = () => {
+    const languageStorage = localStorage.getItem('lang')
+    const languageSelected = country.languages.filter(
+      (language) => language.languageTag === languageStorage
+    )
+    if (languageSelected.length > 0) {
+      return languageSelected[0]
+    } else {
+      localStorage.setItem('lang', country.languages[0].languageTag)
+      return country.languages[0]
+    }
   }
 
   const [country] = useState(
@@ -263,17 +352,24 @@ const LandingPage = (props) => {
   })
 
   useEffect(() => {
-    const contentWithDefaultLanguage = []
-    content && content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage}))
-    setFormatedContent(contentWithDefaultLanguage)
-    config &&
-      setFormatedConfig({
-        ...config,
-        switchLanguage,
-        dataCountries,
-        currentCountry: country,
-        currentLanguage,
-      })
+    if (content) {
+      const contentWithDefaultLanguage = []
+      content &&
+        content.map((c) =>
+          contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry: country})
+        )
+      setFormatedContent(contentWithDefaultLanguage)
+      config &&
+        setFormatedConfig({
+          ...config,
+          switchLanguage,
+          dataCountries,
+          currentCountry: country,
+          currentLanguage,
+        })
+    } else {
+      router.replace(`/${country.urlTag}/home`)
+    }
   }, [currentLanguage, config, content, country, dataCountries])
 
   const openGraphImages = openGraphImage
@@ -301,23 +397,42 @@ const LandingPage = (props) => {
       ]
     : []
 
-  const localeTitle = (title && currentLanguage.languageTag && title[currentLanguage.languageTag]) ? title[currentLanguage?.languageTag] : 'Title not filled on the corresponding language for this page'
-  const localeDescription = (description && currentLanguage.languageTag && description[currentLanguage.languageTag]) ? description[currentLanguage?.languageTag] : 'Description not filled on the corresponding language for this page'
+  const localeTitle =
+    title && currentLanguage.languageTag && title[currentLanguage.languageTag]
+      ? title[currentLanguage?.languageTag]
+      : 'Title not filled on the corresponding language for this page'
+  const localeDescription =
+    description && currentLanguage.languageTag && description[currentLanguage.languageTag]
+      ? description[currentLanguage?.languageTag]
+      : 'Description not filled on the corresponding language for this page'
 
   return (
-    <Layout config={formatedConfig}>
-      <NextSeo
-        title={localeTitle}
-        titleTemplate={`%s | ${config.title}`}
-        description={localeDescription}
-        canonical={config.url && `${config.url}/${slug}`}
-        openGraph={{
-          images: openGraphImages,
-        }}
-        noindex={disallowRobots}
-      />
-      {formatedContent && <RenderSections routes={allRoutes} posts={allPosts} teams={allTeams} timelines={allTimelines} locationsDisplays={allLocationsDisplays} sections={formatedContent} />}
-    </Layout>
+    content && (
+      <Layout config={formatedConfig}>
+        <NextSeo
+          title={localeTitle}
+          titleTemplate={`%s | ${config.title}`}
+          description={localeDescription}
+          canonical={config.url && `${config.url}/${slug}`}
+          openGraph={{
+            images: openGraphImages,
+          }}
+          noindex={disallowRobots}
+        />
+        {formatedContent && (
+          <RenderSections
+            routes={allRoutes}
+            posts={allPosts}
+            teams={allTeams}
+            timelines={allTimelines}
+            locationsDisplays={allLocationsDisplays}
+            tabItems={allTabItems}
+            fundItems={allFundItems}
+            sections={formatedContent}
+          />
+        )}
+      </Layout>
+    )
   )
 }
 
@@ -336,6 +451,8 @@ LandingPage.propTypes = {
   allTeams: PropTypes.any,
   allTimelines: PropTypes.any,
   allLocationsDisplays: PropTypes.any,
+  allTabItems: PropTypes.any,
+  allFundItems: PropTypes.any,
 }
 
 export default LandingPage

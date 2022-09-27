@@ -1,21 +1,27 @@
 @import '../../../styles/custom-media.css';
 
 .simpleBlockContent {
-    padding: 0 1em 0 0;
+  position: relative;
+  @media (--media-min-large) {
+    margin-left: 38px;
   }
-  
-  .simpleBlockContent p {
-    font-family: 'Europa';
-    font-size: 16px;
+}
+
+.simpleBlockContent p {
+  font-family: 'Europa';
+  font-size: 18px;
+  color: #091B3F;
+  text-align: left;
+  @media (--media-min-large) {
+    text-align: left;
   }
-  
-  .simpleBlockContent a {
-    font-family: 'Europa';
-    color: #0082E5;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .simpleBlockContent a:hover {
-    text-decoration: underline;
-  }
+}
+
+.simpleBlockContent p strong {
+  color: #0082E5;
+}
+
+.iconMap {
+  position: absolute;
+  left: -40px;
+}

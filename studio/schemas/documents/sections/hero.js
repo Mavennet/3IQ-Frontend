@@ -23,10 +23,29 @@ export default {
     {
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image (*)',
+      title: 'Background image',
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'button',
+      type: 'localeCta',
+      title: 'Optional button',
+    },
+    {
+      name: 'isSubscriptionSrcLink',
+      type: 'boolean',
+      title: 'Is the button external link a Subscription SRC?',
+      description: 'Enable this option if you inserted a subscription SRC link in the button external link',
+      initialValue: false,
+    },
+    {
+      name: 'isButtonReverse',
+      type: 'boolean',
+      title: 'Reverse button Style?',
+      description: 'Enable this option to invert the button layout',
+      initialValue: false,
     },
   ],
   preview: {

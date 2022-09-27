@@ -42,13 +42,13 @@ function NewsCard(props) {
     // INVERTED LAYOUT
     return (
       <ThemeProvider theme={theme}>
-        <Grid container component="main">
+        <Grid container component="main" sx={{flexDirection: {xs: 'column-reverse', sm: 'unset'}}}>
           <CssBaseline />
-          <Grid item xs={12} sm={8} md={6} elevation={6} square>
+          <Grid item xs={12} sm={8} md={6} square>
             <Box
               sx={{
-                mt: 10,
-                mb: 2,
+                mt: {xs: 4, md: 8},
+                mb: {xs: 0, md: 2},
                 ml: {xs: 2, md: 10},
                 mr: {xs: 0, md: 8},
                 display: 'flex',
@@ -98,7 +98,8 @@ function NewsCard(props) {
           </Grid>
           <Grid
             item
-            xs={false}
+            xs={12}
+            py={{xs: 28, md: 0}}
             sm={4}
             md={6}
             sx={{
@@ -108,7 +109,7 @@ function NewsCard(props) {
               bgcolor: '#091b3f',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
+              justifyContent: {xs: 'flex-end', md: 'center'},
               alignItems: 'center',
             }}
           >
@@ -121,11 +122,12 @@ function NewsCard(props) {
   // ORIGINAL LAYOUT
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main">
+      <Grid container component="main" sx={{flexDirection: 'unset'}}>
         <CssBaseline />
         <Grid
           item
-          xs={false}
+          xs={12}
+          py={{xs: 28, md: 0}}
           sm={4}
           md={6}
           sx={{
@@ -135,16 +137,16 @@ function NewsCard(props) {
             bgcolor: '#091b3f',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: {xs: 'flex-start', md: 'center'},
             alignItems: 'center',
           }}
         >
         </Grid>
-        <Grid item xs={12} sm={8} md={6} elevation={6} square>
+        <Grid item xs={12} sm={8} md={6} square>
           <Box
             sx={{
-              mt: 10,
-              mb: 2,
+              mt: {xs: 4, md: 8},
+              mb: {xs: 0, md: 2},
               ml: {xs: 2, md: 10},
               mr: {xs: 0, md: 8},
               display: 'flex',
@@ -199,7 +201,7 @@ function NewsCard(props) {
 
 NewsCard.propTypes = {
   post: PropTypes.object,
-  buttonText: PropTypes.object,
+  buttonText: PropTypes.string,
   currentLanguage: PropTypes.object,
   route: PropTypes.object,
   isInvertedLayout: PropTypes.bool,

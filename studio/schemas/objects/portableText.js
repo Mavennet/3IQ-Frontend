@@ -25,7 +25,8 @@ export default {
         ],
       },
     },
-    // { type: 'figure' },
-    // { type: 'embedHTML' },
+    { type: 'figure' },
+    { type: 'youtube' },
+    { type: 'embedHTML' },
   ],
 };

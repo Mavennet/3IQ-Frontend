@@ -1,16 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {createTheme, ThemeProvider} from '@mui/material/styles'
-// import imageUrlBuilder from '@sanity/image-url'
-// import client from '../../../client'
-// import CssBaseline from '@mui/material/CssBaseline'
-// import Box from '@mui/material/Box'
-// import Typography from '@mui/material/Typography'
-// import Grid from '@mui/material/Grid'
-// import RedirectButton from '../../RedirectButton/RedirectButton'
-// import {format, parseISO} from 'date-fns'
-// import SimpleBlockContent from '../../SimpleBlockContent'
-// import styles from './DescriptionsWithButton.module.css'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { Grid, Container, Box } from '@mui/material'
+import imageUrlBuilder from '@sanity/image-url'
+import client from '../../../client'
+import SimpleBlockContent from '../../SimpleBlockContent'
+import RedirectButton from '../../RedirectButton/RedirectButton'
+import styles from './DescriptionsWithButton.module.css'
 
 const theme = createTheme({
   typography: {
@@ -29,17 +25,56 @@ const theme = createTheme({
   },
 })
 
-// function urlFor(source) {
-//   return imageUrlBuilder(client).image(source)
-// }
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
 
 function DescriptionsWithButton(props) {
-  const {firstDescription, secondDescription, button} = props
+  const { firstDescription, secondDescription, button, backgroundImage, currentLanguage } = props
 
-  console.log(firstDescription, secondDescription, button)
+  const localeButton = button[currentLanguage?.languageTag]
 
-  return ( // TODO
+  return (
     <ThemeProvider theme={theme}>
+      <Box sx={{
+        background: backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat center center`,
+        pt: 10,
+        pb: 10,
+        backgroundColor: '#D2D1D4',
+        backgroundSize: 'cover',
+      }}
+      >
+        <Container maxWidth="md" >
+          <Grid container>
+            <Grid item xs={12}>
+              {
+                firstDescription && (
+                  <div className={styles.simpleBlockContent}>
+                    <SimpleBlockContent blocks={firstDescription} />
+                  </div>
+                )
+              }
+            </Grid>
+            <Grid item xs={12}>
+              {localeButton && (localeButton.route || localeButton.link) && (
+                <RedirectButton
+                  {...localeButton}
+                  sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff' }}
+                />
+              )}
+            </Grid>
+            <Grid item xs={12}>
+              {
+                secondDescription && (
+                  <div className={styles.simpleBlockContent}>
+                    <SimpleBlockContent blocks={secondDescription} />
+                  </div>
+                )
+              }
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </ThemeProvider>
   )
 }
@@ -48,6 +83,8 @@ DescriptionsWithButton.propTypes = {
   firstDescription: PropTypes.object,
   secondDescription: PropTypes.object,
   button: PropTypes.object,
+  backgroundImage: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default DescriptionsWithButton

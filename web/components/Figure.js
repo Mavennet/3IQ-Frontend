@@ -3,21 +3,22 @@ import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import styles from './Figure.module.css'
 import client from '../client'
-
+import { Link } from '@mui/material'
 const builder = imageUrlBuilder(client)
-
-function Figure({node}) {
-  const {alt, caption, asset} = node
+function Figure(node) {
+  const { alt, caption, imageExternalLink, asset } = node.value
   if (!asset) {
     return undefined
   }
   return (
     <figure className={styles.content}>
-      <img
-        src={builder.image(asset).auto('format').width(2000).url()}
-        className={styles.image}
-        alt={alt}
-      />
+      <Link href={imageExternalLink && imageExternalLink} sx={{textDecoration: 'none'}}>
+        <img
+          src={builder.image(asset).auto('format').url()}
+          className={styles.image}
+          alt={alt}
+        />
+      </Link>
       {caption && (
         <figcaption>
           <div className={styles.caption}>
@@ -30,11 +31,11 @@ function Figure({node}) {
     </figure>
   )
 }
-
 Figure.propTypes = {
   node: PropTypes.shape({
     alt: PropTypes.string,
     caption: PropTypes.string,
+    imageExternalLink: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),

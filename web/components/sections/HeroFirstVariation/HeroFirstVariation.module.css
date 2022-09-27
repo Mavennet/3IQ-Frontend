@@ -1,0 +1,20 @@
+@import "../../../styles/custom-media.css";
+
+.heading {
+font-family: 'Europa';
+   color: #091b3f;
+}
+
+.heading a{
+    font-family: 'Europa';
+    color: #0082ef;
+    text-decoration: none;
+}
+
+.secondButton:hover{
+    color: white;
+}
+
+.secondButton:hover {
+    color: white;
+}

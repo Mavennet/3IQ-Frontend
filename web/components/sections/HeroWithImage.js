@@ -20,8 +20,9 @@ function urlFor(source) {
 const theme = createTheme()
 
 function HeroWithImage(props) {
-  const {mainImage, heading, backgroundImage, description, button} = props
+  const {mainImage, heading, backgroundImage, description, button, currentLanguage } = props
 
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -38,14 +39,14 @@ function HeroWithImage(props) {
           pb: 2,
         }}
       >
-        <Container maxWidth="md">
+        <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Box sx={{p: 5, pl: 1, pr: 1}}>
             <Box
               component="img"
               sx={{
                 maxWidth: {md: 400, xs: 300},
               }}
-              alt="The house from the offer." // TODO Ajustar para pegar alt correto configurado no CMS
+              alt={mainImage.alt}
               src={builder.image(mainImage).url()}
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
@@ -57,10 +58,10 @@ function HeroWithImage(props) {
               </div>
             </Box>
 
-            {button &&
+            {localeButton && (localeButton.route || localeButton.link) &&
                (
                <RedirectButton
-               {...button}
+               {...localeButton}
                reverse
                sx={{mt: 4, width: {xs: '100%', md: 'auto'}, padding: '15px 60px'}}
                ></RedirectButton>
@@ -74,6 +75,7 @@ function HeroWithImage(props) {
 
 HeroWithImage.propTypes = {
   mainImage: PropTypes.shape({
+    alt: PropTypes.string,
     asset: PropTypes.shape({
       _ref: PropTypes.string,
     }),
@@ -82,6 +84,7 @@ HeroWithImage.propTypes = {
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default HeroWithImage

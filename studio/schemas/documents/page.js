@@ -42,15 +42,20 @@ export default {
             {type: 'textSeparator'},            
             {type: 'hero'},
             {type: 'heroWithImage'},
+            {type: 'heroFirstVariation'},
+            {type: 'heroDoubleButton'},
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
             {type: 'sideBySideImages'},
+            {type: 'subscribeBlock'},            
             {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
             {type: 'descriptionsWithButton'},
+            {type: 'tabsContent'},
+            {type: 'fundsContent'},
             {type: 'timeline'},
-            {type: 'imageBesideText'},
+            {type: 'imageBesideText'}
           ]
         }
       ]

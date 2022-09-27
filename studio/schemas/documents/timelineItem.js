@@ -13,7 +13,7 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Timeline item name (*)',
+      title: 'Timeline item Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },    
     {

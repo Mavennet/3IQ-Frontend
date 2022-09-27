@@ -50,6 +50,23 @@ export default {
       type: 'localePortableText',
       validation: Rule => Rule.error('Information required.').required(),
     },
+    {
+      name: 'categories',
+      type: 'array',
+      title: 'Categories',
+      description: 'Select one or more categories that this post belongs to',
+      validation: Rule => [
+        Rule.unique().error('You have duplicate categories'),
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select at least 1 category'),
+      ],
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'category' }],
+        },
+      ],
+    },
   ],
   preview: {
     select: {

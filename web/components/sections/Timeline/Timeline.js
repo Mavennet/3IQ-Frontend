@@ -56,7 +56,7 @@ function renderTimeline(items, langTag) {
               }}
               variant="outlined"
             />
-            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '200px'}} />
+            <TimelineConnector sx={{border: '2px solid #DC6E19', paddingTop: '90px'}} />
           </TimelineSeparator>
           <TimelineContent sx={{paddingRight: '10px'}}>
             <Typography
@@ -94,26 +94,27 @@ function Timeline(props) {
         sx={{
           background:
             backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat`,
-          backgroundPosition: '5vw -10vw',
-          backgroundSize: 'cover',
+          backgroundPosition: {xs: '50vw -6vw', md: '2vw -6vw', lg: '10vw -6vw'},
+          backgroundSize: {xs: 'auto', md: '100%'},
+          backgroundRepeat: 'repeat-y',
           bgcolor: '#091b3f',
           pt: 2,
-          pb: 2,
+          pb: {xs: 10, md: 0},
         }}
-      >
-        <Container maxWidth="md">
+      >        
+        <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Grid container>
             <Grid style={{color: 'white', fontWeight: 'bold'}} item md={5} xs={12}>
-              <Box className={styles.leftSimbleBlockContent} pt={15} pr={{md: 20, xs: 0}}>
+              <Box className={styles.leftSimbleBlockContent} pt={{lg: 8, md: 8, xs: 0}} pr={{md: 20, xs: 0}}>
                 {leftFirstTextBlock && <SimpleBlockContent blocks={leftFirstTextBlock} />}
               </Box>
-              <Box className={styles.leftSimbleBlockContent} pt={60} pr={{md: 20, xs: 0}}>
+              <Box className={styles.leftSimbleBlockContent} pt={{lg: 26, md: 8, xs: 12}} pr={{md: 20, xs: 0}} mb={{md: 0, xs: -6}}>
                 {leftSecondTextBlock && <SimpleBlockContent blocks={leftSecondTextBlock} />}
               </Box>
               {span && (<span className={styles.span}>{span}</span>)}
               
             </Grid>
-            <Grid item md={7} xs={12}>
+            <Grid item md={7} xs={12} pt={{md: 0, xs: 10}}>
               <Box style={{color: 'white'}}>
                 {items && renderTimeline(items, currentLanguage.languageTag)}
               </Box>

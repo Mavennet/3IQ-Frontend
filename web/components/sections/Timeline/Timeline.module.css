@@ -1,4 +1,8 @@
 
+.simpleBlockContent {
+  margin-top: -6px;
+}
+
 .simpleBlockContent p {
   font-family: 'Europa';
   margin: 0;
@@ -6,15 +10,31 @@
 
 .simpleBlockContent a {
   font-family: 'Europa';
-  color: #0082ef;
+  color: #FFF;
   text-decoration: none;
 }
 
-.leftSimbleBlockContent a{
+.simpleBlockContent, .leftSimbleBlockContent strong {
+  font-family: 'Europa';
+  color: #0082ef;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.leftSimbleBlockContent a {
   font-family: 'Europa';
   color: #0082ef;
   text-decoration: none;
 }
+
+.simpleBlockContent a:hover {
+  cursor: pointer;
+}
+
+.leftSimbleBlockContent a:hover {
+  cursor: pointer;
+}
+
 
 .span{
   color: #bbbabf;
