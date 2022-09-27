@@ -85,6 +85,22 @@ function Awards(props) {
     slidesToScroll: 1,
     prevArrow: <FaChevronLeft color="#DC6E19" />,
     nextArrow: <FaChevronRight color="#DC6E19" />,
+    responsive: [
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
   return (
@@ -109,7 +125,18 @@ function Awards(props) {
               },
             },
             '& .slick-list': {
-              '& .slick-track': {},
+              '& .slick-track': {
+                // height: '40px',
+                justifyContent: 'center',
+                display: 'flex',
+                alignItems: 'stretch',
+                gap: '12px',
+                '& .slick-slide': {
+                  display: 'flex',
+                  alignItems: 'stretch',
+                  height: 'inherit',
+                  // px: 1.5,
+                },},
             },
           },
         }}
@@ -161,6 +188,7 @@ function Awards(props) {
                     sx={{
                       // m: '5px',
                       pr: '20px',
+                      maxWidth: '220px',
                       maxHeight: '300px',
                       // marginLeft: {xs: '12%', md: '0'},
                       // justifyContent: 'center',
