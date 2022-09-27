@@ -17,11 +17,12 @@ export default {
     },
     {
       name: 'images',
-      type: 'array',
-      title: 'Images (*)',
+      type: 'array',  
+      title: 'Awards Carousel',
+      description: 'Choose the images that will be displayed in the scrollable carousel',
       validation: Rule => [
         Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select a country.')
+        Rule.min(1).error('Please, select an image.')
       ],
       of: [
         {
@@ -33,7 +34,8 @@ export default {
     {
       name: 'video',
       type: 'figure',
-      title: 'Award Video',
+      title: 'Award Display',
+      description: 'Choose between an animated image (GIF) or a static image',
       validation: Rule => Rule.error('Information required.').required()
     },
     {
