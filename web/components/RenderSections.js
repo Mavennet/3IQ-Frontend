@@ -21,14 +21,14 @@ function RenderSections(props) {
   sections.forEach((section) => {
     const toConvertItems = [
       'localeCta',
-      'localeText', 
-      'localeString', 
+      'localeText',
+      'localeString',
       'localeSimplePortableText',
       'localePortableText',
     ]
     const sectionKeys = Object.keys(section)
     const sectionValues = Object.values(section)
-    const filteredSectionKeys = []    
+    const filteredSectionKeys = []
     const countryLanguageTags = section.currentCountry.languages.map(language => language.languageTag)
 
     sectionValues.forEach((value, index) => {
@@ -50,7 +50,7 @@ function RenderSections(props) {
           section[key] = localeParameter
         }
       }
-    })    
+    })
 
     if (section.post && section.post._ref) {
       for (let i = 0; i < posts.length; i++) {
@@ -59,13 +59,13 @@ function RenderSections(props) {
         if (post._id === section.post._ref) {
           section.post = post
           break
-        }              
+        }
       }
 
       if (section.route) {
         for (let i = 0; i < routes.length; i++) {
           const route = routes[i]
-          
+
           if (route._id === section.route._ref) {
             section.route = route // TODO Add break later and verify if breaks current functionality somehow
           }
@@ -77,11 +77,11 @@ function RenderSections(props) {
       for (let index = 0; index < section.teams.length; index++) {
         for (let i = 0; i < teams.length; i++) {
           const team = teams[i]
-  
+
           if (team._id === section.teams[index]._ref) {
             section.teams[index] = team // TODO Add break later and verify if breaks current functionality somehow
-          }              
-        }          
+          }
+        }
       }
     }
 
@@ -92,7 +92,7 @@ function RenderSections(props) {
         if (timeline._id === section._id) {
           section.items = timeline.items
           break
-        }        
+        }
       }
     }
 
@@ -103,7 +103,7 @@ function RenderSections(props) {
         if (locDisplay._id === section._id) {
           section.locations = locDisplay.locations
           break
-        }        
+        }
       }
     }
 
@@ -111,7 +111,7 @@ function RenderSections(props) {
       for (let index = 0; index < section.tabItems.length; index++) {
         for (let i = 0; i < tabItems.length; i++) {
           const item = tabItems[i]
-  
+
           if (item._id === section.tabItems[index]._ref) {
             section.tabItems[index] = item
 
@@ -125,21 +125,21 @@ function RenderSections(props) {
             }
 
             break
-          }              
-        }          
+          }
+        }
       }
-    }    
+    }
 
     if (section.fundItems) {
       for (let index = 0; index < section.fundItems.length; index++) {
         for (let i = 0; i < fundItems.length; i++) {
           const item = fundItems[i]
-  
+
           if (item._id === section.fundItems[index]._ref) {
             section.fundItems[index] = item
             break
-          }              
-        }          
+          }
+        }
       }
     }
   })
