@@ -19,6 +19,7 @@ const hiddenDocTypes = (listItem) => ![
   'doubleOptions',
   'imageWithText',
   'mailchimp',
+  'awards',
   'sideBySideImages',
   'menuItem',
   'newsCard',
@@ -41,6 +42,7 @@ const hiddenDocTypes = (listItem) => ![
   'product',
   'category',
   'imagesContainer',
+  'lineChart'
 ].includes(listItem.getId())
 
 export default () =>
@@ -90,6 +92,7 @@ export default () =>
               S.documentTypeListItem('teamsDisplay').title('Teams Display'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
               S.documentTypeListItem('locationsDisplay').title('Locations Display'),
+              S.documentTypeListItem('awards').title('Awards'),
               S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
               S.documentTypeListItem('subscribeBlock').title('Subscribe Block'),
               S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
@@ -98,6 +101,7 @@ export default () =>
               S.documentTypeListItem('tabsContent').title('Tabs Content'),
               S.documentTypeListItem('timeline').title('Timeline'),
               S.documentTypeListItem('imageBesideText').title('Image beside Text'),
+              S.documentTypeListItem('lineChart').title('Line Chart'),
             ])
       ),
       S.listItem()
@@ -134,7 +138,7 @@ export default () =>
               S.documentTypeListItem('fundItem').title('Fund Item'),
               S.documentTypeListItem('tabItem').title('Tab Item'),
               S.documentTypeListItem('menuItem').title('Menu Item'),
-              S.documentTypeListItem('imagesContainer').title('Images Container'),              
+              S.documentTypeListItem('imagesContainer').title('Images Container'),
             ])
       ),
       S.divider(),
