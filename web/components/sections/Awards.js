@@ -83,6 +83,7 @@ function Awards(props) {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
+    centerMode: false,
     prevArrow: <FaChevronLeft color="#DC6E19" />,
     nextArrow: <FaChevronRight color="#DC6E19" />,
     responsive: [
@@ -91,6 +92,7 @@ function Awards(props) {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
+          centerMode: true
         },
       },
       {
@@ -98,6 +100,7 @@ function Awards(props) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true
         },
       },
     ],
@@ -132,6 +135,7 @@ function Awards(props) {
                 alignItems: 'stretch',
                 gap: '12px',
                 '& .slick-slide': {
+                  justifyContent: 'center',
                   display: 'flex',
                   alignItems: 'stretch',
                   height: 'inherit',
@@ -187,7 +191,7 @@ function Awards(props) {
                     key={image._key}
                     sx={{
                       // m: '5px',
-                      pr: '20px',
+                      // pr: '20px',
                       maxWidth: '220px',
                       maxHeight: '300px',
                       // marginLeft: {xs: '12%', md: '0'},
