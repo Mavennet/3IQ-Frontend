@@ -84,6 +84,7 @@ function Awards(props) {
     slidesToShow: 6,
     slidesToScroll: 1,
     centerMode: false,
+    autoplay: false,
     prevArrow: <FaChevronLeft color="#DC6E19" />,
     nextArrow: <FaChevronRight color="#DC6E19" />,
     responsive: [
@@ -92,15 +93,17 @@ function Awards(props) {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          centerMode: true
+          arrows: false,
+          autoplay: true
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
-          centerMode: true
+          arrows: false,
+          autoplay: true
         },
       },
     ],
@@ -170,7 +173,7 @@ function Awards(props) {
           key={video._key}
           sx={{
             mx: 'auto',
-            maxWidth: {xs: '85%', lg: '50%'},
+            maxWidth: {xs: '95%', lg: '50%'},
             display: 'block',
             p: '10px',
             mb: 1.25,
