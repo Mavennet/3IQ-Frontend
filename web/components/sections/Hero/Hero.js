@@ -33,7 +33,7 @@ function urlFor(source) {
 }
 
 function Hero(props) {
-  const {heading, description, backgroundImage, button, isSubscriptionSrcLink, isButtonReverse, currentLanguage } = props  
+  const {heading, description, backgroundImage, button, isSubscriptionSrcLink, isButtonReverse, currentLanguage } = props
 
   const [open, setOpen] = React.useState(false)
   const [iframeSelected, setIframeSelected] = React.useState(null)
@@ -111,7 +111,7 @@ function Hero(props) {
                 >
                 {localeButton.title || 'Missing button title'}
               </Button>
-            ) : 
+            ) :
               !isSubscriptionSrcLink && localeButton && (localeButton.route || localeButton.link) && (
                 <RedirectButton
                 {...localeButton}
@@ -119,7 +119,7 @@ function Hero(props) {
                 sx={{mt: 8, width: {xs: '100%', md: 'auto'}, padding: '8px 25px', fontSize: '20px', fontWeight: '400'}}
                 ></RedirectButton>
             )}
-            
+
           </Box>
         </Container>
         <Modal

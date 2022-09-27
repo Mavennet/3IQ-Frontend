@@ -26,6 +26,8 @@
 
 .navTeam li a:hover {
   color: #DC6E19;
+  text-decoration: underline;
+  text-underline-offset: 10px;
 }
 
 .navTeam li:last-child {
