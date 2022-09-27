@@ -46,5 +46,5 @@ export default {
     'imagesContainer',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
-    !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name)
+    !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
 }
