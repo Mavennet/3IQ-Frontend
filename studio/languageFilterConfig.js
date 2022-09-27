@@ -23,6 +23,7 @@ export default {
     'imageBesideText',
     'doubleOptions',
     'mailchimp',
+    'awards',
     'sideBySideImages',
     'post',
     'country',
