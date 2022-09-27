@@ -3,6 +3,7 @@ export {default as HeroFirstVariation} from './HeroFirstVariation/HeroFirstVaria
 export {default as HeroWithImage} from './HeroWithImage'
 export {default as Timeline} from './Timeline/Timeline'
 export {default as ImageBesideText} from './ImageBesideText'
+export {default as Awards} from './Awards'
 export {default as SideBySideImages} from './SideBySideImages'
 export {default as DoubleOptions} from './DoubleOptions/DoubleOptions'
 export {default as Mailchimp} from './Mailchimp'
