@@ -8,8 +8,8 @@ export default {
     { id: 'en_CA', title: 'English (CA)' },
     { id: 'en_US', title: 'English (US)' },
     { id: 'en_AU', title: 'English (AU)' },
-    { id: "fr_CA", title: "French (CA)" },
-    { id: 'ar_AE', title: 'Arabic (AE)' },
+    { id: 'fr_CA', title: 'French (CA)' },
+    { id: 'ar_AE', title: 'Arabic (AE)' }
   ],
   defaultLanguages: ['en_CA'], // It will ALWAYS be necessary to fill content in English (CA) when filling a locale field
   documentTypes: [
@@ -22,6 +22,7 @@ export default {
     'imageBesideText',
     'doubleOptions',
     'mailchimp',
+    'awards',
     'sideBySideImages',
     'post',
     'country',
@@ -40,8 +41,8 @@ export default {
     'fundsContent',
     'fundItem',
     'product',
-    'category',
+    'category'
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
-    !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
+    !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name)
 }
