@@ -43,7 +43,7 @@ function Header(props) {
           >
             <Box
               mb={{ xs: 1, md: 2 }}
-              sx={{ color: 'black', display: 'flex', justifyContent: 'flex-start' }}
+              sx={{ color: 'black', display: 'flex', justifyContent: 'space-between' }}
             >
               {/* Social Networks */}
               <Social
