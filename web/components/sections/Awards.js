@@ -79,8 +79,6 @@ function Awards(props) {
   const settings = {
     arrows: true,
     dots: true,
-    infinite: false,
-    speed: 500,
     slidesToShow: 6,
     slidesToScroll: 1,
     centerMode: false,
