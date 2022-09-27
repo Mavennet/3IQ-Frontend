@@ -36,7 +36,7 @@ function SideBySideImages(props) {
           }
        }
      `,
-      { sectionId: _id } // Verificar se o nome da const vai se manter como '_id'
+      { sectionId: _id }
     )
       .then((response) => {
         setImages(response)
@@ -70,7 +70,7 @@ function SideBySideImages(props) {
                 item.imagesContainers && (
                   item.imagesContainers.map((item) => {
                     let title = null
-                    if (item?.title[currentLanguage?.languageTag]) {
+                    if (item?.title[currentLanguage?.languageTag] && !item?.isTitleHidden) {
                       title = item.title[currentLanguage?.languageTag]
                     }
                     if (item?.images) {

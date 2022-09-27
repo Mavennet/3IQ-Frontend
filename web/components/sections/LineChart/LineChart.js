@@ -6,7 +6,8 @@ import RedirectButton from '../../RedirectButton/RedirectButton'
 import Chart from "chart.js/auto"
 import mock from './mock.json'
 import { CSVLink } from "react-csv"
-import * as XLSX from 'xlsx';
+import * as XLSX from 'xlsx'
+import api from '../../../utils/api'
 
 function LineChart(props) {
   const {
@@ -16,6 +17,8 @@ function LineChart(props) {
     lineColor = "#0082E5",
     chartHeight = '120'
   } = props
+
+  const [data, setData] = React.useState(null)
 
   const canvasEl = React.useRef(null)
 
@@ -39,40 +42,56 @@ function LineChart(props) {
     const worksheet = XLSX.utils.json_to_sheet(mock.data);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-    XLSX.writeFile(workbook, "DataSheet.xlsx");
+    XLSX.writeFile(workbook, "line-chart.xlsx");
+  }
+
+  const getChartData = () => {
+    api.get(`/btc_index_etf`)
+    .then(res => {
+      setData(res.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   React.useEffect(() => {
-    const ctx = canvasEl.current.getContext("2d")
+    getChartData()
+  }, [])
 
-    const data = {
-      labels: labels(mock.data),
-      datasets: [
-        {
-          backgroundColor: 'transparent',
-          label: mock.label,
-          data: dataChart(mock.data),
-          fill: true,
-          borderWidth: 2,
-          borderColor: lineColor,
-          lineTension: 0.2,
-          pointBackgroundColor: lineColor,
-          pointRadius: 3
-        }
-      ]
+  React.useEffect(() => {
+    if (data) {
+      const ctx = canvasEl.current.getContext("2d")
+
+      const data = {
+        labels: labels(mock.data),
+        datasets: [
+          {
+            backgroundColor: 'transparent',
+            label: mock.label,
+            data: dataChart(mock.data),
+            fill: true,
+            borderWidth: 2,
+            borderColor: lineColor,
+            lineTension: 0.2,
+            pointBackgroundColor: lineColor,
+            pointRadius: 3
+          }
+        ]
+      }
+
+      const config = {
+        type: "line",
+        data: data
+      }
+
+      const myLineChart = new Chart(ctx, config)
+
+      return function cleanup() {
+        myLineChart.destroy()
+      }
     }
-
-    const config = {
-      type: "line",
-      data: data
-    }
-
-    const myLineChart = new Chart(ctx, config)
-
-    return function cleanup() {
-      myLineChart.destroy()
-    }
-  })
+  }, [data])
 
   return (
     <Grid item xs={gridSize.xs} md={gridSize.md} py={6}>
@@ -97,9 +116,17 @@ function LineChart(props) {
           <CSVLink
             data={mock.data}
             filename={`line-chart.csv`}
-            className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-164s4cv-MuiButtonBase-root-MuiButton-root"
             target="_blank"
-            style={{ textAlign: 'center' }}
+            style={{
+              textAlign: 'center',
+              background: '#dc6e19',
+              border: '3px solid #dc6e19',
+              fontFamily: 'Europa',
+              color: '#fff',
+              textDecoration: "none",
+              padding: '0px 10px',
+              borderRadius: '4px'
+            }}
           >
             CSV
           </CSVLink>
