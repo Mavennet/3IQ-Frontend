@@ -1,8 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon, ComponentIcon, TiersIcon, DocumentIcon } from '@sanity/icons'
 
-const hiddenDocTypes = listItem =>
-  ![
+const hiddenDocTypes = listItem => ![
     'page',
     'route',
     'site-config',
@@ -17,32 +16,32 @@ const hiddenDocTypes = listItem =>
     'heroFirstVariation',
     'heroDoubleButton',
   'imageBesideText',
-    'doubleOptions',
-    'imageWithText',
-    'mailchimp',
-    'awards',
-    'sideBySideImages',
-    'menuItem',
-    'newsCard',
-    'readMoreCard',
-    'team',
-    'teamsDisplay',
-    'timeline',
-    'timelineItem',
-    'contactUsForm',
-    'locationsDisplay',
-    'location',
-    'textSeparator',
-    'headlineWithImages',
-    'descriptionsWithButton',
-    'tabsContent',
-    'tabItem',
-    'subscribeBlock',
-    'fundsContent',
-    'fundItem',
-    'product',
-    'category',
-    'imagesContainer',
+  'doubleOptions',
+  'imageWithText',
+  'mailchimp',
+  'awards',
+  'sideBySideImages',
+  'menuItem',
+  'newsCard',
+  'readMoreCard',
+  'team',
+  'teamsDisplay',
+  'timeline',
+  'timelineItem',
+  'contactUsForm',
+  'locationsDisplay',
+  'location',
+  'textSeparator',
+  'headlineWithImages',
+  'descriptionsWithButton',
+  'tabsContent',
+  'tabItem',
+  'subscribeBlock',
+  'fundsContent',
+  'fundItem',
+  'product',
+  'category',
+  'imagesContainer',
 ].includes(listItem.getId())
 
 export default () =>
@@ -61,7 +60,7 @@ export default () =>
                 .filter('_type == "page" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
+      ),
       S.listItem()
         .title('Routes')
         .icon(LinkIcon)
@@ -72,7 +71,7 @@ export default () =>
                 .filter('_type == "route" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
+      ),
       S.divider(),
       S.listItem()
         .title('Page Sections')
@@ -100,9 +99,9 @@ export default () =>
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('tabsContent').title('Tabs Content'),
               S.documentTypeListItem('timeline').title('Timeline'),
-              S.documentTypeListItem('imageBesideText').title('Image beside Text')
+              S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             ])
-        ),
+      ),
       S.listItem()
         .title('Fund Sections')
         .icon(ComponentIcon)
@@ -124,7 +123,7 @@ export default () =>
                 .filter('_type == "post" && $categoryId in categories[]._ref')
                 .params({ categoryId })
             )
-        ),
+      ),
       S.documentTypeListItem('category').title('Categories'),
       S.listItem()
         .title('Utilities')
@@ -139,7 +138,7 @@ export default () =>
               S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),              
             ])
-        ),
+      ),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
@@ -154,7 +153,7 @@ export default () =>
                 .filter('_type == "team" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
+      ),
       S.documentTypeListItem('person').title('Members'),
-      ...S.documentTypeListItems().filter(hiddenDocTypes)
+      ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])
