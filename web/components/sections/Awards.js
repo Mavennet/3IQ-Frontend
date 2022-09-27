@@ -84,7 +84,11 @@ function Awards(props) {
     slidesToShow: 6,
     slidesToScroll: 1,
     centerMode: false,
-    autoplay: false,
+    autoplay: true,
+    infinite: true,
+    speed: 3000,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
     prevArrow: <FaChevronLeft color="#DC6E19" />,
     nextArrow: <FaChevronRight color="#DC6E19" />,
     responsive: [
@@ -94,11 +98,6 @@ function Awards(props) {
           slidesToShow: 3,
           slidesToScroll: 1,
           arrows: false,
-          autoplay: true,
-          infinite: true,
-          speed: 3000,
-          autoplaySpeed: 3000,
-          pauseOnHover: false
         },
       },
       {
@@ -108,11 +107,6 @@ function Awards(props) {
           slidesToScroll: 1,
           centerMode: true,
           arrows: false,
-          autoplay: true,
-          infinite: true,
-          speed: 3000,
-          autoplaySpeed: 3000,
-          pauseOnHover: false
         },
       },
     ],
