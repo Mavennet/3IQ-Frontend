@@ -112,8 +112,8 @@ export default {
       return {
         title,
         media,
-        subtitle: `${countryNames}`
-      }
-    }
-  }
+        subtitle: `${countryNames}`,
+      };
+    },
+  },
 }
