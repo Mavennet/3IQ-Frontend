@@ -21,7 +21,7 @@ function handleTab(index) {
 
 const tabGridSx = {
   background: '#e8e8ea',
-  height: '250px',
+  minHeight: '250px',
 }
 
 const gridMainHeaderSx = {
@@ -167,129 +167,133 @@ function FundsContent(props) {
               </Grid>
               {fundItem.products &&
                 fundItem.products.map((product, index) => (
-                  <Grid
-                    key={`product_${index}`}
-                    container
-                    item
-                    mb={4}
-                    alignItems="stretch"
-                    spacing={2}
-                  >
-                    <Grid item container xs={12} md={3}>
-                      <Grid item sx={gridGeneratedHeaderSx} xs={12}>
-                        <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                          Product
-                        </Typography>
+                  <Box sx={{width: '100%'}} key={`product_${index}`}>
+                    <Grid container item mb={2} alignItems="stretch" spacing={2}>
+                      <Grid item container xs={12} md={3}>
+                        <Grid item sx={gridGeneratedHeaderSx} xs={12}>
+                          <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
+                            Product
+                          </Typography>
+                        </Grid>
+                        <Grid sx={tabGridSx} container>
+                          <Box my={'auto'} style={{textAlign: 'center', width: '100%'}}>
+                            <img
+                              style={{maxWidth: '90%', maxHeight: '220px', margin: '0 auto'}}
+                              src={urlFor(product.mainImage.asset._ref).url()}
+                              alt={product.mainImage.alt}
+                            />
+                          </Box>
+                        </Grid>
                       </Grid>
-                      <Grid sx={tabGridSx} container>
-                        <Box my={'auto'} style={{textAlign: 'center', width: '100%'}}>
-                          <img
-                            style={{maxWidth: '90%', maxHeight: '220px', margin: '0 auto'}}
-                            src={urlFor(product.mainImage.asset._ref).url()}
-                            alt={product.mainImage.alt}
-                          />
-                        </Box>
+                      <Grid item container xs={12} md={2}>
+                        <Grid item sx={gridGeneratedHeaderSx} xs={12}>
+                          <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
+                            {fundItem.localeCodeTitle &&
+                              fundItem.localeCodeTitle[currentLanguage.languageTag]}
+                          </Typography>
+                          <Typography sx={{color: 'gray', fontSize: '12px'}}>
+                            {fundItem.localeCodeObservation &&
+                              fundItem.localeCodeObservation[currentLanguage.languageTag]}
+                          </Typography>
+                        </Grid>
+                        <Grid sx={{...tabGridSx, background: 'none'}} container>
+                          {product.codes ? (
+                            product.codes.map((code, index) => (
+                              <Grid
+                                item
+                                container
+                                xs={12}
+                                key={`code_${index}`}
+                                sx={{
+                                  background: '#e8e8ea',
+                                  minHeight: `${230 / product.codes.length}px`,
+                                  mt: index > 0 && `${20 / (product.codes.length - 1)}px`,
+                                }}
+                              >
+                                <Box sx={{width: '100%', my: 'auto', textAlign: 'center'}}>
+                                  <Typography component="h4" variant="h6">
+                                    {code}
+                                  </Typography>
+                                </Box>
+                              </Grid>
+                            ))
+                          ) : (
+                            <Grid container sx={tabGridSx}></Grid>
+                          )}
+                        </Grid>
                       </Grid>
-                    </Grid>
-                    <Grid item container xs={12} md={2}>
-                      <Grid item sx={gridGeneratedHeaderSx} xs={12}>
-                        <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                          {fundItem.localeCodeTitle &&
-                            fundItem.localeCodeTitle[currentLanguage.languageTag]}
-                        </Typography>
-                        <Typography sx={{color: 'gray', fontSize: '12px'}}>
-                          {fundItem.localeCodeObservation &&
-                            fundItem.localeCodeObservation[currentLanguage.languageTag]}
-                        </Typography>
-                      </Grid>
-                      <Grid sx={{...tabGridSx, background: 'none'}} container>
-                        {product.codes ? (
-                          product.codes.map((code, index) => (
-                            <Grid
-                              item
-                              container
-                              xs={12}
-                              key={`code_${index}`}
-                              sx={{
-                                background: '#e8e8ea',
-                                height: `${230 / product.codes.length}px`,
-                                mt: index > 0 && `${20 / (product.codes.length - 1)}px`,
-                              }}
-                            >
-                              <Box sx={{width: '100%', my: 'auto', textAlign: 'center'}}>
-                                <Typography component="h4" variant="h6">
-                                  {code}
-                                </Typography>
-                              </Box>
-                            </Grid>
-                          ))
-                        ) : (
-                          <Grid container sx={tabGridSx}></Grid>
+                      <Grid item container xs={12} md={5}>
+                        <Grid item sx={gridGeneratedHeaderSx} xs={12}>
+                          <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
+                            Highlights
+                          </Typography>
+                        </Grid>
+                        <Grid sx={tabGridSx} container>
+                          <Box sx={{my: 'auto', mx: 2}}>
+                            {product.localeHighlights &&
+                              product.localeHighlights[currentLanguage.languageTag] && (
+                                <SimpleBlockContent
+                                  blocks={product.localeHighlights[currentLanguage.languageTag]}
+                                />
+                              )}
+                          </Box>
+                        </Grid>
+                        {index === fundItem.products.length - 1 && (
+                          <Typography sx={{color: 'gray', fontSize: '14px', mr: 3, mt: 3, display: {md: 'none'}}}>
+                            {fundItem.localeObservation &&
+                              fundItem.localeObservation[currentLanguage.languageTag]}
+                          </Typography>
                         )}
                       </Grid>
-                    </Grid>
-                    <Grid item container xs={12} md={5}>
-                      <Grid item sx={gridGeneratedHeaderSx} xs={12}>
-                        <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                          Highlights
-                        </Typography>
-                      </Grid>
-                      <Grid sx={tabGridSx} container>
-                        <Box sx={{my: 'auto'}}>
-                          {product.localeHighlights &&
-                            product.localeHighlights[currentLanguage.languageTag] && (
-                              <SimpleBlockContent
-                                blocks={product.localeHighlights[currentLanguage.languageTag]}
+                      <Grid item container xs={12} md={2}>
+                        <Grid sx={tabGridSx} container>
+                          <Box my={'auto'} style={{width: '100%', textAlign: 'center'}}>
+                            {fundItem.localeReadMoreText && (
+                              <RedirectButton
+                                sx={{
+                                  mx: 'auto',
+                                  width: '130px',
+                                  mb: 3,
+                                  background: '#0082E5',
+                                  border: '3px solid #0082E5',
+                                  fontWeight: 'normal',
+                                  '&:hover': {
+                                    color: '#0082E5',
+                                  },
+                                }}
+                                route={product.readMoreRoute && product.readMoreRoute}
+                                title={fundItem.localeReadMoreText[currentLanguage.languageTag]}
                               />
                             )}
-                        </Box>
-                      </Grid>
-                      {
-                        index === (fundItem.products.length - 1) && (
-                          <Typography sx={{color: 'gray', fontSize: '14px', ml: 3, mt: 3}}>
-                          {fundItem.localeObservation &&
-                            fundItem.localeObservation[currentLanguage.languageTag]}
-                        </Typography>
-                        )
-                      }
-                     
-                    </Grid>
-                    <Grid item container xs={12} md={2}>
-                      <Grid sx={tabGridSx} container>
-                        <Box my={'auto'} style={{width: '100%', textAlign: 'center'}}>
-                          {fundItem.localeReadMoreText && (
-                            <RedirectButton
-                              sx={{
-                                mx: 'auto',
-                                width: '130px',
-                                mb: 3,
-                                background: '#0082E5',
-                                border: '3px solid #0082E5',
-                                fontWeight: 'normal',
-                                '&:hover': {
-                                  color: '#0082E5',
-                                },
-                              }}
-                              route={product.readMoreRoute && product.readMoreRoute}
-                              title={fundItem.localeReadMoreText[currentLanguage.languageTag]}
-                            />
-                          )}
-                          {fundItem.localeTextBetweenButtons && (
-                            <Typography m={3}>
-                                { fundItem.localeTextBetweenButtons[currentLanguage.languageTag]}
-                            </Typography>
+                            {fundItem.localeTextBetweenButtons && (
+                              <Typography m={3}>
+                                {fundItem.localeTextBetweenButtons[currentLanguage.languageTag]}
+                              </Typography>
                             )}
-                          {fundItem.localeContactUsText && (
-                            <RedirectButton
-                              sx={{mx: 'auto', width: '130px', fontWeight: 'normal'}}
-                              link={product.mailtoLink}
-                              title={fundItem.localeContactUsText[currentLanguage.languageTag]}
-                            />
-                          )}
-                        </Box>
+                            {fundItem.localeContactUsText && (
+                              <RedirectButton
+                                sx={{mx: 'auto', width: '130px', fontWeight: 'normal'}}
+                                link={product.mailtoLink}
+                                title={fundItem.localeContactUsText[currentLanguage.languageTag]}
+                              />
+                            )}
+                          </Box>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
+                    <Grid container item mb={4} sx={{display: {xs: 'none', md: 'flex'}}} alignItems="stretch" spacing={2}>
+                      <Grid item xs={5}/>
+                      <Grid item xs={5}>
+                      {index === fundItem.products.length - 1 && (
+                          <Typography sx={{color: 'gray', fontSize: '14px'}}>
+                            {fundItem.localeObservation &&
+                              fundItem.localeObservation[currentLanguage.languageTag]}
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid item xs={2}/>
+                    </Grid>
+                  </Box>
                 ))}
             </Grid>
           ))}

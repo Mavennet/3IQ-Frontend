@@ -32,9 +32,9 @@ function TextSection(props) {
           <Grid container>
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
               <Box sx={{ pt: 5, pr: videoSrc && { md: 20, sm: 0 }, align: 'left' }}>
-                <div className={styles.textSection}>
+                <div>
                   {text && (
-                    <Grid container spacing={2}>
+                    <Grid className={styles.textSection} container spacing={2}>
                       <SimpleBlockContent blocks={text} />
                     </Grid>
                   )}
