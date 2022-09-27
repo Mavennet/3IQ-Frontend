@@ -1,7 +1,8 @@
 @import '../../../styles/custom-media.css';
 
-.textSection > :is(h1, h2, h3, h4, h5, h6){
-   color: #0082e5 !important;
+.textSection > :is(h1, h2, h3, h4){
+   color: #0082e5;
+   width: 100%;
 }
 
 .video{
