@@ -170,7 +170,7 @@ function Awards(props) {
           key={video._key}
           sx={{
             mx: 'auto',
-            maxWidth: '50%',
+            maxWidth: {xs: '85%', lg: '50%'},
             display: 'block',
             p: '10px',
             mb: 1.25,
