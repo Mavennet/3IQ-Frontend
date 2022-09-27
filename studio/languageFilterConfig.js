@@ -23,6 +23,7 @@ export default {
     'imageBesideText',
     'doubleOptions',
     'mailchimp',
+    'awards',
     'sideBySideImages',
     'post',
     'country',
@@ -45,5 +46,5 @@ export default {
     'imagesContainer',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
-    !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
+    !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name)
 }

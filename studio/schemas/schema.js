@@ -95,6 +95,7 @@ export default createSchema({
     hero,
     localeCta,
     localeSimplePortableText,
+    awards,
     sideBySideImages,
     menuItem,
     localePortableText,
