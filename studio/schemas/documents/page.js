@@ -47,6 +47,7 @@ export default {
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
+            { type: 'awards' },
             {type: 'sideBySideImages'},
             {type: 'subscribeBlock'},            
             {type: 'headlineWithImages'},
@@ -111,8 +112,8 @@ export default {
       return {
         title,
         media,
-        subtitle: `${countryNames}`,
-      };
-    },
-  },
+        subtitle: `${countryNames}`
+      }
+    }
+  }
 }
