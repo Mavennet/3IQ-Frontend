@@ -39,7 +39,7 @@ export default {
             {type: 'newsCard'},
             {type: 'readMoreCard'},
             {type: 'textSection'},
-            {type: 'textSeparator'},            
+            {type: 'textSeparator'},
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'heroFirstVariation'},
@@ -48,14 +48,15 @@ export default {
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
             {type: 'sideBySideImages'},
-            {type: 'subscribeBlock'},            
+            {type: 'subscribeBlock'},
             {type: 'headlineWithImages'},
             {type: 'doubleOptions'},
             {type: 'descriptionsWithButton'},
             {type: 'tabsContent'},
             {type: 'fundsContent'},
             {type: 'timeline'},
-            {type: 'imageBesideText'}
+            {type: 'imageBesideText'},
+            {type: 'lineChart'}
           ]
         }
       ]
