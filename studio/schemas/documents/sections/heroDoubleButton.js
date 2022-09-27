@@ -49,7 +49,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
+      title: `name.${baseLanguage.id}`,
       media: 'backgroundImage'
     },
     prepare({ title, media }) {
