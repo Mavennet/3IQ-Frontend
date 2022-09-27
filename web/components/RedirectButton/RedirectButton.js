@@ -28,7 +28,6 @@ function redirectButton(props) {
     border: '3px solid #dc6e19',
     textTransform: 'none',
     whiteSpace: 'normal',
-    display: 'block',
     wordWrap: 'break-word',
     color: 'white',
     fontWeight: 'bold',
