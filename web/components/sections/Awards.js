@@ -94,16 +94,25 @@ function Awards(props) {
           slidesToShow: 3,
           slidesToScroll: 1,
           arrows: false,
-          autoplay: true
+          autoplay: true,
+          infinite: true,
+          speed: 3000,
+          autoplaySpeed: 3000,
+          pauseOnHover: false
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1.2,
           slidesToScroll: 1,
+          centerMode: true,
           arrows: false,
-          autoplay: true
+          autoplay: true,
+          infinite: true,
+          speed: 3000,
+          autoplaySpeed: 3000,
+          pauseOnHover: false
         },
       },
     ],
