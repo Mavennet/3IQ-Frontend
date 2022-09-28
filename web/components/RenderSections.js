@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, teams, timelines, locationsDisplays, tabItems, fundItems} = props
+  const {sections, routes, posts, benefits, teams, timelines, locationsDisplays, tabItems, fundItems} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -68,6 +68,19 @@ function RenderSections(props) {
 
           if (route._id === section.route._ref) {
             section.route = route // TODO Add break later and verify if breaks current functionality somehow
+          }
+        }
+      }
+    }
+
+    if (section.benefits && section.benefits[0]._ref) {
+      for (let i = 0; i < section.benefits.length; i++) {
+        for (let j = 0; j < benefits.length; j++) {
+          const currBenefit = benefits[j]
+
+          if (currBenefit._id === section.benefits[i]._ref) {
+            section.benefits[i] = currBenefit
+            break
           }
         }
       }
@@ -178,6 +191,7 @@ RenderSections.propTypes = {
   locationsDisplays: PropTypes.array,
   tabItems: PropTypes.array,
   fundItems: PropTypes.array,
+  benefits: PropTypes.array,
 }
 
 export default RenderSections
