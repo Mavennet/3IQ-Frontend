@@ -43,6 +43,13 @@ export default {
         hotspot: true,
       },
     },
+    {
+      name: 'grayBackground',
+      type: 'boolean',
+      description: 'Enable this to add an optional gray background to highlight the text',
+      title: 'Add gray background to the text?',
+      initialValue: false,
+    },
   ],
   preview: {
     select: {
