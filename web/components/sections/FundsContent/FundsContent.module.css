@@ -3,7 +3,7 @@
 .simpleBlockContent {
     padding: 0 1em 0 0;
 }
-  
+
 .simpleBlockContent p {
   font-family: 'Europa';
   font-size: 16px;
@@ -18,4 +18,14 @@
 
 .simpleBlockContent a:hover {
   text-decoration: underline;
+}
+
+.fixedLayout {
+  @media (--media-min-large) {
+    width: 100%;
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }

@@ -17,7 +17,7 @@ export default {
     {
       title: 'Paginated News Cards Layout',
       name: 'paginatedLayout',
-      description: 'Enable this option to display all the News Cards with a pagination layout filtered by a post category',
+      description: 'Enable this option to display all the News Cards with a pagination layout filtered by the category of the post referenced at the card',
       options: {
         collapsible: true,
         collapsed: false,
@@ -47,7 +47,7 @@ export default {
     {
       name: 'selectedPostCategory',
       title: 'Post Category',
-      description: 'Select a category that will be used to filter the posts only for the Paginated News Cards layout',
+      description: 'Select a category that will be used to filter News Cards based on the category of the post referenced at the card only for the Paginated News Cards layout',
       type: 'reference',
       to: [{ type: 'category' }],
       fieldset: 'paginatedLayout',
