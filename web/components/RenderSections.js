@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import * as SectionComponents from './sections'
 import capitalizeString from '../utils/capitalizeString'
@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, benefits, teams, timelines, locationsDisplays, tabItems, fundItems} = props
+  const { sections, routes, posts, benefits, teams, timelines, locationsDisplays, tabItems, fundItems } = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -200,6 +200,7 @@ RenderSections.propTypes = {
   locationsDisplays: PropTypes.array,
   tabItems: PropTypes.array,
   fundItems: PropTypes.array,
+  benefits: PropTypes.array,
 }
 
 export default RenderSections

@@ -1,13 +1,13 @@
 import imageUrlBuilder from '@sanity/image-url'
 import groq from 'groq'
-import {NextSeo} from 'next-seo'
-import {useRouter} from 'next/router'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import client from '../client'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
-import {getSlugVariations, slugParamToPath} from '../utils/urls'
+import { getSlugVariations, slugParamToPath } from '../utils/urls'
 
 const pageFragment = groq`
 ...,
@@ -23,7 +23,7 @@ const pageFragment = groq`
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
 
-export const getServerSideProps = async ({params}) => {
+export const getServerSideProps = async ({ params }) => {
   const dataCountries = await client.fetch(
     groq`
     *[_type == "country"]{
@@ -83,7 +83,7 @@ export const getServerSideProps = async ({params}) => {
         }
       `
       )
-      .then((res) => (res?.frontpage ? {...res.frontpage, slug} : undefined))
+      .then((res) => (res?.frontpage ? { ...res.frontpage, slug } : undefined))
   } else {
     // Regular route
     if (country) {
@@ -95,9 +95,9 @@ export const getServerSideProps = async ({params}) => {
             ${pageFragment}
           }
         }`,
-          {possibleSlugs: getSlugVariations(country, slug), country: country}
+          { possibleSlugs: getSlugVariations(country, slug), country: country }
         )
-        .then((res) => (res?.page ? {...res.page, slug} : undefined))
+        .then((res) => (res?.page ? { ...res.page, slug } : undefined))
     } else {
       data = await client
         .fetch(
@@ -107,9 +107,9 @@ export const getServerSideProps = async ({params}) => {
             ${pageFragment}
           }
         }`,
-          {possibleSlugs: getSlugVariations(country, slug)}
+          { possibleSlugs: getSlugVariations(country, slug) }
         )
-        .then((res) => (res?.page ? {...res.page, slug} : undefined))
+        .then((res) => (res?.page ? { ...res.page, slug } : undefined))
     }
   }
 
@@ -367,7 +367,7 @@ const LandingPage = (props) => {
       const contentWithDefaultLanguage = []
       content &&
         content.map((c) =>
-          contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry: country})
+          contentWithDefaultLanguage.push({ ...c, currentLanguage, currentCountry: country })
         )
       setFormatedContent(contentWithDefaultLanguage)
       config &&
@@ -385,27 +385,27 @@ const LandingPage = (props) => {
 
   const openGraphImages = openGraphImage
     ? [
-        {
-          url: builder.image(openGraphImage).width(800).height(600).url(),
-          width: 800,
-          height: 600,
-          alt: title,
-        },
-        {
-          // Facebook recommended size
-          url: builder.image(openGraphImage).width(1200).height(630).url(),
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-        {
-          // Square 1:1
-          url: builder.image(openGraphImage).width(600).height(600).url(),
-          width: 600,
-          height: 600,
-          alt: title,
-        },
-      ]
+      {
+        url: builder.image(openGraphImage).width(800).height(600).url(),
+        width: 800,
+        height: 600,
+        alt: title,
+      },
+      {
+        // Facebook recommended size
+        url: builder.image(openGraphImage).width(1200).height(630).url(),
+        width: 1200,
+        height: 630,
+        alt: title,
+      },
+      {
+        // Square 1:1
+        url: builder.image(openGraphImage).width(600).height(600).url(),
+        width: 600,
+        height: 600,
+        alt: title,
+      },
+    ]
     : []
 
   const localeTitle =
@@ -465,6 +465,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
+  allBenefitCards: PropTypes.any,
 }
 
 export default LandingPage

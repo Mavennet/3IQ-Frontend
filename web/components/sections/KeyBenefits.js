@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../client'
 import CssBaseline from '@mui/material/CssBaseline'
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Slider from 'react-slick'
 import { Card, CardContent, CardMedia, Container, Grid } from '@mui/material'
 import SimpleBlockContent from '../SimpleBlockContent'
 const builder = imageUrlBuilder(client)
@@ -73,8 +71,8 @@ const theme = createTheme({
 })
 
 function KeyBenefits(props) {
-  const { title, benefits, currentCountry, currentLanguage } = props
-  console.log(props)
+  const { title, benefits, currentLanguage } = props
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -101,7 +99,7 @@ function KeyBenefits(props) {
         </Typography>
         <Grid container spacing={2.5}>
           {benefits.map((b) => (
-            <Grid item xs={6} md={3}>
+            <Grid key={b._id} item xs={6} md={3}>
               <Card sx={{
                 p: 2.5, backgroundColor: '#E8E8EA', height: '99%',
                 display: 'flex',
@@ -152,7 +150,8 @@ KeyBenefits.propTypes = {
       body: PropTypes.object,
       heading: PropTypes.object,
     })),
-  heading: PropTypes.object,
+  title: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default KeyBenefits
