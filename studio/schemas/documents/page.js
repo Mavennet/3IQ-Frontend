@@ -58,7 +58,8 @@ export default {
             {type: 'fundsContent'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
-            {type: 'lineChart'}
+            {type: 'lineChart'},
+            {type: 'tableSection'}
           ]
         }
       ]

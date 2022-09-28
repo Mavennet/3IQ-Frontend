@@ -46,6 +46,7 @@ import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
 import fundsContent from './documents/sections/fundsContent';
 import lineChart from './documents/sections/lineChart';
+import tableSection from './documents/sections/tableSection';
 
 // Object types
 import cta from './objects/cta';
@@ -127,6 +128,7 @@ export default createSchema({
     product,
     category,
     imagesContainer,
-    lineChart
+    lineChart,
+    tableSection
   ]),
 });
