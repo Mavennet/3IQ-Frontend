@@ -1,5 +1,5 @@
 import supportedLanguages from '../../supportedLanguages'
-import { SplitHorizontalIcon } from '@sanity/icons'
+import { ComponentIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault)
 
@@ -7,7 +7,7 @@ export default {
   type: 'document',
   name: 'awards',
   title: 'Awards',
-  icon: SplitHorizontalIcon,
+  icon: ComponentIcon,
   fields: [
     {
       name: 'heading',
