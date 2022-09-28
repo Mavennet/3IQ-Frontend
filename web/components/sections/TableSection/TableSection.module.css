@@ -1,0 +1,21 @@
+.simpleBlockContent table {
+  width: 100%;
+  font-size: 18px;
+}
+
+.simpleBlockContent thead tr th {
+  background: #E8E8EA;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.simpleBlockContent tbody tr td{
+  background: #E8E8EA;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.simpleBlockContent tbody tr td:first-child {
+  font-weight: 900;
+}
+
