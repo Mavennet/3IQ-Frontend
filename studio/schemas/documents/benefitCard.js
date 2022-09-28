@@ -1,5 +1,8 @@
-import { format, parseISO } from 'date-fns';
 import { DocumentIcon } from '@sanity/icons'
+import supportedLanguages from '../supportedLanguages';
+
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   name: 'benefitCard',
@@ -27,7 +30,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'heading',
+      title: `heading.${baseLanguage.id}`,
       media: 'mainImage',
     },
     prepare({ title = 'No title', media }) {
