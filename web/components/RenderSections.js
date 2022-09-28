@@ -72,6 +72,7 @@ function RenderSections(props) {
         }
       }
     }
+
     if (section.benefits && section.benefits[0]._ref) {
       for (let i = 0; i < section.benefits.length; i++) {
         for (let j = 0; j < benefits.length; j++) {
@@ -80,16 +81,6 @@ function RenderSections(props) {
           if (currBenefit._id === section.benefits[i]._ref) {
             section.benefits[i] = currBenefit
             break
-          }
-        }
-      }
-
-      if (section.route) {
-        for (let i = 0; i < routes.length; i++) {
-          const route = routes[i]
-
-          if (route._id === section.route._ref) {
-            section.route = route // TODO Add break later and verify if breaks current functionality somehow
           }
         }
       }
