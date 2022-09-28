@@ -28,6 +28,7 @@ import heroDoubleButton from './documents/sections/heroDoubleButton';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
+import awards from './documents/sections/awards'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import newsCard from './documents/sections/newsCard';
@@ -42,6 +43,7 @@ import descriptionsWithButton from './documents/sections/descriptionsWithButton'
 import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
 import fundsContent from './documents/sections/fundsContent';
+import lineChart from './documents/sections/lineChart';
 
 // Object types
 import cta from './objects/cta';
@@ -95,6 +97,7 @@ export default createSchema({
     hero,
     localeCta,
     localeSimplePortableText,
+    awards,
     sideBySideImages,
     menuItem,
     localePortableText,
@@ -120,5 +123,6 @@ export default createSchema({
     product,
     category,
     imagesContainer,
+    lineChart
   ]),
 });
