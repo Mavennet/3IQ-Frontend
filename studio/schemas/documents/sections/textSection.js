@@ -21,7 +21,7 @@ export default {
     {
       name: 'videoSrc',
       type: 'string',
-      title: 'Video Source',
+      title: 'Youtube video ID',
     },
     {
       name: 'button',
@@ -34,7 +34,7 @@ export default {
       title: 'Is the button centralized?',
       description: 'Enable this option to display the button aligned on the center',
       initialValue: true,
-    }, 
+    },
     {
       name: 'backgroundImage',
       type: 'image',
