@@ -16,7 +16,7 @@ export default {
       name: 'isFixedWhenScroll',
       type: 'boolean',
       title: 'Tabs keep fixed when scroll page?',
-      initialValue: false,
+      initialValue: true,
     },
     {
       name: 'fundItems',
