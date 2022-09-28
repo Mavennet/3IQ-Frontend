@@ -38,6 +38,7 @@ export default {
     prepare({ title = 'No title' }) {
       return {
         title,
+        subtitle: 'Key Benefits section'
       };
     },
   },
