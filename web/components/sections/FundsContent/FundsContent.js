@@ -141,7 +141,7 @@ function FundsContent(props) {
     <ThemeProvider theme={theme}>
       <Container maxWidth={'lg'}>
         <Grid item xs={12}>
-          <div ref={fixedNavRef} className={navFixed && styles.fixedLayout}>
+          <div ref={fixedNavRef} className={navFixed && isFixedWhenScroll && styles.fixedLayout}>
             <Box sx={{ mt: -2, mb: 4, display: 'flex', justifyContent: 'center' }}>
               <Tabs
                 orientation={mediumViewport ? 'horizontal' : 'vertical'}
