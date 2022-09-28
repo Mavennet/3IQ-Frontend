@@ -44,7 +44,7 @@ export default {
       },
     },
     {
-      name: 'grayBackground',
+      name: 'isGrayBackground',
       type: 'boolean',
       description: 'Enable this to add an optional gray background to highlight the text',
       title: 'Add gray background to the text?',

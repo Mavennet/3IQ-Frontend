@@ -14,7 +14,7 @@ function urlFor(source) {
 }
 
 function TextSection(props) {
-  const { text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, grayBackground } = props
+  const { text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, isGrayBackground } = props
 
   const localeButton = button && button[currentLanguage?.languageTag]
 
@@ -32,7 +32,7 @@ function TextSection(props) {
           <Grid container>
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
               <Box sx={{ pt: 5, pr: videoSrc && { md: 20, sm: 0 }, align: 'left' }}>
-                <div style={{background: grayBackground && '#e8e8ea', padding: 30}}>
+                <div style={{background: isGrayBackground && '#e8e8ea', padding: 30}}>
                   {text && (
                     <Grid className={styles.textSection} container spacing={2}>
                       <SimpleBlockContent blocks={text} />
@@ -83,7 +83,7 @@ TextSection.propTypes = {
   currentLanguage: PropTypes.object,
   backgroundImage: PropTypes.object,
   isButtonCentralized: PropTypes.bool,
-  grayBackground: PropTypes.bool
+  isGrayBackground: PropTypes.bool
 }
 
 export default TextSection
