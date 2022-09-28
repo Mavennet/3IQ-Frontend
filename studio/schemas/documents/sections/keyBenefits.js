@@ -1,4 +1,4 @@
-import { MasterDetailIcon } from '@sanity/icons'
+import { SplitHorizontalIcon } from '@sanity/icons'
 import supportedLanguages from '../../supportedLanguages';
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
@@ -7,7 +7,7 @@ export default {
   name: 'keyBenefits',
   type: 'document',
   title: 'Key Benefits',
-  icon: MasterDetailIcon,
+  icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'title',
