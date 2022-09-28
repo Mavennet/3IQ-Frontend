@@ -5,12 +5,12 @@ import client from '../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import {createTheme, ThemeProvider} from '@mui/material/styles'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
-import { Container } from '@mui/material'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import {Container} from '@mui/material'
+import {FaChevronLeft, FaChevronRight} from 'react-icons/fa'
 import SimpleBlockContent from '../SimpleBlockContent'
 const builder = imageUrlBuilder(client)
 
@@ -74,8 +74,8 @@ const theme = createTheme({
 })
 
 function Awards(props) {
-  const { images, heading, video, description } = props
-  console.log(heading)
+  const {images, heading, video, description} = props
+
   const settings = {
     arrows: true,
     dots: true,
@@ -144,8 +144,7 @@ function Awards(props) {
                   alignItems: 'stretch',
                   height: 'inherit',
                   // px: 1.5,
-                },
-              },
+                },},
             },
           },
         }}
@@ -175,7 +174,7 @@ function Awards(props) {
           key={video._key}
           sx={{
             mx: 'auto',
-            maxWidth: { xs: '95%', lg: '50%' },
+            maxWidth: {xs: '95%', lg: '50%'},
             display: 'block',
             p: '10px',
             mb: 1.25,
@@ -208,13 +207,6 @@ function Awards(props) {
             })}
         </Slider>
         <SimpleBlockContent blocks={description}></SimpleBlockContent>
-        {/* <>
-          <div className="quoteyeah" height="228">
-            <div data-qmod-tool="quotehead" data-qmod-params='{"symbol":"BTCQ"}' className="qtool"></div>
-          </div>
-          <script id="qmod" type="application/javascript" src="https://qmod.quotemedia.com/js/qmodLoader.js"
-            data-qmod-wmid="104183" data-qmod-env="app" async></script>
-        </> */}
       </Container>
     </ThemeProvider>
   )

@@ -63,7 +63,7 @@ export default () =>
                 .filter('_type == "page" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
+      ),
       S.listItem()
         .title('Routes')
         .icon(LinkIcon)
@@ -74,7 +74,7 @@ export default () =>
                 .filter('_type == "route" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
+      ),
       S.divider(),
       S.listItem()
         .title('Page Sections')
@@ -106,7 +106,7 @@ export default () =>
               S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
             ])
-        ),
+      ),
       S.listItem()
         .title('Fund Sections')
         .icon(ComponentIcon)
@@ -116,7 +116,7 @@ export default () =>
             .items([
               S.documentTypeListItem('fundsContent').title('Funds Content'),
             ])
-        ),
+      ),
       S.divider(),
       S.listItem()
         .title('Posts')
@@ -128,7 +128,7 @@ export default () =>
                 .filter('_type == "post" && $categoryId in categories[]._ref')
                 .params({ categoryId })
             )
-        ),
+      ),
       S.documentTypeListItem('category').title('Categories'),
       S.listItem()
         .title('Utilities')
@@ -143,7 +143,7 @@ export default () =>
               S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),
             ])
-        ),
+      ),
       S.divider(),
       S.documentTypeListItem('country').title('Countries'),
       S.documentTypeListItem('language').title('Languages'),
@@ -158,7 +158,7 @@ export default () =>
                 .filter('_type == "team" && $countryId in countries[]._ref')
                 .params({ countryId })
             )
-        ),
+      ),
       S.documentTypeListItem('person').title('Members'),
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ])
