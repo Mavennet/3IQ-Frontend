@@ -1,3 +1,8 @@
+.simpleBlockContent {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .simpleBlockContent table {
   width: 100%;
   font-size: 18px;

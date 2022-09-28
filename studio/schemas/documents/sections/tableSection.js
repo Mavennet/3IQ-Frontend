@@ -22,12 +22,13 @@ export default {
       name: 'embed',
       type: 'localePortableText',
       title: 'Html Table',
+      description: 'Create an optional hardcoded HTML table through the EmbedHTML tag'
     },
     {
       name: 'endpoint',
       type: 'string',
       title: 'Endpoint',
-      description: "URL to get data and render table",
+      description: "Insert an optional URL for the endpoint that will retrieve the data to populate the table automatically",
     },
   ],
   preview: {
