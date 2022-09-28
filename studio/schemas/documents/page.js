@@ -55,6 +55,7 @@ export default {
             {type: 'descriptionsWithButton'},
             {type: 'tabsContent'},
             {type: 'fundsContent'},
+            {type: 'fundsOverview'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
             {type: 'lineChart'}

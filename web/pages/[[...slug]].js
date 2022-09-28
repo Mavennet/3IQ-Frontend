@@ -268,6 +268,19 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all Fund Items
+  const allFundDocuments = await client.fetch(
+    groq`
+    *[_type == 'fundDocuments'] {
+      _id,
+      _type,
+      _rev,
+      'localeTitle': title,
+      'localeText': text,
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
@@ -283,7 +296,8 @@ export const getServerSideProps = async ({params}) => {
         allTimelines,
         allLocationsDisplays,
         allTabItems,
-        allFundItems
+        allFundItems,
+        allFundDocuments,
       } || {},
   }
 }
@@ -307,7 +321,8 @@ const LandingPage = (props) => {
     allTimelines,
     allLocationsDisplays,
     allTabItems,
-    allFundItems
+    allFundItems,
+    allFundDocuments,
   } = props
 
   const router = useRouter()
@@ -428,6 +443,7 @@ const LandingPage = (props) => {
             locationsDisplays={allLocationsDisplays}
             tabItems={allTabItems}
             fundItems={allFundItems}
+            fundDocuments={allFundDocuments}
             sections={formatedContent}
           />
         )}
@@ -453,6 +469,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
+  allFundDocuments: PropTypes.any,
 }
 
 export default LandingPage

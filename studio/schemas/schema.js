@@ -16,6 +16,7 @@ import location from './documents/location';
 import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
+import fundDocuments from './documents/fundDocuments';
 import category from './documents/category';
 import imagesContainer from './documents/imagesContainer';
 
@@ -43,6 +44,7 @@ import descriptionsWithButton from './documents/sections/descriptionsWithButton'
 import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
 import fundsContent from './documents/sections/fundsContent';
+import fundsOverview from './documents/sections/fundsOverview';
 import lineChart from './documents/sections/lineChart';
 
 // Object types
@@ -119,7 +121,9 @@ export default createSchema({
     subscribeBlock,
     youtube,
     fundsContent,
+    fundsOverview,
     fundItem,
+    fundDocuments,
     product,
     category,
     imagesContainer,
