@@ -21,8 +21,7 @@ export default {
     {
       name: 'embed',
       type: 'localePortableText',
-      title: 'Html Table (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Html Table',
     },
     {
       name: 'endpoint',
