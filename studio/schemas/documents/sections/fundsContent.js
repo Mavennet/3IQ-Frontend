@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'isFixedWhenScroll',
+      type: 'boolean',
+      title: 'Tabs keep fixed when scroll page?',
+      initialValue: false,
+    },
+    {
       name: 'fundItems',
       title: 'Fund items (*)',
       description: 'Select the fund items that will be displayed in order',
