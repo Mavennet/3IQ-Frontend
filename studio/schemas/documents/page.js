@@ -48,6 +48,7 @@ export default {
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
             { type: 'awards' },
+            { type: 'keyBenefits' },
             {type: 'sideBySideImages'},
             {type: 'subscribeBlock'},
             {type: 'headlineWithImages'},

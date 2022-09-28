@@ -25,6 +25,8 @@ export default {
     'mailchimp',
     'awards',
     'sideBySideImages',
+    'keyBenefits',
+    'benefitCard',
     'post',
     'country',
     'newsCard',

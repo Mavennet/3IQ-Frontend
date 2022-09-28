@@ -9,6 +9,7 @@ import person from './documents/person';
 import country from './documents/country';
 import language from './documents/language';
 import post from './documents/post';
+import benefitCard from './documents/benefitCard'
 import menuItem from './documents/menuItem';
 import team from './documents/team';
 import timelineItem from './documents/timelineItem';
@@ -31,6 +32,7 @@ import imageBesideText from './documents/sections/imageBesideText'
 import awards from './documents/sections/awards'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
+import keyBenefits from './documents/sections/keyBenefits';
 import newsCard from './documents/sections/newsCard';
 import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
@@ -85,6 +87,8 @@ export default createSchema({
     postPortableText,
     person,
     doubleOptions,
+    keyBenefits,
+    benefitCard,
     post,
     country,
     language,
