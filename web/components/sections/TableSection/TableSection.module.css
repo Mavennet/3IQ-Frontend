@@ -24,3 +24,13 @@
   font-weight: 900;
 }
 
+.tableColorful tr td:first-child{
+  color: #dc6109;
+  font-weight: 400!important;
+}
+
+.tableColorful tr td:last-child{
+  background-color: #0082e5;
+  color: #fff;
+}
+
