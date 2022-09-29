@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Container, Grid } from '@mui/material'
+import Script from 'next/script'
 
 const theme = createTheme({
   typography: {
@@ -38,13 +39,13 @@ function QuoteHeads({ symbols }) {
       <Container sx={{ mt: 15, mb: 8.6 }}>
         <Grid container spacing={2.5}>
           {symbols.map((s) => {
-            const params = `{"symbol":${s}}`
-            return (<Grid key={`${s}`} item xs={12} md={6} sx={{ '& > div': { maxWidth: '65%', mx: 'auto' } }}>
+            const params = `{"symbol":"${s}"}`
+            return (<Grid key={`${s}`} item xs={12} md={6} sx={{ '& > div': { maxWidth: '70%', mx: 'auto' } }}>
               <div className="quoteyeah" height="228">
                 <div data-qmod-tool="quotehead" data-qmod-params={params} className="qtool"></div>
               </div>
-              <script id="qmod" type="application/javascript" src="https://qmod.quotemedia.com/js/qmodLoader.js"
-                data-qmod-wmid="104183" data-qmod-env="app" data-qmod-version="v1.37.0" async></script>
+              <Script id="qmod" type="application/javascript" src="https://qmod.quotemedia.com/js/qmodLoader.js"
+                data-qmod-wmid="104183" data-qmod-env="app" data-qmod-version="v1.37.0" async />
             </Grid>)
           })}
         </Grid>
