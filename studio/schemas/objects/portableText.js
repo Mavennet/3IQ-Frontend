@@ -20,7 +20,16 @@ export default {
           { title: 'Code', value: 'code' },
         ],
         annotations: [
-          { type: 'link' },
+          {
+            title: 'URL', type: 'object', name: 'link', fields: [{
+              title: 'URL', name: 'href', type: 'url',
+              validation: Rule => Rule.uri({
+                scheme: ['http', 'https', 'mailto', 'tel']
+              })
+            },
+            { title: 'Open in new window', type: 'boolean', name: 'blank', initialValue: false, }
+            ]
+          },
           // { type: 'internalLink' }
         ],
       },

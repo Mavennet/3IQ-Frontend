@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading',
+      description: 'Optional heading for the text section above the content'
+    },
+    {
       name: 'text',
       type: 'localePortableText',
       title: 'Text (*)',
@@ -21,7 +27,7 @@ export default {
     {
       name: 'videoSrc',
       type: 'string',
-      title: 'Video Source',
+      title: 'Youtube video ID',
     },
     {
       name: 'button',
@@ -34,7 +40,7 @@ export default {
       title: 'Is the button centralized?',
       description: 'Enable this option to display the button aligned on the center',
       initialValue: true,
-    }, 
+    },
     {
       name: 'backgroundImage',
       type: 'image',
@@ -42,6 +48,13 @@ export default {
       options: {
         hotspot: true,
       },
+    },
+    {
+      name: 'isGrayBackground',
+      type: 'boolean',
+      description: 'Enable this to add an optional gray background to highlight the text',
+      title: 'Add gray background to the text?',
+      initialValue: false,
     },
   ],
   preview: {
