@@ -47,7 +47,10 @@ export default {
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
-            { type: 'awards' },
+            {type: 'note'},
+            {type: 'quoteHeads'},
+            {type: 'awards'},
+            {type: 'keyBenefits'},
             {type: 'sideBySideImages'},
             {type: 'subscribeBlock'},
             {type: 'headlineWithImages'},
@@ -57,7 +60,8 @@ export default {
             {type: 'fundsContent'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
-            {type: 'lineChart'}
+            {type: 'lineChart'},
+            {type: 'tableSection'}
           ]
         }
       ]

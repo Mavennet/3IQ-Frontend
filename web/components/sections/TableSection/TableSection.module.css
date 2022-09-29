@@ -1,0 +1,36 @@
+.simpleBlockContent {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.simpleBlockContent table {
+  width: 100%;
+  font-size: 18px;
+}
+
+.simpleBlockContent thead tr th {
+  background: #E8E8EA;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.simpleBlockContent tbody tr td{
+  background: #E8E8EA;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.simpleBlockContent tbody tr td:first-child {
+  font-weight: 900;
+}
+
+.tableColorful tr td:first-child{
+  color: #dc6109;
+  font-weight: 400!important;
+}
+
+.tableColorful tr td:last-child{
+  background-color: #0082e5;
+  color: #fff;
+}
+

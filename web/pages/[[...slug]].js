@@ -136,6 +136,15 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all benefit cards (used later on to get the cards details in section)
+  const allBenefitCards = await client.fetch(
+    groq`
+    *[_type == 'benefitCard'] {
+      ...,
+    }
+    `
+  )
+
   // Retrieve all teams (used later on to get the our team display blocks)
   const allTeams = await client.fetch(
     groq`
@@ -253,6 +262,7 @@ export const getServerSideProps = async ({params}) => {
       'localeTextBetweenButtons': textBetweenButtons,
       'localeContactUsText': contactUsText,
       'localeObservation' : observation,
+      fundSections[]->,
       products[]-> {
         _id,
         _type,
@@ -279,6 +289,7 @@ export const getServerSideProps = async ({params}) => {
         currentCountry: country,
         allRoutes,
         allPosts,
+        allBenefitCards,
         allTeams,
         allTimelines,
         allLocationsDisplays,
@@ -303,6 +314,7 @@ const LandingPage = (props) => {
     currentCountry,
     allRoutes,
     allPosts,
+    allBenefitCards,
     allTeams,
     allTimelines,
     allLocationsDisplays,
@@ -422,6 +434,7 @@ const LandingPage = (props) => {
         {formatedContent && (
           <RenderSections
             routes={allRoutes}
+            benefits={allBenefitCards}
             posts={allPosts}
             teams={allTeams}
             timelines={allTimelines}
@@ -453,6 +466,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
+  allBenefitCards: PropTypes.any,
 }
 
 export default LandingPage

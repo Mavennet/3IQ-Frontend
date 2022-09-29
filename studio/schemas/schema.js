@@ -9,6 +9,7 @@ import person from './documents/person';
 import country from './documents/country';
 import language from './documents/language';
 import post from './documents/post';
+import benefitCard from './documents/benefitCard'
 import menuItem from './documents/menuItem';
 import team from './documents/team';
 import timelineItem from './documents/timelineItem';
@@ -28,9 +29,12 @@ import heroDoubleButton from './documents/sections/heroDoubleButton';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
-import awards from './documents/sections/awards'
+import quoteHeads from './documents/sections/quoteHeads';
+import awards from './documents/sections/awards';
+import note from './documents/sections/note';
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
+import keyBenefits from './documents/sections/keyBenefits';
 import newsCard from './documents/sections/newsCard';
 import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
@@ -44,6 +48,7 @@ import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
 import fundsContent from './documents/sections/fundsContent';
 import lineChart from './documents/sections/lineChart';
+import tableSection from './documents/sections/tableSection';
 
 // Object types
 import cta from './objects/cta';
@@ -85,6 +90,8 @@ export default createSchema({
     postPortableText,
     person,
     doubleOptions,
+    keyBenefits,
+    benefitCard,
     post,
     country,
     language,
@@ -97,6 +104,8 @@ export default createSchema({
     hero,
     localeCta,
     localeSimplePortableText,
+    note,
+    quoteHeads,
     awards,
     sideBySideImages,
     menuItem,
@@ -123,6 +132,7 @@ export default createSchema({
     product,
     category,
     imagesContainer,
-    lineChart
+    lineChart,
+    tableSection
   ]),
 });
