@@ -10,9 +10,9 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'name',
+      name: 'title',
       type: 'localeString',
-      title: 'Name (*)',
+      title: 'title (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -24,7 +24,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `name.${baseLanguage.id}`,
+      title: `title.${baseLanguage.id}`,
     },
     prepare({ title }) {
       return {
