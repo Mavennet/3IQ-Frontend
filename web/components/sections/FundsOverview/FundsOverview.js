@@ -8,14 +8,14 @@ import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
-import FundDocuments from '../../FundDocuments/FundDocuments'
+import FundSidebarItem from '../../FundSidebarItem/FundSidebarItem'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
 function FundsOverview(props) {
-  const {currentLanguage, fundDocuments} = props
+  const {currentLanguage, fundSidebarItem} = props
 
   console.log(props)
   return (
@@ -26,11 +26,11 @@ function FundsOverview(props) {
             a
           </Grid>
           <Grid item container md={4}>
-            {fundDocuments &&
-              fundDocuments.map((fundDoc) => (
-                <FundDocuments
-                  title={fundDoc.localeTitle[currentLanguage.languageTag]}
-                  text={fundDoc.localeText[currentLanguage.languageTag]}
+            {fundSidebarItem &&
+              fundSidebarItem.map((fundItem) => (
+                <FundSidebarItem
+                  title={fundItem.localeTitle[currentLanguage.languageTag]}
+                  text={fundItem.localeText[currentLanguage.languageTag]}
                 />
               ))}
           </Grid>

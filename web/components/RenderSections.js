@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, teams, timelines, locationsDisplays, tabItems, fundItems, fundDocuments} = props
+  const {sections, routes, posts, teams, timelines, locationsDisplays, tabItems, fundItems, fundSidebarItem} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -143,13 +143,13 @@ function RenderSections(props) {
       }
     }
 
-    if (section.fundDocuments) {
-      for (let index = 0; index < section.fundDocuments.length; index++) {
-        for (let i = 0; i < fundDocuments.length; i++) {
-          const item = fundDocuments[i]
+    if (section.fundSidebarItem) {
+      for (let index = 0; index < section.fundSidebarItem.length; index++) {
+        for (let i = 0; i < fundSidebarItem.length; i++) {
+          const item = fundSidebarItem[i]
 
-          if (item._id === section.fundDocuments[index]._ref) {
-            section.fundDocuments[index] = item
+          if (item._id === section.fundSidebarItem[index]._ref) {
+            section.fundSidebarItem[index] = item
             break
           }
         }
@@ -191,7 +191,7 @@ RenderSections.propTypes = {
   locationsDisplays: PropTypes.array,
   tabItems: PropTypes.array,
   fundItems: PropTypes.array,
-  fundDocuments: PropTypes.array,
+  fundSidebarItem: PropTypes.array,
 }
 
 export default RenderSections

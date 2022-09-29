@@ -40,7 +40,7 @@ const hiddenDocTypes = (listItem) => ![
   'fundsContent',
   'fundsOverview',
   'fundItem',
-  'fundDocuments',
+  'fundSidebarItem',
   'product',
   'category',
   'imagesContainer',
@@ -139,7 +139,7 @@ export default () =>
             .items([
               S.documentTypeListItem('product').title('Product'),
               S.documentTypeListItem('fundItem').title('Fund Item'),
-              S.documentTypeListItem('fundDocuments').title('Fund Documents'),
+              S.documentTypeListItem('fundSidebarItem').title('Fund Sidebar Item'),
               S.documentTypeListItem('tabItem').title('Tab Item'),
               S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),

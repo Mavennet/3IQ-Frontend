@@ -13,8 +13,8 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'fundDocuments',
-      title: 'Fund documents (*)',
+      name: 'fundSidebarItem',
+      title: 'Fund sidebar items (*)',
       description: 'Select the fund items that will be displayed in order',
       validation: Rule => [
         Rule.max(10).warning('Are you sure you want more than 10 items?'),
@@ -25,8 +25,8 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'fundDocuments' }],
-          title: 'Fund documents',
+          to: [{ type: 'fundSidebarItem' }],
+          title: 'Fund sidebar items',
         },
       ],
     },

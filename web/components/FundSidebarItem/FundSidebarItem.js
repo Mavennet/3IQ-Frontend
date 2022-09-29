@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SimpleBlockContent from '../SimpleBlockContent'
-import styles from './FundDocuments.module.css'
+import styles from './FundSidebarItem.module.css'
 import {Typography, Box} from '@mui/material'
 
-function FundDocuments(props) {
+function FundSidebarItem(props) {
   const {title, text} = props
+
+  console.log(props)
 
   return (
     <Box>
@@ -17,9 +19,9 @@ function FundDocuments(props) {
   )
 }
 
-FundDocuments.propTypes = {
+FundSidebarItem.propTypes = {
   title: PropTypes.string,
   text: PropTypes.arrayOf(PropTypes.object),
 }
 
-export default FundDocuments
+export default FundSidebarItem

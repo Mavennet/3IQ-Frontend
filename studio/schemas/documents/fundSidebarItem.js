@@ -5,7 +5,7 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'fundDocuments',
+  name: 'fundSidebarItem',
   title: 'Fund Item',
   icon: MdInsights,
   fields: [
@@ -30,7 +30,7 @@ export default {
     prepare({ title }) {
       return {
         title,
-        subtitle: 'Fund Documents component',
+        subtitle: 'Fund Sidebar Item component',
       };
     },
   },

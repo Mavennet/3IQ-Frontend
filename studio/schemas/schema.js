@@ -16,7 +16,7 @@ import location from './documents/location';
 import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
-import fundDocuments from './documents/fundDocuments';
+import fundSidebarItem from './documents/fundSidebarItem';
 import category from './documents/category';
 import imagesContainer from './documents/imagesContainer';
 
@@ -123,7 +123,7 @@ export default createSchema({
     fundsContent,
     fundsOverview,
     fundItem,
-    fundDocuments,
+    fundSidebarItem,
     product,
     category,
     imagesContainer,

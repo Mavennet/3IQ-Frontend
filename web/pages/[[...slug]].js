@@ -269,9 +269,9 @@ export const getServerSideProps = async ({params}) => {
   )
 
   // Retrieve all Fund Items
-  const allFundDocuments = await client.fetch(
+  const allFundSidebarItem = await client.fetch(
     groq`
-    *[_type == 'fundDocuments'] {
+    *[_type == 'fundSidebarItem'] {
       _id,
       _type,
       _rev,
@@ -297,7 +297,7 @@ export const getServerSideProps = async ({params}) => {
         allLocationsDisplays,
         allTabItems,
         allFundItems,
-        allFundDocuments,
+        allFundSidebarItem,
       } || {},
   }
 }
@@ -322,7 +322,7 @@ const LandingPage = (props) => {
     allLocationsDisplays,
     allTabItems,
     allFundItems,
-    allFundDocuments,
+    allFundSidebarItem,
   } = props
 
   const router = useRouter()
@@ -443,7 +443,7 @@ const LandingPage = (props) => {
             locationsDisplays={allLocationsDisplays}
             tabItems={allTabItems}
             fundItems={allFundItems}
-            fundDocuments={allFundDocuments}
+            fundSidebarItem={allFundSidebarItem}
             sections={formatedContent}
           />
         )}
@@ -469,7 +469,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
-  allFundDocuments: PropTypes.any,
+  allFundSidebarItem: PropTypes.any,
 }
 
 export default LandingPage

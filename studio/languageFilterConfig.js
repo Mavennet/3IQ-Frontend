@@ -42,7 +42,7 @@ export default {
     'fundsContent',
     'fundsOverview',
     'fundItem',
-    'fundDocuments',
+    'fundSidebarItem',
     'product',
     'category',
     'imagesContainer',
