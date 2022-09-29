@@ -40,8 +40,7 @@ const theme = createTheme({
   },
 })
 
-function Note(props) {
-  const { name, leftTextBlock, rightTextBlock } = prop
+function Note({ name, leftTextBlock, rightTextBlock }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
