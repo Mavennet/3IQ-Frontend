@@ -21,7 +21,7 @@ function TextSection(props) {
 
   const opts = {
     width: '100%',
-    height: '350',
+    height: '520',
     margin: '10px'
   };
 
