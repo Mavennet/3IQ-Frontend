@@ -1,18 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SimpleBlockContent from '../../SimpleBlockContent'
-import styles from './FundsOverview.module.css'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
-import RedirectButton from '../../RedirectButton/RedirectButton'
-import imageUrlBuilder from '@sanity/image-url'
-import client from '../../../client'
 import FundSidebarItem from '../../FundSidebarItem/FundSidebarItem'
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
-}
 
 function FundsOverview(props) {
   const {currentLanguage, fundSidebarItem} = props
@@ -27,8 +19,9 @@ function FundsOverview(props) {
           </Grid>
           <Grid item container md={4}>
             {fundSidebarItem &&
-              fundSidebarItem.map((fundItem) => (
+              fundSidebarItem.map((fundItem, index) => (
                 <FundSidebarItem
+                  key={`fundSidebarItem_${index}`}
                   title={fundItem.localeTitle[currentLanguage.languageTag]}
                   text={fundItem.localeText[currentLanguage.languageTag]}
                 />
@@ -41,12 +34,8 @@ function FundsOverview(props) {
 }
 
 FundsOverview.propTypes = {
-  text: PropTypes.arrayOf(PropTypes.object),
-  videoSrc: PropTypes.string,
-  button: PropTypes.object,
   currentLanguage: PropTypes.object,
-  backgroundImage: PropTypes.object,
-  isButtonCentralized: PropTypes.bool,
+  fundSidebarItem: PropTypes.object
 }
 
 export default FundsOverview
