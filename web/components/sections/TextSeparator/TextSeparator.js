@@ -6,15 +6,14 @@ import styles from './TextSeparator.module.css'
 
 function TextSeparator(props) {
 
-  const { portableText, name } = props
-  const isProxySec = name === 'Vote par procuration' || name === 'Proxy Voting'
+  const { portableText, title, backgroundColor } = props
 
   return (
-    <Box sx={{ backgroundColor: !isProxySec ? '#E8E8EAAD' : '#F9F9F9' }}>
-      <Container maxWidth={!isProxySec ? "md" : 'lg'} sx={{ py: isProxySec && '50px' }}>
+    <Box sx={{ backgroundColor: !backgroundColor ? '#E8E8EAAD' : backgroundColor }}>
+      <Container maxWidth={!backgroundColor ? "md" : 'lg'} sx={{ py: backgroundColor && '50px' }}>
         <Grid container>
           <Grid item xs={12}>
-            {isProxySec &&
+            {backgroundColor &&
               <Typography
                 sx={{
                   position: 'relative',
@@ -31,9 +30,9 @@ function TextSeparator(props) {
                 align={'left'}
                 gutterBottom
               >
-                {name}
+                {title}
               </Typography>}
-            <div className={!isProxySec ? styles.simpleBlockContent : styles.simpleBlockContentProxy}>
+            <div className={!backgroundColor ? styles.simpleBlockContent : styles.simpleBlockContentProxy}>
               <SimpleBlockContent blocks={portableText} />
             </div>
           </Grid>
@@ -45,6 +44,8 @@ function TextSeparator(props) {
 
 TextSeparator.propTypes = {
   portableText: PropTypes.object,
+  title: PropTypes.string,
+  backgroundColor: PropTypes.string,
 }
 
 export default TextSeparator

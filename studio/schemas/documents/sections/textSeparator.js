@@ -16,6 +16,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'backgroundColor',
+      type: 'string',
+      title: 'Background Color',
+      description: "Use this field to input the background color in the same pattern as '#FFFFFF'.",
+    },
+    {
       name: 'portableText',
       type: 'localePortableText',
       title: 'Display Text (*)',
