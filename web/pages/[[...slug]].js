@@ -215,7 +215,7 @@ export const getServerSideProps = async ({params}) => {
       _id,
       _type,
       _rev,
-      'localecontentBlock': contentBlock, 
+      'localecontentBlock': contentBlock,
       'localeButton': button,
       'localeName': name,
       isPaginatedNewsletter,
