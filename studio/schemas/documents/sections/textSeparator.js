@@ -1,7 +1,4 @@
 import { SplitHorizontalIcon } from '@sanity/icons'
-import supportedLanguages from '../../supportedLanguages';
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -11,7 +8,7 @@ export default {
   fields: [
     {
       name: 'name',
-      type: 'localeString',
+      type: 'string',
       title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
@@ -24,7 +21,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `name.${baseLanguage.id}`,
+      title: `name`,
     },
     prepare({ title }) {
       return {
