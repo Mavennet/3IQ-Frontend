@@ -141,6 +141,8 @@ function TabsLayout(props) {
                   onChange={handleChange}
                   aria-label={`${heading} - Tab`}
                   TabIndicatorProps={{ style: { display: 'none' } }}
+                  variant="scrollable"
+                  scrollButtons="auto"
                 >
                   {tabItems &&
                     tabItems.map((item, i) => {

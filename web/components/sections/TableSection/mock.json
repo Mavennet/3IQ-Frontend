@@ -1,0 +1,23 @@
+{
+    "statusCode": 200,
+    "body": [
+        {
+            "id":"NAV",
+            "date":"September 27, 2022",
+            "cad":"22.22",
+            "usd":"17.77"
+        },
+        {
+            "id":"NAVPU",
+            "date":"September 28, 2022",
+            "cad":"22.22",
+            "usd":"17.77"
+        },
+        {
+            "id":"NAVPU Inception",
+            "date":"September 29, 2022",
+            "cad":"22.22",
+            "usd":"17.77"
+        }
+    ]
+}
