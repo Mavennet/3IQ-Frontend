@@ -5,6 +5,15 @@
    width: 100%;
 }
 
+.textSection > :is(ul, ol){
+   width: 100%;
+}
+
+.textSection a{
+   text-decoration: none;
+   color: #0f4b7d
+}
+
 .video{
    position: relative;
    width: 100%;

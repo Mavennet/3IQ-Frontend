@@ -13,6 +13,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading',
+      description: 'Optional heading for the text section above the content'
+    },
+    {
       name: 'text',
       type: 'localePortableText',
       title: 'Text (*)',
