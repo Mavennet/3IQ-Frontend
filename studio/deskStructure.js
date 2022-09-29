@@ -42,7 +42,9 @@ const hiddenDocTypes = (listItem) => ![
   'tabItem',
   'subscribeBlock',
   'fundsContent',
+  'fundsOverview',
   'fundItem',
+  'fundSidebarItem',
   'product',
   'category',
   'imagesContainer',
@@ -89,6 +91,7 @@ export default () =>
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
+              S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
               S.documentTypeListItem('hero').title('Hero'),
               S.documentTypeListItem('heroDoubleButton').title('Hero with 2 Buttons'),
@@ -98,7 +101,6 @@ export default () =>
               S.documentTypeListItem('keyBenefits').title('Key Benefits'),
               S.documentTypeListItem('locationsDisplay').title('Locations Display'),
               S.documentTypeListItem('newsCard').title('News Card'),
-              S.documentTypeListItem('note').title('Note section'),
               S.documentTypeListItem('readMoreCard').title('Read More Card'),
               S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
               S.documentTypeListItem('subscribeBlock').title('Subscribe Block'),
@@ -117,10 +119,11 @@ export default () =>
             .title('Fund Sections')
             .items([
               S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('note').title('Compact Notes'),
               S.documentTypeListItem('tableSection').title('Custom Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
-              S.documentTypeListItem('quoteHeads').title('Quote Heads (Live feed cards)'),
+              S.documentTypeListItem('quoteHeads').title('Live Feed Cards'),
             ])
       ),
       S.divider(),
@@ -143,7 +146,9 @@ export default () =>
           S.list()
             .title('Utilities')
             .items([
+              S.documentTypeListItem('benefitCard').title('Benefit Card'),
               S.documentTypeListItem('fundItem').title('Fund Item'),
+              S.documentTypeListItem('fundSidebarItem').title('Fund Sidebar Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),
               S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('product').title('Product'),

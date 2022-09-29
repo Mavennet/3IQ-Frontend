@@ -7,6 +7,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import SimpleBlockContent from '../../SimpleBlockContent'
+import RenderSections from '../../RenderSections'
 import styles from './FundsContent.module.css'
 
 function urlFor(source) {
@@ -46,7 +47,7 @@ const gridGeneratedHeaderSx = {
 }
 
 function FundsContent(props) {
-  const { currentLanguage, fundItems, isFixedWhenScroll } = props
+  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry } = props
   const [value, setValue] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [navFixed, setNavFixed] = useState(false)
@@ -55,7 +56,7 @@ function FundsContent(props) {
 
   const handleScroll = () => {
     const position = window.scrollY
-    if (position <= 560 ) {
+    if (position <= 560) {
       setNavFixed(false)
     }
     setScrollPosition(position)
@@ -117,6 +118,15 @@ function FundsContent(props) {
       !(fundTypes.indexOf(localeName) >= 0) && fundTypes.push(localeName)
     }
   })
+
+  const createSection = (content) => {
+    const contentWithDefaultLanguage = []
+    content &&
+        content.map((c) =>
+          contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry})
+        )
+    return contentWithDefaultLanguage
+  }
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -335,9 +345,14 @@ function FundsContent(props) {
                       </Grid>
                       <Grid item xs={2} />
                     </Grid>
+                    {fundItem.fundSections && (
+                      <RenderSections
+                        sections={createSection(fundItem.fundSections)}
+                      />
+                    )}
                   </Box>
-                ))}
-                {console.log(fundItems)}
+                ))
+              }
             </Grid>
           ))}
       </Container>
@@ -347,6 +362,7 @@ function FundsContent(props) {
 
 FundsContent.propTypes = {
   currentLanguage: PropTypes.object,
+  currentCountry: PropTypes.object,
   fundItems: PropTypes.fundItems,
   isFixedWhenScroll: PropTypes.bool
 }

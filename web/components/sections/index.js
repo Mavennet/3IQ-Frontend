@@ -25,5 +25,6 @@ export {default as DescriptionsWithButton} from './DescriptionsWithButton/Descri
 export {default as TabsContent} from './TabsContent/TabsContent'
 export {default as SubscribeBlock} from './SubscribeBlock/SubscribeBlock'
 export {default as FundsContent} from './FundsContent/FundsContent'
+export {default as FundsOverview} from './FundsOverview/FundsOverview'
 export {default as LineChart} from './LineChart/LineChart'
 export {default as TableSection} from './TableSection/TableSection'

@@ -6,7 +6,7 @@ import styles from './TableSection.module.css'
 import mock from './mock.json'
 
 function TableSection(props) {
-  const { name, embed, isEnableName } = props
+  const { name, embed, isEnableName, colorfulLayout, headerTransparentLayout } = props
 
   const [data, setData] = React.useState(null)
 
@@ -46,7 +46,15 @@ function TableSection(props) {
             <Grid item xs={12}>
               <div className={styles.simpleBlockContent}>
                 <table>
-                  <tbody className={styles.tableColorful}>
+                  <thead className={headerTransparentLayout && styles.headerTransparent}>
+                    <tr>
+                      <th>Exemplo</th>
+                      <th>Exemplo</th>
+                      <th>Exemplo</th>
+                      <th>Exemplo</th>
+                    </tr>
+                  </thead>
+                  <tbody className={colorfulLayout && styles.tableColorful}>
                     {
                       data.body.map((item,i) => {
                         const values = Object.values(item)
@@ -77,7 +85,9 @@ function TableSection(props) {
 TableSection.propTypes = {
   name: PropTypes.string,
   embed: PropTypes.object,
-  isEnableName: PropTypes.bool
+  isEnableName: PropTypes.bool,
+  colorfulLayout: PropTypes.bool,
+  headerTransparentLayout: PropTypes.bool,
 }
 
 export default TableSection
