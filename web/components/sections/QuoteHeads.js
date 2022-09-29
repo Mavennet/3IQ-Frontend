@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Container, Grid } from '@mui/material'
+import Script from 'next/script'
 
 const theme = createTheme({
   typography: {
@@ -43,8 +44,8 @@ function QuoteHeads({ symbols }) {
               <div className="quoteyeah" height="228">
                 <div data-qmod-tool="quotehead" data-qmod-params={params} className="qtool"></div>
               </div>
-              <script id="qmod" type="application/javascript" src="https://qmod.quotemedia.com/js/qmodLoader.js"
-                data-qmod-wmid="104183" data-qmod-env="app" data-qmod-version="v1.37.0" async></script>
+              <Script id="qmod" type="application/javascript" src="https://qmod.quotemedia.com/js/qmodLoader.js"
+                data-qmod-wmid="104183" data-qmod-env="app" data-qmod-version="v1.37.0" async />
             </Grid>)
           })}
         </Grid>
