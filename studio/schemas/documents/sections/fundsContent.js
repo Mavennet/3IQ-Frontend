@@ -15,7 +15,8 @@ export default {
     {
       name: 'isFixedWhenScroll',
       type: 'boolean',
-      title: 'Tabs keep fixed when scroll page?',
+      title: 'Stick navigation tabs on top?',
+      description: 'Enable this to keep the navigation tabs fixed at the top while scrolling the page on a desktop',
       initialValue: true,
     },
     {

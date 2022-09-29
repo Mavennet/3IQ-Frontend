@@ -21,6 +21,8 @@ const hiddenDocTypes = (listItem) => ![
   'mailchimp',
   'keyBenefits',
   'benefitCard',
+  'note',
+  'quoteHeads',
   'awards',
   'sideBySideImages',
   'menuItem',
@@ -84,26 +86,27 @@ export default () =>
           S.list()
             .title('Page Sections')
             .items([
-              S.documentTypeListItem('newsCard').title('News Card'),
-              S.documentTypeListItem('readMoreCard').title('Read More Card'),
-              S.documentTypeListItem('textSection').title('Text Block'),
-              S.documentTypeListItem('textSeparator').title('Text Separator'),
-              S.documentTypeListItem('hero').title('Hero'),
-              S.documentTypeListItem('heroWithImage').title('Hero with Image'),
-              S.documentTypeListItem('heroFirstVariation').title('Hero first variation'),
-              S.documentTypeListItem('heroDoubleButton').title('Hero with 2 Buttons'),
-              S.documentTypeListItem('teamsDisplay').title('Teams Display'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
-              S.documentTypeListItem('locationsDisplay').title('Locations Display'),
+              S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
+              S.documentTypeListItem('doubleOptions').title('Double Options'),
+              S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
+              S.documentTypeListItem('hero').title('Hero'),
+              S.documentTypeListItem('heroDoubleButton').title('Hero with 2 Buttons'),
+              S.documentTypeListItem('heroFirstVariation').title('Hero first variation'),
+              S.documentTypeListItem('heroWithImage').title('Hero with Image'),
+              S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('keyBenefits').title('Key Benefits'),
+              S.documentTypeListItem('locationsDisplay').title('Locations Display'),
+              S.documentTypeListItem('newsCard').title('News Card'),
+              S.documentTypeListItem('note').title('Note section'),
+              S.documentTypeListItem('readMoreCard').title('Read More Card'),
               S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
               S.documentTypeListItem('subscribeBlock').title('Subscribe Block'),
-              S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
-              S.documentTypeListItem('doubleOptions').title('Double Options'),
-              S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('tabsContent').title('Tabs Content'),
+              S.documentTypeListItem('teamsDisplay').title('Teams Display'),
+              S.documentTypeListItem('textSection').title('Text Block'),
+              S.documentTypeListItem('textSeparator').title('Text Separator'),
               S.documentTypeListItem('timeline').title('Timeline'),
-              S.documentTypeListItem('imageBesideText').title('Image beside Text'),
             ])
       ),
       S.listItem()
@@ -113,7 +116,11 @@ export default () =>
           S.list()
             .title('Fund Sections')
             .items([
+              S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('tableSection').title('Custom Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
+              S.documentTypeListItem('lineChart').title('Line Chart'),
+              S.documentTypeListItem('quoteHeads').title('Quote Heads (Live feed cards)'),
             ])
       ),
       S.divider(),
@@ -136,14 +143,11 @@ export default () =>
           S.list()
             .title('Utilities')
             .items([
-              S.documentTypeListItem('product').title('Product'),
               S.documentTypeListItem('fundItem').title('Fund Item'),
-              S.documentTypeListItem('tabItem').title('Tab Item'),
-              S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),
-              S.documentTypeListItem('awards').title('Awards'),
-              S.documentTypeListItem('lineChart').title('Line Chart'),
-              S.documentTypeListItem('tableSection').title('TableSection'),
+              S.documentTypeListItem('menuItem').title('Menu Item'),
+              S.documentTypeListItem('product').title('Product'),
+              S.documentTypeListItem('tabItem').title('Tab Item'),
             ])
       ),
       S.divider(),
