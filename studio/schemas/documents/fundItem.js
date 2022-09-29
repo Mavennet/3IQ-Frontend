@@ -71,7 +71,7 @@ export default {
     {
       name: 'content',
       type: 'array',
-      title: 'Page sections',
+      title: 'Funds sections',
       description: "Content that will be displayed in the page with the same order",
       of: [
         {
