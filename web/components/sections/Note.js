@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import imageUrlBuilder from '@sanity/image-url'
-import client from '../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { Card, CardContent, CardMedia, Container, Grid } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 import SimpleBlockContent from '../SimpleBlockContent'
 
 const theme = createTheme({
@@ -43,8 +41,7 @@ const theme = createTheme({
 })
 
 function Note(props) {
-  const { name, leftTextBlock, rightTextBlock, currentLanguage } = props
-  console.log(props)
+  const { name, leftTextBlock, rightTextBlock } = prop
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -96,7 +93,7 @@ function Note(props) {
 }
 
 Note.propTypes = {
-  title: PropTypes.object,
+  name: PropTypes.object,
   rightTextBlock: PropTypes.object,
   leftTextBlock: PropTypes.object,
 }

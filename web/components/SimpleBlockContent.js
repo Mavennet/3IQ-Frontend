@@ -23,14 +23,7 @@ function SimpleBlockContent(props) {
           youtube: Youtube
         },
         marks: {
-          internalLink: ({ children, mark }) => (
-            <a style={{ color: "red" }} href={mark.slug.current}>
-              {children}
-            </a>
-          ),
-          link: (props) => {
-            const { children, value } = props
-            console.log(props)
+          link: ({ children, value }) => {
             return (value?.blank ? (
               <a href={value.href} target="_blank" rel="noopener noreferrer">
                 {children}
