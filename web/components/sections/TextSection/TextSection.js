@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
+import { Typography } from '@mui/material'
 import YouTube from 'react-youtube'
 
 function urlFor(source) {
@@ -15,7 +16,7 @@ function urlFor(source) {
 }
 
 function TextSection(props) {
-  const { text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, isGrayBackground } = props
+  const { heading, text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, isGrayBackground } = props
 
   const localeButton = button && button[currentLanguage?.languageTag]
 
@@ -39,6 +40,11 @@ function TextSection(props) {
           <Grid container>
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
               <Box sx={{ pt: 5, pr: videoSrc && { md: 20, sm: 0 }, align: 'left' }}>
+                {heading && (
+                  <Typography component="h2" variant="h4" sx={{color: '#0082e5', fontWeight: 'bold', mb: 6}}>
+                    {heading}
+                  </Typography>
+                )}
                 <div style={{background: isGrayBackground && '#e8e8ea', padding: 30}}>
                   {text && (
                     <Grid className={styles.textSection} container spacing={2}>
@@ -85,6 +91,7 @@ function TextSection(props) {
 }
 
 TextSection.propTypes = {
+  heading: PropTypes.object,
   text: PropTypes.arrayOf(PropTypes.object),
   videoSrc: PropTypes.string,
   button: PropTypes.object,
