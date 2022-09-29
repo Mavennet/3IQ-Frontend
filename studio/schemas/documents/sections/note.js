@@ -1,13 +1,13 @@
 import supportedLanguages from '../../supportedLanguages';
-import { SplitHorizontalIcon } from '@sanity/icons'
+import { ComponentIcon } from '@sanity/icons'
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
   name: 'note',
-  title: 'Note Section',
-  icon: SplitHorizontalIcon,
+  title: 'Compact Notes',
+  icon: ComponentIcon,
   fields: [
     {
       name: 'name',
@@ -35,7 +35,7 @@ export default {
     prepare({ title }) {
       return {
         title,
-        subtitle: 'Note section',
+        subtitle: 'Compact Notes section',
       };
     },
   },

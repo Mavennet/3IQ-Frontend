@@ -27,7 +27,8 @@ export default {
     {
       name: 'videoSrc',
       type: 'string',
-      title: 'Youtube video ID',
+      title: 'YouTube video ID',
+      description: 'Optional display of an YouTube video through its ID'
     },
     {
       name: 'button',
