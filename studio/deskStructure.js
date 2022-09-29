@@ -22,6 +22,7 @@ const hiddenDocTypes = (listItem) => ![
   'keyBenefits',
   'benefitCard',
   'note',
+  'quoteHeads',
   'awards',
   'sideBySideImages',
   'menuItem',
@@ -116,9 +117,10 @@ export default () =>
             .title('Fund Sections')
             .items([
               S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('tableSection').title('Custom Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
-              S.documentTypeListItem('tableSection').title('Custom Table'),
+              S.documentTypeListItem('quoteHeads').title('Quote Heads (Live feed cards)'),
             ])
       ),
       S.divider(),

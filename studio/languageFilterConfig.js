@@ -24,6 +24,7 @@ export default {
     'doubleOptions',
     'mailchimp',
     'note',
+    'quoteHeads',
     'awards',
     'sideBySideImages',
     'keyBenefits',
