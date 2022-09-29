@@ -27,7 +27,7 @@ export default {
                 scheme: ['http', 'https', 'mailto', 'tel']
               })
             },
-            { title: 'Open in new window', type: 'boolean', name: 'blank', }
+            { title: 'Open in new window', type: 'boolean', name: 'blank', initialValue: false, }
             ]
           },
           // { type: 'internalLink' }
