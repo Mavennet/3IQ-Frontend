@@ -22,6 +22,17 @@ function SimpleBlockContent(props) {
           figure: Figure,
           youtube: Youtube
         },
+        marks: {
+          link: ({ children, value }) => {
+            return (value?.blank ? (
+              <a href={value.href} target="_blank" rel="noopener noreferrer">
+                {children}
+              </a>
+            ) : (
+              <a href={value?.href}>{children}</a>
+            ))
+          }
+        }
       }}
     />
   )
