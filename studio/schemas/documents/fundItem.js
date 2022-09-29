@@ -16,6 +16,21 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'fundSections',
+      type: 'array',
+      title: 'Fund sections',
+      description: "Content that will be displayed in the page with the same order",
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {type: 'lineChart'},
+            {type: 'tableSection'}
+          ]
+        }
+      ]
+    },
+    {
       name: 'codeTitle',
       type: 'localeString',
       title: 'Code Title (*)',
@@ -28,12 +43,11 @@ export default {
     },
     {
       name: 'products',
-      title: 'Products (*)',
+      title: 'Products',
       description: 'Select the product(s) that will be displayed in order',
       validation: Rule => [
         Rule.max(4).warning('Are you sure you want more than 4 items?'),
         Rule.unique().error('You have duplicate products'),
-        Rule.min(1).error('Please, select at least 1 product.'),
       ],
       type: 'array',
       of: [
@@ -67,21 +81,6 @@ export default {
       name: 'observation',
       type: 'localeString',
       title: 'Observation'
-    },
-    {
-      name: 'content',
-      type: 'array',
-      title: 'Funds sections',
-      description: "Content that will be displayed in the page with the same order",
-      of: [
-        {
-          type: 'reference',
-          to: [
-            {type: 'lineChart'},
-            {type: 'tableSection'}
-          ]
-        }
-      ]
     },
   ],
   preview: {
