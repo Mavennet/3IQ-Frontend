@@ -47,6 +47,7 @@ export default {
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
+            {type: 'note'},
             {type: 'awards'},
             {type: 'keyBenefits'},
             {type: 'sideBySideImages'},

@@ -30,6 +30,7 @@ import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import awards from './documents/sections/awards'
+import note from './documents/sections/note'
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import keyBenefits from './documents/sections/keyBenefits';
@@ -102,6 +103,7 @@ export default createSchema({
     hero,
     localeCta,
     localeSimplePortableText,
+    note,
     awards,
     sideBySideImages,
     menuItem,
