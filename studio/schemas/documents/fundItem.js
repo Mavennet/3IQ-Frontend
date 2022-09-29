@@ -67,7 +67,22 @@ export default {
       name: 'observation',
       type: 'localeString',
       title: 'Observation'
-    }
+    },
+    {
+      name: 'content',
+      type: 'array',
+      title: 'Page sections',
+      description: "Content that will be displayed in the page with the same order",
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {type: 'lineChart'},
+            {type: 'tableSection'}
+          ]
+        }
+      ]
+    },
   ],
   preview: {
     select: {
