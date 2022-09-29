@@ -12,14 +12,15 @@ export default {
     {
       name: 'title',
       type: 'localeString',
-      title: 'title (*)',
+      title: 'Title (*)',
+      description: "The title will only be visible if you select a background color above.",
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'backgroundColor',
       type: 'string',
       title: 'Background Color',
-      description: "Use this field to input the background color in the same pattern as '#FFFFFF'.",
+      description: "Use this optional field to input the background color in the same pattern as the color '#FFFFFF'. The default color is '#E8E8EAAD'.",
     },
     {
       name: 'portableText',

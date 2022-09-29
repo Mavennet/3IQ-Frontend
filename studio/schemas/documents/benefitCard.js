@@ -1,4 +1,3 @@
-
 import { MdCreditCard } from "react-icons/md";
 import supportedLanguages from '../supportedLanguages';
 
