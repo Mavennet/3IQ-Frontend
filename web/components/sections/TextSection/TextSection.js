@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
+import YouTube from 'react-youtube'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -17,6 +18,12 @@ function TextSection(props) {
   const { text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, isGrayBackground } = props
 
   const localeButton = button && button[currentLanguage?.languageTag]
+
+  const opts = {
+    width: '100%',
+    height: '520',
+    margin: '10px'
+  };
 
   return (
     <Box sx={{
@@ -47,7 +54,7 @@ function TextSection(props) {
               </Box>
             </Grid>
             {videoSrc && (
-              <Grid item md={4} sm={12}>
+              <Grid item md={4} sm={12} xs={12}>
                 <Box
                   sx={{
                     position: { md: 'absolute', xs: 'relative' },
@@ -57,7 +64,7 @@ function TextSection(props) {
                   }}
                   ml={{ md: 5 }}
                 >
-                  <video
+                  {/* <video
                     className={styles.video}
                     autoPlay
                     loop
@@ -65,7 +72,8 @@ function TextSection(props) {
                     controls="controls"
                   >
                     <source src={videoSrc} type="video/mp4" />
-                  </video>
+                  </video> */}
+                  <YouTube videoId={videoSrc} opts={opts} />
                 </Box>
               </Grid>
             )}
