@@ -47,6 +47,8 @@ export default {
     'product',
     'category',
     'imagesContainer',
+    'tableSection',
+    'lineChart',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),

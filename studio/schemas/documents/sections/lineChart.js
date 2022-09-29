@@ -1,10 +1,10 @@
-import { SplitHorizontalIcon } from '@sanity/icons'
+import { ComponentIcon } from '@sanity/icons'
 
 export default {
   type: 'document',
   name: 'lineChart',
   title: 'Line Chart',
-  icon: SplitHorizontalIcon,
+  icon: ComponentIcon,
   fields: [
     {
       name: 'heading',
@@ -44,18 +44,27 @@ export default {
     },
     {
       name: 'endpoint',
-      type: 'string',
-      title: 'Endpoint (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      type: 'url',
+      title: 'API Endpoint (*)',
+      description: "Insert the URL for the API endpoint that will retrieve the data to populate the chart automatically",
+      validation: Rule =>
+        Rule.error('Information required.').required()
+            .uri({
+              allowRelative: false,
+              scheme: ['https', 'http'],
+            }),
     },
   ],
   preview: {
     select: {
-      title: 'heading',
+      heading: 'heading',
+      endpoint: 'endpoint',
+
     },
-    prepare({ heading }) {
+    prepare({ heading, endpoint }) {
       return {
-        heading,
+        title: heading,
+        subtitle: 'Line Chart section - ' + endpoint,
       };
     },
   },
