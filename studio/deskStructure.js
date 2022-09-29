@@ -42,7 +42,9 @@ const hiddenDocTypes = (listItem) => ![
   'tabItem',
   'subscribeBlock',
   'fundsContent',
+  'fundsOverview',
   'fundItem',
+  'fundSidebarItem',
   'product',
   'category',
   'imagesContainer',
@@ -89,6 +91,7 @@ export default () =>
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
+              S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
               S.documentTypeListItem('hero').title('Hero'),
               S.documentTypeListItem('heroDoubleButton').title('Hero with 2 Buttons'),
@@ -144,6 +147,7 @@ export default () =>
             .title('Utilities')
             .items([
               S.documentTypeListItem('fundItem').title('Fund Item'),
+              S.documentTypeListItem('fundSidebarItem').title('Fund Sidebar Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),
               S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('product').title('Product'),

@@ -17,6 +17,7 @@ import location from './documents/location';
 import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
+import fundSidebarItem from './documents/fundSidebarItem';
 import category from './documents/category';
 import imagesContainer from './documents/imagesContainer';
 
@@ -47,6 +48,7 @@ import descriptionsWithButton from './documents/sections/descriptionsWithButton'
 import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
 import fundsContent from './documents/sections/fundsContent';
+import fundsOverview from './documents/sections/fundsOverview';
 import lineChart from './documents/sections/lineChart';
 import tableSection from './documents/sections/tableSection';
 
@@ -128,7 +130,9 @@ export default createSchema({
     subscribeBlock,
     youtube,
     fundsContent,
+    fundsOverview,
     fundItem,
+    fundSidebarItem,
     product,
     category,
     imagesContainer,

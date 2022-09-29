@@ -278,6 +278,19 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all Fund Items
+  const allFundSidebarItem = await client.fetch(
+    groq`
+    *[_type == 'fundSidebarItem'] {
+      _id,
+      _type,
+      _rev,
+      'localeTitle': title,
+      'localeText': text,
+    }
+    `
+  )
+
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 
@@ -294,7 +307,8 @@ export const getServerSideProps = async ({params}) => {
         allTimelines,
         allLocationsDisplays,
         allTabItems,
-        allFundItems
+        allFundItems,
+        allFundSidebarItem,
       } || {},
   }
 }
@@ -319,7 +333,8 @@ const LandingPage = (props) => {
     allTimelines,
     allLocationsDisplays,
     allTabItems,
-    allFundItems
+    allFundItems,
+    allFundSidebarItem,
   } = props
 
   const router = useRouter()
@@ -441,6 +456,7 @@ const LandingPage = (props) => {
             locationsDisplays={allLocationsDisplays}
             tabItems={allTabItems}
             fundItems={allFundItems}
+            fundSidebarItem={allFundSidebarItem}
             sections={formatedContent}
           />
         )}
@@ -466,6 +482,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
+  allFundSidebarItem: PropTypes.any,
   allBenefitCards: PropTypes.any,
 }
 
