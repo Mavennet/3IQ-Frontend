@@ -116,6 +116,7 @@ export default () =>
           S.list()
             .title('Fund Sections')
             .items([
+              S.documentTypeListItem('quoteHeads').title('Quote Heads (Live feed cards)'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
             ])
       ),
@@ -144,7 +145,6 @@ export default () =>
               S.documentTypeListItem('tabItem').title('Tab Item'),
               S.documentTypeListItem('menuItem').title('Menu Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),
-              S.documentTypeListItem('quoteHeads').title('Quote Heads (Live feed cards)'),
               S.documentTypeListItem('awards').title('Awards'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
               S.documentTypeListItem('tableSection').title('TableSection'),
