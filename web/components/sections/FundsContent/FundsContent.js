@@ -147,6 +147,8 @@ function FundsContent(props) {
                 orientation={mediumViewport ? 'horizontal' : 'vertical'}
                 value={value}
                 onChange={handleChange}
+                variant="scrollable"
+                scrollButtons="auto"
                 // aria-label={`${heading} - Tab`}
                 TabIndicatorProps={{ style: { display: 'none' } }}
               >
@@ -335,6 +337,7 @@ function FundsContent(props) {
                     </Grid>
                   </Box>
                 ))}
+                {console.log(fundItems)}
             </Grid>
           ))}
       </Container>
