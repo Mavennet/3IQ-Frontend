@@ -5,7 +5,6 @@ import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TextSeparator.module.css'
 
 function TextSeparator(props) {
-
   const { portableText, title, backgroundColor } = props
 
   return (
