@@ -23,6 +23,20 @@ export default {
       initialValue: true,
     },
     {
+      name: 'headerTransparentLayout',
+      type: 'boolean',
+      title: 'Use layout with transparent header?',
+      description: 'Header will be a white color',
+      initialValue: false,
+    },
+    {
+      name: 'colorfulLayout',
+      type: 'boolean',
+      title: 'Use a colorful layout?',
+      description: 'First cells with orange font and last cells with background blue',
+      initialValue: false,
+    },
+    {
       name: 'embed',
       type: 'localePortableText',
       title: 'HTML Table',
