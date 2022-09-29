@@ -114,7 +114,7 @@ function KeyBenefits(props) {
                   color: '#0082E4',
                   fontWeight: 400,
                   fontFamily: '"DM Serif Display", Sans-serif',
-
+                  wordBreak: 'break-word'
                 }}>
                   {b.heading[currentLanguage?.languageTag]}
                 </Typography>

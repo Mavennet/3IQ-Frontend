@@ -39,8 +39,8 @@ function QuoteHeads({ symbols }) {
       <Container sx={{ mt: 15, mb: 8.6 }}>
         <Grid container spacing={2.5}>
           {symbols.map((s) => {
-            const params = `{"symbol":${s}}`
-            return (<Grid key={`${s}`} item xs={12} md={6} sx={{ '& > div': { maxWidth: '65%', mx: 'auto' } }}>
+            const params = `{"symbol":"${s}"}`
+            return (<Grid key={`${s}`} item xs={12} md={6} sx={{ '& > div': { maxWidth: '70%', mx: 'auto' } }}>
               <div className="quoteyeah" height="228">
                 <div data-qmod-tool="quotehead" data-qmod-params={params} className="qtool"></div>
               </div>
