@@ -5,7 +5,6 @@ import { Box, Container } from '@mui/material'
 import SimpleBlockContent from '../SimpleBlockContent'
 
 function FundsDisclaimer({ heading, portableText }) {
-  console.log(portableText)
   return (
     <Box sx={{ backgroundColor: '#091B3F' }}>
       <Container sx={{ py: 6, px: 3 }}>
