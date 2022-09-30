@@ -5,9 +5,8 @@ import { Grid, Typography, Container } from '@mui/material'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import Chart from "chart.js/auto"
 import mock from './mock.json'
-import { CSVLink } from "react-csv"
+// import { CSVLink } from "react-csv"
 import * as XLSX from 'xlsx'
-import api from '../../../utils/api'
 import SimpleBlockContent from '../../SimpleBlockContent'
 
 function LineChart(props) {
@@ -17,27 +16,45 @@ function LineChart(props) {
     desktopSize = 12,
     mobileSize = 12,
     lineColor = "#0082E5",
-    chartHeight = '120'
+    chartHeight = '120',
+    // endpoint
   } = props
 
-  const [data, setData] = React.useState(null)
+  const [data, setData] = React.useState()
 
   const canvasEl = React.useRef(null)
 
-  const labels = (mock) => {
-    const labels = []
-    mock.map((item) => {
-      return labels.push(item.date)
-    })
-    return (labels)
+  const dataChart = (value) => {
+    const data = []
+    for (const [val] of Object.entries(value)) {
+      data.push(isNaN(val) ? parseFloat(val) : "")
+    }
+    return {data: data}
   }
 
-  const dataChart = (mock) => {
-    const data = []
-    mock.map((item) => {
-      return data.push(item.value)
-    })
-    return (data)
+  const dataSet = (value) => {
+    const labels = []
+    const dataSet = []
+    if (value) {
+      value.map((item) => {
+        labels.push(
+          item.label
+        )
+        dataSet.push({
+          backgroundColor: 'transparent',
+          label: item.label,
+          data: dataChart(item.data).data,
+          fill: true,
+          borderWidth: 2,
+          borderColor: lineColor,
+          lineTension: 0.2,
+          pointBackgroundColor: lineColor,
+          pointRadius: 3
+        })
+        return null
+      })
+    }
+    return {data: dataSet, labels: labels}
   }
 
   function downloadExcel() {
@@ -47,18 +64,13 @@ function LineChart(props) {
     XLSX.writeFile(workbook, "line-chart.xlsx");
   }
 
-  const getChartData = () => {
-    api.get(`/btc_index_etf`)
-      .then(res => {
-        setData(res.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+/*   const getChartData = () => {
+    axios.get(endpoint)
+      .then(response => setData(response.data))
+  } */
 
   React.useEffect(() => {
-    getChartData()
+    // getChartData()
     setData(mock)
   }, [])
 
@@ -67,20 +79,8 @@ function LineChart(props) {
       const ctx = canvasEl.current.getContext("2d")
 
       const data = {
-        labels: labels(mock.data),
-        datasets: [
-          {
-            backgroundColor: 'transparent',
-            label: mock.label,
-            data: dataChart(mock.data),
-            fill: true,
-            borderWidth: 2,
-            borderColor: lineColor,
-            lineTension: 0.2,
-            pointBackgroundColor: lineColor,
-            pointRadius: 3
-          }
-        ]
+        labels: dataSet(mock).labels,
+        datasets: dataSet(mock).data
       }
 
       const config = {
@@ -118,7 +118,7 @@ function LineChart(props) {
               )
             }
             <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
-              <CSVLink
+              {/* <CSVLink
                 data={mock.data}
                 filename={`line-chart.csv`}
                 target="_blank"
@@ -134,7 +134,7 @@ function LineChart(props) {
                 }}
               >
                 CSV
-              </CSVLink>
+              </CSVLink> */}
               <div onClick={() => downloadExcel()}>
                 <RedirectButton
                   title={'Excel'}
@@ -168,6 +168,7 @@ LineChart.propTypes = {
   mobileSize: PropTypes.number,
   lineColor: PropTypes.string,
   chartHeight: PropTypes.string,
+  // endpoint: PropTypes.string,
 }
 
 export default LineChart
