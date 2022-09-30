@@ -11,7 +11,7 @@ export default {
   fields: [
     {
       name: 'name',
-      type: 'localeString',
+      type: 'string',
       title: 'Name (*)',
       description: "The name will only be used for preview.",
     },
