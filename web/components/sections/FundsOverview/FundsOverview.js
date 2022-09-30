@@ -9,7 +9,6 @@ import FundSidebarItem from '../../FundSidebarItem/FundSidebarItem'
 function FundsOverview(props) {
   const {currentLanguage, fundSidebarItem} = props
 
-  console.log(props)
   return (
     <Box>
       <Container sx={{maxWidth: {sm: 'md', lg: 'lg'}}}>
@@ -22,8 +21,8 @@ function FundsOverview(props) {
               fundSidebarItem.map((fundItem, index) => (
                 <FundSidebarItem
                   key={`fundSidebarItem_${index}`}
-                  title={fundItem.localeTitle[currentLanguage.languageTag]}
-                  text={fundItem.localeText[currentLanguage.languageTag]}
+                 {...fundItem}
+                 languageTag={currentLanguage.languageTag}
                 />
               ))}
           </Grid>

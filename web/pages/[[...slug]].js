@@ -287,6 +287,10 @@ export const getServerSideProps = async ({params}) => {
       _rev,
       'localeTitle': title,
       'localeText': text,
+      'localeObservation': observation,
+      mainImage,
+      listImage,
+      listItems
     }
     `
   )
