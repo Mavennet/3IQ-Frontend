@@ -51,6 +51,7 @@ export default {
             {type: 'note'},
             {type: 'quoteHeads'},
             {type: 'awards'},
+            {type: 'fundsDisclaimer'},
             {type: 'keyBenefits'},
             {type: 'sideBySideImages'},
             {type: 'subscribeBlock'},
