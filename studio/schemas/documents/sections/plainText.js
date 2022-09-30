@@ -10,10 +10,10 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'title',
+      name: 'name',
       type: 'localeString',
-      title: 'Title (*)',
-      description: "The title will only be used for preview.",
+      title: 'Name (*)',
+      description: "The name will only be used for preview.",
     },
     {
       name: 'portableText',
@@ -24,7 +24,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `title.${baseLanguage.id}`,
+      title: `name`,
     },
     prepare({ title }) {
       return {
