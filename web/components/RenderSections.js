@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, benefits, teams, timelines, locationsDisplays, tabItems, fundItems, fundSidebarItem} = props
+  const {sections, routes, posts, benefits, teams, timelines, locationsDisplays, tabItems, fundItems} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -155,19 +155,6 @@ function RenderSections(props) {
         }
       }
     }
-
-    if (section.fundSidebarItem) {
-      for (let index = 0; index < section.fundSidebarItem.length; index++) {
-        for (let i = 0; i < fundSidebarItem.length; i++) {
-          const item = fundSidebarItem[i]
-
-          if (item._id === section.fundSidebarItem[index]._ref) {
-            section.fundSidebarItem[index] = item
-            break
-          }
-        }
-      }
-    }
   })
 
   if (!sections) {
@@ -205,7 +192,6 @@ RenderSections.propTypes = {
   tabItems: PropTypes.array,
   fundItems: PropTypes.array,
   benefits: PropTypes.array,
-  fundSidebarItem: PropTypes.array,
 }
 
 export default RenderSections

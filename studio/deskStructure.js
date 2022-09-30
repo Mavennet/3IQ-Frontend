@@ -93,7 +93,6 @@ export default () =>
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
-              S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
               S.documentTypeListItem('hero').title('Hero'),
               S.documentTypeListItem('heroDoubleButton').title('Hero with 2 Buttons'),
@@ -122,6 +121,7 @@ export default () =>
             .title('Fund Sections')
             .items([
               S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('fundsDisclaimer').title('Funds Disclaimer'),
               S.documentTypeListItem('note').title('Compact Notes'),
               S.documentTypeListItem('tableSection').title('Custom Table'),
