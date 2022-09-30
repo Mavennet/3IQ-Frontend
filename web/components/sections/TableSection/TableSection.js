@@ -3,16 +3,33 @@ import PropTypes from 'prop-types'
 import { Grid, Container, Typography } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
-import mock from './mock.json'
+import axios from 'axios'
 
 function TableSection(props) {
-  const { name, embed, isEnableName, colorfulLayout, headerTransparentLayout } = props
+  const {
+    name,
+    embed,
+    isEnableName,
+    colorfulLayout,
+    headerTransparentLayout,
+    endpoint,
+    headers,
+    currentLanguage
+
+  } = props
 
   const [data, setData] = React.useState(null)
 
+  const getTableData = (endpoint) => {
+    axios.get(endpoint)
+      .then(response => setData(response.data))
+  }
+
   React.useEffect(() => {
-    setData(mock)
-  }, [])
+    if (endpoint) {
+      getTableData(endpoint)
+    }
+  }, [endpoint])
 
   return (
     <Container>
@@ -46,17 +63,24 @@ function TableSection(props) {
             <Grid item xs={12}>
               <div className={styles.simpleBlockContent}>
                 <table>
-                  <thead className={headerTransparentLayout && styles.headerTransparent}>
-                    <tr>
-                      <th>Exemplo</th>
-                      <th>Exemplo</th>
-                      <th>Exemplo</th>
-                      <th>Exemplo</th>
-                    </tr>
-                  </thead>
+                  {
+                    headers && (
+                      <thead className={headerTransparentLayout && styles.headerTransparent}>
+                        <tr>
+                          {
+                            headers.map((item) => {
+                              return (
+                                <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
+                              )
+                            })
+                          }
+                        </tr>
+                      </thead>
+                    )
+                  }
                   <tbody className={colorfulLayout && styles.tableColorful}>
                     {
-                      data.body.map((item,i) => {
+                      data.map((item, i) => {
                         const values = Object.values(item)
                         return (
                           <tr key={i}>
@@ -88,6 +112,9 @@ TableSection.propTypes = {
   isEnableName: PropTypes.bool,
   colorfulLayout: PropTypes.bool,
   headerTransparentLayout: PropTypes.bool,
+  endpoint: PropTypes.string,
+  headers: PropTypes.array,
+  currentLanguage: PropTypes.object
 }
 
 export default TableSection
