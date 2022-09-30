@@ -35,6 +35,7 @@ const hiddenDocTypes = (listItem) => ![
   'contactUsForm',
   'locationsDisplay',
   'location',
+  'plainText',
   'textSeparator',
   'headlineWithImages',
   'descriptionsWithButton',
@@ -107,6 +108,7 @@ export default () =>
               S.documentTypeListItem('tabsContent').title('Tabs Content'),
               S.documentTypeListItem('teamsDisplay').title('Teams Display'),
               S.documentTypeListItem('textSection').title('Text Block'),
+              S.documentTypeListItem('plainText').title('Plain Text'),
               S.documentTypeListItem('textSeparator').title('Text Separator'),
               S.documentTypeListItem('timeline').title('Timeline'),
             ])

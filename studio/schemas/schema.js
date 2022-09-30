@@ -42,6 +42,7 @@ import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
+import plainText from './documents/sections/plainText';
 import textSeparator from './documents/sections/textSeparator';
 import headlineWithImages from './documents/sections/headlineWithImages';
 import descriptionsWithButton from './documents/sections/descriptionsWithButton';
@@ -122,6 +123,7 @@ export default createSchema({
     contactUsForm,
     locationsDisplay,
     location,
+    plainText,
     textSeparator,
     headlineWithImages,
     descriptionsWithButton,
