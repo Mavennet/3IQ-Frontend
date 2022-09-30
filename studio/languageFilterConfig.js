@@ -26,6 +26,7 @@ export default {
     'note',
     'quoteHeads',
     'awards',
+    'fundsDisclaimer',
     'sideBySideImages',
     'keyBenefits',
     'benefitCard',
