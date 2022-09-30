@@ -262,7 +262,20 @@ export const getServerSideProps = async ({params}) => {
       'localeTextBetweenButtons': textBetweenButtons,
       'localeContactUsText': contactUsText,
       'localeObservation' : observation,
-      fundSections[]->,
+      fundSections[]-> {
+        ...,
+        fundSidebarItem[]-> {
+          _id,
+      _type,
+      _rev,
+      'localeTitle': title,
+      'localeText': text,
+      'localeObservation': observation,
+      mainImage,
+      listImage,
+      listItems
+        }
+      },
       products[]-> {
         _id,
         _type,
@@ -274,23 +287,6 @@ export const getServerSideProps = async ({params}) => {
         mailtoLink,
         readMoreRoute->,
       },
-    }
-    `
-  )
-
-  // Retrieve all Fund Items
-  const allFundSidebarItem = await client.fetch(
-    groq`
-    *[_type == 'fundSidebarItem'] {
-      _id,
-      _type,
-      _rev,
-      'localeTitle': title,
-      'localeText': text,
-      'localeObservation': observation,
-      mainImage,
-      listImage,
-      listItems
     }
     `
   )
@@ -312,7 +308,6 @@ export const getServerSideProps = async ({params}) => {
         allLocationsDisplays,
         allTabItems,
         allFundItems,
-        allFundSidebarItem,
       } || {},
   }
 }
@@ -338,7 +333,6 @@ const LandingPage = (props) => {
     allLocationsDisplays,
     allTabItems,
     allFundItems,
-    allFundSidebarItem,
   } = props
 
   const router = useRouter()
@@ -460,7 +454,6 @@ const LandingPage = (props) => {
             locationsDisplays={allLocationsDisplays}
             tabItems={allTabItems}
             fundItems={allFundItems}
-            fundSidebarItem={allFundSidebarItem}
             sections={formatedContent}
           />
         )}
@@ -486,7 +479,6 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
-  allFundSidebarItem: PropTypes.any,
   allBenefitCards: PropTypes.any,
 }
 
