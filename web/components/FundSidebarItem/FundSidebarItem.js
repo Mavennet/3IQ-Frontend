@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SimpleBlockContent from '../SimpleBlockContent'
 import styles from './FundSidebarItem.module.css'
-import {Typography, Box, Grid} from '@mui/material'
+import {Typography, Box} from '@mui/material'
 import client from '../../client'
 import imageUrlBuilder from '@sanity/image-url'
 
