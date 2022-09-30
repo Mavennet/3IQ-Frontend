@@ -24,6 +24,7 @@ const hiddenDocTypes = (listItem) => ![
   'note',
   'quoteHeads',
   'awards',
+  'fundsDisclaimer',
   'sideBySideImages',
   'menuItem',
   'newsCard',
@@ -35,6 +36,7 @@ const hiddenDocTypes = (listItem) => ![
   'contactUsForm',
   'locationsDisplay',
   'location',
+  'plainText',
   'textSeparator',
   'headlineWithImages',
   'descriptionsWithButton',
@@ -107,6 +109,7 @@ export default () =>
               S.documentTypeListItem('tabsContent').title('Tabs Content'),
               S.documentTypeListItem('teamsDisplay').title('Teams Display'),
               S.documentTypeListItem('textSection').title('Text Block'),
+              S.documentTypeListItem('plainText').title('Plain Text'),
               S.documentTypeListItem('textSeparator').title('Text Separator'),
               S.documentTypeListItem('timeline').title('Timeline'),
             ])
@@ -119,6 +122,7 @@ export default () =>
             .title('Fund Sections')
             .items([
               S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('fundsDisclaimer').title('Funds Disclaimer'),
               S.documentTypeListItem('note').title('Compact Notes'),
               S.documentTypeListItem('tableSection').title('Custom Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),

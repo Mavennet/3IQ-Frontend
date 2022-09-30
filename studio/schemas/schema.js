@@ -31,6 +31,7 @@ import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import quoteHeads from './documents/sections/quoteHeads';
+import fundsDisclaimer from './documents/sections/fundsDisclaimer';
 import awards from './documents/sections/awards';
 import note from './documents/sections/note';
 import doubleOptions from './documents/sections/doubleOptions';
@@ -42,6 +43,7 @@ import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
+import plainText from './documents/sections/plainText';
 import textSeparator from './documents/sections/textSeparator';
 import headlineWithImages from './documents/sections/headlineWithImages';
 import descriptionsWithButton from './documents/sections/descriptionsWithButton';
@@ -108,6 +110,7 @@ export default createSchema({
     localeSimplePortableText,
     note,
     quoteHeads,
+    fundsDisclaimer,
     awards,
     sideBySideImages,
     menuItem,
@@ -122,6 +125,7 @@ export default createSchema({
     contactUsForm,
     locationsDisplay,
     location,
+    plainText,
     textSeparator,
     headlineWithImages,
     descriptionsWithButton,

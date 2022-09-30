@@ -10,22 +10,50 @@ export default {
   icon: MdInsights,
   fields: [
     {
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'title',
       type: 'localeString',
-      title: 'Title (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Title',
+    },
+    {
+      name: 'mainImage',
+      type: 'figure',
+      title: 'Main image',
     },
     {
         name: 'text',
         type: 'localePortableText',
-        title: 'Text (*)',
-        validation: Rule => Rule.error('Information required.').required(),
+        title: 'Text',
+      },
+      {
+        name: 'listImage',
+        type: 'figure',
+        title: 'List image',
+      },
+      {
+        name: 'listItems',
+        type: 'array',
+        title: 'List Items',
+        of: [{
+          type: 'localeString',
+          title: 'Item'
+        }]
+      },
+      {
+        name: 'observation',
+        type: 'localeString',
+        title: 'Observation'
       },
     
   ],
   preview: {
     select: {
-      title: `title.${baseLanguage.id}`,
+      title: `name`,
     },
     prepare({ title }) {
       return {
