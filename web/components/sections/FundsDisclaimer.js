@@ -46,7 +46,7 @@ function FundsDisclaimer({ heading, portableText }) {
 }
 
 FundsDisclaimer.propTypes = {
-  name: PropTypes.object,
+  heading: PropTypes.object,
   portableText: PropTypes.object,
 }
 
