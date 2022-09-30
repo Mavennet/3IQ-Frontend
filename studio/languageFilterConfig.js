@@ -38,6 +38,7 @@ export default {
     'contactUsForm',
     'locationsDisplay',
     'location',
+    'plainText',
     'textSeparator',
     'headlineWithImages',
     'descriptionsWithButton',
