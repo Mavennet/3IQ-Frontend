@@ -70,15 +70,6 @@ function TextSection(props) {
                   }}
                   ml={{ md: 5 }}
                 >
-                  {/* <video
-                    className={styles.video}
-                    autoPlay
-                    loop
-                    muted
-                    controls="controls"
-                  >
-                    <source src={videoSrc} type="video/mp4" />
-                  </video> */}
                   <YouTube videoId={videoSrc} opts={opts} />
                 </Box>
               </Grid>

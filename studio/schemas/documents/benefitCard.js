@@ -1,13 +1,13 @@
-import { DocumentIcon } from '@sanity/icons'
+import { MdCreditCard } from "react-icons/md";
 import supportedLanguages from '../supportedLanguages';
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   name: 'benefitCard',
-  title: 'Benefit',
+  title: 'Benefit Card',
   type: 'document',
-  icon: DocumentIcon,
+  icon: MdCreditCard,
   fields: [
     {
       name: 'heading',

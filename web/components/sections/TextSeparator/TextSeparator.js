@@ -1,18 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Container, Box } from '@mui/material'
+import { Grid, Container, Box, Typography } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TextSeparator.module.css'
 
 function TextSeparator(props) {
-  const { portableText } = props
+  const { portableText, title, backgroundColor } = props
 
   return (
-    <Box sx={{ backgroundColor: '#E8E8EAAD' }}>
-      <Container maxWidth="md" >
+    <Box sx={{ backgroundColor: !backgroundColor ? '#E8E8EAAD' : backgroundColor }}>
+      <Container maxWidth={!backgroundColor ? "md" : 'lg'} sx={{ py: backgroundColor && '50px' }}>
         <Grid container>
           <Grid item xs={12}>
-            <div className={styles.simpleBlockContent}>
+            {backgroundColor &&
+              <Typography
+                sx={{
+                  position: 'relative',
+                  fontWeight: 600,
+                  fontSize: 34,
+                  lineHeight: 'var(--font-title2-line-height)',
+                  textShadow: '0 1px 1px rgba(0, 0, 0, 0.1)',
+                  margin: 0,
+                  padding: 0,
+                  pt: '1.5rem',
+                  mb: '1.5rem',
+                  color: '#0082E4',
+                }}
+                align={'left'}
+                gutterBottom
+              >
+                {title}
+              </Typography>}
+            <div className={!backgroundColor ? styles.simpleBlockContent : styles.simpleBlockContentProxy}>
               <SimpleBlockContent blocks={portableText} />
             </div>
           </Grid>
@@ -24,6 +43,8 @@ function TextSeparator(props) {
 
 TextSeparator.propTypes = {
   portableText: PropTypes.object,
+  title: PropTypes.string,
+  backgroundColor: PropTypes.string,
 }
 
 export default TextSeparator

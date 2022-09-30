@@ -27,24 +27,27 @@ export default {
     {
       name: 'videoSrc',
       type: 'string',
-      title: 'Youtube video ID',
+      title: 'YouTube video ID',
+      description: 'Optional display of an YouTube video through its ID'
     },
     {
       name: 'button',
       type: 'localeCta',
-      title: 'Main button (*)'
+      title: 'Optional button',
+      description: 'Optional button that will be displayed above the content'
     },
     {
       name: 'isButtonCentralized',
       type: 'boolean',
       title: 'Is the button centralized?',
-      description: 'Enable this option to display the button aligned on the center',
+      description: 'Enable this option to display the optional button aligned on the center',
       initialValue: true,
     },
     {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image',
+      description: 'Optional background image for the section',
       options: {
         hotspot: true,
       },
