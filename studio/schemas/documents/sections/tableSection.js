@@ -48,6 +48,17 @@ export default {
       initialValue: false,
     },
     {
+      name: 'headers',
+      title: 'Headers (*)',
+      description: 'Create each table header item',
+      type: 'array',
+/*       validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(2).max(2).error('Please, select 2 symbols.'),
+      ], */
+      of: [{ type: 'localeString' }],
+    },
+    {
       name: 'endpoint',
       type: 'url',
       title: 'API Endpoint',
