@@ -1,5 +1,5 @@
 import supportedLanguages from '../supportedLanguages';
-import { MdInsights } from "react-icons/md";
+import { MdViewSidebar } from "react-icons/md";
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
@@ -7,7 +7,7 @@ export default {
   type: 'document',
   name: 'fundSidebarItem',
   title: 'Fund Item',
-  icon: MdInsights,
+  icon: MdViewSidebar,
   fields: [
     {
       name: 'name',

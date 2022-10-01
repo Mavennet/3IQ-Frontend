@@ -1,16 +1,28 @@
-import { SplitHorizontalIcon } from '@sanity/icons'
+import { ComponentIcon, } from '@sanity/icons'
 
 export default {
   type: 'document',
   name: 'fundsOverview',
   title: 'Text Block',
-  icon: SplitHorizontalIcon,
+  icon: ComponentIcon,
   fields: [
     {
       name: 'name',
       type: 'string',
       title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'title',
+      type: 'localeString',
+      title: 'Title (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'embed',
+      type: 'localePortableText',
+      title: 'HTML Table',
+      description: 'Create an optional hardcoded HTML table through the EmbedHTML tag',
     },
     {
       name: 'fundSidebarItem',
