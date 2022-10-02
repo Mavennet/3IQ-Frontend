@@ -23,6 +23,7 @@ const hiddenDocTypes = (listItem) => ![
   'benefitCard',
   'note',
   'quoteHeads',
+  'readyToInvest',
   'awards',
   'fundsDisclaimer',
   'sideBySideImages',
@@ -121,6 +122,7 @@ export default () =>
             .title('Fund Sections')
             .items([
               S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('readyToInvest').title('Ready To Invest'),
               S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('fundsDisclaimer').title('Funds Disclaimer'),
               S.documentTypeListItem('note').title('Compact Notes'),

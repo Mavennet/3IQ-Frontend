@@ -50,6 +50,7 @@ export default {
             {type: 'locationsDisplay'},
             {type: 'note'},
             {type: 'quoteHeads'},
+            {type: 'readyToInvest'},
             {type: 'awards'},
             {type: 'fundsDisclaimer'},
             {type: 'keyBenefits'},
