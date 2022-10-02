@@ -1,15 +1,12 @@
 /* eslint-disable no-debugger, no-console */
 import React from 'react'
 import PropTypes from 'prop-types'
-import imageUrlBuilder from '@sanity/image-url'
-import client from '../../../client'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Grid, Container, Box, CssBaseline } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './ReadyToInvest.module.css'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 
-const builder = imageUrlBuilder(client)
 
 const theme = createTheme()
 
@@ -48,11 +45,9 @@ function ReadyToInvest(props) {
 }
 
 ReadyToInvest.propTypes = {
-  _id: PropTypes.string,
   heading: PropTypes.object,
-  currentLanguage: PropTypes.object,
   backgroundColor: PropTypes.string,
-  footerText: PropTypes.object,
+  buttonText: PropTypes.object,
 }
 
 export default ReadyToInvest
