@@ -106,6 +106,7 @@ function NewsletterGrid(props) {
 
   useEffect(() => {
     fetchNewsletters()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
