@@ -52,7 +52,8 @@ const hiddenDocTypes = (listItem) => ![
   'category',
   'imagesContainer',
   'lineChart',
-  'tableSection'
+  'tableSection',
+  'articles'
 ].includes(listItem.getId())
 
 export default () =>
@@ -129,6 +130,7 @@ export default () =>
               S.documentTypeListItem('tableSection').title('Custom Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
+              S.documentTypeListItem('articles').title('Articles'),
               S.documentTypeListItem('quoteHeads').title('Live Feed Cards'),
             ])
       ),

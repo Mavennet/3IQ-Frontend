@@ -55,6 +55,7 @@ export default {
     'imagesContainer',
     'tableSection',
     'lineChart',
+    'articles'
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),

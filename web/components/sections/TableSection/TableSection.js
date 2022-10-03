@@ -50,15 +50,6 @@ function TableSection(props) {
           )
         }
         {
-          embed && (
-            <Grid item xs={12} mb={3}>
-              <div className={styles.simpleBlockContent}>
-                <SimpleBlockContent blocks={embed} />
-              </div>
-            </Grid>
-          )
-        }
-        {
           data && (
             <Grid item xs={12}>
               <div className={styles.simpleBlockContent}>
@@ -97,6 +88,15 @@ function TableSection(props) {
                     }
                   </tbody>
                 </table>
+              </div>
+            </Grid>
+          )
+        }
+        {
+          embed && (
+            <Grid item xs={12} mb={3}>
+              <div className={styles.simpleBlockContent}>
+                <SimpleBlockContent blocks={embed} />
               </div>
             </Grid>
           )

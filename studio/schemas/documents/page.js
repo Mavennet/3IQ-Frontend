@@ -65,7 +65,8 @@ export default {
             {type: 'timeline'},
             {type: 'imageBesideText'},
             {type: 'lineChart'},
-            {type: 'tableSection'}
+            {type: 'tableSection'},
+            {type: 'articles'}
           ]
         }
       ]

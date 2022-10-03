@@ -54,6 +54,7 @@ import fundsContent from './documents/sections/fundsContent';
 import fundsOverview from './documents/sections/fundsOverview';
 import lineChart from './documents/sections/lineChart';
 import tableSection from './documents/sections/tableSection';
+import articles from './documents/sections/articles';
 
 // Object types
 import cta from './objects/cta';
@@ -143,6 +144,7 @@ export default createSchema({
     category,
     imagesContainer,
     lineChart,
-    tableSection
+    tableSection,
+    articles
   ]),
 });

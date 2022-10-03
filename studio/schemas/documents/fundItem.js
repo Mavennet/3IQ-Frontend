@@ -37,7 +37,8 @@ export default {
           to: [
             {type: 'lineChart'},
             {type: 'tableSection'},
-            {type: 'fundsOverview'}
+            {type: 'fundsOverview'},
+            {type: 'articles'}
           ]
         }
       ]
