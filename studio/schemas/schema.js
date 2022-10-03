@@ -32,7 +32,8 @@ import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import quoteHeads from './documents/sections/quoteHeads';
 import fundsDisclaimer from './documents/sections/fundsDisclaimer';
-import awards from './documents/sections/awards';
+import readyToInvest from './documents/sections/readyToInvest'; 
+import awards from './documents/sections/awards'; 
 import note from './documents/sections/note';
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
@@ -111,6 +112,7 @@ export default createSchema({
     note,
     quoteHeads,
     fundsDisclaimer,
+    readyToInvest,
     awards,
     sideBySideImages,
     menuItem,
