@@ -47,7 +47,7 @@ const gridGeneratedHeaderSx = {
 }
 
 function FundsContent(props) {
-  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry } = props
+  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry, allRoutes } = props
   const [value, setValue] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [navFixed, setNavFixed] = useState(false)
@@ -348,6 +348,7 @@ function FundsContent(props) {
                     {fundItem.fundSections && (
                       <RenderSections
                         sections={createSection(fundItem.fundSections)}
+                        routes={allRoutes}
                       />
                     )}
                   </Box>

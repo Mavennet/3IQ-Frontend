@@ -49,14 +49,11 @@ export default {
     },
     {
       name: 'headers',
-      title: 'Headers (*)',
-      description: 'Create each table header item',
+      title: 'Table Heading Cells',
+      description: 'Create each table heading cell to serve as the header of your API Endpoint table. Mandatory if you decide to use an API Endpoint as the data source',
       type: 'array',
-/*       validation: Rule => [
-        Rule.error('Information required.').required(),
-        Rule.min(2).max(2).error('Please, select 2 symbols.'),
-      ], */
       of: [{ type: 'localeString' }],
+      fieldset: 'tableComposition',
     },
     {
       name: 'endpoint',
@@ -74,7 +71,7 @@ export default {
       name: 'embed',
       type: 'localePortableText',
       title: 'HTML Table',
-      description: 'Create an optional hardcoded HTML table through the EmbedHTML tag',
+      description: 'Create an optional hardcoded HTML table through the EmbedHTML tag. Also, through this same field you can add any text to display above either the Endpoint API table or the HTML one',
       fieldset: 'tableComposition',
     },
   ],
