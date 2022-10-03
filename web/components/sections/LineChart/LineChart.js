@@ -72,6 +72,7 @@ function LineChart(props) {
   React.useEffect(() => {
     // getChartData()
     setData(mock)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   React.useEffect(() => {

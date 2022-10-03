@@ -14,7 +14,8 @@ function TableSection(props) {
     headerTransparentLayout,
     endpoint,
     headers,
-    currentLanguage
+    currentLanguage,
+    headerFundPerformance
 
   } = props
 
@@ -50,11 +51,19 @@ function TableSection(props) {
           )
         }
         {
-          embed && (
-            <Grid item xs={12} mb={3}>
-              <div className={styles.simpleBlockContent}>
-                <SimpleBlockContent blocks={embed} />
+          headerFundPerformance && (
+            <Grid item xs={12} mt={5}>
+
+              <div className={styles.fundPerformanceHeader}>
+                <div className={styles.firstCell}></div>
+                <div className={styles.secondCell}>
+                  <p>Total Returns</p>
+                </div>
+                <div className={styles.thirdCell}>
+                  <p>Annualized Returns</p>
+                </div>
               </div>
+
             </Grid>
           )
         }
@@ -101,6 +110,15 @@ function TableSection(props) {
             </Grid>
           )
         }
+        {
+          embed && (
+            <Grid item xs={12} mb={3}>
+              <div className={styles.simpleBlockContent}>
+                <SimpleBlockContent blocks={embed} />
+              </div>
+            </Grid>
+          )
+        }
       </Grid>
     </Container>
   )
@@ -114,7 +132,8 @@ TableSection.propTypes = {
   headerTransparentLayout: PropTypes.bool,
   endpoint: PropTypes.string,
   headers: PropTypes.array,
-  currentLanguage: PropTypes.object
+  currentLanguage: PropTypes.object,
+  headerFundPerformance: PropTypes.bool
 }
 
 export default TableSection

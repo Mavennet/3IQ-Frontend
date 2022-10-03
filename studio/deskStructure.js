@@ -23,6 +23,7 @@ const hiddenDocTypes = (listItem) => ![
   'benefitCard',
   'note',
   'quoteHeads',
+  'readyToInvest',
   'awards',
   'fundsDisclaimer',
   'sideBySideImages',
@@ -51,7 +52,8 @@ const hiddenDocTypes = (listItem) => ![
   'category',
   'imagesContainer',
   'lineChart',
-  'tableSection'
+  'tableSection',
+  'articles'
 ].includes(listItem.getId())
 
 export default () =>
@@ -121,12 +123,14 @@ export default () =>
             .title('Fund Sections')
             .items([
               S.documentTypeListItem('awards').title('Awards'),
+              S.documentTypeListItem('readyToInvest').title('Ready To Invest'),
               S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('fundsDisclaimer').title('Funds Disclaimer'),
               S.documentTypeListItem('note').title('Compact Notes'),
               S.documentTypeListItem('tableSection').title('Custom Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
+              S.documentTypeListItem('articles').title('Articles'),
               S.documentTypeListItem('quoteHeads').title('Live Feed Cards'),
             ])
       ),

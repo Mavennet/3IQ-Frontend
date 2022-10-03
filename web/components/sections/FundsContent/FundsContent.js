@@ -47,7 +47,7 @@ const gridGeneratedHeaderSx = {
 }
 
 function FundsContent(props) {
-  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry } = props
+  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry, allRoutes } = props
   const [value, setValue] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [navFixed, setNavFixed] = useState(false)
@@ -122,9 +122,9 @@ function FundsContent(props) {
   const createSection = (content) => {
     const contentWithDefaultLanguage = []
     content &&
-        content.map((c) =>
-          contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry})
-        )
+      content.map((c) =>
+        contentWithDefaultLanguage.push({ ...c, currentLanguage, currentCountry })
+      )
     return contentWithDefaultLanguage
   }
 
@@ -194,29 +194,31 @@ function FundsContent(props) {
                   {fundItem.localeName[currentLanguage.languageTag]}
                 </Typography>
               </Grid>
-              <Grid item container alignItems="stretch" spacing={2} xs={12}>
-                <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
-                  <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
-                    Product
-                  </Typography>
+              {!fundItem.fundSections && (
+                <Grid item container alignItems="stretch" spacing={2} xs={12}>
+                  <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
+                    <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
+                      Product
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={gridMainHeaderSx} xs={false} md={2}>
+                    <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
+                      {fundItem.localeCodeTitle &&
+                        fundItem.localeCodeTitle[currentLanguage.languageTag]}
+                    </Typography>
+                    <Typography sx={{ color: 'gray', fontSize: '12px' }}>
+                      {fundItem.localeCodeObservation &&
+                        fundItem.localeCodeObservation[currentLanguage.languageTag]}
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={gridMainHeaderSx} xs={false} md={5}>
+                    <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
+                      Highlights
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={gridMainHeaderSx} xs={false} md={2}></Grid>
                 </Grid>
-                <Grid item sx={gridMainHeaderSx} xs={false} md={2}>
-                  <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
-                    {fundItem.localeCodeTitle &&
-                      fundItem.localeCodeTitle[currentLanguage.languageTag]}
-                  </Typography>
-                  <Typography sx={{ color: 'gray', fontSize: '12px' }}>
-                    {fundItem.localeCodeObservation &&
-                      fundItem.localeCodeObservation[currentLanguage.languageTag]}
-                  </Typography>
-                </Grid>
-                <Grid item sx={gridMainHeaderSx} xs={false} md={5}>
-                  <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
-                    Highlights
-                  </Typography>
-                </Grid>
-                <Grid item sx={gridMainHeaderSx} xs={false} md={2}></Grid>
-              </Grid>
+              )}
               {fundItem.products &&
                 fundItem.products.map((product, index) => (
                   <Box sx={{ width: '100%' }} key={`product_${index}`}>
@@ -345,14 +347,15 @@ function FundsContent(props) {
                       </Grid>
                       <Grid item xs={2} />
                     </Grid>
-                    {fundItem.fundSections && (
-                      <RenderSections
-                        sections={createSection(fundItem.fundSections)}
-                      />
-                    )}
                   </Box>
                 ))
               }
+              {fundItem.fundSections && (
+                <RenderSections
+                  sections={createSection(fundItem.fundSections)}
+                  routes={allRoutes}
+                />
+              )}
             </Grid>
           ))}
       </Container>
@@ -364,7 +367,8 @@ FundsContent.propTypes = {
   currentLanguage: PropTypes.object,
   currentCountry: PropTypes.object,
   fundItems: PropTypes.fundItems,
-  isFixedWhenScroll: PropTypes.bool
+  isFixedWhenScroll: PropTypes.bool,
+  allRoutes: PropTypes.object
 }
 
 export default FundsContent

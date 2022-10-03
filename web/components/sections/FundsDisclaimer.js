@@ -18,6 +18,7 @@ function FundsDisclaimer({ heading, portableText }) {
             textShadow: '0 1px 1px rgba(0, 0, 0, 0.1)',
             margin: 0,
             padding: 0,
+            wordBreak: 'break-word',
             pt: '1.5rem',
             mb: '1.5rem',
             py: { xs: 5, md: 2 },

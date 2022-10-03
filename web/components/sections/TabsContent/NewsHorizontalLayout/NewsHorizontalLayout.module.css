@@ -9,6 +9,14 @@
     }
   }
 
+  .noDecoration {
+    text-decoration: none
+  }
+
   .noDecoration:hover {
     text-decoration: none!important;
+  }
+
+  .noDecoration:visited {
+    color: inherit;
   }

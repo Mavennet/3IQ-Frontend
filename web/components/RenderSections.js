@@ -155,6 +155,10 @@ function RenderSections(props) {
         }
       }
     }
+
+    if (section._type === 'fundsContent') {
+      section.allRoutes = routes
+    }
   })
 
   if (!sections) {
