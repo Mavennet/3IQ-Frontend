@@ -266,14 +266,14 @@ export const getServerSideProps = async ({params}) => {
         ...,
         fundSidebarItem[]-> {
           _id,
-      _type,
-      _rev,
-      'localeTitle': title,
-      'localeText': text,
-      'localeObservation': observation,
-      mainImage,
-      listImage,
-      listItems
+          _type,
+          _rev,
+          'localeTitle': title,
+          'localeText': text,
+          'localeObservation': observation,
+          mainImage,
+          listImage,
+          listItems
         }
       },
       products[]-> {
