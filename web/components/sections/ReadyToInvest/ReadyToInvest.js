@@ -11,15 +11,18 @@ import RedirectButton from '../../RedirectButton/RedirectButton'
 const theme = createTheme()
 
 function ReadyToInvest(props) {
-  const { heading, buttonText, backgroundColor } = props
+  const { heading, currentLanguage, ctaButton, backgroundColor } = props
+
+  const localeButton = ctaButton[currentLanguage?.languageTag]
+
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{
-        backgroundColor: backgroundColor && backgroundColor
+        backgroundColor: backgroundColor ? backgroundColor : '#E8E8EA'
       }}>
         <Container sx={{ maxWidth: { sm: 'md', md: 'md', lg: 'lg' } }} >
-          <Grid container pt={6} pb={8}>
+          <Grid container pt={9} pb={8}>
             <CssBaseline />
             {
               heading && (
@@ -30,16 +33,16 @@ function ReadyToInvest(props) {
                 </Grid>
               )
             }
-            <Grid item xs={12} mx={'auto'} display={'inline-flex'} justifyContent={'center'}>
+            <Grid item xs={12} mx={'auto'} sx={{ '& > a': { mx: 'auto', width: { xs: '100%', md: '18%' } } }} display={'inline-flex'} justifyContent={'center'}>
               <RedirectButton
-                title={<SimpleBlockContent blocks={buttonText} />}
+                {...localeButton}
                 reverse={false}
-                sx={{ width: { xs: '100%', md: '18%' }, padding: '8px 25px', fontSize: '20px', fontWeight: '400', }}
+                sx={{ width: '100%', padding: '16px 25px', fontSize: '20px', fontWeight: '400', }}
               ></RedirectButton>
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      </Box >
     </ThemeProvider >
   )
 }
@@ -47,7 +50,8 @@ function ReadyToInvest(props) {
 ReadyToInvest.propTypes = {
   heading: PropTypes.object,
   backgroundColor: PropTypes.string,
-  buttonText: PropTypes.object,
+  ctaButton: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default ReadyToInvest

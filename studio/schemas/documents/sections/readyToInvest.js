@@ -16,9 +16,9 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'buttonText',
-      type: 'localePortableText',
-      title: 'Button text'
+      name: 'ctaButton',
+      type: 'localeCta',
+      title: 'Call to Action Button'
     },
     {
       name: 'backgroundColor',
