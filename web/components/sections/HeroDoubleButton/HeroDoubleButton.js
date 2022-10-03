@@ -44,7 +44,8 @@ function HeroDoubleButton(props) {
             }}
           >
             <Box sx={{p: 5, pl: 1, pr: 1}}>
-              <Box
+              { mainImage && 
+              (<Box
                 component="img"
                 sx={{
                   maxWidth: {md: 800, sm: 500, xs: 350},
@@ -53,6 +54,7 @@ function HeroDoubleButton(props) {
                 alt={mainImage.alt}
                 src={builder.image(mainImage).url()}
               />
+              )}
               <Box sx={{pt: 2, color: '#fff'}}>
                 <Typography
                   component="h1"
