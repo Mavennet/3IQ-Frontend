@@ -41,6 +41,13 @@ export default {
       initialValue: false,
     },
     {
+      name: 'headerFundPerformance',
+      type: 'boolean',
+      title: 'Enable a specific header to Fund Performance Section?',
+      description: 'First cell blank, second cell Total Returns and third cell Annualized Returns',
+      initialValue: false,
+    },
+    {
       name: 'colorfulLayout',
       type: 'boolean',
       title: 'Use a colorful layout?',

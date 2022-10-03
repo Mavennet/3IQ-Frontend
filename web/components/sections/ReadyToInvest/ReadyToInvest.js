@@ -18,7 +18,7 @@ function ReadyToInvest(props) {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{
-        backgroundColor: backgroundColor ? backgroundColor : '#E8E8EA'
+        backgroundColor: backgroundColor && backgroundColor
       }}>
         <Container sx={{ maxWidth: { sm: 'md', md: 'md', lg: 'lg' } }} >
           <Grid container pt={9} pb={8}>

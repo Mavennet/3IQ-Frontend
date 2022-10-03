@@ -14,7 +14,8 @@ function TableSection(props) {
     headerTransparentLayout,
     endpoint,
     headers,
-    currentLanguage
+    currentLanguage,
+    headerFundPerformance
 
   } = props
 
@@ -46,6 +47,23 @@ function TableSection(props) {
                   fontWeight: '900'
                 }}
               >{name}</Typography>
+            </Grid>
+          )
+        }
+        {
+          headerFundPerformance && (
+            <Grid item xs={12} mt={5}>
+
+              <div className={styles.fundPerformanceHeader}>
+                <div className={styles.firstCell}></div>
+                <div className={styles.secondCell}>
+                  <p>Total Returns</p>
+                </div>
+                <div className={styles.thirdCell}>
+                  <p>Annualized Returns</p>
+                </div>
+              </div>
+
             </Grid>
           )
         }
@@ -114,7 +132,8 @@ TableSection.propTypes = {
   headerTransparentLayout: PropTypes.bool,
   endpoint: PropTypes.string,
   headers: PropTypes.array,
-  currentLanguage: PropTypes.object
+  currentLanguage: PropTypes.object,
+  headerFundPerformance: PropTypes.bool
 }
 
 export default TableSection
