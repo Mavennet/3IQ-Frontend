@@ -367,7 +367,8 @@ FundsContent.propTypes = {
   currentLanguage: PropTypes.object,
   currentCountry: PropTypes.object,
   fundItems: PropTypes.fundItems,
-  isFixedWhenScroll: PropTypes.bool
+  isFixedWhenScroll: PropTypes.bool,
+  allRoutes: PropTypes.object
 }
 
 export default FundsContent

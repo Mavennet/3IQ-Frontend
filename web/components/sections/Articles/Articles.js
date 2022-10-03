@@ -37,7 +37,7 @@ function Articles(props) {
 
   const fetchPosts = async () => {
     const postsId = []
-    newsCards.map((item) => { postsId.push(item._ref) })
+    newsCards.map((item) => { return postsId.push(item._ref) })
     await client.fetch(
       groq`
       *[_type == 'newsCard' && _id in $testArrayString] {

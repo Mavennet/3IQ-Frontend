@@ -39,14 +39,12 @@ function RenderSections(props) {
     filteredSectionKeys.forEach((key) => {
       if (section[key] && section.currentLanguage) {
         if (section[key]._type === 'localeCta') {
-          if (routes) [
-            countryLanguageTags.forEach(tag => {
-              const localeRoute = routes.filter((r) => r._id === section[key][tag]?.route?._ref)[0]
-              if (localeRoute) {
-                section[key][tag].route = localeRoute
-              }
-            })
-          ]
+          countryLanguageTags.forEach(tag => {
+            const localeRoute = routes.filter((r) => r._id === section[key][tag]?.route?._ref)[0]
+            if (localeRoute) {
+              section[key][tag].route = localeRoute
+            }
+          })
         } else {
           const localeParameter = section[key][section.currentLanguage.languageTag]
           section[key] = localeParameter
