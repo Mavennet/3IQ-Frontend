@@ -73,7 +73,6 @@ function Articles(props) {
 
   React.useEffect(() => {
     if (newsCards) {
-      console.log(props)
       fetchPosts()
     }
   }, [newsCards])
