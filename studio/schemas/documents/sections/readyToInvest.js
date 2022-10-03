@@ -24,7 +24,7 @@ export default {
       name: 'backgroundColor',
       type: 'string',
       title: 'Background Color',
-      description: "Use this field to input the background color in the same pattern as '#FFFFFF'.",
+      description: "Use this field to input the background color in the same pattern as '#FFFFFF'. The default is #E8E8EA",
     },
   ],
   preview: {
