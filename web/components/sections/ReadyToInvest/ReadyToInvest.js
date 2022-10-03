@@ -15,7 +15,6 @@ function ReadyToInvest(props) {
 
   const localeButton = ctaButton[currentLanguage?.languageTag]
 
-
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{
@@ -33,13 +32,14 @@ function ReadyToInvest(props) {
                 </Grid>
               )
             }
-            <Grid item xs={12} mx={'auto'} sx={{ '& > a': { mx: 'auto', width: { xs: '100%', md: '18%' } } }} display={'inline-flex'} justifyContent={'center'}>
-              <RedirectButton
-                {...localeButton}
-                reverse={false}
-                sx={{ width: '100%', padding: '16px 25px', fontSize: '20px', fontWeight: '400', }}
-              ></RedirectButton>
-            </Grid>
+            {localeButton && (localeButton.route || localeButton.link) &&
+              (<Grid item xs={12} mx={'auto'} sx={{ '& > a': { mx: 'auto', width: { xs: '100%', md: '18%' } } }} display={'inline-flex'} justifyContent={'center'}>
+                <RedirectButton
+                  {...localeButton}
+                  reverse={false}
+                  sx={{ width: '100%', padding: '16px 25px', fontSize: '20px', fontWeight: '400', }}
+                ></RedirectButton>
+              </Grid>)}
           </Grid>
         </Container>
       </Box >
