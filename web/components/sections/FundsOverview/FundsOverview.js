@@ -12,7 +12,7 @@ function FundsOverview(props) {
   const {title, embed, currentLanguage, fundSidebarItem} = props
 
   return (
-    <Box>
+    <Box mt={8}>
       <Container sx={{maxWidth: {sm: 'md', lg: 'lg'}}}>
         <Grid container>
           <Grid item md={8} pr={{xs: 0, md: 10}}>

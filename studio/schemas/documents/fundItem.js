@@ -27,6 +27,13 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'hiddenTitle',
+      type: 'boolean',
+      title: 'Hidden title in Fund Sections?',
+      description: 'The title will be not visible',
+      initialValue: false,
+    },
+    {
       name: 'fundSections',
       type: 'array',
       title: 'Fund sections',
