@@ -31,12 +31,6 @@ export default {
       description: "(1 - 12) Desktop Grid. Default: 12",
     },
     {
-      name: 'lineColor',
-      type: 'string',
-      title: 'Line Color',
-      description: "Default: #0082E5",
-    },
-    {
       name: 'chartHeight',
       type: 'number',
       title: 'Chart Height (px)',
