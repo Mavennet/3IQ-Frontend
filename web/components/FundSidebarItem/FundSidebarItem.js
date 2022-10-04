@@ -13,7 +13,7 @@ function FundSidebarItem(props) {
     props
 
   return (
-    <Box sx={{mb: 10}}>
+    <Box sx={{mb: 5}}>
       {localeTitle && localeTitle[languageTag] && (
         <Typography sx={{fontWeight: 'bold', color: '#0082e5'}} component="h2" variant="h4">
           {localeTitle[languageTag]}
