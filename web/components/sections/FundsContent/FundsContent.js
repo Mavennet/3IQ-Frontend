@@ -188,12 +188,17 @@ function FundsContent(props) {
 
         {fundItems &&
           fundItems.map((fundItem, index) => (
-            <Grid key={`fundItem${index}`} container mt={10} id={`section_${index}`}>
-              <Grid item sx={{ borderBottom: '5px solid #0082e5', color: '#0082e5' }} xs={12}>
-                <Typography component="h2" variant="h4" sx={{ fontWeight: 'bold' }}>
-                  {fundItem.localeName[currentLanguage.languageTag]}
-                </Typography>
-              </Grid>
+            <Grid key={`fundItem${index}`} container mt={10} id={`section_${index}`} spacing={6}>
+              {console.log(fundItem)}
+              {
+                !fundItem.hiddenTitle && (
+                  <Grid item sx={{ borderBottom: '5px solid #0082e5', color: '#0082e5' }} xs={12}>
+                    <Typography component="h2" variant="h4" sx={{ fontWeight: 'bold' }}>
+                      {fundItem.localeName[currentLanguage.languageTag]}
+                    </Typography>
+                  </Grid>
+                )
+              }
               {!fundItem.fundSections && (
                 <Grid item container alignItems="stretch" spacing={2} xs={12}>
                   <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
@@ -368,7 +373,7 @@ FundsContent.propTypes = {
   currentCountry: PropTypes.object,
   fundItems: PropTypes.fundItems,
   isFixedWhenScroll: PropTypes.bool,
-  allRoutes: PropTypes.object
+  allRoutes: PropTypes.object,
 }
 
 export default FundsContent

@@ -1,5 +1,9 @@
 @import '../../../styles/custom-media.css';
 
+.table {
+  font-family: 'Europa';
+}
+
 .simpleBlockContent {
   max-width: 100%;
   overflow-x: auto;
