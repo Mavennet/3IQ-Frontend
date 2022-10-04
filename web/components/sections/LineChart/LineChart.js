@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@mui/material/CssBaseline'
-import { Grid, Typography, Container } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import Chart from "chart.js/auto"
 import { CSVLink } from "react-csv"
