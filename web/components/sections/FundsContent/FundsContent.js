@@ -189,7 +189,7 @@ function FundsContent(props) {
         {fundItems &&
           fundItems.map((fundItem, index) => (
             <Grid key={`fundItem${index}`} container mt={10} id={`section_${index}`} spacing={6}>
-              {
+              {/* {
                 !fundItem.hiddenTitle && (
                   <Grid item sx={{ borderBottom: '5px solid #0082e5', color: '#0082e5' }} xs={12}>
                     <Typography component="h2" variant="h4" sx={{ fontWeight: 'bold' }}>
@@ -197,7 +197,7 @@ function FundsContent(props) {
                     </Typography>
                   </Grid>
                 )
-              }
+              } */}
               {!fundItem.fundSections && (
                 <Grid item container alignItems="stretch" spacing={2} xs={12}>
                   <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
