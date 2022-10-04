@@ -87,70 +87,66 @@ function LineChart(props) {
   }, [data])
 
   return (
-    <Container>
-      <Grid container>
-        <Grid item xs={mobileSize} md={desktopSize} py={6}>
-          <Grid container component="main" sx={{ flexDirection: 'unset' }}>
-            <CssBaseline />
-            {
-              heading && (
-                <Grid item mb={4}>
-                  <Typography
-                    variant="h2"
-                    sx={{
-                      fontSize: 34,
-                      fontFamily: 'Europa',
-                      color: '#0082E5',
-                      fontWeight: '900'
-                    }}
-                  >{heading}</Typography>
-                </Grid>
-              )
-            }
-            {
-              data && (
-                <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
-                  <CSVLink
-                    data={data}
-                    filename={`line-chart.csv`}
-                    target="_blank"
-                    style={{
-                      textAlign: 'center',
-                      background: '#dc6e19',
-                      border: '3px solid #dc6e19',
-                      fontFamily: 'Europa',
-                      color: '#fff',
-                      textDecoration: "none",
-                      padding: '0px 10px',
-                      borderRadius: '4px'
-                    }}
-                  >
-                    CSV
-                  </CSVLink>
-                  <div onClick={() => downloadExcel()}>
-                    <RedirectButton
-                      title={'Excel'}
-                      // route={route}
-                      sx={{ padding: '1px 5px', fontSize: '14px', fontWeight: '300' }}
-                    />
-                  </div>
-                </Grid>
-              )
-            }
-            <Grid item xs={12} mb={4}>
-              <canvas id="myChart" ref={canvasEl} height={chartHeight} />
+    <Grid item xs={mobileSize} md={desktopSize} py={6} sx={{fontFamily: 'Europa'}}>
+      <Grid container component="main" sx={{ flexDirection: 'unset' }}>
+        <CssBaseline />
+        {
+          heading && (
+            <Grid item mb={4}>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: 34,
+                  fontFamily: 'Europa',
+                  color: '#0082E5',
+                  fontWeight: '900'
+                }}
+              >{heading}</Typography>
             </Grid>
-            {
-              description && (
-                <Grid item>
-                  <SimpleBlockContent blocks={description} />
-                </Grid>
-              )
-            }
-          </Grid>
+          )
+        }
+        {
+          data && (
+            <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+              <CSVLink
+                data={data}
+                filename={`line-chart.csv`}
+                target="_blank"
+                style={{
+                  textAlign: 'center',
+                  background: '#dc6e19',
+                  border: '3px solid #dc6e19',
+                  fontFamily: 'Europa',
+                  color: '#fff',
+                  textDecoration: "none",
+                  padding: '0px 10px',
+                  borderRadius: '4px'
+                }}
+              >
+                CSV
+              </CSVLink>
+              <div onClick={() => downloadExcel()}>
+                <RedirectButton
+                  title={'Excel'}
+                  // route={route}
+                  sx={{ padding: '1px 5px', fontSize: '14px', fontWeight: '300' }}
+                />
+              </div>
+            </Grid>
+          )
+        }
+        <Grid item xs={12} mb={4}>
+          <canvas id="myChart" ref={canvasEl} height={chartHeight} />
         </Grid>
+        {
+          description && (
+            <Grid item>
+              <SimpleBlockContent blocks={description} />
+            </Grid>
+          )
+        }
       </Grid>
-    </Container>
+    </Grid>
   )
 }
 
