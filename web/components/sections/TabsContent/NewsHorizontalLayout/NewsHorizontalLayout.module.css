@@ -10,7 +10,8 @@
   }
 
   .noDecoration {
-    text-decoration: none
+    text-decoration: none;
+    color: #000;
   }
 
   .noDecoration:hover {
@@ -18,5 +19,5 @@
   }
 
   .noDecoration:visited {
-    color: inherit;
+    color: #000;
   }
