@@ -8,7 +8,7 @@ const builder = imageUrlBuilder(client)
 function Figure(node) {
   const { alt, caption, imageExternalLink, asset } = node.value
   if (!asset) {
-    return undefined
+    return null
   }
   return (
     <figure className={styles.content}>
