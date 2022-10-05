@@ -93,6 +93,7 @@ export default () =>
           S.list()
             .title('Page Sections')
             .items([
+              S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
@@ -104,7 +105,7 @@ export default () =>
               S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('keyBenefits').title('Key Benefits'),
               S.documentTypeListItem('locationsDisplay').title('Locations Display'),
-              S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
+              S.documentTypeListItem('newsCard').title('News Card'),
               S.documentTypeListItem('readMoreCard').title('Read More Card'),
               S.documentTypeListItem('sideBySideImages').title('Side by Side Images'),
               S.documentTypeListItem('subscribeBlock').title('Subscribe Block'),

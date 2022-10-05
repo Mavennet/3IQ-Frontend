@@ -1,7 +1,4 @@
 import { SplitHorizontalIcon } from '@sanity/icons'
-import supportedLanguages from '../../supportedLanguages';
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -11,8 +8,20 @@ export default {
   fields: [
     {
         name: 'name',
-        type: 'localeString',
-        title: 'Name'
+        type: 'string',
+        title: 'Name (*)',
+        validation: Rule => Rule.error('Information required.').required()
+    },
+    {
+      name: 'selectedPostCategory',
+      title: 'Post Category (*)',
+      description: "Select a category that will be used to filter the lastest News Card that has a post on the category selected, ordered by the post's 'Published at' date. **IMPORTANT: the automated News Card will only be visible if the latest Post for the selected category has a News Card that it is associated with**",
+      type: 'reference',
+      to: [{ type: 'category' }],
+      validation: Rule => [
+        Rule.error('Information required.').required(),
+        Rule.min(1).error('Please, select at least one item.'),
+      ],
     },
     {
       name: 'isInvertedLayout',
@@ -21,24 +30,17 @@ export default {
       description: 'Enable this option to invert the content and show the image on the right side',
       initialValue: false,
     },
-    {
-      name: 'selectedPostCategory',
-      title: 'Post Category',
-      description: 'Select a category that will be used to filter News Cards based on the category of the post referenced at the card only for the Paginated News Cards layout',
-      type: 'reference',
-      to: [{ type: 'category' }],
-    },
   ],
   preview: {
     select: {
-      title: `name.${baseLanguage.id}`,
+      title: `name`,
       isInverted: `isInvertedLayout`,
     },
     prepare({ title, isInverted }) {
       const isInvertedText = isInverted ? ' - Inverted' : ''
       return {
         title,
-        subtitle: 'News Card section' + isInvertedText
+        subtitle: 'Automated News Card section' + isInvertedText
       }
     }
   }

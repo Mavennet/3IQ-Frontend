@@ -34,7 +34,6 @@ export default {
     'post',
     'country',
     'newsCard',
-    'automatedNewsCard',
     'readMoreCard',
     'person',
     'team',
