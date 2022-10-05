@@ -354,12 +354,16 @@ function FundsContent(props) {
                   </Box>
                 ))
               }
-              {fundItem.fundSections && (
-                <RenderSections
-                  sections={createSection(fundItem.fundSections)}
-                  routes={allRoutes}
-                />
-              )}
+              <Grid item xs={12}>
+                <Grid container spacing={{md: 6}}>
+                  {fundItem.fundSections && (
+                    <RenderSections
+                      sections={createSection(fundItem.fundSections)}
+                      routes={allRoutes}
+                    />
+                  )}
+                </Grid>
+              </Grid>
             </Grid>
           ))}
       </Container>
