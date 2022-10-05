@@ -7,9 +7,23 @@ import FundSidebarItem from '../../FundSidebarItem/FundSidebarItem'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './FundsOverview.module.css'
 import { Typography } from '@mui/material'
+import axios from 'axios'
 
 function FundsOverview(props) {
-  const {title, embed, currentLanguage, fundSidebarItem} = props
+  const {title, embed, currentLanguage, fundSidebarItem, endpoint} = props
+
+  const [data, setData] = React.useState(null)
+
+  const getKeyFacts = (endpoint) => {
+    axios.get(endpoint)
+      .then(response => setData(response.data))
+  }
+
+  React.useEffect(() => {
+    if (endpoint) {
+      getKeyFacts(endpoint)
+    }
+  }, [endpoint])
 
   return (
     <Box mt={8}>
@@ -20,6 +34,22 @@ function FundsOverview(props) {
               <Typography component="h2" variant="h4" sx={{fontWeight: 'bold', color: '#0082E5'}}>
                 {title}
               </Typography>
+            )}
+            {data && (
+              <Box className={styles.simpleBlockContent} mt={4}>
+                <table>
+                  <tbody>
+                    {Object.entries(data[0]).map((item, key) => {
+                      return (
+                        <tr key={key}>
+                          <td>{item[0]}</td>
+                          <td>{item[1]}</td>
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              </Box>
             )}
             {embed && (
               <Box className={styles.simpleBlockContent}>
@@ -48,6 +78,7 @@ FundsOverview.propTypes = {
   embed: PropTypes.object,
   currentLanguage: PropTypes.object,
   fundSidebarItem: PropTypes.array,
+  endpoint: PropTypes.string
 }
 
 export default FundsOverview

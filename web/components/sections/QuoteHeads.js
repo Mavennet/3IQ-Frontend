@@ -31,7 +31,6 @@ const theme = createTheme({
 })
 
 function QuoteHeads({ symbols }) {
-  console.log(symbols)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
