@@ -39,6 +39,7 @@ import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
 import keyBenefits from './documents/sections/keyBenefits';
 import newsCard from './documents/sections/newsCard';
+import automatedNewsCard from './documents/sections/automatedNewsCard';
 import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
@@ -119,6 +120,7 @@ export default createSchema({
     menuItem,
     localePortableText,
     newsCard,
+    automatedNewsCard,
     readMoreCard,
     localeBioPortableText,
     team,
