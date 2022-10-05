@@ -37,6 +37,7 @@ export default {
           to: [
             {type: 'post'},
             {type: 'newsCard'},
+            {type: 'automatedNewsCard'},
             {type: 'readMoreCard'},
             {type: 'textSection'},
             {type: 'plainText'},
