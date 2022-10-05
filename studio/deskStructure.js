@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon, ComponentIcon, TiersIcon, DocumentIcon } from '@sanity/icons'
+import { MasterDetailIcon, SplitHorizontalIcon, LinkIcon, UsersIcon, CogIcon, ComponentIcon, TiersIcon, DocumentIcon, BlockquoteIcon } from '@sanity/icons'
 
 const hiddenDocTypes = (listItem) => ![
   'page',
@@ -111,6 +111,7 @@ export default () =>
               S.documentTypeListItem('teamsDisplay').title('Teams Display'),
               S.documentTypeListItem('textSection').title('Text Block'),
               S.documentTypeListItem('plainText').title('Plain Text'),
+              S.documentTypeListItem('post').title('Post'),
               S.documentTypeListItem('textSeparator').title('Text Separator'),
               S.documentTypeListItem('timeline').title('Timeline'),
             ])
@@ -146,7 +147,19 @@ export default () =>
                 .params({ categoryId })
             )
       ),
+      S.listItem()
+        .title('News Cards')
+        .icon(BlockquoteIcon)
+        .child(
+          S.documentTypeList('category').title('Categories')
+            .child(categoryId =>
+              S.documentTypeList('newsCard').title('News Cards')
+                .filter('_type == "newsCard" && $categoryId in post->categories[]._ref')
+                .params({ categoryId })
+            )
+      ),
       S.documentTypeListItem('category').title('Categories'),
+      S.divider(),
       S.listItem()
         .title('Utilities')
         .icon(TiersIcon)
