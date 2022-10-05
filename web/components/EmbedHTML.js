@@ -6,7 +6,7 @@ function EmbedHTML(node) {
   const { html } = node.value
 
   if (!html) {
-    return undefined
+    return null
   }
   return (
     <div dangerouslySetInnerHTML={{ __html: html }} className={styles.embed}/>
