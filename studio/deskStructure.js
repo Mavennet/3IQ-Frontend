@@ -29,6 +29,7 @@ const hiddenDocTypes = (listItem) => ![
   'sideBySideImages',
   'menuItem',
   'newsCard',
+  'automatedNewsCard',
   'readMoreCard',
   'team',
   'teamsDisplay',
@@ -92,6 +93,7 @@ export default () =>
           S.list()
             .title('Page Sections')
             .items([
+              S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
