@@ -45,6 +45,7 @@ export default {
             {type: 'lineChart'},
             {type: 'tableSection'},
             {type: 'fundsOverview'},
+            {type: 'quoteHeads'},
             {type: 'articles'}
           ]
         }

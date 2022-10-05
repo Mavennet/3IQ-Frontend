@@ -25,6 +25,17 @@ export default {
       description: 'Create an optional hardcoded HTML table through the EmbedHTML tag',
     },
     {
+      name: 'endpoint',
+      type: 'url',
+      title: 'API Endpoint',
+      description: "Insert the URL for the API endpoint that will retrieve the data to populate the table automatically",
+      validation: Rule =>
+        Rule.uri({
+              allowRelative: false,
+              scheme: ['https', 'http'],
+            }),
+    },
+    {
       name: 'fundSidebarItem',
       title: 'Fund sidebar items (*)',
       description: 'Select the fund items that will be displayed in order',
