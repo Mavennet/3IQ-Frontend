@@ -136,6 +136,15 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  // Retrieve all benefit cards (used later on to get the cards details in section)
+  const allBenefitCards = await client.fetch(
+    groq`
+    *[_type == 'benefitCard'] {
+      ...,
+    }
+    `
+  )
+
   // Retrieve all teams (used later on to get the our team display blocks)
   const allTeams = await client.fetch(
     groq`
@@ -206,7 +215,7 @@ export const getServerSideProps = async ({params}) => {
       _id,
       _type,
       _rev,
-      'localecontentBlock': contentBlock, 
+      'localecontentBlock': contentBlock,
       'localeButton': button,
       'localeName': name,
       isPaginatedNewsletter,
@@ -253,6 +262,21 @@ export const getServerSideProps = async ({params}) => {
       'localeTextBetweenButtons': textBetweenButtons,
       'localeContactUsText': contactUsText,
       'localeObservation' : observation,
+      'hiddenTitle': hiddenTitle,
+      fundSections[]-> {
+        ...,
+        fundSidebarItem[]-> {
+          _id,
+          _type,
+          _rev,
+          'localeTitle': title,
+          'localeText': text,
+          'localeObservation': observation,
+          mainImage,
+          listImage,
+          listItems
+        }
+      },
       products[]-> {
         _id,
         _type,
@@ -279,11 +303,12 @@ export const getServerSideProps = async ({params}) => {
         currentCountry: country,
         allRoutes,
         allPosts,
+        allBenefitCards,
         allTeams,
         allTimelines,
         allLocationsDisplays,
         allTabItems,
-        allFundItems
+        allFundItems,
       } || {},
   }
 }
@@ -303,11 +328,12 @@ const LandingPage = (props) => {
     currentCountry,
     allRoutes,
     allPosts,
+    allBenefitCards,
     allTeams,
     allTimelines,
     allLocationsDisplays,
     allTabItems,
-    allFundItems
+    allFundItems,
   } = props
 
   const router = useRouter()
@@ -422,6 +448,7 @@ const LandingPage = (props) => {
         {formatedContent && (
           <RenderSections
             routes={allRoutes}
+            benefits={allBenefitCards}
             posts={allPosts}
             teams={allTeams}
             timelines={allTimelines}
@@ -453,6 +480,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
+  allBenefitCards: PropTypes.any,
 }
 
 export default LandingPage

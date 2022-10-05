@@ -1,0 +1,101 @@
+@import '../../../styles/custom-media.css';
+
+.table {
+  font-family: 'Europa';
+}
+
+.simpleBlockContent {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.simpleBlockContent table {
+  width: 100%;
+  font-size: 18px;
+}
+
+.simpleBlockContent thead tr th {
+  background: #E8E8EA;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.headerTransparent tr th {
+  background: transparent!important;
+  text-align: left!important;
+  padding: 20px 15px!important;
+}
+
+.simpleBlockContent tbody tr td{
+  background: #E8E8EA;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.simpleBlockContent tbody tr td:first-child {
+  font-weight: 900;
+}
+
+.tableColorful tr td:first-child{
+  color: #dc6109;
+  font-weight: 400!important;
+}
+
+.tableColorful tr td:last-child{
+  background-color: #0082e5;
+  color: #fff;
+}
+
+.simpleBlockContent .elementor-381 .elementor-element.elementor-element-7313428{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.fundPerformanceHeader {
+  display: flex;
+  text-align: center;
+  color: #fff;
+  font-family: 'Europa';
+  font-weight: 900;
+  font-size: 20px;
+  flex-wrap: wrap;
+  @media (--media-min-large) {
+    flex-wrap: nowrap;
+  }
+}
+
+.firstCell {
+  width: 28.171%;
+  display: none;
+  @media (--media-min-large) {
+    display: block;
+  }
+}
+
+.secondCell {
+  width: 100%;
+  background-color: #091B3F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (--media-min-large) {
+    width: 63.745%;
+  }
+}
+
+.thirdCell {
+  width: 100%;
+  background: #0082E5;
+  padding: 10px;
+  display: flex;
+  @media (--media-min-large) {
+    width: 8.24%;
+  }
+}
+
+.thirdCell p {
+  width: 100%;
+  font-size: 14px;
+}
+

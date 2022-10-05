@@ -9,6 +9,7 @@ import person from './documents/person';
 import country from './documents/country';
 import language from './documents/language';
 import post from './documents/post';
+import benefitCard from './documents/benefitCard'
 import menuItem from './documents/menuItem';
 import team from './documents/team';
 import timelineItem from './documents/timelineItem';
@@ -16,6 +17,7 @@ import location from './documents/location';
 import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
+import fundSidebarItem from './documents/fundSidebarItem';
 import category from './documents/category';
 import imagesContainer from './documents/imagesContainer';
 
@@ -28,22 +30,32 @@ import heroDoubleButton from './documents/sections/heroDoubleButton';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
-import awards from './documents/sections/awards'
+import quoteHeads from './documents/sections/quoteHeads';
+import fundsDisclaimer from './documents/sections/fundsDisclaimer';
+import readyToInvest from './documents/sections/readyToInvest'; 
+import awards from './documents/sections/awards'; 
+import note from './documents/sections/note';
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
+import keyBenefits from './documents/sections/keyBenefits';
 import newsCard from './documents/sections/newsCard';
+import automatedNewsCard from './documents/sections/automatedNewsCard';
 import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
+import plainText from './documents/sections/plainText';
 import textSeparator from './documents/sections/textSeparator';
 import headlineWithImages from './documents/sections/headlineWithImages';
 import descriptionsWithButton from './documents/sections/descriptionsWithButton';
 import tabsContent from './documents/sections/tabsContent';
 import subscribeBlock from './documents/sections/subscribeBlock';
 import fundsContent from './documents/sections/fundsContent';
+import fundsOverview from './documents/sections/fundsOverview';
 import lineChart from './documents/sections/lineChart';
+import tableSection from './documents/sections/tableSection';
+import articles from './documents/sections/articles';
 
 // Object types
 import cta from './objects/cta';
@@ -85,6 +97,8 @@ export default createSchema({
     postPortableText,
     person,
     doubleOptions,
+    keyBenefits,
+    benefitCard,
     post,
     country,
     language,
@@ -97,11 +111,16 @@ export default createSchema({
     hero,
     localeCta,
     localeSimplePortableText,
+    note,
+    quoteHeads,
+    fundsDisclaimer,
+    readyToInvest,
     awards,
     sideBySideImages,
     menuItem,
     localePortableText,
     newsCard,
+    automatedNewsCard,
     readMoreCard,
     localeBioPortableText,
     team,
@@ -111,6 +130,7 @@ export default createSchema({
     contactUsForm,
     locationsDisplay,
     location,
+    plainText,
     textSeparator,
     headlineWithImages,
     descriptionsWithButton,
@@ -119,10 +139,14 @@ export default createSchema({
     subscribeBlock,
     youtube,
     fundsContent,
+    fundsOverview,
     fundItem,
+    fundSidebarItem,
     product,
     category,
     imagesContainer,
-    lineChart
+    lineChart,
+    tableSection,
+    articles
   ]),
 });

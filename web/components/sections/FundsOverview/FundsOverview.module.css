@@ -1,0 +1,21 @@
+.simpleBlockContent {
+  width: 100%;
+}
+
+.simpleBlockContent table {
+  width: 100%;
+  font-size: 15px;
+  border-spacing: 0;
+}
+
+.simpleBlockContent td {
+  padding: 15px;
+}
+
+.simpleBlockContent tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.simpleBlockContent tr:nth-child(even):hover {
+  background-color: #f2f2f2;
+}

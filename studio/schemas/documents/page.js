@@ -37,8 +37,10 @@ export default {
           to: [
             {type: 'post'},
             {type: 'newsCard'},
+            {type: 'automatedNewsCard'},
             {type: 'readMoreCard'},
             {type: 'textSection'},
+            {type: 'plainText'},
             {type: 'textSeparator'},
             {type: 'hero'},
             {type: 'heroWithImage'},
@@ -47,7 +49,12 @@ export default {
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
             {type: 'locationsDisplay'},
-            { type: 'awards' },
+            {type: 'note'},
+            {type: 'quoteHeads'},
+            {type: 'readyToInvest'},
+            {type: 'awards'},
+            {type: 'fundsDisclaimer'},
+            {type: 'keyBenefits'},
             {type: 'sideBySideImages'},
             {type: 'subscribeBlock'},
             {type: 'headlineWithImages'},
@@ -55,9 +62,12 @@ export default {
             {type: 'descriptionsWithButton'},
             {type: 'tabsContent'},
             {type: 'fundsContent'},
+            {type: 'fundsOverview'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
-            {type: 'lineChart'}
+            {type: 'lineChart'},
+            {type: 'tableSection'},
+            {type: 'articles'}
           ]
         }
       ]

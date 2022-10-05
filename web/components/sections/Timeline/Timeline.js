@@ -67,7 +67,7 @@ function renderTimeline(items, langTag) {
             <div className={styles.simpleBlockContent}>
             <SimpleBlockContent blocks={item.localeDescriptionText[langTag]} />
             </div>
-            
+
           </TimelineContent>
         </TimelineItem>
       ))}
@@ -101,7 +101,7 @@ function Timeline(props) {
           pt: 2,
           pb: {xs: 10, md: 0},
         }}
-      >        
+      >
         <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Grid container>
             <Grid style={{color: 'white', fontWeight: 'bold'}} item md={5} xs={12}>
@@ -111,8 +111,8 @@ function Timeline(props) {
               <Box className={styles.leftSimbleBlockContent} pt={{lg: 26, md: 8, xs: 12}} pr={{md: 20, xs: 0}} mb={{md: 0, xs: -6}}>
                 {leftSecondTextBlock && <SimpleBlockContent blocks={leftSecondTextBlock} />}
               </Box>
-              {span && (<span className={styles.span}>{span}</span>)}
-              
+              {span && (<h5 className={styles.span}>{span}</h5>)}
+
             </Grid>
             <Grid item md={7} xs={12} pt={{md: 0, xs: 10}}>
               <Box style={{color: 'white'}}>

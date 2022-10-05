@@ -22,10 +22,11 @@
 
 .fixedLayout {
   @media (--media-min-large) {
-    width: 100%;
+    width: 90%;
     position: fixed;
     top: 15px;
     left: 50%;
     transform: translate(-50%, 0);
+    z-index: 200;
   }
 }
