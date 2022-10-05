@@ -10,7 +10,7 @@ export default {
         name: 'name',
         type: 'string',
         title: 'Name (*)',
-        validation: Rule => Rule.error('Information required.').required()
+        validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'selectedPostCategory',
@@ -18,10 +18,7 @@ export default {
       description: "Select a category that will be used to filter the lastest News Card that has a post on the category selected, ordered by the post's 'Published at' date. **IMPORTANT: the automated News Card will only be visible if the latest Post for the selected category has a News Card that it is associated with**",
       type: 'reference',
       to: [{ type: 'category' }],
-      validation: Rule => [
-        Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select at least one item.'),
-      ],
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'isInvertedLayout',
