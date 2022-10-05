@@ -1,10 +1,10 @@
-import { SplitHorizontalIcon } from '@sanity/icons'
+import { BlockquoteIcon } from '@sanity/icons'
 
 export default {
   type: 'document',
   name: 'newsCard',
   title: 'News Card',
-  icon: SplitHorizontalIcon,
+  icon: BlockquoteIcon,
   fields: [
     {
       name: 'post',
