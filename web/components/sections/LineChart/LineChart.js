@@ -26,26 +26,32 @@ function LineChart(props) {
   const canvasEl = React.useRef(null)
 
   const dataSet = (value) => {
-    const dataSet = []
+    const datasets = []
     let count = 0
     if (value) {
       value.map((item) => {
-        dataSet.push({
+        const { label } = item
+        delete item.label
+        datasets.push({
           backgroundColor: 'transparent',
-          label: item.label,
-          data: item,
+          label: label,
+          data: Object.keys(item).filter((k) => k !== label).sort((a, b) => {
+            a = a.split('/');
+            b = b.split('/');
+            return a[2] - b[2] || a[0] - b[0] || a[1] - b[1];
+          }).reduce((o, sortedKey) => { return { ...o, [sortedKey]: item[sortedKey] } }, {}),
           fill: true,
-          borderWidth: 2,
+          borderWidth: 1,
           borderColor: colors[count],
-          lineTension: 0.2,
+          lineTension: 1,
           pointBackgroundColor: colors[count],
-          pointRadius: 3
+          pointRadius: 1
         })
         count = count + 1
         return null
       })
     }
-    return dataSet
+    return { datasets }
   }
 
   function downloadExcel() {
@@ -69,9 +75,8 @@ function LineChart(props) {
     if (data) {
       const ctx = canvasEl.current.getContext("2d")
 
-      const dataChart = {
-        datasets: dataSet(data)
-      }
+      const dataChart = dataSet(data)
+
 
       const config = {
         type: "line",
