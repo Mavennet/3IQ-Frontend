@@ -9,34 +9,13 @@ import {
   Tab,
   CssBaseline,
 } from '@mui/material'
-import SimpleBlockContent from '../../../SimpleBlockContent'
-import RedirectButton from '../../../RedirectButton/RedirectButton'
-import styles from './TabsLayout.module.css'
-import NewsHorizontalLayout from '../NewsHorizontalLayout/NewsHorizontalLayout'
-import CustomPostCard from '../../custom/CustomPostCard/CustomPostCard'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import NewsletterGrid from '../NewsletterGrid/NewsletterGrid'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
+import TabItem from '../TabItem/TabItem'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
-}
-
-function TabPanel(values) {
-  const { children, value, index, ...other } = values
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <div className={styles.simpleBlockContent}>{children}</div>}
-    </div>
-  )
 }
 
 function TabsLayout(props) {
@@ -166,79 +145,14 @@ function TabsLayout(props) {
                   const translatedButton =
                     item.localeButton && item.localeButton[currentLanguage.languageTag]
                   return (
-                    <TabPanel key={item._id} value={value} index={i}>
-                      {item.localecontentBlock && (
-                        <Grid container ml={0} spacing={2} sx={{ background: '#fff' }} className={styles.simpleBlockContent}>
-                          <SimpleBlockContent
-                            blocks={item.localecontentBlock[currentLanguage.languageTag]}
-                          />
-                        </Grid>
-                      )}
-                      {
-                        item.isPaginatedNewsletter && (
-                          <NewsletterGrid
-                            {...item}
-                            currentLanguage={currentLanguage}
-                            key={item._id}
-                          />
-                        )
-                      }
-                      {item.newsCards?.length > 0 &&
-                        (item.isNewsCardsHorizontalLayout ? (
-                          item.newsCards?.map((item) => {
-                            return (
-                              <NewsHorizontalLayout
-                                {...item}
-                                currentLanguage={currentLanguage}
-                                key={item._id}
-                              />
-                            )
-                          })
-                        ) : (
-                          <Grid container alignItems="stretch">
-                            {item.newsCards?.map((item) => {
-                              return (
-                                <Grid
-                                  item
-                                  key={item._id}
-                                  style={{ display: 'flex' }}
-                                  pt={5}
-                                  md={4}
-                                  pr={2}
-                                >
-                                  <CustomPostCard
-                                    {...item}
-                                    languageTag={currentLanguage.languageTag}
-                                  />
-                                </Grid>
-                              )
-                            })}
-                          </Grid>
-                        ))
-                      }
-                      {translatedButton && (
-                        <Grid container>
-                          <Grid
-                            item
-                            xs={12}
-                            sx={{ display: 'flex', justifyContent: 'center' }}
-                            my={4}
-                          >
-                            <RedirectButton
-                              {...translatedButton}
-                              sx={{
-                                padding: '10px 20px',
-                                fontSize: '16px',
-                                background: '#DC6E19',
-                                borderColor: '#DC6E19',
-                                color: '#fff',
-                                fontWeight: '300',
-                              }}
-                            />
-                          </Grid>
-                        </Grid>
-                      )}
-                    </TabPanel>
+                    <TabItem
+                      {...item}
+                      translatedButton={translatedButton}
+                      currentLanguage={currentLanguage}
+                      key={item._id}
+                      value={value}
+                      index={i}
+                    />
                   )
                 })}
             </Grid>

@@ -60,21 +60,6 @@ export default {
       initialValue: false,
     },
     {
-      name: 'newsCards',
-      type: 'array',
-      title: 'News Cards from Posts',
-      validation: Rule => [
-        Rule.max(3).error('Maximum 3 News Cards from Posts are allowed.'),
-        Rule.unique().error('You have duplicate items.'),
-      ],
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'newsCard' }],
-        },
-      ],
-    },
-    {
       name: 'button',
       type: 'localeCta',
       title: 'Read more posts Button',
@@ -84,14 +69,10 @@ export default {
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
-      newsCardsLength: `newsCards.length`,
-      isPaginatedNewsletter: `isPaginatedNewsletter`,
     },
-    prepare({ name, newsCardsLength, isPaginatedNewsletter }) {
-      const subtitleText = isPaginatedNewsletter ? 'Paginated News' : (newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included')
+    prepare({ name }) {
       return {
         title: `${name}`,
-        subtitle: subtitleText,
       }
     },
   }
