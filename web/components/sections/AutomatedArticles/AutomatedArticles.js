@@ -38,47 +38,49 @@ function AutomatedArticles(props) {
   const fetchCategory = async () => {
     await client
       .fetch(
-        groq`*[_type == 'post' && $categoryId in categories[]._ref] | order(dateTime(publishedAt) desc) {
-      _id,
-      _type,
-      publishedAt,
-    }[0]`,
+        groq`*[_type == 'post' && !(_id in path('drafts.**')) && $categoryId in categories[]._ref] | order(dateTime(publishedAt) desc) {
+          _id,
+          _type,
+          publishedAt,
+        }[0..2]`,
         { categoryId: selectedPostCategory._ref }
       )
       .then((response) => {
+        const postsId = []
+        response.map((item) => { return postsId.push(item._id) })
         const fetchArticles = async () => {
           await client
             .fetch(
               groq`
-            *[_type == 'newsCard' && $latestPostId == post._ref] {
-            _id,
-            _type,
-            _rev,
-            'localeButtonText': buttonText,
-            'localeShortDescription': shortDescription,
-            'localeSmallCardText': smallCardText,
-            route->,
-            post-> {
-              _id,
-              _type,
-              mainImage,
-              'localeHeading': heading,
-              publishedAt,
-              categories[]-> {
+              *[_type == 'newsCard' && !(_id in path('drafts.**')) && post._ref in $postsIds] {
                 _id,
                 _type,
-                'localeName': name,
-              },
-              author-> {
-                _id,
-                _type,
-                name,
-                email,
-                profilePhoto,
-              },
-            },
-          }[0..2]`,
-              { latestPostId: response._id }
+                _rev,
+                'localeButtonText': buttonText,
+                'localeShortDescription': shortDescription,
+                'localeSmallCardText': smallCardText,
+                route->,
+                post-> {
+                  _id,
+                  _type,
+                  mainImage,
+                  'localeHeading': heading,
+                  publishedAt,
+                  categories[]-> {
+                    _id,
+                    _type,
+                    'localeName': name,
+                  },
+                  author-> {
+                    _id,
+                    _type,
+                    name,
+                    email,
+                    profilePhoto,
+                  },
+                },
+              }[0..2]`,
+              { postsIds: postsId }
             )
             .then((res) => {
               setArticles(res)
@@ -113,7 +115,7 @@ function AutomatedArticles(props) {
           }
           {
             localeButton && (localeButton.route || localeButton.link) && (
-              <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center'}} mt={3}>
+              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }} mt={3}>
                 <RedirectButton
                   {...localeButton}
                   sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#dc6e19', borderColor: '#dc6e19', color: '#fff' }}
