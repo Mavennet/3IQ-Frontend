@@ -30,10 +30,6 @@ export default {
   preview: {
     select: {
       title: `title.${baseLanguage.id}`,
-      // firstBenefitHeading: `benefit.0.heading`,
-      // secondBenefitHeading: `benefit.1.heading`,
-      // thirdBenefitHeading: `benefit.2.heading`,
-      // fourthBenefitHeading: `benefit.3.heading`,
     },
     prepare({ title = 'No title' }) {
       return {
