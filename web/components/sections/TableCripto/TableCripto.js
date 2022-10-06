@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Typography, Box } from '@mui/material'
 import styles from './TableCripto.module.css'
+import SimpleBlockContent from '../../SimpleBlockContent'
 import axios from 'axios'
 
 function TableCripto(props) {
   const {
     heading,
+    description,
     endpoint,
     headers,
     currentLanguage,
@@ -94,12 +96,20 @@ function TableCripto(props) {
           </Grid>
         )
       }
+      {
+        description && (
+          <Grid item xs={12} mt={2}>
+            <SimpleBlockContent blocks={description} />
+          </Grid>
+        )
+      }
     </Grid>
   )
 }
 
 TableCripto.propTypes = {
   heading: PropTypes.string,
+  description: PropTypes.string,
   endpoint: PropTypes.string,
   headers: PropTypes.array,
   currentLanguage: PropTypes.object
