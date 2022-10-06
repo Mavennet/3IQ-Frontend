@@ -1,4 +1,5 @@
 export {default as Hero} from './Hero/Hero'
+export {default as AnimatedHero} from './AnimatedHero/AnimatedHero'
 export {default as HeroFirstVariation} from './HeroFirstVariation/HeroFirstVariation'
 export {default as HeroDoubleButton} from './HeroDoubleButton/HeroDoubleButton'
 export {default as HeroWithImage} from './HeroWithImage'
