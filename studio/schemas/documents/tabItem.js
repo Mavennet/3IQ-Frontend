@@ -46,12 +46,11 @@ export default {
     },
     {
       name: 'selectedPostCategory',
-      title: 'Post Category (*)',
+      title: 'Post Category',
       description: 'Select a category that will be used to filter News Cards based on the category of the post referenced at the card only for the Paginated News Cards layout',
       type: 'reference',
       to: [{ type: 'category' }],
       fieldset: 'paginatedLayout',
-      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'isNewsCardsHorizontalLayout',
@@ -70,14 +69,10 @@ export default {
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
-      newsCardsLength: `newsCards.length`,
-      isPaginatedNewsletter: `isPaginatedNewsletter`,
     },
-    prepare({ name, newsCardsLength, isPaginatedNewsletter }) {
-      const subtitleText = isPaginatedNewsletter ? 'Paginated News' : (newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included')
+    prepare({ name }) {
       return {
         title: `${name}`,
-        subtitle: subtitleText,
       }
     },
   }
