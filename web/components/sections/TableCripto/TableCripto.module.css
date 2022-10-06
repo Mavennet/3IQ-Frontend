@@ -1,0 +1,47 @@
+@import '../../../styles/custom-media.css';
+
+.table {
+  font-family: 'Europa';
+}
+
+.simpleBlockContent {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.simpleBlockContent table {
+  width: 100%;
+  font-size: 18px;
+}
+
+.simpleBlockContent thead tr th {
+  background: transparent;
+  padding: 20px 15px;
+  text-align: center;
+  color: #0082E5;
+  font-size: 20px;
+  @media (--media-min-large) {
+    font-size: 30px;
+  }
+}
+
+.simpleBlockContent tbody tr td{
+  background: #E8E8EA;
+  padding: 20px 15px;
+  text-align: center;
+}
+
+.simpleBlockContent tbody tr td:first-child {
+  background-color: #091b3f;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  color: #fff;
+}
+
+.criptoInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
