@@ -54,6 +54,7 @@ const hiddenDocTypes = (listItem) => ![
   'imagesContainer',
   'lineChart',
   'tableSection',
+  'tableCripto',
   'articles'
 ].includes(listItem.getId())
 
@@ -131,6 +132,7 @@ export default () =>
               S.documentTypeListItem('fundsDisclaimer').title('Funds Disclaimer'),
               S.documentTypeListItem('note').title('Compact Notes'),
               S.documentTypeListItem('tableSection').title('Custom Table'),
+              S.documentTypeListItem('tableCripto').title('Cripto Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
               S.documentTypeListItem('articles').title('Articles'),

@@ -55,6 +55,7 @@ export default {
     'category',
     'imagesContainer',
     'tableSection',
+    'tableCripto',
     'lineChart',
     'articles'
   ],

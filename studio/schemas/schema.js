@@ -32,8 +32,8 @@ import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import quoteHeads from './documents/sections/quoteHeads';
 import fundsDisclaimer from './documents/sections/fundsDisclaimer';
-import readyToInvest from './documents/sections/readyToInvest'; 
-import awards from './documents/sections/awards'; 
+import readyToInvest from './documents/sections/readyToInvest';
+import awards from './documents/sections/awards';
 import note from './documents/sections/note';
 import doubleOptions from './documents/sections/doubleOptions';
 import sideBySideImages from './documents/sections/sideBySideImages';
@@ -55,6 +55,7 @@ import fundsContent from './documents/sections/fundsContent';
 import fundsOverview from './documents/sections/fundsOverview';
 import lineChart from './documents/sections/lineChart';
 import tableSection from './documents/sections/tableSection';
+import tableCripto from './documents/sections/tableCripto';
 import articles from './documents/sections/articles';
 
 // Object types
@@ -147,6 +148,7 @@ export default createSchema({
     imagesContainer,
     lineChart,
     tableSection,
+    tableCripto,
     articles
   ]),
 });

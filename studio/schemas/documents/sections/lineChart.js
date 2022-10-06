@@ -15,8 +15,7 @@ export default {
     {
       name: 'heading',
       type: 'localeString',
-      title: 'Heading (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Heading',
     },
     {
       name: 'description',
