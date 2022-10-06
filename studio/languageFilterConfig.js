@@ -47,6 +47,7 @@ export default {
     'tabItem',
     'subscribeBlock',
     'fundsContent',
+    'tabsContent',
     'fundsOverview',
     'fundItem',
     'fundSidebarItem',
@@ -54,6 +55,7 @@ export default {
     'category',
     'imagesContainer',
     'tableSection',
+    'tableCripto',
     'lineChart',
     'articles'
   ],

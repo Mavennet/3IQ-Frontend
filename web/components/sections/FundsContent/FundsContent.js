@@ -188,7 +188,7 @@ function FundsContent(props) {
 
         {fundItems &&
           fundItems.map((fundItem, index) => (
-            <Grid key={`fundItem${index}`} container mt={10} id={`section_${index}`} spacing={6}>
+            <Grid key={`fundItem${index}`} container mt={4} id={`section_${index}`} spacing={6}>
               {
                 !fundItem.hiddenTitle && (
                   <Grid item sx={{ borderBottom: '5px solid #0082e5', color: '#0082e5' }} xs={12}>

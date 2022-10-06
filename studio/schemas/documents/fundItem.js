@@ -44,6 +44,7 @@ export default {
           to: [
             {type: 'lineChart'},
             {type: 'tableSection'},
+            {type: 'tableCripto'},
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
             {type: 'articles'}

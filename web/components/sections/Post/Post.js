@@ -42,7 +42,7 @@ function Post(props) {
     }
   }, [currentLanguage, publishedAt])
 
-  const shareHistoryText = currentCountry.shareThisStoryText[currentLanguage.languageTag]
+  const shareHistoryText = currentCountry.shareThisStoryText && currentCountry.shareThisStoryText[currentLanguage.languageTag]
 
   return (
     <ThemeProvider theme={theme}>

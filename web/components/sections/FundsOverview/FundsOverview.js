@@ -29,7 +29,7 @@ function FundsOverview(props) {
     <Box mt={8}>
       <Container sx={{maxWidth: {sm: 'md', lg: 'lg'}}}>
         <Grid container>
-          <Grid item md={8} pr={{xs: 0, md: 10}}>
+          <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: 10}} mb={{xs: 6}}>
             {title && (
               <Typography component="h2" variant="h4" sx={{fontWeight: 'bold', color: '#0082E5'}}>
                 {title}

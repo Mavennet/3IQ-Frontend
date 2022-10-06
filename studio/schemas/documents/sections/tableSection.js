@@ -27,11 +27,9 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'isEnableName',
-      type: 'boolean',
-      title: 'Is the table name visible?',
-      description: 'Enable this if you want to display the table name above the table content',
-      initialValue: true,
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading',
     },
     {
       name: 'headerTransparentLayout',

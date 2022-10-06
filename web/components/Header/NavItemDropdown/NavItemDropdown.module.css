@@ -69,9 +69,10 @@
 }
 
 .subMenu ul {
-  width: 130px;
+  min-width: 130px;
+  max-width: 240px;
   background: #F9F9F9;
-  padding: 0;
+  padding: 0px 5px;
   border-top: 3px solid var(--color-dark-orange);
 }
 
