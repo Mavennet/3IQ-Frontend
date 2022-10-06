@@ -40,6 +40,7 @@ import sideBySideImages from './documents/sections/sideBySideImages';
 import keyBenefits from './documents/sections/keyBenefits';
 import newsCard from './documents/sections/newsCard';
 import automatedNewsCard from './documents/sections/automatedNewsCard';
+import automatedArticles from './documents/sections/automatedArticles';
 import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
@@ -122,6 +123,7 @@ export default createSchema({
     localePortableText,
     newsCard,
     automatedNewsCard,
+    automatedArticles,
     readMoreCard,
     localeBioPortableText,
     team,

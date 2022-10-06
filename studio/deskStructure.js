@@ -30,6 +30,7 @@ const hiddenDocTypes = (listItem) => ![
   'menuItem',
   'newsCard',
   'automatedNewsCard',
+  'automatedArticles',
   'readMoreCard',
   'team',
   'teamsDisplay',
@@ -135,6 +136,7 @@ export default () =>
               S.documentTypeListItem('tableCripto').title('Cripto Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
+              S.documentTypeListItem('automatedArticles').title('Automated Articles'),
               S.documentTypeListItem('articles').title('Articles'),
               S.documentTypeListItem('quoteHeads').title('Live Feed Cards'),
             ])
