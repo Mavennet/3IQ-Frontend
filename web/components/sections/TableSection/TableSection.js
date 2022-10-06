@@ -7,16 +7,14 @@ import axios from 'axios'
 
 function TableSection(props) {
   const {
-    name,
+    heading,
     embed,
-    isEnableName,
     colorfulLayout,
     headerTransparentLayout,
     endpoint,
     headers,
     currentLanguage,
     headerFundPerformance
-
   } = props
 
   const [data, setData] = React.useState(null)
@@ -35,7 +33,7 @@ function TableSection(props) {
   return (
     <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
       {
-        isEnableName && (
+        heading && (
           <Grid item xs={12} mb={4}>
             <Typography
               variant="h2"
@@ -45,7 +43,7 @@ function TableSection(props) {
                 color: '#0082E5',
                 fontWeight: '900'
               }}
-            >{name}</Typography>
+            >{heading}</Typography>
           </Grid>
         )
       }
@@ -123,9 +121,8 @@ function TableSection(props) {
 }
 
 TableSection.propTypes = {
-  name: PropTypes.string,
+  heading: PropTypes.string,
   embed: PropTypes.object,
-  isEnableName: PropTypes.bool,
   colorfulLayout: PropTypes.bool,
   headerTransparentLayout: PropTypes.bool,
   endpoint: PropTypes.string,
