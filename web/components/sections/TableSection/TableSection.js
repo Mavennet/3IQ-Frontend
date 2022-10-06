@@ -36,7 +36,7 @@ function TableSection(props) {
     <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
       {
         isEnableName && (
-          <Grid item xs={12}>
+          <Grid item xs={12} mb={4}>
             <Typography
               variant="h2"
               sx={{

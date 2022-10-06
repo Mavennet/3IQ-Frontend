@@ -22,7 +22,7 @@ export default {
   fields: [
     {
       name: 'name',
-      type: 'string',
+      type: 'localeString',
       title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
