@@ -44,6 +44,7 @@ export default {
             {type: 'textSeparator'},
             {type: 'hero'},
             {type: 'heroWithImage'},
+            {type: 'animatedHero'},
             {type: 'heroFirstVariation'},
             {type: 'heroDoubleButton'},
             {type: 'teamsDisplay'},
