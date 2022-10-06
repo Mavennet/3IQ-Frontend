@@ -46,11 +46,12 @@ export default {
     },
     {
       name: 'selectedPostCategory',
-      title: 'Post Category',
+      title: 'Post Category (*)',
       description: 'Select a category that will be used to filter News Cards based on the category of the post referenced at the card only for the Paginated News Cards layout',
       type: 'reference',
       to: [{ type: 'category' }],
       fieldset: 'paginatedLayout',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'isNewsCardsHorizontalLayout',
@@ -58,21 +59,6 @@ export default {
       title: 'News Cards with Horizontal layout?',
       description: 'Enable this option to display the selected News Cards with horizontal layout.',
       initialValue: false,
-    },
-    {
-      name: 'newsCards',
-      type: 'array',
-      title: 'News Cards from Posts',
-      validation: Rule => [
-        Rule.max(3).error('Maximum 3 News Cards from Posts are allowed.'),
-        Rule.unique().error('You have duplicate items.'),
-      ],
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'newsCard' }],
-        },
-      ],
     },
     {
       name: 'button',
