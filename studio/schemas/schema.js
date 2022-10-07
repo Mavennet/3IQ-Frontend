@@ -81,6 +81,7 @@ import localeCta from './objects/locale/localeCta'
 import localeSimplePortableText from './objects/locale/localeSimplePortableText'
 import localePortableText from './objects/locale/localePortableText'
 import localeBioPortableText from './objects/locale/localeBioPortableText'
+import localeFigure from './objects/locale/localeFigure'
 
 export default createSchema({
   name: 'default',
@@ -157,6 +158,7 @@ export default createSchema({
     lineChart,
     tableSection,
     tableCripto,
-    articles
+    articles,
+    localeFigure,
   ]),
 });

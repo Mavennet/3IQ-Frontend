@@ -22,7 +22,7 @@ export default {
     },
     {
       name: 'mainImage',
-      type: 'figure',
+      type: 'localeFigure',
       title: 'Main image (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },

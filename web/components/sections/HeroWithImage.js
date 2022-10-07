@@ -23,6 +23,7 @@ function HeroWithImage(props) {
   const {mainImage, heading, backgroundImage, description, button, currentLanguage } = props
 
   const localeButton = button[currentLanguage?.languageTag]
+  const localeMainImage = mainImage[currentLanguage?.languageTag]
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,8 +47,8 @@ function HeroWithImage(props) {
               sx={{
                 maxWidth: {md: 400, xs: 300},
               }}
-              alt={mainImage.alt}
-              src={builder.image(mainImage).url()}
+              alt={localeMainImage.alt}
+              src={builder.image(localeMainImage).url()}
             />
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
@@ -74,12 +75,7 @@ function HeroWithImage(props) {
 }
 
 HeroWithImage.propTypes = {
-  mainImage: PropTypes.shape({
-    alt: PropTypes.string,
-    asset: PropTypes.shape({
-      _ref: PropTypes.string,
-    }),
-  }),
+  mainImage: PropTypes.object,
   heading: PropTypes.object,
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
