@@ -34,7 +34,7 @@ function AnimatedHero(props) {
       }
     })
     setLocalePhrases(phrases)
-  }, [])
+  }, [currentLanguage])
 
   return (
     <ThemeProvider theme={theme}>
