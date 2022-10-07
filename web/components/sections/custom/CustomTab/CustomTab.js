@@ -1,14 +1,10 @@
 import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
 import React, {useState} from 'react'
 import Box from '@mui/material/Box'
-import SimpleBlockContent from '../../../SimpleBlockContent'
-import styles from './CustomTab.module.css'
-import CustomPostCard from '../CustomPostCard/CustomPostCard'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
-import RedirectButton from '../../../RedirectButton/RedirectButton'
 import PropTypes from 'prop-types'
+import CustomTabItem from '../CustomTabItem/CustomTabItem'
 
 function TabPanel(props) {
   const {children, value, index, ...other} = props
@@ -31,7 +27,7 @@ function TabPanel(props) {
 }
 
 export default function CustomTab(props) {
-  const {items, languageTag} = props
+  const {items, currentLanguage} = props
   const [value, setValue] = useState(0)
 
   const handleTabChange = (event, newValue) => {
@@ -67,49 +63,17 @@ export default function CustomTab(props) {
                 textAlign: 'left',
               }}
               disableRipple
-              label={item.localeName[languageTag]}
+              label={item.localeName[currentLanguage.languageTag]}
             />
           ))}
         </Tabs>
       </Box>
       {items.map((item, index) => (
         <TabPanel key={`tabPanel_${index}`} style={{border: '2px solid #dc6e19'}} value={value} index={index}>
-          {item.localecontentBlock &&
-            item.localecontentBlock[languageTag].map((section, index) => (
-              <div key={`blockContent_${index}`} className={styles.simpleBlockContent}>
-                <SimpleBlockContent blocks={section} />
-              </div>
-            ))}
-          <Grid container alignItems="stretch">
-            {item.newsCards &&
-              item.newsCards.map((newsCard, index) => (
-                <Grid item key={`newsCard_${index}`} style={{display: 'flex'}} pt={5} md={4} pr={2}>
-                  <CustomPostCard {...newsCard} languageTag={languageTag} />
-                </Grid>
-              ))}
-          </Grid>
-          <Grid
-            py={5}
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-          >
-            {
-              item.localeButton && item.localeButton[languageTag] && (
-                <RedirectButton
-                  {...item.localeButton[languageTag]}
-                  sx={{
-                    fontWeight: 'normal',
-                    fontSize: '18px',
-                    textTransform: 'none',
-                    padding: '10px 30px',
-                  }}
-                ></RedirectButton>
-              )
-            }
-          </Grid>
+          <CustomTabItem
+            {...item}
+            currentLanguage={currentLanguage}
+          />
         </TabPanel>
       ))}
     </Box>
@@ -118,7 +82,7 @@ export default function CustomTab(props) {
 
 CustomTab.propTypes = {
     items: PropTypes.object,
-    languageTag: PropTypes.string
+    currentLanguage: PropTypes.oject
 }
 
 TabPanel.propTypes = {
