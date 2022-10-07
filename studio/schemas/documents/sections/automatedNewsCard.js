@@ -1,4 +1,7 @@
 import { SplitHorizontalIcon } from '@sanity/icons'
+import supportedLanguages from '../../supportedLanguages';
+
+const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -32,11 +35,12 @@ export default {
     select: {
       title: `name`,
       isInverted: `isInvertedLayout`,
+      selectedPostCategoryName: `selectedPostCategory.name.${baseLanguage.id}`,
     },
-    prepare({ title, isInverted }) {
+    prepare({ title = '', isInverted, selectedPostCategoryName = '' }) {
       const isInvertedText = isInverted ? ' - Inverted' : ''
       return {
-        title,
+        title: title + (selectedPostCategoryName ? ' (' + selectedPostCategoryName + ')' : ''),
         subtitle: 'Automated News Card section' + isInvertedText
       }
     }
