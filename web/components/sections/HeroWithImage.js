@@ -42,14 +42,16 @@ function HeroWithImage(props) {
       >
         <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Box sx={{p: 5, pl: 1, pr: 1}}>
-            <Box
-              component="img"
-              sx={{
-                maxWidth: {md: 400, xs: 300},
-              }}
-              alt={localeMainImage.alt}
-              src={builder.image(localeMainImage).url()}
-            />
+            {localeMainImage && (
+              <Box
+                component="img"
+                sx={{
+                  maxWidth: {md: 400, xs: 300},
+                }}
+                alt={localeMainImage.alt}
+                src={builder.image(localeMainImage).url()}
+              />
+            )}
             <Box sx={{pt: 5, pr: {md: 30, sm: 10}, color: '#fff', align: 'left'}}>
               <Typography component="h1" variant="h5" style={{fontWeight: 'bold'}} gutterBottom>
                 {heading}
