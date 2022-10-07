@@ -31,6 +31,28 @@ export default {
       description: 'Optional display of an YouTube video through its ID'
     },
     {
+      name: 'videoDescription',
+      type: 'localePortableText',
+      title: 'Video Description',
+    },
+    {
+      name: 'member',
+      type: 'array',
+      title: 'Team member',
+      description: "Select the team members that are part of this team",
+      validation: Rule => [
+        Rule.max(1).error('Please, select at only 1 team member.'),
+      ],
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {type: 'person'}
+          ]
+        }
+      ]
+    },
+    {
       name: 'button',
       type: 'localeCta',
       title: 'Optional button',
