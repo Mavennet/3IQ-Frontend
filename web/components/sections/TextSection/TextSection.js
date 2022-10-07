@@ -16,7 +16,7 @@ function urlFor(source) {
 }
 
 function TextSection(props) {
-  const { heading, text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, isGrayBackground } = props
+  const { heading, text, videoSrc, button, currentLanguage, backgroundImage, isButtonCentralized, isGrayBackground, videoDescription } = props
 
   const localeButton = button && button[currentLanguage?.languageTag]
 
@@ -79,7 +79,15 @@ function TextSection(props) {
                   ml={{ md: 5 }}
                 >
                   <YouTube videoId={videoSrc} opts={opts} />
+                  {
+                  videoDescription && (
+                    <div className={styles.textSection} style={{textAlign: 'right'}}>
+                      <SimpleBlockContent blocks={videoDescription} />
+                    </div>
+                  )
+                }
                 </Box>
+
               </Grid>
             )}
           </Grid>
@@ -97,7 +105,8 @@ TextSection.propTypes = {
   currentLanguage: PropTypes.object,
   backgroundImage: PropTypes.object,
   isButtonCentralized: PropTypes.bool,
-  isGrayBackground: PropTypes.bool
+  isGrayBackground: PropTypes.bool,
+  videoDescription: PropTypes.object
 }
 
 export default TextSection

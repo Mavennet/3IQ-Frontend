@@ -31,6 +31,11 @@ export default {
       description: 'Optional display of an YouTube video through its ID'
     },
     {
+      name: 'videoDescription',
+      type: 'localePortableText',
+      title: 'Video Description',
+    },
+    {
       name: 'button',
       type: 'localeCta',
       title: 'Optional button',
