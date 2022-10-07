@@ -26,6 +26,7 @@ export default {
       name: 'publishedAt',
       title: 'Published at (*)',
       type: 'datetime',
+      description: 'Used in order to filter the latest posts when displaying new cards automatically by category',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {

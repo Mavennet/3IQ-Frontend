@@ -14,7 +14,7 @@ import client from '../../../client'
 function Articles(props) {
   const { currentLanguage, newsCards, button } = props
 
-  const localeButton = button[currentLanguage?.languageTag]
+  const localeButton = button && button[currentLanguage?.languageTag]
 
   const [posts, setPosts] = React.useState()
 

@@ -47,7 +47,8 @@ export default {
             {type: 'tableCripto'},
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
-            {type: 'articles'}
+            {type: 'articles'},
+            {type: 'automatedArticles'}
           ]
         }
       ]
