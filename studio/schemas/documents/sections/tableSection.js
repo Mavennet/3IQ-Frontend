@@ -29,6 +29,7 @@ export default {
     {
       name: 'heading',
       type: 'localeString',
+      description: 'Optional title that will be displayed above the table',
       title: 'Heading',
     },
     {

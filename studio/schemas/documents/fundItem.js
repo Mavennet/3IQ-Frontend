@@ -115,13 +115,14 @@ export default {
   preview: {
     select: {
       title: `name.${baseLanguage.id}`,
+      fundSectionsLength: `fundSections.length`,
       productsLength: `products.length`,
     },
-    prepare({ title = '', productsLength }) {
-      const productsLengthText = productsLength > 0 ? productsLength + ' fund item(s) included' : 'No fund item included'
+    prepare({ title = '', fundSectionsLength, productsLength }) {
+      const subtitleText = fundSectionsLength > 0 ? fundSectionsLength + ' fund section(s) included' : (productsLength > 0 ? productsLength + ' product(s) included' : 'No fund section included')
       return {
         title,
-        subtitle: productsLengthText,
+        subtitle: subtitleText,
       };
     },
   },

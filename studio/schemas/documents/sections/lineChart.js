@@ -16,6 +16,7 @@ export default {
       name: 'heading',
       type: 'localeString',
       title: 'Heading',
+      description: 'Optional title that will be displayed above the chart',
     },
     {
       name: 'description',
