@@ -53,7 +53,7 @@ function AccordionLayout(props) {
                   <CustomAccordions items={tabItems} languageTag={currentLanguage.languageTag} />
                 </Box>
                 <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                  <CustomTab items={tabItems} languageTag={currentLanguage.languageTag} />
+                  <CustomTab items={tabItems} currentLanguage={currentLanguage} />
                 </Box>
               </Box>
             </Grid>

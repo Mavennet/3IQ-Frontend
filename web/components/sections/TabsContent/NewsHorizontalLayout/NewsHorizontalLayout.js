@@ -43,7 +43,7 @@ function NewsHorizontalLayout(props) {
                     src={builder.image(post?.mainImage.asset._ref).url()}
                     alt={post?.heading}
                     layout='fill'
-                    objectFit='contain'
+                    objectFit='cover'
                   />
                 </a>
               </Link>

@@ -44,10 +44,12 @@ export default {
             {type: 'textSeparator'},
             {type: 'hero'},
             {type: 'heroWithImage'},
+            {type: 'animatedHero'},
             {type: 'heroFirstVariation'},
             {type: 'heroDoubleButton'},
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
+            {type: 'subscribeForm'},
             {type: 'locationsDisplay'},
             {type: 'note'},
             {type: 'quoteHeads'},
@@ -65,8 +67,6 @@ export default {
             {type: 'fundsOverview'},
             {type: 'timeline'},
             {type: 'imageBesideText'},
-            {type: 'lineChart'},
-            {type: 'tableSection'},
             {type: 'articles'}
           ]
         }

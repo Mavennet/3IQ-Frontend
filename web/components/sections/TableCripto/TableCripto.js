@@ -1,23 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Box } from '@mui/material'
+import styles from './TableCripto.module.css'
 import SimpleBlockContent from '../../SimpleBlockContent'
-import styles from './TableSection.module.css'
 import axios from 'axios'
 
-function TableSection(props) {
+function TableCripto(props) {
   const {
     heading,
-    embed,
-    colorfulLayout,
-    headerTransparentLayout,
+    description,
     endpoint,
     headers,
     currentLanguage,
-    headerFundPerformance
   } = props
 
-  const [data, setData] = React.useState(null)
+  const [data, setData] = React.useState([])
 
   const getTableData = (endpoint) => {
     axios.get(endpoint)
@@ -48,30 +45,13 @@ function TableSection(props) {
         )
       }
       {
-        headerFundPerformance && (
-          <Grid item xs={12} mt={5}>
-
-            <div className={styles.fundPerformanceHeader}>
-              <div className={styles.firstCell}></div>
-              <div className={styles.secondCell}>
-                <p>Total Returns</p>
-              </div>
-              <div className={styles.thirdCell}>
-                <p>Annualized Returns</p>
-              </div>
-            </div>
-
-          </Grid>
-        )
-      }
-      {
         data && (
           <Grid item xs={12}>
             <div className={styles.simpleBlockContent}>
               <table>
                 {
                   headers && (
-                    <thead className={headerTransparentLayout && styles.headerTransparent}>
+                    <thead>
                       <tr>
                         {
                           headers.map((item) => {
@@ -84,19 +64,28 @@ function TableSection(props) {
                     </thead>
                   )
                 }
-                <tbody className={colorfulLayout && styles.tableColorful}>
+                <tbody>
                   {
                     data.map((item, i) => {
-                      const values = Object.values(item)
                       return (
                         <tr key={i}>
-                          {
-                            values.map((item, i) => {
-                              return (
-                                <td key={i}>{item}</td>
-                              )
-                            })
-                          }
+                          <td>
+                            <div className={styles.criptoInfo}>
+                              <Box
+                                component="img"
+                                alt={item.currency}
+                                src={item.image.small}
+                                sx={{
+                                  marginRight: '10px',
+                                  width: '25px',
+                                }}
+                              />
+                              {item.currency}
+                            </div>
+                            <strong>{item.price}</strong>
+                          </td>
+                          <td>{item.index}</td>
+                          <td>{item.weight}</td>
                         </tr>
                       )
                     })
@@ -108,11 +97,9 @@ function TableSection(props) {
         )
       }
       {
-        embed && (
-          <Grid item xs={12} mb={3}>
-            <div className={styles.simpleBlockContent}>
-              <SimpleBlockContent blocks={embed} />
-            </div>
+        description && (
+          <Grid item xs={12} mt={2}>
+            <SimpleBlockContent blocks={description} />
           </Grid>
         )
       }
@@ -120,15 +107,13 @@ function TableSection(props) {
   )
 }
 
-TableSection.propTypes = {
+TableCripto.propTypes = {
   heading: PropTypes.string,
-  embed: PropTypes.object,
-  colorfulLayout: PropTypes.bool,
-  headerTransparentLayout: PropTypes.bool,
+  description: PropTypes.string,
   endpoint: PropTypes.string,
   headers: PropTypes.array,
-  currentLanguage: PropTypes.object,
-  headerFundPerformance: PropTypes.bool
+  currentLanguage: PropTypes.object
 }
 
-export default TableSection
+export default TableCripto
+

@@ -12,6 +12,7 @@ const hiddenDocTypes = (listItem) => ![
   'route',
   'textSection',
   'hero',
+  'animatedHero',
   'heroWithImage',
   'heroFirstVariation',
   'heroDoubleButton',
@@ -21,6 +22,7 @@ const hiddenDocTypes = (listItem) => ![
   'mailchimp',
   'keyBenefits',
   'benefitCard',
+  'item',
   'note',
   'quoteHeads',
   'readyToInvest',
@@ -30,12 +32,14 @@ const hiddenDocTypes = (listItem) => ![
   'menuItem',
   'newsCard',
   'automatedNewsCard',
+  'automatedArticles',
   'readMoreCard',
   'team',
   'teamsDisplay',
   'timeline',
   'timelineItem',
   'contactUsForm',
+  'subscribeForm',
   'locationsDisplay',
   'location',
   'plainText',
@@ -54,6 +58,7 @@ const hiddenDocTypes = (listItem) => ![
   'imagesContainer',
   'lineChart',
   'tableSection',
+  'tableCripto',
   'articles'
 ].includes(listItem.getId())
 
@@ -93,8 +98,10 @@ export default () =>
           S.list()
             .title('Page Sections')
             .items([
+              S.documentTypeListItem('animatedHero').title('Animated Hero'),
               S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
+              S.documentTypeListItem('subscribeForm').title('Subscribe Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
               S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
@@ -125,15 +132,17 @@ export default () =>
           S.list()
             .title('Fund Sections')
             .items([
+              S.documentTypeListItem('articles').title('Articles'),
+              S.documentTypeListItem('automatedArticles').title('Automated Articles'),
               S.documentTypeListItem('awards').title('Awards'),
               S.documentTypeListItem('readyToInvest').title('Ready To Invest'),
               S.documentTypeListItem('fundsOverview').title('Funds Overview'),
               S.documentTypeListItem('fundsDisclaimer').title('Funds Disclaimer'),
               S.documentTypeListItem('note').title('Compact Notes'),
               S.documentTypeListItem('tableSection').title('Custom Table'),
+              S.documentTypeListItem('tableCripto').title('Cripto Table'),
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
-              S.documentTypeListItem('articles').title('Articles'),
               S.documentTypeListItem('quoteHeads').title('Live Feed Cards'),
             ])
       ),
@@ -170,6 +179,7 @@ export default () =>
             .title('Utilities')
             .items([
               S.documentTypeListItem('benefitCard').title('Benefit Card'),
+              S.documentTypeListItem('item').title('Item'),
               S.documentTypeListItem('fundItem').title('Fund Item'),
               S.documentTypeListItem('fundSidebarItem').title('Fund Sidebar Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),

@@ -7,10 +7,15 @@ export default {
   icon: ComponentIcon,
   fields: [
     {
-      name: 'heading',
+      name: 'name',
       type: 'string',
-      title: 'Heading (*)',
+      title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading',
     },
     {
       name: 'description',
@@ -51,13 +56,13 @@ export default {
   ],
   preview: {
     select: {
-      heading: 'heading',
+      title: 'name',
       endpoint: 'endpoint',
 
     },
-    prepare({ heading, endpoint }) {
+    prepare({ title, endpoint }) {
       return {
-        title: heading,
+        title,
         subtitle: 'Line Chart section - ' + endpoint,
       };
     },

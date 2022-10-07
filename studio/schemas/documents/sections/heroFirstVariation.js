@@ -1,7 +1,4 @@
-import supportedLanguages from '../../supportedLanguages';
 import { SplitHorizontalIcon } from '@sanity/icons'
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -42,7 +39,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `name.${baseLanguage.id}`,
+      title: `name`,
       media: 'backgroundImage',
     },
     prepare({ title, media }) {

@@ -15,9 +15,9 @@ export default {
     ),
   fieldsets: [
     {
-      title: 'Paginated News Cards Layout',
-      name: 'paginatedLayout',
-      description: 'Enable this option to display all the News Cards with a pagination layout filtered by the category of the post referenced at the card',
+      title: 'News Cards Layout Display',
+      name: 'newsCardLayout',
+      description: 'If you want to display the newest 3 News Cards (ordered by "Published At" date) of a Post Category, select the Category and disable the paginated flag. If you want the Paginated Layout, it is necessary to enable the paginated flag and select a Category. If you want none of those, keep the paginated flag as false and do not select any Category',
       options: {
         collapsible: true,
         collapsed: false,
@@ -39,56 +39,43 @@ export default {
     {
       name: 'isPaginatedNewsletter',
       type: 'boolean',
-      title: 'Is this tab item only for Paginated News Cards layout?',
-      description: 'Enabling this layout will override the other layouts.',
+      title: 'Display News Cards with the Paginated Layout?',
+      description: 'Enable this option to display all the News Cards with a pagination layout filtered by the category of the post referenced at the card. This layout will override the other layouts',
       initialValue: false,
-      fieldset: 'paginatedLayout',
-    },
-    {
-      name: 'selectedPostCategory',
-      title: 'Post Category',
-      description: 'Select a category that will be used to filter News Cards based on the category of the post referenced at the card only for the Paginated News Cards layout',
-      type: 'reference',
-      to: [{ type: 'category' }],
-      fieldset: 'paginatedLayout',
+      fieldset: 'newsCardLayout',
     },
     {
       name: 'isNewsCardsHorizontalLayout',
       type: 'boolean',
       title: 'News Cards with Horizontal layout?',
-      description: 'Enable this option to display the selected News Cards with horizontal layout.',
+      description: 'Enable this option to display the selected News Cards with a horizontal layout (default display is vertical). This option does not work for Paginated Layout',
       initialValue: false,
+      fieldset: 'newsCardLayout',
     },
     {
-      name: 'newsCards',
-      type: 'array',
-      title: 'News Cards from Posts',
-      validation: Rule => [
-        Rule.max(3).error('Maximum 3 News Cards from Posts are allowed.'),
-        Rule.unique().error('You have duplicate items.'),
-      ],
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'newsCard' }],
-        },
-      ],
+      name: 'selectedPostCategory',
+      title: 'Post Category',
+      description: 'Select a category that will be used to automatically filter News Cards based on the category of the post referenced at the card only for the Paginated News Cards layout',
+      type: 'reference',
+      to: [{ type: 'category' }],
+      fieldset: 'newsCardLayout',
     },
     {
       name: 'button',
       type: 'localeCta',
       title: 'Read more posts Button',
-      description: 'Optional button to show the route/link to more Posts'
+      description: 'Optional button to show the route/link to more Posts',
     },
   ],
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,
-      newsCardsLength: `newsCards.length`,
+      selectedPostCategoryName: `selectedPostCategory.name.${baseLanguage.id}`,
       isPaginatedNewsletter: `isPaginatedNewsletter`,
     },
-    prepare({ name, newsCardsLength, isPaginatedNewsletter }) {
-      const subtitleText = isPaginatedNewsletter ? 'Paginated News' : (newsCardsLength > 0 ? newsCardsLength + ' news card(s) included' : 'No news card included')
+    prepare({ name, selectedPostCategoryName, isPaginatedNewsletter }) {
+      console.log(selectedPostCategoryName)
+      const subtitleText = isPaginatedNewsletter ? 'Paginated News Cards from ' + selectedPostCategoryName : (selectedPostCategoryName ? 'News Cards from ' + selectedPostCategoryName : '')
       return {
         title: `${name}`,
         subtitle: subtitleText,
