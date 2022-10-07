@@ -10,6 +10,7 @@ import country from './documents/country';
 import language from './documents/language';
 import post from './documents/post';
 import benefitCard from './documents/benefitCard'
+import item from './documents/item'
 import menuItem from './documents/menuItem';
 import team from './documents/team';
 import timelineItem from './documents/timelineItem';
@@ -44,6 +45,7 @@ import readMoreCard from './documents/sections/readMoreCard';
 import teamsDisplay from './documents/sections/teamsDisplay';
 import timeline from './documents/sections/timeline';
 import contactUsForm from './documents/sections/contactUsForm';
+import subscribeForm from './documents/sections/subscribeForm';
 import locationsDisplay from './documents/sections/locationsDisplay';
 import plainText from './documents/sections/plainText';
 import textSeparator from './documents/sections/textSeparator';
@@ -99,6 +101,7 @@ export default createSchema({
     doubleOptions,
     keyBenefits,
     benefitCard,
+    item,
     post,
     country,
     language,
@@ -127,6 +130,7 @@ export default createSchema({
     teamsDisplay,
     timeline,
     timelineItem,
+    subscribeForm,
     contactUsForm,
     locationsDisplay,
     location,

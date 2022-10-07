@@ -48,6 +48,7 @@ export default {
             {type: 'heroDoubleButton'},
             {type: 'teamsDisplay'},
             {type: 'contactUsForm'},
+            {type: 'subscribeForm'},
             {type: 'locationsDisplay'},
             {type: 'note'},
             {type: 'quoteHeads'},
