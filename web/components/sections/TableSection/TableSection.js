@@ -94,7 +94,7 @@ function TableSection(props) {
                           {
                             values.map((item, i) => {
                               return (
-                                <td key={i}>{ keys[i] === 'cad' || keys[i] === 'usd' ? `\$ ${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`: item}</td>
+                                <td key={i}>{ keys[i] === 'cad' || keys[i] === 'usd' ? `$ ${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`: item}</td>
                               )
                             })
                           }
