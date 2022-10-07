@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const {sections, routes, posts, benefits, teams, timelines, locationsDisplays, tabItems, fundItems} = props
+  const {sections, routes, posts, benefits, items, teams, timelines, locationsDisplays, tabItems, fundItems} = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -80,6 +80,19 @@ function RenderSections(props) {
 
           if (currBenefit._id === section.benefits[i]._ref) {
             section.benefits[i] = currBenefit
+            break
+          }
+        }
+      }
+    }
+
+    if (section.items && section.items[0]._ref) {
+      for (let i = 0; i < section.items.length; i++) {
+        for (let j = 0; j < items.length; j++) {
+          const currItems = items[j]
+
+          if (currItems._id === section.items[i]._ref) {
+            section.items[i] = currItems
             break
           }
         }
@@ -195,6 +208,7 @@ RenderSections.propTypes = {
   locationsDisplays: PropTypes.array,
   tabItems: PropTypes.array,
   fundItems: PropTypes.array,
+  items: PropTypes.array,
   benefits: PropTypes.array,
 }
 

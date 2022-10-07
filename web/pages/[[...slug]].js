@@ -145,6 +145,14 @@ export const getServerSideProps = async ({params}) => {
     `
   )
 
+  const allItems = await client.fetch(
+    groq`
+    *[_type == 'item'] {
+      ...,
+    }
+    `
+  )
+
   // Retrieve all teams (used later on to get the our team display blocks)
   const allTeams = await client.fetch(
     groq`
@@ -304,6 +312,7 @@ export const getServerSideProps = async ({params}) => {
         allRoutes,
         allPosts,
         allBenefitCards,
+        allItems,
         allTeams,
         allTimelines,
         allLocationsDisplays,
@@ -329,6 +338,7 @@ const LandingPage = (props) => {
     allRoutes,
     allPosts,
     allBenefitCards,
+    allItems,
     allTeams,
     allTimelines,
     allLocationsDisplays,
@@ -449,6 +459,7 @@ const LandingPage = (props) => {
           <RenderSections
             routes={allRoutes}
             benefits={allBenefitCards}
+            items={allItems}
             posts={allPosts}
             teams={allTeams}
             timelines={allTimelines}
@@ -481,6 +492,7 @@ LandingPage.propTypes = {
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
   allBenefitCards: PropTypes.any,
+  allItems: PropTypes.any,
 }
 
 export default LandingPage

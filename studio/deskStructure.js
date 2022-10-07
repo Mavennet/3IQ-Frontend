@@ -22,6 +22,7 @@ const hiddenDocTypes = (listItem) => ![
   'mailchimp',
   'keyBenefits',
   'benefitCard',
+  'item',
   'note',
   'quoteHeads',
   'readyToInvest',
@@ -38,6 +39,7 @@ const hiddenDocTypes = (listItem) => ![
   'timeline',
   'timelineItem',
   'contactUsForm',
+  'subscribeForm',
   'locationsDisplay',
   'location',
   'plainText',
@@ -99,6 +101,7 @@ export default () =>
               S.documentTypeListItem('animatedHero').title('Animated Hero'),
               S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
+              S.documentTypeListItem('subscribeForm').title('Subscribe Form'),
               S.documentTypeListItem('descriptionsWithButton').title('Descriptions with Button'),
               S.documentTypeListItem('doubleOptions').title('Double Options'),
               S.documentTypeListItem('headlineWithImages').title('Headline with Images'),
@@ -176,6 +179,7 @@ export default () =>
             .title('Utilities')
             .items([
               S.documentTypeListItem('benefitCard').title('Benefit Card'),
+              S.documentTypeListItem('item').title('Item'),
               S.documentTypeListItem('fundItem').title('Fund Item'),
               S.documentTypeListItem('fundSidebarItem').title('Fund Sidebar Item'),
               S.documentTypeListItem('imagesContainer').title('Images Container'),
