@@ -171,6 +171,13 @@ function RenderSections(props) {
 
     if (section._type === 'fundsContent') {
       section.allRoutes = routes
+      section.allBenefits = benefits
+      section.allItems = items
+      section.allPosts = posts
+      section.allTeams = teams
+      section.allTimelines = timelines
+      section.allLocationsDisplays = locationsDisplays
+      section.allTabItems = tabItems
     }
   })
 
