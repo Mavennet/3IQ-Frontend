@@ -45,6 +45,11 @@ export default {
             {type: 'lineChart'},
             {type: 'tableSection'},
             {type: 'tableCripto'},
+            {type: 'textSection'},
+            {type: 'keyBenefits'},
+            {type: 'tabsContent'},
+            {type: 'awards'},
+            {type: 'note'},
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
             {type: 'articles'},
@@ -56,8 +61,7 @@ export default {
     {
       name: 'codeTitle',
       type: 'localeString',
-      title: 'Code Title (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Code Title',
       fieldset: 'productCards',
     },
     {

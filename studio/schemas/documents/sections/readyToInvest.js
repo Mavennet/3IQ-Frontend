@@ -1,7 +1,4 @@
 import { ComponentIcon } from '@sanity/icons'
-import supportedLanguages from '../../supportedLanguages';
-
-const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
@@ -9,6 +6,12 @@ export default {
   title: 'Ready To Invest',
   icon: ComponentIcon,
   fields: [
+    {
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
     {
       name: 'heading',
       type: 'localePortableText',
@@ -29,7 +32,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `heading.${baseLanguage.id}`,
+      title: `name`,
     },
     prepare({ title }) {
       return {

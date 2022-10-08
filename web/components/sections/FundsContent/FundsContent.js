@@ -47,7 +47,7 @@ const gridGeneratedHeaderSx = {
 }
 
 function FundsContent(props) {
-  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry, allRoutes } = props
+  const { currentLanguage, fundItems, isFixedWhenScroll, currentCountry, allRoutes, allPosts, allBenefits, allItems, allTeams, allTimelines, allLocationsDisplays, allTabItems } = props
   const [value, setValue] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [navFixed, setNavFixed] = useState(false)
@@ -360,6 +360,13 @@ function FundsContent(props) {
                     <RenderSections
                       sections={createSection(fundItem.fundSections)}
                       routes={allRoutes}
+                      benefits={allBenefits}
+                      items={allItems}
+                      posts={allPosts}
+                      teams={allTeams}
+                      timelines={allTimelines}
+                      locationsDisplays={allLocationsDisplays}
+                      tabItems={allTabItems}
                     />
                   )}
                 </Grid>
@@ -377,6 +384,13 @@ FundsContent.propTypes = {
   fundItems: PropTypes.fundItems,
   isFixedWhenScroll: PropTypes.bool,
   allRoutes: PropTypes.object,
+  allBenefits: PropTypes.object,
+  allItems: PropTypes.object,
+  allPosts: PropTypes.object,
+  allTeams: PropTypes.object,
+  allTimelines: PropTypes.object,
+  allLocationsDisplays: PropTypes.object,
+  allTabItems: PropTypes.object,
 }
 
 export default FundsContent
