@@ -88,12 +88,13 @@ function TableSection(props) {
                   {
                     data.map((item, i) => {
                       const values = Object.values(item)
+                      const keys = Object.keys(item)
                       return (
                         <tr key={i}>
                           {
                             values.map((item, i) => {
                               return (
-                                <td key={i}>{item}</td>
+                                <td key={i}>{ keys[i] === 'cad' || keys[i] === 'usd' ? `$ ${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`: item}</td>
                               )
                             })
                           }

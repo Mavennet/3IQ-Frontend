@@ -80,7 +80,27 @@ function LineChart(props) {
 
       const config = {
         type: "line",
-        data: dataChart
+        data: dataChart,
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                maxTicksLimit: 6,
+                includeBounds: true
+              }
+            },
+            y: {
+              ticks: {
+                // Include a dollar sign in the ticks
+                callback: function (value, index, values) {
+                  const label = dataChart.datasets[0].label 
+                  const hasDollar = label === 'Index Value^' || label === 'NAVPU *' || label === 'Market Price **'
+                  return hasDollar ? ('$' + value) : value;
+                }
+              }
+            }
+          }
+        }
       }
 
       const myLineChart = new Chart(ctx, config)
@@ -104,7 +124,8 @@ function LineChart(props) {
                   fontSize: 34,
                   fontFamily: 'Europa',
                   color: '#0082E5',
-                  fontWeight: '900'
+                  fontWeight: '900',
+                  minHeight: '2em'
                 }}
               >{heading}</Typography>
             </Grid>
