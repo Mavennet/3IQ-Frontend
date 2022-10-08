@@ -135,7 +135,7 @@ export default function CustomTabItem(props) {
           </Grid>
         )
       }
-      {localeButton && (
+      {localeButton && localeButton[currentLanguage.languageTag] && (
         <Grid container>
           <Grid
             item
@@ -144,7 +144,7 @@ export default function CustomTabItem(props) {
             my={4}
           >
             <RedirectButton
-              {...localeButton}
+              {...localeButton[currentLanguage.languageTag]}
               sx={{
                 padding: '10px 20px',
                 fontSize: '16px',

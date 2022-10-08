@@ -74,7 +74,6 @@ export default {
       isPaginatedNewsletter: `isPaginatedNewsletter`,
     },
     prepare({ name, selectedPostCategoryName, isPaginatedNewsletter }) {
-      console.log(selectedPostCategoryName)
       const subtitleText = isPaginatedNewsletter ? 'Paginated News Cards from ' + selectedPostCategoryName : (selectedPostCategoryName ? 'News Cards from ' + selectedPostCategoryName : '')
       return {
         title: `${name}`,

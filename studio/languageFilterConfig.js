@@ -60,7 +60,8 @@ export default {
     'tableSection',
     'tableCripto',
     'lineChart',
-    'articles'
+    'articles',
+    'automatedArticles',
   ],
   filterField: (enclosingType, field, selectedLanguageIds) =>
     !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(field.name),
