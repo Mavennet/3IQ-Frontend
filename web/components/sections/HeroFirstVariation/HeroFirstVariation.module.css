@@ -1,14 +1,27 @@
 @import "../../../styles/custom-media.css";
 
 .heading {
-font-family: 'Europa';
-   color: #091b3f;
+  font-family: 'Europa';
+  color: #091b3f;
+}
+
+.heading p {
+  font-size: 26px;
+  font-family: 'Europa';
+  line-height: 1px;
+  font-weight: 700;
 }
 
 .heading a{
     font-family: 'Europa';
     color: #0082ef;
     text-decoration: none;
+}
+
+.heading strong{
+  font-family: 'Europa';
+  color: #0082ef;
+  text-decoration: none;
 }
 
 .secondButton:hover{
