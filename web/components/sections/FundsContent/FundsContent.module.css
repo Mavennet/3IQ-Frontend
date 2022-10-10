@@ -30,3 +30,7 @@
     z-index: 200;
   }
 }
+
+.simpleBlockContent a{
+  color: #0082E5;
+}
