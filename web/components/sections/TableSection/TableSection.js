@@ -4,6 +4,7 @@ import { Grid, Typography } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
 import axios from 'axios'
+import { format } from 'date-fns'
 
 function TableSection(props) {
   const {
@@ -22,6 +23,31 @@ function TableSection(props) {
   const getTableData = (endpoint) => {
     axios.get(endpoint)
       .then(response => setData(response.data))
+  }
+
+  const isDate = (dateStr) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+
+    if (dateStr.match(regex) === null) {
+      return false;
+    }
+
+    const date = new Date(dateStr);
+
+    const timestamp = date.getTime();
+
+    if (typeof timestamp !== 'number' || Number.isNaN(timestamp)) {
+      return false;
+    }
+
+    return date.toISOString().startsWith(dateStr);
+  }
+
+  const convertDate = (value) => {
+    const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
+    const newYears = new Date(value)
+    const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+    return formattedDate
   }
 
   React.useEffect(() => {
@@ -94,7 +120,15 @@ function TableSection(props) {
                           {
                             values.map((item, i) => {
                               return (
-                                <td key={i}>{ keys[i] === 'cad' || keys[i] === 'usd' ? `$ ${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`: item}</td>
+                                <td key={i}>
+                                  {
+                                    keys[i] === 'cad' || keys[i] === 'usd'
+                                      ? `$ ${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+                                      : isDate(item)
+                                        ? convertDate(item)
+                                        : item
+                                  }
+                                </td>
                               )
                             })
                           }
