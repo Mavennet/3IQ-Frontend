@@ -88,7 +88,19 @@ export default function CustomAccordions(props) {
               alignItems="center"
               justifyContent="center"
             >
-              <RedirectButton sx={{fontWeight: 'normal', fontSize: '18px', textTransform: 'none', padding: '10px 30px'}} title="Show More"></RedirectButton>
+              {item.localeButton && item.localeButton[languageTag] && (
+                <RedirectButton
+                {...item.localeButton[languageTag]}
+                sx={{
+                  padding: '10px 20px',
+                  fontSize: '16px',
+                  background: '#DC6E19',
+                  borderColor: '#DC6E19',
+                  color: '#fff',
+                  fontWeight: '300',
+                }}
+              />
+              )}
             </Grid>
           </AccordionDetails>
         </Accordion>

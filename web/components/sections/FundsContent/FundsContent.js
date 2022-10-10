@@ -80,11 +80,12 @@ function FundsContent(props) {
             background: '#DC6E19',
             color: '#fff',
             textTransform: 'capitalize',
+            maxWidth: {xs: '260px', md: '165px'},
             '&.Mui-selected': {
               border: 'none',
               color: '#fff!important',
               textDecoration: 'underline!important',
-              textUnderlineOffset: '10px!important',
+              textUnderlineOffset: '3px!important',
               fontWeight: '900',
             },
           },
@@ -157,8 +158,8 @@ function FundsContent(props) {
                 orientation={mediumViewport ? 'horizontal' : 'vertical'}
                 value={value}
                 onChange={handleChange}
-                variant="scrollable"
-                scrollButtons="auto"
+                variant="fullWidth"
+                // scrollButtons="auto"
                 // aria-label={`${heading} - Tab`}
                 TabIndicatorProps={{ style: { display: 'none' } }}
               >
@@ -174,7 +175,7 @@ function FundsContent(props) {
                         sx={{
                           '&:hover': {
                             textDecoration: 'underline!important',
-                            textUnderlineOffset: '10px!important',
+                            textUnderlineOffset: '3px!important',
                             transition: '0.3s'
                           }
                         }}
@@ -185,13 +186,12 @@ function FundsContent(props) {
             </Box>
           </div>
         </Grid>
-
         {fundItems &&
           fundItems.map((fundItem, index) => (
-            <Grid key={`fundItem${index}`} container mt={4} id={`section_${index}`} spacing={6}>
+            <Grid key={`fundItem${index}`} container mt={4} id={`section_${index}`} spacing={2}>
               {
                 !fundItem.hiddenTitle && (
-                  <Grid item sx={{ borderBottom: '5px solid #0082e5', color: '#0082e5' }} xs={12}>
+                  <Grid item sx={{ borderBottom: fundItem?.products?.length > 0 ? '5px solid #0082e5' : '', color: '#0082e5' }} xs={12}>
                     <Typography component="h2" variant="h4" sx={{ fontWeight: 'bold' }}>
                       {fundItem.localeName[currentLanguage.languageTag]}
                     </Typography>
@@ -199,7 +199,7 @@ function FundsContent(props) {
                 )
               }
               {!fundItem.fundSections && (
-                <Grid item container alignItems="stretch" spacing={2} xs={12}>
+                <Grid item container alignItems="stretch" spacing={9} xs={12}>
                   <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
                     <Typography component="h3" variant="h6" sx={{ fontWeight: 'bold' }}>
                       Product
@@ -288,12 +288,14 @@ function FundsContent(props) {
                         </Grid>
                         <Grid sx={tabGridSx} container>
                           <Box sx={{ my: 'auto', mx: 2 }}>
+                            <div className={styles.simpleBlockContent}>
                             {product.localeHighlights &&
                               product.localeHighlights[currentLanguage.languageTag] && (
                                 <SimpleBlockContent
                                   blocks={product.localeHighlights[currentLanguage.languageTag]}
                                 />
                               )}
+                            </div>
                           </Box>
                         </Grid>
                         {index === fundItem.products.length - 1 && (
@@ -330,7 +332,17 @@ function FundsContent(props) {
                             )}
                             {fundItem.localeContactUsText && (
                               <RedirectButton
-                                sx={{ mx: 'auto', width: '130px', fontWeight: 'normal' }}
+                                sx={{
+                                  mx: 'auto',
+                                  width: '130px',
+                                  fontWeight: 'normal',
+                                  background: 'transparent',
+                                  color: '#DC6E19',
+                                  '&:hover': {
+                                    color: '#fff',
+                                    background: '#DC6E19',
+                                  },
+                                }}
                                 link={product.mailtoLink}
                                 title={fundItem.localeContactUsText[currentLanguage.languageTag]}
                               />

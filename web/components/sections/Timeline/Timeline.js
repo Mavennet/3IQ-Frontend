@@ -104,8 +104,8 @@ function Timeline(props) {
       >
         <Container sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
           <Grid container>
-            <Grid style={{color: 'white', fontWeight: 'bold'}} item md={5} xs={12}>
-              <Box className={styles.leftSimbleBlockContent} pt={{lg: 8, md: 8, xs: 0}} pr={{md: 20, xs: 0}}>
+            <Grid style={{color: 'white', fontWeight: 'bold'}} item md={4} lg={6} xs={12}>
+              <Box className={styles.leftSimbleBlockContent} pt={{lg: 8, md: 8, xs: 0}} pr={{md: 20, xs: 0}} pl={{md: 2, xs: 0}}>
                 {leftFirstTextBlock && <SimpleBlockContent blocks={leftFirstTextBlock} />}
               </Box>
               <Box className={styles.leftSimbleBlockContent} pt={{lg: 26, md: 8, xs: 12}} pr={{md: 20, xs: 0}} mb={{md: 0, xs: -6}}>
@@ -114,7 +114,7 @@ function Timeline(props) {
               {span && (<h5 className={styles.span}>{span}</h5>)}
 
             </Grid>
-            <Grid item md={7} xs={12} pt={{md: 0, xs: 10}}>
+            <Grid item md={8} lg={6} xs={12} pt={{md: 0, xs: 10}}>
               <Box style={{color: 'white'}}>
                 {items && renderTimeline(items, currentLanguage.languageTag)}
               </Box>
