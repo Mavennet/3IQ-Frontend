@@ -52,9 +52,9 @@ function SelectDropdown(props) {
               <Link
                 key={country.urlTag}
                 href={
-                  country.urlTag == 'au' ? 'https://3iq-au.com/' : 
-                  country.urlTag == 'us' ? 'https://www.3iq-us.com/' :
-                  country.urlTag == 'ae' ? 'https://3iq.ae/' :
+                  country.urlTag === 'au' ? 'https://3iq-au.com/' : 
+                  country.urlTag === 'us' ? 'https://www.3iq-us.com/' :
+                  country.urlTag === 'ae' ? 'https://3iq.ae/' :
                   `/${country.urlTag}/home`
                 }
                 underline="hover"
