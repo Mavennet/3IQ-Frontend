@@ -8,6 +8,7 @@ import { CSVLink } from "react-csv"
 import * as XLSX from 'xlsx'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import axios from 'axios'
+import { format } from 'date-fns'
 
 function LineChart(props) {
   const {
@@ -16,7 +17,8 @@ function LineChart(props) {
     desktopSize = 12,
     mobileSize = 12,
     chartHeight = '120',
-    endpoint
+    endpoint,
+    currentLanguage
   } = props
 
   const colors = ["#0082E5", "#dc6e19", "#869D7A", "#FF2205"]
@@ -24,6 +26,13 @@ function LineChart(props) {
   const [data, setData] = React.useState()
 
   const canvasEl = React.useRef(null)
+
+  const convertDate = (value) => {
+    const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
+    const newYears = new Date(value)
+    const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+    return formattedDate
+  }
 
   const dataSet = (value) => {
     const datasets = []
@@ -39,7 +48,7 @@ function LineChart(props) {
             a = a.split('/');
             b = b.split('/');
             return a[2] - b[2] || a[0] - b[0] || a[1] - b[1];
-          }).reduce((o, sortedKey) => { return { ...o, [sortedKey]: item[sortedKey] } }, {}),
+          }).reduce((o, sortedKey) => { return { ...o, [convertDate(sortedKey)]: item[sortedKey] } }, {}),
           fill: true,
           borderWidth: 1,
           borderColor: colors[count],
@@ -93,7 +102,7 @@ function LineChart(props) {
               ticks: {
                 // Include a dollar sign in the ticks
                 callback: function (value, index, values) {
-                  const label = dataChart.datasets[0].label 
+                  const label = dataChart.datasets[0].label
                   const hasDollar = label === 'Index Value^' || label === 'NAVPU *' || label === 'Market Price **'
                   return hasDollar ? ('$' + value) : value;
                 }
@@ -183,6 +192,7 @@ LineChart.propTypes = {
   mobileSize: PropTypes.number,
   chartHeight: PropTypes.string,
   endpoint: PropTypes.string,
+  currentLanguage: PropTypes.object
 }
 
 export default LineChart
