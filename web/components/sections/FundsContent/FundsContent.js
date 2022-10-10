@@ -190,7 +190,7 @@ function FundsContent(props) {
             <Grid key={`fundItem${index}`} container mt={4} id={`section_${index}`} spacing={2}>
               {
                 !fundItem.hiddenTitle && (
-                  <Grid item sx={{ borderBottom: '5px solid #0082e5', color: '#0082e5' }} xs={12}>
+                  <Grid item sx={{ borderBottom: '0px solid #0082e5', color: '#0082e5' }} xs={12}>
                     <Typography component="h2" variant="h4" sx={{ fontWeight: 'bold' }}>
                       {fundItem.localeName[currentLanguage.languageTag]}
                     </Typography>
@@ -334,7 +334,6 @@ function FundsContent(props) {
                                 sx={{
                                   mx: 'auto',
                                   width: '130px',
-                                  fontWeight: 'normal',
                                   fontWeight: 'normal',
                                   background: 'transparent',
                                   color: '#DC6E19',

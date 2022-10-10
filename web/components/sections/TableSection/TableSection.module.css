@@ -29,7 +29,7 @@
 .simpleBlockContent tbody tr td{
   background: #E8E8EA;
   padding: 30px 15px;
-  text-align: center;
+  text-align: left;
 }
 
 .simpleBlockContent tbody tr td:first-child {
