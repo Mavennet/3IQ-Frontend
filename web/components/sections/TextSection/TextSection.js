@@ -51,7 +51,8 @@ function TextSection(props) {
       rel: 0,
       showinfo: 0,
       mute: 1,
-      loop: 1
+      loop: 1,
+      playlist: videoSrc
     }
   };
 
