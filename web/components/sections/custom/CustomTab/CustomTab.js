@@ -40,8 +40,6 @@ export default function CustomTab(props) {
         <Tabs
           value={value}
           onChange={handleTabChange}
-          variant="scrollable"
-          scrollButtons="auto"
           TabIndicatorProps={{style: {background: 'transparent', transition: 'none'}}}
           sx={{marginBottom: '-2px'}}
         >
