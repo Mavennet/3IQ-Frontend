@@ -80,11 +80,12 @@ function FundsContent(props) {
             background: '#DC6E19',
             color: '#fff',
             textTransform: 'capitalize',
+            maxWidth: {xs: '260px', md: '165px'},
             '&.Mui-selected': {
               border: 'none',
               color: '#fff!important',
               textDecoration: 'underline!important',
-              textUnderlineOffset: '10px!important',
+              textUnderlineOffset: '3px!important',
               fontWeight: '900',
             },
           },
@@ -157,8 +158,8 @@ function FundsContent(props) {
                 orientation={mediumViewport ? 'horizontal' : 'vertical'}
                 value={value}
                 onChange={handleChange}
-                variant="scrollable"
-                scrollButtons="auto"
+                variant="fullWidth"
+                // scrollButtons="auto"
                 // aria-label={`${heading} - Tab`}
                 TabIndicatorProps={{ style: { display: 'none' } }}
               >
@@ -174,7 +175,7 @@ function FundsContent(props) {
                         sx={{
                           '&:hover': {
                             textDecoration: 'underline!important',
-                            textUnderlineOffset: '10px!important',
+                            textUnderlineOffset: '3px!important',
                             transition: '0.3s'
                           }
                         }}
