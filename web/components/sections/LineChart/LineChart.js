@@ -108,8 +108,18 @@ function LineChart(props) {
                 }
               }
             }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                pointStyle: 'line',
+                usePointStyle: true,
+                padding: 20,
+                pointStyleWidth: 25,
+              }
+            }
           }
-        }
+        },
       }
 
       const myLineChart = new Chart(ctx, config)
@@ -121,7 +131,7 @@ function LineChart(props) {
   }, [data])
 
   return (
-    <Grid item xs={mobileSize} md={desktopSize} py={6} sx={{fontFamily: 'Europa'}}>
+    <Grid item xs={mobileSize} md={desktopSize} py={6} sx={{ fontFamily: 'Europa' }}>
       <Grid container component="main" sx={{ flexDirection: 'unset' }}>
         <CssBaseline />
         {
