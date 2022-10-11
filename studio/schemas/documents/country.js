@@ -29,7 +29,7 @@ export default {
     },
     {
       name: 'headerLogo',
-      type: 'figure',
+      type: 'localeFigure',
       title: 'Header logo (*)',
       description: "Best choice is to use a transparent PNG file",
       validation: Rule => Rule.error('Information required.').required(),
@@ -53,7 +53,7 @@ export default {
     },
     {
       name: 'footerLogo',
-      type: 'figure',
+      type: 'localeFigure',
       title: 'Footer logo (*)',
       description: "Best choice is to use a transparent PNG file",
       validation: Rule => Rule.error('Information required.').required(),
@@ -81,13 +81,13 @@ export default {
       name: 'footerSecondLeftBlockContent',
       type: 'localePortableText',
       title: 'Footer second left block content (*)',
-      description: "Second block of content that will be shown below the footer logo",      
+      description: "Second block of content that will be shown below the footer logo",
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'footerSecondLeftBlockButton',
       type: 'localeCta',
-      title: 'Footer second left block button (*)',    
+      title: 'Footer second left block button (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {

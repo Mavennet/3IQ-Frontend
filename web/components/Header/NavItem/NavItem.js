@@ -15,10 +15,10 @@ function NavItem(props) {
       <Typography
         className={styles.menuItem}
         sx={{
-          width: {xs: '100%', md: 'auto'},
-          marginLeft: {xs: '0', md: '30px'},
-          padding: {xs: '12px 16px', md: '0px'},
-          backgroundColor: {xs: '#fbfbfb', md: 'transparent'},
+          width: {xs: '100%', lg: 'auto'},
+          marginLeft: {xs: '0', lg: '30px'},
+          padding: {xs: '12px 16px', lg: '0px'},
+          backgroundColor: {xs: '#fbfbfb', lg: 'transparent'},
           color: '#000',
           textTransform: 'capitalize',
           fontSize: '18px',
