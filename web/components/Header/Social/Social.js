@@ -8,7 +8,7 @@ function Social(props) {
   const { youtubeUrl, linkedinUrl, twitterUrl } = props
 
   return (
-    <Box sx={{ display: 'flex' }} mr={{ xs: 0, sm: 20, md: 40 }}>
+    <Box sx={{ display: 'flex' }} mr={{ xs: 0, sm: 20, md: 40 }} ml={{lg: 3}} mb={{lg: 1}}>
       <ul className={styles.social}>
         <li>
           <Link href={twitterUrl} color="inherit" target='_blank' rel="noopener"><FaTwitter /></Link>
