@@ -31,7 +31,7 @@ function FundsOverview(props) {
         <Grid container>
           <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: 10}} mb={{xs: 6}}>
             {title && (
-              <Typography component="h2" variant="h4" sx={{fontWeight: 'bold', color: '#0082E5'}}>
+              <Typography component="h2" variant="h4" sx={{ fontWeight: 'bold', color: '#0082E5' }}>
                 {title}
               </Typography>
             )}
@@ -40,10 +40,19 @@ function FundsOverview(props) {
                 <table>
                   <tbody>
                     {Object.entries(data[0]).map((item, key) => {
+                      const keysToExpand = ['UnitsOutstanding', 'BTCPerUnit', 'UnitsPerBTC']
+                      const keysExpanded = ['Units Outstanding', 'BTC per Unit', 'Units per BTC']
+                      const indexOfKey = keysToExpand.indexOf(item[0])
+                      const isExpandKey = keysToExpand.includes(item[0])
+                      let expandValue
+                      if (isExpandKey && indexOfKey === 0) { expandValue = `${parseFloat(item[1]).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ‡` }
+                      else if (isExpandKey && indexOfKey === 1) { expandValue = `${parseFloat(item[1]).toFixed(8)} ‡` }
+                      else { expandValue = `${parseFloat(item[1]).toFixed(2)} ‡` }
+
                       return (
                         <tr key={key}>
-                          <td>{item[0]}</td>
-                          <td>{item[1]}</td>
+                          <td>{isExpandKey ? keysExpanded[indexOfKey] : item[0]}</td>
+                          <td>{isExpandKey ? expandValue : item[1]}</td>
                         </tr>
                       )
                     })}
