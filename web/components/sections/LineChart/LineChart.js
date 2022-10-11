@@ -104,12 +104,22 @@ function LineChart(props) {
                 callback: function (value, index, values) {
                   const label = dataChart.datasets[0].label
                   const hasDollar = label === 'Index Value^' || label === 'NAVPU *' || label === 'Market Price **'
-                  return hasDollar ? ('$' + value) : value;
+                  return hasDollar ? ('$' + value) : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
               }
             }
+          },
+          plugins: {
+            legend: {
+              labels: {
+                pointStyle: 'line',
+                usePointStyle: true,
+                padding: 20,
+                pointStyleWidth: 25,
+              }
+            }
           }
-        }
+        },
       }
 
       const myLineChart = new Chart(ctx, config)
@@ -121,7 +131,7 @@ function LineChart(props) {
   }, [data])
 
   return (
-    <Grid item xs={mobileSize} md={desktopSize} py={6} sx={{fontFamily: 'Europa'}}>
+    <Grid item xs={mobileSize} md={desktopSize} py={6} sx={{ fontFamily: 'Europa' }}>
       <Grid container component="main" sx={{ flexDirection: 'unset' }}>
         <CssBaseline />
         {

@@ -30,7 +30,7 @@ function NavItemDropdown(props) {
   return (
     <>
       {/* Mobile */}
-      <Box sx={{ display: { xs: 'flex', sm: 'flex', md: 'none' } }}>
+      <Box sx={{ display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'none' } }}>
         <li>
           <Accordion style={{ boxShadow: "none" }}>
             <AccordionSummary
@@ -46,8 +46,8 @@ function NavItemDropdown(props) {
                 <Typography
                   className={styles.sumaryText}
                   sx={{
-                    width: {xs: '100%', md: 'auto'},
-                    marginLeft: {xs: '0', md: '30px'},
+                    width: {xs: '100%', lg: 'auto'},
+                    marginLeft: {xs: '0', lg: '30px'},
                     color: '#000',
                     textTransform: 'capitalize',
                     fontSize: '18px',
@@ -77,7 +77,7 @@ function NavItemDropdown(props) {
         </li>
       </Box>
       {/* Desktop */}
-      <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex' } }}>
+      <Box sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
         <Link href={isLinkEnabled && link} sx={{textDecoration: 'none'}}>
           <Typography
             id={_id + '-button'}

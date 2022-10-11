@@ -51,18 +51,18 @@ const theme = createTheme({
       .simpleBlockContent {
         padding: 0px 20px;
       }
-      
+
       .simpleBlockContent p {
         font-family: 'Europa';
         font-size: 14px
       }
-      
+
       .simpleBlockContent a {
         font-family: 'Europa';
         color: #fff;
         text-decoration: none;
       }
-      
+
       .simpleBlockContent a:hover {
         text-decoration: underline;
       }`,
@@ -133,7 +133,6 @@ function KeyBenefits(props) {
                 />
                 <CardContent align='center' sx={{ padding: 0 }}>
                   <SimpleBlockContent blocks={b.body[currentLanguage?.languageTag]}></SimpleBlockContent>
-
                 </CardContent>
               </Card>
             </Grid>
