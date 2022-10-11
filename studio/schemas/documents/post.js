@@ -19,7 +19,7 @@ export default {
     {
       name: 'heading',
       title: 'Heading (*)',
-      type: 'localeString',
+      type: 'string',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -48,7 +48,7 @@ export default {
     {
       name: 'body',
       title: 'Body (*)',
-      type: 'localePortableText',
+      type: 'portableText',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -77,7 +77,7 @@ export default {
       author: 'author.name',
     },
     prepare({title = 'No title', publishedAt, media, author}) {
-      const subtitle = "Published at " +format(parseISO(publishedAt), 'yyyy/MM/dd') + " by " + author 
+      const subtitle = "Published at " +format(parseISO(publishedAt), 'yyyy/MM/dd') + " by " + author
       return {
         title,
         media,
