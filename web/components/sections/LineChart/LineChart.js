@@ -104,7 +104,7 @@ function LineChart(props) {
                 callback: function (value, index, values) {
                   const label = dataChart.datasets[0].label
                   const hasDollar = label === 'Index Value^' || label === 'NAVPU *' || label === 'Market Price **'
-                  return hasDollar ? ('$' + value) : value;
+                  return hasDollar ? ('$' + value) : value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
               }
             }
