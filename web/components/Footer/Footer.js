@@ -72,7 +72,7 @@ function Footer(props) {
                     sx={{ maxWidth: '100%', ml: { md: 4 } }}
                     width={180}
                     alt={currentCountry.footerLogo.alt}
-                    src={urlFor(currentCountry.footerLogo.asset._ref).url()}
+                    src={currentCountry.footerLogo[currentLanguage.languageTag] && urlFor(currentCountry.footerLogo[currentLanguage.languageTag].asset._ref).url()}
                   />
                 </Link> : (
                   <Typography variant="p" paragraph mb={1}> Missing Footer Logo</Typography>

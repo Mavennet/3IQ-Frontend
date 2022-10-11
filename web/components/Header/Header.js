@@ -32,12 +32,12 @@ function Header(props) {
           <Box>
             {/* Logo */}
             <Link href={`/${currentCountry.urlTag}/home`}>
-              <Logo logo={currentCountry.headerLogo} />
+              <Logo logo={currentCountry.headerLogo[currentLanguage.languageTag] && currentCountry.headerLogo[currentLanguage.languageTag]} />
             </Link>
           </Box>
           <Box
-            mt={{ xs: 0, md: 2 }}
-            mr={{ xs: 1, md: 3, lg: '10%' }}
+            mt={{ xs: 0, md: 1 }}
+            mr={{ xs: 1, md: 3, lg: '5%' }}
             ml={'auto'}
             className={styles.navbarContainer}
           >
@@ -62,7 +62,7 @@ function Header(props) {
               </Box>
             </Box>
             {/* NavBar Menu - Desktop */}
-            <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'flex' } }}>
+            <Box sx={{ml: 'auto', display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => (
                   item && (
@@ -93,7 +93,7 @@ function Header(props) {
             {/* NavBar Menu - Mobile */}
             <Box
               justifyContent='flex-end'
-              sx={{ mb: '20px', display: { xs: 'flex', sm: 'flex', md: 'none' } }}
+              sx={{ mb: '20px', display: { xs: 'flex', sm: 'flex', md: 'flex', lg: 'none' } }}
             >
               <Box sx={{ mr: 2.5, alignItems: 'center', display: { xs: 'flex', sm: 'none', md: 'none' } }}>
                 <CountryAndLanguageSwitch
