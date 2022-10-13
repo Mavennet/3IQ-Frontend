@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
 import RedirectButton from '../../RedirectButton/RedirectButton'
-import {format, parseISO} from 'date-fns'
+import {format} from 'date-fns'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './NewsCard.module.css'
 
@@ -33,12 +33,23 @@ function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
-function NewsCard(props) {  
+function NewsCard(props) {
   const {post, buttonText, route, currentLanguage, isInvertedLayout, shortDescription} = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
 
-  if (isInvertedLayout) {  
+  const [publishedDate, setPublishedDate] = React.useState('')
+
+  React.useEffect(() => {
+    if (currentLanguage.languageTag) {
+      const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
+      const newYears = new Date(post.publishedAt)
+      const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+      setPublishedDate(formattedDate)
+    }
+  }, [currentLanguage, post.publishedAt])
+
+  if (isInvertedLayout) {
     // INVERTED LAYOUT
     return (
       <ThemeProvider theme={theme}>
@@ -73,8 +84,8 @@ function NewsCard(props) {
                   mb: 5,
                 }}
               >
-              {post.publishedAt && (
-                <Typography variant="p" 
+              {publishedDate && (
+                <Typography variant="p"
                   sx={{
                       float: 'left',
                       verticalAlign: 'middle',
@@ -83,7 +94,7 @@ function NewsCard(props) {
                       marginBottom: {xs: '5%', md:'5%', lg:'0%'},
                       fontSize: '16px',
                     }}>
-                  {format(parseISO(post.publishedAt), 'MMMM d, yyyy')}
+                  {publishedDate}
                 </Typography>
               )}
               {route && buttonText && (
@@ -171,8 +182,8 @@ function NewsCard(props) {
                 mb: 5,
               }}
             >
-            {post.publishedAt && (
-              <Typography variant="p" 
+            {publishedDate && (
+              <Typography variant="p"
                 sx={{
                     float: 'left',
                     verticalAlign: 'middle',
@@ -181,7 +192,7 @@ function NewsCard(props) {
                     marginBottom: {xs: '5%', md:'5%', lg:'0%'},
                     fontSize: '16px',
                   }}>
-                {format(parseISO(post.publishedAt), 'MMMM d, yyyy')}
+                {publishedDate}
               </Typography>
             )}
             {route && buttonText && (
