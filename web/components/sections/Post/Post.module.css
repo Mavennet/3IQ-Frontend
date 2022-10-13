@@ -2,7 +2,7 @@
 
 .imgGrid {
   width: 100%;
-  max-width: 100%;
+  max-width: 800px;
   height: 60vh;
   position: relative;
 }
