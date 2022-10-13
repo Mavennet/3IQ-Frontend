@@ -19,7 +19,7 @@ export default {
     {
       name: 'heading',
       title: 'Heading (*)',
-      type: 'string',
+      type: 'localeString',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
@@ -48,7 +48,7 @@ export default {
     {
       name: 'body',
       title: 'Body (*)',
-      type: 'portableText',
+      type: 'localePortableText',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
