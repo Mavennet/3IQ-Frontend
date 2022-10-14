@@ -307,7 +307,7 @@ function FundsContent(props) {
                       </Grid>
                       <Grid item container xs={12} md={2}>
                         <Grid sx={tabGridSx} container>
-                          <Box my={'auto'} style={{ width: '100%', textAlign: 'center' }}>
+                          <Box my={2} style={{ width: '100%', textAlign: 'center' }}>
                             {fundItem.localeReadMoreText && (
                               <RedirectButton
                                 sx={{
