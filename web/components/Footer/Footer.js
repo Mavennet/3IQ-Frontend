@@ -48,6 +48,15 @@ function Footer(props) {
     currentLanguage
   } = props
 
+  const [logoLanguage, setLogoLanguage] = React.useState(null)
+
+  React.useEffect(() => {
+    if (currentLanguage.languageTag) {
+      setLogoLanguage(currentLanguage.languageTag)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentLanguage.languageTag])
+
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -67,13 +76,17 @@ function Footer(props) {
             {
               currentCountry.footerLogo ?
                 <Link href={`/${currentCountry.urlTag}/home`}>
-                  <Box
-                    component="img"
-                    sx={{ maxWidth: '100%', ml: { md: 4 } }}
-                    width={180}
-                    alt={currentCountry.footerLogo.alt}
-                    src={currentCountry.footerLogo[currentLanguage.languageTag] && urlFor(currentCountry.footerLogo[currentLanguage.languageTag].asset._ref).url()}
-                  />
+                  {
+                    logoLanguage && (
+                      <Box
+                        component="img"
+                        sx={{ maxWidth: '100%', ml: { md: 4 } }}
+                        width={180}
+                        alt={currentCountry.footerLogo[logoLanguage].alt}
+                        src={currentCountry.footerLogo[logoLanguage] && urlFor(currentCountry.footerLogo[logoLanguage].asset._ref).url()}
+                      />
+                    )
+                  }
                 </Link> : (
                   <Typography variant="p" paragraph mb={1}> Missing Footer Logo</Typography>
                 )
