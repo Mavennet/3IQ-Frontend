@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography, Box } from '@mui/material'
+import { Grid, Typography, Box, Container } from '@mui/material'
 import styles from './TableCripto.module.css'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import axios from 'axios'
@@ -28,6 +28,7 @@ function TableCripto(props) {
   }, [endpoint])
 
   return (
+    <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
     <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
       {
         heading && (
@@ -104,6 +105,7 @@ function TableCripto(props) {
         )
       }
     </Grid>
+    </Container>
   )
 }
 

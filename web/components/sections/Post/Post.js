@@ -48,7 +48,7 @@ function Post(props) {
     <ThemeProvider theme={theme}>
       <Container  sx={{ maxWidth: {sm: 'md', lg: 'lg'} }}>
         <Grid container my={2}>
-          <Grid item xs={12} mb={4}>
+          <Grid item xs={12} mb={4} sx={{display: 'flex', justifyContent: 'center'}}>
             <div className={styles.imgGrid}>
               {
                 mainImage && (
@@ -56,7 +56,7 @@ function Post(props) {
                     src={builder.image(mainImage).url()}
                     alt={heading}
                     layout='fill'
-                    objectFit='cover'
+                    objectFit='contain'
                   />
                 )
               }
