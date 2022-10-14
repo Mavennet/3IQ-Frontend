@@ -26,7 +26,7 @@ function FundsOverview(props) {
   }, [endpoint])
 
   return (
-    <Box mt={8}>
+    <Grid xs={12} mt={8}>
       <Container sx={{maxWidth: {sm: 'md', lg: 'lg'}}}>
         <Grid container>
           <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: 10}} mb={{xs: 6}}>
@@ -78,7 +78,7 @@ function FundsOverview(props) {
           </Grid>
         </Grid>
       </Container>
-    </Box>
+    </Grid>
   )
 }
 
