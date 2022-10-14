@@ -98,35 +98,33 @@ function AutomatedArticles(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Grid item xs={12}>
-        <Container maxWidth="lg">
-          <Grid container pb={4} mt={10}>
-            {
-              articles && (
-                articles.map((item) => {
-                  return (
-                    <NewsHorizontalLayout
-                      {...item}
-                      currentLanguage={currentLanguage}
-                      key={item._id}
-                    />
-                  )
-                })
-              )
-            }
-            {
-              localeButton && (localeButton.route || localeButton.link) && (
-                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }} mt={3}>
-                  <RedirectButton
-                    {...localeButton}
-                    sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#dc6e19', borderColor: '#dc6e19', color: '#fff' }}
+      <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+        <Grid container pb={4} mt={10}>
+          {
+            articles && (
+              articles.map((item) => {
+                return (
+                  <NewsHorizontalLayout
+                    {...item}
+                    currentLanguage={currentLanguage}
+                    key={item._id}
                   />
-                </Grid>
-              )
-            }
-          </Grid>
-        </Container>
-      </Grid>
+                )
+              })
+            )
+          }
+          {
+            localeButton && (localeButton.route || localeButton.link) && (
+              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }} mt={3}>
+                <RedirectButton
+                  {...localeButton}
+                  sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#dc6e19', borderColor: '#dc6e19', color: '#fff' }}
+                />
+              </Grid>
+            )
+          }
+        </Grid>
+      </Container>
     </ThemeProvider>
   )
 }

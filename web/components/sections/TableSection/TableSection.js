@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Container } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
 import axios from 'axios'
@@ -57,26 +57,26 @@ function TableSection(props) {
   }, [endpoint])
 
   return (
-    <Grid item xs={12}>
-      <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
-        {
-          heading && (
-            <Grid item xs={12} mb={4}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontSize: 34,
-                  fontFamily: 'Europa',
-                  color: '#0082E5',
-                  fontWeight: '900'
-                }}
-              >{heading}</Typography>
-            </Grid>
-          )
-        }
-        {
-          headerFundPerformance && (
-            <Grid item xs={12} mt={5}>
+    <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+    <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
+      {
+        heading && (
+          <Grid item xs={12} mb={4}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: 34,
+                fontFamily: 'Europa',
+                color: '#0082E5',
+                fontWeight: '900'
+              }}
+            >{heading}</Typography>
+          </Grid>
+        )
+      }
+      {
+        headerFundPerformance && (
+          <Grid item xs={12} mt={5}>
 
               <div className={styles.fundPerformanceHeader}>
                 <div className={styles.firstCell}></div>
@@ -88,73 +88,74 @@ function TableSection(props) {
                 </div>
               </div>
 
-            </Grid>
-          )
-        }
-        {
-          data && (
-            <Grid item xs={12}>
-              <div className={styles.simpleBlockContent}>
-                <table>
+          </Grid>
+        )
+      }
+      {
+        data && (
+          <Grid item xs={12}>
+            <div className={styles.simpleBlockContent}>
+              <table>
+                {
+                  headers && (
+                    <thead className={headerTransparentLayout && styles.headerTransparent}>
+                      <tr>
+                        {
+                          headers.map((item) => {
+                            return (
+                              <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
+                            )
+                          })
+                        }
+                      </tr>
+                    </thead>
+                  )
+                }
+                <tbody className={colorfulLayout && styles.tableColorful}>
                   {
-                    headers && (
-                      <thead className={headerTransparentLayout && styles.headerTransparent}>
-                        <tr>
+                    data.map((item, i) => {
+                      const values = Object.values(item)
+                      const keys = Object.keys(item)
+                      return (
+                        <tr key={i}>
                           {
-                            headers.map((item) => {
+                            values.map((item, i) => {
                               return (
-                                <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
+                                <td key={i}>
+                                  {
+                                    (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
+                                      ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+                                      : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
+                                        : isDate(item)
+                                          ? convertDate(item)
+                                          : item
+                                  }
+                                </td>
                               )
                             })
                           }
                         </tr>
-                      </thead>
-                    )
+                      )
+                    })
                   }
-                  <tbody className={colorfulLayout && styles.tableColorful}>
-                    {
-                      data.map((item, i) => {
-                        const values = Object.values(item)
-                        const keys = Object.keys(item)
-                        return (
-                          <tr key={i}>
-                            {
-                              values.map((item, i) => {
-                                return (
-                                  <td key={i}>
-                                    {
-                                      (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
-                                        ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-                                        : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
-                                          : isDate(item)
-                                            ? convertDate(item)
-                                            : item
-                                    }
-                                  </td>
-                                )
-                              })
-                            }
-                          </tr>
-                        )
-                      })
-                    }
-                  </tbody>
-                </table>
-              </div>
-            </Grid>
-          )
-        }
-        {
-          embed && (
-            <Grid item xs={12} mb={3}>
-              <div className={styles.simpleBlockContent}>
-                <SimpleBlockContent blocks={embed} />
-              </div>
-            </Grid>
-          )
-        }
-      </Grid>
+                </tbody>
+              </table>
+            </div>
+          </Grid>
+          
+        )
+      }
+      {
+        embed && (
+          <Grid item xs={12} mb={3}>
+            <div className={styles.simpleBlockContent}>
+              <SimpleBlockContent blocks={embed} />
+            </div>
+          </Grid>
+        )
+      }
     </Grid>
+    </Container>
   )
 }
 
