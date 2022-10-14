@@ -56,7 +56,7 @@ function Post(props) {
                     src={builder.image(mainImage).url()}
                     alt={heading}
                     layout='fill'
-                    objectFit='cover'
+                    objectFit='contain'
                   />
                 )
               }
