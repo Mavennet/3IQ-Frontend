@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@mui/material/CssBaseline'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Container } from '@mui/material'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import Chart from "chart.js/auto"
 import { CSVLink } from "react-csv"
@@ -14,8 +14,6 @@ function LineChart(props) {
   const {
     heading,
     description,
-    desktopSize = 12,
-    mobileSize = 12,
     chartHeight = '120',
     endpoint,
     currentLanguage
@@ -131,7 +129,7 @@ function LineChart(props) {
   }, [data])
 
   return (
-    <Grid item xs={mobileSize} md={desktopSize} py={6} sx={{ fontFamily: 'Europa' }}>
+    <Container py={6} sx={{ maxWidth: { sm: 'md', lg: 'lg' }, fontFamily: 'Europa' }}>
       <Grid container component="main" sx={{ flexDirection: 'unset' }}>
         <CssBaseline />
         {
@@ -191,15 +189,13 @@ function LineChart(props) {
           )
         }
       </Grid>
-    </Grid>
+    </Container>
   )
 }
 
 LineChart.propTypes = {
   heading: PropTypes.string,
   description: PropTypes.string,
-  desktopSize: PropTypes.number,
-  mobileSize: PropTypes.number,
   chartHeight: PropTypes.string,
   endpoint: PropTypes.string,
   currentLanguage: PropTypes.object

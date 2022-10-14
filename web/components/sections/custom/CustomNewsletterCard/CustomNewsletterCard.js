@@ -33,6 +33,7 @@ export default function CustomNewsletterCard(props) {
   return (
     <Card
       style={{
+        width: '100%',
         color: '#091b3f',
         display: 'flex',
         justifyContent: 'space-between',
@@ -42,17 +43,23 @@ export default function CustomNewsletterCard(props) {
       <div>
         <Link
           href={{
-            pathname: '/LandingPage',
+            pathname: `/${post.localeHeading && post.localeHeading[languageTag]}`,
             query: { slug: route.slug.current },
           }}
           as={`/${route.slug.current}`}
         >
-          <CardMedia
-            sx={{ cursor: 'pointer', maxHeight: { md: '20vh' } }}
-            component="img"
-            image={urlFor(post.mainImage)}
-            alt="green iguana"
-          />
+          <a>
+            {
+              post.mainImage && (
+                <CardMedia
+                  sx={{ cursor: 'pointer', maxHeight: { md: '20vh' } }}
+                  component="img"
+                  image={urlFor(post.mainImage)}
+                  alt="green iguana"
+                />
+              )
+            }
+          </a>
         </Link>
         <CardContent>
           <Link
@@ -83,7 +90,7 @@ export default function CustomNewsletterCard(props) {
           </Link>
           <div>
             <SimpleBlockContent
-              blocks={localeShortDescription && localeShortDescription[languageTag]}
+              blocks={localeShortDescription ? localeShortDescription[languageTag] : "Missing Heading Title"}
             />
           </div>
         </CardContent>
