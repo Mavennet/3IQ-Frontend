@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Menu, MenuItem, Typography, Link} from '@mui/material'
+import {Menu, MenuItem, Typography, Link, Box} from '@mui/material'
 import styles from '../CountryAndLanguageSwitch.module.css'
 import ReactCountryFlag from 'react-country-flag'
+import {FaGlobe} from 'react-icons/fa'
+
 
 function SelectDropdown(props) {
   const {title, flag, currentCountry, dataCountries, setLanguage} = props
@@ -22,15 +24,18 @@ function SelectDropdown(props) {
     <>
       <button onClick={handleOpen} className={styles.countryButtons}>
         {flag ? (
-          <ReactCountryFlag
-            countryCode={flag}
-            title={title}
-            svg
-            style={{
-              width: '1.5em',
-              height: '1.5em',
-            }}
-          />
+          <Box sx={{display: 'flex'}}>
+            <FaGlobe style={{fontSize: 20, marginRight: 10, color: 'black'}} />
+            <ReactCountryFlag
+              countryCode={flag}
+              title={title}
+              svg
+              style={{
+                width: '1.5em',
+                height: '1.5em',
+              }}
+            />
+          </Box>
         ) : (
           title
         )}
@@ -52,10 +57,13 @@ function SelectDropdown(props) {
               <Link
                 key={country.urlTag}
                 href={
-                  country.urlTag === 'au' ? 'https://3iq-au.com/' : 
-                  country.urlTag === 'us' ? 'https://www.3iq-us.com/' :
-                  country.urlTag === 'ae' ? 'https://3iq.ae/' :
-                  `/${country.urlTag}/home`
+                  country.urlTag === 'au'
+                    ? 'https://3iq-au.com/'
+                    : country.urlTag === 'us'
+                    ? 'https://www.3iq-us.com/'
+                    : country.urlTag === 'ae'
+                    ? 'https://3iq.ae/'
+                    : `/${country.urlTag}/home`
                 }
                 underline="hover"
                 color="inherit"

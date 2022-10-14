@@ -98,7 +98,7 @@ function AutomatedArticles(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
         <Grid container pb={4} mt={10}>
           {
             articles && (

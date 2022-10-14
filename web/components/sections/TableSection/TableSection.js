@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography } from '@mui/material'
+import { Grid, Typography, Container } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
 import axios from 'axios'
@@ -57,6 +57,7 @@ function TableSection(props) {
   }, [endpoint])
 
   return (
+    <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
     <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
       {
         heading && (
@@ -141,6 +142,7 @@ function TableSection(props) {
               </table>
             </div>
           </Grid>
+          
         )
       }
       {
@@ -153,6 +155,7 @@ function TableSection(props) {
         )
       }
     </Grid>
+    </Container>
   )
 }
 
