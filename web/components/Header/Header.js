@@ -19,6 +19,14 @@ function Header(props) {
   } = props
 
   const [showNav, setShowNav] = React.useState(false)
+  const [logoLanguage, setLogoLanguage] = React.useState(null)
+
+  React.useEffect(() => {
+    if (currentLanguage.languageTag) {
+      setLogoLanguage(currentLanguage.languageTag)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentLanguage.languageTag])
 
   return (
     <>
@@ -29,12 +37,16 @@ function Header(props) {
             alignItems: { xs: 'center', md: 'flex-start' }
           }}
         >
-          <Box>
-            {/* Logo */}
-            <Link href={`/${currentCountry.urlTag}/home`}>
-              <Logo logo={currentCountry.headerLogo[currentLanguage.languageTag] && currentCountry.headerLogo[currentLanguage.languageTag]} />
-            </Link>
-          </Box>
+          {
+            logoLanguage && (
+              <Box>
+                {/* Logo */}
+                <Link href={`/${currentCountry.urlTag}/home`}>
+                  <Logo logo={currentCountry.headerLogo[logoLanguage] && currentCountry.headerLogo[logoLanguage]} />
+                </Link>
+              </Box>
+            )
+          }
           <Box
             mt={{ xs: 0, md: 1 }}
             mr={{ xs: 1, md: 3, lg: '5%' }}
@@ -62,7 +74,7 @@ function Header(props) {
               </Box>
             </Box>
             {/* NavBar Menu - Desktop */}
-            <Box sx={{ml: 'auto', display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
+            <Box sx={{ ml: 'auto', display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
               {navItems &&
                 navItems.map((item) => (
                   item && (
