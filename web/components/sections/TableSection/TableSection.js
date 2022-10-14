@@ -78,15 +78,15 @@ function TableSection(props) {
         headerFundPerformance && (
           <Grid item xs={12} mt={5}>
 
-            <div className={styles.fundPerformanceHeader}>
-              <div className={styles.firstCell}></div>
-              <div className={styles.secondCell}>
-                <p>Total Returns</p>
+              <div className={styles.fundPerformanceHeader}>
+                <div className={styles.firstCell}></div>
+                <div className={styles.secondCell}>
+                  <p>Total Returns</p>
+                </div>
+                <div className={styles.thirdCell}>
+                  <p>Annualized Returns</p>
+                </div>
               </div>
-              <div className={styles.thirdCell}>
-                <p>Annualized Returns</p>
-              </div>
-            </div>
 
           </Grid>
         )
