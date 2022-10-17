@@ -265,6 +265,8 @@ export const getServerSideProps = async ({params}) => {
       _rev,
       'localeName': name,
       'localeCodeTitle': codeTitle,
+      'firstColumnTitle': firstColumnTitle,
+      'thirdColumnTitle': thirdColumnTitle,
       'localeCodeObservation': codeObservation,
       'localeReadMoreText': readMoreText,
       'localeTextBetweenButtons': textBetweenButtons,

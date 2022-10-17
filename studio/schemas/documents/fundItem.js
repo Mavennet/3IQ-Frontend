@@ -53,21 +53,34 @@ export default {
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
             {type: 'articles'},
-            {type: 'automatedArticles'}
+            {type: 'automatedArticles'},
+            {type: 'textSeparator'}
           ]
         }
       ]
     },
     {
+      name: 'firstColumnTitle',
+      type: 'localeString',
+      title: 'First Column Title',
+      fieldset: 'productCards',
+    },
+    {
       name: 'codeTitle',
       type: 'localeString',
-      title: 'Code Title',
+      title: 'Second Column Title',
       fieldset: 'productCards',
     },
     {
       name: 'codeObservation',
       type: 'localeString',
-      title: 'Code Observation',
+      title: 'Second Column Observation',
+      fieldset: 'productCards',
+    },
+    {
+      name: 'thirdColumnTitle',
+      type: 'localeString',
+      title: 'Third Column Title',
       fieldset: 'productCards',
     },
     {
