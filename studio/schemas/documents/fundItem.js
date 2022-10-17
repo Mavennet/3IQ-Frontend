@@ -53,7 +53,8 @@ export default {
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
             {type: 'articles'},
-            {type: 'automatedArticles'}
+            {type: 'automatedArticles'},
+            {type: 'textSeparator'}
           ]
         }
       ]
