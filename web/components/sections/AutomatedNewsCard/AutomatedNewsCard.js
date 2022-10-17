@@ -54,6 +54,7 @@ function AutomatedNewsCard(props) {
               {latestPostId: response._id}
             )
             .then((res) => {
+              res.sort((a,b) => new Date(b.post.publishedAt) -  new Date(a.post.publishedAt))
               setNewsCard(res)
             })
         }

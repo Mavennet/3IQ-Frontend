@@ -61,6 +61,7 @@ function FundsContent(props) {
     allLocationsDisplays,
     allTabItems,
   } = props
+
   const [value, setValue] = useState(0)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [navFixed, setNavFixed] = useState(false)
@@ -221,7 +222,8 @@ function FundsContent(props) {
                   <Grid item container alignItems="stretch" spacing={9} xs={12}>
                     <Grid item sx={gridMainHeaderSx} xs={false} md={3}>
                       <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                        Product
+                        {fundItem.firstColumnTitle &&
+                          fundItem.firstColumnTitle[currentLanguage.languageTag]}
                       </Typography>
                     </Grid>
                     <Grid item sx={gridMainHeaderSx} xs={false} md={2}>
@@ -236,7 +238,8 @@ function FundsContent(props) {
                     </Grid>
                     <Grid item sx={gridMainHeaderSx} xs={false} md={5}>
                       <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                        Highlights
+                        {fundItem.thirdColumnTitle &&
+                          fundItem.thirdColumnTitle[currentLanguage.languageTag]}
                       </Typography>
                     </Grid>
                     <Grid item sx={gridMainHeaderSx} xs={false} md={2}></Grid>
@@ -249,7 +252,8 @@ function FundsContent(props) {
                         <Grid item container xs={12} md={3}>
                           <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                             <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                              Product
+                              {fundItem.firstColumnTitle &&
+                                fundItem.firstColumnTitle[currentLanguage.languageTag]}
                             </Typography>
                           </Grid>
                           <Grid sx={tabGridSx} container>
@@ -302,7 +306,8 @@ function FundsContent(props) {
                         <Grid item container xs={12} md={5}>
                           <Grid item sx={gridGeneratedHeaderSx} xs={12}>
                             <Typography component="h3" variant="h6" sx={{fontWeight: 'bold'}}>
-                              Highlights
+                              {fundItem.thirdColumnTitle &&
+                                fundItem.thirdColumnTitle[currentLanguage.languageTag]}
                             </Typography>
                           </Grid>
                           <Grid sx={tabGridSx} container>

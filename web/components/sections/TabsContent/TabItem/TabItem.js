@@ -43,6 +43,7 @@ function TabItem(props) {
 
   const [articles, setArticles] = React.useState(null)
 
+
   const fetchCategory = async () => {
     await client
       .fetch(
@@ -91,6 +92,7 @@ function TabItem(props) {
               { postsIds: postsId }
             )
             .then((res) => {
+              res.sort((a,b) => new Date(b.post.publishedAt) -  new Date(a.post.publishedAt))
               setArticles(res)
             })
         }
@@ -102,6 +104,7 @@ function TabItem(props) {
     if (selectedPostCategory) {
       fetchCategory()
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPostCategory])
 
