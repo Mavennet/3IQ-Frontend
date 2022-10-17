@@ -98,6 +98,7 @@ function NewsletterGrid(props) {
       { categoryId: selectedPostCategory._id }
     )
       .then((response) => {
+        response.sort((a,b) => new Date(b.post.publishedAt) -  new Date(a.post.publishedAt))
         setNewsletters(response)
         setNoOfPages(Math.ceil(response.length / itemsPerPage))
         setIsLoading(false)

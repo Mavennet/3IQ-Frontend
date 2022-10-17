@@ -71,6 +71,7 @@ export default function CustomTabItem(props) {
               { postsIds: postsId }
             )
             .then((res) => {
+              res.sort((a,b) => new Date(b.post.publishedAt) -  new Date(a.post.publishedAt))
               setArticles(res)
             })
         }

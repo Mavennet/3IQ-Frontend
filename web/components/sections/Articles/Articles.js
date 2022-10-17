@@ -67,6 +67,7 @@ function Articles(props) {
      { testArrayString: postsId }
     )
       .then((response) => {
+        response.sort((a,b) => new Date(b.post.publishedAt) -  new Date(a.post.publishedAt))
         setPosts(response)
       })
   }
