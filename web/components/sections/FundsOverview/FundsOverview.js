@@ -39,20 +39,22 @@ function FundsOverview(props) {
               <Box className={styles.simpleBlockContent} mt={4}>
                 <table>
                   <tbody>
-                    {Object.entries(data[0]).map((item, key) => {
+                    {Object.entries(data[0].en_CA ? data[0][currentLanguage.languageTag.startsWith('en') ? 'en_CA' : currentLanguage.languageTag] : data[0]).map((item, key) => {
                       const keysToExpand = ['UnitsOutstanding', 'BTCPerUnit', 'UnitsPerBTC', 'UnitsPerETH', 'ETHPerUnit']
                       const keysExpanded = ['Units Outstanding', 'BTC per Unit', 'Units per BTC', 'Units per ETH', 'ETH per Unit']
-                      const indexOfKey = keysToExpand.indexOf(item[0])
+                      const frenchKeys = ['Unités en circulation', 'BTC Par Unité', 'Unités Par BTC', 'Unités Par ETH', 'ETH Par Unité']
+                      const indexOfKey = keysToExpand.indexOf(item[0]) === -1 ? frenchKeys.indexOf(item[0]) : keysToExpand.indexOf(item[0])
                       const isExpandKey = keysToExpand.includes(item[0])
+                      const isFrenchKey = frenchKeys.includes(item[0])
                       let expandValue
-                      if (isExpandKey && indexOfKey === 0) { expandValue = `${parseFloat(item[1]).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ‡` }
-                      else if (isExpandKey && (indexOfKey === 1 || indexOfKey === 4)) { expandValue = `${parseFloat(item[1]).toFixed(8)} ‡` }
+                      if ((isExpandKey || isFrenchKey) && indexOfKey === 0) { expandValue = `${parseFloat(item[1]).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ‡` }
+                      else if ((isExpandKey || isFrenchKey) && (indexOfKey === 1 || indexOfKey === 4)) { expandValue = `${parseFloat(item[1]).toFixed(8)} ‡` }
                       else { expandValue = `${parseFloat(item[1]).toFixed(2)} ‡` }
 
                       return (
                         <tr key={key}>
                           <td>{isExpandKey ? keysExpanded[indexOfKey] : item[0]}</td>
-                          <td>{isExpandKey ? expandValue : item[1]}</td>
+                          <td>{isExpandKey || isFrenchKey ? expandValue : item[1]}</td>
                         </tr>
                       )
                     })}
