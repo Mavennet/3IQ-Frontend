@@ -8,7 +8,6 @@ import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './FundsOverview.module.css'
 import { Typography } from '@mui/material'
 import axios from 'axios'
-import { format } from 'date-fns'
 
 function FundsOverview(props) {
   const {title, embed, currentLanguage, fundSidebarItem, endpoint} = props
@@ -18,15 +17,6 @@ function FundsOverview(props) {
   const getKeyFacts = (endpoint) => {
     axios.get(endpoint)
       .then(response => setData(response.data))
-  }
-
-  const convertDate = (value) => {
-    const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
-    const newYears = new Date(value)
-    const formattedDate = format(newYears, 'MMMM dd, yyyy', {
-      locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
-    })
-    return formattedDate
   }
 
   React.useEffect(() => {
@@ -70,11 +60,6 @@ function FundsOverview(props) {
                     })}
                   </tbody>
                 </table>
-              </Box>
-            )}
-            {data && data[0].date && (
-              <Box sx={{ mt: 2 }}>
-                <Typography >{`‡ ${convertDate(data[0].date)}`}</Typography>
               </Box>
             )}
             {embed && (

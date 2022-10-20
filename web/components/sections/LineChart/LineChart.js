@@ -62,7 +62,6 @@ function LineChart(props) {
           lineTension: 1,
           pointBackgroundColor: colors[count],
           pointRadius: 1,
-          clip: 0
         })
         count = count + 1
         return null

@@ -201,7 +201,7 @@ function FundsContent(props) {
             <div key={`fundItem${index}`}>
               <Box
                 id={`section_${index}`}
-                sx={{position: 'relative', bottom: '100px', scrollMarginTop: ['Trading Platforms', 'Plateformes'].includes(fundItem.localeName[currentLanguage.languageTag]) && '-300px'}}
+                sx={{position: 'relative', bottom: '100px'}}
               ></Box>
               <Grid container mt={4} spacing={2}>
                 {!fundItem.hiddenTitle && (
