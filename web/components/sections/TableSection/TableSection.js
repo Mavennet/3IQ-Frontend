@@ -81,10 +81,10 @@ function TableSection(props) {
               <div className={styles.fundPerformanceHeader}>
                 <div className={styles.firstCell}></div>
                 <div className={styles.secondCell}>
-                  <p>Total Returns</p>
+                  <p>{currentLanguage?.languageTag.startsWith('en') ? 'Total Returns' : 'Retours totaux'}</p>
                 </div>
                 <div className={styles.thirdCell}>
-                  <p>Annualized Returns</p>
+                  <p>{currentLanguage?.languageTag.startsWith('en') ? 'Annualized Returns' : 'Rendements annualisés'}</p>
                 </div>
               </div>
 
