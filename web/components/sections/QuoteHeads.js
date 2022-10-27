@@ -57,6 +57,7 @@ function QuoteHeads({ symbols, currentLanguage}) {
 
 QuoteHeads.propTypes = {
   symbols: PropTypes.arrayOf(PropTypes.string),
+  currentLanguage: PropTypes.object,
 }
 
 export default QuoteHeads

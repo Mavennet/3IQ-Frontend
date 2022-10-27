@@ -37,7 +37,7 @@ function Post(props) {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
       const newYears = new Date(publishedAt)
-      const isEng = currentLanguage.name == "EN"
+      const isEng = currentLanguage.name === "EN"
       const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : "dd MMMM yyyy", { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
       !isEng && formattedDate.toLocaleLowerCase('fr')
       setPublishedDate(formattedDate)
