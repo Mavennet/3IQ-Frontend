@@ -30,7 +30,7 @@ const theme = createTheme({
   },
 })
 
-function QuoteHeads({ symbols }) {
+function QuoteHeads({ symbols, currentLanguage}) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -38,14 +38,16 @@ function QuoteHeads({ symbols }) {
       <Container sx={{ mt: 15, mb: 8.6 }}>
         <Grid container spacing={2.5}>
           {symbols.map((s) => {
-            const params = `{"symbol":"${s}"}`
-            return (<Grid key={`${s}`} item xs={12} md={6} sx={{ '& > div': { maxWidth: '70%', mx: 'auto' } }}>
+            const params = `{"lang":"${currentLanguage.name.toLowerCase()}",  "symbol":"${s}"}`
+            return (
+            <Grid key={`${s}`} item xs={12} md={6} sx={{ '& > div': { maxWidth: '70%', mx: 'auto' } }}>
               <div className="quoteyeah" height="228">
                 <div data-qmod-tool="quotehead" data-qmod-params={params} className="qtool"></div>
               </div>
               <Script id="qmod" type="application/javascript" src="https://qmod.quotemedia.com/js/qmodLoader.js"
                 data-qmod-wmid="104183" data-qmod-env="app" data-qmod-version="v1.37.0" async />
-            </Grid>)
+            </Grid>
+            )
           })}
         </Grid>
       </Container>
@@ -55,6 +57,7 @@ function QuoteHeads({ symbols }) {
 
 QuoteHeads.propTypes = {
   symbols: PropTypes.arrayOf(PropTypes.string),
+  currentLanguage: PropTypes.object,
 }
 
 export default QuoteHeads

@@ -120,19 +120,20 @@ function TabsLayout(props) {
                   onChange={handleChange}
                   aria-label={`${heading} - Tab`}
                   TabIndicatorProps={{ style: { display: 'none' } }}
-                  variant="scrollable"
-                  scrollButtons="auto"
+                  // scrollButtons="auto"
                 >
                   {tabItems &&
                     tabItems.map((item, i) => {
                       return (
                         <Tab
+                          fullWidth
                           key={item._id}
-                          wrapped
+                          // wrapped
                           label={
                             item.localeName[currentLanguage.languageTag] || 'Missing Tab Label'
                           }
                           onClick={() => handleTab(i)}
+                          sx={{whiteSpace: 'nowrap'}}
                         />
                       )
                     })}
