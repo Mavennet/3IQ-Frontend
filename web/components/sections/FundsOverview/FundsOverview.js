@@ -74,7 +74,7 @@ function FundsOverview(props) {
             )}
             {data && data[0].date && (
               <Box sx={{ mt: 2 }}>
-                <Typography >{`‡ ${convertDate(data[0].date)}`}</Typography>
+                <Typography align='right' sx={{color:'#77757F'}}>{`‡ ${convertDate(data[0].date)}`}</Typography>
               </Box>
             )}
             {embed && (
