@@ -29,7 +29,7 @@ function LineChart(props) {
 
   const convertDate = (value) => {
     const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
-    const newYears = new Date(value)
+    const newYears = new Date(`${value} 12:00:00:00`)
     const formattedDate = format(newYears, 'MMMM dd, yyyy', {
       locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
     })
