@@ -16,9 +16,7 @@
     "@sanity/language-filter",
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
-    "dashboard-widget-netlify",
-    "media-library",
-    "@sanity/color-input"
+    "dashboard-widget-netlify"
   ],
   "env": {
     "development": {

@@ -30,7 +30,6 @@ export default {
             { title: 'Open in new window', type: 'boolean', name: 'blank', initialValue: false, }
             ]
           },
-          {name: 'color', title: 'Color', type: 'color'},
           // { type: 'internalLink' }
         ],
       },
