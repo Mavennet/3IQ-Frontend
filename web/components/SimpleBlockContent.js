@@ -31,6 +31,10 @@ function SimpleBlockContent(props) {
             ) : (
               <a href={value?.href}>{children}</a>
             ))
+          },
+          color: ({ children, value }) => {
+            const hex = value.hex
+            return value &&  (<span style={{color: hex}}>{children}</span>)
           }
         }
       }}
