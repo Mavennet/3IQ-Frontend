@@ -93,7 +93,7 @@ function FundsContent(props) {
             fontSize: '20px',
             background: '#DC6E19',
             color: '#fff',
-            textTransform: 'capitalize',
+            textTransform: currentLanguage.name === 'EN' && 'capitalize',
             maxWidth: {xs: '260px', md: '165px'},
             '&.Mui-selected': {
               border: 'none',
