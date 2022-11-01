@@ -56,7 +56,7 @@ function TabsLayout(props) {
             fontSize: '20px',
             background: '#DC6E19',
             color: '#fff',
-            textTransform: 'capitalize',
+            textTransform: currentLanguage.name === 'EN' ? 'capitalize' : 'none',
             '&.Mui-selected': {
               border: 'none',
               color: '#fff!important',

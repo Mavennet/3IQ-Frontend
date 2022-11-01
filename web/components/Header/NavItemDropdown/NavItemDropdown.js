@@ -90,7 +90,7 @@ function NavItemDropdown(props) {
               marginLeft: {xs: '0', md: '30px'},
               padding: {xs: '12px 16px', md: '0px'},
               color: '#0a1b3f',
-              textTransform: 'capitalize',
+              textTransform: language.startsWith('en') ? 'capitalize' : 'none',
               fontSize: '18px',
               position: 'relative'
             }}
