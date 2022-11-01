@@ -22,10 +22,13 @@ function FundsOverview(props) {
 
   const convertDate = (value) => {
     const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
-    const newYears = new Date(`${value} 12:00:00:00`)
-    const formattedDate = format(newYears, 'MMMM dd, yyyy', {
+    const dt = value.split('-')
+    const newYears = new Date(parseInt(dt[0]), parseInt(dt[1]) - 1, parseInt(dt[2]), 12)
+    const isEng = currentLanguage.name === "EN"
+    const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
       locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
     })
+    !isEng && formattedDate.toLocaleLowerCase('fr')
     return formattedDate
   }
 
