@@ -93,7 +93,7 @@ function FundsContent(props) {
             fontSize: '20px',
             background: '#DC6E19',
             color: '#fff',
-            textTransform: currentLanguage.name === 'EN' && 'capitalize',
+            textTransform: currentLanguage.name === 'EN' ? 'capitalize' : 'none',
             maxWidth: {xs: '260px', md: '165px'},
             '&.Mui-selected': {
               border: 'none',
@@ -345,7 +345,7 @@ function FundsContent(props) {
                                   sx={{
                                     mx: 'auto',
                                     width: '130px',
-                                    mb: 3,
+                                    mb: !fundItem.localeTextBetweenButtons && 3,
                                     background: '#0082E5',
                                     border: '3px solid #0082E5',
                                     fontWeight: 'normal',
@@ -358,7 +358,7 @@ function FundsContent(props) {
                                 />
                               )}
                               {fundItem.localeTextBetweenButtons && (
-                                <Typography m={3}>
+                                <Typography m={1.5}>
                                   {fundItem.localeTextBetweenButtons[currentLanguage.languageTag]}
                                 </Typography>
                               )}
