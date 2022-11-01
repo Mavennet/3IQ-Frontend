@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography, Container } from '@mui/material'
+import { Grid, Typography, Container, Box } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
 import axios from 'axios'
@@ -125,7 +125,7 @@ function TableSection(props) {
                           <tr key={i}>
                             {
                               values.map((item, i) => {
-                                return (
+                                return (keys[i] !== 'dateDaily' &&
                                   <td key={i}>
                                     {
                                       (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
@@ -145,6 +145,11 @@ function TableSection(props) {
                     }
                   </tbody>
                 </table>
+                {data[0].dateDaily && (
+                  <Box sx={{ mt: 2 }}>
+                    <Typography align='right' sx={{color:'#77757F'}}>{`${currentLanguage.name === 'EN' ? 'Price as at' : 'Prix au'} ${convertDate(data[0].dateDaily)}`}</Typography>
+                  </Box>
+                )}
               </div>
             </Grid>
 
