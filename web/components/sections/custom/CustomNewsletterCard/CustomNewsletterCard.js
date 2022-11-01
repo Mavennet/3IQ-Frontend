@@ -25,7 +25,11 @@ export default function CustomNewsletterCard(props) {
     if (languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
       const newYears = new Date(post.publishedAt)
-      const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(languageTag.replace("_", "-")) })
+      const isEng = languageTag.startsWith('en')
+      const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
+        locale: getLocale(languageTag.replace('_', '-')),
+      })
+      !isEng && formattedDate.toLocaleLowerCase('fr')
       setPublishedDate(formattedDate)
     }
   }, [languageTag, post.publishedAt])

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography, Container } from '@mui/material'
+import { Grid, Typography, Container, Box } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
 import axios from 'axios'
@@ -45,8 +45,13 @@ function TableSection(props) {
 
   const convertDate = (value) => {
     const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
-    const newYears = new Date(`${value} 12:00:00:00`)
-    const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+    const dt = value.split('-')
+    const newYears = new Date(parseInt(dt[0]), parseInt(dt[1]) - 1, parseInt(dt[2]), 12)
+    const isEng = currentLanguage.name === "EN"
+    const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
+      locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
+    })
+    !isEng && formattedDate.toLocaleLowerCase('fr')
     return formattedDate
   }
 
@@ -120,7 +125,7 @@ function TableSection(props) {
                           <tr key={i}>
                             {
                               values.map((item, i) => {
-                                return (
+                                return (keys[i] !== 'dateDaily' &&
                                   <td key={i}>
                                     {
                                       (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
@@ -140,6 +145,11 @@ function TableSection(props) {
                     }
                   </tbody>
                 </table>
+                {data[0].dateDaily && (
+                  <Box sx={{ mt: 2 }}>
+                    <Typography align='right' sx={{color:'#77757F'}}>{`${currentLanguage.name === 'EN' ? 'Price as at' : 'Prix au'} ${convertDate(data[0].dateDaily)}`}</Typography>
+                  </Box>
+                )}
               </div>
             </Grid>
 
