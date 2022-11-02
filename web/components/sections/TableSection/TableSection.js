@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid, Typography, Container } from '@mui/material'
+import { Grid, Typography, Container, Box } from '@mui/material'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import styles from './TableSection.module.css'
 import axios from 'axios'
@@ -45,8 +45,13 @@ function TableSection(props) {
 
   const convertDate = (value) => {
     const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
-    const newYears = new Date(value)
-    const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+    const dt = value.split('-')
+    const newYears = new Date(parseInt(dt[0]), parseInt(dt[1]) - 1, parseInt(dt[2]), 12)
+    const isEng = currentLanguage.name === "EN"
+    const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
+      locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
+    })
+    !isEng && formattedDate.toLocaleLowerCase('fr')
     return formattedDate
   }
 
@@ -58,25 +63,25 @@ function TableSection(props) {
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-    <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
-      {
-        heading && (
-          <Grid item xs={12} mb={4}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: 34,
-                fontFamily: 'Europa',
-                color: '#0082E5',
-                fontWeight: '900'
-              }}
-            >{heading}</Typography>
-          </Grid>
-        )
-      }
-      {
-        headerFundPerformance && (
-          <Grid item xs={12} mt={5}>
+      <Grid container py={6} sx={{ fontFamily: 'Europa' }}>
+        {
+          heading && (
+            <Grid item xs={12} mb={4}>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: 34,
+                  fontFamily: 'Europa',
+                  color: '#0082E5',
+                  fontWeight: '900'
+                }}
+              >{heading}</Typography>
+            </Grid>
+          )
+        }
+        {
+          headerFundPerformance && (
+            <Grid item xs={12} mt={5}>
 
               <div className={styles.fundPerformanceHeader}>
                 <div className={styles.firstCell}></div>
@@ -88,73 +93,78 @@ function TableSection(props) {
                 </div>
               </div>
 
-          </Grid>
-        )
-      }
-      {
-        data && (
-          <Grid item xs={12}>
-            <div className={styles.simpleBlockContent}>
-              <table>
-                {
-                  headers && (
-                    <thead className={headerTransparentLayout && styles.headerTransparent}>
-                      <tr>
-                        {
-                          headers.map((item) => {
-                            return (
-                              <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
-                            )
-                          })
-                        }
-                      </tr>
-                    </thead>
-                  )
-                }
-                <tbody className={colorfulLayout && styles.tableColorful}>
+            </Grid>
+          )
+        }
+        {
+          data && (
+            <Grid item xs={12}>
+              <div className={styles.simpleBlockContent}>
+                <table>
                   {
-                    data.map((item, i) => {
-                      const values = Object.values(item)
-                      const keys = Object.keys(item)
-                      return (
-                        <tr key={i}>
+                    headers && (
+                      <thead className={headerTransparentLayout && styles.headerTransparent}>
+                        <tr>
                           {
-                            values.map((item, i) => {
+                            headers.map((item) => {
                               return (
-                                <td key={i}>
-                                  {
-                                    (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
-                                      ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-                                      : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
-                                        : isDate(item)
-                                          ? convertDate(item)
-                                          : item
-                                  }
-                                </td>
+                                <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
                               )
                             })
                           }
                         </tr>
-                      )
-                    })
+                      </thead>
+                    )
                   }
-                </tbody>
-              </table>
-            </div>
-          </Grid>
-          
-        )
-      }
-      {
-        embed && (
-          <Grid item xs={12} mb={3}>
-            <div className={styles.simpleBlockContent}>
-              <SimpleBlockContent blocks={embed} />
-            </div>
-          </Grid>
-        )
-      }
-    </Grid>
+                  <tbody className={colorfulLayout && styles.tableColorful}>
+                    {
+                      data.map((item, i) => {
+                        const values = Object.values(item)
+                        const keys = Object.keys(item)
+                        return (
+                          <tr key={i}>
+                            {
+                              values.map((item, i) => {
+                                return (keys[i] !== 'dateDaily' &&
+                                  <td key={i}>
+                                    {
+                                      (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
+                                        ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+                                        : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
+                                          : isDate(item)
+                                            ? convertDate(item)
+                                            : item
+                                    }
+                                  </td>
+                                )
+                              })
+                            }
+                          </tr>
+                        )
+                      })
+                    }
+                  </tbody>
+                </table>
+                {data[0].dateDaily && (
+                  <Box sx={{ mt: 2 }}>
+                    <Typography align='right' sx={{color:'#77757F'}}>{`${currentLanguage.name === 'EN' ? 'Price as at' : 'Prix au'} ${convertDate(data[0].dateDaily)}`}</Typography>
+                  </Box>
+                )}
+              </div>
+            </Grid>
+
+          )
+        }
+        {
+          embed && (
+            <Grid item xs={12} mb={3}>
+              <div className={styles.simpleBlockContent}>
+                <SimpleBlockContent blocks={embed} />
+              </div>
+            </Grid>
+          )
+        }
+      </Grid>
     </Container>
   )
 }
