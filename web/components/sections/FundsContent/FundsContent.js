@@ -53,7 +53,7 @@ function FundsContent(props) {
     isFixedWhenScroll,
     currentCountry,
     allRoutes,
-    allPosts,
+    // allPosts,
     allBenefits,
     allItems,
     allTeams,
@@ -412,7 +412,7 @@ function FundsContent(props) {
                         routes={allRoutes}
                         benefits={allBenefits}
                         items={allItems}
-                        posts={allPosts}
+                        // posts={allPosts}
                         teams={allTeams}
                         timelines={allTimelines}
                         locationsDisplays={allLocationsDisplays}
