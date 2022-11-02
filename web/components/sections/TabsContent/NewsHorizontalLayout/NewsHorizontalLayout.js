@@ -20,7 +20,11 @@ function NewsHorizontalLayout(props) {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
       const newYears = new Date(post.publishedAt)
-      const formattedDate = format(newYears, 'MMMM dd, yyyy', { locale: getLocale(currentLanguage.languageTag.replace("_", "-")) })
+      const isEng = currentLanguage.name === "EN"
+      const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
+        locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
+      })
+      !isEng && formattedDate.toLocaleLowerCase('fr')
       setPublishedDate(formattedDate)
     }
   }, [currentLanguage, post.publishedAt])

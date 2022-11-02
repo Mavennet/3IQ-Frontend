@@ -34,7 +34,7 @@
 
 .content {
   position: relative;
-  margin: 0 auto!important;
+  /* margin: 0 auto!important; */
   max-width: var(--width-medium);
 
   @nest & figcaption {
@@ -44,6 +44,7 @@
 
   @media (--media-min-medium) {
     margin: 0 0;
+    margin-top: 24px;
     padding-top: 0;
 
     @nest & figcaption {

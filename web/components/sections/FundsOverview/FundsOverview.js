@@ -22,10 +22,13 @@ function FundsOverview(props) {
 
   const convertDate = (value) => {
     const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
-    const newYears = new Date(value)
-    const formattedDate = format(newYears, 'MMMM dd, yyyy', {
+    const dt = value.split('-')
+    const newYears = new Date(parseInt(dt[0]), parseInt(dt[1]) - 1, parseInt(dt[2]), 12)
+    const isEng = currentLanguage.name === "EN"
+    const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
       locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
     })
+    !isEng && formattedDate.toLocaleLowerCase('fr')
     return formattedDate
   }
 
@@ -74,7 +77,7 @@ function FundsOverview(props) {
             )}
             {data && data[0].date && (
               <Box sx={{ mt: 2 }}>
-                <Typography >{`‡ ${convertDate(data[0].date)}`}</Typography>
+                <Typography align='right' sx={{color:'#77757F'}}>{`‡ ${convertDate(data[0].date)}`}</Typography>
               </Box>
             )}
             {embed && (

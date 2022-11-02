@@ -28,7 +28,7 @@ function NewsletterGrid(props) {
 
   const PageBackButton = () => (
     <RedirectButton
-      title="← Previous"
+      title={currentLanguage.languageTag.name === "EN" ? "« Previous" : "« Précédent"}
       reverse={false}
       sx={{
         padding: '10px 20px',
@@ -47,7 +47,7 @@ function NewsletterGrid(props) {
 
   const PageForwardButton = () => (
     <RedirectButton
-      title="Next →"
+      title={currentLanguage.languageTag.name === "EN" ? "Next »" : "Suivant »"}
       reverse={false}
       sx={{
         padding: '10px 20px',
