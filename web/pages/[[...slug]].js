@@ -12,7 +12,13 @@ import {getSlugVariations, slugParamToPath} from '../utils/urls'
 const pageFragment = groq`
 ...,
   content[] {
-    _type == 'reference' => @->,
+    _type == 'reference' => @->{
+      ...,
+      post->{
+        ...,
+        author->
+      },
+    },
   }`
 
 /**
@@ -127,14 +133,15 @@ export const getServerSideProps = async ({params}) => {
   )
 
   // Retrieve all posts (used later on to get the news cards details)
-  const allPosts = await client.fetch(
-    groq`
-    *[_type == 'post'] {
-      ...,
-      author->
-    }
-    `
-  )
+  // const allPosts = await client.fetch(
+  //   groq`
+  //   *[_type == 'post'] {
+  //     ...,
+  //     author->
+  //   }
+  //   `
+  // )
+  // console.log('allPosts', Buffer.byteLength(JSON.stringify(allPosts), 'utf8'))
 
   // Retrieve all benefit cards (used later on to get the cards details in section)
   const allBenefitCards = await client.fetch(
@@ -312,7 +319,7 @@ export const getServerSideProps = async ({params}) => {
         dataCountries,
         currentCountry: country,
         allRoutes,
-        allPosts,
+        // allPosts,
         allBenefitCards,
         allItems,
         allTeams,
@@ -338,7 +345,7 @@ const LandingPage = (props) => {
     dataCountries,
     currentCountry,
     allRoutes,
-    allPosts,
+    // allPosts,
     allBenefitCards,
     allItems,
     allTeams,
@@ -462,7 +469,7 @@ const LandingPage = (props) => {
             routes={allRoutes}
             benefits={allBenefitCards}
             items={allItems}
-            posts={allPosts}
+            // posts={allPosts}
             teams={allTeams}
             timelines={allTimelines}
             locationsDisplays={allLocationsDisplays}
@@ -487,7 +494,7 @@ LandingPage.propTypes = {
   dataCountries: PropTypes.array,
   currentCountry: PropTypes.string,
   allRoutes: PropTypes.any,
-  allPosts: PropTypes.any,
+  // allPosts: PropTypes.any,
   allTeams: PropTypes.any,
   allTimelines: PropTypes.any,
   allLocationsDisplays: PropTypes.any,

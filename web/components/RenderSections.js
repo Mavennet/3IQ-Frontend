@@ -52,23 +52,13 @@ function RenderSections(props) {
       }
     })
 
-    if (section.post && section.post._ref) {
-      for (let i = 0; i < posts.length; i++) {
-        const post = posts[i]
 
-        if (post._id === section.post._ref) {
-          section.post = post
-          break
-        }
-      }
+    if (section.route) {
+      for (let i = 0; i < routes.length; i++) {
+        const route = routes[i]
 
-      if (section.route) {
-        for (let i = 0; i < routes.length; i++) {
-          const route = routes[i]
-
-          if (route._id === section.route._ref) {
-            section.route = route // TODO Add break later and verify if breaks current functionality somehow
-          }
+        if (route._id === section.route._ref) {
+          section.route = route // TODO Add break later and verify if breaks current functionality somehow
         }
       }
     }
