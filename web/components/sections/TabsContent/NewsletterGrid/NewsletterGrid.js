@@ -28,7 +28,7 @@ function NewsletterGrid(props) {
 
   const PageBackButton = () => (
     <RedirectButton
-      title={currentLanguage.languageTag.name === "EN" ? "« Previous" : "« Précédent"}
+      title={currentLanguage.name === "EN" ? "« Previous" : "« Précédent"}
       reverse={false}
       sx={{
         padding: '10px 20px',
@@ -47,7 +47,7 @@ function NewsletterGrid(props) {
 
   const PageForwardButton = () => (
     <RedirectButton
-      title={currentLanguage.languageTag.name === "EN" ? "Next »" : "Suivant »"}
+      title={currentLanguage.name === "EN" ? "Next »" : "Suivant »"}
       reverse={false}
       sx={{
         padding: '10px 20px',
@@ -98,7 +98,7 @@ function NewsletterGrid(props) {
       { categoryId: selectedPostCategory._id }
     )
       .then((response) => {
-        response.sort((a,b) => new Date(b.post.publishedAt) -  new Date(a.post.publishedAt))
+        response.sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
         setNewsletters(response)
         setNoOfPages(Math.ceil(response.length / itemsPerPage))
         setIsLoading(false)
