@@ -33,6 +33,7 @@ import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
 import imageBesideText from './documents/sections/imageBesideText'
 import quoteHeads from './documents/sections/quoteHeads';
+import quoteHeadsDubai from './documents/sections/quoteHeadsDubai';
 import fundsDisclaimer from './documents/sections/fundsDisclaimer';
 import readyToInvest from './documents/sections/readyToInvest';
 import awards from './documents/sections/awards';
@@ -121,6 +122,7 @@ export default createSchema({
     localeSimplePortableText,
     note,
     quoteHeads,
+    quoteHeadsDubai,
     fundsDisclaimer,
     readyToInvest,
     awards,
