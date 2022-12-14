@@ -26,7 +26,7 @@ function NavItemDropdown(props) {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
+  console.log(`link is /${getPathFromSlug(link)}`)
   return (
     <>
       {/* Mobile */}
@@ -42,7 +42,7 @@ function NavItemDropdown(props) {
                 backgroundColor: '#fbfbfb',
               }}
             >
-              <Link href={isLinkEnabled && link} sx={{textDecoration: 'none'}}>
+              <Link href={'/pain'} sx={{textDecoration: 'none'}}>
                 <Typography
                   className={styles.sumaryText}
                   sx={{
@@ -78,7 +78,7 @@ function NavItemDropdown(props) {
       </Box>
       {/* Desktop */}
       <Box sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
-        <Link href={isLinkEnabled && link} sx={{textDecoration: 'none'}}>
+        <Link href={isLinkEnabled && getPathFromSlug(link)} sx={{textDecoration: 'none'}}>
           <Typography
             id={_id + '-button'}
             aria-controls={open ? _id + '-menu' : undefined}
