@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@sanity/base": "^2.26.0",
+    "@sanity/cli": "^2.26.0",
     "@sanity/color-input": "^2.35.0",
     "@sanity/core": "^2.26.0",
     "@sanity/dashboard": "^2.26.0",
@@ -34,7 +35,6 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.26.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.8.0",
     "eslint-config-standard": "^16.0.3",
