@@ -113,8 +113,7 @@ export default {
     {
       name: 'newsletterSubscribeSrc',
       type: 'url',
-      title: 'Newsletter Subscribe Link (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Newsletter Subscribe Link',
     },
     {
       name: 'followUsText',
