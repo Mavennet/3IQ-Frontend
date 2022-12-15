@@ -26,7 +26,6 @@ function NavItemDropdown(props) {
   const handleClose = () => {
     setAnchorEl(null)
   }
-  console.log(`link is /${getPathFromSlug(link)}`)
   return (
     <>
       {/* Mobile */}
@@ -42,7 +41,7 @@ function NavItemDropdown(props) {
                 backgroundColor: '#fbfbfb',
               }}
             >
-              <Link href={'/pain'} sx={{textDecoration: 'none'}}>
+              <Link href={isLinkEnabled && getPathFromSlug(link)} sx={{textDecoration: 'none'}}>
                 <Typography
                   className={styles.sumaryText}
                   sx={{
