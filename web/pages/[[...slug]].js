@@ -69,8 +69,8 @@ export const getServerSideProps = async ({ params }) => {
   let country = ''
 
   if (params?.slug) {
+    country = process.env.COUNTRY_BASE
     if (countries.indexOf(params.slug[0]) >= 0) {
-      country = params.slug[0]
       params.slug.shift()
     }
   }
