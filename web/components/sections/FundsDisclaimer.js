@@ -4,9 +4,9 @@ import Typography from '@mui/material/Typography'
 import { Box, Container } from '@mui/material'
 import SimpleBlockContent from '../SimpleBlockContent'
 
-function FundsDisclaimer({ heading, portableText }) {
+function FundsDisclaimer({ heading, portableText, currentLanguage }) {
   return (
-    <Box sx={{ backgroundColor: '#091B3F' }}>
+    <Box sx={{ backgroundColor: '#091B3F', direction: currentLanguage.name === 'AR' && 'rtl' }}>
       <Container sx={{ py: 6, px: 3 }}>
         <Typography
           sx={{
@@ -24,7 +24,7 @@ function FundsDisclaimer({ heading, portableText }) {
             py: { xs: 5, md: 2 },
             color: '#fff',
           }}
-          align={'left'}
+          align={currentLanguage.name === 'AR' ? 'right' : 'left'}
           gutterBottom
         >
           {heading}
@@ -48,6 +48,7 @@ function FundsDisclaimer({ heading, portableText }) {
 FundsDisclaimer.propTypes = {
   heading: PropTypes.object,
   portableText: PropTypes.object,
+  currentLanguage: PropTypes.object,
 }
 
 export default FundsDisclaimer

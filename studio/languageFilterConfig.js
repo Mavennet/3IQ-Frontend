@@ -26,6 +26,7 @@ export default {
     'mailchimp',
     'note',
     'quoteHeads',
+    'quoteHeadsDubai',
     'readyToInvest',
     'awards',
     'fundsDisclaimer',
