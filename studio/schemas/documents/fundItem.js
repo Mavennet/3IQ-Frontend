@@ -52,6 +52,7 @@ export default {
             {type: 'note'},
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
+            {type: 'quoteHeadsDubai'},
             {type: 'articles'},
             {type: 'automatedArticles'},
             {type: 'textSeparator'}
