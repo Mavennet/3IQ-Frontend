@@ -25,6 +25,7 @@ const hiddenDocTypes = (listItem) => ![
   'item',
   'note',
   'quoteHeads',
+  'quoteHeadsDubai',
   'readyToInvest',
   'awards',
   'fundsDisclaimer',
@@ -144,6 +145,7 @@ export default () =>
               S.documentTypeListItem('fundsContent').title('Funds Content'),
               S.documentTypeListItem('lineChart').title('Line Chart'),
               S.documentTypeListItem('quoteHeads').title('Live Feed Cards'),
+              S.documentTypeListItem('quoteHeadsDubai').title('Dubai Live Feed Cards'),
             ])
       ),
       S.divider(),

@@ -63,7 +63,7 @@ function SelectDropdown(props) {
                     ? 'https://www.3iq-us.com/'
                     : country.urlTag === 'ae'
                     ? 'https://3iq.ae/'
-                    : `/${country.urlTag}/home`
+                    : 'https://3iq.ca/'
                 }
                 underline="hover"
                 color="inherit"
