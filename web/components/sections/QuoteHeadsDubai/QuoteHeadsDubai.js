@@ -41,7 +41,6 @@ function QuoteHeadsDubai({ currentLanguage }) {
     var url2 = "https://feeds.nasdaqdubai.com/apps/sso/source/qbtc650f605";
 
     (async () => { const pain = await axios.get(url2).then(response => setDataWidget(response.data)) })()
-    console.log("test wlp aaaahhhh")
 
 
     // function processData(allText) {

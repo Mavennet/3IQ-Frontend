@@ -68,9 +68,9 @@ export const getServerSideProps = async ({ params }) => {
 
   let country = ''
 
+  country = process.env.COUNTRY_BASE
   if (params?.slug) {
     if (countries.indexOf(params.slug[0]) >= 0) {
-      country = params.slug[0]
       params.slug.shift()
     }
   }
@@ -79,46 +79,48 @@ export const getServerSideProps = async ({ params }) => {
   let data
 
   // Frontpage - fetch the linked `frontpage` from the global configuration document.
-  if (slug === '/') {
-    data = await client
-      .fetch(
-        groq`
-        *[_id == "global-config"][0]{
-          frontpage -> {
-            ${pageFragment}
-          }
-        }
-      `
-      )
-      .then((res) => (res?.frontpage ? { ...res.frontpage, slug } : undefined))
-  } else {
-    // Regular route
-    if (country) {
+
+  // Regular route
+  if (country) {
+    if (slug === 'home') {
       data = await client
         .fetch(
-          // Get the route document with one of the possible slugs for the given requested path
-          groq`*[_type == "route" && slug.current in $possibleSlugs && $country in countries[]->urlTag][0]{
-          page-> {
-            ${pageFragment}
-          }
-        }`,
-          { possibleSlugs: getSlugVariations(country, slug), country: country }
+          // Get the route document with the home slug for the given country
+          groq`*[_type == "route" && slug.current == $possibleSlug && $country in countries[]->urlTag][0]{
+            page-> {
+              ${pageFragment}
+            }
+          }`,
+          { possibleSlug: `${country}/home`, country: country }
         )
         .then((res) => (res?.page ? { ...res.page, slug } : undefined))
     } else {
       data = await client
         .fetch(
           // Get the route document with one of the possible slugs for the given requested path
-          groq`*[_type == "route" && slug.current in $possibleSlugs][0]{
+          groq`*[_type == "route" && slug.current in $possibleSlugs && $country in countries[]->urlTag][0]{
+            page-> {
+              ${pageFragment}
+            }
+          }`,
+          { possibleSlugs: getSlugVariations(country, slug), country: country }
+        )
+        .then((res) => (res?.page ? { ...res.page, slug } : undefined))
+    }
+  } else {
+    data = await client
+      .fetch(
+        // Get the route document with one of the possible slugs for the given requested path
+        groq`*[_type == "route" && slug.current in $possibleSlugs][0]{
           page-> {
             ${pageFragment}
           }
         }`,
-          { possibleSlugs: getSlugVariations(country, slug) }
-        )
-        .then((res) => (res?.page ? { ...res.page, slug } : undefined))
-    }
+        { possibleSlugs: getSlugVariations(country, slug) }
+      )
+      .then((res) => (res?.page ? { ...res.page, slug } : undefined))
   }
+
 
   if (!data?._type === 'page') {
     return {
@@ -359,7 +361,8 @@ const LandingPage = (props) => {
   } = props
 
   const router = useRouter()
-
+  // console.log('content')
+  // console.log(content)
   const getLanguageFromStorage = () => {
     const languageStorage = localStorage.getItem('lang')
     const languageSelected = country.languages.filter(
@@ -378,6 +381,7 @@ const LandingPage = (props) => {
       ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
       : dataCountries.filter((country) => country.urlTag === 'ca')[0]
   )
+  console.log('da country: ', country)
 
   const [currentLanguage, setCurrentLanguage] = useState(
     typeof window !== 'undefined' && localStorage.getItem('lang')
