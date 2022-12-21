@@ -1,7 +1,7 @@
 import sanityClient from '@sanity/client'
 
 const client = sanityClient({
-  projectId: 'w7ow2x7s',
+  projectId: '1wgg5qqs',
   dataset: 'production',
   useCdn: true, // `false` if you want to ensure fresh data
   apiVersion: '2022-01-31',
