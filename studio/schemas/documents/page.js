@@ -44,6 +44,7 @@ export default {
             {type: 'textSeparator'},
             {type: 'hero'},
             {type: 'heroWithImage'},
+            {type: 'mailchimp'},
             {type: 'componentsTests'},
             {type: 'animatedHero'},
             {type: 'heroFirstVariation'},

@@ -15,9 +15,14 @@ export default { // Não utilizado no momento --> podemos remover
       title: 'Heading',
     },
     {
-      name: 'subtitle',
+      name: 'text',
+      type: 'localePortableText',
+      title: 'Mailchimp Text',
+    },
+    {
+      name: 'inputPlaceholder',
       type: 'localeString',
-      title: 'Subheading',
+      title: 'Form Placeholder',
     },
     {
       name: 'actionUrl',

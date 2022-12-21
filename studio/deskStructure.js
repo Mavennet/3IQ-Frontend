@@ -100,6 +100,7 @@ export default () =>
           S.list()
             .title('Page Sections')
             .items([
+              S.documentTypeListItem('mailchimp').title('Mailchimp'),
               S.documentTypeListItem('animatedHero').title('Animated Hero'),
               S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
