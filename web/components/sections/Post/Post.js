@@ -33,11 +33,11 @@ function Post(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
-  currentCountry.urlTag === 'ae' && body.forEach(block => {
+  body.forEach(block => {
     if (block._type === 'block') {
       block.markDefs.length > 0 && block.markDefs.forEach(m => {
         if (m._type === 'link') {
-          m.href = m.href.replace('https://3iq.ca', 'https://staging--3iq-ae-dev.netlify.app/ae')
+          m.href = m.href.replace('3iq.ca', `3iq.${currentCountry.urlTag}`)
         }
       })
     }
