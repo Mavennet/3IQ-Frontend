@@ -33,6 +33,15 @@ function Post(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
+  body.forEach(block => {
+    if (block._type === 'block') {
+      block.markDefs.length > 0 && block.markDefs.forEach(m => {
+        if (m._type === 'link') {
+          m.href = m.href.replace('3iq.ca', `3iq.${currentCountry.urlTag}`)
+        }
+      })
+    }
+  })
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
