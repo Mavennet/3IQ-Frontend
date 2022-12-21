@@ -16,6 +16,8 @@
   "dependencies": {
     "@sanity/cli": "^3.0.6",
     "@sanity/language-filter": "^2.29.8",
-    "lerna": "^6.1.0"
+    "lerna": "^6.1.0",
+    "react-select": "^5.7.0",
+    "sass": "^1.57.1"
   }
 }

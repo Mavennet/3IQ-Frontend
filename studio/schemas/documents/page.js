@@ -44,6 +44,7 @@ export default {
             {type: 'textSeparator'},
             {type: 'hero'},
             {type: 'heroWithImage'},
+            {type: 'componentsTests'},
             {type: 'animatedHero'},
             {type: 'heroFirstVariation'},
             {type: 'heroDoubleButton'},

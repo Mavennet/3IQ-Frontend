@@ -16,6 +16,7 @@ export default {
     'page',
     'textSection',
     'heroWithImage',
+    'componentsTests',
     'animatedHero',
     'heroFirstVariation',
     'heroDoubleButton',

@@ -1,0 +1,288 @@
+:root {
+
+    //Colors - Primary
+
+    --light-blue: #0082E5;
+    --blue: #091B3F;
+
+    //Colors - Secondary
+
+    --light-gray: #F9F9F9;
+    --light-orange: #F59B1E;
+    --light-green: #009A93;
+
+    // Colors - Hover
+
+    --hover-blue: #1495F8;
+
+    // Colors - Others
+    --medium-gray: #EEEEEE;
+    --gray: #EBEBEB;
+    --orange: #DC6E19;
+    --red: #DC4819;
+    --green: #008C86;
+    --black: #28373C;
+    --white: #FFFFFF;
+    --component-light-gray: #7F7F7F;
+    --component-gray: #484848;
+    --disabled-gray: #CECECE;
+
+    //Typographies - Primary
+
+    --font-family-primary: 'Alata',
+        sans-serif;
+    --font-size-primary-xs: 20px;
+    --font-size-primary-sm: 24px;
+    --font-size-primary-md: 32px;
+    --font-size-primary-lg: 48px;
+    --font-size-primary-xl: 70px;
+
+    //Typographies - Secondary
+
+    --font-family-secondary: 'Segoe UI',
+        sans-serif;
+    --font-size-secondary-xs: 14px;
+    --font-size-secondary-sm: 16px;
+    --font-size-secondary-md: 18px;
+    --font-size-secondary-lg: 20px;
+    --font-size-secondary-xl: 28px;
+
+    //Typographies - Font Weight
+
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-heavy: 900;
+
+    //Background
+
+    --background-color: #F6F6F6;
+
+    //Component sizes
+
+    --component-sm: 39px;
+    --component-md: 50px;
+    --component-lg: 59px;
+
+}
+
+//Html and body
+
+html {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary-xs);
+}
+
+body {
+    background: var(--background-color);
+    color: var(--black);
+}
+
+//Typography - Primary Tags
+
+p,
+span,
+a {
+    font-size: var(--font-size-primary-xs);
+    font-weight: var(--font-weight-regular);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-weight: var(--font-weight-regular);
+    color: var(--blue)
+}
+
+a {
+    color: var(--light-blue);
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &__secondary {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+h1 {
+    font-size: var(--font-size-primary-xl);
+}
+
+h2 {
+    font-size: var(--font-size-primary-lg);
+}
+
+h3 {
+    font-size: var(--font-size-primary-md);
+}
+
+h4 {
+    font-size: var(--font-size-primary-sm);
+}
+
+h5 {
+    font-size: var(--font-size-primary-xs);
+}
+
+//Typography - Classes and Secondary Classes
+
+.p,
+.span,
+.a {
+    font-size: var(--font-size-primary-xs);
+    font-weight: var(--font-weight-regular);
+    line-break: auto;
+
+    &__xs {
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-primary-xs);
+    }
+
+    &__sm {
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-primary-sm);
+    }
+
+    &__md {
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-primary-md);
+    }
+
+    &__lg {
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-primary-lg);
+    }
+
+    &__xl {
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-primary-xl);
+    }
+
+    &__secondary {
+        font-family: var(--font-family-secondary);
+        font-size: var(--font-size-secondary-xs);
+
+        &__xs {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-secondary-xs);
+        }
+
+        &__sm {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-secondary-sm);
+        }
+
+        &__md {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-secondary-md);
+        }
+
+        &__lg {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-secondary-lg);
+        }
+
+        &__xl {
+            font-family: var(--font-family-secondary);
+            font-size: var(--font-size-secondary-xl);
+        }
+    }
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-weight: var(--font-weight-regular);
+    color: var(--blue);
+
+    &__secondary {
+        font-family: var(--font-family-secondary);
+    }
+}
+
+.a {
+    color: var(--light-blue);
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &__secondary {
+        color: var(--light-blue);
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.h1 {
+    font-size: var(--font-size-primary-xl);
+
+    &__secondary {
+        font-size: var(--font-size-secondary-xl);
+    }
+}
+
+.h2 {
+    font-size: var(--font-size-primary-lg);
+
+    &__secondary {
+        font-size: var(--font-size-secondary-lg);
+    }
+}
+
+.h3 {
+    font-size: var(--font-size-primary-md);
+
+    &__secondary {
+        font-size: var(--font-size-secondary-md);
+    }
+}
+
+.h4 {
+    font-size: var(--font-size-primary-sm);
+
+    &__secondary {
+        font-size: var(--font-size-secondary-sm);
+    }
+}
+
+.h5 {
+    font-size: var(--font-size-primary-xs);
+
+    &__secondary {
+        font-size: var(--font-size-secondary-xs);
+    }
+}
+
+//Component Sizes
+
+.sm {
+    font-size: var(--font-size-secondary-sm);
+    height: var(--component-sm);
+}
+
+.md {
+    font-size: var(--font-size-secondary-sm);
+    ;
+    height: var(--component-md);
+}
+
+.lg {
+    font-size: var(--font-size-secondary-lg);
+    height: var(--component-lg);
+}
