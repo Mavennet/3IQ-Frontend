@@ -144,6 +144,7 @@ export const getServerSideProps = async ({ params }) => {
   //   }
   //   `
   // )
+  // console.log('allPosts', Buffer.byteLength(JSON.stringify(allPosts), 'utf8'))
 
   // Retrieve all benefit cards (used later on to get the cards details in section)
   const allBenefitCards = await client.fetch(
@@ -360,6 +361,8 @@ const LandingPage = (props) => {
   } = props
 
   const router = useRouter()
+  // console.log('content')
+  // console.log(content)
   const getLanguageFromStorage = () => {
     const languageStorage = localStorage.getItem('lang')
     const languageSelected = country.languages.filter(
@@ -378,6 +381,7 @@ const LandingPage = (props) => {
       ? dataCountries.filter((country) => country.urlTag === currentCountry)[0]
       : dataCountries.filter((country) => country.urlTag === 'ca')[0]
   )
+  console.log('da country: ', country)
 
   const [currentLanguage, setCurrentLanguage] = useState(
     typeof window !== 'undefined' && localStorage.getItem('lang')
