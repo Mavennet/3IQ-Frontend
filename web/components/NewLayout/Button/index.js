@@ -1,61 +1,14 @@
 import React from 'react'
-import { PropTypes } from 'prop-types'
+import {PropTypes} from 'prop-types'
 import styles from './styles.module.scss'
-import { FiChevronDown } from 'react-icons/fi'
-import Link from 'next/link'
+import {FiChevronDown} from 'react-icons/fi'
 
 function Button(props) {
-  const {
-    title,
-    variant = 'solid',
-    size = 'md',
-    disabled = false,
-    arrow = false,
-    route,
-    link,
-    target,
-    className
-  } = props
+  const {title, variant = 'solid', size = 'md', disabled = false, arrow = false, className} = props
 
   const typesStyle = {
     solid: styles.button__solid,
     outlined: styles.button__outlined,
-  }
-
-  if (route && route.slug && route.slug.current) {
-    return (
-      <Link
-        href={{
-          pathname: '/LandingPage',
-          query: { slug: route.slug.current },
-        }}
-        as={`/${route.slug.current}`}
-      >
-        <a>
-          <button
-            className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
-            disabled={disabled}
-          >
-            <div className={styles.button__title}>{title}</div>
-            {arrow && (<FiChevronDown className={styles.arrow} />)}
-          </button>
-        </a>
-      </Link>
-    )
-  }
-
-  if (link) {
-    return (
-      <a href={link} target={target}>
-        <button
-          className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
-          disabled={disabled}
-        >
-          <div className={styles.button__title}>{title}</div>
-          {arrow && (<FiChevronDown className={styles.arrow} />)}
-        </button>
-      </a>
-    )
   }
 
   return (
@@ -75,13 +28,6 @@ Button.propTypes = {
   size: PropTypes.string,
   disabled: PropTypes.boolean,
   arrow: PropTypes.boolean,
-  route: PropTypes.shape({
-    slug: PropTypes.shape({
-      current: PropTypes.string,
-    }),
-  }),
-  link: PropTypes.string,
-  target: PropTypes.string
 }
 
 export default Button
