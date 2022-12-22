@@ -6,7 +6,7 @@ import client from '../../../client'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Grid, Container, Box, CssBaseline, Typography } from '@mui/material'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './SideBySideImages.module.css'
+import styles from'./styles.module.scss'
 import Link from 'next/link'
 import groq from 'groq'
 

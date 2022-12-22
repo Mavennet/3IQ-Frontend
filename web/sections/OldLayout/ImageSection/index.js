@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import styles from './ImageSection.module.css'
+import styles from'./styles.module.scss'
 import client from '../../../client'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import Cta from '../../../components/OldLayout/Cta'

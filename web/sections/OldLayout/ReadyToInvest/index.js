@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Grid, Container, Box, CssBaseline } from '@mui/material'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './ReadyToInvest.module.css'
+import styles from'./styles.module.scss'
  import RedirectButton from '../../../components/OldLayout/RedirectButton'
 
 

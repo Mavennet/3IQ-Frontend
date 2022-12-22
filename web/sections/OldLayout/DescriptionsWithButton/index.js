@@ -6,7 +6,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import RedirectButton from '../../../components/OldLayout/RedirectButton'
-import styles from './DescriptionsWithButton.module.css'
+import styles from'./styles.module.scss'
 
 const theme = createTheme({
   typography: {

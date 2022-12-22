@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './TextSection.module.css'
+import styles from'./styles.module.scss'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'

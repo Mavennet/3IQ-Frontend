@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './ContactUsForm.module.css'
+import styles from'./styles.module.scss'
 
 const theme = createTheme({
   typography: {

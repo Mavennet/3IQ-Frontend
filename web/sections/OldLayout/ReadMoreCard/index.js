@@ -9,7 +9,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
  import RedirectButton from '../../../components/OldLayout/RedirectButton'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './ReadMoreCard.module.css'
+import styles from'./styles.module.scss'
 
 const theme = createTheme({
   typography: {

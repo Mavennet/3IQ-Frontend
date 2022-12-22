@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Typography, Box, Container } from '@mui/material'
-import styles from './TableCripto.module.css'
+import styles from'./styles.module.scss'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import axios from 'axios'
 

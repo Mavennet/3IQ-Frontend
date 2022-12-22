@@ -5,7 +5,7 @@ import {
 } from '@mui/material'
 import SimpleBlockContent from '../../../../components/OldLayout/SimpleBlockContent'
 import RedirectButton from '../../../../components/OldLayout/RedirectButton'
-import styles from '../TabsLayout/TabsLayout.module.css'
+import styles from '../TabsLayout/styles.module.scss'
 import CustomPostCard from '../../custom/CustomPostCard'
 import NewsletterGrid from '../NewsletterGrid'
 import NewsHorizontalLayout from '../NewsHorizontalLayout'

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Grid, Container, Modal, Button, Box } from '@mui/material'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './SubscribeBlock.module.css'
+import styles from'./styles.module.scss'
 import { AiOutlineClose } from 'react-icons/ai'
 
 const theme = createTheme({

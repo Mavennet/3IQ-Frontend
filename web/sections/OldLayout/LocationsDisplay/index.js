@@ -5,7 +5,7 @@ import { Grid, Container, Box, Typography } from '@mui/material'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import Image from 'next/image'
-import styles from './LocationsDisplay.module.css'
+import styles from'./styles.module.scss'
 import {FaMapMarkerAlt} from 'react-icons/fa'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 

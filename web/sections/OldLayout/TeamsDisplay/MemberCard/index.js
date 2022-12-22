@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, Typography, Link } from '@mui/material'
-import styles from './MemberCard.module.css'
+import styles from'./styles.module.scss'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
 import { FaLinkedinIn } from 'react-icons/fa'

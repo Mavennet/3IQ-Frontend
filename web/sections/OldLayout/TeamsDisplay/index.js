@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { CssBaseline, Grid, Container, Typography, Modal, Box } from '@mui/material'
 import MemberCard from './MemberCard'
-import styles from './TeamsDisplay.module.css'
+import styles from'./styles.module.scss'
 import { AiOutlineClose } from 'react-icons/ai'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 

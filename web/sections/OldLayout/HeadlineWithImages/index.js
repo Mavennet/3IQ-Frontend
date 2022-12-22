@@ -5,7 +5,7 @@ import { Grid, Container, Box, Typography } from '@mui/material'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './HeadlineWithImages.module.css'
+import styles from'./styles.module.scss'
 import Image from 'next/image'
 
 const theme = createTheme({

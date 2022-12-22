@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import styles from './HeroWithImage.module.css'
+import styles from'./styles.module.scss'
 import client from '../../../client'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'

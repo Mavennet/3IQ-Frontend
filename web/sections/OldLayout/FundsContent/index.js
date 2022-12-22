@@ -8,7 +8,7 @@ import client from '../../../client'
 import RedirectButton from '../../../components/OldLayout/RedirectButton'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import RenderSections from '../../../components/RenderSections'
-import styles from './FundsContent.module.css'
+import styles from'./styles.module.scss'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)

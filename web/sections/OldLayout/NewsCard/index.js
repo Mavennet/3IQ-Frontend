@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid'
 import RedirectButton from '../../../components/OldLayout/RedirectButton'
 import {format} from 'date-fns'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './NewsCard.module.css'
+import styles from'./styles.module.scss'
 
 const theme = createTheme({
   typography: {

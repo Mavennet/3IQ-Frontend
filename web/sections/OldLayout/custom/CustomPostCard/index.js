@@ -8,7 +8,7 @@ import {Button, CardActions} from '@mui/material'
 import SimpleBlockContent from '../../../../components/OldLayout/SimpleBlockContent'
 import client from '../../../../client'
 import {format, parseISO} from 'date-fns'
-import styles from './CustomPostCard.module.css'
+import styles from'./styles.module.scss'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 

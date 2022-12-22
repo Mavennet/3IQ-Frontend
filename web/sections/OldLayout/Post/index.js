@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
-import styles from './Post.module.css'
+import styles from'./styles.module.scss'
 import client from '../../../client'
 import { Grid, Container, Typography, Link } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'

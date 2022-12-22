@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Typography, Container, Box } from '@mui/material'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './TableSection.module.css'
+import styles from'./styles.module.scss'
 import axios from 'axios'
 import { format } from 'date-fns'
 

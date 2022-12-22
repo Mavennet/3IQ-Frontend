@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
 import RedirectButton from '../../../components/OldLayout/RedirectButton'
-import styles from './DoubleOptions.module.css'
+import styles from'./styles.module.scss'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 
 const builder = imageUrlBuilder(client)

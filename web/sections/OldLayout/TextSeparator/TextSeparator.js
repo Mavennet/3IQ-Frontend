@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Container, Box, Typography } from '@mui/material'
  import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from './TextSeparator.module.css'
+import styles from'./styles.module.scss'
 
 function TextSeparator(props) {
   const { portableText, title, backgroundColor } = props
