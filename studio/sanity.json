@@ -4,8 +4,8 @@
     "name": "3IQ Website"
   },
   "api": {
-    "projectId": "w7ow2x7s",
-    "dataset": "production"
+    "projectId": "1wgg5qqs",
+    "dataset": "staging"
   },
   "plugins": [
     "@sanity/base",

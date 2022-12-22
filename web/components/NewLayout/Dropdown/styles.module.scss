@@ -1,0 +1,53 @@
+.select {
+  outline: none;
+  cursor: pointer!important;
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-md);
+}
+
+.round {
+  position: relative;
+}
+
+.round label {
+  background-color: transparent;
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 0.8em;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0.8em;
+}
+
+.round label:after {
+  border: 2px solid var(--hover-blue);
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 4px;
+  left: 5px;
+  opacity: 0;
+  position: absolute;
+  top: 4px;
+  width: 2px;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: rotate(45deg) scale(-1, 1);
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: transparent;
+  border-color: var(--hover-blue);
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}

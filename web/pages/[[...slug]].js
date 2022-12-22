@@ -9,71 +9,26 @@ import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
 import CookieConsent, { Cookies } from 'react-cookie-consent';
-
-const pageFragment = groq`
-...,
-  content[] {
-    _type == 'reference' => @->{
-      ...,
-      post->{
-        ...,
-        author->
-      },
-    },
-  }`
-
-/**
- * Fetches data for our pages.
- *
- * The [[...slug]] name for this file is intentional - it means Next will run this getServerSideProps
- * for every page requested - /, /about, /contact, etc..
- * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
- */
+import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES } from '../utils/groqQueries'
 
 export const getServerSideProps = async ({ params }) => {
+
   const dataCountries = await client.fetch(
-    groq`
-    *[_type == "country"]{
-      name,
-      urlTag,
-      mainNavigation[]-> {
-      ...,
-      route-> { ..., 'localeTitle': page->title },
-      submenuRoutes[]-> { ..., 'localeTitle': page->title },
-    },
-      languages[]->,
-      headerLogo,
-      footerLogo,
-      footerNavigation[]-> { ..., 'localeTitle': page->title },
-      footerFirstLeftBlockContent,
-      footerFirstLeftBlockImage,
-      footerSecondLeftBlockContent,
-      footerSecondLeftBlockImage,
-      footerSecondLeftBlockButton,
-      footerBottomContent,
-      newsletterBody,
-      newsletterSubscribeSrc,
-      followUsText,
-      twitterUrl,
-      linkedinUrl,
-      youtubeUrl,
-      shareThisStoryText,
-    }
-  `
+    DATA_COUNTRIES
   )
 
   const countries = []
 
   dataCountries.map((c) => countries.push(c.urlTag))
 
-  let country = ''
+  let country = 'ca'
 
-  country = process.env.COUNTRY_BASE
   if (params?.slug) {
     if (countries.indexOf(params.slug[0]) >= 0) {
       params.slug.shift()
     }
   }
+
   const slug = slugParamToPath(params?.slug)
 
   let data
@@ -86,11 +41,7 @@ export const getServerSideProps = async ({ params }) => {
       data = await client
         .fetch(
           // Get the route document with the home slug for the given country
-          groq`*[_type == "route" && slug.current == $possibleSlug && $country in countries[]->urlTag][0]{
-            page-> {
-              ${pageFragment}
-            }
-          }`,
+          DATA_EQUALS_SLUG,
           { possibleSlug: `${country}/home`, country: country }
         )
         .then((res) => (res?.page ? { ...res.page, slug } : undefined))
@@ -98,11 +49,7 @@ export const getServerSideProps = async ({ params }) => {
       data = await client
         .fetch(
           // Get the route document with one of the possible slugs for the given requested path
-          groq`*[_type == "route" && slug.current in $possibleSlugs && $country in countries[]->urlTag][0]{
-            page-> {
-              ${pageFragment}
-            }
-          }`,
+          DATA_IN_SLUG,
           { possibleSlugs: getSlugVariations(country, slug), country: country }
         )
         .then((res) => (res?.page ? { ...res.page, slug } : undefined))
@@ -111,11 +58,7 @@ export const getServerSideProps = async ({ params }) => {
     data = await client
       .fetch(
         // Get the route document with one of the possible slugs for the given requested path
-        groq`*[_type == "route" && slug.current in $possibleSlugs][0]{
-          page-> {
-            ${pageFragment}
-          }
-        }`,
+        DATA_IN_SLUG_BY_PATH,
         { possibleSlugs: getSlugVariations(country, slug) }
       )
       .then((res) => (res?.page ? { ...res.page, slug } : undefined))
@@ -129,11 +72,21 @@ export const getServerSideProps = async ({ params }) => {
   }
 
   // Retrieve all routes (used later on to get the buttons routes)
-  const allRoutes = await client.fetch(
-    groq`
-    *[_type == 'route'] {...}
-    `
-  )
+  const allRoutes = await client.fetch(ROUTES)
+  // Retrieve all benefit cards (used later on to get the cards details in section)
+  const allBenefitCards = await client.fetch(BENEFIT_CARDS)
+  const allItems = await client.fetch(ITEMS)
+  // Retrieve all teams (used later on to get the our team display blocks)
+  const allTeams = await client.fetch(TEAMS)
+  // Retrieve all timelines (used later on to get the Our Story timeline items)
+  const allTimelines = await client.fetch(TIMELINES)
+  // Retrieve all Locations Display sections (used to retrieve the section locations with necessary info)
+  const allLocationsDisplays = await client.fetch(LOCATIONS_DISPLAY)
+  // Retrieve all Tab Items
+  const allTabItems = await client.fetch(TAB_ITEMS)
+  // Retrieve all Fund Items
+  const allFundItems = await client.fetch(FUND_ITEMS)
+
 
   // Retrieve all posts (used later on to get the news cards details)
   // const allPosts = await client.fetch(
@@ -144,173 +97,8 @@ export const getServerSideProps = async ({ params }) => {
   //   }
   //   `
   // )
-
-  // Retrieve all benefit cards (used later on to get the cards details in section)
-  const allBenefitCards = await client.fetch(
-    groq`
-    *[_type == 'benefitCard'] {
-      ...,
-    }
-    `
-  )
-
-  const allItems = await client.fetch(
-    groq`
-    *[_type == 'item'] {
-      ...,
-    }
-    `
-  )
-
-  // Retrieve all teams (used later on to get the our team display blocks)
-  const allTeams = await client.fetch(
-    groq`
-    *[_type == 'team'] {
-      _id,
-      _type,
-      'localeName': name,
-      members[]-> {
-        _id,
-        _type,
-        name,
-        'localeJobTitle': jobTitle,
-        'localeBio': bio,
-        profilePhoto,
-        linkedinUrl,
-        email,
-        contactText,
-        readProfileText,
-      },
-      countries[]-> {_id},
-    }
-    `
-  )
-
-  // Retrieve all timelines (used later on to get the Our Story timeline items)
-  const allTimelines = await client.fetch(
-    groq`
-    *[_type == 'timeline'] {
-      _id,
-      _type,
-      _rev,
-      backgroundImage,
-      leftFirstTextBlock,
-      leftSecondTextBlock,
-      items[]-> {
-        _id,
-        _type,
-        'localeDateText': dateText,
-        'localeDescriptionText': descriptionText
-      },
-    }
-    `
-  )
-
-  // Retrieve all Locations Display sections (used to retrieve the section locations with necessary info)
-  const allLocationsDisplays = await client.fetch(
-    groq`
-    *[_type == 'locationsDisplay'] {
-      _id,
-      _type,
-      _rev,
-      locations[]-> {
-        _id,
-        _type,
-        'localeName': name,
-        'localeDescription': description,
-        googleMapsSrc,
-        mainImage,
-      }
-    }
-    `
-  )
-
-  // Retrieve all Tab Items
-  const allTabItems = await client.fetch(
-    groq`
-    *[_type == 'tabItem'] {
-      _id,
-      _type,
-      _rev,
-      'localecontentBlock': contentBlock,
-      'localeButton': button,
-      'localeName': name,
-      isPaginatedNewsletter,
-      isNewsCardsHorizontalLayout,
-      selectedPostCategory->,
-      newsCards[]-> {
-        _id,
-        _type,
-        _rev,
-        'localeButtonText': buttonText,
-        'localeShortDescription': shortDescription,
-        'localeSmallCardText': smallCardText,
-        route->,
-        post-> {
-          _id,
-          _type,
-          mainImage,
-          'localeHeading': heading,
-          publishedAt,
-          author-> {
-            _id,
-            _type,
-            name,
-            email,
-            profilePhoto,
-          },
-        },
-      },
-    }
-    `
-  )
-
-  // Retrieve all Fund Items
-  const allFundItems = await client.fetch(
-    groq`
-    *[_type == 'fundItem'] {
-      _id,
-      _type,
-      _rev,
-      'localeName': name,
-      'localeCodeTitle': codeTitle,
-      'firstColumnTitle': firstColumnTitle,
-      'thirdColumnTitle': thirdColumnTitle,
-      'localeCodeObservation': codeObservation,
-      'localeReadMoreText': readMoreText,
-      'localeTextBetweenButtons': textBetweenButtons,
-      'localeContactUsText': contactUsText,
-      'localeObservation' : observation,
-      'hiddenTitle': hiddenTitle,
-      fundSections[]-> {
-        ...,
-        fundSidebarItem[]-> {
-          _id,
-          _type,
-          _rev,
-          'localeTitle': title,
-          'localeText': text,
-          'localeObservation': observation,
-          mainImage,
-          listImage,
-          listItems
-        }
-      },
-      products[]-> {
-        _id,
-        _type,
-        _rev,
-        codes,
-        'localeName': name,
-        'localeHighlights': highlights,
-        mainImage,
-        mailtoLink,
-        readMoreRoute->,
-      },
-    }
-    `
-  )
-
+  // console.log('allPosts', Buffer.byteLength(JSON.stringify(allPosts), 'utf8'))
+  //
   // Routes filtered by the current country (can be used if necessary)
   // const countryRoutes = allRoutes.filter(route => route.slug.current.startsWith(country));
 

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import * as SectionComponents from './sections'
+import * as SectionComponents from '../sections'
 import capitalizeString from '../utils/capitalizeString'
 
 function resolveSections(section) {

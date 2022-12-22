@@ -1,24 +1,11 @@
 import React from 'react'
 import BaseApp from 'next/app'
 import client from '../client'
+// import '../styles/global.scss'
 import '../styles/shared.module.css'
 import '../styles/layout.css'
 import '../styles/custom-properties.css'
-
-const siteConfigQuery = `
-  *[_id == "global-config"] {
-    ...,
-    logo {asset->{extension, url}},
-    mainNavigation[] -> {
-      ...,
-      "title": page->title
-    },
-    footerNavigation[] -> {
-      ...,
-      "title": page->title
-    }
-  }[0]
-  `
+import { SITE_CONFIG_QUERY } from '../utils/groqQueries'
 
 class App extends BaseApp {
   static async getInitialProps({Component, ctx}) {
@@ -29,7 +16,7 @@ class App extends BaseApp {
     }
 
     // Add site config from sanity
-    return client.fetch(siteConfigQuery).then((config) => {
+    return client.fetch(SITE_CONFIG_QUERY).then((config) => {
       if (!config) {
         return {pageProps}
       }

@@ -1,0 +1,43 @@
+.alert {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 3px;
+    color: var(--white);
+    font-family: var(--font-family-secondary);
+}
+
+.text {
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
+    p {
+        width: 100%;
+        margin: 14px 8px;
+        font-size: var(--font-size-secondary-sm);
+        font-weight: var(--font-weight-regular);
+    }
+}
+
+.close {
+    width: 50px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.primary {
+    background-color: var(--light-blue);
+}
+
+.error {
+    background-color: var(--red);
+}
+
+.success {
+    background-color: var(--light-green);
+}
+
+.warning {
+    background-color: var(--light-orange);
+}

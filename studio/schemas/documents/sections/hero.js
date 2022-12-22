@@ -21,6 +21,12 @@ export default {
       title: 'Description',
     },
     {
+      name: 'fontColor',
+      type: 'string',
+      title: 'Font color',
+      description: 'Default: #FFF (White)',
+    },
+    {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image',

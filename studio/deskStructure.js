@@ -14,12 +14,14 @@ const hiddenDocTypes = (listItem) => ![
   'hero',
   'animatedHero',
   'heroWithImage',
+  'componentsTests',
   'heroFirstVariation',
   'heroDoubleButton',
   'imageBesideText',
   'doubleOptions',
   'imageWithText',
   'mailchimp',
+  'mainHero',
   'keyBenefits',
   'benefitCard',
   'item',
@@ -99,6 +101,8 @@ export default () =>
           S.list()
             .title('Page Sections')
             .items([
+              S.documentTypeListItem('mailchimp').title('Mailchimp'),
+              S.documentTypeListItem('mainHero').title('Main Hero'),
               S.documentTypeListItem('animatedHero').title('Animated Hero'),
               S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),
@@ -110,6 +114,7 @@ export default () =>
               S.documentTypeListItem('heroDoubleButton').title('Hero with 2 Buttons'),
               S.documentTypeListItem('heroFirstVariation').title('Hero first variation'),
               S.documentTypeListItem('heroWithImage').title('Hero with Image'),
+              S.documentTypeListItem('componentsTests').title('Components Tests'),
               S.documentTypeListItem('imageBesideText').title('Image beside Text'),
               S.documentTypeListItem('keyBenefits').title('Key Benefits'),
               S.documentTypeListItem('locationsDisplay').title('Locations Display'),

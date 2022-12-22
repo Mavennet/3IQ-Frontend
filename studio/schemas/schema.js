@@ -25,12 +25,14 @@ import imagesContainer from './documents/imagesContainer';
 // Section documents
 import textSection from './documents/sections/textSection';
 import heroWithImage from './documents/sections/heroWithImage';
+import componentsTests from './documents/sections/componentsTests';
 import animatedHero from './documents/sections/animatedHero';
 import hero from './documents/sections/hero';
 import heroFirstVariation from './documents/sections/heroFirstVariation';
 import heroDoubleButton from './documents/sections/heroDoubleButton';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
+import mainHero from './documents/sections/mainHero';
 import imageBesideText from './documents/sections/imageBesideText'
 import quoteHeads from './documents/sections/quoteHeads';
 import quoteHeadsDubai from './documents/sections/quoteHeadsDubai';
@@ -94,6 +96,7 @@ export default createSchema({
     internalLink,
     link,
     mailchimp,
+    mainHero,
     page,
     portableText,
     route,
@@ -113,6 +116,7 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    componentsTests,
     animatedHero,
     heroFirstVariation,
     heroDoubleButton,
