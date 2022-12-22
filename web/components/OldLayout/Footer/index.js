@@ -256,7 +256,7 @@ function Footer(props) {
                 )
               }
               {
-                currentCountry.newsletterSubscribeSrc && (
+                currentCountry.urlTag === 'ca' && currentCountry.newsletterSubscribeSrc && (
                   <Grid item xs={12} mb={2}>
                     <iframe
                       src={currentCountry.newsletterSubscribeSrc}

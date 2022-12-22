@@ -33,6 +33,15 @@ function Post(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
+  currentCountry.urlTag === 'ae' && body.forEach(block => {
+    if (block._type === 'block') {
+      block.markDefs.length > 0 && block.markDefs.forEach(m => {
+        if (m._type === 'link') {
+          m.href = m.href.replace('https://3iq.ca', 'https://staging--3iq-ae-dev.netlify.app/ae')
+        }
+      })
+    }
+  })
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)

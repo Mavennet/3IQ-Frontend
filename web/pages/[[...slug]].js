@@ -28,7 +28,7 @@ export const getServerSideProps = async ({ params }) => {
       params.slug.shift()
     }
   }
-  
+
   const slug = slugParamToPath(params?.slug)
 
   let data
