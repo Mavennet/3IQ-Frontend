@@ -45,6 +45,7 @@ export default {
             {type: 'hero'},
             {type: 'heroWithImage'},
             {type: 'mailchimp'},
+            {type: 'mainHero'},
             {type: 'componentsTests'},
             {type: 'animatedHero'},
             {type: 'heroFirstVariation'},

@@ -21,6 +21,7 @@ const hiddenDocTypes = (listItem) => ![
   'doubleOptions',
   'imageWithText',
   'mailchimp',
+  'mainHero',
   'keyBenefits',
   'benefitCard',
   'item',
@@ -101,6 +102,7 @@ export default () =>
             .title('Page Sections')
             .items([
               S.documentTypeListItem('mailchimp').title('Mailchimp'),
+              S.documentTypeListItem('mainHero').title('Main Hero'),
               S.documentTypeListItem('animatedHero').title('Animated Hero'),
               S.documentTypeListItem('automatedNewsCard').title('Automated News Card'),
               S.documentTypeListItem('contactUsForm').title('Contact Us Form'),

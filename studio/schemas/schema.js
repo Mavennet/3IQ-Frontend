@@ -32,6 +32,7 @@ import heroFirstVariation from './documents/sections/heroFirstVariation';
 import heroDoubleButton from './documents/sections/heroDoubleButton';
 import imageWithText from './documents/sections/imageWithText';
 import mailchimp from './documents/sections/mailchimp';
+import mainHero from './documents/sections/mainHero';
 import imageBesideText from './documents/sections/imageBesideText'
 import quoteHeads from './documents/sections/quoteHeads';
 import quoteHeadsDubai from './documents/sections/quoteHeadsDubai';
@@ -95,6 +96,7 @@ export default createSchema({
     internalLink,
     link,
     mailchimp,
+    mainHero,
     page,
     portableText,
     route,

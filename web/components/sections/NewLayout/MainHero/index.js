@@ -9,8 +9,8 @@ import Form from '../../../NewLayout/Form'
 import ButtonTextArea from '../../../NewLayout/ButtonTextArea'
 
 
-function Mailchimp(props) {
-    const { text, inputPlaceholder, actionUrl } = props
+function MainHero(props) {
+    const { heading, image, description, button, backgroundImage } = props
 
     const typesStyle = {
         solid: styles.button__solid,
@@ -19,7 +19,7 @@ function Mailchimp(props) {
 
     return (
         <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-            <Grid container className={styles.mailchimp} py={{md: 6, xs: 3}} px={{md: 4, xs: 3}}>
+            <Grid container className={styles.MainHero} py={{md: 6, xs: 3}} px={{md: 4, xs: 3}}>
                 <Grid item sm={8} xs={12}  >
                         <SimpleBlockContent blocks={text} />
                 </Grid>
@@ -38,7 +38,7 @@ function Mailchimp(props) {
     )
 }
 
-Mailchimp.propTypes = {
+MainHero.propTypes = {
     title: PropTypes.string.isRequired,
     variant: PropTypes.string,
     size: PropTypes.string,
@@ -46,4 +46,4 @@ Mailchimp.propTypes = {
     arrow: PropTypes.boolean,
 }
 
-export default Mailchimp
+export default MainHero

@@ -25,6 +25,7 @@ export default {
     'imageBesideText',
     'doubleOptions',
     'mailchimp',
+    'mainHero',
     'note',
     'quoteHeads',
     'quoteHeadsDubai',
