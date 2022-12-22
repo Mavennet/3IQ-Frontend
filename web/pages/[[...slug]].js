@@ -10,6 +10,7 @@ import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
 import CookieConsent, { Cookies } from 'react-cookie-consent';
 import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES } from '../utils/groqQueries'
+import { MainHero } from '../sections'
 
 export const getServerSideProps = async ({ params }) => {
 
@@ -254,6 +255,9 @@ const LandingPage = (props) => {
             images: openGraphImages,
           }}
           noindex={disallowRobots}
+        />
+        <MainHero
+          inputPlaceholder='exemplo'
         />
         {formatedContent && (
           <RenderSections
