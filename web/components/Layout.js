@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { LogoJsonLd } from 'next-seo'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
+import Header from './OldLayout/Header'
+import Footer from './OldLayout/Footer'
 
 const theme = createTheme({
   typography: {
