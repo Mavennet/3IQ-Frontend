@@ -1,47 +1,71 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import styles from './styles.module.scss'
-import { FiChevronDown } from 'react-icons/fi'
-import { Container, Grid } from '@mui/material'
+import { Container, Grid, Box } from '@mui/material'
+import { FaTwitter, FaYoutube, FaLinkedin } from 'react-icons/fa'
+import Link from 'next/link'
+import Button from '../../../components/NewLayout/Button'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import ButtonTextArea from '../../../components/NewLayout/ButtonTextArea'
-
 
 function MainHero(props) {
-    const { heading, image, description, button, backgroundImage } = props
+  const { heading, image, description, button, backgroundImage } = props
 
-    const typesStyle = {
-        solid: styles.button__solid,
-        outlined: styles.button__outlined,
-    }
+  const typesStyle = {
+    solid: styles.button__solid,
+    outlined: styles.button__outlined,
+  }
 
-    return (
-        <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-            <Grid container className={styles.MainHero} py={{md: 6, xs: 3}} px={{md: 4, xs: 3}}>
-                <Grid item sm={8} xs={12}  >
-                        <SimpleBlockContent blocks={text} />
-                </Grid>
-                <Grid pt={{xs: 3, md: false}} item sm={4} xs={12} >
-                    <ButtonTextArea size="md" placeholder={inputPlaceholder} buttonTitle="Subscribe"/>
-                </Grid>
-            </Grid>
-        </Container>
-        // <button
-        //   className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
-        //   disabled={disabled}
-        // >
-        //   <div className={styles.button__title}>{title}</div>
-        //   {arrow && (<FiChevronDown className={styles.arrow} />)}
-        // </button>
-    )
+  return (
+    <Box sx={{ backgroundColor: '#082146', py: 7 }}>
+      <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+        <Grid container sx={{display: 'flex', alignItems: 'center'}}>
+          <Grid item sm={8} xs={10}  >
+            <div className={styles.simple__block__content}>
+              <h5><strong>That's the 3iQ difference.</strong></h5>
+              <h2>innovative investments of institutional Quality</h2>
+              <p>We help investors navigate and understand the evolving digital asset space with investment solutions that provide exposure to cryptocurrencies.</p>
+            </div>
+            <Button
+              title="Read our story"
+            />
+          </Grid>
+          <Grid item sm={4} xs={2} >
+            <div className={styles.social__media}>
+              <Link href={'https://twitter.com/3iQ_corp'}>
+                <a target='_blank' rel="noopener">
+                  <div className={styles.icon}>
+                    <FaTwitter/>
+                  </div>
+                </a>
+              </Link>
+              <Link href={'#'}>
+                <a target='_blank' rel="noopener">
+                  <div className={styles.icon}>
+                    <FaYoutube/>
+                  </div>
+                </a>
+              </Link>
+              <Link href={'#'}>
+                <a target='_blank' rel="noopener">
+                  <div className={styles.icon}>
+                    <FaLinkedin/>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  )
 }
 
 MainHero.propTypes = {
-    title: PropTypes.string.isRequired,
-    variant: PropTypes.string,
-    size: PropTypes.string,
-    disabled: PropTypes.boolean,
-    arrow: PropTypes.boolean,
+  title: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  size: PropTypes.string,
+  disabled: PropTypes.boolean,
+  arrow: PropTypes.boolean,
 }
 
 export default MainHero
