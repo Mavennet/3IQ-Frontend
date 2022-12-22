@@ -67,14 +67,11 @@
 
 //Html and body
 
-html {
-    font-family: var(--font-family-primary);
-    font-size: var(--font-size-primary-xs);
-}
-
 body {
-    background: var(--background-color);
-    color: var(--black);
+    background: var(--background-color) !important;
+    color: var(--black) !important;
+    font-family: var(--font-family-primary) !important;
+    font-size: var(--font-size-primary-xs) !important;
 }
 
 //Typography - Primary Tags

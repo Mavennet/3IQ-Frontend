@@ -2,9 +2,9 @@ import React from 'react'
 import BaseApp from 'next/app'
 import client from '../client'
 import '../styles/global.scss'
-import '../styles/shared.module.css'
-import '../styles/layout.css'
-import '../styles/custom-properties.css'
+// import '../styles/shared.module.css'
+// import '../styles/layout.css'
+// import '../styles/custom-properties.css'
 
 const siteConfigQuery = `
   *[_id == "global-config"] {

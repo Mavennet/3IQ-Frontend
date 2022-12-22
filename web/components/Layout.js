@@ -2,18 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import {LogoJsonLd} from 'next-seo'
+import { LogoJsonLd } from 'next-seo'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Europa',
+    // fontFamily: 'Europa',
   }
 })
 
 function Layout(props) {
-  const {config, children} = props
+  const { config, children } = props
 
   if (!config) {
     console.error('Missing config')
@@ -35,7 +35,7 @@ function Layout(props) {
   const logoUrl = logo && logo.asset && logo.asset.url
 
   return (
-    <ThemeProvider theme={theme}>
+    <div>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width, viewport-fit=cover" />
       </Head>
@@ -57,7 +57,7 @@ function Layout(props) {
         />
         {logoUrl && url && <LogoJsonLd url={url} logo={logoUrl} />}
       </div>
-      </ThemeProvider>
+    </div>
   )
 }
 
