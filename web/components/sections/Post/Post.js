@@ -38,6 +38,7 @@ function Post(props) {
       block.markDefs.length > 0 && block.markDefs.forEach(m => {
         if (m._type === 'link') {
           m.href = m.href.replace('https://staging--3iq-ae-dev.netlify.app', 'https://3iq.ae')
+          m.href = m.href.replace('3iq.ca/', '3iq.ae/')
         }
       })
     }
