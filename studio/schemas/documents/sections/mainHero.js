@@ -16,16 +16,8 @@ export default {
             validation: Rule => Rule.error('Information required.').required(),
         },
         {
-            name: 'image',
-            type: 'image',
-            title: 'Image',
-            options: {
-                hotspot: true,
-            },
-        },
-        {
             name: 'description',
-            type: 'localeSimplePortableText',
+            type: 'localePortableText',
             title: 'Description',
         },
         {
