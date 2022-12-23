@@ -15,7 +15,23 @@ function urlFor(source) {
 }
 
 function MainHero(props) {
-  const { heading, image, description, button, backgroundImage } = props
+  const {
+    description,
+    button,
+    backgroundImage,
+    currentLanguage,
+    twitterUrl,
+    linkedinUrl,
+    youtubeUrl,
+    firstBoxTitle,
+    firstBoxDescription,
+    secondBoxTitle,
+    secondBoxDescription,
+    thirdBoxTitle,
+    thirdBoxDescription
+  } = props
+
+  const localeButton = button[currentLanguage?.languageTag]
 
   return (
     <Box
@@ -35,33 +51,48 @@ function MainHero(props) {
             <div className={styles.simple__block__content}>
               {description && <SimpleBlockContent blocks={description} />}
             </div>
-            <Button
-              title="Read our story"
-            />
+            {localeButton && (localeButton.route || localeButton.link) && (
+              <Button
+                {...localeButton}
+                title="Read our story"
+              />
+            )}
           </Grid>
           <Grid item sm={4} sx={{ display: { xs: 'none', sm: 'block' } }} >
             <div className={styles.social__media}>
-              <Link href={'https://twitter.com/3iQ_corp'}>
-                <a target='_blank' rel="noopener">
-                  <div className={styles.icon}>
-                    <FaTwitter />
-                  </div>
-                </a>
-              </Link>
-              <Link href={'#'}>
-                <a target='_blank' rel="noopener">
-                  <div className={styles.icon}>
-                    <FaYoutube />
-                  </div>
-                </a>
-              </Link>
-              <Link href={'#'}>
-                <a target='_blank' rel="noopener">
-                  <div className={styles.icon}>
-                    <FaLinkedin />
-                  </div>
-                </a>
-              </Link>
+              {
+                twitterUrl && (
+                  <Link href={twitterUrl}>
+                    <a target='_blank' rel="noopener">
+                      <div className={styles.icon}>
+                        <FaTwitter />
+                      </div>
+                    </a>
+                  </Link>
+                )
+              }
+              {
+                youtubeUrl && (
+                  <Link href={youtubeUrl}>
+                    <a target='_blank' rel="noopener">
+                      <div className={styles.icon}>
+                        <FaYoutube />
+                      </div>
+                    </a>
+                  </Link>
+                )
+              }
+              {
+                linkedinUrl && (
+                  <Link href={linkedinUrl}>
+                    <a target='_blank' rel="noopener">
+                      <div className={styles.icon}>
+                        <FaLinkedin />
+                      </div>
+                    </a>
+                  </Link>
+                )
+              }
             </div>
           </Grid>
         </Grid>
@@ -69,30 +100,47 @@ function MainHero(props) {
           <div className={styles.box__main__hero}>
             <div className={styles.box__title}>
               <FaEthereum />
-              <h5>Navigate</h5>
+              {
+                firstBoxTitle && (
+                  <h5>{firstBoxTitle}</h5>
+                )
+              }
             </div>
-            <p>
-              Navigate We help investors navigate and understand the evolving digital asset space
-              with investment solutions that provide
-            </p>
+            {
+              firstBoxDescription && (
+                <p>{firstBoxDescription}</p>
+              )
+            }
           </div>
           <div className={styles.box__main__hero}>
             <div className={styles.box__title}>
               <BsCurrencyBitcoin />
-              <h5>Investments</h5>
+              {
+                secondBoxTitle && (
+                  <h5>{secondBoxTitle}</h5>
+                )
+              }
             </div>
-            <p>
-              We help investors navigate and understand the evolving digital asset space with investment solutions that provide
-            </p>
+            {
+              secondBoxDescription && (
+                <p>{secondBoxDescription}</p>
+              )
+            }
           </div>
           <div className={styles.box__main__hero}>
             <div className={styles.box__title}>
               <FaMixer />
-              <h5>Quality</h5>
+              {
+                thirdBoxTitle && (
+                  <h5>{thirdBoxTitle}</h5>
+                )
+              }
             </div>
-            <p>
-              We help investors navigate and understand the evolving digital asset space with investment solutions that provide
-            </p>
+            {
+              thirdBoxDescription && (
+                <p>{thirdBoxDescription}</p>
+              )
+            }
           </div>
         </div>
       </Container>
@@ -103,6 +151,17 @@ function MainHero(props) {
 MainHero.propTypes = {
   heading: PropTypes.string.isRequired,
   description: PropTypes.any,
+  button: PropTypes.object,
+  currentLanguage: PropTypes.object,
+  twitterUrl: PropTypes.string,
+  linkedinUrl: PropTypes.string,
+  youtubeUrl: PropTypes.string,
+  firstBoxTitle: PropTypes.string,
+  firstBoxDescription: PropTypes.string,
+  secondBoxTitle: PropTypes.string,
+  secondBoxDescription: PropTypes.string,
+  thirdBoxTitle: PropTypes.string,
+  thirdBoxDescription: PropTypes.string,
 }
 
 export default MainHero
