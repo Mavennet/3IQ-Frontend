@@ -54,7 +54,7 @@ function MainHero(props) {
             {localeButton && (localeButton.route || localeButton.link) && (
               <Button
                 {...localeButton}
-                title="Read our story"
+                title="Read our story "
               />
             )}
           </Grid>
