@@ -43,6 +43,7 @@ export default {
             {type: 'plainText'},
             {type: 'textSeparator'},
             {type: 'hero'},
+            {type: 'ourFunds'},
             {type: 'heroWithImage'},
             {type: 'mailchimp'},
             {type: 'mainHero'},

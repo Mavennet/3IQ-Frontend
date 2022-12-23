@@ -25,6 +25,7 @@ import imagesContainer from './documents/imagesContainer';
 // Section documents
 import textSection from './documents/sections/textSection';
 import heroWithImage from './documents/sections/heroWithImage';
+import ourFunds from './documents/sections/ourFunds';
 import componentsTests from './documents/sections/componentsTests';
 import animatedHero from './documents/sections/animatedHero';
 import hero from './documents/sections/hero';
@@ -116,6 +117,7 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    ourFunds,
     componentsTests,
     animatedHero,
     heroFirstVariation,
