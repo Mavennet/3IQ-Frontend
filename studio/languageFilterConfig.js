@@ -16,6 +16,7 @@ export default {
     'page',
     'textSection',
     'heroWithImage',
+    'ourFunds',
     'componentsTests',
     'animatedHero',
     'heroFirstVariation',
