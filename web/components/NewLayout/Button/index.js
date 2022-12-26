@@ -19,7 +19,9 @@ function Button(props) {
 
   const typesStyle = {
     solid: styles.button__solid,
+    solidWhite: styles.button__solid__white,
     outlined: styles.button__outlined,
+    outlinedWhite: styles.button__outlined__white,
   }
 
   if (route && route.slug && route.slug.current) {
