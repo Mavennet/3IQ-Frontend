@@ -15,6 +15,7 @@ function Hero(props) {
     heading,
     description,
     backgroundImage,
+    backgroundColor,
     fontColor
   } = props
 
@@ -28,7 +29,7 @@ function Hero(props) {
           `url("${urlFor(backgroundImage)
             .url()}") no-repeat center center`,
         backgroundSize: 'cover',
-        bgcolor: '#091b3f',
+        bgcolor: backgroundColor ? backgroundColor : '#091b3f',
         pt: { lg: 12, xs: 8 },
         pb: { lg: 18, xs: 14 },
       }}
@@ -51,7 +52,8 @@ Hero.propTypes = {
   heading: PropTypes.string,
   backgroundImage: PropTypes.object,
   description: PropTypes.any,
-  fontColor: PropTypes.string
+  fontColor: PropTypes.string,
+  backgroundColor: PropTypes.string
 }
 
 export default Hero
