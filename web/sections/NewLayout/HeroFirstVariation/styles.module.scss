@@ -1,0 +1,32 @@
+@import "../../../styles/custom-media.css";
+
+.simple__block__content {
+  margin-bottom: 40px;
+  color: var(--light-gray);
+  p {
+    font-size: var(--font-size-secondary-xl);
+    margin: 0px;
+    @media (--media-max-large) {
+      font-size: var(--font-size-secondary-xl);
+    }
+  }
+  strong {
+    color: var(--blue);
+  }
+}
+
+.container__buttons {
+  display: flex;
+  gap: 10px;
+  @media (--media-max-large) {
+    display: block;
+  }
+  a {
+    button {
+      @media (--media-max-large) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
