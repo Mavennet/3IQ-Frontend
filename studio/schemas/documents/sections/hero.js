@@ -35,6 +35,12 @@ export default {
       },
     },
     {
+      name: 'backgroundColor',
+      type: 'string',
+      title: 'Background color',
+      description: 'Default: #091b3f (Blue)',
+    },
+    {
       name: 'button',
       type: 'localeCta',
       title: 'Optional button',
