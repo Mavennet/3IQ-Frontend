@@ -48,6 +48,25 @@
       }
   }
 
+  &__solid__orange {
+    background-color: var(--orange);
+    color: var(--white);
+    transition: 0.3s;
+
+    &:hover {
+        background-color: var(--hover-blue);
+        transition: 0.3s;
+    }
+
+    &:disabled,
+    &[disabled] {
+        background-color: var(--disabled-gray);
+        color: var(--component-light-gray);
+        cursor: auto;
+    }
+}
+
+
     &__outlined {
         background-color: transparent;
         color: var(--component-light-gray);

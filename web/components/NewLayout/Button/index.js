@@ -20,6 +20,7 @@ function Button(props) {
   const typesStyle = {
     solid: styles.button__solid,
     solidWhite: styles.button__solid__white,
+    solidOrange: styles.button__solid__orange,
     outlined: styles.button__outlined,
     outlinedWhite: styles.button__outlined__white,
   }
