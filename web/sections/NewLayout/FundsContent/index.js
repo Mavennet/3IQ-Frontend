@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import { Container, Grid, Box } from '@mui/material'
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
+import RenderSections from '../../../components/RenderSections'
 
 function FundsContent(props) {
   const {
@@ -28,6 +29,13 @@ function FundsContent(props) {
     } else {
       containerRef.current.scrollLeft = containerRef.current.scrollLeft - 300
     }
+  }
+
+  const createSection = (content) => {
+    const contentWithDefaultLanguage = []
+    content &&
+      content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry}))
+    return contentWithDefaultLanguage
   }
 
   return (
@@ -59,6 +67,34 @@ function FundsContent(props) {
           </Box>
         </Grid>
       </Grid>
+      {fundItems &&
+        fundItems.map((fundItem, index) => (
+          <div key={`fundItem${index}`}>
+            <Box
+              id={`section_${index}`}
+              sx={{ position: 'relative', bottom: '100px', scrollMarginTop: ['Trading Platforms', 'Plateformes'].includes(fundItem.localeName[currentLanguage.languageTag]) && '-300px' }}
+            ></Box>
+            <Grid container mt={4} spacing={2}>
+              <Grid item xs={12}>
+                <Grid container spacing={{ md: 6 }}>
+                  {fundItem.fundSections && (
+                    <RenderSections
+                      sections={createSection(fundItem.fundSections)}
+                      routes={allRoutes}
+                      benefits={allBenefits}
+                      items={allItems}
+                      // posts={allPosts}
+                      teams={allTeams}
+                      timelines={allTimelines}
+                      locationsDisplays={allLocationsDisplays}
+                      tabItems={allTabItems}
+                    />
+                  )}
+                </Grid>
+              </Grid>
+            </Grid>
+          </div>
+        ))}
     </Container>
   )
 }

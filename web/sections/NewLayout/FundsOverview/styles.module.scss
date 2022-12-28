@@ -1,0 +1,26 @@
+.title {
+  font-size: var(--font-size-primary-lg);
+}
+
+.content {
+  color: var(--black);
+  h1 {
+    font-size: var(--font-size-primary-xl);
+  }
+  h2 {
+    font-size: var(--font-size-primary-lg);
+  }
+  h3 {
+    font-size: var(--font-size-primary-md);
+  }
+  h4 {
+    font-size: var(--font-size-primary-xs);
+  }
+  h5 {
+    font-size: var(--font-size-secondary-xs);
+  }
+  p {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-lg);
+  }
+}
