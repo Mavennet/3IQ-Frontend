@@ -32,6 +32,31 @@ function getContent(sectionItems, items) {
   }
 }
 
+function getContentWithRoutes(sectionItems, items, countryLanguageTags, routes) {
+  if (sectionItems) {
+    for (let index = 0; index < sectionItems.length; index++) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+
+        if (item._id === sectionItems[index]._ref) {
+          sectionItems[index] = item
+
+          if (sectionItems[index].localeButton) {
+            countryLanguageTags.forEach(tag => {
+              const localeRoute = routes.filter((r) => r._id === sectionItems[index].localeButton[tag]?.route?._ref)[0]
+              if (localeRoute) {
+                sectionItems[index].localeButton[tag].route = localeRoute
+              }
+            })
+          }
+        }
+      }
+    }
+  }
+
+  return sectionItems
+}
+
 function RenderSections(props) {
   const { sections, routes, posts, benefits, items, teams, timelines, locationsDisplays, tabItems, fundItems, fundCards } = props
 
@@ -153,32 +178,57 @@ function RenderSections(props) {
       }
     }
 
-    if (section.tabItems) {
-      for (let index = 0; index < section.tabItems.length; index++) {
-        for (let i = 0; i < tabItems.length; i++) {
-          const item = tabItems[i]
+    // if (section.tabItems) {
+    //   for (let index = 0; index < section.tabItems.length; index++) {
+    //     for (let i = 0; i < tabItems.length; i++) {
+    //       const item = tabItems[i]
 
-          if (item._id === section.tabItems[index]._ref) {
-            section.tabItems[index] = item
+    //       if (item._id === section.tabItems[index]._ref) {
+    //         section.tabItems[index] = item
 
-            if (section.tabItems[index].localeButton) {
-              countryLanguageTags.forEach(tag => {
-                const localeRoute = routes.filter((r) => r._id === section.tabItems[index].localeButton[tag]?.route?._ref)[0]
-                if (localeRoute) {
-                  section.tabItems[index].localeButton[tag].route = localeRoute
-                }
-              })
-            }
+    //         if (section.tabItems[index].localeButton) {
+    //           countryLanguageTags.forEach(tag => {
+    //             const localeRoute = routes.filter((r) => r._id === section.tabItems[index].localeButton[tag]?.route?._ref)[0]
+    //             if (localeRoute) {
+    //               section.tabItems[index].localeButton[tag].route = localeRoute
+    //             }
+    //           })
+    //         }
 
-            break
-          }
-        }
-      }
-    }
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
 
+    // if (section.fundCards) {
+    //   for (let index = 0; index < section.fundCards.length; index++) {
+    //     for (let i = 0; i < fundCards.length; i++) {
+    //       const item = fundCards[i]
+
+    //       if (item._id === section.fundCards[index]._ref) {
+    //         section.fundCards[index] = item
+
+    //         if (section.fundCards[index].localeButton) {
+    //           countryLanguageTags.forEach(tag => {
+    //             const localeRoute = routes.filter((r) => r._id === section.fundCards[index].localeButton[tag]?.route?._ref)[0]
+    //             if (localeRoute) {
+    //               section.fundCards[index].localeButton[tag].route = localeRoute
+    //             }
+    //           })
+    //         }
+
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
+
+
+    section.tabItems = getContentWithRoutes(section.tabItems, tabItems, countryLanguageTags, routes)
+    section.fundCards = getContentWithRoutes(section.fundCards, fundCards, countryLanguageTags, routes)
     section.fundItems = getContent(section.fundItems, fundItems)
     section.teams = getContent(section.teams, teams)
-    section.fundCards = getContent(section.fundCards, fundCards)
 
     if (section._type === 'fundsContent') {
       section.allRoutes = routes

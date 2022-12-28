@@ -33,6 +33,8 @@ function MainHero(props) {
 
   const localeButton = button[currentLanguage?.languageTag]
 
+  console.log(props)
+
   return (
     <Box
       sx={{

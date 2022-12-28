@@ -52,9 +52,12 @@ function renderCards(items, languageTag) {
                             <span className='p__secondary__sm'>Daily NAV</span>
                             <h5>{item.localeDailyNav[languageTag] || ''}</h5>
                         </div>
-                        <Box className={styles.box__container__card__button__grid} sx={{ justifyContent: { sm: 'end', xs: 'center' } }}>
-                            <Button className={cardStyles[count].button} title="Read more" size="sm" />
-                        </Box>
+                        {item.localeButton[languageTag] && (
+                            <Box className={styles.box__container__card__button__grid} sx={{ justifyContent: { sm: 'end', xs: 'center' } }}>
+                                <Button {...item.localeButton[languageTag]} title={item.localeButton[languageTag].title} className={cardStyles[count].button} size="sm" />
+                            </Box>
+                        )}
+
                     </div>
                 </div>
             </Box>

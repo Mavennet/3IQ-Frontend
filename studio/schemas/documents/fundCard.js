@@ -44,8 +44,6 @@ export default {
             type: 'localeCta',
             title: 'Read More Button',
         },
-
-
         {
             name: 'backgroundImage',
             title: 'Background Image',
