@@ -265,7 +265,6 @@ function Footer(props) {
                       type='text/html'
                       frameBorder='0'
                       aria-label='newsletter subscription'
-                      allowTransparency='true'
                     >
                     </iframe>
                   </Grid>

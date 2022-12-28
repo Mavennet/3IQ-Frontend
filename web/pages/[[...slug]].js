@@ -1,5 +1,4 @@
 import imageUrlBuilder from '@sanity/image-url'
-import groq from 'groq'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
@@ -8,7 +7,7 @@ import client from '../client'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
-import CookieConsent, { Cookies } from 'react-cookie-consent';
+import CookieConsent, { Cookies } from 'react-cookie-consent'
 import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES, FUND_CARDS } from '../utils/groqQueries'
 
 export const getServerSideProps = async ({ params }) => {
@@ -21,7 +20,7 @@ export const getServerSideProps = async ({ params }) => {
 
   dataCountries.map((c) => countries.push(c.urlTag))
 
-  let country = 'ca'
+  const country = 'ca'
 
   if (params?.slug) {
     if (countries.indexOf(params.slug[0]) >= 0) {
@@ -286,7 +285,7 @@ const LandingPage = (props) => {
             onDecline={() => {
               areCookiesEnabled = false
               Object.keys(Cookies.get()).forEach(function (cookieName) {
-                let neededAttributes = {
+                const neededAttributes = {
                   // Here you pass the same attributes that were used when the cookie was created
                   // and are required when removing the cookie
                 };
@@ -319,6 +318,7 @@ LandingPage.propTypes = {
   allLocationsDisplays: PropTypes.any,
   allTabItems: PropTypes.any,
   allFundItems: PropTypes.any,
+  allFundCards: PropTypes.any,
   allBenefitCards: PropTypes.any,
   allItems: PropTypes.any,
 }

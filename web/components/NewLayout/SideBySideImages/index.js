@@ -2,16 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
-import { createTheme } from '@mui/material/styles'
-import { Grid, Container, Box, CssBaseline, Typography } from '@mui/material'
-import SimpleBlockContent from '../../SimpleBlockContent'
+import { Grid, Container, Box, CssBaseline } from '@mui/material'
+import SimpleBlockContent from '../../OldLayout/SimpleBlockContent'
 import styles from './styles.module.scss'
 import Link from 'next/link'
 import groq from 'groq'
 
 const builder = imageUrlBuilder(client)
-
-const theme = createTheme()
 
 function SideBySideImages(props) {
   const { heading, currentLanguage, backgroundColor, footerText, _id } = props
@@ -67,14 +64,14 @@ function SideBySideImages(props) {
             images &&
             images.map((item) => (
               item.imagesContainers && (
-                item.imagesContainers.map((item) => {
+                item.imagesContainers.map((item, i) => {
                   let title = null
                   if (item?.title[currentLanguage?.languageTag] && !item?.isTitleHidden) {
                     title = item.title[currentLanguage?.languageTag]
                   }
                   if (item?.images) {
                     return (
-                      <Grid item xs={12} mb={4}>
+                      <Grid item xs={12} mb={4} key={i}>
                         {
                           title && <h5 className={styles.title__image}>{title}</h5>
                         }
@@ -82,10 +79,10 @@ function SideBySideImages(props) {
                           sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}
                         >
                           {
-                            item.images.map((image) => {
+                            item.images.map((image, i) => {
                               if (image.imageExternalLink) {
                                 return (
-                                  <Link href={image.imageExternalLink}>
+                                  <Link href={image.imageExternalLink} key={i}>
                                     <a target='_blank' rel="noopener">
                                       <Box
                                         component="img"

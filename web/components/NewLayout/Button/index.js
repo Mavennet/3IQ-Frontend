@@ -84,7 +84,8 @@ Button.propTypes = {
     }),
   }),
   link: PropTypes.string,
-  target: PropTypes.string
+  target: PropTypes.string,
+  className: PropTypes.string
 }
 
 export default Button
