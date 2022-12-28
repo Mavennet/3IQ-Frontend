@@ -25,6 +25,15 @@ export default {
       type: 'string',
       title: 'Font color',
       description: 'Default: #FFF (White)',
+      options: {
+        list: [
+          { title: "Blue", value: "#0082E5" },
+          { title: "Green", value: "#008C86" },
+          { title: "Orange", value: "#F59B1E" },
+          { title: "White", value: "#FFFFFF" }
+        ],
+        layout: "radio"
+      }
     },
     {
       name: 'backgroundImage',
@@ -39,6 +48,15 @@ export default {
       type: 'string',
       title: 'Background color',
       description: 'Default: #091b3f (Blue)',
+      options: {
+        list: [
+          { title: "Blue", value: "#0082E5" },
+          { title: "Green", value: "#008C86" },
+          { title: "Orange", value: "#F59B1E" },
+          { title: "White", value: "#FFFFFF" }
+        ],
+        layout: "radio"
+      }
     },
     {
       name: 'button',
