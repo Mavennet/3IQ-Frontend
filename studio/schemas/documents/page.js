@@ -1,135 +1,152 @@
-
-import supportedLanguages from '../supportedLanguages';
-import { MasterDetailIcon } from '@sanity/icons'
+import supportedLanguages from "../supportedLanguages";
+import { MasterDetailIcon } from "@sanity/icons";
 
 const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
-  name: 'page',
-  type: 'document',
-  title: 'Page',
+  name: "page",
+  type: "document",
+  title: "Page",
   icon: MasterDetailIcon,
   fieldsets: [
     {
-      title: 'SEO & metadata',
-      name: 'metadata',
-    },
+      title: "SEO & metadata",
+      name: "metadata"
+    }
   ],
   fields: [
     {
-      name: 'title',
-      type: 'localeString',
-      title: 'Title (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      name: "title",
+      type: "localeString",
+      title: "Title (*)",
+      validation: Rule => Rule.error("Information required.").required()
     },
     {
-      name: 'content',
-      type: 'array',
-      title: 'Page sections (*)',
-      description: "Content that will be displayed in the page with the same order",
+      name: "content",
+      type: "array",
+      title: "Page sections (*)",
+      description:
+        "Content that will be displayed in the page with the same order",
       validation: Rule => [
-        Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select at least 1 page section.'),
+        Rule.error("Information required.").required(),
+        Rule.min(1).error("Please, select at least 1 page section.")
       ],
       of: [
         {
-          type: 'reference',
+          type: "reference",
           to: [
-            {type: 'post'},
-            {type: 'newsCard'},
-            {type: 'automatedNewsCard'},
-            {type: 'readMoreCard'},
-            {type: 'textSection'},
-            {type: 'plainText'},
-            {type: 'textSeparator'},
-            {type: 'hero'},
-            {type: 'ourFunds'},
-            {type: 'heroWithImage'},
-            {type: 'mailchimp'},
-            {type: 'mainHero'},
-            {type: 'componentsTests'},
-            {type: 'animatedHero'},
-            {type: 'heroFirstVariation'},
-            {type: 'heroDoubleButton'},
-            {type: 'teamsDisplay'},
-            {type: 'contactUsForm'},
-            {type: 'subscribeForm'},
-            {type: 'locationsDisplay'},
-            {type: 'note'},
-            {type: 'quoteHeads'},
-            {type: 'quoteHeadsDubai'},
-            {type: 'readyToInvest'},
-            {type: 'awards'},
-            {type: 'fundsDisclaimer'},
-            {type: 'keyBenefits'},
-            {type: 'sideBySideImages'},
-            {type: 'subscribeBlock'},
-            {type: 'headlineWithImages'},
-            {type: 'doubleOptions'},
-            {type: 'descriptionsWithButton'},
-            {type: 'tabsContent'},
-            {type: 'fundsContent'},
-            {type: 'fundsOverview'},
-            {type: 'timeline'},
-            {type: 'imageBesideText'},
-            {type: 'articles'}
+            { type: "post" },
+            { type: "newsCard" },
+            { type: "automatedNewsCard" },
+            { type: "readMoreCard" },
+            { type: "textSection" },
+            { type: "plainText" },
+            { type: "textSeparator" },
+            { type: "hero" },
+            { type: "ourFunds" },
+            { type: "heroWithImage" },
+            { type: "advertisement" },
+            { type: "mailchimp" },
+            { type: "mainHero" },
+            { type: "componentsTests" },
+            { type: "animatedHero" },
+            { type: "heroFirstVariation" },
+            { type: "heroDoubleButton" },
+            { type: "teamsDisplay" },
+            { type: "contactUsForm" },
+            { type: "subscribeForm" },
+            { type: "locationsDisplay" },
+            { type: "note" },
+            { type: "quoteHeads" },
+            { type: "quoteHeadsDubai" },
+            { type: "readyToInvest" },
+            { type: "awards" },
+            { type: "fundsDisclaimer" },
+            { type: "keyBenefits" },
+            { type: "sideBySideImages" },
+            { type: "subscribeBlock" },
+            { type: "headlineWithImages" },
+            { type: "doubleOptions" },
+            { type: "descriptionsWithButton" },
+            { type: "tabsContent" },
+            { type: "fundsContent" },
+            { type: "fundsOverview" },
+            { type: "timeline" },
+            { type: "imageBesideText" },
+            { type: "articles" }
           ]
         }
       ]
     },
     {
-      name: 'countries',
-      title: 'Countries (*)',
-      description: 'Choose the country that this content will be displayed into',
-      type: 'array',
+      name: "countries",
+      title: "Countries (*)",
+      description:
+        "Choose the country that this content will be displayed into",
+      type: "array",
       validation: Rule => [
-        Rule.error('Information required.').required(),
-        Rule.min(1).error('Please, select a country.'),
+        Rule.error("Information required.").required(),
+        Rule.min(1).error("Please, select a country.")
       ],
-      of: [{type: 'reference', to: {type: 'country'}}],
+      of: [{ type: "reference", to: { type: "country" } }]
     },
     {
-      name: 'description',
-      type: 'localeText',
-      title: 'Description',
-      description: 'This description populates meta-tags on the webpage',
-      fieldset: 'metadata',
+      name: "description",
+      type: "localeText",
+      title: "Description",
+      description: "This description populates meta-tags on the webpage",
+      fieldset: "metadata"
     },
     {
-      name: 'openGraphImage',
-      type: 'image',
-      title: 'Open Graph Image',
-      description: 'Image for sharing previews on Facebook, Twitter etc.',
-      fieldset: 'metadata',
-    },
+      name: "openGraphImage",
+      type: "image",
+      title: "Open Graph Image",
+      description: "Image for sharing previews on Facebook, Twitter etc.",
+      fieldset: "metadata"
+    }
   ],
 
   preview: {
-    select: {
-    },
+    select: {}
   },
   preview: {
     select: {
       title: `title.${baseLanguage.id}`,
-      media: 'openGraphImage',
+      media: "openGraphImage",
       firstCountryName: `countries.0.name`,
       secondCountryName: `countries.1.name`,
       thirdCountryName: `countries.2.name`,
       fourthCountryName: `countries.3.name`,
-      fifthCountryName: `countries.4.name`,  // By passing the countries names, it will be able to access them within prepare() without only receiving the reference _ref
+      fifthCountryName: `countries.4.name` // By passing the countries names, it will be able to access them within prepare() without only receiving the reference _ref
     },
-    prepare({ title, media, firstCountryName = '', secondCountryName, thirdCountryName, fourthCountryName, fifthCountryName }) {
+    prepare({
+      title,
+      media,
+      firstCountryName = "",
+      secondCountryName,
+      thirdCountryName,
+      fourthCountryName,
+      fifthCountryName
+    }) {
       let countryNames = firstCountryName;
-      countryNames = secondCountryName ? countryNames.concat(', ' + secondCountryName) : countryNames;
-      countryNames = thirdCountryName ? countryNames.concat(', ' + thirdCountryName) : countryNames;
-      countryNames = fourthCountryName ? countryNames.concat(', ' + fourthCountryName) : countryNames;
-      countryNames = fifthCountryName ? countryNames.concat(', ' + fifthCountryName) : countryNames;
+      countryNames = secondCountryName
+        ? countryNames.concat(", " + secondCountryName)
+        : countryNames;
+      countryNames = thirdCountryName
+        ? countryNames.concat(", " + thirdCountryName)
+        : countryNames;
+      countryNames = fourthCountryName
+        ? countryNames.concat(", " + fourthCountryName)
+        : countryNames;
+      countryNames = fifthCountryName
+        ? countryNames.concat(", " + fifthCountryName)
+        : countryNames;
 
       return {
         title,
         media,
-        subtitle: `${countryNames}`,
+        subtitle: `${countryNames}`
       };
-    },
-  },
-}
+    }
+  }
+};
