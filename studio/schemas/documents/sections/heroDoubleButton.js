@@ -16,10 +16,15 @@ export default {
       validation: Rule => Rule.error('Information required.').required()
     },
     {
+      name: 'tagName',
+      type: 'localeText',
+      title: 'Tag Name (*)',
+      validation: Rule => Rule.error('Information required.').required()
+    },
+    {
       name: 'description',
       type: 'localeText',
-      title: 'Description (*)',
-      validation: Rule => Rule.error('Information required.').required()
+      title: 'Description'
     },
     {
       name: 'backgroundImage',
@@ -30,21 +35,14 @@ export default {
       },
     },
     {
-      name: 'mainImage',
-      type: 'figure',
-      title: 'Optional image'
-    },
-    {
       name: 'button',
       type: 'localeCta',
-      title: 'Main Button (*)',
-      validation: Rule => Rule.error('Information required.').required()
+      title: 'Main Button',
     },
     {
       name: 'secondButton',
       type: 'localeCta',
-      title: 'Second Button (*)',
-      validation: Rule => Rule.error('Information required.').required()
+      title: 'Second Button',
     }
   ],
   preview: {

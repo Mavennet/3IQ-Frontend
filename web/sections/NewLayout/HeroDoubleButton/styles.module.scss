@@ -1,0 +1,12 @@
+@import "../../../styles/custom-media.css";
+
+.text {
+  h2 {
+    color: var(--white);
+    font-size: var(--font-size-primary-lg);
+  }
+  p {
+    color: var(--white);
+    font-size: var(--font-size-primary-sm);
+  }
+}
