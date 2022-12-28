@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Container} from '@mui/material'
-import SimpleBlockContent from '../../SimpleBlockContent'
+import SimpleBlockContent from '../../OldLayout/SimpleBlockContent'
 import styles from './styles.module.scss'
 
 function FundsDisclaimer(props) {

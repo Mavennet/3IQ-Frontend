@@ -1,16 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { LogoJsonLd } from 'next-seo'
 import Header from './OldLayout/Header'
 import Footer from './OldLayout/Footer'
-
-const theme = createTheme({
-  typography: {
-    // fontFamily: 'Europa',
-  }
-})
 
 function Layout(props) {
   const { config, children } = props
