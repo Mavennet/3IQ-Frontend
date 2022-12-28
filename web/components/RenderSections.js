@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import * as SectionComponents from '../sections'
 import capitalizeString from '../utils/capitalizeString'
@@ -15,8 +15,50 @@ function resolveSections(section) {
   return null
 }
 
+function getContent(sectionItems, items) {
+  if (sectionItems) {
+    for (let index = 0; index < sectionItems.length; index++) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+
+        if (item._id === sectionItems[index]._ref) {
+          sectionItems[index] = item
+          break
+        }
+      }
+    }
+
+    return sectionItems
+  }
+}
+
+function getContentWithRoutes(sectionItems, items, countryLanguageTags, routes) {
+  if (sectionItems) {
+    for (let index = 0; index < sectionItems.length; index++) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+
+        if (item._id === sectionItems[index]._ref) {
+          sectionItems[index] = item
+
+          if (sectionItems[index].localeButton) {
+            countryLanguageTags.forEach(tag => {
+              const localeRoute = routes.filter((r) => r._id === sectionItems[index].localeButton[tag]?.route?._ref)[0]
+              if (localeRoute) {
+                sectionItems[index].localeButton[tag].route = localeRoute
+              }
+            })
+          }
+        }
+      }
+    }
+  }
+
+  return sectionItems
+}
+
 function RenderSections(props) {
-  const {sections, routes, posts, benefits, items, teams, timelines, locationsDisplays, tabItems, fundItems} = props
+  const { sections, routes, posts, benefits, items, teams, timelines, locationsDisplays, tabItems, fundItems, fundCards } = props
 
   sections.forEach((section) => {
     const toConvertItems = [
@@ -89,17 +131,30 @@ function RenderSections(props) {
       }
     }
 
-    if (section.teams) {
-      for (let index = 0; index < section.teams.length; index++) {
-        for (let i = 0; i < teams.length; i++) {
-          const team = teams[i]
+    // if (section.teams) {
+    //   for (let index = 0; index < section.teams.length; index++) {
+    //     for (let i = 0; i < teams.length; i++) {
+    //       const team = teams[i]
 
-          if (team._id === section.teams[index]._ref) {
-            section.teams[index] = team // TODO Add break later and verify if breaks current functionality somehow
-          }
-        }
-      }
-    }
+    //       if (team._id === section.teams[index]._ref) {
+    //         section.teams[index] = team // TODO Add break later and verify if breaks current functionality somehow
+    //       }
+    //     }
+    //   }
+    // }
+
+    // if (section.fundItems) {
+    //   for (let index = 0; index < section.fundItems.length; index++) {
+    //     for (let i = 0; i < fundItems.length; i++) {
+    //       const item = fundItems[i]
+
+    //       if (item._id === section.fundItems[index]._ref) {
+    //         section.fundItems[index] = item
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
 
     if (section._type === 'timeline') {
       for (let i = 0; i < timelines.length; i++) {
@@ -123,41 +178,57 @@ function RenderSections(props) {
       }
     }
 
-    if (section.tabItems) {
-      for (let index = 0; index < section.tabItems.length; index++) {
-        for (let i = 0; i < tabItems.length; i++) {
-          const item = tabItems[i]
+    // if (section.tabItems) {
+    //   for (let index = 0; index < section.tabItems.length; index++) {
+    //     for (let i = 0; i < tabItems.length; i++) {
+    //       const item = tabItems[i]
 
-          if (item._id === section.tabItems[index]._ref) {
-            section.tabItems[index] = item
+    //       if (item._id === section.tabItems[index]._ref) {
+    //         section.tabItems[index] = item
 
-            if (section.tabItems[index].localeButton) {
-              countryLanguageTags.forEach(tag => {
-                const localeRoute = routes.filter((r) => r._id === section.tabItems[index].localeButton[tag]?.route?._ref)[0]
-                if (localeRoute) {
-                  section.tabItems[index].localeButton[tag].route = localeRoute
-                }
-              })
-            }
+    //         if (section.tabItems[index].localeButton) {
+    //           countryLanguageTags.forEach(tag => {
+    //             const localeRoute = routes.filter((r) => r._id === section.tabItems[index].localeButton[tag]?.route?._ref)[0]
+    //             if (localeRoute) {
+    //               section.tabItems[index].localeButton[tag].route = localeRoute
+    //             }
+    //           })
+    //         }
 
-            break
-          }
-        }
-      }
-    }
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
 
-    if (section.fundItems) {
-      for (let index = 0; index < section.fundItems.length; index++) {
-        for (let i = 0; i < fundItems.length; i++) {
-          const item = fundItems[i]
+    // if (section.fundCards) {
+    //   for (let index = 0; index < section.fundCards.length; index++) {
+    //     for (let i = 0; i < fundCards.length; i++) {
+    //       const item = fundCards[i]
 
-          if (item._id === section.fundItems[index]._ref) {
-            section.fundItems[index] = item
-            break
-          }
-        }
-      }
-    }
+    //       if (item._id === section.fundCards[index]._ref) {
+    //         section.fundCards[index] = item
+
+    //         if (section.fundCards[index].localeButton) {
+    //           countryLanguageTags.forEach(tag => {
+    //             const localeRoute = routes.filter((r) => r._id === section.fundCards[index].localeButton[tag]?.route?._ref)[0]
+    //             if (localeRoute) {
+    //               section.fundCards[index].localeButton[tag].route = localeRoute
+    //             }
+    //           })
+    //         }
+
+    //         break
+    //       }
+    //     }
+    //   }
+    // }
+
+
+    section.tabItems = getContentWithRoutes(section.tabItems, tabItems, countryLanguageTags, routes)
+    section.fundCards = getContentWithRoutes(section.fundCards, fundCards, countryLanguageTags, routes)
+    section.fundItems = getContent(section.fundItems, fundItems)
+    section.teams = getContent(section.teams, teams)
 
     if (section._type === 'fundsContent') {
       section.allRoutes = routes
@@ -205,6 +276,7 @@ RenderSections.propTypes = {
   locationsDisplays: PropTypes.array,
   tabItems: PropTypes.array,
   fundItems: PropTypes.array,
+  fundCards: PropTypes.array,
   items: PropTypes.array,
   benefits: PropTypes.array,
 }

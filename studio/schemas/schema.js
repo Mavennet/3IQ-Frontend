@@ -18,6 +18,7 @@ import location from './documents/location';
 import tabItem from './documents/tabItem';
 import product from './documents/product';
 import fundItem from './documents/fundItem';
+import fundCard from './documents/fundCard';
 import fundSidebarItem from './documents/fundSidebarItem';
 import category from './documents/category';
 import imagesContainer from './documents/imagesContainer';
@@ -159,6 +160,7 @@ export default createSchema({
     fundsContent,
     fundsOverview,
     fundItem,
+    fundCard,
     fundSidebarItem,
     product,
     category,

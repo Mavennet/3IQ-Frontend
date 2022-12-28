@@ -208,6 +208,21 @@ export const FUND_ITEMS = groq`
   },
 }
 `
+
+export const FUND_CARDS = groq`
+*[_type == 'fundCard'] {
+  _id,
+  _type,
+  _rev,
+  'localeHeading': heading,
+  codes,
+  'localeButton': button,
+  'localeText': text,
+  'localeDailyNav': dailyNav,
+  'backgroundImage': backgroundImage
+}
+`
+
 export const SITE_CONFIG_QUERY = `
   *[_id == "global-config"] {
     ...,

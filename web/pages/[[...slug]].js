@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
 import CookieConsent, { Cookies } from 'react-cookie-consent';
-import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES } from '../utils/groqQueries'
+import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES, FUND_CARDS } from '../utils/groqQueries'
 
 export const getServerSideProps = async ({ params }) => {
 
@@ -86,6 +86,8 @@ export const getServerSideProps = async ({ params }) => {
   const allTabItems = await client.fetch(TAB_ITEMS)
   // Retrieve all Fund Items
   const allFundItems = await client.fetch(FUND_ITEMS)
+  // Retrieve all Fund Cards
+  const allFundCards = await client.fetch(FUND_CARDS)
 
 
   // Retrieve all posts (used later on to get the news cards details)
@@ -117,6 +119,7 @@ export const getServerSideProps = async ({ params }) => {
         allLocationsDisplays,
         allTabItems,
         allFundItems,
+        allFundCards
       } || {},
   }
 }
@@ -145,6 +148,7 @@ const LandingPage = (props) => {
     allLocationsDisplays,
     allTabItems,
     allFundItems,
+    allFundCards
   } = props
 
   const router = useRouter()
@@ -266,6 +270,7 @@ const LandingPage = (props) => {
             locationsDisplays={allLocationsDisplays}
             tabItems={allTabItems}
             fundItems={allFundItems}
+            fundCards={allFundCards}
             sections={formatedContent}
           />
         )}

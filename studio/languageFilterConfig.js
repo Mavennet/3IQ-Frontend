@@ -57,6 +57,7 @@ export default {
     'tabsContent',
     'fundsOverview',
     'fundItem',
+    'fundCard',
     'fundSidebarItem',
     'product',
     'category',
