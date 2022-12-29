@@ -16,12 +16,6 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'mainImage',
-      type: 'figure',
-      title: 'Main image (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
       name: 'codes',
       type: 'array',
       title: 'Codes',
@@ -37,10 +31,30 @@ export default {
       ],
     },
     {
+      title: "Product Icon",
+      name: "productIcon",
+      type: "string",
+      options: {
+        list: [
+          { title: "Bitcoin (Primary)", value: "bitcoin" },
+          { title: "Ethereum (Secondary)", value: "ethereum" },
+          { title: "Grow", value: "grow" },
+          { title: "World", value: "global" }
+        ],
+        layout: "radio"
+      }
+    },
+    {
       name: 'highlights',
       type: 'localeSimplePortableText',
       title: 'Highlights (*)',
       validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'observation',
+      type: 'localeString',
+      title: 'Observation',
+      description: 'Text that will be displayed below the product(s) card(s)',
     },
     {
       name: 'readMoreRoute',
@@ -55,16 +69,18 @@ export default {
       ],
     },
     {
-      title: 'Contact us Mailto link',
-      name: 'mailtoLink',
-      type: 'url',
-      description: "Write the 'mailto:' link that will be used for e-mail contact",
-      validation: Rule =>
-        Rule.error('Information required.').required()
-            .uri({
-              allowRelative: true,
-              scheme: ['mailto'],
-            }),
+      title: "Read More Button Color",
+      name: "buttonColor",
+      type: "string",
+      options: {
+        list: [
+          { title: "Light Blue (Primary)", value: "solid" },
+          { title: "Orange (Secondary)", value: "solidOrange" },
+          { title: "Dark Blue", value: "solidDarkBlue" },
+          { title: "White", value: "solidWhite" }
+        ],
+        layout: "radio"
+      }
     },
   ],
   preview: {
