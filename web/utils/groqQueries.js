@@ -204,6 +204,9 @@ export const FUND_ITEMS = groq`
     'localeHighlights': highlights,
     mainImage,
     mailtoLink,
+    buttonColor,
+    productIcon,
+    'localeObservation' : observation,
     readMoreRoute->,
   },
 }

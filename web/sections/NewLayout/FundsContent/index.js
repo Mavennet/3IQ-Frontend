@@ -4,12 +4,19 @@ import styles from './styles.module.scss'
 import { Container, Grid, Box } from '@mui/material'
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl'
 import RenderSections from '../../../components/RenderSections'
+import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
+import Button from '../../../components/NewLayout/Button'
+import { BsCurrencyBitcoin } from 'react-icons/bs'
+import { FaEthereum } from 'react-icons/fa'
+import { RiGlobalLine } from 'react-icons/ri'
+import { TbPlant } from 'react-icons/tb'
 
 function FundsContent(props) {
   const {
     currentLanguage,
     fundItems,
-    isFixedWhenScroll,
+    isLightBlueLayout,
+    showTitleSection,
     currentCountry,
     allRoutes,
     // allPosts,
@@ -34,8 +41,15 @@ function FundsContent(props) {
   const createSection = (content) => {
     const contentWithDefaultLanguage = []
     content &&
-      content.map((c) => contentWithDefaultLanguage.push({...c, currentLanguage, currentCountry}))
+      content.map((c) => contentWithDefaultLanguage.push({ ...c, currentLanguage, currentCountry }))
     return contentWithDefaultLanguage
+  }
+
+  const icons = {
+    bitcoin: <BsCurrencyBitcoin color={'#fff'} size={50} />,
+    ethereum: <FaEthereum color={'#fff'} size={50} />,
+    global: <RiGlobalLine color={'#fff'} size={50} />,
+    grow: <TbPlant color={'#fff'} size={50} />
   }
 
   return (
@@ -43,10 +57,14 @@ function FundsContent(props) {
       <Grid container>
         <Grid item xs={12}>
           <Box sx={{ position: 'relative' }}>
-            <div className={styles.arrow___left} onClick={() => handleArrow('prev')}>
-              <SlArrowLeft size={20} />
-            </div>
-            <div className={styles.menu} ref={containerRef}>
+            {
+              !isLightBlueLayout && (
+                <div className={styles.arrow___left} onClick={() => handleArrow('prev')}>
+                  <SlArrowLeft size={20} />
+                </div>
+              )
+            }
+            <div className={`${styles.menu} ${isLightBlueLayout ? styles.light__blue : styles.dark__blue}`} ref={containerRef}>
               <ul>
                 {fundItems &&
                   fundItems.map((item, i) => {
@@ -61,39 +79,84 @@ function FundsContent(props) {
                 </li>
               </ul>
             </div>
-            <div className={styles.arrow___right} onClick={() => handleArrow('next')}>
-              <SlArrowRight size={20} />
-            </div>
+            {
+              !isLightBlueLayout && (
+                <div className={styles.arrow___right} onClick={() => handleArrow('next')}>
+                  <SlArrowRight size={20} />
+                </div>
+              )
+            }
           </Box>
         </Grid>
       </Grid>
       {fundItems &&
         fundItems.map((fundItem, index) => (
-          <div key={`fundItem${index}`}>
-            <Box
-              id={`section_${index}`}
-              sx={{ position: 'relative', bottom: '100px', scrollMarginTop: ['Trading Platforms', 'Plateformes'].includes(fundItem.localeName[currentLanguage.languageTag]) && '-300px' }}
-            ></Box>
-            <Grid container mt={4} spacing={2}>
-              <Grid item xs={12}>
-                <Grid container spacing={{ md: 6 }}>
-                  {fundItem.fundSections && (
-                    <RenderSections
-                      sections={createSection(fundItem.fundSections)}
-                      routes={allRoutes}
-                      benefits={allBenefits}
-                      items={allItems}
-                      // posts={allPosts}
-                      teams={allTeams}
-                      timelines={allTimelines}
-                      locationsDisplays={allLocationsDisplays}
-                      tabItems={allTabItems}
-                    />
-                  )}
+          <section id={`section_${index}`} key={`fundItem${index}`}>
+            <Grid container mt={4} spacing={2} py={2}>
+              {showTitleSection && (
+                <Grid item xs={12}>
+                  <h2>{fundItem.localeName[currentLanguage.languageTag]}</h2>
                 </Grid>
-              </Grid>
+              )}
+              {fundItem.products &&
+                fundItem.products.map((product, index) => (
+                  <Grid item xs={12} md={fundItem.products.length === 1 ? 12 : 6} key={`product_${index}`}>
+                    <Grid container>
+                      <Grid item xs={12} my={4} sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                        {product.productIcon && (
+                          <div className={`${styles.icon} ${product.buttonColor ? styles[product.buttonColor] : styles.solid}`}>
+                            {icons[product.productIcon]}
+                          </div>
+                        )}
+                        <div className={styles.title__product}>
+                          <h3>{product.localeName[currentLanguage.languageTag]}</h3>
+                          <h5>
+                            {product.codes && (
+                              product.codes.map((code) => (
+                                code + ', '
+                              ))
+                            )}
+                          </h5>
+                        </div>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <div className={styles.simple__block__content}>
+                          {product.localeHighlights &&
+                            product.localeHighlights[currentLanguage.languageTag] && (
+                              <SimpleBlockContent
+                                blocks={product.localeHighlights[currentLanguage.languageTag]}
+                              />
+                            )}
+                        </div>
+                        {fundItem.localeReadMoreText && (
+                          <Button
+                            route={product.readMoreRoute && product.readMoreRoute}
+                            title={fundItem.localeReadMoreText[currentLanguage.languageTag]}
+                            variant={product.buttonColor ? product.buttonColor : 'solid'}
+                          />
+                        )}
+                        {product.localeObservation && (
+                          <p className={styles.observation}>{product.localeObservation[currentLanguage.languageTag]}</p>
+                        )}
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                ))}
+              {fundItem.fundSections && (
+                <RenderSections
+                  sections={createSection(fundItem.fundSections)}
+                  routes={allRoutes}
+                  benefits={allBenefits}
+                  items={allItems}
+                  // posts={allPosts}
+                  teams={allTeams}
+                  timelines={allTimelines}
+                  locationsDisplays={allLocationsDisplays}
+                  tabItems={allTabItems}
+                />
+              )}
             </Grid>
-          </div>
+          </section>
         ))}
     </Container>
   )
@@ -103,7 +166,8 @@ FundsContent.propTypes = {
   currentLanguage: PropTypes.object,
   currentCountry: PropTypes.object,
   fundItems: PropTypes.fundItems,
-  isFixedWhenScroll: PropTypes.bool,
+  isLightBlueLayout: PropTypes.bool,
+  showTitleSection: PropTypes.bool,
   allRoutes: PropTypes.object,
   allBenefits: PropTypes.object,
   allItems: PropTypes.object,

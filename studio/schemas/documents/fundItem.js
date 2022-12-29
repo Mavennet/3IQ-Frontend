@@ -122,13 +122,6 @@ export default {
       description: 'Text that will be displayed in the Contact Us button for each product',
       fieldset: 'productCards',
     },
-    {
-      name: 'observation',
-      type: 'localeString',
-      title: 'Observation',
-      description: 'Text that will be displayed below the product(s) card(s)',
-      fieldset: 'productCards',
-    },
   ],
   preview: {
     select: {

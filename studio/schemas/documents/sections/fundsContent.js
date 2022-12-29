@@ -13,11 +13,18 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'isFixedWhenScroll',
+      name: 'isLightBlueLayout',
       type: 'boolean',
-      title: 'Stick navigation bar on top?',
-      description: 'Enable this to keep the navigation bar fixed at the top while scrolling the page on a desktop',
+      title: 'Layout with light blue color?',
+      description: 'Enable this to use light blue layout',
       initialValue: true,
+    },
+    {
+      name: 'showTitleSection',
+      type: 'boolean',
+      title: 'Show title in section?',
+      description: 'Enable the title over the section',
+      initialValue: false,
     },
     {
       name: 'fundItems',
