@@ -1,0 +1,29 @@
+.simple__block__content * {
+  text-align: center;
+  color: var(--black);
+  h1 {
+    font-size: var(--font-size-primary-xl);
+  }
+  h2 {
+    font-size: var(--font-size-primary-lg);
+  }
+  h3 {
+    font-size: var(--font-size-primary-md);
+  }
+  h4 {
+    font-size: var(--font-size-primary-sm);
+  }
+  h5 {
+    font-size: var(--font-size-primary-xs);
+  }
+  p {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-primary-xs);
+  }
+}
+
+.title__image {
+  text-align: center;
+  color: var(--black);
+  font-size: var(--font-size-primary-md);
+}
