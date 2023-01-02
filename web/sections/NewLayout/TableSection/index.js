@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Typography, Container, Box } from '@mui/material'
- import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import styles from'./styles.module.scss'
+import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
+import styles from './styles.module.scss'
 import axios from 'axios'
 import { format } from 'date-fns'
+import { CSVLink } from 'react-csv'
 
 function TableSection(props) {
   const {
@@ -12,6 +13,7 @@ function TableSection(props) {
     embed,
     colorfulLayout,
     headerTransparentLayout,
+    downloadButton,
     endpoint,
     headers,
     currentLanguage,
@@ -66,7 +68,7 @@ function TableSection(props) {
       <Grid container py={6}>
         {
           heading && (
-            <Grid item xs={12} mb={4}>
+            <Grid item xs={12} mb={4} sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
               <Typography
                 variant="h2"
                 sx={{
@@ -75,6 +77,15 @@ function TableSection(props) {
                   color: 'var(--black)',
                 }}
               >{heading}</Typography>
+              {
+                downloadButton && embed && (
+                  <>
+                  {console.log(embed)}
+                  <CSVLink data={[]}>Download</CSVLink>
+                  </>
+
+                )
+              }
             </Grid>
           )
         }
@@ -146,7 +157,7 @@ function TableSection(props) {
                 </table>
                 {data[0].dateDaily && (
                   <Box sx={{ mt: 2 }}>
-                    <Typography align='right' sx={{color:'#77757F'}}>{`${currentLanguage.name === 'EN' ? 'Price as at' : 'Prix au'} ${convertDate(data[0].dateDaily)}`}</Typography>
+                    <Typography align='right' sx={{ color: '#77757F' }}>{`${currentLanguage.name === 'EN' ? 'Price as at' : 'Prix au'} ${convertDate(data[0].dateDaily)}`}</Typography>
                   </Box>
                 )}
               </div>
@@ -158,7 +169,7 @@ function TableSection(props) {
           embed && (
             <Grid item xs={12} mb={3}>
               <div className={styles.simpleBlockContent}>
-                <br/>
+                <br />
                 <SimpleBlockContent blocks={embed} />
               </div>
             </Grid>
@@ -174,6 +185,7 @@ TableSection.propTypes = {
   embed: PropTypes.object,
   colorfulLayout: PropTypes.bool,
   headerTransparentLayout: PropTypes.bool,
+  downloadButton: PropTypes.bool,
   endpoint: PropTypes.string,
   headers: PropTypes.array,
   currentLanguage: PropTypes.object,
