@@ -35,7 +35,7 @@ function Button(props) {
         }}
         as={`/${route.slug.current}`}
       >
-        <a>
+        <a style={{float: 'left'}}>
           <button
             className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
             disabled={disabled}
