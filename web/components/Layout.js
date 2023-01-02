@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { LogoJsonLd } from 'next-seo'
-import Header from './OldLayout/Header'
+import Header from './NewLayout/Header'
 import Footer from './OldLayout/Footer'
 
 function Layout(props) {

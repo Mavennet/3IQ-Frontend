@@ -1,0 +1,66 @@
+
+.navbarContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbarContainer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.countryButtons {
+  color: '#0a1b3f';
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.countryButtons:hover {
+  color: var(--color-dark-orange);
+}
+
+.menuMobile{
+  width: 100%;
+  min-height: 100% !important;
+  height: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  background: var(--light-gray);
+  left: 0;
+  box-shadow: none;
+  z-index: 9999;
+  border: none;
+}
+
+.menuMobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuMobile li {
+  color: var(--component-gray);
+  width: 100% !important;
+}
+
+.icon{
+  color: var(--component-gray);
+}
+
+.closeIcon{
+  color: var(--component-gray);
+  position: absolute;
+  top: 40px;
+  right: 30px;
+}
+
+.separator{
+  color: var(--gray);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
