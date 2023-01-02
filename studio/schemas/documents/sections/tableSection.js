@@ -54,6 +54,13 @@ export default {
       initialValue: false,
     },
     {
+      name: 'downloadButton',
+      type: 'boolean',
+      title: 'Enable download button?',
+      description: 'Show download button to save CSV data',
+      initialValue: false,
+    },
+    {
       name: 'headers',
       title: 'Table Heading Cells',
       description: 'Create each table heading cell to serve as the header of your API Endpoint table. Mandatory if you decide to use an API Endpoint as the data source',
