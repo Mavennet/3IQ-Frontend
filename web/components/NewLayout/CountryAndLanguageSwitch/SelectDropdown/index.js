@@ -24,7 +24,7 @@ function SelectDropdown(props) {
       <button onClick={handleOpen} className={styles.countryButtons}>
         {flag ? (
           <Box sx={{display: 'flex'}}>
-            <FiGlobe style={{fontSize: 23, marginRight: 10, color: '#0D1C3D'}} />
+            <FiGlobe style={{fontSize: 20, marginRight: 10, color: '#0D1C3D'}} />
             <ReactCountryFlag
               countryCode={flag}
               title={title}
@@ -32,7 +32,6 @@ function SelectDropdown(props) {
               style={{
                 width: '1.5em',
                 height: '1.5em',
-                marginTop: '2px',
               }}
             />
           </Box>
@@ -53,11 +52,13 @@ function SelectDropdown(props) {
         MenuListProps={{
           onMouseLeave: handleClose,
         }}
+        className={styles.menu}
       >
         {dataCountries &&
           dataCountries.map((country) => {
             return (
               <Link
+              
                 key={country.urlTag}
                 href={
                   country.urlTag === 'au'
@@ -71,7 +72,7 @@ function SelectDropdown(props) {
                 underline="hover"
                 color="inherit"
               >
-                <MenuItem>
+                <MenuItem >
                   <ReactCountryFlag countryCode={country.urlTag.toUpperCase()} svg />
                   <Typography textAlign="center" sx={{ml: 1}}>
                     {country.name}
@@ -83,7 +84,8 @@ function SelectDropdown(props) {
         {currentCountry &&
           currentCountry.languages.map((language) => {
             return (
-              <MenuItem key={language._id} onClick={(e) => setLanguage(language)}>
+              <MenuItem className={styles.menu} key={language._id} onClick={(e) => setLanguage(language)}>
+                <input className={styles.input} type="radio" name="language" checked={title == language.name}/>
                 <Typography textAlign="center">{language.name}</Typography>
               </MenuItem>
             )

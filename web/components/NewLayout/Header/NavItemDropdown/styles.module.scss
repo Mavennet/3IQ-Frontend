@@ -3,7 +3,7 @@
 .sumary{
   background-color: var(--light-gray);
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-secondary-md);
+  font-size: var(--font-size-secondary-sm);
 }
 
 .sumary__subitem{
@@ -24,7 +24,7 @@
   color: #0D1C3D;
   text-transform: capitalize;
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-secondary-md);
+  font-size: var(--font-size-secondary-sm);
 
   &:hover{
     color: #274F88 !important;
@@ -37,7 +37,7 @@
 
 .menuItem {
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-secondary-md);
+  font-size: var(--font-size-secondary-sm);
   color: #0D1C3D;
 }
 

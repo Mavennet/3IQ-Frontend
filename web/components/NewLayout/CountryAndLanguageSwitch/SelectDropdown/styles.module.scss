@@ -6,13 +6,52 @@
   cursor: pointer;
 
   span {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-secondary-md);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary-sm);
     color: #0d1c3d;
     font-weight: 500;
   }
 
   &:hover {
     color: #274f88;
+  }
+}
+
+.menu {
+  margin-top: 32px;
+  ul {
+    background: var(--light-gray) !important;
+  }
+
+  li {
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.input {
+  cursor: pointer;
+  box-sizing: border-box;
+  appearance: none;
+  background: transparent;
+  outline: 2px solid var(--light-blue);
+  border: 3px solid var(--background-color);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 5px;
+
+  &:checked {
+    background: var(--light-blue);
+    outline: 2px solid var(--light-blue);
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: auto;
+    outline: 2px solid var(--disabled-gray);
   }
 }

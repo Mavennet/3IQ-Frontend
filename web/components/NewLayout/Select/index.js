@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 
-function Form(props) {
+function Select(props) {
     const { type = "radio", items} = props
 
     return (
@@ -22,9 +22,9 @@ function Form(props) {
     )
 }
 
-Form.propTypes = {
+Select.propTypes = {
     type: PropTypes.string,
     items: PropTypes.array,
 }
 
-export default Form
+export default Select
