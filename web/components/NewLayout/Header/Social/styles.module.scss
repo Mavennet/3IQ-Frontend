@@ -1,0 +1,17 @@
+.social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.social li {
+  border-radius: 50%;
+  border: 1px solid #fff;
+  padding: 5px 8px 0px 8px;
+  font-size: 17px;
+  margin-right: 7px;
+  color: var(--light-blue);
+  cursor: pointer;
+  background: rgb(0,130,229, 0.2);
+}

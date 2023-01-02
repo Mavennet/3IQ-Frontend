@@ -1,0 +1,18 @@
+.countryButtons {
+  color: #0d1c3d;
+  background: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+
+  span {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-md);
+    color: #0d1c3d;
+    font-weight: 500;
+  }
+
+  &:hover {
+    color: #274f88;
+  }
+}
