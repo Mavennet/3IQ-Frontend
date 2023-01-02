@@ -16,6 +16,13 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'text',
+      title: 'Text (*)',
+      type: 'localeString',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    // to remove
+    {
       name: 'body',
       title: 'Body (*)',
       type: 'localePortableText',

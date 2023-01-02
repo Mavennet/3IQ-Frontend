@@ -1,0 +1,15 @@
+.text{
+
+    height: 100%;
+
+    &__heading{
+        color: white;
+    }
+    
+    &__body{
+        padding-top: 10px;
+        font-family: var(--font-family-secondary);
+        font-size: var(--font-size-secondary-xs);
+        color: white;
+    }
+}
