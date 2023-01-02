@@ -1,0 +1,11 @@
+@import "../../../styles/custom-media.css";
+
+.logo {
+  width: 126px;
+  @media (--media-min-large) {
+    width: 126px;
+  }
+  @media (--media-min-x-large) {
+    width: 126px;
+  }
+}
