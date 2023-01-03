@@ -27,6 +27,12 @@ export default {
       initialValue: false,
     },
     {
+      name: 'lastItem',
+      type: 'localeCta',
+      title: 'Last item link (Default: Ask 3iQ) (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'fundItems',
       title: 'Fund items (*)',
       description: 'Select the fund items that will be displayed in order',

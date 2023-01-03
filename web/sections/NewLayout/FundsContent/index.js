@@ -10,10 +10,12 @@ import { BsCurrencyBitcoin } from 'react-icons/bs'
 import { FaEthereum } from 'react-icons/fa'
 import { RiGlobalLine } from 'react-icons/ri'
 import { TbPlant } from 'react-icons/tb'
+import Link from 'next/link'
 
 function FundsContent(props) {
   const {
     currentLanguage,
+    lastItem,
     fundItems,
     isLightBlueLayout,
     showTitleSection,
@@ -74,9 +76,22 @@ function FundsContent(props) {
                       </li>
                     )
                   })}
-                <li>
-                  <a href={`#`}>Ask 3iQ</a>
-                </li>
+                {
+                  lastItem[currentLanguage.languageTag].route && lastItem[currentLanguage.languageTag].route.slug && lastItem[currentLanguage.languageTag].route.slug.current && (
+                    <li>
+                      <Link
+                        href={{
+                          pathname: '/LandingPage',
+                          query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
+                        }}
+                        as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
+                      >
+                        <a>{lastItem[currentLanguage.languageTag].title}</a>
+                      </Link>
+                    </li>
+                  )
+                }
+                {console.log(lastItem)}
               </ul>
             </div>
             {
@@ -176,6 +191,7 @@ FundsContent.propTypes = {
   allTimelines: PropTypes.object,
   allLocationsDisplays: PropTypes.object,
   allTabItems: PropTypes.object,
+  lastItem: PropTypes.object,
 }
 
 export default FundsContent
