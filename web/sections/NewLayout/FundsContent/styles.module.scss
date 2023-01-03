@@ -1,5 +1,22 @@
 @import '../../../styles/custom-media.css';
 
+.fixedLayout {
+  @media (--media-min-large) {
+    width: 90%;
+    position: fixed;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 9999;
+    .arrow___left {
+      top: 15%;
+    }
+    .arrow___right {
+      top: 15%;
+    }
+  }
+}
+
 .arrow___left {
   position: absolute;
   color: var(--orange);

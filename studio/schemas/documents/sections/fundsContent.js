@@ -20,6 +20,13 @@ export default {
       initialValue: true,
     },
     {
+      name: 'isFixedWhenScroll',
+      type: 'boolean',
+      title: 'Using fixed menu when scroll page?',
+      description: 'Enable menu fixed when scroll page',
+      initialValue: true,
+    },
+    {
       name: 'showTitleSection',
       type: 'boolean',
       title: 'Show title in section?',

@@ -68,7 +68,7 @@ function TableSection(props) {
       <Grid container py={6}>
         {
           heading && (
-            <Grid item xs={12} mb={4} sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Typography
                 variant="h2"
                 sx={{
@@ -80,8 +80,7 @@ function TableSection(props) {
               {
                 downloadButton && embed && (
                   <>
-                  {console.log(embed)}
-                  <CSVLink data={[]}>Download</CSVLink>
+                    <CSVLink data={[]}>Download</CSVLink>
                   </>
 
                 )
