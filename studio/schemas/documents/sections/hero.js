@@ -59,6 +59,22 @@ export default {
       }
     },
     {
+      name: 'sideImage',
+      type: 'image',
+      title: 'Optional Side Image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'bottomImage',
+      type: 'image',
+      title: 'Optional Bottom Image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: 'button',
       type: 'localeCta',
       title: 'Optional button',
