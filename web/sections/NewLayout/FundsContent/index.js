@@ -77,7 +77,9 @@ function FundsContent(props) {
                     )
                   })}
                 {
-                  lastItem[currentLanguage.languageTag].route && lastItem[currentLanguage.languageTag].route.slug && lastItem[currentLanguage.languageTag].route.slug.current && (
+                  lastItem?.[currentLanguage.languageTag].route &&
+                  lastItem?.[currentLanguage.languageTag].route.slug &&
+                  lastItem?.[currentLanguage.languageTag].route.slug.current && (
                     <li>
                       <Link
                         href={{
