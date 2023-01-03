@@ -6,7 +6,7 @@ import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent
 import Button from '../../../components/NewLayout/Button'
 
 function Advertisement(props) {
-  const {text, button, currentLanguage, color} = props
+  const {text, button, currentLanguage, color, buttonColor} = props
 
   const localeButton = button[currentLanguage?.languageTag]
 
@@ -24,6 +24,7 @@ function Advertisement(props) {
         <Grid item xs={12} sm={12} md={3} pl={3} pt={{xs: 3, md: 0}}>
           {localeButton && (
             <Button
+              variant={buttonColor}
               className={styles.advertisement__button}
               {...localeButton}
               size="md"
@@ -42,6 +43,7 @@ function Advertisement(props) {
 }
 
 Advertisement.propTypes = {
+  buttonColor: PropTypes.string,
   title: PropTypes.string.isRequired,
   variant: PropTypes.string,
   size: PropTypes.string,

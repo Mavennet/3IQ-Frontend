@@ -38,6 +38,20 @@ export default {
       name: "button",
       type: "localeCta",
       title: "Advertisement Button"
+    },
+    {
+      title: "Advertisement Button Color",
+      name: "buttonColor",
+      type: "string",
+      options: {
+        list: [
+          { title: "Light Blue (Primary)", value: "solid" },
+          { title: "Orange (Secondary)", value: "solidOrange" },
+          { title: "Dark Blue", value: "solidDarkBlue" },
+          { title: "White", value: "solidWhite" }
+        ],
+        layout: "radio"
+      }
     }
   ],
   preview: {
