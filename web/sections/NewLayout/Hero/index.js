@@ -69,7 +69,8 @@ function Hero(props) {
           <Grid item xs={12} sx={{pb: 4, display: {xs: 'flex', sm: 'none'}}}>
             <Box
               component="img"
-              sx={{height: '110px', position: 'relative', left: -14}}
+              // sx={{maxHeight: '110px', position: 'relative', left: -14}}
+              sx={{width: '110%',position: 'relative', left: -14}}
               alt={bottomImage.alt}
               src={builder.image(bottomImage).url()}
             />
