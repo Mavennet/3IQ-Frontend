@@ -5,7 +5,7 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import styles from './styles.module.scss'
-import FundSidebarItem from '../../../components/OldLayout/FundSidebarItem'
+import FundSidebarItem from '../../../components/NewLayout/FundSidebarItem'
 import axios from 'axios'
 import { format } from 'date-fns'
 import { Typography } from '@mui/material'
@@ -83,7 +83,7 @@ function FundsOverview(props) {
                   sx={{
                     color: 'var(--black)',
                     fontFamily: 'var(--font-family-secondary)',
-                    fontSize: '18px'
+                    fontSize: 'var(--font-size-secondary-md)',
                   }}
                 >{`‡ ${convertDate(data[0].date)}`}</Typography>
               </Box>

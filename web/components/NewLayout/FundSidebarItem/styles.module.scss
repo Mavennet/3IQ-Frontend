@@ -1,0 +1,25 @@
+@import '../../../styles/custom-media.css';
+
+
+.textSection{
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-lg);
+  margin-left: 10px;
+  a {
+    color: var(--black);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-md);
+  }
+  p {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-lg);
+  }
+}
+
+.textSection > :is(h1, h2, h3, h4, h5, h6){
+   color: var(--black);
+   width: 100%;
+}
+
