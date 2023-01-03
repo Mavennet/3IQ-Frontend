@@ -22,6 +22,9 @@
     display: block;
   }
   a {
+    @media (--media-max-large) {
+      width: 100%;
+    }
     button {
       @media (--media-max-large) {
         width: 100%;
