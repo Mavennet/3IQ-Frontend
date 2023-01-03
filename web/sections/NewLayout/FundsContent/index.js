@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import { Container, Grid, Box } from '@mui/material'
@@ -28,9 +28,22 @@ function FundsContent(props) {
     allTimelines,
     allLocationsDisplays,
     allTabItems,
+    isFixedWhenScroll,
   } = props
 
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const [navFixed, setNavFixed] = useState(false)
+
+  const fixedNavRef = React.useRef()
   const containerRef = React.useRef(null)
+
+  const handleScroll = () => {
+    const position = window.scrollY
+    if (position <= 560) {
+      setNavFixed(false)
+    }
+    setScrollPosition(position)
+  }
 
   const handleArrow = (type) => {
     if (type === 'next') {
@@ -54,56 +67,74 @@ function FundsContent(props) {
     grow: <TbPlant color={'#fff'} size={50} />
   }
 
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  React.useEffect(() => {
+    if (scrollPosition) {
+      if (scrollPosition >= fixedNavRef?.current?.offsetTop) {
+        setNavFixed(true)
+      } else {
+        setNavFixed(false)
+      }
+    }
+  }, [scrollPosition])
+
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' }, background: 'var(--background-color)' }}>
       <Grid container>
         <Grid item xs={12}>
-          <Box sx={{ position: 'relative' }}>
-            {
-              !isLightBlueLayout && (
-                <div className={styles.arrow___left} onClick={() => handleArrow('prev')}>
-                  <SlArrowLeft size={20} />
-                </div>
-              )
-            }
-            <div className={`${styles.menu} ${isLightBlueLayout ? styles.light__blue : styles.dark__blue}`} ref={containerRef}>
-              <ul>
-                {fundItems &&
-                  fundItems.map((item, i) => {
-                    return (
-                      <li key={i}>
-                        <a href={`#section_${i}`}>{item.localeName[currentLanguage.languageTag]}</a>
+            <Box ref={fixedNavRef} className={navFixed && isFixedWhenScroll && styles.fixedLayout} sx={{ position: 'relative' }}>
+              {
+                !isLightBlueLayout && (
+                  <div className={styles.arrow___left} onClick={() => handleArrow('prev')}>
+                    <SlArrowLeft size={20} />
+                  </div>
+                )
+              }
+              <div className={`${styles.menu} ${isLightBlueLayout ? styles.light__blue : styles.dark__blue}`} ref={containerRef}>
+                <ul>
+                  {fundItems &&
+                    fundItems.map((item, i) => {
+                      return (
+                        <li key={i}>
+                          <a href={`#section_${i}`}>{item.localeName[currentLanguage.languageTag]}</a>
+                        </li>
+                      )
+                    })}
+                  {
+                    lastItem?.[currentLanguage.languageTag]?.route &&
+                    lastItem?.[currentLanguage.languageTag].route?.slug &&
+                    lastItem?.[currentLanguage.languageTag].route?.slug.current && (
+                      <li>
+                        <Link
+                          href={{
+                            pathname: '/LandingPage',
+                            query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
+                          }}
+                          as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
+                        >
+                          <a>{lastItem[currentLanguage.languageTag].title}</a>
+                        </Link>
                       </li>
                     )
-                  })}
-                {
-                  lastItem?.[currentLanguage.languageTag]?.route &&
-                  lastItem?.[currentLanguage.languageTag].route?.slug &&
-                  lastItem?.[currentLanguage.languageTag].route?.slug.current && (
-                    <li>
-                      <Link
-                        href={{
-                          pathname: '/LandingPage',
-                          query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
-                        }}
-                        as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
-                      >
-                        <a>{lastItem[currentLanguage.languageTag].title}</a>
-                      </Link>
-                    </li>
-                  )
-                }
-                {console.log(lastItem)}
-              </ul>
-            </div>
-            {
-              !isLightBlueLayout && (
-                <div className={styles.arrow___right} onClick={() => handleArrow('next')}>
-                  <SlArrowRight size={20} />
-                </div>
-              )
-            }
-          </Box>
+                  }
+
+                </ul>
+              </div>
+              {
+                !isLightBlueLayout && (
+                  <div className={styles.arrow___right} onClick={() => handleArrow('next')}>
+                    <SlArrowRight size={20} />
+                  </div>
+                )
+              }
+            </Box>
+
         </Grid>
       </Grid>
       {fundItems &&
@@ -194,6 +225,7 @@ FundsContent.propTypes = {
   allLocationsDisplays: PropTypes.object,
   allTabItems: PropTypes.object,
   lastItem: PropTypes.object,
+  isFixedWhenScroll: PropTypes.bool,
 }
 
 export default FundsContent
