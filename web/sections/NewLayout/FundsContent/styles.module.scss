@@ -3,7 +3,7 @@
 .fixedLayout {
   @media (--media-min-large) {
     width: 90%;
-    position: fixed;
+    position: fixed!important;
     top: 35px;
     left: 50%;
     transform: translate(-50%, 0);
