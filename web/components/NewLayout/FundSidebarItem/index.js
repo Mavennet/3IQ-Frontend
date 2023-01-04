@@ -79,8 +79,6 @@ function FundSidebarItem(props) {
                 fontFamily: 'var(--font-family-secondary)',
                 fontSize: 'var(--font-size-secondary-md)',
                 mt: 2,
-                ml: 13,
-                mr: 8,
               }}
             >
               {localeObservation[languageTag]}
