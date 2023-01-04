@@ -17,6 +17,14 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'isFounder',
+      type: 'boolean',
+      title: 'This team is a Founder? (*)',
+      description: 'Enable to show a member with a big card',
+      initialValue: false,
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'members',
       type: 'array',
       title: 'Team members (*)',
@@ -45,7 +53,7 @@ export default {
       ],
       of: [{type: 'reference', to: {type: 'country'}}],
     },
-  ], 
+  ],
   preview: {
     select: {
       name: `name.${baseLanguage.id}`,

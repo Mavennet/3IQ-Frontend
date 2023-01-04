@@ -4,7 +4,6 @@ import { Box, Typography, Link } from '@mui/material'
 import styles from './styles.module.scss'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
-import { FaLinkedinIn } from 'react-icons/fa'
 import Image from 'next/image'
 
 function MemberCard(props) {

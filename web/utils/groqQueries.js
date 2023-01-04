@@ -80,6 +80,7 @@ export const TEAMS = groq`
   _id,
   _type,
   'localeName': name,
+  'isFounder': isFounder,
   members[]-> {
     _id,
     _type,
