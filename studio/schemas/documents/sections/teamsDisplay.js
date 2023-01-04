@@ -8,13 +8,19 @@ export default {
   name: 'teamsDisplay',
   title: 'Teams Display',
   icon: SplitHorizontalIcon,
-  fields: [ 
+  fields: [
     {
       name: 'name',
-      type: 'string',
+      type: 'localeString',
       title: 'Name (*)',
       validation: Rule => Rule.error('Information required.').required(),
-    },   
+    },
+    {
+      name: 'description',
+      type: 'localePortableText',
+      title: 'Description',
+      description: 'Text under the title',
+    },
     {
       name: 'teams',
       type: 'array',
@@ -31,10 +37,28 @@ export default {
         },
       ],
     },
+    {
+      name: 'textCta',
+      type: 'localePortableText',
+      title: 'Text CTA',
+    },
+    {
+      name: 'buttonCta',
+      type: 'localeCta',
+      title: 'CTA Button',
+    },
+    {
+      name: 'backgroundImageCta',
+      type: 'image',
+      title: 'CTA Background image (*)',
+      options: {
+        hotspot: true,
+      },
+    },
   ],
   preview: {
     select: {
-      name: `name`,
+      name: `name.${baseLanguage.id}`,
       firstCountryName: `teams.0.countries.0.name`,
       secondCountryName: `teams.0.countries.1.name`,
       thirdCountryName: `teams.0.countries.2.name`,
@@ -48,7 +72,7 @@ export default {
       countryNames = fourthCountryName ? countryNames.concat(', ' + fourthCountryName) : countryNames;
       countryNames = fifthCountryName ? countryNames.concat(', ' + fifthCountryName) : countryNames;
 
-      const title = name + ' - ' + countryNames
+      const title = name
       return {
         title,
         subtitle: 'Team Display section',
