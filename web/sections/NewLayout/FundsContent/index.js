@@ -88,52 +88,52 @@ function FundsContent(props) {
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' }, background: 'var(--background-color)' }}>
       <Grid container>
         <Grid item xs={12}>
-            <Box ref={fixedNavRef} className={navFixed && isFixedWhenScroll && styles.fixedLayout} sx={{ position: 'relative' }}>
-              {
-                !isLightBlueLayout && (
-                  <div className={styles.arrow___left} onClick={() => handleArrow('prev')}>
-                    <SlArrowLeft size={20} />
-                  </div>
-                )
-              }
-              <div className={`${styles.menu} ${isLightBlueLayout ? styles.light__blue : styles.dark__blue}`} ref={containerRef}>
-                <ul>
-                  {fundItems &&
-                    fundItems.map((item, i) => {
-                      return (
-                        <li key={i}>
-                          <a href={`#section_${i}`}>{item.localeName[currentLanguage.languageTag]}</a>
-                        </li>
-                      )
-                    })}
-                  {
-                    lastItem?.[currentLanguage.languageTag]?.route &&
-                    lastItem?.[currentLanguage.languageTag].route?.slug &&
-                    lastItem?.[currentLanguage.languageTag].route?.slug.current && (
-                      <li>
-                        <Link
-                          href={{
-                            pathname: '/LandingPage',
-                            query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
-                          }}
-                          as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
-                        >
-                          <a>{lastItem[currentLanguage.languageTag].title}</a>
-                        </Link>
+          <Box ref={fixedNavRef} className={navFixed && isFixedWhenScroll && styles.fixedLayout} sx={{ position: 'relative' }}>
+            {
+              !isLightBlueLayout && (
+                <div className={styles.arrow___left} onClick={() => handleArrow('prev')}>
+                  <SlArrowLeft size={20} />
+                </div>
+              )
+            }
+            <div className={`${styles.menu} ${isLightBlueLayout ? styles.light__blue : styles.dark__blue}`} ref={containerRef}>
+              <ul>
+                {fundItems &&
+                  fundItems.map((item, i) => {
+                    return (
+                      <li key={i}>
+                        <a href={`#section_${i}`}>{item.localeName[currentLanguage.languageTag]}</a>
                       </li>
                     )
-                  }
+                  })}
+                {
+                  lastItem?.[currentLanguage.languageTag]?.route &&
+                  lastItem?.[currentLanguage.languageTag].route?.slug &&
+                  lastItem?.[currentLanguage.languageTag].route?.slug.current && (
+                    <li>
+                      <Link
+                        href={{
+                          pathname: '/LandingPage',
+                          query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
+                        }}
+                        as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
+                      >
+                        <a>{lastItem[currentLanguage.languageTag].title}</a>
+                      </Link>
+                    </li>
+                  )
+                }
 
-                </ul>
-              </div>
-              {
-                !isLightBlueLayout && (
-                  <div className={styles.arrow___right} onClick={() => handleArrow('next')}>
-                    <SlArrowRight size={20} />
-                  </div>
-                )
-              }
-            </Box>
+              </ul>
+            </div>
+            {
+              !isLightBlueLayout && (
+                <div className={styles.arrow___right} onClick={() => handleArrow('next')}>
+                  <SlArrowRight size={20} />
+                </div>
+              )
+            }
+          </Box>
 
         </Grid>
       </Grid>
@@ -183,6 +183,8 @@ function FundsContent(props) {
                             variant={product.buttonColor ? product.buttonColor : 'solid'}
                           />
                         )}
+                      </Grid>
+                      <Grid xs={12}>
                         {product.localeObservation && (
                           <p className={styles.observation}>{product.localeObservation[currentLanguage.languageTag]}</p>
                         )}
