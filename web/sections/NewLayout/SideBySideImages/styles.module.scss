@@ -18,7 +18,15 @@
   }
   p {
     font-family: var(--font-family-secondary);
-    font-size: var(--font-size-primary-xs);
+    font-size: var(--font-size-secondary-md);
+    font-weight: var(--font-weight-regular);
+  }
+}
+
+.left {
+  p {
+    text-align: justify!important;
+    font-family: var(--font-family-secondary);
   }
 }
 
