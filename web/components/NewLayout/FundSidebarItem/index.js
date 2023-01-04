@@ -34,7 +34,7 @@ function FundSidebarItem(props) {
           <Box
             component="img"
             sx={{
-              width: { xs: 150 },
+              height: { xs: 100 },
             }}
             alt={mainImage.alt}
             src={builder.image(mainImage).url()}
