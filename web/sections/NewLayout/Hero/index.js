@@ -46,7 +46,6 @@ function Hero(props) {
             sm={11}
             xs={12}
             sx={{pt: {lg: 4, xs: 6}, pb: {lg: 8, xs: 2}, pl: {lg: 5, sm: 10}, p: 2}}
-
           >
             <Box sx={{p: '5 1', pr: 1, pl: {xs: 1}}}>
               <Box
@@ -64,11 +63,7 @@ function Hero(props) {
               </Box>
             </Box>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sx={{pb: 4, display: {xs: 'block', sm: 'none'}}}
-          >
+          <Grid item xs={12} sx={{pb: 4, display: {xs: 'block', sm: 'none'}}}>
             <Box
               sx={{
                 height: '120px',
