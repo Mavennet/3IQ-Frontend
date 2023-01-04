@@ -20,8 +20,8 @@ function HeroFirstVariation(props) {
     currentLanguage,
   } = props
 
-  const localeFirstButton = firstButton[currentLanguage?.languageTag]
-  const localeSecondButton = secondButton[currentLanguage?.languageTag]
+  const localeFirstButton = firstButton?.[currentLanguage?.languageTag]
+  const localeSecondButton = secondButton?.[currentLanguage?.languageTag]
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
