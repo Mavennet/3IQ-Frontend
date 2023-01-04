@@ -22,6 +22,12 @@ export default {
       description: 'Text under the title',
     },
     {
+      name: 'quotesText',
+      type: 'localePortableText',
+      title: 'Text under Quotes in Founder section (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'teams',
       type: 'array',
       title: 'Teams (*)',
