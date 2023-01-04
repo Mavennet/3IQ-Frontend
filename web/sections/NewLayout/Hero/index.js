@@ -28,13 +28,10 @@ function Hero(props) {
   return sideImage && bottomImage ? (
     <Box
       sx={{
-        background:
-          backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat center center`,
-        backgroundSize: 'cover',
         bgcolor: backgroundColor ? backgroundColor : '#091b3f',
       }}
     >
-      <Container sx={{maxWidth: {sm: 'sm', lg: 'lg'}}}>
+      <Container sx={{maxWidth: {sm: 'sm', lg: 'lg'}, p: 0}}>
         <Grid container>
           <Grid item sm={1} sx={{display: {xs: 'none', sm: 'flex'}}}>
             <Box
@@ -48,7 +45,8 @@ function Hero(props) {
             item
             sm={11}
             xs={12}
-            sx={{pt: {lg: 4, xs: 6}, pb: {lg: 8, xs: 2}, pl: {lg: 5, sm: 10}}}
+            sx={{pt: {lg: 4, xs: 6}, pb: {lg: 8, xs: 2}, pl: {lg: 5, sm: 10}, p: 2}}
+
           >
             <Box sx={{p: '5 1', pr: 1, pl: {xs: 1}}}>
               <Box
@@ -66,13 +64,19 @@ function Hero(props) {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={12} sx={{pb: 4, display: {xs: 'flex', sm: 'none'}}}>
+          <Grid
+            item
+            xs={12}
+            sx={{pb: 4, display: {xs: 'block', sm: 'none'}}}
+          >
             <Box
-              component="img"
-              // sx={{maxHeight: '110px', position: 'relative', left: -14}}
-              sx={{width: '110%',position: 'relative', left: -14}}
-              alt={bottomImage.alt}
-              src={builder.image(bottomImage).url()}
+              sx={{
+                height: '120px',
+                background:
+                  bottomImage && `url("${urlFor(bottomImage).url()}") no-repeat center center`,
+                backgroundSize: 'contain',
+                bgcolor: backgroundColor ? backgroundColor : '#091b3f',
+              }}
             />
           </Grid>
         </Grid>
@@ -117,7 +121,7 @@ Hero.propTypes = {
   fontColor: PropTypes.string,
   backgroundColor: PropTypes.string,
   bottomImage: PropTypes.object,
-  sideImage: PropTypes.object
+  sideImage: PropTypes.object,
 }
 
 export default Hero
