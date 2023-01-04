@@ -129,7 +129,7 @@ function SideBySideImages(props) {
           {
             footerText && (
               <Grid item xs={12}>
-                <div style={{ textAlign: 'justify', padding: '20px' }}>
+                <div className={`${styles.simple__block__content} ${styles.left}`}>
                   <SimpleBlockContent blocks={footerText} />
                 </div>
               </Grid>
