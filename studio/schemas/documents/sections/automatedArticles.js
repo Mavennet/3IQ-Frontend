@@ -11,7 +11,7 @@ export default {
   fields: [
     {
         name: 'name',
-        type: 'string',
+        type: 'localeString',
         title: 'Name (*)',
         validation: Rule => Rule.error('Information required.').required(),
     },
@@ -32,7 +32,7 @@ export default {
   ],
   preview: {
     select: {
-      title: `name`,
+      title: `name${baseLanguage.id}`,
       selectedPostCategoryName: `selectedPostCategory.name.${baseLanguage.id}`,
     },
     prepare({ title = '', selectedPostCategoryName = '' }) {

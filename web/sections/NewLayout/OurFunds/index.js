@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import { Container, Grid, Box } from '@mui/material'
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
-import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
-import imageUrlBuilder from '@sanity/image-url'
-import client from '../../../client'
 import Button from '../../../components/NewLayout/Button'
 
 function renderCards(items, languageTag) {
@@ -74,8 +71,6 @@ function OurFunds(props) {
         currentLanguage,
         fundCards
     } = props
-
-    console.log(props)
 
     const boxItemSx = {
         width: {
