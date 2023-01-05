@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
@@ -8,10 +8,11 @@ import Grid from '@mui/material/Grid'
 import styles from './styles.module.scss'
 import SimpleBlockContent from '../../../../components/OldLayout/SimpleBlockContent'
 import {Container} from '@mui/material'
-import CustomAccordions from '../../../OldLayout/custom/CustomAccordion'
-import CustomTab from '../../../OldLayout/custom/CustomTab'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
+import CustomPostCard from '../../custom/CustomPostCard'
+import groq from 'groq'
+import Button from '../../../../components/NewLayout/Button'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -22,9 +23,76 @@ function AccordionLayout(props) {
   const {heading, description, tabItems, currentLanguage, backgroundImage} = props
 
   const [selected, setSelected] = useState(0)
+  const [articles, setArticles] = useState([])
   const containerRef = useRef(null)
 
-  console.log(tabItems)
+
+  const fetchCategory = async () => {
+    await client
+      .fetch(
+        groq`*[_type == 'post' && !(_id in path('drafts.**')) && $categoryId in categories[]._ref] | order(dateTime(publishedAt) desc) {
+          _id,
+          _type,
+          publishedAt,
+        }[0..2]`,
+        {categoryId: tabItems[selected].selectedPostCategory._id}
+      )
+      .then((response) => {
+        const postsId = []
+        response.map((item) => {
+          return postsId.push(item._id)
+        })
+        const fetchArticles = async () => {
+          await client
+            .fetch(
+              groq`
+              *[_type == 'newsCard' && !(_id in path('drafts.**')) && post._ref in $postsIds] {
+                _id,
+                _type,
+                _rev,
+                'localeButtonText': buttonText,
+                'localeShortDescription': shortDescription,
+                'localeSmallCardText': smallCardText,
+                route->,
+                post-> {
+                  _id,
+                  _type,
+                  mainImage,
+                  'localeHeading': heading,
+                  publishedAt,
+                  categories[]-> {
+                    _id,
+                    _type,
+                    'localeName': name,
+                  },
+                  author-> {
+                    _id,
+                    _type,
+                    name,
+                    email,
+                    profilePhoto,
+                  },
+                },
+              }[0..2]`,
+              {postsIds: postsId}
+            )
+            .then((res) => {
+              res.sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
+              setArticles(res)
+            })
+        }
+        fetchArticles()
+      })
+  }
+
+  useEffect(() => {
+    if (selected) {
+      fetchCategory()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected])
+
+  fetchCategory()
 
   return (
     <>
@@ -62,52 +130,36 @@ function AccordionLayout(props) {
 
           <Grid item md={9} pt={2} pl={2}>
             <div className={styles.content}>
-              <SimpleBlockContent
-                blocks={tabItems[selected].localecontentBlock[currentLanguage.languageTag]}
-              />
+              <div className={styles.content__text}>
+                <SimpleBlockContent
+                  blocks={tabItems[selected].localecontentBlock[currentLanguage.languageTag]}
+                />
+              </div>
+              <Box mt={3}>
+                <Grid contianer xs={12} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                  <h3>Press Releases</h3>
+                  {tabItems[selected].localeButton && tabItems[selected].localeButton[currentLanguage.languageTag] && (
+                     <Button className={styles.button} size={"sm"} variant="outlined" {...tabItems[selected].localeButton[currentLanguage.languageTag]} />
+                  )}
+                 
+                </Grid>
+                <Grid container mt={3} spacing={2}>
+                  {articles &&
+                    articles.map((newsCard) => (
+                      <Grid item md={4}>
+                        <CustomPostCard
+                          {...newsCard}
+                          currentLanguage={currentLanguage}
+                          key={newsCard._id}
+                        />
+                      </Grid>
+                    ))}
+                </Grid>
+              </Box>
             </div>
           </Grid>
         </Grid>
       </Container>
-      <ThemeProvider theme={theme}>
-        <Box
-          sx={{
-            pb: 4,
-            background:
-              backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat center center`,
-            backgroundSize: 'cover',
-            bgcolor: backgroundImage ? '#091b3f' : '#fff',
-          }}
-        >
-          <Container maxWidth={'md'} sx={{background: backgroundImage ? '#fff' : 'none'}}>
-            <Grid container>
-              <CssBaseline />
-              <Grid xs={12} md={12}>
-                <Box className={styles.heading}>
-                  {heading && (
-                    <Typography mt={8} component="h2" variant="h4">
-                      {heading}
-                    </Typography>
-                  )}
-                  {description && (
-                    <div className={styles.description}>
-                      <SimpleBlockContent blocks={description} />
-                    </div>
-                  )}
-                </Box>
-                <Box>
-                  <Box sx={{display: {md: 'none'}}}>
-                    <CustomAccordions items={tabItems} languageTag={currentLanguage.languageTag} />
-                  </Box>
-                  <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                    <CustomTab items={tabItems} currentLanguage={currentLanguage} />
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </ThemeProvider>
     </>
   )
 }

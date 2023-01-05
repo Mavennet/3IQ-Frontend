@@ -28,8 +28,14 @@
   }
 }
 
+.button{
+  margin-top: 15px;
+  margin-right: 15px;
+  border-radius: 40px;
+}
+
 .content {
-  max-height: 500px;
+  max-height: 550px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -45,27 +51,29 @@
     border-radius: 10px;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  a {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-secondary-sm);
-    font-weight: var(--font-weight-bold);
-    color: #404040;
-  }
+  &__text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-secondary-sm);
+      font-weight: var(--font-weight-bold);
+      color: #404040;
+    }
 
-  p {
-    font-weight: var(--font-weight-regular);
-  }
+    p {
+      font-weight: var(--font-weight-regular);
+    }
 
-  a {
-    font-weight: var(--font-weight-regular);
-    color: var(--light-blue);
+    a {
+      font-weight: var(--font-weight-regular);
+      color: var(--light-blue);
+    }
   }
 }
 
@@ -121,11 +129,11 @@
       &:last-child {
         border-left: 1px solid var(--white);
         a {
-          color: #8E8E8E;
+          color: #8e8e8e;
         }
       }
       a {
-        color: #8E8E8E;
+        color: #8e8e8e;
       }
     }
   }
