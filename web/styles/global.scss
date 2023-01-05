@@ -1,5 +1,18 @@
 :root {
 
+    &::-webkit-scrollbar {
+        width: 8px;
+      }
+    
+      &::-webkit-scrollbar-track {
+        background: var(--light-gray);
+      }
+    
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--disabled-gray);
+        border-radius: 10px;
+      }
+
     //Colors - Primary
 
     --light-blue: #0082E5;
