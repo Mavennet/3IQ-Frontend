@@ -9,6 +9,9 @@
   justify-content: center;
   flex-wrap: wrap;
   width: auto;
+  &::after {
+    content: '',
+  }
 
   &__solid {
     background-color: var(--light-blue);

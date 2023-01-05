@@ -1,0 +1,32 @@
+@import '../../../styles/custom-media.css';
+
+.title {
+  font-size: var(--font-size-primary-lg);
+  color: var(--black);
+}
+
+.arrows {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  @media (--media-min-large) {
+    display: none;
+  }
+}
+
+.news__container {
+  max-width: 100%;
+  display: flex;
+  flex: auto;
+  gap: 30px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
