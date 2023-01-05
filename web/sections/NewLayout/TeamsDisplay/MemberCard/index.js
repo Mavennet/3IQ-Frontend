@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../../client'
 import Image from 'next/image'
+import { RiLinkedinLine } from 'react-icons/ri'
 
 function MemberCard(props) {
   const { name, image, role, linkedin, showProfileBox, email, contactText, readProfileText } = props
@@ -68,6 +69,31 @@ function MemberCard(props) {
         >
           {role}
         </Typography>
+        {
+          linkedin && (
+            <Link href={linkedin} color="inherit" target='_blank' rel="noopener" className={styles.link}>
+              <Box
+                sx={{
+                  padding: '2px 20px',
+                  border: '1px solid var(--light-blue)',
+                  color: 'var(--light-blue)',
+                  borderRadius: '34px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
+                  alignItems: 'center',
+                  fontFamily: 'var(--font-family-secondary)',
+                  fontSize: 'var(--font-size-secondary-sm)',
+                  fontWeight: 'var(--font-weight-regular)',
+                  gap: 1
+                }}
+              >
+                <RiLinkedinLine />
+                <div>{contactText && contactText}</div>
+              </Box>
+            </Link>
+          )
+        }
       </Box>
     </div>
   )
