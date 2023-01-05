@@ -156,6 +156,11 @@ export const TAB_ITEMS = groq`
       mainImage,
       'localeHeading': heading,
       publishedAt,
+      categories[]-> {
+        _id,
+        _type,
+        'localeName': name,
+      },
       author-> {
         _id,
         _type,
