@@ -98,10 +98,10 @@ function AccordionLayout(props) {
     <>
       <Container maxWidth={'lg'} bgcolor="#F6F6F6">
         <Grid container mt={10} mb={20}>
-          <Grid item md={12}>
+          <Grid item xs={12}>
             <h4>Investment Funds</h4>
           </Grid>
-          <Grid item md={12} sx={{display: {sm: 'block', md: 'none'}}}>
+          <Grid item xs={12} sx={{display: {sm: 'block', md: 'none'}}}>
             <div className={`${styles.menu} ${styles.light__blue}`} ref={containerRef}>
               <ul>
                 {tabItems &&
@@ -141,7 +141,7 @@ function AccordionLayout(props) {
                   {tabItems[selected].localeButton && tabItems[selected].localeButton[currentLanguage.languageTag] && (
                      <Button className={styles.button} size={"sm"} variant="outlined" {...tabItems[selected].localeButton[currentLanguage.languageTag]} />
                   )}
-                 
+
                 </Grid>
                 <Grid container mt={3} spacing={2}>
                   {articles &&
