@@ -32,6 +32,7 @@ import animatedHero from "./documents/sections/animatedHero";
 import hero from "./documents/sections/hero";
 import heroFirstVariation from "./documents/sections/heroFirstVariation";
 import heroDoubleButton from "./documents/sections/heroDoubleButton";
+import heroBigImage from "./documents/sections/heroBigImage";
 import imageWithText from "./documents/sections/imageWithText";
 import mailchimp from "./documents/sections/mailchimp";
 import advertisement from "./documents/sections/advertisement";
@@ -125,6 +126,7 @@ export default createSchema({
     animatedHero,
     heroFirstVariation,
     heroDoubleButton,
+    heroBigImage,
     imageBesideText,
     hero,
     localeCta,

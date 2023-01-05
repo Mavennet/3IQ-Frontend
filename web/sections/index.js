@@ -1,4 +1,5 @@
 export {default as Hero} from './NewLayout/Hero'
+export {default as HeroBigImage} from './NewLayout/HeroBigImage'
 export {default as AnimatedHero} from './OldLayout/AnimatedHero'
 export {default as HeroFirstVariation} from './NewLayout/HeroFirstVariation'
 export {default as HeroDoubleButton} from './NewLayout/HeroDoubleButton'

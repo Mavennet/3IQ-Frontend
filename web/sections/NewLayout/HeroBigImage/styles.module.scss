@@ -1,0 +1,28 @@
+.heading {
+  position: absolute;
+  top: -50px;
+  right: -80%;
+  max-width: 100%;
+}
+
+.simple__block__content {
+  margin-left: 150px;
+  font-family: var(--font-family-secondary);
+  p {
+    font-size: var(--font-size-secondary-md);
+  }
+  strong {
+    font-size: var(--font-size-primary-md);
+  }
+}
+
+.simple__block__content__mobile {
+  font-family: var(--font-family-secondary);
+  p {
+    font-size: var(--font-size-secondary-md);
+  }
+  strong {
+    font-size: var(--font-size-primary-md);
+    font-weight: 600;
+  }
+}
