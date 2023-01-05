@@ -1,0 +1,144 @@
+.heading {
+  font-family: 'Europa';
+}
+
+.heading h2 {
+  color: #0082e5;
+  font-weight: bold;
+}
+
+.accordion {
+  background: none;
+  border: 4px solid orange;
+  border-bottom: 4px solid orange;
+}
+
+.accordionSumary {
+  background: none;
+  border-bottom: 2px solid orange;
+}
+
+.item {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-sm);
+  color: #8e8e8e;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button{
+  margin-top: 15px;
+  margin-right: 15px;
+  border-radius: 40px;
+}
+
+.content {
+  max-height: 550px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--light-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--disabled-gray);
+    border-radius: 10px;
+  }
+
+  &__text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-secondary-sm);
+      font-weight: var(--font-weight-bold);
+      color: #404040;
+    }
+
+    p {
+      font-weight: var(--font-weight-regular);
+    }
+
+    a {
+      font-weight: var(--font-weight-regular);
+      color: var(--light-blue);
+    }
+  }
+}
+
+.menu {
+  padding: 20px 0px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  @media (--media-max-large) {
+    margin: 10px 0px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  ul {
+    max-width: 100%;
+    list-style: none;
+    display: inline-flex;
+    margin: 0px;
+    padding: 0;
+    li {
+      cursor: pointer;
+      width: 100%;
+      white-space: nowrap;
+      padding: 10px 30px;
+      @media (--media-max-large) {
+        border-radius: 24px;
+        margin-right: 10px;
+      }
+      a {
+        font-size: var(--font-size-secondary-sm);
+        font-family: var(--font-family-secondary);
+      }
+    }
+  }
+}
+
+.light__blue {
+  background: var(--light-blue);
+  @media (--media-max-large) {
+    background: transparent;
+  }
+  ul {
+    li {
+      @media (--media-max-large) {
+        background: var(--gray);
+      }
+      &:last-child {
+        border-left: 1px solid var(--white);
+        a {
+          color: #8e8e8e;
+        }
+      }
+      a {
+        color: #8e8e8e;
+      }
+    }
+  }
+}
+
+.active {
+  color: var(--light-blue) !important;
+}
