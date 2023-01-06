@@ -1,0 +1,47 @@
+@import '../../../styles/custom-media.css';
+
+.full__width {
+  position: relative;
+  width: 100vw;
+  @media (--media-min-large) {
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+
+.lines {
+  content: '';
+  position: absolute;
+  display: block;
+  background: url('../../../assets/img/sections/lines-mobile.png');
+  bottom: 20px;
+  width: 100%;
+  height: 70px;
+  background-size: cover;
+  @media (--media-min-large) {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: url('../../../assets/img/sections/lines.png');
+    width: 200px;
+    height: 100%;
+  }
+}
+
+.video {
+  position: relative;
+}
+
+.simple__block__content {
+  font-family: var(--font-family-secondary);
+  color: var(--white);
+  margin-right: 20px;
+  p {
+    font-size: var(--font-size-secondary-md);
+  }
+  strong {
+    font-size: var(--font-size-primary-md);
+  }
+}
