@@ -3,11 +3,11 @@
     &::-webkit-scrollbar {
         width: 8px;
       }
-    
+
       &::-webkit-scrollbar-track {
         background: var(--light-gray);
       }
-    
+
       &::-webkit-scrollbar-thumb {
         background-color: var(--disabled-gray);
         border-radius: 10px;
@@ -31,6 +31,7 @@
     // Colors - Others
     --medium-gray: #EEEEEE;
     --gray: #EBEBEB;
+    --text-gray: #8E8E8E;
     --dark-gray: #707070;
     --dark-blue: #0D1C3D;
     --orange: #DC6E19;
