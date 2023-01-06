@@ -74,7 +74,7 @@ function NewsCard(props) {
                   component="h2"
                   variant="h2"
                   sx={{
-                    fontSize: 'var(--font-size-primary-lg)',
+                    fontSize: 'var(--font-size-primary-md)',
                     fontFamily: 'var(--font-family-primary)',
                     color: 'var(--black)',
                     mt: { xs: 4, md: 8 },
@@ -147,7 +147,7 @@ function NewsCard(props) {
                     sx={{
                       fontSize: 'var(--font-size-secondary-sm)',
                       fontFamily: 'var(--font-family-secondary)',
-                      color: 'var(--black)',
+                      color: '#A9A9A9',
                     }}
                   >
                     {publishedDate}
