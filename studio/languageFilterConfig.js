@@ -21,6 +21,7 @@ export default {
     "animatedHero",
     "heroFirstVariation",
     "heroDoubleButton",
+    "heroBigImage",
     "timeline",
     "hero",
     "imageBesideText",

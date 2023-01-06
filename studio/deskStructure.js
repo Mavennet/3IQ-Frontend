@@ -29,6 +29,7 @@ const hiddenDocTypes = listItem =>
     "componentsTests",
     "heroFirstVariation",
     "heroDoubleButton",
+    "heroBigImage",
     "imageBesideText",
     "doubleOptions",
     "imageWithText",
@@ -145,6 +146,9 @@ export default () =>
               S.documentTypeListItem("ourFunds").title("Our Funds"),
               S.documentTypeListItem("heroDoubleButton").title(
                 "Hero with 2 Buttons"
+              ),
+              S.documentTypeListItem("heroBigImage").title(
+                "Hero with big image"
               ),
               S.documentTypeListItem("heroFirstVariation").title(
                 "Hero first variation"

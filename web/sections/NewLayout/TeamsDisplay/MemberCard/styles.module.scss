@@ -8,3 +8,9 @@
   position: relative;
   z-index: 90;
 }
+
+.link {
+  text-decoration: none!important;
+  font-family: var(--font-family-secondary);
+  float: left;
+}

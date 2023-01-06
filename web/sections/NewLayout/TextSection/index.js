@@ -11,7 +11,7 @@ import client from '../../../client'
 import { Typography, Modal } from '@mui/material'
 import YouTube from 'react-youtube'
 import groq from 'groq'
-import MemberCard from '../../OldLayout/TeamsDisplay/MemberCard'
+import MemberCard from '../../NewLayout/TeamsDisplay/MemberCard'
 import { AiOutlineClose } from 'react-icons/ai'
 
 function urlFor(source) {
@@ -34,8 +34,8 @@ function TextSection(props) {
     width: { xs: '95%', md: '90%' },
     height: 'auto',
     maxWidth: '1024px',
-    maxHeight: '95%',
-    bgcolor: '#fff',
+    maxHeight: {xs: '100vh', md: '85vh'},
+    bgcolor: 'var(--light-gray)',
     outline: 'none',
     overflowY: 'scroll',
     p: 2,
@@ -112,7 +112,7 @@ function TextSection(props) {
                   )}
                 </div>
                 {localeButton && (
-                  <Box mb={4} sx={{ display: 'flex', justifyContent: isButtonCentralized ? 'center' : 'flex-start'}} onClick={() => setOpen(true)}>
+                  <Box mb={4} sx={{ display: 'flex', justifyContent: isButtonCentralized ? 'center' : 'flex-start' }} onClick={() => setOpen(true)}>
                     <Button
                       variant="solidOrange"
                       {...localeButton}
@@ -147,6 +147,11 @@ function TextSection(props) {
             onClose={() => setOpen(false)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
+            BackdropProps={{
+              sx: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)'
+              }
+            }}
           >
             <Box sx={modalStyle}>
               <Box
@@ -154,24 +159,25 @@ function TextSection(props) {
                 sx={{
                   display: 'flex',
                   justifyContent: 'flex-end',
-                  mb: 2,
-                  cursor: 'pointer'
+                  my: 2,
+                  cursor: 'pointer',
                 }}
               >
-                <AiOutlineClose size={26} />
+                <AiOutlineClose size={32} />
               </Box>
               <Grid container spacing={3}>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                   <MemberCard
                     name={memberSelected?.name}
                     role={memberSelected?.jobTitle[currentLanguage.languageTag]}
                     image={memberSelected?.profilePhoto.asset._ref}
                     linkedin={memberSelected?.linkedinUrl}
+                    contactText={memberSelected?.contactText[currentLanguage.languageTag]}
                     showProfileBox={false}
                   />
                 </Grid>
-                <Grid item xs={12} md={8}>
-                  <div className={styles.simpleBlockContent}><SimpleBlockContent blocks={memberSelected?.bio[currentLanguage?.languageTag]} /></div>
+                <Grid item xs={12} md={9}>
+                  <div className={styles.simple__block__content}><SimpleBlockContent blocks={memberSelected?.bio[currentLanguage?.languageTag]} /></div>
                 </Grid>
               </Grid>
             </Box>

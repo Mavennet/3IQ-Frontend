@@ -53,6 +53,7 @@ export default {
             { type: "animatedHero" },
             { type: "heroFirstVariation" },
             { type: "heroDoubleButton" },
+            { type: "heroBigImage" },
             { type: "teamsDisplay" },
             { type: "contactUsForm" },
             { type: "subscribeForm" },
