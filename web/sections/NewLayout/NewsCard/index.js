@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
+import { Grid, Typography, Box } from '@mui/material'
 import { format } from 'date-fns'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import groq from 'groq'
+import { AiFillPlayCircle } from 'react-icons/ai'
 
 function urlFor(source) {
   return imageUrlBuilder(client).image(source)
@@ -20,6 +20,7 @@ function NewsCard(props) {
   const localeHeading = post.heading[currentLanguage.languageTag]
 
   const [publishedDate, setPublishedDate] = React.useState('')
+  const [categorie, setCategorie] = React.useState(null)
 
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
@@ -34,20 +35,65 @@ function NewsCard(props) {
     }
   }, [currentLanguage, post.publishedAt])
 
+  React.useEffect(() => {
+    const fetchCategories = async (ref) => {
+      await client
+        .fetch(
+          groq`
+        *[_type == 'category' && _id == $categorieRef] {
+          _id,
+          _ref,
+          name,
+        }[0]
+       `,
+          { categorieRef: ref }
+        )
+        .then((response) => {
+          setCategorie(response)
+        })
+    }
+    console.log(post?.categories[0]?._ref)
+    fetchCategories(post?.categories[0]?._ref)
+  }, [])
+
   return (
-    <Grid container component="main" sx={{ flexDirection: { xs: 'column-reverse', md: isInvertedLayout ? 'unset' : 'row-reverse' } }}>
-      <Grid item xs={12} md={6} square>
-        <Link
-          href={{
-            pathname: `/${localeHeading}`,
-            query: { slug: route.slug.current },
-          }}
-          as={`/${route.slug.current}`}
-        >
-          <a className={styles.no__decoration}>
+    <Link
+      href={{
+        pathname: `/${localeHeading}`,
+        query: { slug: route.slug.current },
+      }}
+      as={`/${route.slug.current}`}
+    >
+      <a className={styles.no__decoration}>
+        <Grid container component="main" sx={{ flexDirection: { xs: 'column-reverse', md: isInvertedLayout ? 'unset' : 'row-reverse' } }}>
+          <Grid item xs={12} md={6} square>
+            <Box>
+              {categorie?.name && (
+                <Typography
+                  my={2}
+                  component="h2"
+                  variant="h2"
+                  sx={{
+                    fontSize: 'var(--font-size-primary-lg)',
+                    fontFamily: 'var(--font-family-primary)',
+                    color: 'var(--black)',
+                    mt: { xs: 4, md: 8 },
+                    mb: { xs: 0, md: 2 },
+                    ml: { xs: 2, md: 10 },
+                    mr: { xs: 0, md: 8 },
+                  }}
+                >
+                  {categorie?.name?.[currentLanguage.languageTag]}
+                </Typography>
+              )}
+            </Box>
+            <Box my={4}>
+              <div className={styles.line}></div>
+              <div className={styles.line}></div>
+              <div className={styles.line}></div>
+            </Box>
             <Box
               sx={{
-                mt: { xs: 4, md: 8 },
                 mb: { xs: 0, md: 2 },
                 ml: { xs: 2, md: 10 },
                 mr: { xs: 0, md: 8 },
@@ -57,7 +103,7 @@ function NewsCard(props) {
                 color: '#091b3f',
               }}
             >
-              {post?.author?.name && post?.categories[0]?._key && (
+              {post?.author?.name && categorie?.name && (
                 <Typography
                   my={2}
                   variant="h5"
@@ -67,7 +113,7 @@ function NewsCard(props) {
                     color: 'var(--black)',
                   }}
                 >
-                  <strong className={styles.blue}>{post?.categories[0]?._key + ' '}</strong>
+                  <strong className={styles.blue}>{categorie?.name?.[currentLanguage.languageTag] + ' '}</strong>
                   by {post?.author?.name}
                 </Typography>
               )}
@@ -109,27 +155,35 @@ function NewsCard(props) {
                 )}
               </Box>
             </Box>
-          </a>
-        </Link>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        py={{ xs: 28, md: 0 }}
-        md={6}
-        sx={{
-          background:
-            post.mainImage && `url("${urlFor(post.mainImage).url()}") no-repeat center center`,
-          backgroundSize: 'cover',
-          bgcolor: '#091b3f',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: { xs: 'flex-end', md: 'center' },
-          alignItems: 'center',
-        }}
-      >
-      </Grid>
-    </Grid>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            py={{ xs: 28, md: 0 }}
+            md={6}
+            sx={{
+              background:
+                post.mainImage && `url("${urlFor(post.mainImage).url()}") no-repeat center center`,
+              backgroundSize: 'cover',
+              bgcolor: '#091b3f',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: { xs: 'flex-end', md: 'center' },
+              alignItems: 'center',
+            }}
+          >
+            {
+              categorie?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' && (
+                <AiFillPlayCircle
+                  size={90}
+                  color={'var(--white)'}
+                />
+              )
+            }
+          </Grid>
+        </Grid>
+      </a>
+    </Link>
   )
 
 }

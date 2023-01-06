@@ -31,3 +31,10 @@
 .no__decoration {
   text-decoration: none !important;
 }
+
+.line {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 10px;
+  background: transparent linear-gradient(90deg, #EBEBEB 0%, #F2F2F2 100%) 0% 0% no-repeat padding-box;
+}
