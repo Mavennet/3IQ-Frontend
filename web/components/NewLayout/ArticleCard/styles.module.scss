@@ -6,7 +6,18 @@
     position: relative;
     @media (--media-min-large) {
       height: 50vh;
+      max-height: 380px;
     }
+  }
+
+  .play {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .noDecoration {
