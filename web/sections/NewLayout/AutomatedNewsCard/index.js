@@ -74,7 +74,7 @@ function AutomatedNewsCard(props) {
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-      <Grid container spacing={2} my={8}>
+      <Grid container spacing={6} my={8}>
         {
           newsCard && (
             newsCard.map((item) => {

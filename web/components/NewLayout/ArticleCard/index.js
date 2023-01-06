@@ -85,7 +85,7 @@ function ArticleCard(props) {
                     variant="h2"
                     my={2}
                     sx={{
-                      fontSize: 'var(--font-size-primary-sm)',
+                      fontSize: 'var(--font-size-primary-md)',
                       fontFamily: 'var(--font-family-primary)',
                       color: 'var(--black)',
                     }}
@@ -101,7 +101,7 @@ function ArticleCard(props) {
                 sx={{
                   fontSize: 'var(--font-size-secondary-sm)',
                   fontFamily: 'var(--font-family-secondary)',
-                  color: 'var(--black)',
+                  color: 'var(--text-gray)',
                 }}
               >
                 {publishedDate}
