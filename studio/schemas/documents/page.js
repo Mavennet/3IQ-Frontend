@@ -47,6 +47,7 @@ export default {
             { type: "heroWithImage" },
             { type: "advertisement" },
             { type: "mailchimp" },
+            { type: "podcasts" },
             { type: "mainHero" },
             { type: "teamsVideoDisplay" },
             { type: "componentsTests" },

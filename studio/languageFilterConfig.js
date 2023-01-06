@@ -29,6 +29,7 @@ export default {
     "mailchimp",
     "advertisement",
     "mainHero",
+    "podcasts",
     "teamsVideoDisplay",
     "note",
     "quoteHeads",

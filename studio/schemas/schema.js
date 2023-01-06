@@ -37,6 +37,7 @@ import imageWithText from "./documents/sections/imageWithText";
 import mailchimp from "./documents/sections/mailchimp";
 import advertisement from "./documents/sections/advertisement";
 import mainHero from "./documents/sections/mainHero";
+import podcasts from "./documents/sections/podcasts";
 import teamsVideoDisplay from "./documents/sections/teamsVideoDisplay";
 import imageBesideText from "./documents/sections/imageBesideText";
 import quoteHeads from "./documents/sections/quoteHeads";
@@ -103,6 +104,7 @@ export default createSchema({
     mailchimp,
     advertisement,
     mainHero,
+    podcasts,
     teamsVideoDisplay,
     page,
     portableText,

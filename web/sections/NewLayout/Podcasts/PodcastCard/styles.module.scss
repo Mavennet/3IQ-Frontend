@@ -1,0 +1,63 @@
+.stripe {
+    width: 100%;
+    height: 6px;
+    margin: 8px 0;
+    background: linear-gradient(to left, rgb(255, 255, 255, 1), rgb(255, 255, 255, 0));
+  
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .podcast {
+    &__categorie {
+      color: var(--orange);
+      font-family: var(--font-family-secondary);
+      font-size: 12px;
+    }
+
+    &__title{
+    font-size: var(--font-size-secondary-md);
+    }
+  
+    &__author {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-secondary-xs);
+    }
+  
+    &__description {
+      font-family: var(--font-family-secondary);
+      font-size: 12px;
+    }
+  
+    &__date {
+      font-family: var(--font-family-secondary);
+      font-size: 12px;
+    }
+  
+    &__duration {
+      font-family: var(--font-family-secondary);
+      font-size: 13px;
+      font-weight: var(--font-weight-bold);
+      color: #8e8e8e;
+    }
+  
+    &__player {
+      display: flex;
+      align-items: center;
+    }
+  
+    &__bar {
+      height: 5px;
+      width: 250px;
+      background: #d6d6d6;
+      border-radius: 50px;
+  
+      &__progress {
+        height: 100%;
+        background: var(--light-blue);
+        border-radius: 50px;
+      }
+    }
+  }
+  
