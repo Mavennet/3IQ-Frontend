@@ -28,6 +28,7 @@ export default {
     "mailchimp",
     "advertisement",
     "mainHero",
+    "teamsVideoDisplay",
     "note",
     "quoteHeads",
     "quoteHeadsDubai",

@@ -46,6 +46,11 @@ export default {
       title: 'E-mail',
     },
     {
+      name: 'youtubeVideo',
+      type: 'string',
+      title: 'Video',
+    },
+    {
       name: 'readProfileText',
       type: 'localeString',
       title: 'Read Profile Text',

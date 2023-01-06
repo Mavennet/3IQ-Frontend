@@ -48,6 +48,7 @@ export default {
             { type: "advertisement" },
             { type: "mailchimp" },
             { type: "mainHero" },
+            { type: "teamsVideoDisplay" },
             { type: "componentsTests" },
             { type: "animatedHero" },
             { type: "heroFirstVariation" },
