@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'images',
-      type: 'array',  
+      type: 'array',
       title: 'Awards Carousel',
       description: 'Choose the images that will be displayed in the scrollable carousel',
       validation: Rule => [
@@ -43,7 +43,22 @@ export default {
       type: 'localePortableText',
       title: 'Description (*)',
       validation: Rule => Rule.error('Information required.').required()
-    }
+    },
+    {
+      name: 'lineImageMobile',
+      type: 'image',
+      title: 'Line image mobile',
+    },
+    {
+      name: 'lineImageDesktop',
+      type: 'image',
+      title: 'Line image desktop',
+    },
+    {
+      name: 'bgColor',
+      type: 'string',
+      title: 'Background color (default: orange)',
+    },
   ],
   preview: {
     select: {

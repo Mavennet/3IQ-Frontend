@@ -13,7 +13,7 @@ import styles from './styles.module.scss'
 const builder = imageUrlBuilder(client)
 
 function Awards(props) {
-  const { images, heading, video, description } = props
+  const { images, heading, video, description, lineImageDesktop, lineImageMobile, bgColor } = props
 
   const settings = {
     arrows: true,
@@ -51,22 +51,43 @@ function Awards(props) {
 
   return (
     <div className={styles.full__width}>
-      <Box sx={{ background: 'linear-gradient(77deg, rgba(247,145,4,1) 0%, rgba(255,171,55,1) 49%, rgba(255,171,55,1) 100%)' }}>
+      <Box sx={{ background: bgColor ? bgColor : 'linear-gradient(77deg, rgba(247,145,4,1) 0%, rgba(255,171,55,1) 49%, rgba(255,171,55,1) 100%)' }}>
         <Container>
-          <Grid container py={8} sx={{position: 'relative'}}>
-            <div className={styles.lines}></div>
-            <Grid item xs={12} md={8} mt={10}>
+          <Grid container py={8} sx={{ position: 'relative' }}>
+            {
+              lineImageDesktop && (
+                <Box
+                  className={styles.lines}
+                  component="img"
+                  alt={'lines'}
+                  src={builder.image(lineImageDesktop).url()}
+                  sx={{display: {xs: 'none', md: 'block'}}}
+                />
+              )
+            }
+            {
+              lineImageMobile && (
+                <Box
+                  className={styles.lines}
+                  component="img"
+                  alt={'lines'}
+                  src={builder.image(lineImageMobile).url()}
+                  sx={{display: {xs: 'block', md: 'none'}}}
+                />
+              )
+            }
+            <Grid item xs={12} md={8} mt={10} my={8}>
               <div className={styles.video}>
                 <Typography
                   variant="h2"
                   sx={{
                     fontWeight: '300',
                     color: '#EBEBEB',
-                    fontSize: { xs: '50px', md: '100px' },
+                    fontSize: { xs: '50px', md: '131px' },
                     fontFamily: 'var(--font-family-primary)',
                     position: 'absolute',
-                    top: {xs: '-40px', md: '-80px'},
-                    left: {xs: '0', md: '-40px'},
+                    top: { xs: '-40px', md: '-80px' },
+                    left: { xs: '0', md: '-40px' },
                   }}
                 >
                   {heading}
@@ -168,6 +189,9 @@ Awards.propTypes = {
       }),
     })
   ),
+  lineImageDesktop: PropTypes.object,
+  lineImageMobile: PropTypes.object,
+  bgColor: PropTypes.string,
   video: PropTypes.shape({
     alt: PropTypes.string,
     _key: PropTypes.string,
