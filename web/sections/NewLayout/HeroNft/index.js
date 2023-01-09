@@ -174,7 +174,7 @@ function HeroNft(props) {
                 <AiOutlineClose size={32} />
               </Box>
               <Grid container spacing={3}>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} sm={4} md={3}>
                   <MemberCard
                     name={memberSelected?.name}
                     role={memberSelected?.jobTitle[currentLanguage.languageTag]}
@@ -184,7 +184,7 @@ function HeroNft(props) {
                     showProfileBox={false}
                   />
                 </Grid>
-                <Grid item xs={12} md={9}>
+                <Grid item xs={12} sm={8} md={9}>
                   <div className={styles.simple__block__content}><SimpleBlockContent blocks={memberSelected?.bio[currentLanguage?.languageTag]} /></div>
                 </Grid>
               </Grid>
