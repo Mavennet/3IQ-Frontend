@@ -282,7 +282,7 @@ const LandingPage = (props) => {
             left: { xs: '5px', md: 'auto', },
             bottom: '5px',
             right: '5px',
-            width: { xs: 'auto', md: '50%', lg: '35%' },
+            width: { xs: 'auto', md: '40%', lg: '30%' },
           }}
         >
           {!areCookiesEnabled && (
