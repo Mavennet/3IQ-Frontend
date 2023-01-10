@@ -17,6 +17,16 @@ export default {
       description: 'The main site url. Used to create canonical url',
     },
     {
+      name: "cookiesText",
+      type: "localePortableText",
+      title: "Cookies policy text"
+    },
+    {
+      name: "newUpdatesText",
+      type: "localePortableText",
+      title: "Content update text to show in popup"
+    },
+    {
       name: 'frontpage',
       type: 'reference',
       description: 'Choose page to be the frontpage',

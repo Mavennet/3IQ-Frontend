@@ -22,6 +22,7 @@ export default {
     "heroFirstVariation",
     "heroDoubleButton",
     "heroBigImage",
+    "heroNft",
     "timeline",
     "hero",
     "imageBesideText",

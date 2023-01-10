@@ -1,0 +1,32 @@
+.popup__box {
+  background-color: #F6F6F6;
+  padding: 10px 20px 30px 20px;
+  box-shadow: 5px 5px 20px #00000029;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.simple__block__content {
+  margin: 10px 0px;
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
+  p {
+    margin: 0px;
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-sm);
+    font-weight: var(--font-weight-regular);
+  }
+}
+
+.button__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.close__button {
+  cursor: pointer;
+}

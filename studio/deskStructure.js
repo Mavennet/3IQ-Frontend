@@ -30,6 +30,7 @@ const hiddenDocTypes = listItem =>
     "heroFirstVariation",
     "heroDoubleButton",
     "heroBigImage",
+    "heroNft",
     "imageBesideText",
     "doubleOptions",
     "imageWithText",
@@ -153,6 +154,9 @@ export default () =>
               ),
               S.documentTypeListItem("heroBigImage").title(
                 "Hero with big image"
+              ),
+              S.documentTypeListItem("heroNft").title(
+                "Hero with NFT"
               ),
               S.documentTypeListItem("heroFirstVariation").title(
                 "Hero first variation"
