@@ -16,6 +16,7 @@ export default {
     "page",
     "textSection",
     "heroWithImage",
+    "heroSailGP",
     "ourFunds",
     "componentsTests",
     "animatedHero",

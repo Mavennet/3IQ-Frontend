@@ -1,0 +1,32 @@
+@import '../../../styles/custom-media.css';
+
+.heading {
+  color: var(--white);
+  font-weight: var(--font-weight-regular);
+  font-family: var(--font-family-primary);
+  font-size: 42px;
+  line-height: 1.2em;
+  margin-left: -50px;
+  margin-top: -100px;
+  @media (--media-min-large) {
+    font-size: var(--font-size-primary-xl);
+    margin-left: -80px;
+    margin-top: -80px;
+  }
+}
+
+.simple__block__content {
+  font-family: var(--font-family-secondary);
+  color: var(--white);
+  p {
+    font-size: var(--font-size-secondary-lg);
+    font-family: var(--font-family-secondary);
+  }
+}
+
+.line {
+  width: 100%;
+  height: 8px;
+  margin-bottom: 10px;
+  background: transparent linear-gradient(270deg, #F6F6F6 0%, #0D1C3D 100%) 0% 0% no-repeat padding-box;
+}
