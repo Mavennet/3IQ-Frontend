@@ -1,0 +1,15 @@
+.search {
+  &__found {
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: var(--font-size-secondary-sm);
+  }
+
+  &__dropdown {
+    width: 200px;
+
+    &__mobile{
+      width: 100%
+    }
+  }
+}

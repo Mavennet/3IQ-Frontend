@@ -30,6 +30,7 @@ export default {
     "advertisement",
     "mainHero",
     "podcasts",
+    "search",
     "teamsVideoDisplay",
     "note",
     "quoteHeads",

@@ -37,6 +37,7 @@ const hiddenDocTypes = listItem =>
     "mailchimp",
     "mainHero",
     "podcasts",
+    "search",
     "teamsVideoDisplay",
     "keyBenefits",
     "benefitCard",
@@ -130,6 +131,7 @@ export default () =>
               S.documentTypeListItem("advertisement").title("Advertisement"),
               S.documentTypeListItem("mainHero").title("Main Hero"),
               S.documentTypeListItem("podcasts").title("Podcasts"),
+              S.documentTypeListItem("search").title("Search"),
               S.documentTypeListItem("teamsVideoDisplay").title("Teams Video Display"),
               S.documentTypeListItem("animatedHero").title("Animated Hero"),
               S.documentTypeListItem("automatedNewsCard").title(

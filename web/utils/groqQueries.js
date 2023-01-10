@@ -64,6 +64,10 @@ export const ROUTES = groq`
 *[_type == 'route'] {...}
 `
 
+export const ROUTES_BY_TERM = groq`
+*[_type == 'route' && slug.current match [$urlTag, $term]] {...,countries[]-> {urlTag}, page->{...}}
+`
+
 export const BENEFIT_CARDS = groq`
 *[_type == 'benefitCard'] {
   ...,
