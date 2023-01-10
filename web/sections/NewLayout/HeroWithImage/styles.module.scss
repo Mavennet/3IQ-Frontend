@@ -1,0 +1,21 @@
+@import '../../../styles/custom-media.css';
+
+.heading {
+  color: var(--white);
+  font-weight: var(--font-weight-regular);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-primary-lg);
+  line-height: 1.2em;
+  @media (--media-min-large) {
+    font-size: var(--font-size-primary-xl);
+  }
+}
+
+.simple__block__content {
+  font-family: var(--font-family-secondary);
+  color: var(--white);
+  p {
+    font-size: var(--font-size-secondary-lg);
+    font-family: var(--font-family-secondary);
+  }
+}

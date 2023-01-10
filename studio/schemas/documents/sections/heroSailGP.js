@@ -5,8 +5,8 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'heroWithImage',
-  title: 'Hero with Image',
+  name: 'heroSailGP',
+  title: 'Hero SailGP',
   icon: SplitHorizontalIcon,
   fields: [
     {
@@ -44,7 +44,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero With Image section',
+        subtitle: 'Hero SailGP section',
         media,
       };
     },

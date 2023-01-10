@@ -26,6 +26,7 @@ import imagesContainer from "./documents/imagesContainer";
 // Section documents
 import textSection from "./documents/sections/textSection";
 import heroWithImage from "./documents/sections/heroWithImage";
+import heroSailGP from "./documents/sections/heroSailGP";
 import ourFunds from "./documents/sections/ourFunds";
 import componentsTests from "./documents/sections/componentsTests";
 import animatedHero from "./documents/sections/animatedHero";
@@ -128,6 +129,7 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    heroSailGP,
     ourFunds,
     componentsTests,
     animatedHero,
