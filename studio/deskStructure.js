@@ -25,6 +25,7 @@ const hiddenDocTypes = listItem =>
     "hero",
     "animatedHero",
     "heroWithImage",
+    "heroSailGP",
     "ourFunds",
     "componentsTests",
     "heroFirstVariation",
@@ -160,6 +161,7 @@ export default () =>
                 "Hero first variation"
               ),
               S.documentTypeListItem("heroWithImage").title("Hero with Image"),
+              S.documentTypeListItem("heroSailGP").title("Hero SailGP"),
               S.documentTypeListItem("componentsTests").title(
                 "Components Tests"
               ),
