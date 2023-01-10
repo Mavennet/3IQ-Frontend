@@ -9,12 +9,13 @@ import groq from 'groq'
 import Form from '../../../components/NewLayout/Form'
 import Dropdown from '../../../components/NewLayout/Dropdown'
 import Button from '../../../components/NewLayout/Button'
-import {ROUTES_BY_TERM} from '../../../utils/groqQueries'
+import {ROUTES_BY_TERM, CATEGORIES} from '../../../utils/groqQueries'
 
 function Search(props) {
   const {heading, currentLanguage, currentCountry} = props
   const [sectionDropdownValue, setSectionDropdownValue] = useState([])
   const [routes, setRoutes] = useState([])
+  const [categories, setCategories] = useState([])
 
   console.log(props)
 
@@ -87,16 +88,27 @@ function Search(props) {
     return sections.indexOf(section) >= 0 || sections.length == 0
   }
 
-  async function search(){
-    if (searchTerm.length == 3 || (searchTerm.length > 3 && (searchTerm.length - 3) % 3  == 0)
-      ) {
-        await client.fetch(ROUTES_BY_TERM,
-          { term: searchTerm, urlTag: currentCountry.urlTag }).then(res => console.log(res))
-      alert(searchTerm)
+  async function search() {
+    if (categories.length > 0) {
+      console.log(categories)
+      // let webinars = 
+      if (searchTerm.length == 3 || (searchTerm.length > 3 && (searchTerm.length - 3) % 3 == 0)) {
+        await client
+          .fetch(ROUTES_BY_TERM, {term: searchTerm, urlTag: currentCountry.urlTag})
+          .then((res) => setRoutes(res))
+        alert(searchTerm)
+      }
     }
   }
 
+  async function fetchCategories() {
+    await client
+      .fetch(CATEGORIES)
+      .then((res) => setCategories(res))
+  }
+
   useEffect(() => {
+    categories && categories.length == 0 && fetchCategories()
     search()
   }, [searchTerm])
 
@@ -185,7 +197,7 @@ function Search(props) {
             <Box sx={{display: 'flex', alignItems: 'center'}}>
               <h3>Page Results</h3>
               <span className={styles.search__found}>
-                Found: <strong>3 Items</strong>
+                Found: <strong>{`${routes.length} items`}</strong>
               </span>
             </Box>
             <Box sx={{display: {md: 'flex', xs: 'none'}}}>
@@ -203,6 +215,13 @@ function Search(props) {
                 />
               </Box>
             </Box>
+          </Box>
+          <Box sx={{display: 'block'}}>
+            {routes.map((route) => (
+              <h5 className={styles.search__route}>
+                {route.page.title[currentLanguage.languageTag]}
+              </h5>
+            ))}
           </Box>
           {showSection('articles') && (
             <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>

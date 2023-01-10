@@ -237,6 +237,10 @@ export const FUND_CARDS = groq`
 }
 `
 
+
+export const CATEGORIES = groq`
+*[_type == 'category'] {...}`
+
 export const SITE_CONFIG_QUERY = `
   *[_id == "global-config"] {
     ...,
