@@ -21,12 +21,6 @@ export default {
       title: 'Description',
     },
     {
-      name: 'mainImage',
-      type: 'localeFigure',
-      title: 'Main image (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image (*)',
