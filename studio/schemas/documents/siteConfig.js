@@ -22,6 +22,11 @@ export default {
       title: "Cookies policy text"
     },
     {
+      name: "newUpdatesText",
+      type: "localePortableText",
+      title: "Content update text to show in popup"
+    },
+    {
       name: 'frontpage',
       type: 'reference',
       description: 'Choose page to be the frontpage',

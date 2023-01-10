@@ -8,6 +8,7 @@ import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
 import CookieConsent, { Cookies } from 'react-cookie-consent'
+// import Popup from '../components/NewLayout/Popup'
 import { Box } from '@mui/material'
 import SimpleBlockContent from '../components/OldLayout/SimpleBlockContent'
 import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES, FUND_CARDS } from '../utils/groqQueries'
@@ -285,6 +286,15 @@ const LandingPage = (props) => {
             width: { xs: 'auto', md: '40%', lg: '30%' },
           }}
         >
+          {
+            /*
+            config.newUpdatesText && (
+              <Popup
+                content={config.newUpdatesText[currentLanguage.languageTag]}
+              />
+            )
+            */
+          }
           {!areCookiesEnabled && (
             <CookieConsent
               disableStyles={true}
