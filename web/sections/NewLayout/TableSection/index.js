@@ -12,6 +12,7 @@ function TableSection(props) {
     heading,
     embed,
     colorfulLayout,
+    color,
     headerTransparentLayout,
     downloadButton,
     endpoint,
@@ -21,6 +22,12 @@ function TableSection(props) {
   } = props
 
   const [data, setData] = React.useState(null)
+
+  const typesStyle = {
+    orange: styles.orange,
+    lightBlue: styles.light__blue,
+    darkBlue: styles.dark__blue
+  }
 
   const getTableData = (endpoint) => {
     axios.get(endpoint)
@@ -125,7 +132,7 @@ function TableSection(props) {
                       </thead>
                     )
                   }
-                  <tbody className={colorfulLayout && styles.tableColorful}>
+                  <tbody className={colorfulLayout && `${styles.tableColorful} ${typesStyle[color]}`}>
                     {
                       data.map((item, i) => {
                         const values = Object.values(item)
@@ -182,6 +189,7 @@ function TableSection(props) {
 TableSection.propTypes = {
   heading: PropTypes.string,
   embed: PropTypes.object,
+  color: PropTypes.string,
   colorfulLayout: PropTypes.bool,
   headerTransparentLayout: PropTypes.bool,
   downloadButton: PropTypes.bool,

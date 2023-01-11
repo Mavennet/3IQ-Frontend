@@ -54,6 +54,19 @@ export default {
       initialValue: false,
     },
     {
+      title: "Color",
+      name: "color",
+      type: "string",
+      options: {
+        list: [
+          { title: "Light Blue", value: "lightBlue" },
+          { title: "Dark Blue", value: "darkBlue" },
+          { title: "Orange", value: "orange" },
+        ],
+        layout: "radio"
+      }
+    },
+    {
       name: 'downloadButton',
       type: 'boolean',
       title: 'Enable download button?',

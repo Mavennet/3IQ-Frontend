@@ -151,7 +151,7 @@ export default () =>
               S.documentTypeListItem("hero").title("Hero"),
               S.documentTypeListItem("ourFunds").title("Our Funds"),
               S.documentTypeListItem("heroDoubleButton").title(
-                "Hero with 2 Buttons"
+                "Hero Fund"
               ),
               S.documentTypeListItem("heroBigImage").title(
                 "Hero with big image"
