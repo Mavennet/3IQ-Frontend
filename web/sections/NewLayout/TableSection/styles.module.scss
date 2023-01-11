@@ -51,12 +51,23 @@
 }
 
 .tableColorful tr td:last-child{
-  background-color: var(--light-orange);
   color: var(--white);
   border-radius: 30px;
   width: 78px;
   height: 49px;
   text-align: center;
+}
+
+.orange tr td:last-child {
+  background-color: var(--light-orange);
+}
+
+.light__blue tr td:last-child {
+  background-color: var(--light-blue);
+}
+
+.dark__blue tr td:last-child {
+  background-color: #0D1C3D;
 }
 
 .simpleBlockContent .elementor-381 .elementor-element.elementor-element-7313428{

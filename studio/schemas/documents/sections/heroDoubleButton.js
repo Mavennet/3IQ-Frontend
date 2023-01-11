@@ -6,7 +6,7 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault)
 export default {
   type: 'document',
   name: 'heroDoubleButton',
-  title: 'Hero with 2 Buttons',
+  title: 'Hero Fund',
   icon: SplitHorizontalIcon,
   fields: [
     {
@@ -18,8 +18,7 @@ export default {
     {
       name: 'tagName',
       type: 'localeText',
-      title: 'Tag Name (*)',
-      validation: Rule => Rule.error('Information required.').required()
+      title: 'Tag Name',
     },
     {
       name: 'description',
@@ -33,16 +32,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'button',
-      type: 'localeCta',
-      title: 'Main Button',
-    },
-    {
-      name: 'secondButton',
-      type: 'localeCta',
-      title: 'Second Button',
     }
   ],
   preview: {
@@ -53,7 +42,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero with 2 Buttons section',
+        subtitle: 'Hero Fund section',
         media
       }
     }

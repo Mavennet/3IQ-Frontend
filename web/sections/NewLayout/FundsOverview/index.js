@@ -42,7 +42,7 @@ function FundsOverview(props) {
     <Grid xs={12}>
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
         <Grid container>
-          <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: 10}} mb={{xs: 6}}>
+          <Grid item md={8} pr={{xs: 0, md: 10}} mb={{xs: 6}}>
             {title && (<h2 className={styles.title}>{title}</h2>)}
             {embed && (
               <Box className={styles.content}>

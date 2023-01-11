@@ -13,17 +13,30 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'isLightBlueLayout',
-      type: 'boolean',
-      title: 'Layout with light blue color?',
-      description: 'Enable this to use light blue layout',
-      initialValue: true,
+      title: "Menu Color (*)",
+      name: "menuColor",
+      type: "string",
+      options: {
+        list: [
+          { title: "Light Blue", value: "lightBlue" },
+          { title: "Dark Blue", value: "darkBlue" },
+          { title: "Dark Gray", value: "darkGray" },
+        ],
+        layout: "radio"
+      }
     },
     {
       name: 'isFixedWhenScroll',
       type: 'boolean',
       title: 'Using fixed menu when scroll page?',
       description: 'Enable menu fixed when scroll page',
+      initialValue: true,
+    },
+    {
+      name: 'enableArrows',
+      type: 'boolean',
+      title: 'Layout with arrows to scroll?',
+      description: 'Show arrows in desktop to scroll all items',
       initialValue: true,
     },
     {
