@@ -9,15 +9,14 @@ import groq from 'groq'
 import Form from '../../../components/NewLayout/Form'
 import Dropdown from '../../../components/NewLayout/Dropdown'
 import Button from '../../../components/NewLayout/Button'
-import {ROUTES_BY_TERM, CATEGORIES} from '../../../utils/groqQueries'
+import {ROUTES_BY_TERM, CATEGORIES, NEWS_CARD_BY_TERM} from '../../../utils/groqQueries'
 
 function Search(props) {
   const {heading, currentLanguage, currentCountry} = props
   const [sectionDropdownValue, setSectionDropdownValue] = useState([])
   const [routes, setRoutes] = useState([])
+  const [posts, setPosts] = useState([])
   const [categories, setCategories] = useState([])
-
-  console.log(props)
 
   const sectionDropdownItems = [
     {
@@ -84,20 +83,24 @@ function Search(props) {
     setSections(selectedItems)
   }
 
+  function filterCategories(){
+
+  }
+
   function showSection(section) {
     return sections.indexOf(section) >= 0 || sections.length == 0
   }
 
   async function search() {
     if (categories.length > 0) {
-      console.log(categories)
       // let webinars = 
       if (searchTerm.length == 3 || (searchTerm.length > 3 && (searchTerm.length - 3) % 3 == 0)) {
         await client
           .fetch(ROUTES_BY_TERM, {term: searchTerm, urlTag: currentCountry.urlTag})
           .then((res) => setRoutes(res))
-        alert(searchTerm)
-      }
+        alert(currentLanguage.languageTag)
+        await client.fetch(NEWS_CARD_BY_TERM, {term: searchTerm, languageTag: currentLanguage.languageTag}).then((res) => console.log(res))
+      }  
     }
   }
 
