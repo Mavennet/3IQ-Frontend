@@ -75,49 +75,47 @@ function SideBySideImages(props) {
                         {
                           title && <h5 className={styles.title__image}>{title}</h5>
                         }
-                        <Box
-                          sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center' }}
-                        >
+                        <Grid container spacing={4} my={4}>
                           {
                             item.images.map((image, i) => {
                               if (image.imageExternalLink) {
                                 return (
-                                  <Link href={image.imageExternalLink} key={i}>
-                                    <a target='_blank' rel="noopener">
-                                      <Box
-                                        component="img"
-                                        alt={image.alt}
-                                        src={builder.image(image).url()}
-                                        key={image._key}
-                                        sx={{
-                                          margin: '5px',
-                                          padding: '30px',
-                                          maxHeight: '110px',
-                                          justifyContent: 'center',
-                                        }}
-                                      />
-                                    </a>
-                                  </Link>
+                                  <Grid item xs={6} md={3} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                    <Link href={image.imageExternalLink} key={i}>
+                                      <a target='_blank' rel="noopener">
+                                        <Box
+                                          component="img"
+                                          alt={image.alt}
+                                          src={builder.image(image).url()}
+                                          key={image._key}
+                                          sx={{
+                                            maxWidth: '100%',
+                                            maxHeight: '100%',
+                                          }}
+                                        />
+                                      </a>
+                                    </Link>
+                                  </Grid>
                                 )
                               } else {
                                 return (
-                                  <Box
-                                    component="img"
-                                    alt={image.alt}
-                                    src={builder.image(image).url()}
-                                    key={image._key}
-                                    sx={{
-                                      margin: '5px',
-                                      padding: '30px',
-                                      maxHeight: '110px',
-                                      justifyContent: 'center',
-                                    }}
-                                  />
+                                  <Grid item xs={6} md={3}>
+                                    <Box
+                                      component="img"
+                                      alt={image.alt}
+                                      src={builder.image(image).url()}
+                                      key={image._key}
+                                      sx={{
+                                        maxWidth: '100%',
+                                        maxHeight: '100%',
+                                      }}
+                                    />
+                                  </Grid>
                                 )
                               }
                             })
                           }
-                        </Box>
+                        </Grid>
                       </Grid>
                     )
                   }
