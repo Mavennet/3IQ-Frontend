@@ -88,7 +88,7 @@ function FundsContent(props) {
   const typesStyle = {
     lightBlue: styles.light__blue,
     darkBlue: styles.dark__blue,
-    darkGray: styles.dark_gray,
+    darkGray: styles.dark__gray,
   }
 
   const arrowStyle = {

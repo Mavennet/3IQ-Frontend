@@ -91,7 +91,7 @@ function HeroNft(props) {
       <div className={styles.left__side}>
         <Box
           bgcolor={'#0082E5'}
-          py={6}
+          py={{ xs: 6, md: 10}}
           px={{ md: 6 }}
           sx={{
             width: '100%',

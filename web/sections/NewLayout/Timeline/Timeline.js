@@ -50,7 +50,7 @@ function Timeline(props) {
             {leftFirstTextBlock && <SimpleBlockContent blocks={leftFirstTextBlock} />}
           </div>
         </Grid>
-        <Grid item xs={0} md={12} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', gap: 20 }}>
+        <Grid item xs={0} md={12} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', gap: 10 }}>
           <Box mt={20}>
             <div className={`${styles.line} ${styles.half__height}`}>
               {
