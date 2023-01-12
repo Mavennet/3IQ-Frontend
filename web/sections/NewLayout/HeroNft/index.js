@@ -173,7 +173,7 @@ function HeroNft(props) {
               >
                 <AiOutlineClose size={32} />
               </Box>
-              <Grid container spacing={3}>
+              <Grid container spacing={3} py={4}>
                 <Grid item xs={12} sm={4} md={3}>
                   <MemberCard
                     name={memberSelected?.name}

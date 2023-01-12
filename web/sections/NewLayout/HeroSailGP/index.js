@@ -35,7 +35,7 @@ function HeroSailGP(props) {
             backgroundSize: 'cover',
             px: 5,
             mx: 2,
-            minHeight: { xs: '250px', md: 'auto' },
+            minHeight: { xs: '250px', sm: '400px', md: 'auto', },
             mt: { xs: 5, md: 0 }
           }}
         >
@@ -50,6 +50,7 @@ function HeroSailGP(props) {
                   (
                     <Button
                       variant={'solidOrange'}
+                      className={styles.button}
                       {...localeButton}
                     ></Button>
                   )}
@@ -68,6 +69,7 @@ function HeroSailGP(props) {
               (
                 <Button
                   variant={'solidOrange'}
+                  className={styles.button}
                   {...localeButton}
                 ></Button>
               )}

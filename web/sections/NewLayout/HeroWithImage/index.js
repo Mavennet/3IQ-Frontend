@@ -38,6 +38,7 @@ function HeroWithImage(props) {
               (
                 <Button
                   variant={'solidOrange'}
+                  className={styles.button}
                   {...localeButton}
                 ></Button>
               )}
