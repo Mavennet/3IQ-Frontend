@@ -83,7 +83,7 @@ export const NEWS_CARD_BY_TERM = groq`
     mainImage,
     'localeHeading': heading,
     publishedAt,
-    categories []-> {...},
+    categories[]-> {'localeName': name, ...},
     author-> {
       _id,
       _type,
@@ -91,9 +91,10 @@ export const NEWS_CARD_BY_TERM = groq`
       email,
       profilePhoto,
     },
-  }
+  },
 }
 `
+
 
 export const BENEFIT_CARDS = groq`
 *[_type == 'benefitCard'] {
@@ -265,7 +266,7 @@ export const FUND_CARDS = groq`
 `
 
 export const CATEGORIES = groq`
-*[_type == 'category'] {...}`
+*[_type == 'category' && searchCategory == true] {...}`
 
 
 export const SITE_CONFIG_QUERY = `

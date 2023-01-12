@@ -10,6 +10,7 @@ import Form from '../../../components/NewLayout/Form'
 import Dropdown from '../../../components/NewLayout/Dropdown'
 import Button from '../../../components/NewLayout/Button'
 import {ROUTES_BY_TERM, CATEGORIES, NEWS_CARD_BY_TERM} from '../../../utils/groqQueries'
+import ArticleCard from '../../../components/NewLayout/ArticleCard'
 
 function Search(props) {
   const {heading, currentLanguage, currentCountry} = props
@@ -83,9 +84,7 @@ function Search(props) {
     setSections(selectedItems)
   }
 
-  function filterCategories(){
-
-  }
+  function filterCategories() {}
 
   function showSection(section) {
     return sections.indexOf(section) >= 0 || sections.length == 0
@@ -93,21 +92,41 @@ function Search(props) {
 
   async function search() {
     if (categories.length > 0) {
-      // let webinars = 
+      let categoryIds = []
+      categories.map((c) => categoryIds.push(c._id))
+      // let webinars =
       if (searchTerm.length == 3 || (searchTerm.length > 3 && (searchTerm.length - 3) % 3 == 0)) {
         await client
           .fetch(ROUTES_BY_TERM, {term: searchTerm, urlTag: currentCountry.urlTag})
           .then((res) => setRoutes(res))
-        alert(currentLanguage.languageTag)
-        await client.fetch(NEWS_CARD_BY_TERM, {term: searchTerm, languageTag: currentLanguage.languageTag}).then((res) => console.log(res))
-      }  
+        await client
+          .fetch(NEWS_CARD_BY_TERM, {
+            term: searchTerm,
+            languageTag: currentLanguage.languageTag,
+          })
+          .then((res) => filterPosts(res))
+      }
     }
   }
 
+  function filterPosts(posts) {
+    let filteredPosts = {}
+    categories.map((c) => (filteredPosts[c] = []))
+    posts.map((p) => {
+      p.post.categories.map((c) => {
+        categories.indexOf(c.searchId) >= 0 && filteredPosts[c.searchId].push(p)
+      })
+    })
+    console.log(filteredPosts)
+    setPosts(filteredPosts)
+  }
+
   async function fetchCategories() {
-    await client
-      .fetch(CATEGORIES)
-      .then((res) => setCategories(res))
+    await client.fetch(CATEGORIES).then((res) => {
+      let categoryIds = []
+      res.map((r) => categoryIds.push(r.searchId))
+      setCategories(categoryIds)
+    })
   }
 
   useEffect(() => {
@@ -253,16 +272,27 @@ function Search(props) {
             </Box>
           )}
           {showSection('videos') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>Videos</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
+            <Box>
+              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>Videos</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.videos ? posts.videos.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
               </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
+              <Grid container spacing={5}>
+                {posts &&
+                  posts.videos &&
+                  posts.videos.map((item) => (
+                    <Grid item xs={12} sm={6} key={item._id}>
+                      <ArticleCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
             </Box>
           )}
           {showSection('podcasts') && (
@@ -279,16 +309,32 @@ function Search(props) {
             </Box>
           )}
           {showSection('webinars') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>Webinars</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
+            <Box>
+              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>Webinars</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.webinar ? posts.webinar.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
               </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
+              <Grid container spacing={5}>
+                {posts &&
+                  posts.webinar &&
+                  posts.webinar.map((item) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={posts.webinar.length < 4 ? 12 / posts.webinar.length : 4}
+                      key={item._id}
+                    >
+                      <ArticleCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
             </Box>
           )}
           {showSection('newsletters') && (
@@ -296,7 +342,7 @@ function Search(props) {
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <h3>Newsletters</h3>
                 <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
+                  Found: <strong>{posts.webinar ? posts.webinar.length : 0}</strong>
                 </span>
               </Box>
               <Box>
@@ -318,16 +364,32 @@ function Search(props) {
             </Box>
           )}
           {showSection('press_releases') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>Press Releases</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
+            <Box>
+              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>Press Releases</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>3 Items</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
               </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
+              <Grid container spacing={5}>
+                {posts &&
+                  posts.press_releases &&
+                  posts.press_releases.map((item) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={posts.press_releases.length < 4 ? 12 / posts.press_releases.length : 3}
+                      key={item._id}
+                    >
+                      <ArticleCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
             </Box>
           )}
         </Container>
