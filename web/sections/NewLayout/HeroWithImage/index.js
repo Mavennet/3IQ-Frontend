@@ -24,7 +24,7 @@ function HeroWithImage(props) {
           `url("${urlFor(backgroundImage)
             .url()}") no-repeat center center`,
         backgroundSize: 'cover',
-        py: 10,
+        py: 15,
       }}
     >
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
