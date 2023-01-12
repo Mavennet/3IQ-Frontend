@@ -4,18 +4,23 @@
   color: var(--white);
   font-weight: var(--font-weight-regular);
   font-family: var(--font-family-primary);
-  font-size: var(--font-size-primary-lg);
+  font-size: var(--font-size-primary-md);
   line-height: 1.2em;
   @media (--media-min-large) {
-    font-size: var(--font-size-primary-xl);
+    font-size: 52px;
   }
+}
+
+.button {
+  padding: 10px 50px!important;
+  float: left;
 }
 
 .simple__block__content {
   font-family: var(--font-family-secondary);
   color: var(--white);
   p {
-    font-size: var(--font-size-secondary-lg);
+    font-size: var(--font-size-secondary-md);
     font-family: var(--font-family-secondary);
   }
 }

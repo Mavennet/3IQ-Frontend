@@ -2,7 +2,7 @@
 
 .heading {
   color: var(--white);
-  font-weight: var(--font-weight-regular);
+  font-weight: 300;
   font-family: var(--font-family-primary);
   font-size: 42px;
   line-height: 1.2em;
@@ -22,6 +22,10 @@
     font-size: var(--font-size-secondary-lg);
     font-family: var(--font-family-secondary);
   }
+}
+
+.button {
+  padding: 10px 50px;
 }
 
 .line {
