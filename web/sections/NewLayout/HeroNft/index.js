@@ -91,7 +91,7 @@ function HeroNft(props) {
       <div className={styles.left__side}>
         <Box
           bgcolor={'#0082E5'}
-          py={6}
+          py={{ xs: 6, md: 10}}
           px={{ md: 6 }}
           sx={{
             width: '100%',
@@ -173,7 +173,7 @@ function HeroNft(props) {
               >
                 <AiOutlineClose size={32} />
               </Box>
-              <Grid container spacing={3}>
+              <Grid container spacing={3} py={4}>
                 <Grid item xs={12} sm={4} md={3}>
                   <MemberCard
                     name={memberSelected?.name}

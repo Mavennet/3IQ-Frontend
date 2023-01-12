@@ -68,7 +68,7 @@ function HeroBigImage(props) {
       </Box>
       <Container sx={{ maxWidth: { sm: 'xs', lg: 'lg' }, p: 0, display: { xs: 'none', md: 'flex' } }}>
         <Grid container>
-          <Grid item md={6} sx={{ position: 'relative', color: fontColor ? fontColor : 'var(--black)' }}>
+          <Grid item md={8} sx={{ position: 'relative', color: fontColor ? fontColor : 'var(--black)' }}>
             <Box
               component="img"
               sx={{
