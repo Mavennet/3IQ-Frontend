@@ -10,25 +10,41 @@ export default {
   icon: ComponentIcon,
   fields: [
     {
-      name: 'symbols',
-      title: 'Symbols (*)',
-      description: 'Choose the symbols/tickers from Toronto Stock Exchange that will be displayed in both cards',
-      type: 'array',
-      validation: Rule => [
-        Rule.error('Information required.').required(),
-        Rule.min(2).max(2).error('Please, select 2 symbols.'),
-      ],
-      of: [{ type: 'string' }],
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'orangeBoxEndpoint',
+      type: 'url',
+      title: 'Endpoint (Orange Box)',
+    },
+    {
+      name: 'greenBoxEndpoint',
+      type: 'url',
+      title: 'Endpoint (Green Box)',
+    },
+    {
+      name: 'dateText',
+      type: 'localeString',
+      title: 'Date translate text (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
+      name: 'volumeText',
+      type: 'localeString',
+      title: 'Date volume text (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
     select: {
-      firstSymbol: `symbols.0`,
-      secondSymbol: `symbols.1`,
+      title: 'name',
     },
-    prepare({ firstSymbol, secondSymbol }) {
+    prepare({ name }) {
       return {
-        title: 'Tickers: ' + firstSymbol + ' & '+ secondSymbol,
+        title: name,
         subtitle: 'Live Feed Cards section',
       };
     },

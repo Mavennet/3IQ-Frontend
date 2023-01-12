@@ -160,7 +160,7 @@ function FundsContent(props) {
               )}
               {fundItem.products &&
                 fundItem.products.map((product, index) => (
-                  <Grid item xs={12} mb={4} md={fundItem.products.length === 1 ? 12 : 6} key={`product_${index}`}>
+                  <Grid item xs={12} mb={2} md={fundItem.products.length === 1 ? 12 : 6} key={`product_${index}`}>
                     <Grid container>
                       <Grid item xs={12} my={0} sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                         {product.productIcon && (
