@@ -94,7 +94,7 @@ function ArticleCard(props) {
                         variant="h2"
                         my={2}
                         sx={{
-                          fontSize: 'var(--font-size-primary-md)',
+                          fontSize: 'var(--font-size-primary-sm)',
                           fontFamily: 'var(--font-family-primary)',
                           color: 'var(--black)',
                         }}
