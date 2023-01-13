@@ -10,13 +10,16 @@ import Form from '../../../components/NewLayout/Form'
 import Dropdown from '../../../components/NewLayout/Dropdown'
 import Button from '../../../components/NewLayout/Button'
 import {ROUTES_BY_TERM, CATEGORIES, NEWS_CARD_BY_TERM} from '../../../utils/groqQueries'
-import ArticleCard from '../../../components/NewLayout/ArticleCard'
+import SearchCard from '../../../components/NewLayout/SearchCard'
+import {BsArrowUpRight} from 'react-icons/bs'
 
 function Search(props) {
   const {heading, currentLanguage, currentCountry} = props
   const [sectionDropdownValue, setSectionDropdownValue] = useState([])
+  const [filterDropdownValue, setFilterDropdownValue] = useState([])
   const [routes, setRoutes] = useState([])
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState({})
+  const [data, setData] = useState({})
   const [categories, setCategories] = useState([])
 
   const sectionDropdownItems = [
@@ -46,9 +49,9 @@ function Search(props) {
     },
     {
       id: 6,
-      name: 'webinars',
+      name: 'webinar',
       label: 'Webinars',
-      value: 'webinars',
+      value: 'webinar',
     },
     {
       id: 7,
@@ -70,8 +73,35 @@ function Search(props) {
     },
   ]
 
+  const filterDropdownItems = [
+    {
+      id: 2,
+      name: 'relevancy',
+      label: 'Relevancy',
+      value: 'relevancy',
+    },
+    {
+      id: 3,
+      name: 'most_recent',
+      label: 'Most Recent',
+      value: 'most_recent',
+    },
+  ]
+
   const [sections, setSections] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+
+  function handleCardSize(cardQuantity) {
+    let cardSize = 6
+    if (cardQuantity !== 1) {
+      if (cardQuantity < 4) {
+        cardSize = 12 / cardQuantity
+      } else {
+        cardSize = 3
+      }
+    }
+    return cardSize
+  }
 
   function handleSearch(e) {
     setSearchTerm(e.target.value)
@@ -84,10 +114,11 @@ function Search(props) {
     setSections(selectedItems)
   }
 
-  function filterCategories() {}
-
   function showSection(section) {
-    return sections.indexOf(section) >= 0 || sections.length == 0
+    return (
+      sections.indexOf(section) >= 0 ||
+      (sections.length == 0 && posts[section] && posts[section].length > 0)
+    )
   }
 
   async function search() {
@@ -109,6 +140,20 @@ function Search(props) {
     }
   }
 
+  function filterOrder(evt) {
+    setFilterDropdownValue(evt)
+    let filteredPosts = posts
+    if (evt.value == 'most_recent') {
+      categories.map((c) =>
+        filteredPosts[c].sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
+      )
+      setPosts(filteredPosts)
+    }
+    if (evt.value == 'relevancy') {
+      filterPosts(data)
+    }
+  }
+
   function filterPosts(posts) {
     let filteredPosts = {}
     categories.map((c) => (filteredPosts[c] = []))
@@ -117,7 +162,7 @@ function Search(props) {
         categories.indexOf(c.searchId) >= 0 && filteredPosts[c.searchId].push(p)
       })
     })
-    console.log(filteredPosts)
+    setData(posts)
     setPosts(filteredPosts)
   }
 
@@ -194,14 +239,20 @@ function Search(props) {
     <>
       <Box bgcolor={'#f9f9f9'}>
         <Container maxWidth={'lg'}>
-          <Box my={2}>
+          <Box py={2}>
             <Form
               onChange={(e) => handleSearch(e)}
               placeholder={'Type in your search terms and press enter'}
             />
             <Grid container sx={{display: {sm: 'none', xs: 'block'}}} mt={1} spacing={2}>
               <Grid item xs={6}>
-                <Dropdown className={styles.search__dropdown__mobile} title="Relevancy" />
+                <Dropdown
+                  value={filterDropdownValue}
+                  className={styles.search__dropdown__mobile}
+                  title="Relevancy"
+                  onChange={(e) => filterOrder(e)}
+                  itens={filterDropdownItems}
+                />
               </Grid>
               <Grid item xs={6}>
                 <Dropdown
@@ -224,7 +275,13 @@ function Search(props) {
             </Box>
             <Box sx={{display: {md: 'flex', xs: 'none'}}}>
               <Box mr={3}>
-                <Dropdown className={styles.search__dropdown} title="Relevancy" />
+                <Dropdown
+                  value={filterDropdownValue}
+                  className={styles.search__dropdown__mobile}
+                  title="Relevancy"
+                  onChange={(e) => filterOrder(e)}
+                  itens={filterDropdownItems}
+                />
               </Box>
               <Box>
                 <Dropdown
@@ -246,34 +303,68 @@ function Search(props) {
             ))}
           </Box>
           {showSection('articles') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>Articles</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>Articles</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.articles ? posts.articles.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" arrow variant="outlined" size="sm" />
+                </Box>
               </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
+              <Grid container spacing={6}>
+                {posts &&
+                  posts.articles &&
+                  posts.articles.map((item) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={handleCardSize(posts.articles.length)}
+                      key={item._id}
+                    >
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
             </Box>
           )}
           {showSection('white_papers') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>White Papers</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
-              </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>White Papers</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.white_papers ? posts.white_papers.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
+              </Box>{' '}
+              <Grid container spacing={6}>
+                {posts &&
+                  posts.white_papers &&
+                  posts.white_papers.map((item) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={handleCardSize(posts.white_papers.length)}
+                      key={item._id}
+                    >
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
             </Box>
           )}
           {showSection('videos') && (
-            <Box>
-              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
                 <Box sx={{display: 'flex', alignItems: 'center'}}>
                   <h3>Videos</h3>
                   <span className={styles.search__found}>
@@ -284,33 +375,50 @@ function Search(props) {
                   <Button title="View more" variant="outlined" size="sm" />
                 </Box>
               </Box>
-              <Grid container spacing={5}>
+              <Grid container spacing={6}>
                 {posts &&
                   posts.videos &&
                   posts.videos.map((item) => (
-                    <Grid item xs={12} sm={6} key={item._id}>
-                      <ArticleCard {...item} currentLanguage={currentLanguage} />
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={handleCardSize(posts.videos.length)}
+                      key={item._id}
+                    >
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
               </Grid>
             </Box>
           )}
           {showSection('podcasts') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>Podcasts</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>Podcasts</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.podcasts ? posts.podcasts.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
               </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
+              <Grid container spacing={6}>
+                {posts &&
+                  posts.podcasts &&
+                  posts.podcasts.map((item) => (
+                    <Grid item xs={12} sm={6} md={handleCardSize(posts.podcasts.length)} key={item._id}>
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
             </Box>
           )}
-          {showSection('webinars') && (
-            <Box>
-              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+          {showSection('webinar') && (
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
                 <Box sx={{display: 'flex', alignItems: 'center'}}>
                   <h3>Webinars</h3>
                   <span className={styles.search__found}>
@@ -321,72 +429,102 @@ function Search(props) {
                   <Button title="View more" variant="outlined" size="sm" />
                 </Box>
               </Box>
-              <Grid container spacing={5}>
+              <Grid container spacing={6}>
                 {posts &&
                   posts.webinar &&
                   posts.webinar.map((item) => (
                     <Grid
                       item
                       xs={12}
-                      sm={posts.webinar.length < 4 ? 12 / posts.webinar.length : 4}
+                      sm={6}
+                      md={handleCardSize(posts.webinar.length)}
                       key={item._id}
                     >
-                      <ArticleCard {...item} currentLanguage={currentLanguage} />
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
               </Grid>
             </Box>
           )}
           {showSection('newsletters') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>Newsletters</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>{posts.webinar ? posts.webinar.length : 0}</strong>
-                </span>
-              </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
-            </Box>
-          )}
-          {showSection('news') && (
-            <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-              <Box sx={{display: 'flex', alignItems: 'center'}}>
-                <h3>News</h3>
-                <span className={styles.search__found}>
-                  Found: <strong>3 Items</strong>
-                </span>
-              </Box>
-              <Box>
-                <Button title="View more" variant="outlined" size="sm" />
-              </Box>
-            </Box>
-          )}
-          {showSection('press_releases') && (
-            <Box>
-              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
                 <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Press Releases</h3>
+                  <h3>Newsletters</h3>
                   <span className={styles.search__found}>
-                    Found: <strong>3 Items</strong>
+                    Found: <strong>{posts.newsletter ? posts.newsletter.length : 0}</strong>
                   </span>
                 </Box>
                 <Box>
                   <Button title="View more" variant="outlined" size="sm" />
                 </Box>
               </Box>
-              <Grid container spacing={5}>
+              <Grid container spacing={6}>
+                {posts &&
+                  posts.newsletter &&
+                  posts.newsletter.map((item) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={handleCardSize(posts.newsletter.length)}
+                      key={item._id}
+                    >
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
+            </Box>
+          )}
+          {showSection('news') && (
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>News</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.news ? posts.news.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
+              </Box>
+              <Grid container spacing={6}>
+                {posts &&
+                  posts.news &&
+                  posts.news.map((item) => (
+                    <Grid item xs={12} sm={6} md={handleCardSize(posts.news.length)} key={item._id}>
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                    </Grid>
+                  ))}
+              </Grid>
+            </Box>
+          )}
+          {showSection('press_releases') && (
+            <Box my={6}>
+              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  <h3>Press Releases</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{posts.press_releases ? posts.press_releases.length : 0}</strong>
+                  </span>
+                </Box>
+                <Box>
+                  <Button title="View more" variant="outlined" size="sm" />
+                </Box>
+              </Box>
+              <Grid container spacing={6}>
                 {posts &&
                   posts.press_releases &&
                   posts.press_releases.map((item) => (
                     <Grid
                       item
                       xs={12}
-                      sm={posts.press_releases.length < 4 ? 12 / posts.press_releases.length : 3}
+                      sm={6}
+                      md={handleCardSize(posts.press_releases.length)}
                       key={item._id}
                     >
-                      <ArticleCard {...item} currentLanguage={currentLanguage} />
+                      <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
               </Grid>
