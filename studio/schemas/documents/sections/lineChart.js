@@ -43,6 +43,12 @@ export default {
       description: "Size to render chart. Default: 120",
     },
     {
+      name: 'chartColor',
+      type: 'string',
+      title: 'Line chart color',
+      description: 'Default: Light Blue',
+    },
+    {
       name: 'endpoint',
       type: 'url',
       title: 'API Endpoint (*)',

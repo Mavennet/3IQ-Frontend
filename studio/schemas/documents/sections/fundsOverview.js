@@ -53,6 +53,17 @@ export default {
         },
       ],
     },
+    {
+      name: 'footer',
+      type: 'localePortableText',
+      title: 'Footer',
+      description: 'Last text under key facts',
+    },
+    {
+      name: 'button',
+      type: 'localeCta',
+      title: 'Button',
+    },
   ],
   preview: {
     select: {

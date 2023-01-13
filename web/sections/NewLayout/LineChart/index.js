@@ -16,6 +16,7 @@ function LineChart(props) {
     desktopSize = 12,
     mobileSize = 12,
     chartHeight = '120',
+    chartColor,
     endpoint,
     currentLanguage,
   } = props
@@ -31,7 +32,7 @@ function LineChart(props) {
     const dt = value.split('/')
     const newYears = new Date(parseInt(dt[2]), parseInt(dt[0]) - 1, parseInt(dt[1]), 12)
     const isEng = currentLanguage.name === "EN"
-    const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
+    const formattedDate = format(newYears, isEng ? 'MMM dd yyyy' : 'dd MMM yyyy', {
       locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
     })
     !isEng && formattedDate.toLocaleLowerCase('fr')
@@ -60,9 +61,9 @@ function LineChart(props) {
             }, {}),
           fill: true,
           borderWidth: 1,
-          borderColor: colors[count],
+          borderColor: chartColor ? chartColor : colors[count],
           lineTension: 1,
-          pointBackgroundColor: colors[count],
+          pointBackgroundColor: chartColor ? chartColor : colors[count],
           pointRadius: 1,
           clip: 0
         })
@@ -195,6 +196,7 @@ function LineChart(props) {
 LineChart.propTypes = {
   heading: PropTypes.string,
   description: PropTypes.string,
+  chartColor: PropTypes.string,
   desktopSize: PropTypes.number,
   mobileSize: PropTypes.number,
   chartHeight: PropTypes.string,
