@@ -39,10 +39,10 @@ function FundsOverview(props) {
   }, [endpoint])
 
   return (
-    <Grid xs={12} md={fundSidebarItem ? 12 : 7} lg={fundSidebarItem ? 12 : 6}>
+    <Grid xs={12} md={fundSidebarItem ? 12 : 7} lg={fundSidebarItem ? 12 : 6} py={{xs:4, md: 15}}>
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
         <Grid container>
-          <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: fundSidebarItem ? 10 : 0}} mb={{xs: 6}}>
+          <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: fundSidebarItem ? 10 : 0}}>
             {title && (<h2 className={styles.title}>{title}</h2>)}
             {embed && (
               <Box className={styles.content}>
