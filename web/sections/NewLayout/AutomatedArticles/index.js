@@ -109,13 +109,13 @@ function AutomatedArticles(props) {
             </Grid>
           )
         }
-        <Grid container spacing={6} my={8}>
+        <Grid container spacing={6}>
           <div className={styles.news__container} ref={containerRef}>
             {
               articles && (
                 articles.map((item) => {
                   return (
-                    <Grid item xs={12} sm={6} mb={4}>
+                    <Grid item xs={12} sm={6} mb={4} p={2}>
                       <ArticleCard
                         {...item}
                         currentLanguage={currentLanguage}

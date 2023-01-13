@@ -20,7 +20,7 @@
 
 .line {
   width: 10px;
-  height: 1500px;
+  height: 1100px;
   background-color: var(--dark-gray);
   position: relative;
   .circle {
@@ -39,7 +39,7 @@
     font-weight: var(--font-weight-regular);
   }
   .text {
-    width: 200px;
+    width: 250px;
     position: absolute;
     p {
       font-weight: var(--font-weight-regular);
@@ -52,6 +52,12 @@
         font-weight: 300;
       }
     }
+  }
+  .text.top {
+    top: -10%;
+  }
+  .text.bottom {
+    bottom: -10%;
   }
   .top {
     top: 0;
@@ -68,7 +74,11 @@
 }
 
 .half__height {
-  height: 800px;
+  height: 600px;
+}
+
+.bottom__second {
+  bottom: -20%;
 }
 
 .simpleBlockContent {

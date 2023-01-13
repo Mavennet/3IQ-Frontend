@@ -34,6 +34,11 @@ export default {
       initialValue: false,
     },
     {
+      name: 'bgColor',
+      type: 'string',
+      title: 'Background Color',
+    },
+    {
       name: 'fundSections',
       type: 'array',
       title: 'Fund sections',

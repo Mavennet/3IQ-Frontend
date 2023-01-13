@@ -41,7 +41,7 @@ function Timeline(props) {
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-      <Grid container py={7}>
+      <Grid container py={10}>
         <Grid item xs={12}>
           <h2 className={styles.title}>{name}</h2>
         </Grid>
@@ -75,7 +75,7 @@ function Timeline(props) {
             <div className={styles.line}>
               {
                 firstDateContent && (
-                  <div className={`${styles.text} ${styles.top} ${styles.right}`}>
+                  <div className={`${styles.text} ${styles.right}`}>
                     <SimpleBlockContent blocks={firstDateContent[currentLanguage.languageTag]} />
                   </div>
                 )
@@ -84,7 +84,7 @@ function Timeline(props) {
               <div className={`${styles.circle} ${styles.bottom}`}>2022</div>
               {
                 sixthDateContent && (
-                  <div className={`${styles.text} ${styles.bottom} ${styles.left}`}>
+                  <div className={`${styles.text} ${styles.bottom__second} ${styles.left}`}>
                     <SimpleBlockContent blocks={sixthDateContent[currentLanguage.languageTag]} />
                   </div>
                 )
@@ -104,7 +104,7 @@ function Timeline(props) {
               <div className={`${styles.circle} ${styles.bottom}`}>2021</div>
               {
                 fifthDateContent && (
-                  <div className={`${styles.text} ${styles.bottom} ${styles.right}`}>
+                  <div className={`${styles.text} ${styles.bottom__second} ${styles.right}`}>
                     <SimpleBlockContent blocks={fifthDateContent[currentLanguage.languageTag]} />
                   </div>
                 )
@@ -227,7 +227,9 @@ function Timeline(props) {
             </MuiTimeline>
           </Box>
         </Grid>
-        <Grid item xs={12} mt={4}>
+      </Grid>
+      <Grid container>
+        <Grid item xs={12} mt={{ xs: 4, md: 25 }}>
           <div className={styles.subtitle}>
             {leftSecondTextBlock && <SimpleBlockContent blocks={leftSecondTextBlock} />}
             {span && (<h5 className={styles.span}>{span}</h5>)}
