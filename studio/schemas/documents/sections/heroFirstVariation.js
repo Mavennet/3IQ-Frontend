@@ -7,11 +7,11 @@ export default {
   icon: SplitHorizontalIcon,
   fields: [
     {
-        name: 'name',
-        type: 'string',
-        title: 'Name (*)',
-        validation: Rule => Rule.error('Information required.').required(),
-      },
+      name: 'name',
+      type: 'string',
+      title: 'Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
     {
       name: 'heading',
       type: 'localePortableText',
@@ -19,15 +19,15 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-        name: 'firstButton',
-        type: 'localeCta',
-        title: 'First button',
-      },
-      {
-        name: 'secondButton',
-        type: 'localeCta',
-        title: 'Second button',
-      },
+      name: 'firstButton',
+      type: 'localeCta',
+      title: 'First button',
+    },
+    {
+      name: 'secondButton',
+      type: 'localeCta',
+      title: 'Second button',
+    },
     {
       name: 'backgroundImage',
       type: 'image',

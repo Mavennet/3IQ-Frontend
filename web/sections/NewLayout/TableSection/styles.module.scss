@@ -1,12 +1,21 @@
 @import '../../../styles/custom-media.css';
 
-.table {
-  font-family: 'Europa';
-}
-
 .simpleBlockContent {
   max-width: 100%;
   overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--medium-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+    border-radius: 10px;
+    border: 3px solid var(--gray);
+  }
 }
 
 .simpleBlockContent table {
@@ -89,6 +98,11 @@
     font-weight: var(--font-weight-regular);
     font-family: var(--font-family-secondary);
     font-size: var(--font-size-secondary-md);
+    em {
+      color: var( --dark-gray);
+      font-style: normal;
+      font-weight: 300;
+    }
   }
 }
 

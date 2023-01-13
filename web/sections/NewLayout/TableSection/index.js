@@ -75,7 +75,7 @@ function TableSection(props) {
       <Grid container py={6}>
         {
           heading && (
-            <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Typography
                 variant="h2"
                 sx={{
@@ -98,7 +98,6 @@ function TableSection(props) {
         {
           headerFundPerformance && (
             <Grid item xs={12} mt={5}>
-
               <div className={styles.fundPerformanceHeader}>
                 <div className={styles.firstCell}></div>
                 <div className={styles.secondCell}>
@@ -170,14 +169,12 @@ function TableSection(props) {
                 )}
               </div>
             </Grid>
-
           )
         }
         {
           embed && (
             <Grid item xs={12} mb={3}>
               <div className={styles.simpleBlockContent}>
-                <br />
                 <SimpleBlockContent blocks={embed} />
               </div>
             </Grid>
