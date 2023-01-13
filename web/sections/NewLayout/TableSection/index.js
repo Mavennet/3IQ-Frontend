@@ -143,14 +143,16 @@ function TableSection(props) {
                               values.map((item, i) => {
                                 return (keys[i] !== 'dateDaily' &&
                                   <td key={i}>
-                                    {
-                                      (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
-                                        ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-                                        : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
-                                          : isDate(item)
-                                            ? convertDate(item)
-                                            : item
-                                    }
+                                    <div className={styles.bg}>
+                                      {
+                                        (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
+                                          ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+                                          : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
+                                            : isDate(item)
+                                              ? convertDate(item)
+                                              : item
+                                      }
+                                    </div>
                                   </td>
                                 )
                               })
