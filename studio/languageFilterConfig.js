@@ -35,6 +35,7 @@ export default {
     "teamsVideoDisplay",
     "note",
     "quoteHeads",
+    "quoteFounder",
     "quoteHeadsDubai",
     "readyToInvest",
     "awards",

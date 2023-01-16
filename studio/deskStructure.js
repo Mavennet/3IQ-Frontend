@@ -45,6 +45,7 @@ const hiddenDocTypes = listItem =>
     "item",
     "note",
     "quoteHeads",
+    "quoteFounder",
     "quoteHeadsDubai",
     "readyToInvest",
     "awards",
