@@ -30,16 +30,15 @@ function HeroFirstVariation(props) {
           <Box
             sx={{
               background:
-                backgroundImage &&
+                backgroundImage ?
                 `url("${urlFor(backgroundImage)
-                  .url()}") no-repeat center center`,
+                  .url()}") no-repeat center center` : 'var(--light-blue)',
               backgroundSize: 'cover',
-              bgcolor: 'var(--light-blue)',
               p: 7
             }}
           >
             <Grid container>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={7}>
                 <div className={styles.simple__block__content}>
                   {heading && <SimpleBlockContent blocks={heading} />}
                 </div>

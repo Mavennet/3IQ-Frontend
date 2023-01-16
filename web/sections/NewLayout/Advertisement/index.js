@@ -25,7 +25,7 @@ function Advertisement(props) {
           {localeButton && (
             <Button
               variant={buttonColor}
-              className={styles.advertisement__button}
+              className={`${styles.advertisement__button} ${buttonColor === 'solidDarkBlue' && styles.color__orange}`}
               {...localeButton}
               size="md"
               title={localeButton.title}
