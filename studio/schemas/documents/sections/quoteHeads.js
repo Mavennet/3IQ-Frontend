@@ -34,13 +34,13 @@ export default {
     {
       name: 'volumeText',
       type: 'localeString',
-      title: 'Date volume text (*)',
+      title: 'Volume translate text (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
     select: {
-      title: 'name',
+      name: 'name',
     },
     prepare({ name }) {
       return {

@@ -199,6 +199,7 @@ export default () =>
                 "Automated Articles"
               ),
               S.documentTypeListItem("awards").title("Awards"),
+              S.documentTypeListItem("advertisement").title("Advertisement"),
               S.documentTypeListItem("readyToInvest").title("Ready To Invest"),
               S.documentTypeListItem("fundsOverview").title("Funds Overview"),
               S.documentTypeListItem("fundsDisclaimer").title(

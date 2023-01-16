@@ -54,6 +54,7 @@ export default {
             {type: 'keyBenefits'},
             {type: 'tabsContent'},
             {type: 'awards'},
+            {type: 'advertisement'},
             {type: 'note'},
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},
