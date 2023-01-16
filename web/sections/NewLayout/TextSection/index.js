@@ -34,7 +34,7 @@ function TextSection(props) {
     width: { xs: '95%', md: '90%' },
     height: 'auto',
     maxWidth: '1024px',
-    maxHeight: {xs: '100vh', md: '85vh'},
+    maxHeight: { xs: '100vh', md: '85vh' },
     bgcolor: 'var(--light-gray)',
     outline: 'none',
     overflowY: 'scroll',
@@ -92,7 +92,7 @@ function TextSection(props) {
         `url("${urlFor(backgroundImage)
           .url()}") no-repeat center center`,
       backgroundSize: 'cover',
-      bgcolor: backgroundImage ? '#091b3f' : '#F2F2F2',
+      bgcolor: backgroundImage ? '#091b3f' : 'transparent',
     }}>
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
         <Box sx={{ p: 5, pr: 1, pt: 0, pl: { xs: 1 }, }}>
@@ -100,14 +100,24 @@ function TextSection(props) {
             <Grid item sm={videoSrc ? 8 : 12} xs={12}>
               <Box sx={{ pt: 5, pr: videoSrc && { md: 20, sm: 0 }, align: 'left' }}>
                 {heading && (
-                  <Typography component="h2" variant="h4" sx={{ color: '#0082e5', fontWeight: 'bold', mb: 6 }}>
+                  <Typography
+                    component="h2"
+                    variant="h4"
+                    sx={{
+                      fontFamily: 'var(--font-family-primary)',
+                      fontSize: 'var(--font-size-primary-lg)',
+                      color: 'var(--black)',
+                      mb: 4
+                    }}>
                     {heading}
                   </Typography>
                 )}
                 <div style={{ background: isGrayBackground && '#e8e8ea', padding: 30 }}>
                   {text && (
                     <Grid className={styles.textSection} container spacing={2}>
-                      <SimpleBlockContent blocks={text} />
+                      <div className={styles.simple__block__content}>
+                        <SimpleBlockContent blocks={text} />
+                      </div>
                     </Grid>
                   )}
                 </div>
