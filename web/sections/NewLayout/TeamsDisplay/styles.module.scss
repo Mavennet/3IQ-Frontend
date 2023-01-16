@@ -52,6 +52,11 @@
       display: inline-flex;
     }
     li {
+      &:first-child {
+        a {
+          color: var(--light-blue);
+        }
+      }
       margin-bottom: 20px;
       @media (--media-max-large) {
         border-radius: 24px;

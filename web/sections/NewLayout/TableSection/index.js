@@ -72,7 +72,7 @@ function TableSection(props) {
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-      <Grid container py={6}>
+      <Grid container mb={6}>
         {
           heading && (
             <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
