@@ -21,7 +21,7 @@ function QuoteFounder({ name, quotesText, profilePhoto, localeJobTitle, button, 
     <Box sx={{background: '#ECECEC'}} py={10}>
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
         <Grid container spacing={{ xs: 0, md: 2 }}>
-          <Grid item xs={12} sm={6} md={8}>
+          <Grid item xs={12} sm={6} md={8} mb={4}>
             <RiDoubleQuotesL
               size={50}
               color={'#009A93'}

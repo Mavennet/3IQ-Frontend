@@ -6,6 +6,7 @@ import styles from './styles.module.scss'
 import axios from 'axios'
 import { format } from 'date-fns'
 import { CSVLink } from 'react-csv'
+import { TfiDownload } from 'react-icons/tfi'
 
 function TableSection(props) {
   const {
@@ -31,7 +32,7 @@ function TableSection(props) {
 
   const getTableData = (endpoint) => {
     axios.get(endpoint)
-      .then(response => setData(response.data))
+      .then(response => response.data[currentLanguage.languageTag] ? setData([response.data[currentLanguage.languageTag]]) : setData(response.data))
   }
 
   const isDate = (dateStr) => {
@@ -87,7 +88,27 @@ function TableSection(props) {
               {
                 downloadButton && embed && (
                   <>
-                    <CSVLink data={[]}>Download</CSVLink>
+                    <CSVLink
+                      data={data ? data : []}
+                      filename={`table.csv`}
+                      target="_blank"
+                      style={{
+                        textAlign: 'center',
+                        background: 'transparent',
+                        border: '2px solid #091B3F',
+                        color: '#091B3F',
+                        textDecoration: 'none',
+                        padding: '5px 25px',
+                        borderRadius: '4px',
+                        fontSize: '20px'
+                      }}
+                    >
+                      <TfiDownload
+                        size={15}
+                        className={styles.download__icon}
+                      />
+                      Download
+                    </CSVLink>
                   </>
 
                 )
@@ -132,6 +153,7 @@ function TableSection(props) {
                     )
                   }
                   <tbody className={colorfulLayout && `${styles.tableColorful} ${typesStyle[color]}`}>
+                    {console.log(data)}
                     {
                       data.map((item, i) => {
                         const values = Object.values(item)
