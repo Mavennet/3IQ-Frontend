@@ -72,7 +72,7 @@ function TableSection(props) {
   }, [endpoint])
 
   return (
-    <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+    <Container sx={{ maxWidth: { sm: 'md', md: 'lg', lg: 'xl' } }}>
       <Grid container mb={6}>
         {
           heading && (

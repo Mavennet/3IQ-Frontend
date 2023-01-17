@@ -97,7 +97,9 @@ function HeroNft(props) {
             width: '100%',
             display: 'flex',
             alignItems: 'center',
-            color: 'var(--white)'
+            color: 'var(--white)',
+            paddingLeft: {xl: '35%'},
+            justifyContent: 'flex-end'
           }}>
           <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
             <Grid container>
@@ -118,7 +120,9 @@ function HeroNft(props) {
             width: '100%',
             color: 'var(--black)',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            paddingLeft: {xl: '35%'},
+            justifyContent: 'flex-end'
           }}>
           <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
             <Grid container>

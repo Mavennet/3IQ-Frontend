@@ -1,6 +1,6 @@
 .button {
   border: none;
-  padding: 0px 30px;
+  padding: 15px 30px;
   border-radius: 3px;
   cursor: pointer;
   font-family: var(--font-family-secondary);
@@ -9,6 +9,7 @@
   justify-content: center;
   flex-wrap: wrap;
   width: auto;
+  height: auto;
   &::after {
     content: '',
   }
