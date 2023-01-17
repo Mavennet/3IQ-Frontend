@@ -25,7 +25,7 @@ function Logo (props) {
     <Box
       component="img"
       sx={{
-        mt: 2,
+        mt: 2.7,
         mb: 2,
       }}
       alt={logo.alt}

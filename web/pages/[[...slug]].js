@@ -10,6 +10,7 @@ import { getSlugVariations, slugParamToPath } from '../utils/urls'
 import CookieConsent, { Cookies } from 'react-cookie-consent'
 // import Popup from '../components/NewLayout/Popup'
 import { Box } from '@mui/material'
+import Custom404 from './404'
 import SimpleBlockContent from '../components/OldLayout/SimpleBlockContent'
 import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES, FUND_CARDS } from '../utils/groqQueries'
 
@@ -154,6 +155,7 @@ const LandingPage = (props) => {
   } = props
 
   const router = useRouter()
+
   const getLanguageFromStorage = () => {
     const languageStorage = localStorage.getItem('lang')
     const languageSelected = country.languages.filter(
@@ -192,6 +194,11 @@ const LandingPage = (props) => {
     currentCountry: country,
     currentLanguage,
   })
+
+  // Custom 404 Page redirect
+  if (!router.isFallback && !content && router.asPath !== "/") {
+    return <Custom404 config={formatedConfig} currentLanguage={currentLanguage} />
+  }
 
   useEffect(() => {
     if (content) {
