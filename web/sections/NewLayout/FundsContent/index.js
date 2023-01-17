@@ -99,54 +99,56 @@ function FundsContent(props) {
 
   return (
     <>
-      <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' }, background: 'var(--background-color)' }}>
+      <Container sx={{ background: 'var(--background-color)', maxWidth: { sm: 'md', md: 'lg', xl: 'xl' } }}>
         <Grid container>
           <Grid item xs={12}>
-            <Box ref={fixedNavRef} className={navFixed && isFixedWhenScroll && styles.fixedLayout} sx={{ position: 'relative' }}>
-              {
-                enableArrows && (
-                  <div className={`${styles.arrow___left} ${arrowStyle[menuColor]}`} onClick={() => handleArrow('prev')}>
-                    <SlArrowLeft size={20} />
-                  </div>
-                )
-              }
-              <div className={`${styles.menu} ${typesStyle[menuColor]}`} ref={containerRef}>
-                <ul>
-                  {fundItems &&
-                    fundItems.map((item, i) => {
-                      return (
-                        <li key={i}>
-                          <a href={`#section_${i}`}>{item.localeName[currentLanguage.languageTag]}</a>
+            <Box className={navFixed && isFixedWhenScroll && styles.fixedLayout}>
+              <Box ref={fixedNavRef} sx={{ position: 'relative' }}>
+                {
+                  enableArrows && (
+                    <div className={`${styles.arrow___left} ${arrowStyle[menuColor]}`} onClick={() => handleArrow('prev')}>
+                      <SlArrowLeft size={20} />
+                    </div>
+                  )
+                }
+                <div className={`${styles.menu} ${typesStyle[menuColor]}`} ref={containerRef}>
+                  <ul>
+                    {fundItems &&
+                      fundItems.map((item, i) => {
+                        return (
+                          <li key={i}>
+                            <a href={`#section_${i}`}>{item.localeName[currentLanguage.languageTag]}</a>
+                          </li>
+                        )
+                      })}
+                    {
+                      lastItem?.[currentLanguage.languageTag]?.route &&
+                      lastItem?.[currentLanguage.languageTag].route?.slug &&
+                      lastItem?.[currentLanguage.languageTag].route?.slug.current && (
+                        <li>
+                          <Link
+                            href={{
+                              pathname: '/LandingPage',
+                              query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
+                            }}
+                            as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
+                          >
+                            <a>{lastItem[currentLanguage.languageTag].title}</a>
+                          </Link>
                         </li>
                       )
-                    })}
-                  {
-                    lastItem?.[currentLanguage.languageTag]?.route &&
-                    lastItem?.[currentLanguage.languageTag].route?.slug &&
-                    lastItem?.[currentLanguage.languageTag].route?.slug.current && (
-                      <li>
-                        <Link
-                          href={{
-                            pathname: '/LandingPage',
-                            query: { slug: lastItem[currentLanguage.languageTag].route.slug.current },
-                          }}
-                          as={`/${lastItem[currentLanguage.languageTag].route.slug.current}`}
-                        >
-                          <a>{lastItem[currentLanguage.languageTag].title}</a>
-                        </Link>
-                      </li>
-                    )
-                  }
+                    }
 
-                </ul>
-              </div>
-              {
-                enableArrows && (
-                  <div className={`${styles.arrow___right} ${arrowStyle[menuColor]}`} onClick={() => handleArrow('next')}>
-                    <SlArrowRight size={20} />
-                  </div>
-                )
-              }
+                  </ul>
+                </div>
+                {
+                  enableArrows && (
+                    <div className={`${styles.arrow___right} ${arrowStyle[menuColor]}`} onClick={() => handleArrow('next')}>
+                      <SlArrowRight size={20} />
+                    </div>
+                  )
+                }
+              </Box>
             </Box>
           </Grid>
         </Grid>
@@ -154,7 +156,7 @@ function FundsContent(props) {
       {fundItems &&
         fundItems.map((fundItem, index) => (
           <section id={`section_${index}`} key={`fundItem${index}`} style={{ backgroundColor: fundItem.bgColor ? fundItem.bgColor : 'var(--background-color)' }}>
-            <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+            <Container sx={{ maxWidth: { sm: 'md', md: 'lg', xl: 'xl' } }}>
               <Grid container mt={4} spacing={2}>
                 {!fundItem.hiddenTitle && (
                   <Grid item xs={12} mb={4}>

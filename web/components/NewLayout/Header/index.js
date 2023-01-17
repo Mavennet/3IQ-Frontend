@@ -94,7 +94,7 @@ function Header(props) {
         </Box>
       )}
       <AppBar position="static" sx={{bgcolor: '#F9F9F9', boxShadow: 'none'}}>
-        <Container maxWidth={'lg'}>
+        <Container maxWidth={'xl'}>
           <Toolbar disableGutters>
             {logoLanguage && (
               <Box>

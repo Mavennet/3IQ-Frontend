@@ -61,7 +61,7 @@ function Footer(props) {
 
   return (
     <AppBar position="static" sx={{bgcolor: '#0D1C3D', boxShadow: 'none'}}>
-      <Container maxWidth={'lg'}>
+      <Container maxWidth={'xl'}>
         <Grid container pl={{xs: 1.5, md: 0}}>
           <Grid item md={12} py={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
             {currentCountry.footerLogo && (
