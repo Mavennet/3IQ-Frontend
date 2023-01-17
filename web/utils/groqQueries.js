@@ -221,6 +221,7 @@ export const FUND_ITEMS = groq`
   'localeContactUsText': contactUsText,
   'localeObservation' : observation,
   'hiddenTitle': hiddenTitle,
+  'bgColor': bgColor,
   fundSections[]-> {
     ...,
     fundSidebarItem[]-> {

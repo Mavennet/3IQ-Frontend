@@ -9,9 +9,12 @@ import FundSidebarItem from '../../../components/NewLayout/FundSidebarItem'
 import axios from 'axios'
 import { format } from 'date-fns'
 import { Typography } from '@mui/material'
+import Button from '../../../components/NewLayout/Button'
 
 function FundsOverview(props) {
-  const { title, embed, fundSidebarItem, currentLanguage, endpoint } = props
+  const { title, embed, fundSidebarItem, currentLanguage, endpoint, button, footer } = props
+
+  console.log(button)
 
   const [data, setData] = React.useState(null)
 
@@ -38,11 +41,13 @@ function FundsOverview(props) {
     }
   }, [endpoint])
 
+  const localeButton = button && button[currentLanguage?.languageTag]
+
   return (
-    <Grid xs={12} md={fundSidebarItem ? 12 : 7} lg={fundSidebarItem ? 12 : 6}>
+    <Grid xs={12} md={fundSidebarItem ? 12 : 7} lg={fundSidebarItem ? 12 : 6} py={{ xs: 4, md: 15 }}>
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
         <Grid container>
-          <Grid item md={fundSidebarItem ? 8 : 12} pr={{xs: 0, md: fundSidebarItem ? 10 : 0}} mb={{xs: 6}}>
+          <Grid item md={fundSidebarItem ? 8 : 12} pr={{ xs: 0, md: fundSidebarItem ? 10 : 0 }}>
             {title && (<h2 className={styles.title}>{title}</h2>)}
             {embed && (
               <Box className={styles.content}>
@@ -77,7 +82,7 @@ function FundsOverview(props) {
               </Box>
             )}
             {data && data[0].date && (
-              <Box sx={{ mt: 4 }}>
+              <Box sx={{ mt: 4 }} className={styles.content}>
                 <Typography
                   align='left'
                   sx={{
@@ -99,6 +104,24 @@ function FundsOverview(props) {
                 />
               ))}
           </Grid>
+          {
+            footer && (
+              <Grid item xs={12}>
+                <div className={styles.content}>
+                  <SimpleBlockContent blocks={footer} />
+                </div>
+              </Grid>
+            )
+          }
+          {localeButton && (
+            <Grid item xs={12} mt={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant="solidOrange"
+                {...localeButton}
+                title={localeButton.title}
+              />
+            </Grid>
+          )}
         </Grid>
       </Container>
     </Grid>
@@ -107,6 +130,8 @@ function FundsOverview(props) {
 
 FundsOverview.propTypes = {
   title: PropTypes.object,
+  button: PropTypes.object,
+  footer: PropTypes.object,
   embed: PropTypes.object,
   currentLanguage: PropTypes.object,
   fundSidebarItem: PropTypes.array,

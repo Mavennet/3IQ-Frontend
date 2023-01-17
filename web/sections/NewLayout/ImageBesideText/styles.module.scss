@@ -1,40 +1,3 @@
-@import '../../../styles/custom-media.css';
-
-.textSection > :is(h1, h2, h3, h4){
-   color: var(--black);
-   width: 100%;
-   font-size: var(--font-size-primary-lg);
-}
-
-.textSection p {
-  font-family: var(--font-family-secondary);
-  font-size: var(--font-size-secondary-md);
-}
-
-.textSection > :is(ul, ol){
-   width: 100%;
-}
-
-.textSection a{
-   text-decoration: none;
-   color: #0f4b7d
-}
-
-.textSection strong {
-  color: #0082e5;
-}
-
-.video{
-   position: relative;
-   width: 100%;
-}
-
-.videoContainer{
-   position: absolute;
-   width: 30%;
-   top: 450px;
-}
-
 .simple__block__content {
   color: var(--black);
   strong {
@@ -73,4 +36,3 @@
     font-weight: var(--font-weight-regular);
   }
 }
-

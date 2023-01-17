@@ -1,0 +1,16 @@
+.simple__block__content {
+  font-family: var(--font-family-secondary);
+  color: var(--black);
+  p {
+    margin: 0px;
+  }
+  strong {
+    color: var(--blue);
+  }
+  ol {
+    margin: 0px;
+  }
+  a {
+    color: var(--black);
+  }
+}

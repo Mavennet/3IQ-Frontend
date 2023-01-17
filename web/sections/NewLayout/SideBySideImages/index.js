@@ -53,7 +53,7 @@ function SideBySideImages(props) {
           <CssBaseline />
           {
             heading && (
-              <Grid item xs={12} mb={4}>
+              <Grid item xs={12} mb={12}>
                 <div className={styles.simple__block__content}>
                   <SimpleBlockContent blocks={heading} />
                 </div>

@@ -34,6 +34,11 @@ export default {
       initialValue: false,
     },
     {
+      name: 'bgColor',
+      type: 'string',
+      title: 'Background Color',
+    },
+    {
       name: 'fundSections',
       type: 'array',
       title: 'Fund sections',
@@ -49,6 +54,7 @@ export default {
             {type: 'keyBenefits'},
             {type: 'tabsContent'},
             {type: 'awards'},
+            {type: 'advertisement'},
             {type: 'note'},
             {type: 'fundsOverview'},
             {type: 'quoteHeads'},

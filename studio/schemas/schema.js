@@ -45,6 +45,7 @@ import articlesSearch from "./documents/sections/articlesSearch";
 import teamsVideoDisplay from "./documents/sections/teamsVideoDisplay";
 import imageBesideText from "./documents/sections/imageBesideText";
 import quoteHeads from "./documents/sections/quoteHeads";
+import quoteFounder from "./documents/sections/quoteFounder";
 import quoteHeadsDubai from "./documents/sections/quoteHeadsDubai";
 import fundsDisclaimer from "./documents/sections/fundsDisclaimer";
 import readyToInvest from "./documents/sections/readyToInvest";
@@ -145,6 +146,7 @@ export default createSchema({
     localeSimplePortableText,
     note,
     quoteHeads,
+    quoteFounder,
     quoteHeadsDubai,
     fundsDisclaimer,
     readyToInvest,

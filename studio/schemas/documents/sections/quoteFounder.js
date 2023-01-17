@@ -2,50 +2,52 @@ import { SplitHorizontalIcon } from '@sanity/icons'
 
 export default {
   type: 'document',
-  name: 'heroFirstVariation',
-  title: 'Hero First Variation',
+  name: 'quoteFounder',
+  title: 'Quote Founder',
   icon: SplitHorizontalIcon,
   fields: [
     {
       name: 'name',
       type: 'string',
-      title: 'Name (*)',
+      title: 'Member name',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'heading',
+      name: 'quotesText',
       type: 'localePortableText',
-      title: 'Heading (*)',
+      title: 'Text (*)',
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
-      name: 'firstButton',
-      type: 'localeCta',
-      title: 'First button',
+      name: 'localeJobTitle',
+      type: 'localeString',
+      title: 'Job title'
     },
     {
-      name: 'secondButton',
+      name: 'button',
       type: 'localeCta',
-      title: 'Second button',
+      title: 'Optional button',
+      description: 'Optional button that will be displayed above the content'
     },
     {
-      name: 'backgroundImage',
+      name: 'profilePhoto',
       type: 'image',
-      title: 'Background image (*)',
+      title: 'Profile photo image',
       options: {
         hotspot: true,
       },
+      validation: Rule => Rule.error('Information required.').required(),
     },
   ],
   preview: {
     select: {
-      title: `name`,
-      media: 'backgroundImage',
+      title: 'name',
+      media: 'profilePhoto',
     },
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero First Variation section',
+        subtitle: 'Quote Founder section',
         media,
       };
     },

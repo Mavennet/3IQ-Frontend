@@ -6,6 +6,7 @@ import styles from './styles.module.scss'
 import axios from 'axios'
 import { format } from 'date-fns'
 import { CSVLink } from 'react-csv'
+import { TfiDownload } from 'react-icons/tfi'
 
 function TableSection(props) {
   const {
@@ -31,7 +32,7 @@ function TableSection(props) {
 
   const getTableData = (endpoint) => {
     axios.get(endpoint)
-      .then(response => setData(response.data))
+      .then(response => response.data[currentLanguage.languageTag] ? setData([response.data[currentLanguage.languageTag]]) : setData(response.data))
   }
 
   const isDate = (dateStr) => {
@@ -72,10 +73,10 @@ function TableSection(props) {
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-      <Grid container py={6}>
+      <Grid container mb={6}>
         {
           heading && (
-            <Grid item xs={12} mb={4} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Typography
                 variant="h2"
                 sx={{
@@ -87,7 +88,27 @@ function TableSection(props) {
               {
                 downloadButton && embed && (
                   <>
-                    <CSVLink data={[]}>Download</CSVLink>
+                    <CSVLink
+                      data={data ? data : []}
+                      filename={`table.csv`}
+                      target="_blank"
+                      style={{
+                        textAlign: 'center',
+                        background: 'transparent',
+                        border: '2px solid #091B3F',
+                        color: '#091B3F',
+                        textDecoration: 'none',
+                        padding: '5px 25px',
+                        borderRadius: '4px',
+                        fontSize: '20px'
+                      }}
+                    >
+                      <TfiDownload
+                        size={15}
+                        className={styles.download__icon}
+                      />
+                      Download
+                    </CSVLink>
                   </>
 
                 )
@@ -98,7 +119,6 @@ function TableSection(props) {
         {
           headerFundPerformance && (
             <Grid item xs={12} mt={5}>
-
               <div className={styles.fundPerformanceHeader}>
                 <div className={styles.firstCell}></div>
                 <div className={styles.secondCell}>
@@ -133,6 +153,7 @@ function TableSection(props) {
                     )
                   }
                   <tbody className={colorfulLayout && `${styles.tableColorful} ${typesStyle[color]}`}>
+                    {console.log(data)}
                     {
                       data.map((item, i) => {
                         const values = Object.values(item)
@@ -143,14 +164,16 @@ function TableSection(props) {
                               values.map((item, i) => {
                                 return (keys[i] !== 'dateDaily' &&
                                   <td key={i}>
-                                    {
-                                      (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
-                                        ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-                                        : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
-                                          : isDate(item)
-                                            ? convertDate(item)
-                                            : item
-                                    }
+                                    <div className={styles.bg}>
+                                      {
+                                        (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) > 1000
+                                          ? `$${parseFloat(item).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+                                          : (keys[i] === 'cad' || keys[i] === 'usd') && parseFloat(item) < 1000 ? `$${parseFloat(item).toFixed(4)}`
+                                            : isDate(item)
+                                              ? convertDate(item)
+                                              : item
+                                      }
+                                    </div>
                                   </td>
                                 )
                               })
@@ -168,14 +191,12 @@ function TableSection(props) {
                 )}
               </div>
             </Grid>
-
           )
         }
         {
           embed && (
             <Grid item xs={12} mb={3}>
               <div className={styles.simpleBlockContent}>
-                <br />
                 <SimpleBlockContent blocks={embed} />
               </div>
             </Grid>

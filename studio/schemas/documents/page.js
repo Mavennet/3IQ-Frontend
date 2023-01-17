@@ -65,6 +65,7 @@ export default {
             { type: "locationsDisplay" },
             { type: "note" },
             { type: "quoteHeads" },
+            { type: "quoteFounder" },
             { type: "quoteHeadsDubai" },
             { type: "readyToInvest" },
             { type: "awards" },

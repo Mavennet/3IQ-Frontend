@@ -1,0 +1,19 @@
+
+.simpleBlockContent {
+  text-align: center;
+  p {
+    color: var(--black);
+    font-weight: var(--font-weight-regular);
+    font-family: var(--font-family-secondary);
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.simpleBlockContent > :is(h1, h2, h3, h4, b, strong){
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 10px 70px;
+}
