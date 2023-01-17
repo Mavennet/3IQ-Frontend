@@ -2,25 +2,33 @@ import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import {Container, Box, Grid} from '@mui/material'
-import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import client from '../../../client'
-import {IoIosArrowDropleft, IoIosArrowDropright} from 'react-icons/io'
-import groq from 'groq'
 import Form from '../../../components/NewLayout/Form'
 import Dropdown from '../../../components/NewLayout/Dropdown'
 import Button from '../../../components/NewLayout/Button'
 import {ROUTES_BY_TERM, CATEGORIES, NEWS_CARD_BY_TERM} from '../../../utils/groqQueries'
 import SearchCard from '../../../components/NewLayout/SearchCard'
-import {BsArrowUpRight} from 'react-icons/bs'
+import NewsletterCard from '../../../components/NewLayout/NewletterCard'
+import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 
 function Search(props) {
-  const {heading, currentLanguage, currentCountry} = props
+  const {heading, notFoundText, currentLanguage, currentCountry} = props
   const [sectionDropdownValue, setSectionDropdownValue] = useState([])
   const [filterDropdownValue, setFilterDropdownValue] = useState([])
   const [routes, setRoutes] = useState([])
-  const [posts, setPosts] = useState({})
+  const [posts, setPosts] = useState(null)
   const [data, setData] = useState({})
   const [categories, setCategories] = useState([])
+  const [sections, setSections] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+
+  function showNotFoundText() {
+    let show = false
+    let hasData = []
+    posts && categories && categories.map((c) => hasData.push(posts[c].length > 0))
+    show = !(hasData.indexOf(true) >= 0)
+    return show
+  }
 
   const sectionDropdownItems = [
     {
@@ -55,9 +63,9 @@ function Search(props) {
     },
     {
       id: 7,
-      name: 'newsletters',
+      name: 'newsletter',
       label: 'Newsletters',
-      value: 'newsletters',
+      value: 'newsletter',
     },
     {
       id: 8,
@@ -88,9 +96,6 @@ function Search(props) {
     },
   ]
 
-  const [sections, setSections] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
-
   function handleCardSize(cardQuantity) {
     let cardSize = 6
     if (cardQuantity !== 1) {
@@ -116,8 +121,9 @@ function Search(props) {
 
   function showSection(section) {
     return (
-      sections.indexOf(section) >= 0 ||
-      (sections.length == 0 && posts[section] && posts[section].length > 0)
+      posts &&
+      ((sections.indexOf(section) >= 0 && posts[section] && posts[section].length > 0) ||
+        (sections.length == 0 && posts[section] && posts[section].length > 0))
     )
   }
 
@@ -143,18 +149,18 @@ function Search(props) {
   function filterOrder(evt) {
     setFilterDropdownValue(evt)
     let filteredPosts = posts
-    if (evt.value == 'most_recent') {
+    if (filteredPosts && evt.value == 'most_recent') {
       categories.map((c) =>
         filteredPosts[c].sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
       )
       setPosts(filteredPosts)
     }
-    if (evt.value == 'relevancy') {
-      filterPosts(data)
+    if (filteredPosts && evt.value == 'relevancy') {
+      filterPosts(data, false)
     }
   }
 
-  function filterPosts(posts) {
+  function filterPosts(posts, independentSearch = true) {
     let filteredPosts = {}
     categories.map((c) => (filteredPosts[c] = []))
     posts.map((p) => {
@@ -162,6 +168,11 @@ function Search(props) {
         categories.indexOf(c.searchId) >= 0 && filteredPosts[c.searchId].push(p)
       })
     })
+    if (independentSearch && filterDropdownValue && filterDropdownValue.value == 'most_recent') {
+      categories.map((c) =>
+        filteredPosts[c].sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
+      )
+    }
     setData(posts)
     setPosts(filteredPosts)
   }
@@ -178,6 +189,11 @@ function Search(props) {
     categories && categories.length == 0 && fetchCategories()
     search()
   }, [searchTerm])
+
+  useEffect(() => {
+    categories && categories.length == 0 && fetchCategories()
+    search()
+  }, [filterDropdownValue])
 
   //   console.log(teams)
 
@@ -237,14 +253,14 @@ function Search(props) {
 
   return (
     <>
-      <Box bgcolor={'#f9f9f9'}>
+      <Box  pb={10} bgcolor={'#f9f9f9'}>
         <Container maxWidth={'lg'}>
           <Box py={2}>
             <Form
               onChange={(e) => handleSearch(e)}
               placeholder={'Type in your search terms and press enter'}
             />
-            <Grid container sx={{display: {sm: 'none', xs: 'block'}}} mt={1} spacing={2}>
+            <Grid container sx={{display: {md: 'none', sm: 'flex'}}} mt={1} spacing={2}>
               <Grid item xs={6}>
                 <Dropdown
                   value={filterDropdownValue}
@@ -268,10 +284,14 @@ function Search(props) {
           </Box>
           <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
             <Box sx={{display: 'flex', alignItems: 'center'}}>
-              <h3>Page Results</h3>
-              <span className={styles.search__found}>
-                Found: <strong>{`${routes.length} items`}</strong>
-              </span>
+              {routes.length > 0 && (
+                <>
+                  <h3>Page Results</h3>
+                  <span className={styles.search__found}>
+                    Found: <strong>{`${routes.length} items`}</strong>
+                  </span>
+                </>
+              )}
             </Box>
             <Box sx={{display: {md: 'flex', xs: 'none'}}}>
               <Box mr={3}>
@@ -302,6 +322,12 @@ function Search(props) {
               </h5>
             ))}
           </Box>
+          {showNotFoundText() && (
+            <div className={styles.notFound}>
+              <p>Sorry, there are no results for {searchTerm}.</p>
+              <SimpleBlockContent blocks={notFoundText} />
+            </div>
+          )}
           {showSection('articles') && (
             <Box my={6}>
               <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
@@ -312,7 +338,7 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" arrow variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>
@@ -342,7 +368,7 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>{' '}
               <Grid container spacing={6}>
@@ -372,7 +398,7 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>
@@ -402,14 +428,20 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>
                 {posts &&
                   posts.podcasts &&
                   posts.podcasts.map((item) => (
-                    <Grid item xs={12} sm={6} md={handleCardSize(posts.podcasts.length)} key={item._id}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={handleCardSize(posts.podcasts.length)}
+                      key={item._id}
+                    >
                       <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
@@ -426,7 +458,7 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>
@@ -446,7 +478,7 @@ function Search(props) {
               </Grid>
             </Box>
           )}
-          {showSection('newsletters') && (
+          {showSection('newsletter') && (
             <Box my={6}>
               <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
                 <Box sx={{display: 'flex', alignItems: 'center'}}>
@@ -456,21 +488,15 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>
                 {posts &&
                   posts.newsletter &&
                   posts.newsletter.map((item) => (
-                    <Grid
-                      item
-                      xs={12}
-                      sm={6}
-                      md={handleCardSize(posts.newsletter.length)}
-                      key={item._id}
-                    >
-                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                    <Grid item xs={12} sm={6} md={4} key={item._id}>
+                      <NewsletterCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
               </Grid>
@@ -486,7 +512,7 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>
@@ -510,7 +536,7 @@ function Search(props) {
                   </span>
                 </Box>
                 <Box>
-                  <Button title="View more" variant="outlined" size="sm" />
+                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
                 </Box>
               </Box>
               <Grid container spacing={6}>

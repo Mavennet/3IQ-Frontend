@@ -5,20 +5,20 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: "document",
-  name: "search",
-  title: "Search",
+  name: "articlesSearch",
+  title: "Articles Search",
   icon: SplitHorizontalIcon,
   fields: [
     {
-        name: "heading",
-        type: "localeString",
-        title: "First Description",
+      name: "heading",
+      type: "localeString",
+      title: "First Description"
     },
     {
       name: "notFoundText",
       type: "localePortableText",
-      title: "Not Found Text",
-  },
+      title: "Not Found Text"
+    }
   ],
   preview: {
     select: {
@@ -27,7 +27,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: "Search Section",
+        subtitle: "Articles Search Section",
         media
       };
     }

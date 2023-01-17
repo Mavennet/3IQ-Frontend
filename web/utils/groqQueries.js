@@ -76,6 +76,7 @@ export const NEWS_CARD_BY_TERM = groq`
   'localeButtonText': buttonText,
   'localeShortDescription': shortDescription,
   'localeSmallCardText': smallCardText,
+  newsletterNumber,
   route->,
   post-> {
     _id,
