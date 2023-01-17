@@ -45,6 +45,7 @@ function ImageBesideText(props) {
           {backgroundImage?.asset && (
             <Box
               component="img"
+              mt={4}
               sx={{
                 maxWidth: '100%',
                 height: 'auto'

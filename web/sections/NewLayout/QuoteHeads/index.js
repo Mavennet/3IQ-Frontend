@@ -71,7 +71,7 @@ function QuoteHeads({ orangeBoxEndpoint, greenBoxEndpoint, currentLanguage, volu
               orangeBoxData && (
                 <>
                   <div className={styles.circle__top}></div>
-                  <div className={`${styles.box} ${styles.orange}`}>
+                  <div className={`${styles.box} ${styles.down} ${parseFloat(orangeBoxData.results.quote[0].pricedata.change) < 0 ? styles.orange : styles.green}`}>
                     <Grid container>
                       <Grid item xs={9}>
                         <h5>{orangeBoxData.results.quote[0].equityinfo.longname}</h5>
@@ -88,10 +88,19 @@ function QuoteHeads({ orangeBoxEndpoint, greenBoxEndpoint, currentLanguage, volu
                         </div>
                       </Grid>
                       <Grid item xs={3} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <BsFillArrowDownLeftCircleFill
-                          size={60}
-                          color={'var(--orange)'}
-                        />
+                        {
+                          parseFloat(orangeBoxData.results.quote[0].pricedata.change) < 0 ? (
+                            <BsFillArrowDownLeftCircleFill
+                              size={60}
+                              color={'var(--orange)'}
+                            />
+                          ) : (
+                            <BsFillArrowUpRightCircleFill
+                              size={60}
+                              color={'#009A93'}
+                            />
+                          )
+                        }
                       </Grid>
                       <Grid item xs={12}>
                         <div className={styles.footer}>
@@ -106,7 +115,7 @@ function QuoteHeads({ orangeBoxEndpoint, greenBoxEndpoint, currentLanguage, volu
             {
               greenBoxData && (
                 <>
-                  <div className={`${styles.box} ${styles.green}`}>
+                  <div className={`${styles.box} ${styles.up} ${parseFloat(orangeBoxData.results.quote[0].pricedata.change) < 0 ? styles.orange : styles.green}`}>
                     <Grid container>
                       <Grid item xs={9}>
                         <h5>{greenBoxData.results.quote[0].equityinfo.longname}</h5>
@@ -123,10 +132,19 @@ function QuoteHeads({ orangeBoxEndpoint, greenBoxEndpoint, currentLanguage, volu
                         </div>
                       </Grid>
                       <Grid item xs={3} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <BsFillArrowUpRightCircleFill
-                          size={60}
-                          color={'#009A93'}
-                        />
+                        {
+                          parseFloat(orangeBoxData.results.quote[0].pricedata.change) < 0 ? (
+                            <BsFillArrowDownLeftCircleFill
+                              size={60}
+                              color={'var(--orange)'}
+                            />
+                          ) : (
+                            <BsFillArrowUpRightCircleFill
+                              size={60}
+                              color={'#009A93'}
+                            />
+                          )
+                        }
                       </Grid>
                       <Grid item xs={12}>
                         <div className={styles.footer}>
