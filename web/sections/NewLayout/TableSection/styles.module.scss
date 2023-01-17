@@ -109,13 +109,17 @@
 .fundPerformanceHeader {
   display: flex;
   text-align: center;
-  color: #fff;
-  font-family: 'Europa';
+  color: var(--black);
   font-weight: 900;
   font-size: 20px;
   flex-wrap: wrap;
   @media (--media-min-large) {
     flex-wrap: nowrap;
+  }
+  p {
+    font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-md);
   }
 }
 
@@ -129,7 +133,7 @@
 
 .secondCell {
   width: 100%;
-  background-color: #091B3F;
+  border-bottom: 1px solid #e8e8ea;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +144,7 @@
 
 .thirdCell {
   width: 100%;
-  background: #0082E5;
+  border-bottom: 1px solid #e8e8ea;
   padding: 10px;
   display: flex;
   @media (--media-min-large) {
@@ -150,6 +154,9 @@
 
 .thirdCell p {
   width: 100%;
-  font-size: 14px;
+}
+
+.download__icon {
+  margin-right: 8px;
 }
 

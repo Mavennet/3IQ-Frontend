@@ -96,8 +96,8 @@ export default {
     {
       name: 'embed',
       type: 'localePortableText',
-      title: 'HTML Table',
-      description: 'Create an optional hardcoded HTML table through the EmbedHTML tag. Also, through this same field you can add any text to display above either the Endpoint API table or the HTML one',
+      title: 'Description',
+      description: 'This field you can add any text to display above either the Endpoint API table or the HTML one',
       fieldset: 'tableComposition',
     },
   ],
