@@ -6,6 +6,7 @@ import page from "./documents/page";
 import route from "./documents/route";
 import siteConfig from "./documents/siteConfig";
 import person from "./documents/person";
+import benefity from "./documents/benefity";
 import country from "./documents/country";
 import language from "./documents/language";
 import post from "./documents/post";
@@ -57,6 +58,7 @@ import automatedNewsCard from "./documents/sections/automatedNewsCard";
 import automatedArticles from "./documents/sections/automatedArticles";
 import readMoreCard from "./documents/sections/readMoreCard";
 import teamsDisplay from "./documents/sections/teamsDisplay";
+import whatWeOffer from "./documents/sections/whatWeOffer";
 import timeline from "./documents/sections/timeline";
 import contactUsForm from "./documents/sections/contactUsForm";
 import subscribeForm from "./documents/sections/subscribeForm";
@@ -118,6 +120,7 @@ export default createSchema({
     bioPortableText,
     postPortableText,
     person,
+    benefity,
     doubleOptions,
     keyBenefits,
     benefitCard,
@@ -157,6 +160,7 @@ export default createSchema({
     localeBioPortableText,
     team,
     teamsDisplay,
+    whatWeOffer,
     timeline,
     timelineItem,
     subscribeForm,

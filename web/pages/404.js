@@ -49,9 +49,13 @@ export default function Custom404(props) {
                     color: 'var(--white)',
                     fontSize: { xs: '30px', md: '42px' },
                     fontFamily: 'var(--font-family-secondary)',
+                    '& small': {
+                      color: '#0082E5',
+                      fontSize: { xs: '30px', md: '42px' },
+                    }
                   }}
                 >
-                  Oops, page not Found!
+                  Oops, page not F<small>o</small>und!
                 </Typography>
               </Grid>
             </Grid>
@@ -66,6 +70,13 @@ export default function Custom404(props) {
                 border: '2px solid var(--white)',
                 '& a': {
                   color: 'var(--white)',
+                },
+                '&:hover > a': {
+                  color: '#0A2955',
+                },
+                '&:hover': {
+                  background: 'var(--white)',
+                  cursor: 'pointer',
                 },
               }}>
                 <Link
