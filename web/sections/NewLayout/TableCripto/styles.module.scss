@@ -1,0 +1,66 @@
+@import '../../../styles/custom-media.css';
+
+.simpleBlockContent {
+  max-width: 100%;
+  font-family: var(--font-family-secondary);
+  color: var(--black);
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--medium-gray);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--light-blue);
+    border-radius: 10px;
+    border: 3px solid var(--gray);
+  }
+}
+
+.simpleBlockContent table {
+  width: 100%;
+}
+
+.simpleBlockContent thead {
+  tr {
+    th {
+      text-align: left;
+      font-family: var(--font-family-secondary);
+      color: var(--black);
+      padding: 20px 0px;
+      border-bottom: 1px solid #E8E8EA;
+    }
+  }
+}
+
+.simpleBlockContent tbody tr td {
+  padding: 20px 0px;
+  border-bottom: 1px solid #E8E8EA;
+}
+
+.criptoInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.download__icon {
+  margin-right: 8px;
+}
+
+.simple__block__content * {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-ld);
+  font-weight: var(--font-weight-regular);
+}
+
+.simple__block__content {
+  a {
+    color: var(--black);
+    text-decoration: underline;
+  }
+}
+

@@ -76,7 +76,7 @@ function TableSection(props) {
       <Grid container mb={6}>
         {
           heading && (
-            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
               <Typography
                 variant="h2"
                 sx={{
@@ -100,7 +100,8 @@ function TableSection(props) {
                         textDecoration: 'none',
                         padding: '5px 25px',
                         borderRadius: '4px',
-                        fontSize: '20px'
+                        fontSize: '20px',
+                        margin: '20px 0px'
                       }}
                     >
                       <TfiDownload
@@ -110,7 +111,6 @@ function TableSection(props) {
                       Download
                     </CSVLink>
                   </>
-
                 )
               }
             </Grid>
@@ -153,7 +153,6 @@ function TableSection(props) {
                     )
                   }
                   <tbody className={colorfulLayout && `${styles.tableColorful} ${typesStyle[color]}`}>
-                    {console.log(data)}
                     {
                       data.map((item, i) => {
                         const values = Object.values(item)
