@@ -8,6 +8,7 @@ import Dropdown from '../../../components/NewLayout/Dropdown'
 import Button from '../../../components/NewLayout/Button'
 import {ROUTES_BY_TERM, CATEGORIES, NEWS_CARD_BY_TERM} from '../../../utils/groqQueries'
 import SearchCard from '../../../components/NewLayout/SearchCard'
+import Card from '../../../components/NewLayout/Card'
 import NewsletterCard from '../../../components/NewLayout/NewletterCard'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 
@@ -20,7 +21,14 @@ function Search(props) {
   const [data, setData] = useState({})
   const [categories, setCategories] = useState([])
   const [sections, setSections] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [singleSection, setSingleSection] = useState(null)
+
+  const [searchTerm, setSearchTerm] = useState(null)
+
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+  const urlSearchTerm = urlParams.get('searchTerm')
+  categories.length > 0 && urlSearchTerm && searchTerm == null && setSearchTerm(urlSearchTerm)
 
   function showNotFoundText() {
     let show = false
@@ -28,6 +36,11 @@ function Search(props) {
     posts && categories && categories.map((c) => hasData.push(posts[c].length > 0))
     show = !(hasData.indexOf(true) >= 0)
     return show
+  }
+
+  function filterQuantity(posts, quantity = 4) {
+    let filteredPosts = singleSection ? posts : posts.slice(0, quantity)
+    return filteredPosts
   }
 
   const sectionDropdownItems = [
@@ -127,6 +140,36 @@ function Search(props) {
     )
   }
 
+  function renderHeader(title, section) {
+    return (
+      <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Box sx={{display: {md: 'none', xs: 'flex'}, alignItems: 'center'}}>
+          <h5>{title}</h5>
+          <span className={styles.search__found__mobile}>
+            Found: <strong>{posts[section] ? posts[section].length : 0}</strong> items
+          </span>
+        </Box>
+        <Box sx={{display: {md: 'flex', xs: 'none'}, alignItems: 'center'}}>
+          <h3>{title}</h3>
+          <span className={styles.search__found}>
+            Found: <strong>{posts[section] ? posts[section].length : 0}</strong> items
+          </span>
+        </Box>
+        {!singleSection && (
+          <Box>
+            <Button
+              title="View more"
+              onClick={() => setSingleSection(section)}
+              redirectArrow
+              variant="outlined"
+              size="sm"
+            />
+          </Box>
+        )}
+      </Box>
+    )
+  }
+
   async function search() {
     if (categories.length > 0) {
       let categoryIds = []
@@ -188,140 +231,91 @@ function Search(props) {
   useEffect(() => {
     categories && categories.length == 0 && fetchCategories()
     search()
-  }, [searchTerm])
+  }, [searchTerm, filterDropdownValue])
 
   useEffect(() => {
-    categories && categories.length == 0 && fetchCategories()
-    search()
-  }, [filterDropdownValue])
-
-  //   console.log(teams)
-
-  //   const [members, setMembers] = useState([])
-  //   const [memberSelected, setMemberSelected] = useState(0)
-
-  //   function selectMember(position) {
-  //     if (position == 'prev') {
-  //       if (memberSelected != 0) {
-  //         setMemberSelected(memberSelected - 1)
-  //       } else {
-  //         setMemberSelected(members.length - 1)
-  //       }
-  //     }
-
-  //     if (position == 'next') {
-  //       if (memberSelected != members.length - 1) {
-  //         setMemberSelected(memberSelected + 1)
-  //       } else {
-  //         setMemberSelected(0)
-  //       }
-  //     }
-  //   }
-
-  //   useEffect(() => {
-  //     const fetchMember = async (ids) => {
-  //       await client
-  //         .fetch(
-  //           groq`
-  //         *[_type == 'person' && _id in $personId] {
-  //           _id,
-  //           _type,
-  //           name,
-  //           jobTitle,
-  //           bio,
-  //           youtubeVideo,
-  //           profilePhoto,
-  //           linkedinUrl,
-  //           email,
-  //           contactText,
-  //           ViewProfileText,
-  //         }
-  //        `,
-  //           {personId: ids}
-  //         )
-  //         .then((response) => {
-  //           setMembers(response)
-  //         })
-  //     }
-
-  //     if (teams && members.length == 0) {
-  //       let ids = []
-  //       teams.forEach((member) => ids.push(member._ref))
-  //       fetchMember(ids)
-  //     }
-  //   }, [])
+    singleSection && setSections([singleSection])
+  }, [singleSection])
 
   return (
     <>
-      <Box  pb={10} bgcolor={'#f9f9f9'}>
+      <Box pb={10} bgcolor={'#f9f9f9'}>
         <Container maxWidth={'lg'}>
           <Box py={2}>
             <Form
+              value={searchTerm}
               onChange={(e) => handleSearch(e)}
               placeholder={'Type in your search terms and press enter'}
             />
-            <Grid container sx={{display: {md: 'none', sm: 'flex'}}} mt={1} spacing={2}>
-              <Grid item xs={6}>
-                <Dropdown
-                  value={filterDropdownValue}
-                  className={styles.search__dropdown__mobile}
-                  title="Relevancy"
-                  onChange={(e) => filterOrder(e)}
-                  itens={filterDropdownItems}
-                />
+            {!singleSection && (
+              <Grid container sx={{display: {md: 'none', sm: 'flex'}}} mt={1} spacing={2}>
+                <Grid item xs={6}>
+                  <Dropdown
+                    value={filterDropdownValue}
+                    className={styles.search__dropdown__mobile}
+                    title="Relevancy"
+                    onChange={(e) => filterOrder(e)}
+                    itens={filterDropdownItems}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <Dropdown
+                    value={sectionDropdownValue}
+                    className={styles.search__dropdown__mobile}
+                    title="All"
+                    isMulti
+                    onChange={(e) => filterSections(e)}
+                    itens={sectionDropdownItems}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Dropdown
-                  value={sectionDropdownValue}
-                  className={styles.search__dropdown__mobile}
-                  title="All"
-                  isMulti
-                  onChange={(e) => filterSections(e)}
-                  itens={sectionDropdownItems}
-                />
-              </Grid>
-            </Grid>
+            )}
           </Box>
-          <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
-            <Box sx={{display: 'flex', alignItems: 'center'}}>
-              {routes.length > 0 && (
-                <>
-                  <h3>Page Results</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{`${routes.length} items`}</strong>
-                  </span>
-                </>
-              )}
-            </Box>
-            <Box sx={{display: {md: 'flex', xs: 'none'}}}>
-              <Box mr={3}>
-                <Dropdown
-                  value={filterDropdownValue}
-                  className={styles.search__dropdown__mobile}
-                  title="Relevancy"
-                  onChange={(e) => filterOrder(e)}
-                  itens={filterDropdownItems}
-                />
+          {!singleSection && (
+            <>
+              <Box my={2} sx={{display: 'flex', justifyContent: 'space-between'}}>
+                <Box sx={{display: 'flex', alignItems: 'center'}}>
+                  {routes.length > 0 && (
+                    <>
+                      <h3>Page Results</h3>
+                      <span className={styles.search__found}>
+                        Found: <strong>{`${routes.length} items`}</strong>
+                      </span>
+                    </>
+                  )}
+                </Box>
+                <Box sx={{display: {md: 'flex', xs: 'none'}}}>
+                  <Box mr={3}>
+                    <Dropdown
+                      value={filterDropdownValue}
+                      className={styles.search__dropdown__mobile}
+                      title="Relevancy"
+                      onChange={(e) => filterOrder(e)}
+                      itens={filterDropdownItems}
+                    />
+                  </Box>
+                  <Box>
+                    <Dropdown
+                      value={sectionDropdownValue}
+                      className={styles.search__dropdown}
+                      title="All"
+                      isMulti
+                      onChange={(e) => filterSections(e)}
+                      itens={sectionDropdownItems}
+                    />
+                  </Box>
+                </Box>
               </Box>
-              <Box>
-                <Dropdown
-                  value={sectionDropdownValue}
-                  className={styles.search__dropdown}
-                  title="All"
-                  isMulti
-                  onChange={(e) => filterSections(e)}
-                  itens={sectionDropdownItems}
-                />
+              <Box sx={{display: 'block'}}>
+                {routes.map((route) => (
+                  <h5 className={styles.search__route}>
+                    {route.page.title[currentLanguage.languageTag]}
+                  </h5>
+                ))}
               </Box>
-            </Box>
-          </Box>
-          <Box sx={{display: 'block'}}>
-            {routes.map((route) => (
-              <h5 className={styles.search__route}>
-                {route.page.title[currentLanguage.languageTag]}
-              </h5>
-            ))}
-          </Box>
+            </>
+          )}
+
           {showNotFoundText() && (
             <div className={styles.notFound}>
               <p>Sorry, there are no results for {searchTerm}.</p>
@@ -330,21 +324,11 @@ function Search(props) {
           )}
           {showSection('articles') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Articles</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.articles ? posts.articles.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('Articles', 'articles')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.articles &&
-                  posts.articles.map((item) => (
+                  filterQuantity(posts.articles).map((item) => (
                     <Grid
                       item
                       xs={12}
@@ -352,7 +336,12 @@ function Search(props) {
                       md={handleCardSize(posts.articles.length)}
                       key={item._id}
                     >
-                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                      {' '}
+                      {singleSection ? (
+                        <SearchCard {...item} currentLanguage={currentLanguage} />
+                      ) : (
+                        <Card {...item} currentLanguage={currentLanguage} />
+                      )}
                     </Grid>
                   ))}
               </Grid>
@@ -360,29 +349,13 @@ function Search(props) {
           )}
           {showSection('white_papers') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>White Papers</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.white_papers ? posts.white_papers.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>{' '}
+              {renderHeader('White Papers', 'white_papers')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.white_papers &&
-                  posts.white_papers.map((item) => (
-                    <Grid
-                      item
-                      xs={12}
-                      sm={6}
-                      md={handleCardSize(posts.white_papers.length)}
-                      key={item._id}
-                    >
-                      <SearchCard {...item} currentLanguage={currentLanguage} />
+                  filterQuantity(posts.white_papers, 2).map((item) => (
+                    <Grid item xs={12} md={6} key={item._id}>
+                      <Card {...item} imageLayout currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
               </Grid>
@@ -390,28 +363,12 @@ function Search(props) {
           )}
           {showSection('videos') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Videos</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.videos ? posts.videos.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('Videos', 'videos')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.videos &&
-                  posts.videos.map((item) => (
-                    <Grid
-                      item
-                      xs={12}
-                      sm={6}
-                      md={handleCardSize(posts.videos.length)}
-                      key={item._id}
-                    >
+                  filterQuantity(posts.videos, 2).map((item) => (
+                    <Grid item xs={12} md={6} key={item._id}>
                       <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
@@ -420,21 +377,11 @@ function Search(props) {
           )}
           {showSection('podcasts') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Podcasts</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.podcasts ? posts.podcasts.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('Podcasts', 'podcasts')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.podcasts &&
-                  posts.podcasts.map((item) => (
+                  filterQuantity(posts.podcasts).map((item) => (
                     <Grid
                       item
                       xs={12}
@@ -450,28 +397,12 @@ function Search(props) {
           )}
           {showSection('webinar') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Webinars</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.webinar ? posts.webinar.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('Webinars', 'webinar')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.webinar &&
-                  posts.webinar.map((item) => (
-                    <Grid
-                      item
-                      xs={12}
-                      sm={6}
-                      md={handleCardSize(posts.webinar.length)}
-                      key={item._id}
-                    >
+                  filterQuantity(posts.webinar, 2).map((item) => (
+                    <Grid item xs={12} md={6} key={item._id}>
                       <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
                   ))}
@@ -480,21 +411,11 @@ function Search(props) {
           )}
           {showSection('newsletter') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Newsletters</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.newsletter ? posts.newsletter.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('Newsletters', 'newsletter')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.newsletter &&
-                  posts.newsletter.map((item) => (
+                  filterQuantity(posts.newsletter, 3).map((item) => (
                     <Grid item xs={12} sm={6} md={4} key={item._id}>
                       <NewsletterCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
@@ -504,21 +425,11 @@ function Search(props) {
           )}
           {showSection('news') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>News</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.news ? posts.news.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('News', 'news')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.news &&
-                  posts.news.map((item) => (
+                  filterQuantity(posts.news).map((item) => (
                     <Grid item xs={12} sm={6} md={handleCardSize(posts.news.length)} key={item._id}>
                       <SearchCard {...item} currentLanguage={currentLanguage} />
                     </Grid>
@@ -528,21 +439,11 @@ function Search(props) {
           )}
           {showSection('press_releases') && (
             <Box my={6}>
-              <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <Box sx={{display: 'flex', alignItems: 'center'}}>
-                  <h3>Press Releases</h3>
-                  <span className={styles.search__found}>
-                    Found: <strong>{posts.press_releases ? posts.press_releases.length : 0}</strong>
-                  </span>
-                </Box>
-                <Box>
-                  <Button title="View more" redirectArrow variant="outlined" size="sm" />
-                </Box>
-              </Box>
+              {renderHeader('Press Releases', 'press_releases')}
               <Grid container spacing={6}>
                 {posts &&
                   posts.press_releases &&
-                  posts.press_releases.map((item) => (
+                  filterQuantity(posts.press_releases).map((item) => (
                     <Grid
                       item
                       xs={12}

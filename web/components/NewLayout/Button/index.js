@@ -12,6 +12,7 @@ function Button(props) {
     size = 'md',
     disabled = false,
     arrow = false,
+    onClick = null,
     redirectArrow = false,
     route,
     link,
@@ -70,6 +71,7 @@ function Button(props) {
     <button
       className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
       disabled={disabled}
+      onClick={onClick}
     >
       <div className={styles.button__title}>{title}</div>
       {arrow && (<FiChevronDown className={styles.arrow} />)}

@@ -3,6 +3,11 @@
     padding-top: 15px;
     padding-left: 20px;
     font-size: var(--font-size-secondary-xs);
+
+    &__mobile {
+      padding-left: 20px;
+      font-size: var(--font-size-secondary-xs);
+    }
   }
 
   &__dropdown {

@@ -53,7 +53,7 @@ function SearchCard(props) {
                   )
                 }
                 {
-                  post?.categories[0]?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' && (
+                  (post?.categories[0]?.searchId == 'videos' ||  post?.categories[0]?.searchId == 'webinar') && (
                     <div className={styles.play}>
                       <AiFillPlayCircle
                         size={90}
