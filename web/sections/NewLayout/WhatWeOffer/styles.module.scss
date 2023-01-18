@@ -1,0 +1,21 @@
+.simple__block__content * {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-md);
+  font-weight: var(--font-weight-regular);
+}
+
+.simple__block__content {
+  a {
+    color: var(--black);
+    text-decoration: underline;
+  }
+}
+
+.imgGrid {
+  width: 58px;
+  height: 58px;
+  background-color: #009A93;
+  padding: 20px;
+  border-radius: 50%;
+  position: relative;
+}

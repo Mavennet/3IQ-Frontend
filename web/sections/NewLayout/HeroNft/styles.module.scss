@@ -7,6 +7,9 @@
   @media (--media-min-large) {
     display: flex;
     align-items: stretch;
+    height: 1000px;
+  }
+  @media (min-width: 1300px) {
     height: 680px;
   }
 }

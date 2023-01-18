@@ -58,6 +58,7 @@ export default {
             { type: "heroBigImage" },
             { type: "heroNft" },
             { type: "teamsDisplay" },
+            { type: "whatWeOffer" },
             { type: "contactUsForm" },
             { type: "subscribeForm" },
             { type: "locationsDisplay" },
