@@ -11,7 +11,7 @@ function Advertisement(props) {
   const localeButton = button[currentLanguage?.languageTag]
 
   return (
-    <Container sx={{maxWidth: {sm: 'md', lg: 'lg'}, my: 4}}>
+    <Container sx={{maxWidth: { sm: 'md', md: 'lg', lg: 'xl' }, my: 4}}>
       <Grid
         container
         className={styles.advertisement}
@@ -25,7 +25,7 @@ function Advertisement(props) {
           {localeButton && (
             <Button
               variant={buttonColor}
-              className={`${styles.advertisement__button} ${buttonColor === 'solidDarkBlue' && styles.color__orange}`}
+              className={`${styles.advertisement__button}`}
               {...localeButton}
               size="md"
               title={localeButton.title}

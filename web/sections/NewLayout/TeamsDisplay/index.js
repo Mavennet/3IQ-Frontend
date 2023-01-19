@@ -113,11 +113,17 @@ function TeamsDisplay(props) {
                               <Typography
                                 variant="h3"
                                 my={2}
+                                onClick={item.localeBio ? () => handleOpen(item) : null}
                                 sx={{
                                   fontFamily: 'var(--font-family-secondary)',
                                   color: 'var(--black)',
+                                  cursor: 'pointer',
                                   fontSize: 'var(--font-size-secondary-lg)',
                                   fontWeight: 'var(--font-weight-regular)',
+                                  '&:hover': {
+                                    textDecoration: 'underline',
+                                    textUnderlineOffset: '5px'
+                                  }
                                 }}
                               >
                                 {item.name}

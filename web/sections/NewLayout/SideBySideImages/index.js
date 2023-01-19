@@ -75,7 +75,7 @@ function SideBySideImages(props) {
                         {
                           title && <h5 className={styles.title__image}>{title}</h5>
                         }
-                        <Grid container spacing={4} my={4}>
+                        <Grid container spacing={6} my={4}>
                           {
                             item.images.map((image, i) => {
                               if (image.imageExternalLink) {
@@ -105,6 +105,7 @@ function SideBySideImages(props) {
                                       alt={image.alt}
                                       src={builder.image(image).url()}
                                       key={image._key}
+                                      p={2}
                                       sx={{
                                         maxWidth: '100%',
                                         maxHeight: '100%',

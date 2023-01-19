@@ -51,6 +51,7 @@ export default {
     "newsCard",
     "readMoreCard",
     "person",
+    "benefity",
     "team",
     "contactUsForm",
     "subscribeForm",

@@ -73,13 +73,16 @@
   }
 }
 
-.orange {
-  border-color: var(--orange);
+.down {
   position: relative;
   margin-top: -20px;
   @media (--media-min-large) {
     margin-left: 50px;
   }
+}
+
+.orange {
+  border-color: var(--orange);
   h2 {
     small {
       color: var(--orange);
@@ -89,14 +92,18 @@
 
 .green {
   border-color: #009A93;
-  position: relative;
-  z-index: 50;
-  @media (--media-min-large) {
-    margin-top: -50px;
-  }
   h2 {
     small {
       color: #009A93;
     }
+  }
+}
+
+.up {
+
+  position: relative;
+  z-index: 50;
+  @media (--media-min-large) {
+    margin-top: -50px;
   }
 }

@@ -93,11 +93,13 @@ function HeroNft(props) {
           bgcolor={'#0082E5'}
           py={{ xs: 6, md: 10}}
           px={{ md: 6 }}
+          className={styles.align__header}
           sx={{
             width: '100%',
             display: 'flex',
             alignItems: 'center',
-            color: 'var(--white)'
+            color: 'var(--white)',
+            justifyContent: 'flex-end'
           }}>
           <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
             <Grid container>
@@ -114,11 +116,13 @@ function HeroNft(props) {
           py={6}
           px={{ md: 6 }}
           bgColor={'#F2F2F2'}
+          className={styles.align__header}
           sx={{
             width: '100%',
             color: 'var(--black)',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            justifyContent: 'flex-end'
           }}>
           <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
             <Grid container>

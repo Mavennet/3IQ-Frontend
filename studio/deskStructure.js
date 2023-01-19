@@ -20,6 +20,7 @@ const hiddenDocTypes = listItem =>
     "country",
     "language",
     "person",
+    "benefity",
     "route",
     "textSection",
     "hero",
@@ -60,6 +61,7 @@ const hiddenDocTypes = listItem =>
     "readMoreCard",
     "team",
     "teamsDisplay",
+    "whatWeOffer",
     "timeline",
     "timelineItem",
     "contactUsForm",
@@ -185,6 +187,7 @@ export default () =>
               S.documentTypeListItem("subscribeBlock").title("Subscribe Block"),
               S.documentTypeListItem("tabsContent").title("Tabs Content"),
               S.documentTypeListItem("teamsDisplay").title("Teams Display"),
+              S.documentTypeListItem("whatWeOffer").title("What We Offer"),
               S.documentTypeListItem("textSection").title("Text Block"),
               S.documentTypeListItem("plainText").title("Plain Text"),
               S.documentTypeListItem("post").title("Post"),
@@ -292,5 +295,6 @@ export default () =>
             )
         ),
       S.documentTypeListItem("person").title("Members"),
+      S.documentTypeListItem("benefity").title("Benefitys"),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ]);
