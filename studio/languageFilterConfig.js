@@ -33,6 +33,8 @@ export default {
     "advertisement",
     "mainHero",
     "podcasts",
+    "articlesSearch",
+    "search",
     "teamsVideoDisplay",
     "note",
     "quoteHeads",

@@ -55,6 +55,12 @@ export default {
         },
       ],
     },
+    {
+      name: 'newsletterNumber',
+      type: 'string',
+      title: 'Newsletter Number (*)',
+      description: "Type a number if it's a Newsletter",
+    },
   ],
   preview: {
     select: {

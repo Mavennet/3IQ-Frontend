@@ -22,18 +22,18 @@ const Option = (props) => {
 };
 
 function Dropdown(props) {
-  const {title = '', name = '', disabled = false, value = undefined, onChange = null, itens, isMulti = false} = props
+  const {title = '', name = '', disabled = false, value = undefined, onChange = null, itens, isMulti = false, className} = props
 
   return (
     <Select
       isMulti={isMulti}
       placeholder={title}
-      defaultValue={value}
+      value={value}
       onChange={onChange}
       options={itens}
       disabled={disabled}
       name={name}
-      className={styles.select}
+      className={`${styles.select} ${className}`}
       hideSelectedOptions={isMulti && false}
       components={isMulti ? {Option} : null}
       styles={{
