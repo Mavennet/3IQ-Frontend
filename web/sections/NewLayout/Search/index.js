@@ -11,9 +11,26 @@ import SearchCard from '../../../components/NewLayout/SearchCard'
 import Card from '../../../components/NewLayout/Card'
 import NewsletterCard from '../../../components/NewLayout/NewletterCard'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
+import Link from 'next/link'
+import {IoIosArrowDropleft} from 'react-icons/io'
 
 function Search(props) {
-  const {heading, notFoundText, currentLanguage, currentCountry} = props
+  const {
+    heading,
+    notFoundText,
+    buttonText,
+    articlesLabel,
+    whitePapersLabel,
+    videosLabel,
+    podcastsLabel,
+    webinarsLabel,
+    newslettersLabel,
+    newsLabel,
+    pressReleasesLabel,
+    currentLanguage,
+    currentCountry,
+  } = props
+
   const [sectionDropdownValue, setSectionDropdownValue] = useState([])
   const [filterDropdownValue, setFilterDropdownValue] = useState([])
   const [routes, setRoutes] = useState([])
@@ -43,53 +60,60 @@ function Search(props) {
     return filteredPosts
   }
 
+  const localeArticlesLabel =
+    (articlesLabel && articlesLabel[currentLanguage].languageTag) || 'Articles'
+  const localeWhitePapersLabel =
+    (whitePapersLabel && whitePapersLabel[currentLanguage].languageTag) || 'White Papers'
+  const localeVideosLabel = (videosLabel && videosLabel[currentLanguage].languageTag) || 'Videos'
+  const localePodcastsLabel =
+    (podcastsLabel && podcastsLabel[currentLanguage].languageTag) || 'Podcasts'
+  const localeWebinarsLabel =
+    (webinarsLabel && webinarsLabel[currentLanguage].languageTag) || 'Webinars'
+  const localeNewsletterLabel =
+    (newslettersLabel && newslettersLabel[currentLanguage].languageTag) || 'Newsletters'
+  const localeNewsLabel = (newsLabel && newsLabel[currentLanguage].languageTag) || 'News'
+  const localePressReleasesLabel =
+    (pressReleasesLabel && pressReleasesLabel[currentLanguage].languageTag) || 'Press Releases'
+
   const sectionDropdownItems = [
     {
-      id: 2,
       name: 'articles',
-      label: 'Articles',
+      label: localeArticlesLabel,
       value: 'articles',
     },
     {
-      id: 3,
       name: 'white_papers',
-      label: 'White Papers',
+      label: localeWhitePapersLabel,
       value: 'white_papers',
     },
     {
-      id: 4,
       name: 'videos',
-      label: 'Videos',
+      label: localeVideosLabel,
       value: 'videos',
     },
     {
-      id: 5,
       name: 'podcasts',
-      label: 'Podcasts',
+      label: localePodcastsLabel,
       value: 'podcasts',
     },
     {
-      id: 6,
       name: 'webinar',
-      label: 'Webinars',
+      label: localeWebinarsLabel,
       value: 'webinar',
     },
     {
-      id: 7,
       name: 'newsletter',
-      label: 'Newsletters',
+      label: localeNewsletterLabel,
       value: 'newsletter',
     },
     {
-      id: 8,
       name: 'news',
-      label: 'News',
+      label: localeNewsLabel,
       value: 'news',
     },
     {
-      id: 8,
       name: 'press_releases',
-      label: 'Press Releases',
+      label: localePressReleasesLabel,
       value: 'press_releases',
     },
   ]
@@ -144,25 +168,36 @@ function Search(props) {
     return (
       <Box my={4} sx={{display: 'flex', justifyContent: 'space-between'}}>
         <Box sx={{display: {md: 'none', xs: 'flex'}, alignItems: 'center'}}>
+          {singleSection && (
+            <Box mt={1} mr={1.5}>
+              <IoIosArrowDropleft onClick={() => setSingleSection(null)} className={styles.icon} size={30} />
+            </Box>
+          )}
           <h5>{title}</h5>
           <span className={styles.search__found__mobile}>
             Found: <strong>{posts[section] ? posts[section].length : 0}</strong> items
           </span>
         </Box>
         <Box sx={{display: {md: 'flex', xs: 'none'}, alignItems: 'center'}}>
+          {singleSection && (
+            <Box mt={1.2} mr={1.5}>
+              <IoIosArrowDropleft onClick={() =>  setSingleSection(null)} className={styles.icon} size={35} />
+            </Box>
+          )}
           <h3>{title}</h3>
           <span className={styles.search__found}>
             Found: <strong>{posts[section] ? posts[section].length : 0}</strong> items
           </span>
         </Box>
+
         {!singleSection && (
           <Box>
             <Button
-              title="View more"
+              title={(buttonText && buttonText[currentLanguage.languageTag]) || 'View More'}
               onClick={() => setSingleSection(section)}
               redirectArrow
               variant="outlined"
-              size="sm"
+              size="xs"
             />
           </Box>
         )}
@@ -175,10 +210,15 @@ function Search(props) {
       let categoryIds = []
       categories.map((c) => categoryIds.push(c._id))
       // let webinars =
-      if (searchTerm.length == 3 || (searchTerm.length > 3 && (searchTerm.length - 3) % 3 == 0)) {
+      if (
+        searchTerm &&
+        (searchTerm.length == 3 || (searchTerm.length > 3 && (searchTerm.length - 3) % 3 == 0))
+      ) {
         await client
           .fetch(ROUTES_BY_TERM, {term: searchTerm, urlTag: currentCountry.urlTag})
-          .then((res) => setRoutes(res))
+          .then((res) => {
+            setRoutes(res), console.log(res)
+          })
         await client
           .fetch(NEWS_CARD_BY_TERM, {
             term: searchTerm,
@@ -308,9 +348,17 @@ function Search(props) {
               </Box>
               <Box sx={{display: 'block'}}>
                 {routes.map((route) => (
-                  <h5 className={styles.search__route}>
-                    {route.page.title[currentLanguage.languageTag]}
-                  </h5>
+                  <Link
+                    href={{
+                      pathname: '/LandingPage',
+                      query: {slug: route.slug.current},
+                    }}
+                    as={`/${route.slug.current}`}
+                  >
+                    <h5 className={styles.search__route}>
+                      {route.page.title[currentLanguage.languageTag]}
+                    </h5>
+                  </Link>
                 ))}
               </Box>
             </>
@@ -336,7 +384,6 @@ function Search(props) {
                       md={handleCardSize(posts.articles.length)}
                       key={item._id}
                     >
-                      {' '}
                       {singleSection ? (
                         <SearchCard {...item} currentLanguage={currentLanguage} />
                       ) : (

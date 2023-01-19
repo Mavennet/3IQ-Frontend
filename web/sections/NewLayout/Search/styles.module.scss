@@ -6,6 +6,7 @@
 
     &__mobile {
       padding-left: 20px;
+      margin-top: 6px;
       font-size: var(--font-size-secondary-xs);
     }
   }
@@ -34,4 +35,8 @@
   li{
     font-size: var(--font-size-secondary-sm );
   }
+}
+
+.icon{
+  cursor: pointer;
 }
