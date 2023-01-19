@@ -47,7 +47,7 @@ function MainHero(props) {
         py: 7
       }}
     >
-      <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+      <Container sx={{ maxWidth: { sm: 'md', lg: 'lg', xl: 'xl' } }}>
         <Grid container sx={{ display: 'flex', alignItems: 'center' }}>
           <Grid item sm={8} xs={12}  >
             <div className={styles.simple__block__content}>

@@ -103,7 +103,7 @@ function MemberCard(props) {
                   color: 'var(--light-blue)',
                   borderRadius: '34px',
                   display: 'flex',
-                  justifyContent: 'center',
+                  flexWrap: 'wrap',
                   textDecoration: 'none',
                   alignItems: 'center',
                   fontFamily: 'var(--font-family-secondary)',
@@ -112,7 +112,9 @@ function MemberCard(props) {
                   gap: 1
                 }}
               >
-                <div>{contactText && contactText}</div>
+                <div>
+                  {contactText && contactText}
+                </div>
                 <BsArrowRightShort size={27} />
               </Box>
             </Link>

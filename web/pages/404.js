@@ -62,6 +62,7 @@ export default function Custom404(props) {
             <Grid item xs={12} sx={{display: 'flex', justifyContent: {xs: 'center', md: 'flex-start'}}}>
               <Box sx={{
                 width: '200px',
+                borderRadius: '4px',
                 textAlign: 'center',
                 padding: '10px 25px',
                 color: 'var(--white)',

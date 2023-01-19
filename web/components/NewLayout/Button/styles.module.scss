@@ -122,9 +122,36 @@
       cursor: auto;
     }
   }
+
+  &__outlined__black {
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+    transition: 0.3s;
+
+    &:hover {
+      background-color: var(--hover-blue);
+      color: var(--white);
+      border-color: var(--hover-blue);
+      transition: 0.3s;
+    }
+
+    &:disabled,
+    &[disabled] {
+      background-color: transparent;
+      color: var(--disabled-gray);
+      border: 1px solid var(--disabled-gray);
+      cursor: auto;
+    }
+  }
 }
 
 .arrow {
-  position: realtive;
+  position: relative;
   margin-left: auto;
+}
+
+.arrowUp {
+  position: relative;
+  margin-left: 5px;
 }

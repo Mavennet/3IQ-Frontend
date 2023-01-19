@@ -1,7 +1,7 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import styles from './styles.module.scss'
-import { FiChevronDown } from 'react-icons/fi'
+import { FiChevronDown, FiArrowUpRight } from 'react-icons/fi'
 import Link from 'next/link'
 
 function Button(props) {
@@ -11,6 +11,7 @@ function Button(props) {
     size = 'md',
     disabled = false,
     arrow = false,
+    arrowUp = false,
     route,
     link,
     target,
@@ -23,6 +24,7 @@ function Button(props) {
     solidOrange: styles.button__solid__orange,
     solidDarkBlue: styles.button__solid__darkblue,
     outlined: styles.button__outlined,
+    outlinedBlack: styles.button__outlined__black,
     outlinedWhite: styles.button__outlined__white,
   }
 
@@ -42,6 +44,7 @@ function Button(props) {
           >
             <div className={styles.button__title}>{title}</div>
             {arrow && (<FiChevronDown className={styles.arrow} />)}
+            {arrowUp && (<FiArrowUpRight className={styles.arrowUp} />)}
           </button>
         </a>
       </Link>
@@ -57,6 +60,7 @@ function Button(props) {
         >
           <div className={styles.button__title}>{title}</div>
           {arrow && (<FiChevronDown className={styles.arrow} />)}
+          {arrowUp && (<FiArrowUpRight className={styles.arrow} />)}
         </button>
       </a>
     )
@@ -69,6 +73,7 @@ function Button(props) {
     >
       <div className={styles.button__title}>{title}</div>
       {arrow && (<FiChevronDown className={styles.arrow} />)}
+      {arrowUp && (<FiArrowUpRight className={styles.arrow} />)}
     </button>
   )
 }
@@ -79,6 +84,7 @@ Button.propTypes = {
   size: PropTypes.string,
   disabled: PropTypes.boolean,
   arrow: PropTypes.boolean,
+  arrowUp: PropTypes.boolean,
   route: PropTypes.shape({
     slug: PropTypes.shape({
       current: PropTypes.string,
