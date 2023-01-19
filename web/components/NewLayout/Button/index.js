@@ -26,6 +26,7 @@ function Button(props) {
     solidOrange: styles.button__solid__orange,
     solidDarkBlue: styles.button__solid__darkblue,
     outlined: styles.button__outlined,
+    outlinedBlack: styles.button__outlined__black,
     outlinedWhite: styles.button__outlined__white,
   }
 
@@ -86,6 +87,7 @@ Button.propTypes = {
   size: PropTypes.string,
   disabled: PropTypes.boolean,
   arrow: PropTypes.boolean,
+  arrowUp: PropTypes.boolean,
   route: PropTypes.shape({
     slug: PropTypes.shape({
       current: PropTypes.string,

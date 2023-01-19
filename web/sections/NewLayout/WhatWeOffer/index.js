@@ -70,7 +70,7 @@ function WhatWeOffer(props) {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container spacing={{xs: 2, md: 4}}>
           {
             members && members.map((item) => {
               return (

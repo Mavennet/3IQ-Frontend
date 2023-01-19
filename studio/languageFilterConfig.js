@@ -24,6 +24,7 @@ export default {
     "heroDoubleButton",
     "heroBigImage",
     "heroNft",
+    "highlights",
     "timeline",
     "hero",
     "imageBesideText",
