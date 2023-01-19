@@ -1,0 +1,52 @@
+@import '../../../styles/custom-media.css';
+  .imgGrid {
+    position: relative;
+    width: 100%;
+    padding-bottom: 55%;
+    float: left;
+    height: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+    }
+    @media (--media-min-large) {
+
+    }
+  }
+
+  .play {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .noDecoration {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .noDecoration:hover {
+    text-decoration: none!important;
+  }
+
+  .noDecoration:visited {
+    color: #000;
+  }
+
+.article__card {
+  min-width: 300px;
+  @media (--media-min-large) {
+    min-width: auto;
+    flex: 1 1 0;
+  }
+}
+
+.blue {
+  color: var(--hover-blue)
+}

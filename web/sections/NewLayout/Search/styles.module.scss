@@ -1,0 +1,42 @@
+.search {
+  &__found {
+    padding-top: 15px;
+    padding-left: 20px;
+    font-size: var(--font-size-secondary-xs);
+
+    &__mobile {
+      padding-left: 20px;
+      margin-top: 6px;
+      font-size: var(--font-size-secondary-xs);
+    }
+  }
+
+  &__dropdown {
+    width: 200px;
+
+    &__mobile {
+      width: 100%;
+    }
+  }
+
+  &__route {
+    margin: 20px 0;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+.notFound{
+  p{
+    font-size: var(--font-size-secondary-sm);
+  }
+  li{
+    font-size: var(--font-size-secondary-sm );
+  }
+}
+
+.icon{
+  cursor: pointer;
+}

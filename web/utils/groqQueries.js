@@ -64,6 +64,39 @@ export const ROUTES = groq`
 *[_type == 'route'] {...}
 `
 
+export const ROUTES_BY_TERM = groq`
+*[_type == 'route' && slug.current match [$urlTag, $term]] {...,countries[]-> {urlTag}, page->{...}}
+`
+
+export const NEWS_CARD_BY_TERM = groq`
+*[_type == 'newsCard' &&  pt::text(shortDescription[$languageTag]) match $term] {
+  _id,
+  _type,
+  _rev,
+  'localeButtonText': buttonText,
+  'localeShortDescription': shortDescription,
+  'localeSmallCardText': smallCardText,
+  newsletterNumber,
+  route->,
+  post-> {
+    _id,
+    _type,
+    mainImage,
+    'localeHeading': heading,
+    publishedAt,
+    categories[]-> {'localeName': name, ...},
+    author-> {
+      _id,
+      _type,
+      name,
+      email,
+      profilePhoto,
+    },
+  },
+}
+`
+
+
 export const BENEFIT_CARDS = groq`
 *[_type == 'benefitCard'] {
   ...,
@@ -98,7 +131,7 @@ export const TEAMS = groq`
 }
 `
 
-export const TIMELINES =  groq`
+export const TIMELINES = groq`
 *[_type == 'timeline'] {
   _id,
   _type,
@@ -115,7 +148,7 @@ export const TIMELINES =  groq`
 }
 `
 
-export const LOCATIONS_DISPLAY =  groq`
+export const LOCATIONS_DISPLAY = groq`
 *[_type == 'locationsDisplay'] {
   _id,
   _type,
@@ -233,6 +266,10 @@ export const FUND_CARDS = groq`
   'backgroundImage': backgroundImage
 }
 `
+
+export const CATEGORIES = groq`
+*[_type == 'category' && searchCategory == true] {...}`
+
 
 export const SITE_CONFIG_QUERY = `
   *[_id == "global-config"] {
