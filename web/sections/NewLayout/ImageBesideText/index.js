@@ -16,6 +16,7 @@ function urlFor(source) {
 function ImageBesideText(props) {
   const {
     videoSrc,
+    videoUrl,
     heading,
     backgroundImage,
     description,
@@ -59,6 +60,19 @@ function ImageBesideText(props) {
               <YouTube videoId={videoSrc} opts={opts} />
             </div>
           )}
+          {videoUrl && (
+            <div>
+              <video
+                width="100%"
+                height="100%"
+                playsInline
+                loop
+                controls
+              >
+                <source src={videoUrl} type="video/mp4" />
+              </video>
+            </div>
+          )}
         </Grid>
         <Grid item xs={12} md={6} lg={5} mt={2}>
           {
@@ -81,6 +95,7 @@ ImageBesideText.propTypes = {
   description: PropTypes.object,
   currentLanguage: PropTypes.object,
   videoSrc: PropTypes.string,
+  videoUrl: PropTypes.string,
 }
 
 export default ImageBesideText
