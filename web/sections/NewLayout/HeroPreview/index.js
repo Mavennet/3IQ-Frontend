@@ -7,10 +7,7 @@ import { Container, Typography, Box, Grid } from '@mui/material'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import { format } from 'date-fns'
 import Button from '../../../components/NewLayout/Button'
-
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
-}
+import groq from 'groq'
 
 const builder = imageUrlBuilder(client)
 
@@ -27,6 +24,7 @@ function HeroPreview(props) {
   } = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
+  const [categorie, setCategorie] = React.useState(null)
 
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
@@ -40,6 +38,27 @@ function HeroPreview(props) {
       setPublishedDate(formattedDate)
     }
   }, [currentLanguage, post.publishedAt])
+
+  React.useEffect(() => {
+    const fetchCategories = async (ref) => {
+      await client
+        .fetch(
+          groq`
+        *[_type == 'category' && _id == $categorieRef] {
+          _id,
+          _ref,
+          name,
+        }[0]
+       `,
+          { categorieRef: ref }
+        )
+        .then((response) => {
+          setCategorie(response)
+        })
+    }
+    console.log(post?.categories[0]?._ref)
+    fetchCategories(post?.categories[0]?._ref)
+  }, [])
 
   return (
     <Box
@@ -63,6 +82,19 @@ function HeroPreview(props) {
             </div>
           </Grid>
           <Grid item xs={12} md={5}>
+            {categorie?.name && (
+              <Typography
+                my={2}
+                variant="h5"
+                sx={{
+                  fontSize: 'var(--font-size-secondary-sm)',
+                  fontFamily: 'var(--font-family-secondary)',
+                  color: '#F59B1E',
+                }}
+              >
+                {categorie?.name?.[currentLanguage.languageTag]}
+              </Typography>
+            )}
             {post.heading[currentLanguage.languageTag] && (
               <Typography
                 component="h2"
@@ -86,7 +118,7 @@ function HeroPreview(props) {
                 sx={{
                   fontSize: 'var(--font-size-secondary-md)',
                   fontFamily: 'var(--font-family-secondary)',
-                  color: 'var(--white)',
+                  color: greenLayout ? 'var(--white)' : '#A9A9A9',
                 }}
               >
                 {publishedDate}
@@ -96,7 +128,7 @@ function HeroPreview(props) {
               buttonText && route && (
                 <Button
                   title={buttonText}
-                  variant={'solidWhite'}
+                  variant={greenLayout ? 'solidWhite' : 'solid'}
                   className={styles.button}
                   route={route}
                 />
