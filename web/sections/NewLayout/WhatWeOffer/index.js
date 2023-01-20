@@ -45,12 +45,6 @@ function WhatWeOffer(props) {
     }
   }, [])
 
-  React.useEffect(() => {
-    if (members) {
-      console.log(members)
-    }
-  }, [members])
-
   return (
     <Box sx={{ background: '#ECECEC' }} py={12}>
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
@@ -99,6 +93,7 @@ function WhatWeOffer(props) {
                               fontFamily: 'var(--font-family-primary)',
                               fontSize: 'var(--font-size-primary-md)',
                               color: 'var(--black)',
+                              wordBreak: 'break-word'
                             }}
                           >
                             {item.name[currentLanguage.languageTag]}
