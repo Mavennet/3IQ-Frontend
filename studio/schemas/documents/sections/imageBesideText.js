@@ -42,6 +42,12 @@ export default {
       title: 'YouTube video ID',
       description: 'Optional display of an YouTube video through its ID'
     },
+    {
+      name: 'videoUrl',
+      type: 'url',
+      title: 'Video URL',
+      description: 'Optional display of an video through its url'
+    },
   ],
   preview: {
     select: {
