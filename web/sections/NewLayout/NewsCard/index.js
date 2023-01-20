@@ -52,7 +52,6 @@ function NewsCard(props) {
           setCategorie(response)
         })
     }
-    console.log(post?.categories[0]?._ref)
     fetchCategories(post?.categories[0]?._ref)
   }, [])
 
