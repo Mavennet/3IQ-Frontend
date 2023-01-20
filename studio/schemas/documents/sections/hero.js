@@ -28,6 +28,7 @@ export default {
       options: {
         list: [
           { title: "Blue", value: "#0082E5" },
+          { title: "Black", value: "#28373C" },
           { title: "Green", value: "#008C86" },
           { title: "Orange", value: "#F59B1E" },
           { title: "White", value: "#FFFFFF" }
