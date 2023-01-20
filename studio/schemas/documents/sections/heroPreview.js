@@ -1,11 +1,19 @@
 import { BlockquoteIcon } from '@sanity/icons'
+import supportedLanguages from '../../supportedLanguages'
+const baseLanguage = supportedLanguages.find(l => l.isDefault)
 
 export default {
   type: 'document',
-  name: 'newsCard',
-  title: 'News Card',
+  name: 'heroPreview',
+  title: 'Hero Preview',
   icon: BlockquoteIcon,
   fields: [
+    {
+      name: 'heading',
+      type: 'localeString',
+      title: 'Heading (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
     {
       name: 'post',
       type: 'reference',
@@ -19,17 +27,19 @@ export default {
       ],
     },
     {
-      name: 'isInvertedLayout',
-      type: 'boolean',
-      title: 'Invert layout?',
-      description: 'Enable this option to invert the content and show the image on the right side',
-      initialValue: false,
+      name: 'backgroundImage',
+      type: 'image',
+      title: 'Background image (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+      options: {
+        hotspot: true,
+      },
     },
     {
-      name: 'hideHeader',
+      name: 'greenLayout',
       type: 'boolean',
-      title: 'Hide header layout?',
-      description: 'Enable this option to hide header ',
+      title: 'Is green layout?',
+      description: 'Enable this option to change color to green',
       initialValue: false,
     },
     {
@@ -39,10 +49,10 @@ export default {
       description: "Optional overview about the selected post for the normal-sized News Card",
     },
     {
-      name: 'smallCardText',
+      name: 'buttonText',
       type: 'localeString',
-      title: 'Short text for compacted News Card',
-      description: "Optional short text about the selected post that will be shown only in the compacted/small view of the News Card",
+      title: 'Button text (*)',
+      validation: Rule => Rule.error('Information required.').required(),
     },
     {
       name: 'route',
@@ -56,23 +66,17 @@ export default {
         },
       ],
     },
-    {
-      name: 'newsletterNumber',
-      type: 'string',
-      title: 'Newsletter Number (*)',
-      description: "Type a number if it's a Newsletter",
-    },
   ],
   preview: {
     select: {
-      title: `post.name`,
-      isInverted: `isInvertedLayout`,
+      title: `heading.${baseLanguage.id}`,
+      media: 'backgroundImage',
     },
-    prepare({ title, isInverted }) {
-      const isInvertedText = isInverted ? ' - Inverted' : ''
+    prepare({ title, media }) {
       return {
         title,
-        subtitle: 'News Card section' + isInvertedText
+        media,
+        subtitle: 'Hero Preview section'
       }
     }
   }
