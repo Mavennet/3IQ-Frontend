@@ -124,7 +124,7 @@ function Highlights(props) {
                 {...firstLocaleButton}
                 size="sm"
                 title={firstLocaleButton.title}
-                arrowUp
+                redirectArrow
               />
             )}
             {secondLocaleButton && (
@@ -133,7 +133,7 @@ function Highlights(props) {
                 {...secondLocaleButton}
                 size="sm"
                 title={secondLocaleButton.title}
-                arrowUp
+                redirectArrow
               />
             )}
           </Box>

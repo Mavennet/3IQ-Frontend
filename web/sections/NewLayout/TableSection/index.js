@@ -23,6 +23,7 @@ function TableSection(props) {
   } = props
 
   const [data, setData] = React.useState(null)
+  const [date, setDate] = React.useState(null)
 
   const typesStyle = {
     orange: styles.orange,
@@ -32,7 +33,10 @@ function TableSection(props) {
 
   const getTableData = (endpoint) => {
     axios.get(endpoint)
-      .then(response => response.data[currentLanguage.languageTag] ? setData([response.data[currentLanguage.languageTag]]) : setData(response.data))
+      .then(response => {
+        response.data[currentLanguage.languageTag] ? setData([response.data[currentLanguage.languageTag]]) : setData(response.data)
+        response.data.date && setDate(response.data.date[currentLanguage.languageTag])
+      })
   }
 
   const isDate = (dateStr) => {
@@ -69,7 +73,7 @@ function TableSection(props) {
     if (endpoint) {
       getTableData(endpoint)
     }
-  }, [endpoint])
+  }, [endpoint, currentLanguage])
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', md: 'lg', lg: 'xl' } }}>
@@ -138,7 +142,7 @@ function TableSection(props) {
               <div className={styles.simpleBlockContent}>
                 <table>
                   {
-                    headers && (
+                    headers ? (
                       <thead className={headerTransparentLayout && styles.headerTransparent}>
                         <tr>
                           {
@@ -146,6 +150,21 @@ function TableSection(props) {
                               return (
                                 <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
                               )
+                            })
+                          }
+                        </tr>
+                      </thead>
+                    ) : (
+                      <thead className={headerTransparentLayout && styles.headerTransparent}>
+                        <tr>
+                          {
+                            data.map((item, i) => {
+                              const keys = Object.keys(item)
+                              return keys.map((item, i) => {
+                                return (
+                                  <th key={i}>{item}</th>
+                                )
+                              })
                             })
                           }
                         </tr>
@@ -197,6 +216,9 @@ function TableSection(props) {
             <Grid item xs={12} mb={3}>
               <div className={styles.simpleBlockContent}>
                 <SimpleBlockContent blocks={embed} />
+                {date && (
+                  <Typography paragraph>‡ {date}</Typography>
+                )}
               </div>
             </Grid>
           )
