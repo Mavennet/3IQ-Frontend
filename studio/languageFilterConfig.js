@@ -54,6 +54,7 @@ export default {
     "readMoreCard",
     "person",
     "benefity",
+    "accordionItem",
     "team",
     "contactUsForm",
     "subscribeForm",

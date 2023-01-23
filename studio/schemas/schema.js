@@ -7,6 +7,7 @@ import route from "./documents/route";
 import siteConfig from "./documents/siteConfig";
 import person from "./documents/person";
 import benefity from "./documents/benefity";
+import accordionItem from './documents/accordionItem';
 import country from "./documents/country";
 import language from "./documents/language";
 import post from "./documents/post";
@@ -63,6 +64,7 @@ import automatedArticles from "./documents/sections/automatedArticles";
 import readMoreCard from "./documents/sections/readMoreCard";
 import teamsDisplay from "./documents/sections/teamsDisplay";
 import whatWeOffer from "./documents/sections/whatWeOffer";
+import AccordionText from './documents/sections/accordionText';
 import timeline from "./documents/sections/timeline";
 import contactUsForm from "./documents/sections/contactUsForm";
 import subscribeForm from "./documents/sections/subscribeForm";
@@ -100,6 +102,7 @@ import localeSimplePortableText from "./objects/locale/localeSimplePortableText"
 import localePortableText from "./objects/locale/localePortableText";
 import localeBioPortableText from "./objects/locale/localeBioPortableText";
 import localeFigure from "./objects/locale/localeFigure";
+import accordionText from "./documents/sections/accordionText";
 
 export default createSchema({
   name: "default",
@@ -127,6 +130,7 @@ export default createSchema({
     postPortableText,
     person,
     benefity,
+    accordionItem,
     doubleOptions,
     keyBenefits,
     benefitCard,
@@ -169,6 +173,7 @@ export default createSchema({
     team,
     teamsDisplay,
     whatWeOffer,
+    accordionText,
     timeline,
     timelineItem,
     subscribeForm,

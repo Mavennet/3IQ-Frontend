@@ -21,6 +21,7 @@ const hiddenDocTypes = listItem =>
     "language",
     "person",
     "benefity",
+    "accordionItem",
     "route",
     "textSection",
     "hero",
@@ -64,6 +65,7 @@ const hiddenDocTypes = listItem =>
     "team",
     "teamsDisplay",
     "whatWeOffer",
+    "accordionText",
     "timeline",
     "timelineItem",
     "contactUsForm",
@@ -137,6 +139,7 @@ export default () =>
             .items([
               S.documentTypeListItem("mailchimp").title("Mailchimp"),
               S.documentTypeListItem("advertisement").title("Advertisement"),
+              S.documentTypeListItem("accordionText").title("Accordion Text"),
               S.documentTypeListItem("mainHero").title("Main Hero"),
               S.documentTypeListItem("podcasts").title("Podcasts"),
               S.documentTypeListItem("search").title("Search"),
@@ -304,5 +307,6 @@ export default () =>
         ),
       S.documentTypeListItem("person").title("Members"),
       S.documentTypeListItem("benefity").title("Benefitys"),
+      S.documentTypeListItem("accordionItem").title("Accordion Item"),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ]);
