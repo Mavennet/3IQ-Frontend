@@ -33,7 +33,6 @@ function AccordionText(props) {
     if (accordionItem && itens.length == 0) {
       let ids = []
       accordionItem.forEach((item) => ids.push(item._ref))
-      console.log(ids)
       fetchAccordion(ids)
     }
   }, [])
@@ -45,9 +44,6 @@ function AccordionText(props) {
       </div>
     )
   }
-
-  console.log(accordionItem)
-  console.log(itens)
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', md: 'lg' } }}>
