@@ -30,6 +30,7 @@ export const DATA_COUNTRIES = groq`
   footerEmail,
   footerPhoneNumber,
   footerSchedule,
+  searchPageRoute  -> {page, slug, ...},
   footerSecondLeftBlockButton,
   footerBottomContent,
   newsletterBody,
@@ -95,7 +96,6 @@ export const NEWS_CARD_BY_TERM = groq`
   },
 }
 `
-
 
 export const BENEFIT_CARDS = groq`
 *[_type == 'benefitCard'] {
@@ -174,7 +174,7 @@ export const TAB_ITEMS = groq`
   'localeName': name,
   isPaginatedNewsletter,
   isNewsCardsHorizontalLayout,
-  selectedPostCategory->,
+  selectedPostCategory-> {...},
   newsCards[]-> {
     _id,
     _type,
@@ -193,6 +193,7 @@ export const TAB_ITEMS = groq`
         _id,
         _type,
         'localeName': name,
+        ...
       },
       author-> {
         _id,
@@ -270,6 +271,8 @@ export const FUND_CARDS = groq`
 export const CATEGORIES = groq`
 *[_type == 'category' && searchCategory == true] {...}`
 
+export const CATEGORY_BY_ID = groq`
+*[_type == 'category' && _id == $id] {...}[0]`
 
 export const SITE_CONFIG_QUERY = `
   *[_id == "global-config"] {

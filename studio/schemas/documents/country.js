@@ -100,6 +100,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'searchPageRoute',
+      type: 'reference',
+      to: [{ type: 'route' }],
+      title: 'Search Page Route',
+    },
+    {
       name: 'footerNavigation',
       type: 'array',
       title: 'Footer navigation',
