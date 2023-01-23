@@ -15,7 +15,7 @@ function urlFor(source) {
 }
 
 function NewsCard(props) {
-  const { post, buttonText, route, currentLanguage, isInvertedLayout, shortDescription } = props
+  const { post, hideHeader, route, currentLanguage, isInvertedLayout, shortDescription } = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
 
@@ -52,7 +52,6 @@ function NewsCard(props) {
           setCategorie(response)
         })
     }
-    console.log(post?.categories[0]?._ref)
     fetchCategories(post?.categories[0]?._ref)
   }, [])
 
@@ -67,33 +66,40 @@ function NewsCard(props) {
       <a className={styles.no__decoration}>
         <Grid container component="main" sx={{ flexDirection: { xs: 'column-reverse', md: isInvertedLayout ? 'unset' : 'row-reverse' } }}>
           <Grid item xs={12} md={6} square>
-            <Box>
-              {categorie?.name && (
-                <Typography
-                  my={2}
-                  component="h2"
-                  variant="h2"
-                  sx={{
-                    fontSize: 'var(--font-size-primary-md)',
-                    fontFamily: 'var(--font-family-primary)',
-                    color: 'var(--black)',
-                    mt: { xs: 4, md: 8 },
-                    mb: { xs: 0, md: 2 },
-                    ml: { xs: 2, md: 10 },
-                    mr: { xs: 0, md: 8 },
-                  }}
-                >
-                  {categorie?.name?.[currentLanguage.languageTag]}
-                </Typography>
-              )}
-            </Box>
-            <Box my={4}>
-              <div className={styles.line}></div>
-              <div className={styles.line}></div>
-              <div className={styles.line}></div>
-            </Box>
+            {
+              !hideHeader && (
+                <>
+                  <Box>
+                    {categorie?.name && (
+                      <Typography
+                        my={2}
+                        component="h2"
+                        variant="h2"
+                        sx={{
+                          fontSize: 'var(--font-size-primary-md)',
+                          fontFamily: 'var(--font-family-primary)',
+                          color: 'var(--black)',
+                          mt: { xs: 4, md: 8 },
+                          mb: { xs: 0, md: 2 },
+                          ml: { xs: 2, md: 10 },
+                          mr: { xs: 0, md: 8 },
+                        }}
+                      >
+                        {categorie?.name?.[currentLanguage.languageTag]}
+                      </Typography>
+                    )}
+                  </Box>
+                  <Box my={2}>
+                    <div className={styles.line}></div>
+                    <div className={styles.line}></div>
+                    <div className={styles.line}></div>
+                  </Box>
+                </>
+              )
+            }
             <Box
               sx={{
+                mt: 2,
                 mb: { xs: 0, md: 2 },
                 ml: { xs: 2, md: 10 },
                 mr: { xs: 0, md: 8 },
@@ -190,10 +196,10 @@ function NewsCard(props) {
 
 NewsCard.propTypes = {
   post: PropTypes.object,
-  buttonText: PropTypes.string,
   currentLanguage: PropTypes.object,
   route: PropTypes.object,
   isInvertedLayout: PropTypes.bool,
+  hideHeader: PropTypes.bool,
   shortDescription: PropTypes.object,
 }
 

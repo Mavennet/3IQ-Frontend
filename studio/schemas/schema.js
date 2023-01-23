@@ -36,6 +36,7 @@ import heroFirstVariation from "./documents/sections/heroFirstVariation";
 import heroDoubleButton from "./documents/sections/heroDoubleButton";
 import heroBigImage from "./documents/sections/heroBigImage";
 import heroNft from './documents/sections/heroNft';
+import heroPreview from './documents/sections/heroPreview';
 import highlights from './documents/sections/highlights';
 import imageWithText from "./documents/sections/imageWithText";
 import mailchimp from "./documents/sections/mailchimp";
@@ -144,6 +145,7 @@ export default createSchema({
     heroDoubleButton,
     heroBigImage,
     heroNft,
+    heroPreview,
     highlights,
     imageBesideText,
     hero,

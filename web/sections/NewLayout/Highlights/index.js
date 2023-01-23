@@ -139,7 +139,7 @@ function Highlights(props) {
           </Box>
         </Grid>
       </Grid>
-      <Grid container spacing={{ xs: 0, md: 3 }} pb={10} sx={{ alignItems: 'stretch' }}>
+      <Grid container spacing={{ xs: 0, md: 3 }} sx={{ alignItems: 'stretch' }}>
         <Grid item xs={12} md={8}>
           {videoSrc && (
             <div className={styles.video}>
