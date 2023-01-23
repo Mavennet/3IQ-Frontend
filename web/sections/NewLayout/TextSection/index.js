@@ -112,6 +112,9 @@ function TextSection(props) {
                     {heading}
                   </Typography>
                 )}
+                <div style="width: 100%; height: auto">
+                  <iframe width="100%" height="715" src="https://www.youtube.com/embed/CAOzw3Z5-a8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
                 <div style={{ background: isGrayBackground && '#e8e8ea', padding: 30 }}>
                   {text && (
                     <Grid className={styles.textSection} container spacing={2}>
