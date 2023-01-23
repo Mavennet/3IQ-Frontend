@@ -15,11 +15,17 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'hideHeading',
+      type: 'boolean',
+      title: 'Hide Heading Image?',
+      description: 'Enable this option to hide the title in side image.',
+      initialValue: false,
+    },
+    {
       name: 'post',
       type: 'reference',
-      title: 'Post (*)',
+      title: 'Post',
       description: "Select the post that this card should refer to. It is a good practice to keep only 1 News Card per Post, since it will avoid duplicates being displayed when enabling the News Cards Paginated Layout on a Tab Item",
-      validation: Rule => Rule.error('Information required.').required(),
       to: [
         {
           type: 'post',
@@ -29,7 +35,7 @@ export default {
     {
       name: 'backgroundImage',
       type: 'image',
-      title: 'Background image (*)',
+      title: 'Background image',
       validation: Rule => Rule.error('Information required.').required(),
       options: {
         hotspot: true,
@@ -51,15 +57,13 @@ export default {
     {
       name: 'buttonText',
       type: 'localeString',
-      title: 'Button text (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Button text',
     },
     {
       name: 'route',
       type: 'reference',
-      title: 'Route (*)',
+      title: 'Route',
       description: "Select the route that points to this post's Page",
-      validation: Rule => Rule.error('Information required.').required(),
       to: [
         {
           type: 'route',

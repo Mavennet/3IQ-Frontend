@@ -14,6 +14,7 @@ const builder = imageUrlBuilder(client)
 function HeroPreview(props) {
   const {
     heading,
+    hideHeading,
     backgroundImage,
     greenLayout,
     shortDescription,
@@ -24,10 +25,10 @@ function HeroPreview(props) {
   } = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
-  const [categorie, setCategorie] = React.useState(null)
+  const [categorie, setCategorie] = React.useState("")
 
   React.useEffect(() => {
-    if (currentLanguage.languageTag) {
+    if (currentLanguage.languageTag && post?.publishedAt) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
       const newYears = new Date(post.publishedAt)
       const isEng = currentLanguage.name === "EN"
@@ -37,7 +38,7 @@ function HeroPreview(props) {
       !isEng && formattedDate.toLocaleLowerCase('fr')
       setPublishedDate(formattedDate)
     }
-  }, [currentLanguage, post.publishedAt])
+  }, [currentLanguage, post?.publishedAt])
 
   React.useEffect(() => {
     const fetchCategories = async (ref) => {
@@ -56,18 +57,19 @@ function HeroPreview(props) {
           setCategorie(response)
         })
     }
-    console.log(post?.categories[0]?._ref)
-    fetchCategories(post?.categories[0]?._ref)
-  }, [])
+
+    if (post) {
+      fetchCategories(post?.categories[0]?._ref)
+    }
+  }, [post])
 
   return (
     <Box
       py={15}
       className={greenLayout ? styles.green : styles.blue}
     >
-      {console.log(post)}
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg', xl: 'xl' } }}>
-        <Grid container spacing={{ xs: 0, md: 4 }}>
+        <Grid container spacing={{ xs: 0, md: 4 }} sx={{display: 'flex', alignItems: 'center'}}>
           <Grid item xs={12} md={7} mb={4}>
             <div className={styles.image}>
               <Box
@@ -78,7 +80,7 @@ function HeroPreview(props) {
                 alt={backgroundImage.alt}
                 src={builder.image(backgroundImage).url()}
               />
-              <h2 className={styles.heading}>{heading}</h2>
+              {heading && !hideHeading &&<h2 className={styles.heading}>{heading}</h2>}
             </div>
           </Grid>
           <Grid item xs={12} md={5}>
@@ -95,7 +97,7 @@ function HeroPreview(props) {
                 {categorie?.name?.[currentLanguage.languageTag]}
               </Typography>
             )}
-            {post.heading[currentLanguage.languageTag] && (
+            {post?.heading[currentLanguage.languageTag] && (
               <Typography
                 component="h2"
                 variant="h4"
@@ -145,6 +147,7 @@ HeroPreview.propTypes = {
   heading: PropTypes.object,
   backgroundImage: PropTypes.object,
   greenLayout: PropTypes.bool,
+  hideHeading: PropTypes.bool,
   shortDescription: PropTypes.object,
   buttonText: PropTypes.string,
   route: PropTypes.object,

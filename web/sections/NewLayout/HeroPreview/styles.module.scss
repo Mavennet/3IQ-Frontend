@@ -15,18 +15,24 @@
   color: var(--white);
   h1 {
     font-size: var(--font-size-primary-xl);
+    color: var(--white);
   }
   h2 {
     font-size: var(--font-size-primary-lg);
+    color: var(--white);
   }
   h3 {
     font-size: var(--font-size-primary-md);
+    color: var(--white);
   }
   h4 {
     font-size: var(--font-size-primary-sm);
+    color: var(--white);
+
   }
   h5 {
     font-size: var(--font-size-primary-xs);
+    color: var(--white);
   }
   p {
     font-size: var(--font-size-secondary-md);
@@ -37,6 +43,7 @@
 
 .button {
   padding: 10px 50px;
+  word-break: break-all;
 }
 
 .green {
