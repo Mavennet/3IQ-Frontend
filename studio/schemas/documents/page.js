@@ -63,6 +63,7 @@ export default {
             { type: "highlights" },
             { type: "teamsDisplay" },
             { type: "whatWeOffer" },
+            { type: "accordionText" },
             { type: "contactUsForm" },
             { type: "subscribeForm" },
             { type: "locationsDisplay" },
