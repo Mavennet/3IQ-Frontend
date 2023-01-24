@@ -37,6 +37,13 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'articlesCount',
+      title: 'How many posts did you want show?',
+      description: 'Numbers of posts to display in section',
+      type: 'number',
+      validation: Rule => Rule.min(0).integer().positive(),
+    },
+    {
       name: 'button',
       type: 'localeCta',
       title: 'Read more Button',
