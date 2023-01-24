@@ -70,7 +70,7 @@ export default {
     select: {
       title: `heading.${baseLanguage.id}`,
     },
-    prepare({ title, media }) {
+    prepare({ title }) {
       return {
         title,
         subtitle: 'Hero NFT section',

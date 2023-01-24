@@ -5,8 +5,8 @@ const baseLanguage = supportedLanguages.find(l => l.isDefault);
 
 export default {
   type: 'document',
-  name: 'heroWithImage',
-  title: 'Hero with Image',
+  name: 'heroSubscribe',
+  title: 'Hero Subscribe',
   icon: SplitHorizontalIcon,
   fields: [
     {
@@ -21,18 +21,6 @@ export default {
       title: 'Description',
     },
     {
-      title: "Align text to",
-      name: "align",
-      type: "string",
-      options: {
-        list: [
-          { title: "Left", value: "flex-start" },
-          { title: "Right", value: "flex-end" },
-        ],
-        layout: "radio"
-      }
-    },
-    {
       name: 'backgroundImage',
       type: 'image',
       title: 'Background image (*)',
@@ -40,19 +28,6 @@ export default {
       options: {
         hotspot: true,
       },
-    },
-    {
-      name: 'button',
-      type: 'localeCta',
-      title: 'Main button (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },
-    {
-      name: 'stripes',
-      type: 'boolean',
-      title: 'Display stripes in Layout?',
-      description: 'Enable to show 3 stripes in footer layout.',
-      initialValue: false,
     },
   ],
   preview: {
@@ -63,7 +38,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero With Image section',
+        subtitle: 'Hero Subscribe section',
         media,
       };
     },
