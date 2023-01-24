@@ -164,6 +164,19 @@ export const LOCATIONS_DISPLAY = groq`
 }
 `
 
+export const LOCATIONS = groq`
+*[_type == 'location' && _id in $locationIds] {
+    _id,
+    _type,
+    'localeName': name,
+    'localeDescription': description,
+    googleMapsSrc,
+    isMetaverse,
+    redirectLink,
+    mainImage,
+}
+`
+
 export const TAB_ITEMS = groq`
 *[_type == 'tabItem'] {
   _id,

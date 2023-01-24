@@ -1,8 +1,9 @@
 import React from 'react'
-import { PropTypes } from 'prop-types'
+import {PropTypes} from 'prop-types'
 import styles from './styles.module.scss'
-import { FiChevronDown } from 'react-icons/fi'
-import {BsArrowUpRight} from 'react-icons/bs'
+import {FiChevronDown} from 'react-icons/fi'
+import {BsArrowUpRight, BsBoxArrowUpRight} from 'react-icons/bs'
+import {BiMap} from 'react-icons/bi'
 import Link from 'next/link'
 
 function Button(props) {
@@ -12,12 +13,14 @@ function Button(props) {
     size = 'md',
     disabled = false,
     arrow = false,
+    map = false,
     onClick = null,
     redirectArrow = false,
+    redirectArrowLeft = false,
     route,
     link,
     target,
-    className
+    className,
   } = props
 
   const typesStyle = {
@@ -35,7 +38,7 @@ function Button(props) {
       <Link
         href={{
           pathname: '/LandingPage',
-          query: { slug: route.slug.current },
+          query: {slug: route.slug.current},
         }}
         as={`/${route.slug.current}`}
       >
@@ -44,9 +47,11 @@ function Button(props) {
             className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
             disabled={disabled}
           >
+            {redirectArrowLeft && <BsBoxArrowUpRight className={styles.redirect__arrow__left} />}
+            {map && <BiMap className={styles.map} />}
             <div className={styles.button__title}>{title}</div>
-            {arrow && (<FiChevronDown className={styles.arrow} />)}
-            {redirectArrow && (<BsArrowUpRight className={styles.redirect__arrow} />)}
+            {arrow && <FiChevronDown className={styles.arrow} />}
+            {redirectArrow && <BsArrowUpRight className={styles.redirect__arrow} />}
           </button>
         </a>
       </Link>
@@ -60,9 +65,11 @@ function Button(props) {
           className={`${styles.button} ${typesStyle[variant]} ${size} ${className}`}
           disabled={disabled}
         >
+          {redirectArrowLeft && <BsBoxArrowUpRight className={styles.redirect__arrow__left} />}
+          {map && <BiMap className={styles.map} />}
           <div className={styles.button__title}>{title}</div>
-          {arrow && (<FiChevronDown className={styles.arrow} />)}
-          {redirectArrow && (<BsArrowUpRight className={styles.redirect__arrow} />)}
+          {arrow && <FiChevronDown className={styles.arrow} />}
+          {redirectArrow && <BsArrowUpRight className={styles.redirect__arrow} />}
         </button>
       </a>
     )
@@ -74,9 +81,11 @@ function Button(props) {
       disabled={disabled}
       onClick={onClick}
     >
+      {redirectArrowLeft && <BsBoxArrowUpRight className={styles.redirect__arrow__left} />}
+      {map && <BiMap className={styles.map} />}
       <div className={styles.button__title}>{title}</div>
-      {arrow && (<FiChevronDown className={styles.arrow} />)}
-      {redirectArrow && (<BsArrowUpRight className={styles.redirect__arrow} />)}
+      {arrow && <FiChevronDown className={styles.arrow} />}
+      {redirectArrow && <BsArrowUpRight className={styles.redirect__arrow} />}
     </button>
   )
 }
@@ -95,7 +104,7 @@ Button.propTypes = {
   }),
   link: PropTypes.string,
   target: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 }
 
 export default Button
