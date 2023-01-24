@@ -55,6 +55,7 @@ import quoteHeadsDubai from "./documents/sections/quoteHeadsDubai";
 import fundsDisclaimer from "./documents/sections/fundsDisclaimer";
 import readyToInvest from "./documents/sections/readyToInvest";
 import awards from "./documents/sections/awards";
+import categoriesList from './documents/sections/categoriesList';
 import note from "./documents/sections/note";
 import doubleOptions from "./documents/sections/doubleOptions";
 import sideBySideImages from "./documents/sections/sideBySideImages";
@@ -164,6 +165,7 @@ export default createSchema({
     fundsDisclaimer,
     readyToInvest,
     awards,
+    categoriesList,
     sideBySideImages,
     menuItem,
     localePortableText,

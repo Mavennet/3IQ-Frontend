@@ -75,6 +75,7 @@ export default {
             { type: "quoteHeadsDubai" },
             { type: "readyToInvest" },
             { type: "awards" },
+            { type: "categoriesList" },
             { type: "fundsDisclaimer" },
             { type: "keyBenefits" },
             { type: "sideBySideImages" },
