@@ -12,7 +12,7 @@ import ArticleCard from '../../../components/NewLayout/ArticleCard'
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
 
 function AutomatedArticles(props) {
-  const { selectedPostCategory, currentLanguage, button, name } = props
+  const { selectedPostCategory, currentLanguage, button, name, align } = props
 
   const localeButton = button && button[currentLanguage?.languageTag]
 
@@ -90,11 +90,11 @@ function AutomatedArticles(props) {
   }, [])
 
   return (
-    <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+    <Container sx={{ maxWidth: { sm: 'md', lg: 'xl' } }}>
       <Grid container pb={4} mt={10}>
         {
           name && (
-            <Grid item xs={12} mb={8} sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'space-between', md: 'center' } }}>
+            <Grid item xs={12} mb={2} p={{xs: 1, md: 2}} sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: align ? align : 'space-between', md: align ? align : 'center' } }}>
               <h2 className={styles.title}>{name}</h2>
               <div className={styles.arrows}>
                 <IoIosArrowDropleft
@@ -109,7 +109,7 @@ function AutomatedArticles(props) {
             </Grid>
           )
         }
-        <Grid container spacing={{xs: 0, md: 6}}>
+        <Grid container>
           <div className={styles.news__container} ref={containerRef}>
             {
               articles && (
@@ -147,6 +147,7 @@ function AutomatedArticles(props) {
 
 AutomatedArticles.propTypes = {
   name: PropTypes.string,
+  align: PropTypes.string,
   selectedPostCategory: PropTypes.object,
   currentLanguage: PropTypes.object,
   button: PropTypes.object

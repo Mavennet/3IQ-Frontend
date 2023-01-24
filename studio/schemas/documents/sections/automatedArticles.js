@@ -16,6 +16,19 @@ export default {
         validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      title: "Align title to",
+      name: "align",
+      type: "string",
+      options: {
+        list: [
+          { title: "Left", value: "flex-start" },
+          { title: "Center", value: "center" },
+          { title: "Right", value: "flex-end" },
+        ],
+        layout: "radio"
+      }
+    },
+    {
       name: 'selectedPostCategory',
       title: 'Post Category (*)',
       description: "Select a category that will be used to automatically filter the 3 lastest Articles that has a post on the category selected, ordered by the post's 'Published at' date. **IMPORTANT: the automated News Card will only be visible if each of the 3 latest Posts for the selected category has a News Card that it is associated with**",
