@@ -59,6 +59,7 @@ export default {
             { type: "heroDoubleButton" },
             { type: "heroBigImage" },
             { type: "heroNft" },
+            { type: "heroSubscribe" },
             { type: "heroPreview" },
             { type: "highlights" },
             { type: "teamsDisplay" },

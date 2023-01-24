@@ -37,6 +37,7 @@ import heroFirstVariation from "./documents/sections/heroFirstVariation";
 import heroDoubleButton from "./documents/sections/heroDoubleButton";
 import heroBigImage from "./documents/sections/heroBigImage";
 import heroNft from './documents/sections/heroNft';
+import heroSubscribe from './documents/sections/heroSubscribe';
 import heroPreview from './documents/sections/heroPreview';
 import highlights from './documents/sections/highlights';
 import imageWithText from "./documents/sections/imageWithText";
@@ -149,6 +150,7 @@ export default createSchema({
     heroDoubleButton,
     heroBigImage,
     heroNft,
+    heroSubscribe,
     heroPreview,
     highlights,
     imageBesideText,
