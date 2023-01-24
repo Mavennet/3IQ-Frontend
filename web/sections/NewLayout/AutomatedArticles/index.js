@@ -14,7 +14,7 @@ import ArticleCard from '../../../components/NewLayout/ArticleCard'
 import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
 
 function AutomatedArticles(props) {
-  const { selectedPostCategory, currentLanguage, button, name, align, buttonInHeader } = props
+  const { selectedPostCategory, currentLanguage, button, name, align, buttonInHeader, articlesCount = 3 } = props
 
   const localeButton = button && button[currentLanguage?.languageTag]
 
@@ -37,7 +37,7 @@ function AutomatedArticles(props) {
           _id,
           _type,
           publishedAt,
-        }[0..2]`,
+        }[0..${articlesCount - 1}]`,
         { categoryId: selectedPostCategory._ref }
       )
       .then((response) => {
@@ -74,7 +74,7 @@ function AutomatedArticles(props) {
                     profilePhoto,
                   },
                 },
-              }[0..2]`,
+              }[0..${articlesCount - 1}]`,
               { postsIds: postsId }
             )
             .then((res) => {
@@ -144,7 +144,7 @@ function AutomatedArticles(props) {
           <div className={styles.news__container} ref={containerRef}>
             {
               articles && (
-                articles.map((item) => {
+                articles.map((item, i) => {
                   return (
                     <Grid item xs={12} sm={6} mb={4} p={{ xs: 1, md: 2 }}>
                       <ArticleCard
@@ -178,6 +178,7 @@ function AutomatedArticles(props) {
 AutomatedArticles.propTypes = {
   name: PropTypes.string,
   align: PropTypes.string,
+  articlesCount: PropTypes.number,
   buttonInHeader: PropTypes.bool,
   selectedPostCategory: PropTypes.object,
   currentLanguage: PropTypes.object,
