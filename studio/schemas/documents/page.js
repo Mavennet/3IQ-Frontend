@@ -38,6 +38,7 @@ export default {
             { type: "post" },
             { type: "newsCard" },
             { type: "automatedNewsCard" },
+            { type: "automatedArticles" },
             { type: "readMoreCard" },
             { type: "textSection" },
             { type: "plainText" },

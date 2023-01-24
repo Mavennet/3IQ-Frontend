@@ -150,6 +150,9 @@ export default () =>
               S.documentTypeListItem("automatedNewsCard").title(
                 "Automated News Card"
               ),
+              S.documentTypeListItem("automatedArticles").title(
+                "Automated Articles"
+              ),
               S.documentTypeListItem("contactUsForm").title("Contact Us Form"),
               S.documentTypeListItem("subscribeForm").title("Subscribe Form"),
               S.documentTypeListItem("descriptionsWithButton").title(
