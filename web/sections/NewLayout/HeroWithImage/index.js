@@ -12,7 +12,7 @@ function urlFor(source) {
 }
 
 function HeroWithImage(props) {
-  const { heading, backgroundImage, description, button, currentLanguage } = props
+  const { heading, backgroundImage, description, button, currentLanguage, align, stripes } = props
 
   const localeButton = button[currentLanguage?.languageTag]
 
@@ -25,10 +25,11 @@ function HeroWithImage(props) {
             .url()}") no-repeat center center`,
         backgroundSize: 'cover',
         py: 15,
+        position: 'relative',
       }}
     >
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-        <Grid container sx={{display: 'flex', justifyContent: 'flex-end'}}>
+        <Grid container sx={{ display: 'flex', justifyContent: align ? align : 'flex-end' }}>
           <Grid item xs={12} md={6} my={4}>
             <div className={styles.simple__block__content}>
               <h2 className={styles.heading}>{heading}</h2>
@@ -45,12 +46,30 @@ function HeroWithImage(props) {
           </Grid>
         </Grid>
       </Container>
+      {
+        stripes && (
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              width: '100%',
+            }}
+          >
+            <div className={styles.stripe} />
+            <div className={styles.stripe} />
+            <div className={styles.stripe} />
+          </Box>
+        )
+      }
     </Box>
   )
 }
 
 HeroWithImage.propTypes = {
   heading: PropTypes.object,
+  align: PropTypes.string,
+  stripes: PropTypes.bool,
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.object,
