@@ -21,9 +21,9 @@ export default {
       type: "string",
       options: {
         list: [
-          { title: "Left", value: "flex-start" },
+          { title: "Left", value: "left" },
           { title: "Center", value: "center" },
-          { title: "Right", value: "flex-end" },
+          { title: "Right", value: "right" },
         ],
         layout: "radio"
       }
@@ -41,6 +41,12 @@ export default {
       type: 'localeCta',
       title: 'Read more Button',
       description: 'Optional button to show the route/link to more Posts'
+    },
+    {
+      name: 'buttonInHeader',
+      type: 'boolean',
+      title: 'Button fixed in Header, inline with Title?',
+      initialValue: false,
     },
   ],
   preview: {
