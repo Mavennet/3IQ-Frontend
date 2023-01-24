@@ -46,6 +46,16 @@ export default {
       fieldset: 'reference',
     },
     {
+      name: 'redirectLink',
+      type: 'localeCta',
+      title: 'Link to redirect the user'
+    },
+    {
+      name: 'isMetaverse',
+      type: 'boolean',
+      title: 'Link to metaverse?'
+    },
+    {
       name: 'description',
       type: 'localePortableText',
       title: 'Description (*)',

@@ -151,8 +151,21 @@
   margin-left: auto;
 }
 
+.map{
+  position: relative;
+  font-size: 20px;
+  padding-right: 8px;
+}
+
 .redirect__arrow{
-  position: realtive;
+  position: relative;
   padding-left: 5px;
   margin-left: auto;
+
+  &__left{
+    position: relative;
+    font-size: 18px;
+    padding-right: 8px;
+
+  }
 }
