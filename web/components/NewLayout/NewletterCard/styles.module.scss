@@ -47,6 +47,23 @@
   }
 }
 
+.md {
+  h3 {
+    font-size: var(--font-size-primary-sm);
+  }
+  h5 {
+    font-size: var(--font-size-secondary-sm);
+  }
+  span {
+    font-size: var(--font-size-secondary-sm);
+  }
+  .number {
+    font-size: var(--font-size-secondary-lg);
+    width: 60px;
+    height: 60px;
+  }
+}
+
 .blue {
   color: var(--hover-blue);
   font-size: var(--font-size-secondary-xs);
