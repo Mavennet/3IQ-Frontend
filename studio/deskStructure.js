@@ -63,6 +63,7 @@ const hiddenDocTypes = listItem =>
     "categoriesList",
     "automatedNewsCard",
     "automatedArticles",
+    "automatedLatest",
     "readMoreCard",
     "team",
     "teamsDisplay",
@@ -154,6 +155,9 @@ export default () =>
               ),
               S.documentTypeListItem("automatedArticles").title(
                 "Automated Articles"
+              ),
+              S.documentTypeListItem("automatedLatest").title(
+                "Automated Latest"
               ),
               S.documentTypeListItem("contactUsForm").title("Contact Us Form"),
               S.documentTypeListItem("subscribeForm").title("Subscribe Form"),

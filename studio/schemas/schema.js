@@ -63,6 +63,7 @@ import keyBenefits from "./documents/sections/keyBenefits";
 import newsCard from "./documents/sections/newsCard";
 import automatedNewsCard from "./documents/sections/automatedNewsCard";
 import automatedArticles from "./documents/sections/automatedArticles";
+import automatedLatest from "./documents/sections/automatedLatest";
 import readMoreCard from "./documents/sections/readMoreCard";
 import teamsDisplay from "./documents/sections/teamsDisplay";
 import whatWeOffer from "./documents/sections/whatWeOffer";
@@ -172,6 +173,7 @@ export default createSchema({
     newsCard,
     automatedNewsCard,
     automatedArticles,
+    automatedLatest,
     readMoreCard,
     localeBioPortableText,
     team,
