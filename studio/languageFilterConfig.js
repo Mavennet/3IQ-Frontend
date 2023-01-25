@@ -44,6 +44,7 @@ export default {
     "quoteHeadsDubai",
     "readyToInvest",
     "awards",
+    "categoriesList",
     "fundsDisclaimer",
     "sideBySideImages",
     "keyBenefits",
