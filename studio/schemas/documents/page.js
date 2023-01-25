@@ -39,6 +39,7 @@ export default {
             { type: "newsCard" },
             { type: "automatedNewsCard" },
             { type: "automatedArticles" },
+            { type: "automatedLatest" },
             { type: "readMoreCard" },
             { type: "textSection" },
             { type: "plainText" },

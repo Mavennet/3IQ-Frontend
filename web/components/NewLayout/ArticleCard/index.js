@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { AiFillPlayCircle } from 'react-icons/ai'
 
 function ArticleCard(props) {
-  const { post, route, currentLanguage } = props
+  const { post, route, hideImage = false, currentLanguage } = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
@@ -40,30 +40,34 @@ function ArticleCard(props) {
       <a>
         <div className={styles.article__card}>
           <Grid container>
-            <Grid item xs={12}>
-              <div className={styles.imgGrid}>
-                {
-                  post?.mainImage && route && (
-                    <Image
-                      src={builder.image(post?.mainImage.asset._ref).url()}
-                      alt={post?.heading}
-                      layout='fill'
-                      objectFit='cover'
-                    />
-                  )
-                }
-                {
-                  post?.categories[0]?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' && (
-                    <div className={styles.play}>
-                      <AiFillPlayCircle
-                        size={90}
-                        color={'var(--white)'}
-                      />
-                    </div>
-                  )
-                }
-              </div>
-            </Grid>
+            {
+              !hideImage && (
+                <Grid item xs={12}>
+                  <div className={styles.imgGrid}>
+                    {
+                      post?.mainImage && route && (
+                        <Image
+                          src={builder.image(post?.mainImage.asset._ref).url()}
+                          alt={post?.heading}
+                          layout='fill'
+                          objectFit='cover'
+                        />
+                      )
+                    }
+                    {
+                      post?.categories[0]?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' && (
+                        <div className={styles.play}>
+                          <AiFillPlayCircle
+                            size={90}
+                            color={'var(--white)'}
+                          />
+                        </div>
+                      )
+                    }
+                  </div>
+                </Grid>
+              )
+            }
             <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
                 {post?.author?.name && post?.categories[0]?.localeName[currentLanguage.languageTag] && (
@@ -127,6 +131,7 @@ function ArticleCard(props) {
 
 ArticleCard.propTypes = {
   post: PropTypes.object,
+  hideImage: PropTypes.bool,
   route: PropTypes.object,
   currentLanguage: PropTypes.object,
   localeButtonText: PropTypes.string,
