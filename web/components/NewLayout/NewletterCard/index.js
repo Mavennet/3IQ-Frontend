@@ -71,7 +71,7 @@ function NewsletterCard(props) {
                 justifyContent: 'space-between',
                 alignItems: 'flex-start',
               }}
-              pl={3}
+              pl={1}
             >
               <div>
                 {post?.author?.name &&
@@ -117,6 +117,7 @@ function NewsletterCard(props) {
                 )}
                 {post?.publishedAt && publishedDate && (
                   <Typography
+                  pt={3}
                     variant="h5"
                     sx={{
                       fontSize: 'var(--font-size-secondary-xs)',
