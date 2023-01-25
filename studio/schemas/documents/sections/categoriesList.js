@@ -44,21 +44,6 @@ export default {
         },
       ],
     },
-    {
-      title: "Icon Color",
-      name: "color",
-      type: "string",
-      options: {
-        list: [
-          { title: "Blue", value: "#0082E5" },
-          { title: "Dark Blue", value: "#091B3F" },
-          { title: "Green", value: "#008C86" },
-          { title: "Orange", value: "#F59B1E" },
-          { title: "White", value: "#FFFFFF" }
-        ],
-        layout: "radio"
-      }
-    },
   ],
   preview: {
     select: {
