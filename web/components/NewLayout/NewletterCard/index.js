@@ -7,10 +7,9 @@ import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import {format} from 'date-fns'
 import Link from 'next/link'
-import {AiFillPlayCircle} from 'react-icons/ai'
 
 function NewsletterCard(props) {
-  const {post, newsletterNumber, route, currentLanguage} = props
+  const {post, newsletterNumber, route, currentLanguage, size} = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
@@ -29,6 +28,12 @@ function NewsletterCard(props) {
     }
   }, [currentLanguage, post.publishedAt])
 
+  const sizes = {
+    sm: styles.sm,
+    md: styles.md,
+    lg: styles.lg
+  }
+
   return (
     <Link
       href={{
@@ -38,10 +43,11 @@ function NewsletterCard(props) {
       as={`/${route.slug.current}`}
     >
       <a>
-        <div className={styles.article__card}>
+        <div className={`${styles.article__card} ${styles[size]}`}>
           <Grid container>
             <Grid item xs={2}>
               <Box
+                className={styles.number}
                 mt={2.5}
                 sx={{
                   background: '#0D1C3D',
@@ -132,6 +138,7 @@ function NewsletterCard(props) {
 
 NewsletterCard.propTypes = {
   post: PropTypes.object,
+  size: PropTypes.string,
   route: PropTypes.object,
   currentLanguage: PropTypes.object,
   localeButtonText: PropTypes.string,

@@ -8,6 +8,7 @@ import {
   Typography
 } from '@mui/material'
 import Button from '../../../components/NewLayout/Button'
+import NewsletterCard from '../../../components/NewLayout/NewletterCard'
 import groq from 'groq'
 import styles from './styles.module.scss'
 import ArticleCard from '../../../components/NewLayout/ArticleCard'
@@ -54,6 +55,7 @@ function AutomatedArticles(props) {
                 'localeButtonText': buttonText,
                 'localeShortDescription': shortDescription,
                 'localeSmallCardText': smallCardText,
+                newsletterNumber,
                 route->,
                 post-> {
                   _id,
@@ -147,11 +149,22 @@ function AutomatedArticles(props) {
                 articles.map((item, i) => {
                   return (
                     <Grid item xs={12} sm={6} mb={4} p={{ xs: 1, md: 2 }}>
-                      <ArticleCard
-                        {...item}
-                        currentLanguage={currentLanguage}
-                        key={item._id}
-                      />
+                      {
+                        item.newsletterNumber ? (
+                          <NewsletterCard
+                            {...item}
+                            currentLanguage={currentLanguage}
+                            size={'md'}
+                          />
+                        ) : (
+                          <ArticleCard
+                            {...item}
+                            currentLanguage={currentLanguage}
+                            key={item._id}
+                          />
+                        )
+                      }
+
                     </Grid>
                   )
                 })

@@ -39,7 +39,7 @@ export default {
             value: 'https://github.com/mkhraisha/3IQ-Frontend',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://3-iq-frontend.netlify.app', category: 'apps' }
+          { title: 'Frontend', value: 'https://ocio--3iq-new.netlify.app/', category: 'apps' }
         ]
       }
     },
