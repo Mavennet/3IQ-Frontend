@@ -15,7 +15,7 @@ function Mailchimp(props) {
     }
 
     return (
-        <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
+        <Container sx={{ maxWidth: { sm: 'md', lg: 'lg', xl: 'xl' } }}>
             <Grid container className={styles.mailchimp} mb={5} py={{md: 6, xs: 3}} px={{md: 4, xs: 3}}>
                 <Grid item sm={8} xs={12}  >
                         <SimpleBlockContent blocks={text} />
