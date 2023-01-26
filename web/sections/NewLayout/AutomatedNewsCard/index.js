@@ -18,7 +18,7 @@ function AutomatedNewsCard(props) {
 
   const renderCards = () => {
     if (category && newsCard) {
-      if (category.searchId == 'videos' || category.searchId == 'webinars') {
+      if (category.searchId == 'videos' || category.searchId == 'webinars'  || category.searchId == 'podcasts') {
         return newsCard.map((item) => (
           <Grid item xs={12} sm={6} mb={4}>
             <ArticleCard {...item} currentLanguage={currentLanguage} key={item._id} />
