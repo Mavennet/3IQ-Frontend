@@ -16,6 +16,11 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'description',
+      type: 'localeString',
+      title: 'Description (*)',
+    },
+    {
       name: 'searchCategory',
       type: 'boolean',
       title: 'Search Category (*)',

@@ -24,6 +24,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'buttonText',
+      title: 'Read More Button Text (*)',
+      description: "Select text that will be displayed on the read more button",
+      type: 'localeString',
+    },
+    {
       name: 'isInvertedLayout',
       type: 'boolean',
       title: 'Invert layout?',
