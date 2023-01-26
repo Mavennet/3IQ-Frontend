@@ -12,6 +12,8 @@ import { AiFillPlayCircle } from 'react-icons/ai'
 function ArticleCard(props) {
   const { post, route, hideImage = false, currentLanguage } = props
 
+  console.log(post)
+
   const [publishedDate, setPublishedDate] = React.useState('')
 
   const builder = imageUrlBuilder(client)
