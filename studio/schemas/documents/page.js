@@ -68,6 +68,7 @@ export default {
             { type: "whatWeOffer" },
             { type: "accordionText" },
             { type: "contactUsForm" },
+            { type: "webinarSubscribe" },
             { type: "subscribeForm" },
             { type: "locationsDisplay" },
             { type: "note" },

@@ -59,6 +59,7 @@ export default {
     "accordionItem",
     "team",
     "contactUsForm",
+    "webinarSubscribe",
     "subscribeForm",
     "locationsDisplay",
     "location",

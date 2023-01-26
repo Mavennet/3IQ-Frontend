@@ -72,6 +72,7 @@ const hiddenDocTypes = listItem =>
     "timeline",
     "timelineItem",
     "contactUsForm",
+    "webinarSubscribe",
     "subscribeForm",
     "locationsDisplay",
     "location",
@@ -160,6 +161,7 @@ export default () =>
                 "Automated Latest"
               ),
               S.documentTypeListItem("contactUsForm").title("Contact Us Form"),
+              S.documentTypeListItem("webinarSubscribe").title("Webinar Subscribe"),
               S.documentTypeListItem("subscribeForm").title("Subscribe Form"),
               S.documentTypeListItem("descriptionsWithButton").title(
                 "Descriptions with Button"

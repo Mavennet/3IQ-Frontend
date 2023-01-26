@@ -1,0 +1,15 @@
+.text {
+  p {
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-sm);
+  }
+}
+
+.label {
+  font-size: var(--font-size-secondary-sm);
+}
+
+.item{
+    color: var(--light-blue);
+    font-size: var(--font-size-secondary-xs);
+}

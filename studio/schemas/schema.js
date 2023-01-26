@@ -70,6 +70,7 @@ import whatWeOffer from "./documents/sections/whatWeOffer";
 import AccordionText from './documents/sections/accordionText';
 import timeline from "./documents/sections/timeline";
 import contactUsForm from "./documents/sections/contactUsForm";
+import webinarSubscribe from "./documents/sections/webinarSubscribe";
 import subscribeForm from "./documents/sections/subscribeForm";
 import locationsDisplay from "./documents/sections/locationsDisplay";
 import plainText from "./documents/sections/plainText";
@@ -184,6 +185,7 @@ export default createSchema({
     timelineItem,
     subscribeForm,
     contactUsForm,
+    webinarSubscribe,
     locationsDisplay,
     location,
     plainText,
