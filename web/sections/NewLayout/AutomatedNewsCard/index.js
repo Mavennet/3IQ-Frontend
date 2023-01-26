@@ -7,6 +7,7 @@ import groq from 'groq'
 import {CATEGORY_BY_ID} from '../../../utils/groqQueries'
 import NewsletterCard from '../../../components/NewLayout/NewletterCard'
 import Button from '../../../components/NewLayout/Button'
+import SearchCard from '../../../components/NewLayout/SearchCard'
 
 function AutomatedNewsCard(props) {
   const {selectedPostCategory, isInvertedLayout, buttonText, currentLanguage} = props
@@ -28,6 +29,13 @@ function AutomatedNewsCard(props) {
         return newsCard.map((item) => (
           <Grid item xs={12} sm={6} mb={4}>
             <NewsletterCard {...item} currentLanguage={currentLanguage} key={item._id} />
+          </Grid>
+        ))
+      }
+      if (category.searchId == 'articles') {
+        return newsCard.map((item) => (
+          <Grid item xs={12} sm={4} p={2} mb={4}>
+            <SearchCard {...item} currentLanguage={currentLanguage} key={item._id} />
           </Grid>
         ))
       }
@@ -116,7 +124,12 @@ function AutomatedNewsCard(props) {
       <Grid container spacing={6} my={8}>
         {renderCards()}
         <Grid item xs={12} align="center">
-          <Button size="xs" variant="outlined" onClick={() => setMaxQuantity(maxQuantity + 6)} title={buttonText || 'View More'} />
+          <Button
+            size="xs"
+            variant="outlined"
+            onClick={() => setMaxQuantity(maxQuantity + 6)}
+            title={buttonText || 'View More'}
+          />
         </Grid>
       </Grid>
     </Container>
