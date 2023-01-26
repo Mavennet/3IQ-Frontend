@@ -110,7 +110,7 @@ function NewsCard(props) {
                   },
                 }}
               >
-                <Grid item xs={12} md={6} square>
+                <Grid item xs={12} md={6} sx={{background: '#EBEBEB'}} square>
                   {!hideHeader && (
                     <>
                       <Box>
