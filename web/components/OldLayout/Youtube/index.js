@@ -15,12 +15,12 @@ function Youtube(node) {
 
   const opts = {
     width: '100%',
-    height: '280',
+    height: '480',
     margin: '10px'
   };
 
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12}>
       <YouTube videoId={id} opts={opts} />
     </Grid>
   )
