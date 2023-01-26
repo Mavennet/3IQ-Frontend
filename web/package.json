@@ -21,6 +21,7 @@
     "@react-three/fiber": "^7.0.29",
     "@sanity/client": "^3.0.3",
     "@sanity/image-url": "^1.0.1",
+    "@sanity/webhook": "^2.0.0",
     "axios": "^0.27.2",
     "chart.js": "^3.9.1",
     "cssnano": "^5.0.16",
