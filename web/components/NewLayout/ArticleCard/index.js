@@ -12,6 +12,8 @@ import { AiFillPlayCircle } from 'react-icons/ai'
 function ArticleCard(props) {
   const { post, route, hideImage = false, currentLanguage } = props
 
+  console.log(post)
+
   const [publishedDate, setPublishedDate] = React.useState('')
 
   const builder = imageUrlBuilder(client)
@@ -55,7 +57,8 @@ function ArticleCard(props) {
                       )
                     }
                     {
-                      post?.categories[0]?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' && (
+                      post?.categories[0]?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' ||
+                      post?.categories[0]?._id === '062e2534-4f9b-42c7-9d58-4bd9d31b5394' && (
                         <div className={styles.play}>
                           <AiFillPlayCircle
                             size={90}
