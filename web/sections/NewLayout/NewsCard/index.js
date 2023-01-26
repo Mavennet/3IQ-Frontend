@@ -17,7 +17,7 @@ function urlFor(source) {
 }
 
 function NewsCard(props) {
-  const {post, hideHeader, route, currentLanguage, isInvertedLayout, shortDescription} = props
+  const {post, hideHeader, route, currentLanguage, isInvertedLayout, shortDescription, optionalTitle} = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
 
@@ -68,7 +68,7 @@ function NewsCard(props) {
           <Grid container>
             <Grid item md={7} xs={12} py={10} sx={{background: '#0D1C3D', color: 'white'}}>
               <Box pl={13} pb={5} className={styles.newsletter}>
-                <span className={styles.orangeText}>Research & Education</span>
+                <span className={styles.orangeText}>{optionalTitle && optionalTitle[currentLanguage.languageTag]}</span>
                 <h3>{categorie && categorie.name[currentLanguage.languageTag]}</h3>
                 <p>{categorie && categorie.description[currentLanguage.languageTag]}</p>
               </Box>
@@ -114,6 +114,7 @@ function NewsCard(props) {
                   {!hideHeader && (
                     <>
                       <Box>
+                      <span className={styles.orangeText}>{optionalTitle && optionalTitle[currentLanguage.languageTag]}</span>
                         {categorie?.name && (
                           <Typography
                             my={2}
