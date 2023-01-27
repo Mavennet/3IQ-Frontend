@@ -8,10 +8,11 @@ import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { getSlugVariations, slugParamToPath } from '../utils/urls'
 import CookieConsent, { Cookies } from 'react-cookie-consent'
-// import Popup from '../components/NewLayout/Popup'
+import Popup from '../components/NewLayout/Popup'
 import { Box } from '@mui/material'
 import Custom404 from './404'
 import SimpleBlockContent from '../components/OldLayout/SimpleBlockContent'
+import groq from 'groq'
 import { BENEFIT_CARDS, DATA_COUNTRIES, DATA_EQUALS_SLUG, DATA_IN_SLUG, DATA_IN_SLUG_BY_PATH, FUND_ITEMS, ITEMS, LOCATIONS_DISPLAY, ROUTES, TAB_ITEMS, TEAMS, TIMELINES, FUND_CARDS } from '../utils/groqQueries'
 
 export const getServerSideProps = async ({ params }) => {
@@ -195,9 +196,41 @@ const LandingPage = (props) => {
     currentLanguage,
   })
 
+  const [showPopUp, setShowPopUp] = useState(false)
+
   // Custom 404 Page redirect
   if (!router.isFallback && !content && router.asPath !== "/") {
     return <Custom404 config={formatedConfig} currentLanguage={currentLanguage} />
+  }
+
+  const fetchNewUpdates = async () => {
+    await client
+      .fetch(
+        groq`
+      *[_type == 'route'] | order(_updatedAt desc) {
+        _id,
+        slug,
+        page
+      }[0]
+     `,
+      )
+      .then((response) => {
+        let storageItem = localStorage.getItem('lastUpdate')
+        if (storageItem) {
+          if (response._id === storageItem) {
+            setShowPopUp(false);
+            console.log('ocultou')
+            console.log(response)
+          } else {
+            localStorage.setItem('lastUpdate', response._id);
+            setShowPopUp(true);
+            console.log('exibiu')
+            console.log(response)
+          }
+        } else {
+          localStorage.setItem('lastUpdate', response._id);
+        }
+      })
   }
 
   useEffect(() => {
@@ -208,6 +241,7 @@ const LandingPage = (props) => {
           contentWithDefaultLanguage.push({ ...c, currentLanguage, currentCountry: country })
         )
       setFormatedContent(contentWithDefaultLanguage)
+      fetchNewUpdates()
       config &&
         setFormatedConfig({
           ...config,
@@ -294,13 +328,11 @@ const LandingPage = (props) => {
           }}
         >
           {
-            /*
-            config.newUpdatesText && (
+            config.newUpdatesText && showPopUp && (
               <Popup
                 content={config.newUpdatesText[currentLanguage.languageTag]}
               />
             )
-            */
           }
           {!areCookiesEnabled && (
             <CookieConsent
