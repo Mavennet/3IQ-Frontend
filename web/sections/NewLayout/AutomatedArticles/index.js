@@ -103,7 +103,7 @@ function AutomatedArticles(props) {
                 variant="h2"
                 className={styles.title}
                 sx={{
-                  fontSize: 'var(--font-size-primary-lg)',
+                  fontSize: {xs: 'var(--font-size-primary-md)', md: 'var(--font-size-primary-lg)'},
                   fontFamily: 'var(--font-family-primary)',
                   color: 'var(--black)',
                   textAlign: align ? align : 'center',
