@@ -10,6 +10,10 @@ function Popup(props) {
 
   const { content, closeHandler, route } = props
 
+  const goToContent = () => {
+    localStorage.setItem('lastUpdate', route._id);
+  }
+
   return (
     <div className={styles.popup__box}>
       <Grid container p={2}>
@@ -24,11 +28,13 @@ function Popup(props) {
           </div>
         </Grid>
         <Grid item xs={12}>
-          <Button
-            title={'Go to content'}
-            size={'xs'}
-            route={route}
-          />
+          <div onClick={() => goToContent()}>
+            <Button
+              title={'Go to content'}
+              size={'xs'}
+              route={route}
+            />
+          </div>
         </Grid>
       </Grid>
     </div>
