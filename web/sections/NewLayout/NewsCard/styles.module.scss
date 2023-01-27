@@ -30,6 +30,11 @@
 
 .no__decoration {
   text-decoration: none !important;
+
+  &__newsletter{
+    text-decoration: none !important;
+    color: var(--black);
+  }
 }
 
 .line {
@@ -41,6 +46,10 @@
 }
 
 .newsletter {
+
+  word-wrap: break-word;
+
+
   h1,
   h2,
   h3,
@@ -62,6 +71,7 @@
 }
 
 .newsCard {
+  word-wrap: break-word;
   p {
     font-family: var(--font-family-secondary);
     font-size: var(--font-size-secondary-sm);

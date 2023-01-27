@@ -65,7 +65,8 @@ export default {
       name: "newsletterNumber",
       type: "string",
       title: "Newsletter Number (*)",
-      description: "Type a number if it's a Newsletter"
+      description: "Type a number if it's a Newsletter",
+      validation: Rule => Rule.error("Information required.").max(4),
     }
   ],
   preview: {

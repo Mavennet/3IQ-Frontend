@@ -7,9 +7,10 @@ import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../client'
 import {format} from 'date-fns'
 import Link from 'next/link'
+import {AiFillPlayCircle} from 'react-icons/ai'
 
 function NewsletterCard(props) {
-  const {post, newsletterNumber, route, currentLanguage, size} = props
+  const {post, newsletterNumber, route, currentLanguage} = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
@@ -28,12 +29,6 @@ function NewsletterCard(props) {
     }
   }, [currentLanguage, post.publishedAt])
 
-  const sizes = {
-    sm: styles.sm,
-    md: styles.md,
-    lg: styles.lg
-  }
-
   return (
     <Link
       href={{
@@ -43,37 +38,30 @@ function NewsletterCard(props) {
       as={`/${route.slug.current}`}
     >
       <a>
-        <div className={`${styles.article__card} ${styles[size]}`}>
+        <div className={styles.article__card}>
           <Grid container>
             <Grid item xs={2}>
               <Box
-                className={styles.number}
                 mt={2.5}
                 sx={{
                   background: '#0D1C3D',
                   color: 'white',
-                  width: '53px',
-                  height: '53px',
+                  width: '60px',
+                  height: '60px',
                   textAlign: 'center',
-                  fontSize: 'var(--font-size-secondary-sm)',
+                  fontSize: 'var(--font-size-secondary-xs)',
                   fontFamily: 'var(--font-family-primary)',
                 }}
               >
-                <Box pt={1.7}>#{newsletterNumber}</Box>
+                <Box pt={2.5}>#{newsletterNumber}</Box>
               </Box>
             </Grid>
             <Grid
               item
               xs={10}
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-              }}
-              pl={1}
+              pl={3}
             >
-              <div>
+              <div className={styles.newsletterCard}>
                 {post?.author?.name &&
                   post?.categories[0]?.localeName[currentLanguage.languageTag] && (
                     <Typography
@@ -84,6 +72,7 @@ function NewsletterCard(props) {
                         fontFamily: 'var(--font-family-secondary)',
                         color: 'var(--black)',
                       }}
+                    
                     >
                       <span className={styles.blue}>
                         {post?.categories[0]?.localeName[currentLanguage.languageTag] + ' '}
@@ -117,7 +106,6 @@ function NewsletterCard(props) {
                 )}
                 {post?.publishedAt && publishedDate && (
                   <Typography
-                  pt={3}
                     variant="h5"
                     sx={{
                       fontSize: 'var(--font-size-secondary-xs)',
@@ -139,7 +127,6 @@ function NewsletterCard(props) {
 
 NewsletterCard.propTypes = {
   post: PropTypes.object,
-  size: PropTypes.string,
   route: PropTypes.object,
   currentLanguage: PropTypes.object,
   localeButtonText: PropTypes.string,

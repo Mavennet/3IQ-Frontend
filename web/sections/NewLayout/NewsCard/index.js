@@ -17,7 +17,15 @@ function urlFor(source) {
 }
 
 function NewsCard(props) {
-  const {post, hideHeader, route, currentLanguage, isInvertedLayout, shortDescription, optionalTitle} = props
+  const {
+    post,
+    hideHeader,
+    route,
+    currentLanguage,
+    isInvertedLayout,
+    shortDescription,
+    optionalTitle,
+  } = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
 
@@ -63,30 +71,40 @@ function NewsCard(props) {
     if (categorie) {
       if (categorie.searchId == 'newsletter') {
         return (
-          <Grid container>
-            <Grid item md={7} xs={12} py={10} sx={{background: '#0D1C3D', color: 'white'}}>
-              <Box pl={13} pb={5} className={styles.newsletter}>
-                <span className={styles.orangeText}>{optionalTitle && optionalTitle[currentLanguage.languageTag]}</span>
-                <h3>{categorie && categorie.name[currentLanguage.languageTag]}</h3>
-                <p>{categorie && categorie.description[currentLanguage.languageTag]}</p>
-              </Box>
-              <Box component="img" sx={{width: '100%'}} src={lines.src} />
-            </Grid>
-            <Grid item md={5} xs={12} sx={{background: '#EBEBEB'}}>
-              <Box pt={10} pb={2} px={5} className={styles.newsCard}>
-                <div className={styles.author}>
-                  <span>{categorie && categorie.name[currentLanguage.languageTag]}</span>
-                  {` by ${post.author.name}`}
-                </div>
-                <span></span>
-                <h4>{post.heading[currentLanguage.languageTag]}</h4>
-                <SimpleBlockContent blocks={shortDescription} />
-              </Box>
-              <Box pb={8} px={5} className={styles.newsCard}>
-                <span className={styles.publishedDate}>{publishedDate}</span>
-              </Box>
-            </Grid>
-          </Grid>
+          <Link
+            href={{
+              pathname: `/${localeHeading}`,
+              query: {slug: route.slug.current},
+            }}
+            as={`/${route.slug.current}`}
+          >
+            <a className={styles.no__decoration__newsletter}>
+              <Grid container>
+                <Grid item md={7} xs={12} py={10} sx={{background: '#0D1C3D', color: 'white'}}>
+                  <Box pl={13} pr={3} pb={5} className={styles.newsletter}>
+                    <span className={styles.orangeText}>{optionalTitle}</span>
+                    <h3>{categorie && categorie.name[currentLanguage.languageTag]}</h3>
+                    <p>{categorie && categorie.description[currentLanguage.languageTag]}</p>
+                  </Box>
+                  <Box component="img" sx={{width: '100%'}} src={lines.src} />
+                </Grid>
+                <Grid item md={5} xs={12} sx={{background: '#EBEBEB'}}>
+                  <Box pt={10} pb={2} px={5} className={styles.newsCard}>
+                    <div className={styles.author}>
+                      <span>{categorie && categorie.name[currentLanguage.languageTag]}</span>
+                      {` by ${post.author.name}`}
+                    </div>
+                    <span></span>
+                    <h4>{post.heading[currentLanguage.languageTag]}</h4>
+                    <SimpleBlockContent blocks={shortDescription} />
+                  </Box>
+                  <Box pb={8} px={5} className={styles.newsCard}>
+                    <span className={styles.publishedDate}>{publishedDate}</span>
+                  </Box>
+                </Grid>
+              </Grid>
+            </a>
+          </Link>
         )
       } else {
         return (
@@ -112,7 +130,9 @@ function NewsCard(props) {
                   {!hideHeader && (
                     <>
                       <Box>
-                      <span className={styles.orangeText}>{optionalTitle && optionalTitle[currentLanguage.languageTag]}</span>
+                        <span className={styles.orangeText}>
+                          {optionalTitle && optionalTitle[currentLanguage.languageTag]}
+                        </span>
                         {categorie?.name && (
                           <Typography
                             my={2}

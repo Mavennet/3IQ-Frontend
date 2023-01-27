@@ -170,7 +170,11 @@ function Search(props) {
         <Box sx={{display: {md: 'none', xs: 'flex'}, alignItems: 'center'}}>
           {singleSection && (
             <Box mt={1} mr={1.5}>
-              <IoIosArrowDropleft onClick={() => setSingleSection(null)} className={styles.icon} size={30} />
+              <IoIosArrowDropleft
+                onClick={() => setSingleSection(null)}
+                className={styles.icon}
+                size={30}
+              />
             </Box>
           )}
           <h5>{title}</h5>
@@ -181,7 +185,11 @@ function Search(props) {
         <Box sx={{display: {md: 'flex', xs: 'none'}, alignItems: 'center'}}>
           {singleSection && (
             <Box mt={1.2} mr={1.5}>
-              <IoIosArrowDropleft onClick={() =>  setSingleSection(null)} className={styles.icon} size={35} />
+              <IoIosArrowDropleft
+                onClick={() => setSingleSection(null)}
+                className={styles.icon}
+                size={35}
+              />
             </Box>
           )}
           <h3>{title}</h3>
@@ -207,8 +215,6 @@ function Search(props) {
 
   async function search() {
     if (categories.length > 0) {
-      let categoryIds = []
-      categories.map((c) => categoryIds.push(c._id))
       // let webinars =
       if (
         searchTerm &&
@@ -365,7 +371,7 @@ function Search(props) {
           )}
 
           {showNotFoundText() && (
-            <div className={styles.notFound}>
+            <div className={styles.notFound} >
               <p>Sorry, there are no results for {searchTerm}.</p>
               <SimpleBlockContent blocks={notFoundText} />
             </div>
