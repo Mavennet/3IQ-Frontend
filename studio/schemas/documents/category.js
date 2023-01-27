@@ -37,8 +37,13 @@ export default {
       hidden: ({currentUser}) => {
         return !(currentUser.roles.find(({name}) => name === 'editor'))
       }
-    }
-
+    },
+    {
+      name: 'priority',
+      title: 'Priority',
+      type: 'number',
+      validation: Rule => Rule.min(0).integer().positive(),
+    },
   ],
   preview: {
     select: {
