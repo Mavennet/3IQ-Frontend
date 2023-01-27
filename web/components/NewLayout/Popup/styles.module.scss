@@ -8,6 +8,13 @@
   display: block;
 }
 
+.block__button {
+  display: block;
+  a {
+    float: none!important;
+  }
+}
+
 .simple__block__content {
   margin: 10px 0px;
   strong {

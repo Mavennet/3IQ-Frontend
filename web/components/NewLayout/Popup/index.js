@@ -7,27 +7,26 @@ import { RiCloseLine } from 'react-icons/ri'
 
 function Popup(props) {
 
-  const { content } = props
-
-  const [hiddenPopup, setHiddenPopup] = React.useState(false)
+  const { content, closeHandler, route } = props
 
   return (
-    !hiddenPopup && (
-      <div className={styles.popup__box}>
-        <div className={styles.button__container}>
-          <div className={styles.close__button} onClick={() => setHiddenPopup(true)}>
-            <RiCloseLine size={20} color={'var(--black)'} />
-          </div>
+    <div className={styles.popup__box}>
+      <div className={styles.button__container}>
+        <div className={styles.close__button} onClick={() => closeHandler()}>
+          <RiCloseLine size={20} color={'var(--black)'} />
         </div>
-        <div className={styles.simple__block__content}>
-          <SimpleBlockContent blocks={content} />
-        </div>
+      </div>
+      <div className={styles.simple__block__content}>
+        <SimpleBlockContent blocks={content} />
+      </div>
+      <div className={styles.block__button}>
         <Button
           title={'Go to content'}
           size={'sm'}
+          route={route}
         />
       </div>
-    )
+    </div>
   )
 }
 

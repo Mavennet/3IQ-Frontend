@@ -197,10 +197,16 @@ const LandingPage = (props) => {
   })
 
   const [showPopUp, setShowPopUp] = useState(false)
+  const [lastRoute, setLastRoute] = useState(null)
 
   // Custom 404 Page redirect
   if (!router.isFallback && !content && router.asPath !== "/") {
     return <Custom404 config={formatedConfig} currentLanguage={currentLanguage} />
+  }
+
+  const closePopUp = () => {
+    setShowPopUp(false);
+    localStorage.setItem('lastUpdate', lastRoute._id);
   }
 
   const fetchNewUpdates = async () => {
@@ -219,13 +225,9 @@ const LandingPage = (props) => {
         if (storageItem) {
           if (response._id === storageItem) {
             setShowPopUp(false);
-            console.log('ocultou')
-            console.log(response)
           } else {
-            localStorage.setItem('lastUpdate', response._id);
+            setLastRoute(response);
             setShowPopUp(true);
-            console.log('exibiu')
-            console.log(response)
           }
         } else {
           localStorage.setItem('lastUpdate', response._id);
@@ -331,6 +333,8 @@ const LandingPage = (props) => {
             config.newUpdatesText && showPopUp && (
               <Popup
                 content={config.newUpdatesText[currentLanguage.languageTag]}
+                closeHandler={closePopUp}
+                route={lastRoute && lastRoute}
               />
             )
           }
