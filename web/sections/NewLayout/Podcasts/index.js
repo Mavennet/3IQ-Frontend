@@ -16,8 +16,6 @@ const builder = imageUrlBuilder(client)
 function Podcasts(props) {
   const {heading} = props
 
-  console.log(props)
-
   return (
     <>
       <Box bgcolor={'#EBEBEB'}>

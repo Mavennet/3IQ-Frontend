@@ -47,6 +47,8 @@ export default {
             { type: "hero" },
             { type: "ourFunds" },
             { type: "heroWithImage" },
+            { type: "headerPost" },
+            { type: "postOverview" },
             { type: "heroSailGP" },
             { type: "advertisement" },
             { type: "mailchimp" },

@@ -14,8 +14,6 @@ import Button from '../../../components/NewLayout/Button'
 function FundsOverview(props) {
   const { title, embed, fundSidebarItem, currentLanguage, endpoint, button, footer } = props
 
-  console.log(button)
-
   const [data, setData] = React.useState(null)
 
   const getKeyFacts = (endpoint) => {

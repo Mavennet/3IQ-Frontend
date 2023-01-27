@@ -10,8 +10,6 @@ import groq from 'groq'
 function TeamsVideoDisplay(props) {
   const {heading, description, secondDescription, teams, currentLanguage} = props
 
-  console.log(teams)
-
   const [members, setMembers] = useState([])
   const [memberSelected, setMemberSelected] = useState(0)
 

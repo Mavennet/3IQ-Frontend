@@ -135,7 +135,6 @@ function NewsletterGrid(props) {
                 xs={12}
                 md={4}
               >
-                {/* {console.log(item)} */}
                 <CustomNewsletterCard
                   {...item}
                   languageTag={currentLanguage.languageTag}

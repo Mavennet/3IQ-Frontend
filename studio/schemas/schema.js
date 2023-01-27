@@ -28,6 +28,8 @@ import imagesContainer from "./documents/imagesContainer";
 // Section documents
 import textSection from "./documents/sections/textSection";
 import heroWithImage from "./documents/sections/heroWithImage";
+import headerPost from "./documents/sections/headerPost";
+import postOverview from './documents/sections/postOverview';
 import heroSailGP from "./documents/sections/heroSailGP";
 import ourFunds from "./documents/sections/ourFunds";
 import componentsTests from "./documents/sections/componentsTests";
@@ -145,6 +147,8 @@ export default createSchema({
     localeString,
     localeText,
     heroWithImage,
+    headerPost,
+    postOverview,
     heroSailGP,
     ourFunds,
     componentsTests,

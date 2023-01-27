@@ -48,8 +48,6 @@ function ContactUsForm(props) {
     locations,
   } = props
 
-  console.log(locations)
-
   const [filteredLocations, setFilteredLocations] = useState(null)
 
   const fetchLocations = async () => {

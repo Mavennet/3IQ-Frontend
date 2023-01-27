@@ -51,8 +51,6 @@ function WebinarSubscribe(props) {
     currentLanguage,
   } = props
 
-  console.log(props)
-
   return (
     <Container maxWidth={'lg'}>
       <Grid container my={6}>
@@ -79,7 +77,7 @@ function WebinarSubscribe(props) {
           <Box ml={{md: 6, xs: 2}}>
           <h3>{formLabel}</h3>
           </Box>
-        
+
           <Box sx={{height: '800px'}} pl={{md: 6, sm: 2}} pr={{sm: 2}}>
             <iframe
               style={{width: '100%', height: '100%', border: 'none'}}

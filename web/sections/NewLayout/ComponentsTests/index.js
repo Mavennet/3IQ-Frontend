@@ -12,8 +12,6 @@ import Select from '../../../components/NewLayout/Select'
 function ComponentsTests(props) {
   const {heading} = props
 
-  console.log(heading)
-
   return (
     <div>
       <Grid container spacing={4} justifyContent="center">
@@ -234,7 +232,7 @@ function ComponentsTests(props) {
           <br />
           <hr />
         </Grid>
-        
+
         <Grid item md={9} xs={12}>
           <Grid container>
             <Grid item md={6} xs={12}>

@@ -16,6 +16,8 @@ export default {
     "page",
     "textSection",
     "heroWithImage",
+    "headerPost",
+    "postOverview",
     "heroSailGP",
     "ourFunds",
     "componentsTests",

@@ -18,8 +18,6 @@ function HeroDoubleButton(props) {
     description,
   } = props
 
-  console.log(backgroundImage)
-
   return (
     <Box
       sx={{

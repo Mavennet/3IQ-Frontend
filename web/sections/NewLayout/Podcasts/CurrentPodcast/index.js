@@ -15,8 +15,6 @@ const builder = imageUrlBuilder(client)
 function CurrentPodcast(props) {
   const {heading} = props
 
-  console.log(props)
-
   return (
     <Box>
       <Grid container>
