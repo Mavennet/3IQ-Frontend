@@ -20,6 +20,7 @@
   overflow-x: scroll;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  justify-content: flex-start;
 
   &::-webkit-scrollbar {
     display: none;
