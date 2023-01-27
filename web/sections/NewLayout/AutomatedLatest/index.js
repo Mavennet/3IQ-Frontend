@@ -198,6 +198,7 @@ function AutomatedLatest(props) {
                     _id,
                     _type,
                     'localeName': name,
+                    searchId,
                   },
                   author-> {
                     _id,
@@ -284,7 +285,7 @@ function AutomatedLatest(props) {
                   leftArticles && (
                     leftArticles.map((item) => {
                       return (
-                        <Grid item xs={12} sm={6} mb={4} p={{ xs: 1, md: 2 }}>
+                        <Grid item xs={12} sm={6} md={6} mb={4} p={{ xs: 1, md: 2 }}>
                           <ArticleCard
                             {...item}
                             currentLanguage={currentLanguage}
@@ -421,17 +422,17 @@ function AutomatedLatest(props) {
             }
             <Grid item xs={12} sx={{ display: { xs: 'none', md: 'block' } }} p={{ xs: 1, md: 2 }}>
               <Grid container spacing={4}>
-                <Grid item xs={8}>
+                <Grid item xs={9}>
                   {
                     bottomArticles && bottomArticles[0] && (
                       <ArticleCard
-                        {...bottomArticles[0]}
+                        {...bottomArticles[2]}
                         currentLanguage={currentLanguage}
                       />
                     )
                   }
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={3}>
                   <Grid container spacing={8}>
                     <Grid item xs={12}>
                       {
@@ -447,7 +448,7 @@ function AutomatedLatest(props) {
                       {
                         bottomArticles && bottomArticles[2] && (
                           <ArticleCard
-                            {...bottomArticles[2]}
+                            {...bottomArticles[0]}
                             currentLanguage={currentLanguage}
                           />
                         )
@@ -463,7 +464,7 @@ function AutomatedLatest(props) {
                   bottomArticles && (
                     bottomArticles.map((item) => {
                       return (
-                        <Grid item xs={4} sm={6} mb={4} p={{ xs: 1, md: 2 }}>
+                        <Grid item xs={12} sm={6} mb={4} p={{ xs: 0, md: 2 }}>
                           <ArticleCard
                             {...item}
                             currentLanguage={currentLanguage}

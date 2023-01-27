@@ -12,8 +12,6 @@ import { AiFillPlayCircle } from 'react-icons/ai'
 function ArticleCard(props) {
   const { post, route, hideImage = false, currentLanguage } = props
 
-  console.log(post)
-
   const [publishedDate, setPublishedDate] = React.useState('')
 
   const builder = imageUrlBuilder(client)
@@ -80,6 +78,7 @@ function ArticleCard(props) {
                       fontSize: 'var(--font-size-secondary-sm)',
                       fontFamily: 'var(--font-family-secondary)',
                       color: 'var(--black)',
+                      wordWrap: 'break-word'
                     }}
                   >
                     <strong className={styles.blue}>{post?.categories[0]?.localeName[currentLanguage.languageTag] + ' '}</strong>
