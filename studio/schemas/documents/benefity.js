@@ -27,7 +27,13 @@ export default {
       name: 'description',
       type: 'localePortableText',
       title: 'Description',
-    }
+    },
+    {
+      name: 'priority',
+      title: 'Priority',
+      type: 'number',
+      validation: Rule => Rule.min(0).integer().positive(),
+    },
   ],
   preview: {
     select: {
