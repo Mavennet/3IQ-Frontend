@@ -119,7 +119,6 @@ function AutomatedLatest(props) {
         { categoryId: rightCategory._ref }
       )
       .then((response) => {
-        console.log(response)
         const fetchArticles = async () => {
           await client
             .fetch(

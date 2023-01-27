@@ -23,8 +23,6 @@ function Hero(props) {
     bottomImage,
   } = props
 
-  console.log(props)
-
   return sideImage && bottomImage ? (
     <Box
       sx={{

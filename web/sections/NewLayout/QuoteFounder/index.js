@@ -11,8 +11,6 @@ import Button from '../../../components/NewLayout/Button'
 
 function QuoteFounder({ name, quotesText, profilePhoto, localeJobTitle, button, currentLanguage }) {
 
-  console.log(button)
-
   function urlFor(source) {
     return imageUrlBuilder(client).image(source)
   }

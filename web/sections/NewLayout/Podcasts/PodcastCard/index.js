@@ -15,8 +15,6 @@ const builder = imageUrlBuilder(client)
 function PodcastCard(props) {
   const {heading} = props
 
-  console.log(props)
-
   return (
     <Box mt={4}>
       <Grid container>
