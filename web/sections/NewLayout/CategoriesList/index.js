@@ -24,10 +24,11 @@ function CategoriesList(props) {
       await client
         .fetch(
           groq`
-        *[_type == 'category' && _id in $categorieRef] | order(searchId asc) {
+        *[_type == 'category' && _id in $categorieRef] | order(priority asc) {
           _id,
           name,
           searchId,
+          priority,
         }
        `,
           { categorieRef: ids }
