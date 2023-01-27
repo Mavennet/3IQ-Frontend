@@ -58,9 +58,12 @@
 }
 
 .heading {
-  font-size: var(--font-size-primary-xl);
+  font-size: var(--font-size-primary-lg);
   color: inherit;
   line-height: 1.2em;
+  @media (--media-min-large) {
+    font-size: var(--font-size-primary-xl);
+  }
 }
 
 .simpleBlockContent {
