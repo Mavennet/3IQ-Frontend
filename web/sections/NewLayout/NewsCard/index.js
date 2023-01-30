@@ -25,6 +25,7 @@ function NewsCard(props) {
     isInvertedLayout,
     shortDescription,
     optionalTitle,
+    hideImage
   } = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
@@ -238,7 +239,7 @@ function NewsCard(props) {
                       `url("${urlFor(post.mainImage).url()}") no-repeat center center`,
                     backgroundSize: 'cover',
                     bgcolor: '#091b3f',
-                    display: 'flex',
+                    display: {xs: hideImage && 'none', md: 'flex'},
                     flexDirection: 'column',
                     justifyContent: {xs: 'flex-end', md: 'center'},
                     alignItems: 'center',
@@ -266,6 +267,7 @@ NewsCard.propTypes = {
   currentLanguage: PropTypes.object,
   route: PropTypes.object,
   isInvertedLayout: PropTypes.bool,
+  hideImage: PropTypes.bool,
   hideHeader: PropTypes.bool,
   shortDescription: PropTypes.object,
 }
