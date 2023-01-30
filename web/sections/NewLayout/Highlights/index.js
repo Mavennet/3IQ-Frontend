@@ -26,6 +26,8 @@ function Highlights(props) {
   const opts = {
     width: '100%',
     height: '600',
+    margin: 0,
+    padding: 0,
     playerVars: {
       autoplay: 1,
       controls: 0,
@@ -140,22 +142,22 @@ function Highlights(props) {
         </Grid>
       </Grid>
       <Grid container spacing={{ xs: 0, md: 3 }} sx={{ alignItems: 'stretch' }}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} lg={8}>
           {videoSrc && (
             <div className={styles.video}>
               <YouTube videoId={videoSrc} opts={opts} />
             </div>
           )}
         </Grid>
-        <Grid item xs={12} md={4} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }}>
+        <Grid item xs={12} lg={4} sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'stretch' }}>
           {
             articles && (
-              articles.map((item) => {
+              articles.map((item, i) => {
                 return (
                   <ArticleText
                     {...item}
                     currentLanguage={currentLanguage}
-                    key={item._id}
+                    number={i}
                   />
                 )
               })
