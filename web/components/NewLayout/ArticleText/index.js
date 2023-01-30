@@ -8,7 +8,7 @@ import { format } from 'date-fns'
 import Link from 'next/link'
 
 function ArticleText(props) {
-  const { post, route, currentLanguage, key } = props
+  const { post, route, currentLanguage, number, _id } = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
@@ -28,11 +28,12 @@ function ArticleText(props) {
   }, [currentLanguage, post.publishedAt])
 
   return (
-
     <Box
-      key={key}
+      key={_id}
       sx={{
-        width: '100%'
+        width: '100%',
+        borderBottom: number !== 2 && '1px solid #b0b0b0',
+        paddingBottom: {xs: 4, lg: 0},
       }}
     >
       {post?.author?.name && post?.categories[0]?.localeName[currentLanguage.languageTag] && (
@@ -90,6 +91,7 @@ function ArticleText(props) {
 }
 
 ArticleText.propTypes = {
+  number: PropTypes.number,
   post: PropTypes.object,
   route: PropTypes.object,
   currentLanguage: PropTypes.object,

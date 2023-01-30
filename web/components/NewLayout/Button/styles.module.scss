@@ -1,15 +1,22 @@
+@import '../../../styles/custom-media.css';
+
 .button {
   border: none;
-  padding: 15px 30px;
+  padding: 5px 10px;
   border-radius: 3px;
   cursor: pointer;
   font-family: var(--font-family-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   width: auto;
   height: auto;
+
+  @media (--media-min-large) {
+    padding: 15px 30px;
+    flex-wrap: wrap;
+  }
+
   &::after {
     content: '',
   }
