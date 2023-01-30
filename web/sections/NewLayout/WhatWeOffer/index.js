@@ -23,7 +23,7 @@ function WhatWeOffer(props) {
       await client
         .fetch(
           groq`
-        *[_type == 'benefity' && _id in $personId] {
+        *[_type == 'benefity' && _id in $personId] | order(priority asc) {
           _id,
           _type,
           name,
