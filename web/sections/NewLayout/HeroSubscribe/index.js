@@ -20,18 +20,19 @@ function HeroSubscribe(props) {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.left__side}>
+    <Grid
+      container
+      component="main"
+    >
+      <Grid item xs={12} md={6} sx={{ background: '#EBEBEB', position: 'relative' }} square>
         <Box
           py={{ xs: 6, md: 10 }}
-          px={{ md: 6 }}
           className={styles.align__header}
           sx={{
             width: '100%',
             display: 'flex',
-            alignItems: 'center',
-            color: 'var(--white)',
-            justifyContent: 'flex-end',
+            flexDirection: 'column',
+            alignItems: 'left',
             backgroundColor: '#0D1C3D'
           }}>
           <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
@@ -51,21 +52,28 @@ function HeroSubscribe(props) {
             </Grid>
           </Container>
         </Box>
-      </div>
-      <div className={styles.right__side}>
-        <Box
-          sx={{
-            background:
-              backgroundImage &&
-              `url("${urlFor(backgroundImage)
-                .url()}") no-repeat center center`,
-            backgroundSize: 'cover',
-            width: '100%',
-            height: '100%'
-          }}
-        />
-      </div>
-    </div>
+
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        py={{ xs: 28, md: 0 }}
+        md={6}
+        sx={{
+          background:
+            backgroundImage &&
+            `url("${urlFor(backgroundImage)
+              .url()}") no-repeat center center`,
+          backgroundSize: 'cover',
+          bgcolor: '#091b3f',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: { xs: 'flex-end', md: 'center' },
+          alignItems: 'center',
+        }}
+      >
+      </Grid>
+    </Grid>
   )
 }
 
