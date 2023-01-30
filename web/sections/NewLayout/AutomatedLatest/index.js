@@ -229,7 +229,7 @@ function AutomatedLatest(props) {
 
 
   return (
-    <Container sx={{ maxWidth: { sm: 'md', md: 'md', lg: 'xl' } }}>
+    <Container sx={{ maxWidth: { sm: 'md', md: 'lg', xl: 'xl' } }}>
       <Grid container py={8}>
         <Grid item xs={12} sm={12} md={6}>
           <Grid container>
@@ -310,7 +310,7 @@ function AutomatedLatest(props) {
                     variant="h2"
                     className={styles.title}
                     sx={{
-                      fontSize: '42px',
+                      fontSize: {xs: 'var(--font-size-primary-md)', md: 42},
                       fontFamily: 'var(--font-family-primary)',
                       color: 'var(--black)',
                       textAlign: 'left',
@@ -381,7 +381,7 @@ function AutomatedLatest(props) {
                     variant="h2"
                     className={styles.title}
                     sx={{
-                      fontSize: '42px',
+                      fontSize: {xs: 'var(--font-size-primary-md)', md: 'var(--font-size-primary-lg)'},
                       fontFamily: 'var(--font-family-primary)',
                       color: 'var(--black)',
                       textAlign: 'left',
@@ -433,7 +433,7 @@ function AutomatedLatest(props) {
                   }
                 </Grid>
                 <Grid item xs={3}>
-                  <Grid container spacing={8}>
+                  <Grid container>
                     <Grid item xs={12}>
                       {
                         bottomArticles && bottomArticles[1] && (
@@ -443,6 +443,9 @@ function AutomatedLatest(props) {
                           />
                         )
                       }
+                    </Grid>
+                    <Grid xs={12} py={2}>
+                      <Box sx={{borderBottom: '1px solid #b0b0b0'}}/>
                     </Grid>
                     <Grid item xs={12}>
                       {
@@ -464,7 +467,7 @@ function AutomatedLatest(props) {
                   bottomArticles && (
                     bottomArticles.map((item) => {
                       return (
-                        <Grid item xs={12} sm={6} mb={4} p={{ xs: 0, md: 2 }}>
+                        <Grid item xs={12} sm={6} mb={2} p={{ xs: 0, md: 2 }}>
                           <ArticleCard
                             {...item}
                             currentLanguage={currentLanguage}
