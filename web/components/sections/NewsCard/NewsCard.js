@@ -73,12 +73,12 @@ function NewsCard(props) {
               }}
             >
               {localeHeading && (
-                <Typography component="h1" variant="h4" style={{fontWeight: 'bold'}} gutterBottom>
+                <Typography component="h1" variant="h4" style={{fontWeight: 'bold', color:'#0082E5'}} gutterBottom>
                   {localeHeading}
                 </Typography>
               )}
               {shortDescription && (
-                <div className={styles.simpleBlockContent}>
+                <div className={styles.description}>
                   <SimpleBlockContent blocks={shortDescription} />
                 </div>
               )}
