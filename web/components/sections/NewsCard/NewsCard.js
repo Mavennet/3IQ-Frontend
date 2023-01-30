@@ -86,6 +86,9 @@ function NewsCard(props) {
                 sx={{
                   mt: 5,
                   mb: 5,
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
                 }}
               >
               {publishedDate && (

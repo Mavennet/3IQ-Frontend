@@ -78,7 +78,7 @@ function ReadMoreCard(props) {
               </Typography>
             )}
             {description && (
-              <div className={styles.simpleBlockContent}>
+              <div className={styles.description}>
                 <SimpleBlockContent blocks={description} />
               </div>
             )}
