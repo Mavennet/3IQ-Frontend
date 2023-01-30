@@ -244,7 +244,7 @@ function NewsCard(props) {
                     alignItems: 'center',
                   }}
                 >
-                  {categorie?._id === 'f0043b46-c820-4101-81c7-81caf7deba35' && (
+                  {categorie?.searchId === 'videos' || categorie?.searchId === 'podcasts'   && (
                     <AiFillPlayCircle size={90} color={'var(--white)'} />
                   )}
                 </Grid>

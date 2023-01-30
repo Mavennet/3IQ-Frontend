@@ -82,7 +82,7 @@ function ContactUsForm(props) {
           item
           xs={12}
           sx={{
-            height: '500px',
+            pb: 5,
             width: '100%',
             bgcolor: 'var(--orange)',
           }}
