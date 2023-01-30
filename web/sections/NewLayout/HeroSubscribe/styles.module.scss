@@ -7,13 +7,11 @@
   @media (--media-min-large) {
     display: flex;
     align-items: stretch;
-    height: 700px;
     .heading {
       font-size: var(--font-size-primary-lg);
     }
   }
   @media (min-width: 1300px) {
-    height: 520px;
     .heading {
       font-size: var(--font-size-primary-xl);
     }
@@ -22,51 +20,29 @@
 
 .align__header {
   @media (min-width: 1700px) {
-    padding-left: 23%;
+    padding-left: 15%;
   }
   @media (min-width: 2436px) {
-    padding-left: 47%;
+    padding-left: 38%;
   }
   @media (min-width: 4000px) {
-    padding-left: 32vw;
+    padding-left: 20vw;
   }
 }
 
-.left__side {
-  width: 100%;
-  height: auto;
-  display: block;
-  @media (--media-min-large) {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: stretch;
-    flex-wrap: wrap;
-  }
-}
-
-.right__side {
-  width: 100%;
-  height: 400px;
-  display: block;
-  @media (--media-min-large) {
-    width: 50%;
-    height: 100%;
-    background-color: #0D1C3D;
-    position: relative;
-  }
-}
 
 .heading {
   font-size: var(--font-size-primary-lg);
-  color: inherit;
+  color: var(--white);
   line-height: 1.2em;
+  word-wrap: break-word;
   @media (--media-min-large) {
     font-size: var(--font-size-primary-xl);
   }
 }
 
 .simpleBlockContent {
+  color: var(--white);
   p{
     font-family: var(--font-family-secondary);
     font-size: var(--font-size-secondary-lg);
