@@ -181,9 +181,9 @@ function NewsCard(props) {
                           color: 'var(--black)',
                         }}
                       >
-                        <strong className={styles.blue}>
+                        <span className={styles.blue}>
                           {categorie?.name?.[currentLanguage.languageTag] + ' '}
-                        </strong>
+                        </span>
                         by {post?.author?.name}
                       </Typography>
                     )}

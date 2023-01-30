@@ -8,6 +8,7 @@ import {CATEGORY_BY_ID} from '../../../utils/groqQueries'
 import NewsletterCard from '../../../components/NewLayout/NewletterCard'
 import Button from '../../../components/NewLayout/Button'
 import SearchCard from '../../../components/NewLayout/SearchCard'
+import styles from './styles.module.scss'
 
 function AutomatedNewsCard(props) {
   const {selectedPostCategory, isInvertedLayout, buttonText, currentLanguage} = props
@@ -18,7 +19,11 @@ function AutomatedNewsCard(props) {
 
   const renderCards = () => {
     if (category && newsCard) {
-      if (category.searchId == 'videos' || category.searchId == 'webinars'  || category.searchId == 'podcasts') {
+      if (
+        category.searchId == 'videos' ||
+        category.searchId == 'webinars' ||
+        category.searchId == 'podcasts'
+      ) {
         return newsCard.map((item) => (
           <Grid item xs={12} sm={6} mb={4}>
             <ArticleCard {...item} currentLanguage={currentLanguage} key={item._id} />
@@ -123,14 +128,17 @@ function AutomatedNewsCard(props) {
     <Container sx={{maxWidth: {sm: 'md', lg: 'lg'}}}>
       <Grid container spacing={6} my={8}>
         {renderCards()}
-        <Grid item xs={12} align="center">
-          <Button
-            size="xs"
-            variant="outlined"
-            onClick={() => setMaxQuantity(maxQuantity + 6)}
-            title={buttonText || 'View More'}
-          />
-        </Grid>
+        {newsCard && newsCard.length > 0 && (
+          <Grid item xs={12} align="center">
+            <Button
+            className={styles.button}
+              size="xs"
+              variant="outlined"
+              onClick={() => setMaxQuantity(maxQuantity + 6)}
+              title={buttonText || 'View More'}
+            />
+          </Grid>
+        )}
       </Grid>
     </Container>
   )
