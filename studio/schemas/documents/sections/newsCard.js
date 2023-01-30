@@ -67,7 +67,14 @@ export default {
       title: "Newsletter Number (*)",
       description: "Type a number if it's a Newsletter",
       validation: Rule => Rule.error("Information required.").max(4),
-    }
+    },
+    {
+      name: "hideImage",
+      type: "boolean",
+      title: "Hide main image in mobile?",
+      description: "Enable this option to hide main image in mobile resolution ",
+      initialValue: false
+    },
   ],
   preview: {
     select: {
