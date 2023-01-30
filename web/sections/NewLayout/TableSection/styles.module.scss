@@ -25,7 +25,7 @@
 
 .simpleBlockContent thead tr th {
   padding: 20px 0px;
-  text-align: center;
+  text-align: left;
   border-bottom: 1px solid #E8E8EA;
 }
 
@@ -40,7 +40,7 @@
 
 .simpleBlockContent tbody tr td{
   border-bottom: 1px solid #E8E8EA;
-  padding: 30px 15px;
+  padding: 30px 0px;
   text-align: left;
   font-weight: var(--font-weight-regular);
   font-family: var(--font-family-secondary);
