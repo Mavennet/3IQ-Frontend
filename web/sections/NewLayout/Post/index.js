@@ -2,17 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import client from '../../../client'
-import { Grid, Container, Typography } from '@mui/material'
+import { Grid, Container, Typography, Box } from '@mui/material'
 import SimpleBlockContent from '../../../components/OldLayout/SimpleBlockContent'
 import { MdOutlineArrowForward } from 'react-icons/md'
 import groq from 'groq'
 import Link from 'next/link'
+import YouTube from 'react-youtube'
 
 function Post(props) {
 
-  const { body, currentLanguage, categories } = props
+  const { body, currentLanguage, categories, videoSrc, videoText } = props
 
   const [relatedArticles, setRelatedArticles] = React.useState(null)
+
+  const opts = {
+    width: '100%',
+    height: '220',
+    margin: '10px',
+    playerVars: {
+      autoplay: 1,
+      controls: 0,
+      rel: 0,
+      showinfo: 0,
+      mute: 1,
+      loop: 1,
+      playlist: videoSrc
+    }
+  };
 
   const fetchRelatedArticles = async () => {
     await client
@@ -94,6 +110,35 @@ function Post(props) {
         <Grid item xs={12} md={4} my={4}>
           <Grid container>
             {
+              videoSrc && (
+                <Grid item xs={12} mb={3}>
+                  <Box
+                  pb={3}
+                  sx={{
+                    borderBottom: '1px solid #b0b0b0',
+                  }}>
+                  <YouTube videoId={videoSrc} opts={opts} />
+                  {
+                    videoText && (
+                      <Typography
+                        component="h4"
+                        variant="h4"
+                        mt={1}
+                        sx={{
+                          fontSize: 'var(--font-size-primary-xs)',
+                          fontFamily: 'var(--font-family-primary)',
+                          fontWeight: '600'
+                        }}
+                      >
+                        {videoText}
+                      </Typography>
+                    )
+                  }
+                  </Box>
+                </Grid>
+              )
+            }
+            {
               relatedArticles && (
                 <Grid item xs={12}>
                   <Typography
@@ -158,6 +203,8 @@ Post.propTypes = {
   body: PropTypes.object,
   currentLanguage: PropTypes.object,
   categories: PropTypes.object,
+  videoSrc: PropTypes.string,
+  videoText: PropTypes.string
 }
 
 export default Post

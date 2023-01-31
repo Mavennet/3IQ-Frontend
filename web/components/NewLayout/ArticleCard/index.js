@@ -17,7 +17,7 @@ function ArticleCard(props) {
   const builder = imageUrlBuilder(client)
 
   React.useEffect(() => {
-    if (currentLanguage.languageTag) {
+    if (currentLanguage.languageTag && post?.publishedAt) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
       const newYears = new Date(post.publishedAt)
       const isEng = currentLanguage.name === "EN"
@@ -27,15 +27,15 @@ function ArticleCard(props) {
       !isEng && formattedDate.toLocaleLowerCase('fr')
       setPublishedDate(formattedDate)
     }
-  }, [currentLanguage, post.publishedAt])
+  }, [currentLanguage, post?.publishedAt])
 
   return (
     <Link
       href={{
         pathname: `/${post?.localeHeading[currentLanguage.languageTag]}`,
-        query: { slug: route.slug.current },
+        query: { slug: route?.slug?.current },
       }}
-      as={`/${route.slug.current}`}
+      as={`/${route?.slug?.current}`}
     >
       <a>
         <div className={styles.article__card}>
