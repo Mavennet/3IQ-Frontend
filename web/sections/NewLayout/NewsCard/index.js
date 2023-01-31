@@ -175,11 +175,8 @@ console.log(props)
                           alignItems: 'center',
                           py: 8,
                         }}
-                      >
-                        {categorie?.searchId === 'videos' ||
-                          (categorie?.searchId === 'podcasts' && (
+                      >  
                             <AiFillPlayCircle size={90} color={'var(--white)'} />
-                          ))}
                       </Box>
                     </>
                   )}
