@@ -39,6 +39,11 @@ export default {
       }
     },
     {
+      name: 'optionalTitle',
+      type: 'localeString',
+      title: 'Optional Title (*)',
+    },
+    {
       name: 'priority',
       title: 'Priority',
       type: 'number',

@@ -6,7 +6,6 @@ export default {
   title: "News Card",
   icon: BlockquoteIcon,
   fields: [
-    { name: "optionalTitle", type: "localeString", title: "Optional Title" },
     {
       name: "post",
       type: "reference",

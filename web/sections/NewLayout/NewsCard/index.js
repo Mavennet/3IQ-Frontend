@@ -17,16 +17,8 @@ function urlFor(source) {
 }
 
 function NewsCard(props) {
-  const {
-    post,
-    hideHeader,
-    route,
-    currentLanguage,
-    isInvertedLayout,
-    shortDescription,
-    optionalTitle,
-    hideImage,
-  } = props
+  const {post, hideHeader, route, currentLanguage, isInvertedLayout, shortDescription, hideImage} =
+    props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
 
@@ -54,6 +46,7 @@ function NewsCard(props) {
         *[_type == 'category' && _id == $categorieRef] {
           _id,
           _ref,
+          optionalTitle,
           name,
           searchId,
           description
@@ -83,7 +76,11 @@ function NewsCard(props) {
               <Grid container>
                 <Grid item md={7} xs={12} py={10} sx={{background: '#0D1C3D', color: 'white'}}>
                   <Box pl={13} pr={3} pb={5} className={styles.newsletter}>
-                    <span className={styles.orangeText}>{optionalTitle}</span>
+                    <span className={styles.orangeText}>
+                      {' '}
+                      {categorie.optionalTitle &&
+                        categorie.optionalTitle[currentLanguage.languageTag]}
+                    </span>
                     <h3>{categorie && categorie.name[currentLanguage.languageTag]}</h3>
                     <p>{categorie && categorie.description[currentLanguage.languageTag]}</p>
                   </Box>
@@ -129,31 +126,38 @@ function NewsCard(props) {
               >
                 <Grid item xs={12} md={6} sx={{background: '#EBEBEB'}} square>
                   {!hideHeader && (
-                    <>
-                      <Box>
+                      <>
+                      <Box
+                        my={2}
+                        sx={{
+                          fontSize: 'var(--font-size-primary-md)',
+                          fontFamily: 'var(--font-family-primary)',
+                          color: 'var(--black)',
+                          mt: {xs: 4, md: 8},
+                          mb: {xs: 0, md: 2},
+                          ml: {xs: 2, md: 10},
+                          mr: {xs: 0, md: 8},
+                        }}
+                      >
                         <span className={styles.orangeText}>
-                          {optionalTitle && optionalTitle[currentLanguage.languageTag]}
+                          {categorie.optionalTitle &&
+                            categorie.optionalTitle[currentLanguage.languageTag]}
                         </span>
                         {categorie?.name && (
                           <Typography
-                            my={2}
                             component="h2"
                             variant="h2"
                             sx={{
                               fontSize: 'var(--font-size-primary-md)',
                               fontFamily: 'var(--font-family-primary)',
                               color: 'var(--black)',
-                              mt: {xs: 4, md: 8},
-                              mb: {xs: 0, md: 2},
-                              ml: {xs: 2, md: 10},
-                              mr: {xs: 0, md: 8},
                             }}
                           >
                             {categorie?.name?.[currentLanguage.languageTag]}
                           </Typography>
                         )}
                       </Box>
-                      <Box mt={2}>
+                      <Box my={2}>
                         <div className={styles.line}></div>
                         <div className={styles.line}></div>
                         <div className={styles.line}></div>
@@ -169,7 +173,7 @@ function NewsCard(props) {
                           flexDirection: 'column',
                           justifyContent: {xs: 'flex-end', md: 'center'},
                           alignItems: 'center',
-                          py: 8
+                          py: 8,
                         }}
                       >
                         {categorie?.searchId === 'videos' ||
@@ -296,23 +300,30 @@ function NewsCard(props) {
                 <Grid item xs={12} md={6} sx={{background: '#EBEBEB'}} square>
                   {!hideHeader && (
                     <>
-                      <Box>
+                      <Box
+                        my={2}
+                        sx={{
+                          fontSize: 'var(--font-size-primary-md)',
+                          fontFamily: 'var(--font-family-primary)',
+                          color: 'var(--black)',
+                          mt: {xs: 4, md: 8},
+                          mb: {xs: 0, md: 2},
+                          ml: {xs: 2, md: 10},
+                          mr: {xs: 0, md: 8},
+                        }}
+                      >
                         <span className={styles.orangeText}>
-                          {optionalTitle && optionalTitle[currentLanguage.languageTag]}
+                          {categorie.optionalTitle &&
+                            categorie.optionalTitle[currentLanguage.languageTag]}
                         </span>
                         {categorie?.name && (
                           <Typography
-                            my={2}
                             component="h2"
                             variant="h2"
                             sx={{
                               fontSize: 'var(--font-size-primary-md)',
                               fontFamily: 'var(--font-family-primary)',
                               color: 'var(--black)',
-                              mt: {xs: 4, md: 8},
-                              mb: {xs: 0, md: 2},
-                              ml: {xs: 2, md: 10},
-                              mr: {xs: 0, md: 8},
                             }}
                           >
                             {categorie?.name?.[currentLanguage.languageTag]}
