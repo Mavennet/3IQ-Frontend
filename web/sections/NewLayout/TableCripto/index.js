@@ -97,7 +97,7 @@ function TableCripto(props) {
                       data.map((item, i) => {
                         return (
                           <tr key={i}>
-                            <td>
+                            <td className={styles.fixed__mobile}>
                               <div className={styles.criptoInfo}>
                                 <Box
                                   component="img"
@@ -111,8 +111,8 @@ function TableCripto(props) {
                                 {item.currency}
                               </div>
                             </td>
-                            <td>{item.price}</td>
-                            <td>{item.index}</td>
+                            <td className={styles.price}>{item.price}</td>
+                            <td className={styles.price}>{item.index}</td>
                             <td>{item.weight}</td>
                           </tr>
                         )
