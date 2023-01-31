@@ -24,7 +24,7 @@ function NewsCard(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
   const [categorie, setCategorie] = React.useState(null)
-
+console.log(props)
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
@@ -448,6 +448,7 @@ NewsCard.propTypes = {
   hideImage: PropTypes.bool,
   hideHeader: PropTypes.bool,
   shortDescription: PropTypes.object,
+  optionalTitle: PropTypes.object,
 }
 
 export default NewsCard
