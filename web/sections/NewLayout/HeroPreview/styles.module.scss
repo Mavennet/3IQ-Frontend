@@ -1,3 +1,5 @@
+@import '../../../styles/custom-media.css';
+
 .image {
   position: relative;
   .heading {
@@ -8,6 +10,8 @@
     font-weight: 300;
     font-family: var(--font-family-primary);
     font-size: var(--font-size-primary-xl);
+    max-height: 100%;
+    overflow: hidden;
   }
 }
 

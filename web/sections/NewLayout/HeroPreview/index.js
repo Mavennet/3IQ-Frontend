@@ -32,7 +32,7 @@ function HeroPreview(props) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
       const newYears = new Date(post.publishedAt)
       const isEng = currentLanguage.name === "EN"
-      const formattedDate = format(newYears, isEng ? 'MMMM dd, yyyy' : 'dd MMMM yyyy', {
+      const formattedDate = format(newYears, isEng ? "MMMM dd, yyyy - hh a" : 'dd MMMM yyyy - hh a', {
         locale: getLocale(currentLanguage.languageTag.replace('_', '-')),
       })
       !isEng && formattedDate.toLocaleLowerCase('fr')
