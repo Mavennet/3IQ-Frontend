@@ -92,6 +92,7 @@ function HeroPreview(props) {
                   fontSize: 'var(--font-size-secondary-sm)',
                   fontFamily: 'var(--font-family-secondary)',
                   color: '#F59B1E',
+                  display: 'none'
                 }}
               >
                 {categorie?.name?.[currentLanguage.languageTag]}

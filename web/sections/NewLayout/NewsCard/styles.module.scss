@@ -74,6 +74,11 @@
   }
 }
 
+.orangeText {
+  color: var(--light-orange);
+  font-size: var(--font-size-secondary-sm);
+}
+
 .newsCard {
   word-wrap: break-word;
   p {
