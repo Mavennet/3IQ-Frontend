@@ -82,9 +82,9 @@ function TableCripto(props) {
                       <thead>
                         <tr>
                           {
-                            headers.map((item) => {
+                            headers.map((item, i) => {
                               return (
-                                <th key={item._key}>{item[currentLanguage?.languageTag]}</th>
+                                <th key={item._key} className={i === 0 && styles.header__fixed__mobile}>{item[currentLanguage?.languageTag]}</th>
                               )
                             })
                           }

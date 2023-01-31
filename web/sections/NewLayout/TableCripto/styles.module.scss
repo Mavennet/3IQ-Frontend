@@ -22,6 +22,10 @@
 
 .simpleBlockContent table {
   width: 100%;
+  margin-left: 150px;
+  @media (--media-min-large) {
+    margin-left: 0px;
+  }
 }
 
 .simpleBlockContent thead {
@@ -32,6 +36,10 @@
       color: var(--black);
       padding: 20px 0px;
       border-bottom: 1px solid #E8E8EA;
+      @media (--media-min-large) {
+        min-width: auto;
+        position: static;
+      }
     }
   }
 }
@@ -50,16 +58,29 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  max-width: 160px;
+  max-width: 180px;
 }
 
 .fixed__mobile {
   background-color: #f6f6f6;
   position: absolute;
   top: auto;
+  left: 10px;
   min-width: 130px;
   @media (--media-min-large) {
     min-width: auto;
+    position: static;
+  }
+}
+
+.header__fixed__mobile {
+  background-color: #f6f6f6;
+  position: absolute;
+  top: auto;
+  max-width: 150px;
+  left: 10px;
+  @media (--media-min-large) {
+    max-width: 200px;
     position: static;
   }
 }
