@@ -32,7 +32,7 @@ function NewsCard(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
   const [categorie, setCategorie] = React.useState(null)
-
+console.log(props)
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
@@ -296,9 +296,16 @@ function NewsCard(props) {
                 <Grid item xs={12} md={6} sx={{background: '#EBEBEB'}} square>
                   {!hideHeader && (
                     <>
-                      <Box>
+                      <Box
+                        sx={{
+                          mt: {xs: 4, md: 8},
+                          mb: {xs: 0, md: 2},
+                          ml: {xs: 2, md: 10},
+                          mr: {xs: 0, md: 8},
+                        }}
+                      >
                         <span className={styles.orangeText}>
-                          {optionalTitle && optionalTitle[currentLanguage.languageTag]}
+                          {optionalTitle && optionalTitle}
                         </span>
                         {categorie?.name && (
                           <Typography
@@ -309,10 +316,6 @@ function NewsCard(props) {
                               fontSize: 'var(--font-size-primary-md)',
                               fontFamily: 'var(--font-family-primary)',
                               color: 'var(--black)',
-                              mt: {xs: 4, md: 8},
-                              mb: {xs: 0, md: 2},
-                              ml: {xs: 2, md: 10},
-                              mr: {xs: 0, md: 8},
                             }}
                           >
                             {categorie?.name?.[currentLanguage.languageTag]}
@@ -437,6 +440,7 @@ NewsCard.propTypes = {
   hideImage: PropTypes.bool,
   hideHeader: PropTypes.bool,
   shortDescription: PropTypes.object,
+  optionalTitle: PropTypes.object,
 }
 
 export default NewsCard

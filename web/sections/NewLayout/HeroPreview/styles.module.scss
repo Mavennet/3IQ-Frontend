@@ -4,14 +4,19 @@
   position: relative;
   .heading {
     position: absolute;
-    top: -50px;
-    left: -20px;
+    top: -40px;
+    left: 5px;
     color: var(--white);
     font-weight: 300;
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-primary-xl);
+    font-size: var(--font-size-primary-md);
     max-height: 100%;
     overflow: hidden;
+    @media (--media-min-large) {
+      font-size: var(--font-size-primary-xl);
+      left: -20px;
+      top: -50px;
+    }
   }
 }
 
