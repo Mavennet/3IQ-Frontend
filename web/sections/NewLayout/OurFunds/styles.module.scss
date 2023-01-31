@@ -155,3 +155,10 @@
 
 
 }
+
+.arrow{
+    &:hover{
+        cursor: pointer;
+        color: var(--light-blue);
+    }
+}

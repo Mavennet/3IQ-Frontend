@@ -99,10 +99,12 @@ function OurFunds(props) {
                         <h3>Our Funds</h3>
                         <div className={styles.arrows}>
                             <IoIosArrowDropleft
+                            className={styles.arrow}
                                 size={40}
                                 onClick={() => handleArrow('prev')}
                             />
                             <IoIosArrowDropright
+                            className={styles.arrow}
                                 size={40}
                                 onClick={() => handleArrow('next')}
                             />

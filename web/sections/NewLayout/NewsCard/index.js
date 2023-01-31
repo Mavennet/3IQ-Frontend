@@ -25,7 +25,7 @@ function NewsCard(props) {
     isInvertedLayout,
     shortDescription,
     optionalTitle,
-    hideImage
+    hideImage,
   } = props
 
   const localeHeading = post.heading[currentLanguage.languageTag]
@@ -102,6 +102,172 @@ function NewsCard(props) {
                   <Box pb={8} px={5} className={styles.newsCard}>
                     <span className={styles.publishedDate}>{publishedDate}</span>
                   </Box>
+                </Grid>
+              </Grid>
+            </a>
+          </Link>
+        )
+      } else if (categorie.searchId == 'videos' || categorie.searchId == 'podcasts') {
+        return (
+          <Link
+            href={{
+              pathname: `/${localeHeading}`,
+              query: {slug: route.slug.current},
+            }}
+            as={`/${route.slug.current}`}
+          >
+            <a className={styles.no__decoration}>
+              <Grid
+                container
+                component="main"
+                sx={{
+                  flexDirection: {
+                    xs: 'column-reverse',
+                    md: isInvertedLayout ? 'unset' : 'row-reverse',
+                  },
+                }}
+              >
+                <Grid item xs={12} md={6} sx={{background: '#EBEBEB'}} square>
+                  {!hideHeader && (
+                    <>
+                      <Box>
+                        <span className={styles.orangeText}>
+                          {optionalTitle && optionalTitle[currentLanguage.languageTag]}
+                        </span>
+                        {categorie?.name && (
+                          <Typography
+                            my={2}
+                            component="h2"
+                            variant="h2"
+                            sx={{
+                              fontSize: 'var(--font-size-primary-md)',
+                              fontFamily: 'var(--font-family-primary)',
+                              color: 'var(--black)',
+                              mt: {xs: 4, md: 8},
+                              mb: {xs: 0, md: 2},
+                              ml: {xs: 2, md: 10},
+                              mr: {xs: 0, md: 8},
+                            }}
+                          >
+                            {categorie?.name?.[currentLanguage.languageTag]}
+                          </Typography>
+                        )}
+                      </Box>
+                      <Box mt={2}>
+                        <div className={styles.line}></div>
+                        <div className={styles.line}></div>
+                        <div className={styles.line}></div>
+                      </Box>
+                      <Box
+                        sx={{
+                          background:
+                            post.mainImage &&
+                            `url("${urlFor(post.mainImage).url()}") no-repeat center center`,
+                          backgroundSize: 'cover',
+                          bgcolor: '#091b3f',
+                          display: {xs: 'flex', md: 'none'},
+                          flexDirection: 'column',
+                          justifyContent: {xs: 'flex-end', md: 'center'},
+                          alignItems: 'center',
+                          py: 8
+                        }}
+                      >
+                        {categorie?.searchId === 'videos' ||
+                          (categorie?.searchId === 'podcasts' && (
+                            <AiFillPlayCircle size={90} color={'var(--white)'} />
+                          ))}
+                      </Box>
+                    </>
+                  )}
+                  <Box
+                    sx={{
+                      mt: 2,
+                      mb: {xs: 0, md: 2},
+                      ml: {xs: 2, md: 10},
+                      mr: {xs: 0, md: 8},
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'left',
+                      color: '#091b3f',
+                    }}
+                  >
+                    {post?.author?.name && categorie?.name && (
+                      <Typography
+                        my={2}
+                        variant="h5"
+                        sx={{
+                          fontSize: 'var(--font-size-secondary-sm)',
+                          fontFamily: 'var(--font-family-secondary)',
+                          color: 'var(--black)',
+                        }}
+                      >
+                        <span className={styles.blue}>
+                          {categorie?.name?.[currentLanguage.languageTag] + ' '}
+                        </span>
+                        by {post?.author?.name}
+                      </Typography>
+                    )}
+                    {localeHeading && (
+                      <Typography
+                        component="h2"
+                        variant="h4"
+                        sx={{
+                          fontSize: 'var(--font-size-primary-md)',
+                          fontFamily: 'var(--font-family-primary)',
+                          color: 'var(--black)',
+                        }}
+                        gutterBottom
+                      >
+                        {localeHeading}
+                      </Typography>
+                    )}
+                    {shortDescription && (
+                      <div className={styles.simple__block__content}>
+                        <SimpleBlockContent blocks={shortDescription} />
+                      </div>
+                    )}
+                    <Box
+                      sx={{
+                        mt: 5,
+                        mb: 5,
+                      }}
+                    >
+                      {publishedDate && (
+                        <Typography
+                          variant="h5"
+                          sx={{
+                            fontSize: 'var(--font-size-secondary-sm)',
+                            fontFamily: 'var(--font-family-secondary)',
+                            color: '#A9A9A9',
+                          }}
+                        >
+                          {publishedDate}
+                        </Typography>
+                      )}
+                    </Box>
+                  </Box>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  py={{xs: 28, md: 0}}
+                  md={6}
+                  sx={{
+                    background:
+                      post.mainImage &&
+                      `url("${urlFor(post.mainImage).url()}") no-repeat center center`,
+                    backgroundSize: 'cover',
+                    bgcolor: '#091b3f',
+                    display: {xs: 'none', md: 'flex'},
+                    flexDirection: 'column',
+                    justifyContent: {xs: 'flex-end', md: 'center'},
+                    alignItems: 'center',
+                  }}
+                >
+                  {categorie?.searchId === 'videos' ||
+                    (categorie?.searchId === 'podcasts' && (
+                      <AiFillPlayCircle size={90} color={'var(--white)'} />
+                    ))}
                 </Grid>
               </Grid>
             </a>
@@ -245,9 +411,10 @@ function NewsCard(props) {
                     alignItems: 'center',
                   }}
                 >
-                  {categorie?.searchId === 'videos' || categorie?.searchId === 'podcasts'   && (
-                    <AiFillPlayCircle size={90} color={'var(--white)'} />
-                  )}
+                  {categorie?.searchId === 'videos' ||
+                    (categorie?.searchId === 'podcasts' && (
+                      <AiFillPlayCircle size={90} color={'var(--white)'} />
+                    ))}
                 </Grid>
               </Grid>
             </a>
