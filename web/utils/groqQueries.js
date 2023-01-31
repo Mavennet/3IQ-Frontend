@@ -69,8 +69,16 @@ export const ROUTES_BY_TERM = groq`
 *[_type == 'route' && slug.current match [$urlTag, $term]] {...,countries[]-> {urlTag}, page->{...}}
 `
 
+export const POSTS_BY_TERM = groq`*[_type == 'post' && !(_id in path('drafts.**')) && (name match $term || heading[$languageTag] match $term)] {
+      _id,
+      _type,
+      publishedAt,
+      name,
+      heading
+    }`
+
 export const NEWS_CARD_BY_TERM = groq`
-*[_type == 'newsCard' &&  pt::text(shortDescription[$languageTag]) match $term] {
+*[_type == 'newsCard' && !(_id in path('drafts.**')) && post._ref in $postsIds] {
   _id,
   _type,
   _rev,
