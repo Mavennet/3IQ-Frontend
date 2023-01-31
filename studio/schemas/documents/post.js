@@ -52,6 +52,18 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'videoSrc',
+      type: 'string',
+      title: 'YouTube video ID',
+      description: 'Optional display video in sidebar with related articles links.'
+    },
+    {
+      name: 'videoText',
+      title: 'Text below video',
+      type: 'localeString',
+      description: 'Optional text talking about video.'
+    },
+    {
       name: 'categories',
       type: 'array',
       title: 'Categories',
