@@ -6,12 +6,14 @@
     position: absolute;
     top: -40px;
     left: 5px;
+    max-width: 100%;
     color: var(--white);
     font-weight: 300;
     font-family: var(--font-family-primary);
     font-size: var(--font-size-primary-md);
     max-height: 100%;
     overflow: hidden;
+    word-wrap: break-word;
     @media (--media-min-large) {
       font-size: var(--font-size-primary-xl);
       left: -20px;
