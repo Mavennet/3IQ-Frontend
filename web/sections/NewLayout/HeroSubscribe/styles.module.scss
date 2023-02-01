@@ -20,13 +20,16 @@
 
 .align__header {
   @media (min-width: 1700px) {
-    padding-left: 15%;
+    padding-left: 5%;
+  }
+  @media (min-width: 2000px) {
+    padding-left: 10%;
   }
   @media (min-width: 2436px) {
-    padding-left: 38%;
+    padding-left: 22%;
   }
   @media (min-width: 4000px) {
-    padding-left: 20vw;
+    padding-left: 30vw;
   }
 }
 
