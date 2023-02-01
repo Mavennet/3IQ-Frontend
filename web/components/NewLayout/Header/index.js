@@ -11,7 +11,7 @@ import {IoMdClose} from 'react-icons/io'
 import CountryAndLanguageSwitch from '../CountryAndLanguageSwitch'
 import Form from '../Form'
 import {FiSearch} from 'react-icons/fi'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
 function Header(props) {
   const {navItems, setLanguage, dataCountries, currentCountry, currentLanguage} = props
@@ -19,6 +19,7 @@ function Header(props) {
   const router = useRouter()
 
   const [showSearch, setShowSearch] = useState(false)
+  const [showSearchIcon, setShowSearchIcon] = useState(true)
   const [showNav, setShowNav] = React.useState(false)
   const [logoLanguage, setLogoLanguage] = React.useState(null)
   const [searchTerm, setSearchTerm] = useState(null)
@@ -39,8 +40,11 @@ function Header(props) {
 
   const watchKey = (event) => {
     if (event.key === 'Enter') {
-      router.replace(`/${currentCountry.urlTag}/${currentCountry.searchPageRoute.slug.current}?searchTerm=${searchTerm}`)
+      router.replace(
+        `/${currentCountry.urlTag}/${currentCountry.searchPageRoute.slug.current}?searchTerm=${searchTerm}`
+      )
       setShowSearch(false)
+      setShowSearchIcon(false)
       setShowNav(false)
     }
   }
@@ -71,14 +75,14 @@ function Header(props) {
             </Box>
             <Box pl={2}>
               <Box m={1.5}>
-              <Form
-                value={searchTerm}
-                onKeyDown={(e) => watchKey(e)}
-                onChange={(e) => handleSearch(e)}
-                placeholder={'Type something and press enter to search'}
-              />
+                <Form
+                  value={searchTerm}
+                  onKeyDown={(e) => watchKey(e)}
+                  onChange={(e) => handleSearch(e)}
+                  placeholder={'Type something and press enter to search'}
+                />
               </Box>
-         
+
               <ul>
                 {navItems &&
                   navItems.map((item) =>
@@ -157,11 +161,16 @@ function Header(props) {
               </Box>
               {/* NavBar Menu - Desktop */}
               <Box sx={{ml: 'auto', display: {xs: 'none', sm: 'none', md: 'none', lg: 'flex'}}}>
-                <FiSearch
-                  className={styles.searchIcon}
-                  onClick={() => setShowSearch(!showSearch)}
-                />
-                <div className={styles.separator}></div>
+                {showSearchIcon && (
+                  <>
+                    <FiSearch
+                      className={styles.searchIcon}
+                      onClick={() => setShowSearch(!showSearch)}
+                    />
+                    <div className={styles.separator}></div>
+                  </>
+                )}
+
                 {navItems &&
                   navItems.map(
                     (item) =>
