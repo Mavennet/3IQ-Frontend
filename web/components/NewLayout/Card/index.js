@@ -67,7 +67,7 @@ function Card(props) {
                 >
                   <div>
                     {post?.author?.name &&
-                      post?.categories[0]?.singularName[currentLanguage.languageTag] && (
+                      post?.categories[0]?.singularName && post?.categories[0]?.singularName[currentLanguage.languageTag] && (
                         <Typography
                           variant="h5"
                           sx={{
@@ -77,7 +77,7 @@ function Card(props) {
                           }}
                         >
                           <strong className={styles.blue}>
-                            {post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}
+                            {post?.categories[0]?.singularName && post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}
                           </strong>
                           by {post?.author?.name}
                         </Typography>
@@ -134,7 +134,7 @@ function Card(props) {
               >
                 <div>
                   {post?.author?.name &&
-                    post?.categories[0]?.singularName[currentLanguage.languageTag] && (
+                    post?.categories[0]?.singularName && post?.categories[0]?.singularName[currentLanguage.languageTag] && (
                       <Typography
                         variant="h5"
                         sx={{
@@ -144,7 +144,7 @@ function Card(props) {
                         }}
                       >
                         <strong className={styles.blue}>
-                          {post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}
+                          {post?.categories[0]?.singularName && post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}
                         </strong>
                         by {post?.author?.name}
                       </Typography>

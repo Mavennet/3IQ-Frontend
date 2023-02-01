@@ -83,6 +83,7 @@ function AutomatedNewsCard(props) {
           'localeButtonText': buttonText,
           'localeShortDescription': shortDescription,
           'localeSmallCardText': smallCardText,
+          newsletterNumber,
           route->,
           post-> {
             _id,
@@ -94,6 +95,7 @@ function AutomatedNewsCard(props) {
               _id,
               _type,
               'localeName': name,
+              singularName,
               ...
             },
             author-> {
@@ -110,7 +112,6 @@ function AutomatedNewsCard(props) {
       .then((res) => {
         res.sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
         setNewsCard(res)
-        console.log(res)
       })
   }
 
