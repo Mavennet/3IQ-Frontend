@@ -22,6 +22,11 @@ export default {
       initialValue: false,
     },
     {
+      name: "arrowButton",
+      type: "localeCta",
+      title: "Button to show all"
+    },
+    {
       name: 'post',
       type: 'reference',
       title: 'Post',
