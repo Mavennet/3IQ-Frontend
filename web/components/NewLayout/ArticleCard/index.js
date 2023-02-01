@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { AiFillPlayCircle } from 'react-icons/ai'
 
 function ArticleCard(props) {
-  const { post, route, hideImage = false, currentLanguage } = props
+  const { post, route, hideImage = false, currentLanguage, className } = props
 
   const [publishedDate, setPublishedDate] = React.useState('')
 
@@ -38,7 +38,7 @@ function ArticleCard(props) {
       as={`/${route?.slug?.current}`}
     >
       <a>
-        <div className={styles.article__card}>
+        <div className={`${styles.article__card} ${className}`}>
           <Grid container>
             {
               !hideImage && (
@@ -132,6 +132,7 @@ function ArticleCard(props) {
 
 ArticleCard.propTypes = {
   post: PropTypes.object,
+  className: PropTypes.object,
   hideImage: PropTypes.bool,
   route: PropTypes.object,
   currentLanguage: PropTypes.object,
