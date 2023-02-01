@@ -24,7 +24,7 @@ function NewsCard(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
   const [categorie, setCategorie] = React.useState(null)
-  console.log(props)
+
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
@@ -366,7 +366,7 @@ function NewsCard(props) {
                         component="h2"
                         variant="h4"
                         sx={{
-                          fontSize: 'var(--font-size-primary-md)',
+                          fontSize: {xs: 'var(--font-size-primary-sm)', md: 'var(--font-size-primary-md)'},
                           fontFamily: 'var(--font-family-primary)',
                           color: 'var(--black)',
                         }}

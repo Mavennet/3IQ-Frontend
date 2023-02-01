@@ -166,17 +166,17 @@ function HeaderPost(props) {
                     {shareHistoryText}
                   </Typography>
                   <ul className={styles.social}>
-                    <Link href={`http://twitter.com/share?text=${post?.heading[currentLanguage.languageTag]}&url=${window.location.href}`} color="inherit" target='_blank' rel="noopener">
-                      <a>
-                        <li>
-                          <FaTwitter />
-                        </li>
-                      </a>
-                    </Link>
                     <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}&title=${post?.heading[currentLanguage.languageTag]}&summary=${post?.heading[currentLanguage.languageTag]}&source=LinkedIn`} color="inherit" target='_blank' rel="noopener">
                       <a>
                         <li>
                           <FaLinkedinIn />
+                        </li>
+                      </a>
+                    </Link>
+                    <Link href={`http://twitter.com/share?text=${post?.heading[currentLanguage.languageTag]}&url=${window.location.href}`} color="inherit" target='_blank' rel="noopener">
+                      <a>
+                        <li>
+                          <FaTwitter />
                         </li>
                       </a>
                     </Link>

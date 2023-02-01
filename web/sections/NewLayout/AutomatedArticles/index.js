@@ -38,7 +38,7 @@ function AutomatedArticles(props) {
           _id,
           _type,
           publishedAt,
-        }[0..${articlesCount - 1}]`,
+        }`,
         { categoryId: selectedPostCategory._ref }
       )
       .then((response) => {
@@ -148,7 +148,7 @@ function AutomatedArticles(props) {
               articles && (
                 articles.map((item, i) => {
                   return (
-                    <Grid item xs={12} sm={6} mb={4} p={{ xs: 1, md: 2 }}>
+                    <Grid item xs={12} sm={6} md={4} mb={4} p={{ xs: 1, md: 2 }}>
                       {
                         item.newsletterNumber ? (
                           <NewsletterCard

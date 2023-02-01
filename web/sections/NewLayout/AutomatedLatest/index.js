@@ -322,9 +322,6 @@ function AutomatedLatest(props) {
                   {
                     rightLocaleButton && (rightLocaleButton.route || rightLocaleButton.link) && (
                       <Box
-                        sx={{
-                          display: { xs: 'none', md: 'block' }
-                        }}
                       >
                         <Button
                           {...rightLocaleButton}
