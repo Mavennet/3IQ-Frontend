@@ -72,6 +72,25 @@ function HeroPreview(props) {
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg', xl: 'xl' } }}>
         <Grid container spacing={{ xs: 0, md: 4 }} sx={{ display: 'flex', alignItems: 'center' }}>
           <Grid item xs={12} md={7} mb={4}>
+            {arrowButton && arrowButton[currentLanguage.languageTag] && (
+              <Box
+                sx={{
+                  width: '100%',
+                  justifyContent: 'flex-end',
+                  display: { xs: 'flex', md: 'none' },
+                  marginBottom: 8
+                }}
+              >
+                <Button
+                  variant={'outlinedWhite'}
+                  className={styles.button}
+                  {...arrowButton[currentLanguage.languageTag]}
+                  size="xs"
+                  title={arrowButton[currentLanguage.languageTag]?.title}
+                  redirectArrow={true}
+                />
+              </Box>
+            )}
             <div className={styles.image}>
               <Box
                 component="img"
@@ -89,8 +108,8 @@ function HeroPreview(props) {
               <Box
                 sx={{
                   width: '100%',
-                  display: 'flex',
-                  justifyContent: 'flex-end'
+                  justifyContent: 'flex-end',
+                  display: { xs: 'none', md: 'flex' }
                 }}
               >
                 <Button
