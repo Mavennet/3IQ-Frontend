@@ -21,6 +21,7 @@ function HeroPreview(props) {
     buttonText,
     route,
     post,
+    arrowButton,
     currentLanguage
   } = props
 
@@ -69,7 +70,7 @@ function HeroPreview(props) {
       className={greenLayout ? styles.green : styles.blue}
     >
       <Container sx={{ maxWidth: { sm: 'md', lg: 'lg', xl: 'xl' } }}>
-        <Grid container spacing={{ xs: 0, md: 4 }} sx={{display: 'flex', alignItems: 'center'}}>
+        <Grid container spacing={{ xs: 0, md: 4 }} sx={{ display: 'flex', alignItems: 'center' }}>
           <Grid item xs={12} md={7} mb={4}>
             <div className={styles.image}>
               <Box
@@ -80,19 +81,37 @@ function HeroPreview(props) {
                 alt={backgroundImage.alt}
                 src={builder.image(backgroundImage).url()}
               />
-              {heading && !hideHeading &&<h2 className={styles.heading}>{heading}</h2>}
+              {heading && !hideHeading && <h2 className={styles.heading}>{heading}</h2>}
             </div>
           </Grid>
           <Grid item xs={12} md={5}>
+            {arrowButton && arrowButton[currentLanguage.languageTag] && (
+              <Box
+                sx={{
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'flex-end'
+                }}
+              >
+                <Button
+                  variant={'outlinedWhite'}
+                  className={styles.button}
+                  {...arrowButton[currentLanguage.languageTag]}
+                  size="xs"
+                  title={arrowButton[currentLanguage.languageTag]?.title}
+                  redirectArrow={true}
+                />
+              </Box>
+            )}
             {categorie?.name && (
               <Typography
                 my={2}
                 variant="h5"
                 sx={{
-                  fontSize: 'var(--font-size-secondary-sm)',
+                  fontSize: 'var(--font-size-secondary-md)',
                   fontFamily: 'var(--font-family-secondary)',
                   color: '#F59B1E',
-                  display: 'none'
+                  display: greenLayout && 'none'
                 }}
               >
                 {categorie?.name?.[currentLanguage.languageTag]}
@@ -154,6 +173,7 @@ HeroPreview.propTypes = {
   route: PropTypes.object,
   post: PropTypes.object,
   currentLanguage: PropTypes.object,
+  arrowButton: PropTypes.object,
 }
 
 export default HeroPreview

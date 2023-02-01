@@ -37,7 +37,7 @@ function AutomatedNewsCard(props) {
           </Grid>
         ))
       }
-      if (category.searchId == 'articles' || category.searchId == 'white_papers') {
+      if (category.searchId == 'articles') {
         return newsCard.map((item) => (
           <Grid item xs={12} sm={4} p={2} mb={4}>
             <SearchCard {...item} currentLanguage={currentLanguage} key={item._id} />
@@ -110,7 +110,6 @@ function AutomatedNewsCard(props) {
       .then((res) => {
         res.sort((a, b) => new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
         setNewsCard(res)
-        console.log(res)
       })
   }
 
