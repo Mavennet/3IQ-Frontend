@@ -70,7 +70,7 @@ function ArticleCard(props) {
             }
             <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
-                {post?.author?.name && post?.categories[0]?.localeName[currentLanguage.languageTag] && (
+                {post?.author?.name && post?.categories[0]?.singularName[currentLanguage.languageTag] && (
                   <Typography
                     mt={2}
                     variant="h5"
@@ -81,7 +81,7 @@ function ArticleCard(props) {
                       wordWrap: 'break-word'
                     }}
                   >
-                    <strong className={styles.blue}>{post?.categories[0]?.localeName[currentLanguage.languageTag] + ' '}</strong>
+                    <span className={styles.blue}>{post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}</span>
                     by {post?.author?.name}
                   </Typography>
                 )}

@@ -24,7 +24,7 @@ function NewsCard(props) {
 
   const [publishedDate, setPublishedDate] = React.useState('')
   const [categorie, setCategorie] = React.useState(null)
-console.log(props)
+  console.log(props)
   React.useEffect(() => {
     if (currentLanguage.languageTag) {
       const getLocale = (locale) => require(`date-fns/locale/${locale}/index.js`)
@@ -48,6 +48,7 @@ console.log(props)
           _ref,
           optionalTitle,
           name,
+          singularName,
           searchId,
           description
         }[0]
@@ -77,7 +78,6 @@ console.log(props)
                 <Grid item md={7} xs={12} py={10} sx={{background: '#0D1C3D', color: 'white'}}>
                   <Box pl={13} pr={3} pb={5} className={styles.newsletter}>
                     <span className={styles.orangeText}>
-                      {' '}
                       {categorie.optionalTitle &&
                         categorie.optionalTitle[currentLanguage.languageTag]}
                     </span>
@@ -89,7 +89,9 @@ console.log(props)
                 <Grid item md={5} xs={12} sx={{background: '#EBEBEB'}}>
                   <Box pt={10} pb={2} px={5} className={styles.newsCard}>
                     <div className={styles.author}>
-                      <span>{categorie && categorie.name[currentLanguage.languageTag]}</span>
+                      <span>
+                        {categorie && categorie.singularName[currentLanguage.languageTag]}
+                      </span>
                       {` by ${post.author.name}`}
                     </div>
                     <span></span>
@@ -126,7 +128,7 @@ console.log(props)
               >
                 <Grid item xs={12} md={6} sx={{background: '#EBEBEB'}} square>
                   {!hideHeader && (
-                      <>
+                    <>
                       <Box
                         my={2}
                         sx={{
@@ -175,8 +177,8 @@ console.log(props)
                           alignItems: 'center',
                           py: 8,
                         }}
-                      >  
-                            <AiFillPlayCircle size={90} color={'var(--white)'} />
+                      >
+                        <AiFillPlayCircle size={90} color={'var(--white)'} />
                       </Box>
                     </>
                   )}
@@ -203,7 +205,7 @@ console.log(props)
                         }}
                       >
                         <span className={styles.blue}>
-                          {categorie?.name?.[currentLanguage.languageTag] + ' '}
+                          {categorie?.singularName?.[currentLanguage.languageTag] + ' '}
                         </span>
                         by {post?.author?.name}
                       </Typography>
@@ -265,10 +267,7 @@ console.log(props)
                     alignItems: 'center',
                   }}
                 >
-                  {categorie?.searchId === 'videos' ||
-                    (categorie?.searchId === 'podcasts' && (
-                      <AiFillPlayCircle size={90} color={'var(--white)'} />
-                    ))}
+                  <AiFillPlayCircle size={90} color={'var(--white)'} />
                 </Grid>
               </Grid>
             </a>
@@ -357,7 +356,7 @@ console.log(props)
                         }}
                       >
                         <span className={styles.blue}>
-                          {categorie?.name?.[currentLanguage.languageTag] + ' '}
+                          {categorie?.singularName?.[currentLanguage.languageTag] + ' '}
                         </span>
                         by {post?.author?.name}
                       </Typography>

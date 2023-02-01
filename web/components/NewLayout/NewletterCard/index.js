@@ -63,7 +63,7 @@ function NewsletterCard(props) {
             >
               <div className={styles.newsletterCard}>
                 {post?.author?.name &&
-                  post?.categories[0]?.localeName[currentLanguage.languageTag] && (
+                  post?.categories[0]?.singularName[currentLanguage.languageTag] && (
                     <Typography
                       mt={2}
                       variant="h5"
@@ -75,7 +75,7 @@ function NewsletterCard(props) {
                     
                     >
                       <span className={styles.blue}>
-                        {post?.categories[0]?.localeName[currentLanguage.languageTag] + ' '}
+                        {post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}
                       </span>
                       by {post?.author?.name}
                     </Typography>

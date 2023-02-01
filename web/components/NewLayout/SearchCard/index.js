@@ -66,7 +66,7 @@ function SearchCard(props) {
             </Grid>
             <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div>
-                {post?.author?.name && post?.categories[0]?.localeName[currentLanguage.languageTag] && (
+                {post?.author?.name && post?.categories[0]?.singularName[currentLanguage.languageTag] && (
                   <Typography
                     mt={2}
                     variant="h5"
@@ -76,7 +76,7 @@ function SearchCard(props) {
                       color: 'var(--black)',
                     }}
                   >
-                    <strong className={styles.blue}>{post?.categories[0]?.localeName[currentLanguage.languageTag] + ' '}</strong>
+                    <strong className={styles.blue}>{post?.categories[0]?.singularName[currentLanguage.languageTag] + ' '}</strong>
                     by {post?.author?.name}
                   </Typography>
                 )}

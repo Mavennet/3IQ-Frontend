@@ -16,6 +16,12 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      name: 'singularName',
+      type: 'localeString',
+      title: 'Singular Name (*)',
+      validation: Rule => Rule.error('Information required.').required(),
+    },
+    {
       name: 'description',
       type: 'localeString',
       title: 'Description (*)',

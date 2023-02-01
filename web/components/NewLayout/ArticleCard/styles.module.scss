@@ -55,5 +55,7 @@
 }
 
 .blue {
-  color: var(--hover-blue)
+  color: var(--hover-blue);
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-secondary-sm);
 }
