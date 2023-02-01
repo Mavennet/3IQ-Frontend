@@ -15,7 +15,7 @@ function AutomatedNewsCard(props) {
 
   const [newsCard, setNewsCard] = useState(null)
   const [category, setCategory] = useState(null)
-  const [maxQuantity, setMaxQuantity] = useState(6)
+  const [maxQuantity, setMaxQuantity] = useState(5)
 
   const renderCards = () => {
     if (category && newsCard) {
@@ -106,7 +106,7 @@ function AutomatedNewsCard(props) {
               profilePhoto,
             },
           },
-        }`,
+        }[0..${maxQuantity}]`,
         {postsIds: id}
       )
       .then((res) => {
