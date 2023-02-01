@@ -57,6 +57,7 @@ export default function CustomTabItem(props) {
                   categories[]-> {
                     _id,
                     _type,
+                    singularName,
                     'localeName': name,
                   },
                   author-> {

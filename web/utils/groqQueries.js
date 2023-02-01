@@ -93,7 +93,7 @@ export const NEWS_CARD_BY_TERM = groq`
     mainImage,
     'localeHeading': heading,
     publishedAt,
-    categories[]-> {'localeName': name, ...},
+    categories[]-> {singularName, 'localeName': name, ...},
     author-> {
       _id,
       _type,
@@ -213,6 +213,7 @@ export const TAB_ITEMS = groq`
       categories[]-> {
         _id,
         _type,
+        singularName,
         'localeName': name,
         ...
       },

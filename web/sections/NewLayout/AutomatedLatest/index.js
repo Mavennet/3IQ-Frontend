@@ -86,6 +86,7 @@ function AutomatedLatest(props) {
                   categories[]-> {
                     _id,
                     _type,
+                    singularName,
                     'localeName': name,
                   },
                   author-> {
@@ -141,6 +142,7 @@ function AutomatedLatest(props) {
                   categories[]-> {
                     _id,
                     _type,
+                    singularName,
                     'localeName': name,
                   },
                   author-> {
@@ -197,6 +199,7 @@ function AutomatedLatest(props) {
                   categories[]-> {
                     _id,
                     _type,
+                    singularName,
                     'localeName': name,
                     searchId,
                   },

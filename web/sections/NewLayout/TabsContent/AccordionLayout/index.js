@@ -63,6 +63,7 @@ function AccordionLayout(props) {
                   categories[]-> {
                     _id,
                     _type,
+                    singularName,
                     'localeName': name,
                   },
                   author-> {
