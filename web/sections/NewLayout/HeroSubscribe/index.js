@@ -24,16 +24,14 @@ function HeroSubscribe(props) {
       container
       component="main"
     >
-      <Grid item xs={12} md={6} sx={{ background: '#EBEBEB', position: 'relative' }} square>
+      <Grid item xs={12} md={7} sx={{ background: '#0D1C3D', position: 'relative' }} className={styles.align__header}>
         <Box
           py={{ xs: 6, md: 10 }}
-          className={styles.align__header}
           sx={{
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'left',
-            backgroundColor: '#0D1C3D'
           }}>
           <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
             <Grid container>
@@ -58,7 +56,7 @@ function HeroSubscribe(props) {
         item
         xs={12}
         py={{ xs: 28, md: 0 }}
-        md={6}
+        md={5}
         sx={{
           background:
             backgroundImage &&
