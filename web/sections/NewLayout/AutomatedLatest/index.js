@@ -356,7 +356,7 @@ function AutomatedLatest(props) {
                         </div>
                       </Box>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={8} p={{xs: 0, md: 2}}>
                       <ArticleCard
                         {...rightArticles}
                         currentLanguage={currentLanguage}
@@ -423,7 +423,7 @@ function AutomatedLatest(props) {
                   {
                     bottomArticles && bottomArticles[0] && (
                       <ArticleCard
-                        {...bottomArticles[2]}
+                        {...bottomArticles[0]}
                         currentLanguage={currentLanguage}
                       />
                     )
@@ -448,7 +448,7 @@ function AutomatedLatest(props) {
                       {
                         bottomArticles && bottomArticles[2] && (
                           <ArticleCard
-                            {...bottomArticles[0]}
+                            {...bottomArticles[2]}
                             currentLanguage={currentLanguage}
                           />
                         )
