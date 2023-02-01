@@ -106,7 +106,7 @@ function NewsCard(props) {
             </a>
           </Link>
         )
-      } else if (categorie.searchId == 'videos' || categorie.searchId == 'podcasts') {
+      } else if (categorie.searchId == 'videos' || categorie.searchId == 'podcasts' || categorie.searchId == 'webinars' || categorie.searchId == 'articles') {
         return (
           <Link
             href={{
@@ -159,7 +159,7 @@ function NewsCard(props) {
                           </Typography>
                         )}
                       </Box>
-                      <Box my={2}>
+                      <Box mt={2}>
                         <div className={styles.line}></div>
                         <div className={styles.line}></div>
                         <div className={styles.line}></div>
@@ -175,10 +175,11 @@ function NewsCard(props) {
                           flexDirection: 'column',
                           justifyContent: {xs: 'flex-end', md: 'center'},
                           alignItems: 'center',
-                          py: 8,
+                          py: categorie.searchId == 'videos' || categorie.searchId == 'podcasts' || categorie.searchId == 'webinars' ? 8 : 14,
                         }}
                       >
-                        <AiFillPlayCircle size={90} color={'var(--white)'} />
+                        {categorie.searchId == 'videos' || categorie.searchId == 'podcasts' || categorie.searchId == 'webinars' &&  <AiFillPlayCircle size={90} color={'var(--white)'} />}
+                       
                       </Box>
                     </>
                   )}
@@ -267,7 +268,7 @@ function NewsCard(props) {
                     alignItems: 'center',
                   }}
                 >
-                  <AiFillPlayCircle size={90} color={'var(--white)'} />
+                   {categorie.searchId == 'videos' || categorie.searchId == 'podcasts' || categorie.searchId == 'webinars' &&  <AiFillPlayCircle size={90} color={'var(--white)'} />}
                 </Grid>
               </Grid>
             </a>
@@ -418,10 +419,7 @@ function NewsCard(props) {
                     alignItems: 'center',
                   }}
                 >
-                  {categorie?.searchId === 'videos' ||
-                    (categorie?.searchId === 'podcasts' && (
-                      <AiFillPlayCircle size={90} color={'var(--white)'} />
-                    ))}
+                  {categorie.searchId == 'videos' || categorie.searchId == 'podcasts' || categorie.searchId == 'webinars' &&  <AiFillPlayCircle size={90} color={'var(--white)'} />}
                 </Grid>
               </Grid>
             </a>
