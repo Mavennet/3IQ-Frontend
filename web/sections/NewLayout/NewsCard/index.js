@@ -175,7 +175,7 @@ console.log(props)
                           alignItems: 'center',
                           py: 8,
                         }}
-                      >  
+                      >
                             <AiFillPlayCircle size={90} color={'var(--white)'} />
                       </Box>
                     </>
@@ -367,7 +367,7 @@ console.log(props)
                         component="h2"
                         variant="h4"
                         sx={{
-                          fontSize: 'var(--font-size-primary-md)',
+                          fontSize: {xs: 'var(--font-size-primary-sm)', md: 'var(--font-size-primary-md)'},
                           fontFamily: 'var(--font-family-primary)',
                           color: 'var(--black)',
                         }}
