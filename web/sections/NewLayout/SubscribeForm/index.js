@@ -12,8 +12,12 @@ import styles from './styles.module.scss'
 
 const builder = imageUrlBuilder(client)
 
+function urlFor(source) {
+  return imageUrlBuilder(client).image(source)
+}
+
 function SubscribeForm(props) {
-  const {contactUsFormSrc, items, currentLanguage} = props
+  const {contactUsFormSrc, items, currentLanguage, backgroundImage} = props
 
   return (
     <Grid container>
@@ -24,18 +28,26 @@ function SubscribeForm(props) {
         xs={12}
         sx={{
           bgcolor: '#1495F8',
+          background:
+            backgroundImage &&
+            `url("${urlFor(backgroundImage).url()}") no-repeat top center #1495F8`,
+          backgroundSize: 'contain',
         }}
+        order={{md: 1, xs: 2}}
       >
-        <Box sx={{ml: 'auto', mr: 3, mt: 12}}>
+        <Box sx={{ml: 'auto', mr: 3, mt: {md: 12, xs: 6}}}>
           {items &&
             items.map((item, index) => (
-              <Box key={`item_${index}`} className={styles.card}>
+              <Box key={`item_${index}`} ml={{md: 30, xs: 3}} p={4} mb={3} className={styles.card}>
                 <Box sx={{display: 'flex'}}>
                   <img
-                    style={{width: '25px', height: '25px'}}
+                    style={{width: '20px', height: '20px'}}
                     src={builder.image(item.mainImage).url()}
+                    className={styles.filteredImage}
                   />
-                  <span>{item.heading[currentLanguage.languageTag]}</span>
+                  <Box ml={1}>
+                    <span>{item.heading[currentLanguage.languageTag]}</span>
+                  </Box>
                 </Box>
 
                 <Box className={styles.text}>
@@ -45,7 +57,7 @@ function SubscribeForm(props) {
             ))}
         </Box>
       </Grid>
-      <Grid item md={6} xs={12} order={{md: 2, xs: 1}} sx={{height: '960px'}}>
+      <Grid item md={6} xs={12} order={{md: 2, xs: 1}} >
         <Box sx={{height: '960px'}} mt={3} pl={{md: 15, sm: 2}} pr={{md: 15, sm: 2}}>
           <iframe
             style={{width: '100%', height: '100%', border: 'none'}}

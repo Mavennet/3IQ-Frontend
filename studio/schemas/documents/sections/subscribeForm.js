@@ -1,44 +1,48 @@
-import { SplitHorizontalIcon } from '@sanity/icons'
+import { SplitHorizontalIcon } from "@sanity/icons";
 
 export default {
-  type: 'document',
-  name: 'subscribeForm',
-  title: 'Contact Us Form',
+  type: "document",
+  name: "subscribeForm",
+  title: "Contact Us Form",
   icon: SplitHorizontalIcon,
   fields: [
     {
-      name: 'name',
-      type: 'string',
-      title: 'Name (*)',
-      validation: Rule => Rule.error('Information required.').required(),
-    },  
-    {
-      name: 'contactUsFormSrc',
-      type: 'url',
-      title: 'Form Link (*)',
-      description: "This is the link that will load the form fields in the website",
-      validation: Rule => Rule.error('Information required.').required(),
+      name: "name",
+      type: "string",
+      title: "Name (*)",
+      validation: Rule => Rule.error("Information required.").required()
     },
     {
-      name: 'items',
-      title: 'Items (*)',
-      description: 'Choose the items that will be displayed',
-      type: 'array',
-      validation: Rule => [
-        Rule.error('Information required.').required(),
-      ],
-      of: [{ type: 'reference', to: { type: 'item' } }],
+      name: "contactUsFormSrc",
+      type: "url",
+      title: "Form Link (*)",
+      description:
+        "This is the link that will load the form fields in the website",
+      validation: Rule => Rule.error("Information required.").required()
     },
+    {
+      name: "items",
+      title: "Items (*)",
+      description: "Choose the items that will be displayed",
+      type: "array",
+      validation: Rule => [Rule.error("Information required.").required()],
+      of: [{ type: "reference", to: { type: "item" } }]
+    },
+    {
+      name: "backgroundImage",
+      title: "Background Image",
+      type: "figure"
+    }
   ],
   preview: {
     select: {
-      title: `name`,
+      title: `name`
     },
     prepare({ title }) {
       return {
         title,
-        subtitle: 'Subscribe Form section'
-      }
+        subtitle: "Subscribe Form section"
+      };
     }
   }
-}
+};
