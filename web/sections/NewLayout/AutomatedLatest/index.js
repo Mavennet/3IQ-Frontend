@@ -243,7 +243,7 @@ function AutomatedLatest(props) {
                     variant="h2"
                     className={styles.title}
                     sx={{
-                      fontSize: {xs: 'var(--font-size-primary-md)', md: 'var(--font-size-primary-lg)'},
+                      fontSize: { xs: 'var(--font-size-primary-md)', md: 'var(--font-size-primary-lg)' },
                       fontFamily: 'var(--font-family-primary)',
                       color: 'var(--black)',
                       textAlign: 'left',
@@ -313,7 +313,7 @@ function AutomatedLatest(props) {
                     variant="h2"
                     className={styles.title}
                     sx={{
-                      fontSize: {xs: 'var(--font-size-primary-md)', md: 42},
+                      fontSize: { xs: 'var(--font-size-primary-md)', md: 42 },
                       fontFamily: 'var(--font-family-primary)',
                       color: 'var(--black)',
                       textAlign: 'left',
@@ -342,28 +342,27 @@ function AutomatedLatest(props) {
             <Grid item xs={12} p={{ xs: 1, md: 2 }} mb={4}>
               {
                 rightArticles && (
-                  <Grid container sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Grid item xs={4}>
-                      <Box mr={2}>
-                        <div className={styles.imgGrid}>
-                          {
-                            rightArticles.post?.mainImage && (
-                              <Image
-                                src={builder.image(rightArticles.post?.mainImage.asset._ref).url()}
-                                alt={rightArticles.post?.heading}
-                                layout='fill'
-                                objectFit='cover'
-                              />
-                            )
-                          }
-                        </div>
-                      </Box>
+                  <Grid container sx={{ display: 'flex', alignItems: 'stretch' }} spacing={{xs: 2, md: 4}}>
+                    <Grid item xs={6} md={4}>
+                      <div className={styles.imgGrid}>
+                        {
+                          rightArticles.post?.mainImage && (
+                            <Image
+                              src={builder.image(rightArticles.post?.mainImage.asset._ref).url()}
+                              alt={rightArticles.post?.heading}
+                              layout='fill'
+                              objectFit='cover'
+                            />
+                          )
+                        }
+                      </div>
                     </Grid>
-                    <Grid item xs={8} p={{xs: 0, md: 2}}>
+                    <Grid item xs={6} md={8}>
                       <ArticleCard
                         {...rightArticles}
                         currentLanguage={currentLanguage}
                         hideImage={true}
+                        className={styles.article__single}
                       />
                     </Grid>
                   </Grid>
@@ -381,7 +380,7 @@ function AutomatedLatest(props) {
                     variant="h2"
                     className={styles.title}
                     sx={{
-                      fontSize: {xs: 'var(--font-size-primary-md)', md: 'var(--font-size-primary-lg)'},
+                      fontSize: { xs: 'var(--font-size-primary-md)', md: 'var(--font-size-primary-lg)' },
                       fontFamily: 'var(--font-family-primary)',
                       color: 'var(--black)',
                       textAlign: 'left',
@@ -445,7 +444,7 @@ function AutomatedLatest(props) {
                       }
                     </Grid>
                     <Grid xs={12} py={2}>
-                      <Box sx={{borderBottom: '1px solid #b0b0b0'}}/>
+                      <Box sx={{ borderBottom: '1px solid #b0b0b0' }} />
                     </Grid>
                     <Grid item xs={12}>
                       {

@@ -37,6 +37,13 @@ export default {
       }
     },
     {
+      name: 'smallImage',
+      type: 'boolean',
+      title: 'Image Grid size less than text?',
+      description: 'Size: {true: 35%, false: 70%}',
+      initialValue: false,
+    },
+    {
       name: 'videoSrc',
       type: 'string',
       title: 'YouTube video ID',

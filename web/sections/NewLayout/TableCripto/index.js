@@ -111,7 +111,7 @@ function TableCripto(props) {
                                 {item.currency}
                               </div>
                             </td>
-                            <td className={styles.price}>{item.price}</td>
+                            <td className={styles.price}>$ {(item.price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</td>
                             <td className={styles.price}>{item.index}</td>
                             <td>{item.weight}</td>
                           </tr>
