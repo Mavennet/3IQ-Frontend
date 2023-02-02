@@ -58,7 +58,7 @@ function SubscribeForm(props) {
         </Box>
       </Grid>
       <Grid item md={6} xs={12} order={{md: 2, xs: 1}}>
-        <Box sx={{height: '960px'}} mt={3} pl={{md: 15, sm: 2}} pr={{md: 15, sm: 2}}>
+        <Box sx={{height: '1100px'}} mt={3} pl={{md: 15, sm: 2}} pr={{md: 15, sm: 2}}>
           <br />
           <br />
           <Box className={styles.title}>{title && <SimpleBlockContent blocks={title} />}</Box>
