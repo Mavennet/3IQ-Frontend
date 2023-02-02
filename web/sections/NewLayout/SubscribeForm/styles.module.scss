@@ -23,3 +23,12 @@
   padding-top: 6px;
   filter: invert(84%) sepia(13%) saturate(5245%) hue-rotate(330deg) brightness(101%) contrast(102%);
 }
+
+.title {
+  font-family: var(--font-family-primary);
+  strong {
+    display: block !important;
+    color: var(--light-blue);
+    font-weight: normal;
+  }
+}

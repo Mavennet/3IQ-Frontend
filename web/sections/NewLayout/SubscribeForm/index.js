@@ -17,7 +17,7 @@ function urlFor(source) {
 }
 
 function SubscribeForm(props) {
-  const {contactUsFormSrc, items, currentLanguage, backgroundImage} = props
+  const {contactUsFormSrc, items, currentLanguage, backgroundImage, title} = props
 
   return (
     <Grid container>
@@ -35,7 +35,7 @@ function SubscribeForm(props) {
         }}
         order={{md: 1, xs: 2}}
       >
-        <Box sx={{ml: 'auto', mr: 3, mt: {md: 12, xs: 6}}}>
+        <Box sx={{ml: 'auto', mr: 3, mt: {md: 10, xs: 6}}}>
           {items &&
             items.map((item, index) => (
               <Box key={`item_${index}`} ml={{md: 30, xs: 3}} p={4} mb={3} className={styles.card}>
@@ -57,8 +57,12 @@ function SubscribeForm(props) {
             ))}
         </Box>
       </Grid>
-      <Grid item md={6} xs={12} order={{md: 2, xs: 1}} >
+      <Grid item md={6} xs={12} order={{md: 2, xs: 1}}>
         <Box sx={{height: '960px'}} mt={3} pl={{md: 15, sm: 2}} pr={{md: 15, sm: 2}}>
+          <br />
+          <br />
+          <Box className={styles.title}>{title && <SimpleBlockContent blocks={title} />}</Box>
+          <br />
           <iframe
             style={{width: '100%', height: '100%', border: 'none'}}
             name="my_iframe"
