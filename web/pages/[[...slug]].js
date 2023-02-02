@@ -291,9 +291,13 @@ const LandingPage = (props) => {
       ? description[currentLanguage?.languageTag]
       : 'Description not filled on the corresponding language for this page'
 
+      // console.log(formatedContent[0]._type)
+
   return (
     content && (
-      <Layout config={formatedConfig}>
+      <Layout config={formatedConfig}
+       pageType={formatedContent[0] && formatedContent[0]._type}
+       >
         <NextSeo
           title={localeTitle}
           titleTemplate={`%s | ${config.title}`}

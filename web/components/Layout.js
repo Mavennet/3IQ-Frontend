@@ -6,7 +6,7 @@ import Header from './NewLayout/Header'
 import Footer from './NewLayout/Footer'
 
 function Layout(props) {
-  const { config, children } = props
+  const { config, children, pageType } = props
 
   if (!config) {
     console.error('Missing config')
@@ -41,6 +41,7 @@ function Layout(props) {
           dataCountries={dataCountries}
           currentCountry={currentCountry}
           currentLanguage={currentLanguage}
+          pageType={pageType}
         />
         <div className="content">{children}</div>
         <Footer

@@ -14,7 +14,7 @@ import {FiSearch} from 'react-icons/fi'
 import {useRouter} from 'next/router'
 
 function Header(props) {
-  const {navItems, setLanguage, dataCountries, currentCountry, currentLanguage} = props
+  const {navItems, setLanguage, dataCountries, currentCountry, currentLanguage, pageType} = props
 
   const router = useRouter()
 
@@ -34,6 +34,11 @@ function Header(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLanguage.languageTag, size])
 
+
+  React.useEffect(() => {
+    pageType == 'search' && setShowSearchIcon(false)
+  }, [pageType])
+
   function handleSearch(e) {
     setSearchTerm(e.target.value)
   }
@@ -44,7 +49,6 @@ function Header(props) {
         `/${currentCountry.urlTag}/${currentCountry.searchPageRoute.slug.current}?searchTerm=${searchTerm}`
       )
       setShowSearch(false)
-      setShowSearchIcon(false)
       setShowNav(false)
     }
   }
@@ -169,7 +173,7 @@ function Header(props) {
                     />
                     <div className={styles.separator}></div>
                   </>
-                )}
+                 )} 
 
                 {navItems &&
                   navItems.map(
