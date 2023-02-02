@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 import { Container, Grid, Box } from '@mui/material'
-import { IoIosArrowDropleft, IoIosArrowDropright } from 'react-icons/io'
+import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 import Button from '../../../components/NewLayout/Button'
 
 function renderCards(items, languageTag) {
@@ -31,7 +31,7 @@ function renderCards(items, languageTag) {
         count > 2 && --count
         ++count
         return (
-            <Box sx={{ minWidth: { sm: '500px', xs: '300px' }, ml: count == 0 && { xl: 60, lg: 10, md: 2, xs: 0 } }} className={cardStyles[count].card}>
+            <Box sx={{ minWidth: { sm: '500px', xs: '300px' } }} className={cardStyles[count].card}>
                 <div className={cardStyles[count].background}>
                     <div className={styles.box__container__card__content}>
                         <div className={styles.box__container__title}>
@@ -93,17 +93,17 @@ function OurFunds(props) {
 
     return (
         <section className={styles.our__funds__section}>
-            <Container>
+            <Container sx={{maxWidth: { sm: 'md', md: 'lg', lg: 'xl' }}}>
                 <Grid container mb={4}>
                     <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <h3>Our Funds</h3>
                         <div className={styles.arrows}>
-                            <IoIosArrowDropleft
+                            <RiArrowLeftSLine
                             className={styles.arrow}
                                 size={40}
                                 onClick={() => handleArrow('prev')}
                             />
-                            <IoIosArrowDropright
+                            <RiArrowRightSLine
                             className={styles.arrow}
                                 size={40}
                                 onClick={() => handleArrow('next')}
