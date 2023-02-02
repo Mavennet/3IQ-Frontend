@@ -16,6 +16,8 @@
     "@mui/lab": "^5.0.0-alpha.98",
     "@mui/material": "^5.10.4",
     "@netlify/plugin-nextjs": "^4.2.4",
+    "@nivo/core": "^0.80.0",
+    "@nivo/line": "^0.80.0",
     "@portabletext/react": "^1.0.2",
     "@react-three/drei": "^8.11.0",
     "@react-three/fiber": "^7.0.29",
