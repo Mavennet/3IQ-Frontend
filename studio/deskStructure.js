@@ -40,6 +40,7 @@ const hiddenDocTypes = listItem =>
     "heroPreview",
     "highlights",
     "imageBesideText",
+    "overflowHero",
     "doubleOptions",
     "imageWithText",
     "advertisement",
@@ -204,6 +205,9 @@ export default () =>
               ),
               S.documentTypeListItem("imageBesideText").title(
                 "Image beside Text"
+              ),
+              S.documentTypeListItem("overflowHero").title(
+                "Overflow Hero"
               ),
               S.documentTypeListItem("keyBenefits").title("Key Benefits"),
               S.documentTypeListItem("locationsDisplay").title(

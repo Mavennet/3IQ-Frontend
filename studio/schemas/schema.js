@@ -51,6 +51,7 @@ import search from "./documents/sections/search";
 import articlesSearch from "./documents/sections/articlesSearch";
 import teamsVideoDisplay from "./documents/sections/teamsVideoDisplay";
 import imageBesideText from "./documents/sections/imageBesideText";
+import overflowHero from "./documents/sections/overflowHero";
 import quoteHeads from "./documents/sections/quoteHeads";
 import quoteFounder from "./documents/sections/quoteFounder";
 import quoteHeadsDubai from "./documents/sections/quoteHeadsDubai";
@@ -139,6 +140,7 @@ export default createSchema({
     accordionItem,
     doubleOptions,
     keyBenefits,
+    overflowHero,
     benefitCard,
     item,
     post,

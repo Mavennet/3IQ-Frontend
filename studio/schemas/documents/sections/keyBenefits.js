@@ -26,6 +26,11 @@ export default {
       ],
       of: [{ type: 'reference', to: { type: 'benefitCard' } }],
     },
+    {
+      name: 'fundsLayout',
+      type: 'boolean',
+      title: 'Funds Layout (*)',
+    },
   ],
   preview: {
     select: {

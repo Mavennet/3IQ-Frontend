@@ -29,6 +29,19 @@ export default {
       validation: Rule => Rule.error('Information required.').required(),
     },
     {
+      title: "Card Color",
+      name: "cardColor",
+      type: "string",
+      options: {
+        list: [
+          { title: "Blue", value: "#0082E5" },
+          { title: "Yellow", value: "#F59B1E" },
+          { title: "Dark Blue", value: "#0D1C3D" },
+        ],
+        layout: "radio"
+      }
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'figure',

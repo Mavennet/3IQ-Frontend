@@ -32,6 +32,7 @@ export default {
     "timeline",
     "hero",
     "imageBesideText",
+    "overflowHero",
     "doubleOptions",
     "mailchimp",
     "advertisement",

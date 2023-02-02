@@ -1,15 +1,32 @@
-.text{
+.text {
+  height: 100%;
 
-    height: 100%;
+  &__heading {
+    color: white;
+  }
 
-    &__heading{
-        color: white;
+  &__fundLayout__heading {
+    color: var(--black);
+  }
+
+  &__fundLayout__body {
+    color: var(--black);
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-sm);
+
+    p {
+      color: var(--black);
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-secondary-sm);
+      margin: 0;
+      padding: 0;
     }
-    
-    &__body{
-        padding-top: 10px;
-        font-family: var(--font-family-secondary);
-        font-size: var(--font-size-secondary-xs);
-        color: white;
-    }
+  }
+
+  &__body {
+    padding-top: 10px;
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-secondary-xs);
+    color: white;
+  }
 }

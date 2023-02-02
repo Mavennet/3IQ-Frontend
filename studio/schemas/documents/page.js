@@ -92,6 +92,7 @@ export default {
             { type: "fundsOverview" },
             { type: "timeline" },
             { type: "imageBesideText" },
+            { type: "overflowHero" },
             { type: "articles" }
           ]
         }
