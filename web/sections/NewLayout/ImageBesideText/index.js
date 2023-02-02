@@ -21,7 +21,8 @@ function ImageBesideText(props) {
     backgroundImage,
     description,
     currentLanguage,
-    isInvertedLayout
+    isInvertedLayout,
+    smallImage = false
   } = props
 
   const opts = {
@@ -41,8 +42,8 @@ function ImageBesideText(props) {
 
   return (
     <Container sx={{ maxWidth: { sm: 'md', lg: 'lg' } }}>
-      <Grid container py={10} spacing={{ xs: 0, md: 4 }} sx={{ flexDirection: { xs: 'column-reverse', md: !isInvertedLayout ? 'unset' : 'row-reverse' } }}>
-        <Grid item xs={12} md={6} lg={7}>
+      <Grid container py={10} spacing={{ xs: 0, md: 4 }} sx={{ display: 'flex', alignItems: 'center', flexDirection: { xs: 'column-reverse', md: !isInvertedLayout ? 'unset' : 'row-reverse' } }}>
+        <Grid item xs={12} md={smallImage ? 4 : 6} lg={smallImage ? 4 : 7}>
           {backgroundImage?.asset && (
             <Box
               component="img"
@@ -74,7 +75,7 @@ function ImageBesideText(props) {
             </div>
           )}
         </Grid>
-        <Grid item xs={12} md={6} lg={5} mt={2}>
+        <Grid item xs={12} md={smallImage ? 8 : 6} lg={smallImage ? 8 : 5} mt={2}>
           {
             description && (
               <div className={styles.simple__block__content}>
@@ -90,6 +91,7 @@ function ImageBesideText(props) {
 
 ImageBesideText.propTypes = {
   isInvertedLayout: PropTypes.bool,
+  smallImage: PropTypes.bool,
   heading: PropTypes.object,
   backgroundImage: PropTypes.object,
   description: PropTypes.object,
