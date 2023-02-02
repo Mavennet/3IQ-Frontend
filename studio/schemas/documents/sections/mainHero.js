@@ -23,8 +23,7 @@ export default {
     {
       name: 'mainImage',
       type: 'localeFigure',
-      title: 'Main image (*)',
-      validation: Rule => Rule.error('Information required.').required(),
+      title: 'Main image',
     },
     {
       name: 'backgroundImage',
@@ -65,6 +64,13 @@ export default {
       title: 'First Box Description',
     },
     {
+      name: "firstRoute",
+      type: "localeCta",
+      title: "Route (*)",
+      description: "Select the route that points to first box item",
+      validation: Rule => Rule.error("Information required.").required(),
+    },
+    {
       name: 'secondBoxTitle',
       type: 'localeString',
       title: 'Second Box Title',
@@ -75,6 +81,13 @@ export default {
       title: 'Second Box Description',
     },
     {
+      name: "secondRoute",
+      type: "localeCta",
+      title: "Route (*)",
+      description: "Select the route that points to second box item",
+      validation: Rule => Rule.error("Information required.").required(),
+    },
+    {
       name: 'thirdBoxTitle',
       type: 'localeString',
       title: 'Third Box Title',
@@ -83,6 +96,13 @@ export default {
       name: 'thirdBoxDescription',
       type: 'localeString',
       title: 'Third Box Description',
+    },
+    {
+      name: "thirdRoute",
+      type: "localeCta",
+      title: "Route (*)",
+      description: "Select the route that points to third box item",
+      validation: Rule => Rule.error("Information required.").required(),
     },
   ],
   preview: {
