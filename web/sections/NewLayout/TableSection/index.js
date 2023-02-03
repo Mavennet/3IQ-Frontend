@@ -217,7 +217,7 @@ function TableSection(props) {
               <div className={styles.simpleBlockContent}>
                 <SimpleBlockContent blocks={embed} />
                 {date && (
-                  <Typography paragraph style={{color: 'var(--dark-gray)'}}>‡ {date}</Typography>
+                  <Typography paragraph style={{color: 'var(--dark-gray)', fontWeight: '300', fontStyle: 'normal'}}>‡ {date}</Typography>
                 )}
               </div>
             </Grid>
