@@ -7,6 +7,7 @@ import client from '../../../client'
 import SimpleBlockContent from '../../SimpleBlockContent'
 import RedirectButton from '../../RedirectButton/RedirectButton'
 import styles from './DescriptionsWithButton.module.css'
+import Script from 'next/script'
 
 const theme = createTheme({
   typography: {
@@ -16,12 +17,12 @@ const theme = createTheme({
     },
     h2: {
       fontSize: 20,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     h5: {
       fontSize: 20,
-      fontWeight: 'bold'
-    }
+      fontWeight: 'bold',
+    },
   },
 })
 
@@ -36,43 +37,55 @@ function DescriptionsWithButton(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{
-        background: backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat center center`,
-        pt: 10,
-        pb: 10,
-        backgroundColor: '#D2D1D4',
-        backgroundSize: 'cover',
-      }}
+      <Box
+        sx={{
+          background:
+            backgroundImage && `url("${urlFor(backgroundImage).url()}") no-repeat center center`,
+          pt: 10,
+          pb: 10,
+          backgroundColor: '#D2D1D4',
+          backgroundSize: 'cover',
+        }}
       >
-        <Container maxWidth="md" >
+        <Container maxWidth="md">
           <Grid container>
             <Grid item xs={12}>
-              {
-                firstDescription && (
-                  <div className={styles.simpleBlockContent}>
-                    <SimpleBlockContent blocks={firstDescription} />
-                  </div>
-                )
-              }
+              {firstDescription && (
+                <div className={styles.simpleBlockContent}>
+                  <SimpleBlockContent blocks={firstDescription} />
+                </div>
+              )}
             </Grid>
             <Grid item xs={12}>
               {localeButton && (localeButton.route || localeButton.link) && (
                 <RedirectButton
                   {...localeButton}
-                  sx={{ width: { xs: '96%', md: 180 }, padding: '10px 20px', fontSize: '16px', background: '#091B3F', borderColor: '#091B3F', color: '#fff' }}
+                  sx={{
+                    width: {xs: '96%', md: 180},
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    background: '#091B3F',
+                    borderColor: '#091B3F',
+                    color: '#fff',
+                  }}
                 />
               )}
             </Grid>
             <Grid item xs={12}>
-              {
-                secondDescription && (
-                  <div className={styles.simpleBlockContent}>
-                    <SimpleBlockContent blocks={secondDescription} />
-                  </div>
-                )
-              }
+              {secondDescription && (
+                <div className={styles.simpleBlockContent}>
+                  <SimpleBlockContent blocks={secondDescription} />
+                </div>
+              )}
             </Grid>
           </Grid>
+          <div
+            id="BambooHR"
+            data-domain="3iq.bamboohr.com"
+            data-version="1.0.0"
+            data-departmentId=""
+          ></div>
+          <Script src="https://3iq.bamboohr.com/js/embed.js" type="text/javascript" async defer />
         </Container>
       </Box>
     </ThemeProvider>
