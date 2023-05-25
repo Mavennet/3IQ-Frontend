@@ -14,9 +14,10 @@ Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-i
 
 1. Clone this repository
 2. `npm install` in the project root folder on local
-3. `npm run dev` to start the studio and frontend locally
+3. `export COUNTRY_BASE=ca && npm run dev` to start the studio and frontend locally
    - Your studio should be running on [http://localhost:3333](http://localhost:3333)
    - Your frontend should be running on [http://localhost:3000](http://localhost:3000)
+   - Change export COUNTRY_BASE to ca or ae for Canada or Dubai sites respectively
 4. `npm run build` to build to production locally
 
 ## Deploy changes
